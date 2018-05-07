@@ -1,0 +1,16 @@
+<h1>Connect to our Bridge</h1><br>
+To initialize the Bridge API add the JavaScript library to communicate with the EVASION server and provide your merchant id as a public key to identify against it. Add the following code snippet into the page header in a script tag:<br>
+<pre>&lt;script src="https://pp.payengine.de/bridge/1.0/payengine.min.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+ window.onload = function() {
+ PayEngine.setPublishableKey( "&lt;YOUR_MERCHANT_ID&gt;" );
+ };
+&lt;/script&gt;
+</pre><br>
+<em>! Note -&gt; Details for common functions, parameters, errors and user variables can be found <a href="/buildyourown/bridge/commonreference">here</a></em><br>
+<br>
+There are a couple of integration options based on the PCI DSS level the merchant has:<br>
+<ul>
+ 	<li><strong><a href="/buildyourown/bridge/saqasolution">SAQ-A</a></strong> - Card-not-present merchants (e-commerce or mail/telephone-order) that have fully outsourced all cardholder data functions to PCI DSS validated third-party service providers, with no electronic storage, processing, or transmission of any cardholder data on the merchant’s systems or premises. Not applicable to face-to-face channels.</li>
+ 	<li><strong><a href="/buildyourown/bridge/saqaepsolution">SAQ-AEP</a></strong> - E-commerce merchants who outsource all payment processing to PCI DSS validated third parties, and who have a website(s) that doesn’t directly receive cardholder data but that can impact the security of the payment transaction. No electronic storage, processing, or transmission of any cardholder data on the merchant’s systems or premises.</li>
+</ul>

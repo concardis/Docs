@@ -1,0 +1,301 @@
+<h3>POST /orders</h3>
+<p>Method: <code>POST</code></p>
+<p>URI: <code>/orders</code></p>
+<p>Parent Error Code: <code>12000 Error while creating order.</code></p>
+<p>The HTTP Status is always <code>400 Bad Request</code></p>
+<br/>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center;">Field</th>
+      <th style="text-align: center;">Data Type</th>
+      <th style="text-align: center;">Required for</th>
+      <th style="text-align: center;">Value Range</th>
+      <th style="text-align: center;">Length</th>
+      <th style="text-align: center;">Expectation</th>
+      <th style="text-align: center;">Code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>initialAmount</td>
+      <td>Number</td>
+      <td>All</td>
+      <td>greater then min. authorizing amount in cents and less then 9999999</td>
+      <td></td>
+      <td>Integer between min. authorizing amount in cents and 9999999</td>
+      <td>12200<br/>12201</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>currency</td>
+      <td>String</td>
+      <td>Yes<br/>when basket is present</td>
+      <td>Processing, dependent on payment method and merchant configuration</td>
+      <td>3</td>
+      <td>
+        Currency code in the range of <a target="_blank" href="https://en.wikipedia.org/wiki/ISO_4217">ISO_4217</a>
+      </td>
+      <td>12202<br/>12203</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>async</td>
+      <td>Object</td>
+      <td>Yes<br/>when basket is present</td>
+      <td></td>
+      <td></td>
+      <td>object of type async</td>
+      <td>12204</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>async.successUrl</td>
+      <td>String</td>
+      <td>Yes</td>
+      <td>
+        <a target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html">Class URL</a>
+      </td>
+      <td>{6 - 2048}</td>
+      <td>Mandatory string representing a valid http URL according to:
+        <a target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html">Class URL</a> and
+        <a target="_blank" href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html">UrlValidator</a>
+      </td>
+      <td>12205<br/>12206</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>async.failureUrl</td>
+      <td>String</td>
+      <td>Yes</td>
+      <td>
+        <a target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html">Class URL</a>
+      </td>
+      <td>{6 - 2048}</td>
+      <td>Mandatory string representing a valid http URL according to:
+        <a target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html">Class URL</a> and
+        <a target="_blank" href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html">UrlValidator</a>
+      </td>
+      <td>12207<br/>12208</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>async.cancelUrl</td>
+      <td>String</td>
+      <td>Yes</td>
+      <td>
+        <a target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html">Class URL</a>
+      </td>
+      <td>{6 - 2048}</td>
+      <td>Mandatory string representing a valid http URL according to:
+        <a target="_blank" href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html">Class URL</a> and
+        <a target="_blank" href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html">UrlValidator</a>
+      </td>
+      <td>12209<br/>12210</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>transactionType</td>
+      <td>String</td>
+      <td>Yes</td>
+      <td>[PREAUTH, DEBIT]</td>
+      <td>128</td>
+      <td>Mandatory string "PREAUTH" or "DEBIT"</td>
+      <td>12211<br/>12212</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>terms</td>
+      <td>Number</td>
+      <td>RatePay</td>
+      <td>long</td>
+      <td></td>
+      <td>UNIX timestamp in ms</td>
+      <td>12213<br/>12214</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>privacy</td>
+      <td>Number</td>
+      <td>RatePay</td>
+      <td>long</td>
+      <td></td>
+      <td>UNIX timestamp in ms</td>
+      <td>12215<br/>12216</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>description</td>
+      <td>String</td>
+      <td>No</td>
+      <td></td>
+      <td>{1 - 128}</td>
+      <td>String between 1 and 128 characters</td>
+      <td>12217</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>statementDescription</td>
+      <td>String</td>
+      <td>No</td>
+      <td></td>
+      <td>{1 - 128}</td>
+      <td>String between 1 and 128 characters</td>
+      <td>12218</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>basket</td>
+      <td>Array[item]</td>
+      <td>RatePay</td>
+      <td></td>
+      <td></td>
+      <td>Array of type item</td>
+      <td>12219<br/>12220</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>item.name</td>
+      <td>String</td>
+      <td>Yes<br/>when basket is present</td>
+      <td></td>
+      <td>{1 - 128}</td>
+      <td>Mandatory string between 1 and 128 characters</td>
+      <td>12221<br/>12222</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>item.articleNumber</td>
+      <td>String</td>
+      <td>Yes<br/>when basket is present</td>
+      <td></td>
+      <td>{1 - 255}</td>
+      <td>Mandatory string between 1 and 255 characters</td>
+      <td>12223<br/>12224</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>item.totalPrice</td>
+      <td>Number</td>
+      <td>Yes<br/>when basket is present</td>
+      <td>greater than min. item total price amount in cents and less than 9999999</td>
+      <td></td>
+      <td>Number between min. item total price amount in cents and 9999999</td>
+      <td>12225<br/>12226</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>item.totalPriceWithTax:</td>
+      <td>Number</td>
+      <td>Yes<br/>when basket is present</td>
+      <td>Number greater than item Total Price in cents</td>
+      <td></td>
+      <td>Mandatory number greater than item Total Price in cents</td>
+      <td>12227<br/>12228</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>item.tax</td>
+      <td>Number</td>
+      <td>Yes<br/>when basket is present</td>
+      <td>Number between 0 and 100</td>
+      <td></td>
+      <td>Mandatory number between 0 and 100</td>  
+      <td>12229<br/>12230</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>item.unitPrice</td>
+      <td>Number</td>
+      <td>Yes<br/>when basket is present</td>
+      <td>Number between min. item unit price amount in cents and 9999999</td>
+      <td></td>
+      <td>Number between min. item unit price amount in cents and 9999999</td>
+      <td>12231<br/>12232</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>item.unitPriceWithTax</td>
+      <td>Number</td>
+      <td>Yes<br/>when basket is present</td>
+      <td>Number greater than item.unitPrice</td>
+      <td></td>
+      <td>Number greater than item unit Price in cents</td>
+      <td>12233<br/>12234</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>item.quantity</td>
+      <td>Number</td>
+      <td>Yes<br/>when basket is present</td>
+      <td>Number between 1 and 9999999</td>
+      <td></td>
+      <td>Number between 1 and 9999999</td>
+      <td>12235<br/>12236</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>customer</td>
+      <td>String</td>
+      <td>RatePay</td>
+      <td>Additional required fields for ratepay (when ratepay is part of the allowed PMs):<br/>email</td>
+      <td>20</td>
+      <td>Unique string representing a customer reference. May contain numbers, letters, dashes and underscores.</td>
+      <td>12237<br/>12238<br/>12239</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>persona</td>
+      <td>String</td>
+      <td>RatePay</td>
+      <td>Additional required fields for ratepay(when ratepay is part of the allowed PMs): birthday</td>
+      <td>20</td>
+      <td>Unique string representing a persona reference. May contain numbers, letters, dashes and underscores.</td>
+      <td>12240<br/>12241<br/>12242<br/>12243</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>billingAddress</td>
+      <td>String</td>
+      <td>RatePay</td>
+      <td>Additional required fields for ratepay(when ratepay is part of the allowed PMs): at least phone or mobile</td>
+      <td>20</td>
+      <td>Unique string representing a billing reference. May contain numbers, letters, dashes and underscores.</td>
+      <td>12244<br/>12245</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>shippingAddress</td>
+      <td>String</td>
+      <td>RatePay</td>
+      <td></td>
+      <td>20</td>
+      <td>Unique string representing a shipping Address reference. May contain numbers, letters, dashes and underscores.</td>
+      <td>12246<br/>12247</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>ipAddress</td>
+      <td>String</td>
+      <td>RatePay</td>
+      <td>IPv4 - IPv6</td>
+      <td>255</td>
+      <td>String with length of 255 representing a valid ip address according to: <a target="_blank" href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/InetAddressValidator.html">InetAddressValidator</a>
+        </td>
+      <td>12248<br/>12249</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>channel</td>
+      <td>String</td>
+      <td>No</td>
+      <td>[ MOTO, ECOM ]</td>
+      <td>128</td>
+      <td>String in range [MOTO, ECOM]</td>
+      <td>12251</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>source</td>
+      <td>String</td>
+      <td>No</td>
+      <td></td>
+      <td>{1 - 128}</td>
+      <td>String between 1 and 128 characters</td>
+      <td>12252</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>allowedProducts</td>
+      <td>Array[type]</td>
+      <td>No</td>
+      <td>empty list means all type are allowed!</td>
+      <td></td>
+      <td>array in range<br/>[ creditcard, paypal, paydirekt, ratepay-invoice, ratepay-directdebit, ratepay-installment, sofort ]</td>
+      <td>12253</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>merchantOrderId</td>
+      <td>String</td>
+      <td>No</td>
+      <td></td>
+      <td>{1 - 255}</td>
+      <td>Merchant generated unique identifier for a customer<br/>String between 1 and 255 characters</td>
+      <td>12254<br/>12255</td>
+    </tr>
+  </tbody>
+</table>

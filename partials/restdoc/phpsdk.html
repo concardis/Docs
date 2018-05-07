@@ -1,0 +1,182 @@
+<!-- # Getting started ## Prerequisites ### PHP ### Composer ### Get the PHP-API-SDK ## Integration ### Create a customer ### Create a persona ### Create a address ### Create a preauthorization ### Capture a preauthorization ### Cancel a preauthorization ### Refund a capture or debit transaction ### GET transaction status ### GET order -->
+<h1>Getting started</h1><br>
+This is a quickstart guide for using our PHP SDK to accept credit card payments.<br>
+<h2>Prerequisites</h2><br>
+<h3>PHP</h3><br>
+Get and install PHP for your system. <a href="http://php.net/manual/en/install.php" target="_blank" rel="noopener">http://php.net/manual/en/install.php</a><br>
+<h3>Composer</h3><br>
+Get and install composer for your system. <a href="https://getcomposer.org" target="_blank" rel="noopener">https://getcomposer.org</a><br>
+<h3>Get the PHP SDK</h3><br>
+<h4>By cloning</h4><br>
+<pre>
+git@github.com:concardis/PHP_SDK.git
+</pre><br>
+<h4>As release zip</h4><br>
+<a href="https://github.com/concardis/PHP_SDK/releases">Releases on GitHub</a><br>
+<h2>Integration</h2><br>
+<h3>Initialize SDK</h3><br>
+Uncompress the PHP SDK folder, change into the newly created folder and run<br>
+<pre>composer install</pre><br>
+Move the PHP SDK folder into the vendor folder of your PHP project. Now you can create a php file to use the SDK with.<br>
+<pre>    include_once "./vendor/payengine/autoload.php";
+
+    use \Concardis\Payengine\Lib\Payengine;
+    use \Concardis\Payengine\Lib\Internal\Config\MerchantConfiguration;
+    use \Concardis\Payengine\Lib\Models\Request\Customer as CustomerRequest;
+    use \Concardis\Payengine\Lib\Models\Request\Customers\Persona as PersonaRequest;
+    use \Concardis\Payengine\Lib\Models\Request\Customers\Address as AddressRequest;
+    use \Concardis\Payengine\Lib\Models\Request\Orders\Payment\Payment;
+
+    $config = new MerchantConfiguration();
+    //TODO: Enter your API-Key
+    $config-&gt;setApiKey('YOUR_API_KEY');
+    // TODO: Enter your merchantId
+    $config-&gt;setMerchantId('YOUR_MERCHANT_ID');
+    $config-&gt;setIsLiveMode(false);
+
+    $lib = new Payengine($config);
+</pre>
+<h3>Create a customer</h3>
+<pre>    $customerRequest = new CustomerRequest();
+    $customerRequest-&gt;setEmail('somebody@' . time() .'.org');
+
+    $customerResponse = $lib-&gt;customer()-&gt;post($customerRequest);
+</pre>
+<h3>Create a persona</h3>
+<pre>    $personaRequest = new PersonaRequest();
+    $personaRequest-&gt;setTitle("Dr.");
+    $personaRequest-&gt;setGender(
+        \Concardis\Payengine\Lib\Internal\Constants\Gender::MALE
+    );
+    $personaRequest-&gt;setFirstName("Max");
+    $personaRequest-&gt;setLastName("Mustermann");
+    $personaRequest-&gt;setBirthday(time());
+    $personaRequest-&gt;setFax("0123456789");
+    $personaRequest-&gt;setMobile("0123456789");
+    $personaRequest-&gt;setPhone("0123456789");
+</pre>
+<h3>Create an address</h3>
+<pre>    $addressRequest = new AddressRequest();
+    $addressRequest-&gt;setFirstName("Maxim");
+    $addressRequest-&gt;setLastName("Mustermann");
+    $addressRequest-&gt;setZip("12345");
+    $addressRequest-&gt;setStreet("Musterstrasse");
+    $addressRequest-&gt;setHouseNumber("1a");
+    $addressRequest-&gt;setCountry("DE");
+    $addressRequest-&gt;setCity("Musterstadt");
+    $addressRequest-&gt;setPhone("0123456789");
+    $addressRequest-&gt;setMobile("0123456789");
+    $addressRequest-&gt;setFax("0123456789");
+    $addressRequest-&gt;setState("nrw");
+    $addressRequest-&gt;setTitle("dr.");
+
+    $addressResponse = $lib-&gt;customer(
+    $customerResponse-&gt;getCustomerId())-&gt;addresses()-&gt;post($addressRequest);
+</pre>
+<h3>Create a preauthorization</h3>
+<pre>    $payment = new Payment();
+    //TODO Enter PaymentInstrumentId
+    $payment-&gt;setPaymentInstrumentId('IDFromYourFrontend');
+
+    $item = new \Concardis\Payengine\Lib\Models\Request\Orders\Item();
+    $item-&gt;setQuantity(2);
+    $item-&gt;setUnitPrice(5);
+    $item-&gt;setUnitPriceWithTax(6);
+    $item-&gt;setTotalPrice(10);
+    $item-&gt;setTotalPriceWithTax(12);
+    $item-&gt;setArticleNumber("test");
+    $item-&gt;setName("testName");
+    $item-&gt;setTax(19);
+
+    $async = new \Concardis\Payengine\Lib\Models\Request\Orders\Async();
+    $async-&gt;setSuccessUrl("http://google.de?q=success");
+    $async-&gt;setCancelUrl("http://google.de?q=cancel");
+    $async-&gt;setFailureUrl("http://google.de?q=failure");
+
+    $authorizingTransaction = new \Concardis\Payengine\Lib\Models\Request\Orders\AuthorizingTransaction();
+    $authorizingTransaction-&gt;setCustomer($customerResponse-&gt;getCustomerId());
+    $authorizingTransaction-&gt;setPersona($personaResponse-&gt;getPersonaId());
+    $authorizingTransaction-&gt;setBillingAddress(
+        $addressResponse-&gt;getAddressId()
+    );
+    $authorizingTransaction-&gt;setShippingAddress(
+        $addressResponse-&gt;getAddressId()
+    );
+    $authorizingTransaction-&gt;setCurrency("EUR");
+    $authorizingTransaction-&gt;setPayment($payment);
+    $authorizingTransaction-&gt;setBasket(array(
+        $item
+    ));
+    $authorizingTransaction-&gt;setInitialAmount(12);
+    $authorizingTransaction-&gt;setChannel('ECOM');
+    $authorizingTransaction-&gt;setSource("basicUsage script");
+    $authorizingTransaction-&gt;setTerms(time());
+    $authorizingTransaction-&gt;setPrivacy(time());
+    $authorizingTransaction-&gt;setAsync($async);
+    $authorizingTransaction-&gt;setProduct(
+        \Concardis\Payengine\Lib\Internal\Constants\Products::CREDITCARD
+    );
+
+    $transactionResponse = $lib-&gt;orders()-&gt;preauth()-&gt;post(
+        $authorizingTransaction
+    );
+</pre>
+<h3>Capture a preauthorization</h3>
+<pre>    $referencingTransaction = new \Concardis\Payengine\Lib\Models\Request\Orders\ReferencingTransaction();
+    $referencingTransaction-&gt;setInitialAmount(12);
+    $referencingTransaction-&gt;setCurrency("EUR");
+    $referencingTransaction-&gt;setDescription("Capture everything");
+    $referencingTransaction-&gt;setBasket(array(
+        $item
+    ));
+
+    /* @var $preAuthTransaction \Concardis\Payengine\Lib\Models\Response\Orders\Transaction */
+    $preAuthTransaction = $transactionResponse-&gt;getTransactions()[0];
+    $preAuthId = $preAuthTransaction-&gt;getTransactionId();
+
+    $captureResponse = $lib-&gt;orders(
+        $transactionResponse-&gt;getOrderId()
+    )-&gt;transactions($preAuthId)-&gt;capture()-&gt;post($referencingTransaction);
+</pre>
+<h3>Cancel a preauthorization</h3>
+<pre>    $referencingTransaction = new \Concardis\Payengine\Lib\Models\Request\Orders\ReferencingTransaction();
+    $referencingTransaction-&gt;setInitialAmount(12);
+    $referencingTransaction-&gt;setCurrency("EUR");
+    $referencingTransaction-&gt;setDescription("Capture everything");
+    $referencingTransaction-&gt;setBasket(array(
+        $item
+    ));
+
+    /* @var $preAuthTransaction \Concardis\Payengine\Lib\Models\Response\Orders\Transaction */
+    $preAuthTransaction = $transactionResponse-&gt;getTransactions()[0];
+    $preAuthId = $preAuthTransaction-&gt;getTransactionId();
+
+    $cancelResponse = $lib-&gt;orders(
+        $transactionResponse-&gt;getOrderId()
+    )-&gt;transactions($preAuthId)-&gt;cancel()-&gt;post($referencingTransaction);
+</pre>
+<h3>Refund a capture or debit transaction</h3>
+<pre>    $referencingTransaction = new \Concardis\Payengine\Lib\Models\Request\Orders\ReferencingTransaction();
+    $referencingTransaction-&gt;setInitialAmount(12);
+    $referencingTransaction-&gt;setCurrency("EUR");
+    $referencingTransaction-&gt;setDescription("Refund everything");
+    $referencingTransaction-&gt;setBasket(array(
+        $item
+    ));
+
+    $refundResponse = $lib-&gt;orders(
+        $transactionResponse-&gt;getOrderId()
+    )-&gt;transactions(
+        $captureResponse-&gt;getTransactionId()
+    )-&gt;refund()-&gt;post($referencingTransaction);
+</pre>
+<h3>GET transaction status</h3>
+<pre>    $transactionGetResponse = $lib-&gt;orders(
+        $transactionResponse-&gt;getOrderId()
+    )-&gt;transactions($captureResponse-&gt;getTransactionId())-&gt;get();
+</pre>
+<h3>GET order</h3>
+<pre>    $orderGetResponse = $lib-&gt;orders(
+        $transactionResponse-&gt;getOrderId()
+    )-&gt;get();
+</pre>

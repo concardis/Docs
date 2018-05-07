@@ -1,0 +1,56 @@
+<div class="container">
+    <h4 class="p-title" style="color:#DA4405;"><span>REST API</span></h4>
+</div>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div ng-init="menu=true;" class="col-md-3 btn-group-vertical" >
+    	<button type="button" class="btn btn-light text-left" ng-click="menu=!menu">Menu <span ng-show="menu" class="pull-right glyph-icon icon-chevron-down"></span><span ng-show="!menu" class="pull-right glyph-icon icon-chevron-up"></span></button>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/bridge/ourbridge">Connect to our Bridge</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/bridge/saqasolution">How to implement SAQ-A solution</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/bridge/saqareference">SAQ-A Reference</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/bridge/saqaepsolution">How to implement SAQ-AEP solution</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/bridge/saqaepreference">SAQ-AEP Reference</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/bridge/commonreference">Common Reference</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/bridge/ratepayreference">RatePAY Reference</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/bridge/recurringverification">Recurring verification Reference</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/bridge/support3dsecure">How To Support 3D-secure</a>
+    </div>
+    <div class="col-md-7">
+        <div ng-show="cur=='ourbridge'">
+        	<div  ng-include="'/partials/bridge/ourbridge.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='saqasolution'">
+        	<div  ng-include="'/partials/bridge/saqasolution.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='saqareference'">
+			<div  ng-include="'/partials/bridge/saqareference.html'">
+            </div>	
+        </div>
+        <div ng-show="cur=='saqaepsolution'">
+			<div  ng-include="'/partials/bridge/saqaepsolution.html'">
+            </div>	
+		</div>	
+		<div ng-show="cur=='saqaepreference'">
+			<div  ng-include="'/partials/bridge/saqaepreference.html'">
+            </div>		
+		</div>
+		<div ng-show="cur=='commonreference'">
+			<div  ng-include="'/partials/bridge/commonreference.html'">
+            </div>		
+		</div>
+		<div ng-show="cur=='ratepayreference'">
+			<div  ng-include="'/partials/bridge/ratepayreference.html'">
+            </div>	
+		</div>
+		<div ng-show="cur=='recurringverification'">
+			<div  ng-include="'/partials/bridge/recurringverification.html'">
+            </div>	
+		</div>	
+		<div ng-show="cur=='support3dsecure'">
+			<div  ng-include="'/partials/bridge/support3dsecure.html'">
+            </div>	
+		</div>	
+    </div>
+</div>

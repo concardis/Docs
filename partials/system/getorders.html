@@ -1,0 +1,354 @@
+<p>Method: <code>GET</code></p><br>
+<p>URI: <code>/orders/{orderId}</code></p><br>
+<p>Parent Error Code: <code>12001 Error while fetching order.</code></p><br>
+<br/>
+<br>
+<table>
+<thead>
+<tr>
+  <th style="text-align: center;">Field</th>
+  <th style="text-align: center;">Required</th>
+  <th style="text-align: center;">Data Type</th>
+  <th style="text-align: center;">Validation</th>
+  <th style="text-align: center;" width="10%">HTTP Status</th>
+  <th style="text-align: center;">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+  <td>orderId</td>
+  <td>Yes<br/>when basket is present</td>
+  <td>String</td>
+  <td>valid identity of type order</td>
+  <td>404</td>
+  <td>12101</td>
+</tr>
+</tbody>
+</table>
+<br/>
+<h3>GET /orders</h3>
+<p>Method: <code>GET</code></p>
+<p>URI: <code>/orders</code></p>
+<p>Parent Code: (where applicable)<code>12002 Error while listing orders.</code></p>
+<br/>
+<table>
+<thead>
+  <tr>
+    <th style="text-align: center;">Field</th>
+    <th style="text-align: center;">Required</th>
+    <th style="text-align: center;">Data Type</th>
+    <th style="text-align: center;">Validation</th>
+    <th style="text-align: center;" width="10%">HTTP Status</th>
+    <th style="text-align: center;" width="10%">Parent Code</th>
+    <th style="text-align: center;">Code</th>
+  </tr>
+</thead>
+<tbody>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>createdAt</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>2013</td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>createdAtAfter</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>2014</td>
+  </tr>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>createdAtBefore</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>2015</td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>modifiedAt</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>2016</td>
+  </tr>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>modifiedAtAfter</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>2017</td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>modifiedAtBefore</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>2018</td>
+  </tr>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>page</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>int</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>2010</td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>size</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>int</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>2011</td>
+  </tr>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>orderBy</td>
+    <td>No</td>
+    <td>String</td>
+    <td>alphas</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3001</td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>orderDir</td>
+    <td>No</td>
+    <td>String</td>
+    <td>"ASC", "DESC"</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3002</td>
+  </tr>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>initialAmountLess</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3500</td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>initialAmountGreater</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3501</td>
+  </tr>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>settlementDate</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3502</td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>settlementDateBefore</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3503</td>
+  </tr>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>settlementDateAfter</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3504</td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>privacy</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3505</td>
+  </tr>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>privacyBefore</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3506</td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>privacyAfter</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3507</td>
+  </tr>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>terms</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3508</td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>termsBefore</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3509</td>
+  </tr>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>termsAfter</td>
+    <td>No</td>
+    <td>Number</td>
+    <td>long</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3510</td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>orderId</td>
+    <td>No</td>
+    <td>String</td>
+    <td>alphanumeric, numbers and chars; length 10</td>
+    <td>200</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>paymentProviderOrderId</td>
+    <td>No</td>
+    <td>String</td>
+    <td>alphanumeric</td>
+    <td>200</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>customerId</td>
+    <td>No</td>
+    <td>String</td>
+    <td>valid identity of type customer</td>
+    <td>200</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>personaId</td>
+    <td>No</td>
+    <td>String</td>
+    <td>valid identity of type customer</td>
+    <td>200</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>shippingAddressId</td>
+    <td>No</td>
+    <td>String</td>
+    <td>valid identity of type customer</td>
+    <td>200</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>billingAddressId</td>
+    <td>No</td>
+    <td>String</td>
+    <td>valid identity of type adress</td>
+    <td>200</td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>ipAddress</td>
+    <td>No</td>
+    <td>String</td>
+    <td>IPv4 - IPv6</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3518</td>
+  </tr>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>status</td>
+    <td>No</td>
+    <td>String</td>
+    <td>"CREATED", "OPEN", "CLOSED"</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3519</td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>channel</td>
+    <td>No</td>
+    <td>String</td>
+    <td>"MOTO", "ECOM"</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3520</td>
+  </tr>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>source</td>
+    <td>No</td>
+    <td>String</td>
+    <td>alphas, whitespaces, apostrophes, dots, dashes<br/>{1 - 128}</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3521</td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>product</td>
+    <td>No</td>
+    <td>String</td>
+    <td>"creditcard", "paypal", "paydirekt", "ratepay-invoice", "ratepay-directdebit", "ratepay-installment", "sofort"</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3522</td>
+  </tr>
+  <tr style="text-align: center; border-top: 1px solid black;">
+    <td>settled</td>
+    <td>No</td>
+    <td>Boolean</td>
+    <td>"true", "false"</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3523</td>
+  </tr>
+  <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+    <td>currency</td>
+    <td>No</td>
+    <td>String</td>
+    <td>ISO-4217</td>
+    <td>400</td>
+    <td>Yes</td>
+    <td>3526</td>
+  </tr>
+</tbody>
+</table>

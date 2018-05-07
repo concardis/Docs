@@ -1,0 +1,24 @@
+<div id="{{api.name}}" class="clearfix" ng-class="api.css">
+    <div id="{{api.name}}*" class="list-inline pull-left endpoint-heading">
+        <div>
+            <h4>
+                <a ng-click="api.open=!api.open;api.open?permalink(api.name):'';" ng-bind="api.name"></a>
+                <span ng-if="api.description"> : <span ng-bind="api.description"></span></span>
+            </h4>
+        </div>
+    </div>
+    <div class="pull-right endpoint-actions">
+        <div>
+            <a ng-click="api.open=!api.open;api.open?permalink(api.name):'';" swagger-translate="endPointToggleOperations"></a>
+        </div>
+        <div>
+            <a ng-click="expand(api);api.open?permalink(api.name):'';" swagger-translate="endPointListOperations"></a>
+        </div>
+        <div>
+            <a ng-click="expand(api,true);api.open?permalink(api.name+'*'):'';" swagger-translate="endPointExpandOperations"></a>
+        </div>
+    </div>
+</div>
+<div class="list-unstyled operations" ng-class="api.css" ng-if="api.open">
+    <div ng-repeat="op in api.operations track by $index" class="operation" ng-class="[op.httpMethod,op.css,{'has-authorization':op.security.length}]" ng-include="'/templates/operation.html'"></div>
+</div>

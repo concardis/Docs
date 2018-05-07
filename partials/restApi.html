@@ -1,0 +1,352 @@
+<img src="img/CC_Wheel.jpeg" width="100%"></img>
+<div class="container">
+    <div swagger-ui input-type="json" input="swag"  template-url="/templates/swagger-ui.html"></div>
+</div>
+<!--<div class="row">
+    <div class="col-md-1"></div>
+    <div ng-init="cur=1"class="col-md-3">
+        <div class="btn-group-vertical">
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=1">Endpoint Structure</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=2">Get your Key</button>
+        </div><br><br>
+        <h4>Endpoints</h4>
+        <div class="btn-group-vertical">
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=3">/orders</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=4">/orders/debit</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=5">/orders/preauth</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=6">/orders/{orderId}</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=7">/orders/{orderId}/transactions</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=8">/orders/.../{transactionId}</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=9">/orders/.../{transactionId}/cancel</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=10">/orders/.../{transactionId}/capture</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=11">/orders/.../{transactionId}/refund</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=12">/customers</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=13">/customers/{customerId}</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=14">/customers/{customerId}/addresses</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=15">/customers/.../addresses/{addressId}</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=16">/customers/.../personas</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=17">/customers/.../personas/{personaId}</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=18">/customers/.../payment-instruments</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=19">/customers/.../{paymentInstrumentId}</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=20">/payment-instruments</button>
+            <button type="button" class="btn btn-primary text-left" ng-click="cur=21">/payment-instruments/{paymentInstrumentId}</button>
+        </div>
+    </div>
+    <div class="col-md-7">
+        <div ng-show="cur==1">
+        All the API functionality can be accessed via three main endpoints, orders, customers and payments. Following a overview of the endpoints and its HTTP request methods:
+        <br> <br>
+
+        <a class="btn btn-xs btn-info" href="https://docs.payengine.de/endpoint/orders" type="button" style="padding-left: 15px; padding-right: 15px;">Get</a><a class="btn btn-xs btn-success" href="https://docs.payengine.de/endpoint/orders" type="button" style="padding-left: 15px; padding-right: 15px;">Post</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Patch</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/orders <br> <br>
+
+        <a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Get</s></a><a class="btn btn-xs btn-success" href="https://docs.payengine.de/endpoint/orders/debit" type="button" style="padding-left: 15px; padding-right: 15px;">Post</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Patch</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/orders/debit <br> <br>
+
+        <a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Get</s></a><a class="btn btn-xs btn-success" href="https://docs.payengine.de/endpoint/orders/preauth" type="button" style="padding-left: 15px; padding-right: 15px;">Post</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Patch</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/orders/preauth <br> <br>
+
+        <a class="btn btn-xs btn-info" href="https://docs.payengine.de/endpoint/orders/orderId" type="button" style="padding-left: 15px; padding-right: 15px;">Get</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Post</s></a><a class="btn btn-xs btn-warning" type="button" style="padding-left: 15px; padding-right: 15px; background-color: #f0ad4e;">Patch</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/orders/{orderId} <br> <br>
+
+        <a class="btn btn-xs btn-info" href="https://docs.payengine.de/endpoint/orders/orderId/transactions" type="button" style="padding-left: 15px; padding-right: 15px;">Get</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Post</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Patch</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/orders/{orderId}/transactions <br> <br>
+
+        <a class="btn btn-xs btn-info" href="https://docs.payengine.de/endpoint/orders/orderId/transactionId" type="button" style="padding-left: 15px; padding-right: 15px;">Get</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Post</s></a><a class="btn btn-xs btn-warning" type="button" style="padding-left: 15px; padding-right: 15px; background-color: #f0ad4e;">Patch</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/orders/{orderId}/transactions/{transactionId} <br> <br>
+
+        <a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Get</s></a><a class="btn btn-xs btn-success" href="https://docs.payengine.de/endpoint/orders/orderId/transactionId/cancel" type="button" style="padding-left: 15px; padding-right: 15px;">Post</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Patch</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/orders/{orderId}/transactions/{transactionId}/cancel <br> <br>
+
+        <a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Get</s></a><a class="btn btn-xs btn-success" href="https://docs.payengine.de/endpoint/orders/orderId/transactionId/capture" type="button" style="padding-left: 15px; padding-right: 15px;">Post</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Patch</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/orders/{orderId}/transactions/{transactionId}/capture <br> <br>
+
+        <a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Get</s></a><a class="btn btn-xs btn-success" href="https://docs.payengine.de/endpoint/orders/orderId/transactionId/refund" type="button" style="padding-left: 15px; padding-right: 15px;">Post</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Patch</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/orders/{orderId}/transactions/{transactionId}/refund <br> <br>
+
+        <a class="btn btn-xs btn-info" href="https://docs.payengine.de/endpoint/customers" type="button" style="padding-left: 15px; padding-right: 15px;">Get</a><a class="btn btn-xs btn-success" href="https://docs.payengine.de/endpoint/customers" type="button" style="padding-left: 15px; padding-right: 15px;">Post</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Patch</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/customers <br> <br>
+
+        <a class="btn btn-xs btn-info" href="https://docs.payengine.de/endpoint/customerid" type="button" style="padding-left: 15px; padding-right: 15px;">Get</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Post</s></a><a class="btn btn-xs btn-warning" type="button" style="padding-left: 15px; padding-right: 15px; background-color: #f0ad4e;">Patch</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/customers/{customerId} <br> <br>
+
+        <a class="btn btn-xs btn-info" href="https://docs.payengine.de/endpoint/customerid/addresses" type="button" style="padding-left: 15px; padding-right: 15px;">Get</a><a class="btn btn-xs btn-success" href="https://docs.payengine.de/endpoint/customerid/addresses" type="button" style="padding-left: 15px; padding-right: 15px;">Post</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Patch</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/customers/{customerId}/addresses <br> <br>
+
+        <a class="btn btn-xs btn-info" href="https://docs.payengine.de/endpoint/customerid/addresses/addressId" type="button" style="padding-left: 15px; padding-right: 15px;">Get</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Post</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Patch</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/customers/{customerId}/addresses/{addressId} <br> <br>
+
+        <a class="btn btn-xs btn-info" href="https://docs.payengine.de/endpoint/customerid/personas" type="button" style="padding-left: 15px; padding-right: 15px;">Get</a><a class="btn btn-xs btn-success" href="https://docs.payengine.de/endpoint/customerid/personas" type="button" style="padding-left: 15px; padding-right: 15px;">Post</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Patch</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/customers/{customerId}/personas <br> <br>
+
+        <a class="btn btn-xs btn-info" href="https://docs.payengine.de/endpoint/customerid/personas/personaId" type="button" style="padding-left: 15px; padding-right: 15px;">Get</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Post</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Patch</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/customers/{customerId}/personas/{personaId} <br> <br>
+
+        <a class="btn btn-xs btn-info" href="https://docs.payengine.de/endpoint/customerid/payment-instruments" type="button" style="padding-left: 15px; padding-right: 15px;">Get</a><a class="btn btn-xs btn-success" href="https://docs.payengine.de/endpoint/customerid/payment-instruments" type="button" style="padding-left: 15px; padding-right: 15px;">Post</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Patch</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/customers/{customerId}/payment-instruments <br> <br>
+
+        <a class="btn btn-xs btn-info" href="https://docs.payengine.de/endpoint/customerid/payment-instruments/paymentInstrumentId" type="button" style="padding-left: 15px; padding-right: 15px;">Get</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Post</s></a><a class="btn btn-xs btn-warning" type="button" style="padding-left: 15px; padding-right: 15px; background-color: #f0ad4e;">Patch</a><a class="btn btn-xs btn-danger" href="https://docs.payengine.de/endpoint/customerid/payment-instruments/paymentInstrumentId" type="button" style="padding-left: 15px; padding-right: 15px;">Delete</a> /customers/{customerId}/payment-instruments/{paymentInstrumentId} <br> <br>
+
+        <a class="btn btn-xs btn-info" href="https://docs.payengine.de/endpoint/payment-instruments" type="button" style="padding-left: 15px; padding-right: 15px;">Get</a><a class="btn btn-xs btn-success" href="https://docs.payengine.de/endpoint/payment-instruments" type="button" style="padding-left: 15px; padding-right: 15px;">Post</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Patch</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Delete</s></a>/payment-instruments <br> <br>
+
+        <a class="btn btn-xs btn-info" href="https://docs.payengine.de/endpoint/payment-instruments/paymentInstrumentId" type="button" style="padding-left: 15px; padding-right: 15px;">Get</a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Post</s></a><a class="btn btn-xs disabled" type="button" style="padding-left: 15px; padding-right: 15px;"><s>Patch</s></a><a class="btn btn-xs btn-danger" href="https://docs.payengine.de/endpoint/payment-instruments/paymentInstrumentId" type="button" style="padding-left: 15px; padding-right: 15px;">Delete</a> /payment-instruments/{paymentInstrumentId} 
+        </div>
+        <div ng-show="cur==2">      
+        <div class="panel-body">
+            <p class=" mrg10B">Authorization of requests is done via <a href="https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side">HTTP basic access authentication</a>.<br>
+
+            The merchant id and the API Key can be found in the Payengine Merchant Center under "My Account".</p>
+
+            <form class="form-horizontal bordered-row">
+                <div class="form-group">
+                    <div class="row mrg10B">
+                        <label class="col-sm-4 control-label">Your Merchant-ID</label>
+                        <div class="col-sm-6">
+                            <input ng-change="auth='';requeststatus=''" type="text" class="form-control"  ng-model="json.merchantId" id="" placeholder="e.g. Merchant-00000000-0000-0000-0000-00000000">
+                        </div>
+                    </div>
+                    <div class="row mrg10B">
+                        <label class="col-sm-4 control-label">Api-Key</label>
+                        <div class="col-sm-6">
+                            <input ng-change="auth='';requeststatus=''" type="text" class="form-control"  ng-model="json.apikey" id="" placeholder="e.g. xXxXxXxXxXxXxXxX">
+                        </div>
+                    </div>
+                    <div class="row mrg10B">
+                        <div class="col-sm-12 text-center">
+                            <button class="btn btn-success" ng-click="encode()" ng-show="!auth">Generate base64 encoded version of „MerchantID:APIKey“</button>
+                            <button class="btn btn-success" ng-click="encode()" ng-show="auth">Recalculate your Key</button>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </form>  
+            <form class="form-horizontal bordered-row" ng-show="auth">
+                <div class="form-group">
+                    <div class="list-group">
+                        <div class="list-group-item">Your Authorization Key in base64:</div>
+                        <div class="list-group-item">{{auth}}</div>
+                    </div><br>
+                    <div class="row mrg10B">
+                        <div class="col-sm-12 text-center">
+                            <button class="btn btn-success" ng-click="testAuth()">Let's do a Test Call!</button>
+                        </div>
+                    </div>
+                </div>
+            </form>   
+            <form class="form-horizontal bordered-row" ng-show="requeststatus">
+                <div class="form-group">
+                    <div class="col-md-12">    
+                        <table class="table table-striped">
+                            <tbody>
+                            <tr>
+                                <td>headers: ['Authorization']</td>
+                                <td>'Basic {{auth}}'</td>
+                            </tr>
+                            <tr>
+                                <td>HTTP GET</td>
+                                <td>https://apitest.payengine.de/v1/customers</td>
+                            </tr>
+                            <tr>
+                                <td>Response</td>
+                                <td>
+                                    <span class="col-sm-2 bs-label label-success" ng-show="requeststatus==200">{{requeststatus}} Ok</span>
+                                    <span class="col-sm-3 bs-label label-danger" ng-show="requeststatus!=200">{{requeststatus}} Check your Key</span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </form>                   
+        </div>
+        </div>
+        <div ng-show="cur==3">      
+            <div class="container">
+                <h4 class="p-title" style="color:#dc4405"><span>/orders</span></h4>
+                Test the request online with "Web Test", or select your preferred language.<br><br>
+                <uib-tabset active="active">
+                    <uib-tab index="0" heading="JavaScript">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Authorization</div>
+                            <div class="panel-body">
+                                $http.defaults.headers.common['Authorization'] = 'Basic {{auth}}';
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Get Request</div>
+                            <div class="panel-body">
+                                $http.get("https://apitest.payengine.de/v1/orders");
+                            </div>
+                        </div>
+                    </uib-tab>
+                    <uib-tab index="1" heading="Java">
+                        Java
+                    </uib-tab>
+                    <uib-tab index="2" heading=".Net">
+                        .Net
+                    </uib-tab>
+                    <uib-tab index="3" heading="Go">
+                        Go
+                    </uib-tab>
+                    <uib-tab index="4" heading="PHP">
+                        PHP
+                    </uib-tab>
+                    <uib-tab index="5" heading="Python">
+                        Python
+                    </uib-tab>
+                    <uib-tab index="8" heading="Web Test">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Headers</div>
+                            <div class="panel-body">
+                                ['Authorization']:'Basic {{auth}}'
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">HTTP <label ng-click="getCustomers();" class="btn btn-xs btn-info" type="button" style="padding-left: 15px; padding-right: 15px;">Get</label> https://apitest.payengine.de/v1/customers</div>
+                            <div class="panel-body">
+                                <pre><code>{{response}}</code></pre>
+                            </div>
+                        </div>
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+        </div>
+        <div ng-show="cur==4">      
+            <div class="container">
+                <h4 class="p-title" style="color:#dc4405"><span>/orders/debit</span></h4>
+                Test the request online with "Web Test", or select your preferred language.<br><br>
+                <uib-tabset active="active">
+                    <uib-tab index="0" heading="JavaScript">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Authorization</div>
+                            <div class="panel-body">
+                                $http.defaults.headers.common['Authorization'] = 'Basic {{auth}}';
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Get Request</div>
+                            <div class="panel-body">
+                                $http.get("https://apitest.payengine.de/v1/orders/debit");
+                            </div>
+                        </div>
+                    </uib-tab>
+                    <uib-tab index="1" heading="Java">
+                        Java
+                    </uib-tab>
+                    <uib-tab index="2" heading=".Net">
+                        .Net
+                    </uib-tab>
+                    <uib-tab index="3" heading="Go">
+                        Go
+                    </uib-tab>
+                    <uib-tab index="4" heading="PHP">
+                        PHP
+                    </uib-tab>
+                    <uib-tab index="5" heading="Python">
+                        Python
+                    </uib-tab>
+                    <uib-tab index="8" heading="Web Test">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Headers</div>
+                            <div class="panel-body">
+                                ['Authorization']:'Basic {{auth}}'
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">HTTP <label ng-click="getCustomers();" class="btn btn-xs btn-info" type="button" style="padding-left: 15px; padding-right: 15px;">Get</label> https://apitest.payengine.de/v1/orders/debit</div>
+                            <div class="panel-body">
+                                <pre><code>{{response}}</code></pre>
+                            </div>
+                        </div>
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+        </div>
+        <div ng-show="cur==5">      
+            <div class="container">
+                <h4 class="p-title" style="color:#dc4405"><span>/orders/preauth</span></h4>
+                Test the request online with "Web Test", or select your preferred language.<br><br>
+                <uib-tabset active="active">
+                    <uib-tab index="0" heading="JavaScript">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Authorization</div>
+                            <div class="panel-body">
+                                $http.defaults.headers.common['Authorization'] = 'Basic {{auth}}';
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Get Request</div>
+                            <div class="panel-body">
+                                $http.get("https://apitest.payengine.de/v1/orders/preauth");
+                            </div>
+                        </div>
+                    </uib-tab>
+                    <uib-tab index="1" heading="Java">
+                        Java
+                    </uib-tab>
+                    <uib-tab index="2" heading=".Net">
+                        .Net
+                    </uib-tab>
+                    <uib-tab index="3" heading="Go">
+                        Go
+                    </uib-tab>
+                    <uib-tab index="4" heading="PHP">
+                        PHP
+                    </uib-tab>
+                    <uib-tab index="5" heading="Python">
+                        Python
+                    </uib-tab>
+                    <uib-tab index="8" heading="Web Test">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Headers</div>
+                            <div class="panel-body">
+                                ['Authorization']:'Basic {{auth}}'
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">HTTP <label ng-click="getCustomers();" class="btn btn-xs btn-info" type="button" style="padding-left: 15px; padding-right: 15px;">Get</label> https://apitest.payengine.de/v1/orders/preauth</div>
+                            <div class="panel-body">
+                                <pre><code>{{response}}</code></pre>
+                            </div>
+                        </div>
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+        </div>
+          <div ng-show="cur==12">      
+            <div class="container">
+                <h4 class="p-title" style="color:#dc4405"><span>/customers</span></h4>
+                Test the request online with "Web Test", or select your preferred language.<br><br>
+                <uib-tabset active="active">
+                    <uib-tab index="0" heading="JavaScript">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Authorization</div>
+                            <div class="panel-body">
+                                $http.defaults.headers.common['Authorization'] = 'Basic {{auth}}';
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Get Request</div>
+                            <div class="panel-body">
+                                $http.get("https://apitest.payengine.de/v1/customers");
+                            </div>
+                        </div>
+                    </uib-tab>
+                    <uib-tab index="1" heading="Java">
+                        Java
+                    </uib-tab>
+                    <uib-tab index="2" heading=".Net">
+                        .Net
+                    </uib-tab>
+                    <uib-tab index="3" heading="Go">
+                        Go
+                    </uib-tab>
+                    <uib-tab index="4" heading="PHP">
+                        PHP
+                    </uib-tab>
+                    <uib-tab index="5" heading="Python">
+                        Python
+                    </uib-tab>
+                    <uib-tab index="8" heading="Web Test">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Headers</div>
+                            <div class="panel-body">
+                                ['Authorization']:'Basic {{auth}}'
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">HTTP <label ng-click="getCustomers();" class="btn btn-xs btn-info" type="button" style="padding-left: 15px; padding-right: 15px;">Get</label> https://apitest.payengine.de/v1/customers</div>
+                            <div class="panel-body">
+                                <pre><code>{{response}}</code></pre>
+                            </div>
+                        </div>
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+        </div>
+    </div>
+</div>-->

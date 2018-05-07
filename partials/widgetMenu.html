@@ -1,0 +1,52 @@
+<div class="container">
+    <h4 class="p-title" style="color:#DA4405;"><span>Widget</span></h4>
+</div>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div ng-init="menu=true;" class="col-md-3 btn-group-vertical" >
+    	<button type="button" class="btn btn-light text-left" ng-click="menu=!menu">Menu <span ng-show="menu" class="pull-right glyph-icon icon-chevron-down"></span><span ng-show="!menu" class="pull-right glyph-icon icon-chevron-up"></span></button>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/outofthebox/widgetmenu/ourwidget">How to integrate a Widget</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/outofthebox/widgetmenu/modalwidget">How to implement a Modal Widget</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/outofthebox/widgetmenu/modalwidgetreference">Modal Widget Reference</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/outofthebox/widgetmenu/inlinewidget">How to implement an Inline Widget</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/outofthebox/widgetmenu/inlinewidgetreference">Inline Widget Reference</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/outofthebox/widgetmenu/piwidget">How to implement Widget as a Bridge</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/outofthebox/widgetmenu/piwidgetreference">Widget as a Bridge Reference</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/outofthebox/widgetmenu/deviceident">Device Ident</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/outofthebox/widgetexample" >Example</a>
+    </div>
+    <div class="col-md-7">
+        <div ng-show="cur=='ourwidget'">
+            <div  ng-include="'/partials/widget/ourwidget.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='modalwidget'">
+        	<div  ng-include="'/partials/widget/modalwidget.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='modalwidgetreference'">
+           <div  ng-include="'/partials/widget/modalwidgetreference.html'">
+           </div>
+        </div>
+        <div ng-show="cur=='inlinewidget'">
+        	<div  ng-include="'/partials/widget/inlinewidget.html'">
+           	</div>   
+        </div>
+        <div ng-show="cur=='inlinewidgetreference'">
+        	<div  ng-include="'/partials/widget/inlinewidgetreference.html'">
+           	</div>
+        </div>
+        <div ng-show="cur=='piwidget'">
+            <div  ng-include="'/partials/widget/piwidget.html'">
+           	</div>
+        </div>
+        <div ng-show="cur=='piwidgetreference'">
+         	<div  ng-include="'/partials/widget/piwidgetreference.html'">
+           	</div>   
+        </div>
+        <div ng-show="cur=='deviceident'">
+        	<div  ng-include="'/partials/widget/deviceident.html'">
+           	</div> 
+        </div>
+    </div>
+</div>

@@ -1,0 +1,337 @@
+<h1>SAQ-A Reference</h1><br>
+<div>
+Here you can find all needed methods and respective parameters to further enrich your checkout workflow for SAQ-A solution.
+
+<em>! Important -&gt; All methods should be called on PayEngine object (e.g PayEngine.desiredMethod(parameters)).</em>
+
+<hr />
+
+<code>iframesInit</code>
+Used to initialize the credit card number and credit card verification iframes in containers, provided by the integrator.
+
+<strong>Signature</strong>
+<code>iframesInit (creditCardContainer, verificationContainer, options, initCallback)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th blah="width: 100px; text-align: center;">Name</th>
+<th blah="width: 100px; text-align: center;">Mandatory</th>
+<th blah="width: 100px; text-align: center;">Type</th>
+<th blah="width: 100px; text-align: center;">Default Value</th>
+<th blah="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr blah="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>creditCardContainer</td>
+<td>YES</td>
+<td>String or DOM Element</td>
+<td>N/A</td>
+<td blah="text-align: left;">The id of the container html element OR DOM Element, where iframe of the credit card number input field will be rendered</td>
+</tr>
+<tr blah="text-align: center; border-top: 1px solid black;">
+<td>verificationContainer</td>
+<td>YES</td>
+<td>String or DOM Element</td>
+<td>N/A</td>
+<td blah="text-align: left;">The id of the container html element OR DOM Element, where iframe of the credit card verification input field will be rendered</td>
+</tr>
+<tr blah="text-align: center; border-top: 1px solid black;">
+<td>options</td>
+<td>NO</td>
+<td>Object</td>
+<td>N/A</td>
+<td blah="text-align: left;">Optionally appies custom UI appearance. Available settings are:
+<em>cardNumberStyle</em> / <em>verificationStyle</em> : a custom style ( String ) for the corresponding iframe.Custom styles can be defined in the section "Custom Styles" in the Merchant Center. Every custom style gets a unique ID, which should be placed as value for the corresponding parameter. Default: none
+<em>cardNumberPlaceholder</em> / <em>verificationPlaceholder</em> : a custom placeholder (String) for the corresponding iframe input field. Default: none</td>
+</tr>
+<tr blah="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>initCallback</td>
+<td>YES</td>
+<td>Function</td>
+<td>N/A</td>
+<td blah="text-align: left;">Function with following signature - callback (error, result).
+<em>Result</em> parameter is a reference object that is to be used by the integrator with all other SAQ-A methods, indicating exactly which iframes instance is being targeted.
+<em>Error</em> parameter is an object, containing a message with the reason why the iframe were not loaded.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<code>iframesCreatePaymentInstrument</code>
+Creates payment instrument
+
+<strong>Signature</strong>
+<code>iframesCreatePaymentInstrument (iframeCoupleReference, data, merchantPaymentInstrumentId, callback)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th blah="width: 100px; text-align: center;">Name</th>
+<th blah="width: 100px; text-align: center;">Mandatory</th>
+<th blah="width: 100px; text-align: center;">Type</th>
+<th blah="width: 100px; text-align: center;">Default Value</th>
+<th blah="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr blah="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>iframeCoupleReference</td>
+<td>YES</td>
+<td>Object</td>
+<td>N/A</td>
+<td blah="text-align: left;">iframe reference, which is received as a result parameter in the initCallback of iframesInit function</td>
+</tr>
+<tr blah="text-align: center; border-top: 1px solid black;">
+<td>data</td>
+<td>YES</td>
+<td>Object</td>
+<td>N/A</td>
+<td blah="text-align: left;">An object for credit card information, which should have the following key-value pairs:
+expiryMonth: {EXPIRY MONTH},
+expiryYear: {EXPIRY YEAR},
+cardHolder: {CARD HOLDER}</td>
+</tr>
+<tr blah="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>merchantPaymentInstrumentId</td>
+<td>NO</td>
+<td>String</td>
+<td>N/A</td>
+<td blah="text-align: left;"></td>
+</tr>
+<tr blah="text-align: center; border-top: 1px solid black;">
+<td>resultCallback</td>
+<td>YES</td>
+<td>Function</td>
+<td>N/A</td>
+<td blah="text-align: left;">Function with following signature - callback (error, result)
+<em>Result</em> parameter is object, containing the paymentInstrumentId
+<em>Error</em> parameter is an object, containing a message with the reason what has failed. Please see Error object for further information.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<code>iframesGetCardType</code>
+The method will return the credit card type.
+
+<strong>Signature</strong>
+<code> iframesGetCardType (iframeCoupleReference, resultCallback)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th blah="width: 100px; text-align: center;">Name</th>
+<th blah="width: 100px; text-align: center;">Mandatory</th>
+<th blah="width: 100px; text-align: center;">Type</th>
+<th blah="width: 100px; text-align: center;">Default Value</th>
+<th blah="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr blah="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>iframeCoupleReference</td>
+<td>YES</td>
+<td>Object</td>
+<td>N/A</td>
+<td blah="text-align: left;">iframe reference, which is received as a result parameter in the initCallback of iframesInit function</td>
+</tr>
+<tr blah="text-align: center; border-top: 1px solid black;">
+<td>resultCallback</td>
+<td>YES</td>
+<td>Function</td>
+<td>N/A</td>
+<td blah="text-align: left;">Function with following signature - callback (error, result)
+<em>Result</em> parameter is object, containing the credit card type (e.g. "visa", "mastercard", "amex", etc.)
+<em>Error</em> parameter is an object, containing a message with the reason what has failed. Please see Error object for further information.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<code>iframesValidateCardNumber</code>
+This method will validate the credit card number.
+
+<strong>Signature</strong>
+<code> iframesValidateCardNumber (iframeCoupleReference, resultCallback)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th blah="width: 100px; text-align: center;">Name</th>
+<th blah="width: 100px; text-align: center;">Mandatory</th>
+<th blah="width: 100px; text-align: center;">Type</th>
+<th blah="width: 100px; text-align: center;">Default Value</th>
+<th blah="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr blah="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>iframeCoupleReference</td>
+<td>YES</td>
+<td>Object</td>
+<td>N/A</td>
+<td blah="text-align: left;">iframe reference, which is received as a result parameter in the initCallback of iframesInit function</td>
+</tr>
+<tr blah="text-align: center; border-top: 1px solid black;">
+<td>resultCallback</td>
+<td>YES</td>
+<td>Function</td>
+<td>N/A</td>
+<td blah="text-align: left;">Function with following signature - callback (error, result)
+<em>Result</em> parameter is "true" (if validation passed)
+<em>Error</em> parameter is an object, containing a message with the reason what has failed. Please see Error object for further information.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<code>iframesValidateVerification</code>
+This method will validate the credit card verification.
+
+<strong>Signature</strong>
+<code> iframesValidateVerification (iframeCoupleReference, resultCallback)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th blah="width: 100px; text-align: center;">Name</th>
+<th blah="width: 100px; text-align: center;">Mandatory</th>
+<th blah="width: 100px; text-align: center;">Type</th>
+<th blah="width: 100px; text-align: center;">Default Value</th>
+<th blah="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr blah="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>iframeCoupleReference</td>
+<td>YES</td>
+<td>Object</td>
+<td>N/A</td>
+<td blah="text-align: left;">iframe reference, which is received as a result parameter in the initCallback of iframesInit function</td>
+</tr>
+<tr blah="text-align: center; border-top: 1px solid black;">
+<td>resultCallback</td>
+<td>YES</td>
+<td>Function</td>
+<td>N/A</td>
+<td blah="text-align: left;">Function with following signature - callback (error, result)
+<em>Result</em> parameter is "true" (if validation passed)
+<em>Error</em> parameter is an object, containing a message with the reason what has failed. Please see Error object for further information.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<code>iframesAddEventListener</code>
+This method will add event listener on the input field inside the targeted iframe, which will provide the integrator with validation result when triggered by the event chosen.
+
+<strong>Signature</strong>
+<code> iframesAddEventListener (iframeCoupleReference, iframeType, eventType, listener)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th blah="width: 100px; text-align: center;">Name</th>
+<th blah="width: 100px; text-align: center;">Mandatory</th>
+<th blah="width: 100px; text-align: center;">Type</th>
+<th blah="width: 100px; text-align: center;">Default Value</th>
+<th blah="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr blah="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>iframeCoupleReference</td>
+<td>YES</td>
+<td>Object</td>
+<td>N/A</td>
+<td blah="text-align: left;">iframe reference, which is received as a result parameter in the initCallback of iframesInit function</td>
+</tr>
+<tr blah="text-align: center; border-top: 1px solid black;">
+<td>iframeType</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td blah="text-align: left;">"cardNumber" or "verification" (see UserVariables)</td>
+</tr>
+<tr blah="text-align: center; border-top: 1px solid black;">
+<td>eventType</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td blah="text-align: left;">"blur", "enter", "focus", "input", "mouseOver", "mouseOut", "shiftTab", "tab" (see UserVariables)</td>
+</tr>
+<tr blah="text-align: center; border-top: 1px solid black;">
+<td>listener</td>
+<td>YES</td>
+<td>Function</td>
+<td>N/A</td>
+<td blah="text-align: left;">Function with following signature - listener (result)
+<em>Result</em> parameter will represent an object, containing iframeType, iframeEventType and depending on the iframeType cardNumberValid, cardNumberError, cardType for cardNumber iframe and verificationValid, verificationError for verification iframe.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<code> iframesRemoveEventListener </code>
+This method will remove event listener on the input field inside the targeted iframe
+
+<strong>Signature</strong>
+<code> iframesRemoveEventListener (iframeCoupleReference, iframeType, eventType, listener)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th blah="width: 100px; text-align: center;">Name</th>
+<th blah="width: 100px; text-align: center;">Mandatory</th>
+<th blah="width: 100px; text-align: center;">Type</th>
+<th blah="width: 100px; text-align: center;">Default Value</th>
+<th blah="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr blah="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>iframeCoupleReference</td>
+<td>YES</td>
+<td>Object</td>
+<td>N/A</td>
+<td blah="text-align: left;">iframe reference, which is received as a result parameter in the initCallback of iframesInit function</td>
+</tr>
+<tr blah="text-align: center; border-top: 1px solid black;">
+<td>iframeType</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td blah="text-align: left;">"cardNumber" or "verification" (see UserVariables)</td>
+</tr>
+<tr blah="text-align: center; border-top: 1px solid black;">
+<td>eventType</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td blah="text-align: left;">"blur", "enter", "focus", "input", "mouseOver", "mouseOut", "shiftTab", "tab" (see UserVariables)</td>
+</tr>
+<tr blah="text-align: center; border-top: 1px solid black;">
+<td>listener</td>
+<td>YES</td>
+<td>Function</td>
+<td>N/A</td>
+<td blah="text-align: left;">The previously added event listener</td>
+</tr>
+</tbody>
+</table>
+</div>

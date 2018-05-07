@@ -1,0 +1,471 @@
+<h1>Errors</h1><br>
+
+Our API Endpoints use conventional HTTP response codes to indicate the success or failure of an API request. <br>
+In general, codes in the 2xx range indicate success, codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, a charge failed, etc.), and codes in the 5xx range indicate an error with our backend (these are rare).<br>
+
+<br>
+	&nbsp;
+	<table>
+	<tbody>
+	<tr>
+	<th><strong>HttpStatusCode    </strong></th>
+	<th><strong>Message</strong></th>
+	<th><strong>Possible Payload</strong></th>
+	</tr>
+	<tr>
+	<td>200</td>
+	<td>Ok</td>
+	<td>Request was successful and contains the response content</td>
+	</tr>
+	<tr>
+	<td>202</td>
+	<td>Accepted</td>
+	<td>The request has been accepted for processing, but the processing has not been completed</td>
+	</tr>
+	<tr>
+	<td>203</td>
+	<td>Non-Authoritative Information</td>
+	<td>Request was successful but contains business errors</td>
+	</tr>
+	<tr>
+	<td>400</td>
+	<td>Bad Request</td>
+	<td>The Request was incorrect (due to http protocol)</td>
+	</tr>
+	<tr>
+	<td>401</td>
+	<td>Unauthorized</td>
+	<td>Not authorized access to a endpoint</td>
+	</tr>
+	<tr>
+	<td>403</td>
+	<td>Forbidden</td>
+	<td>Not authorized access to a specific resource</td>
+	</tr>
+	<tr>
+	<td>404</td>
+	<td>Not Found</td>
+	<td>Resource not found</td>
+	</tr>
+	<tr>
+	<td>409</td>
+	<td>Conflict</td>
+	<td>Resource already exists</td>
+	</tr>
+	<tr>
+	<td>500</td>
+	<td>Internal Server Error</td>
+	<td>Unexpected Server Error</td>
+	</tr>
+	<tr>
+	<td>501</td>
+	<td>Not implemented</td>
+	<td>Method not implemented</td>
+	</tr>
+	</tbody>
+	</table>
+	&nbsp;
+	<h2>Specific error codes</h2>
+	Not all errors map cleanly onto HTTP response codes, however. When a request is valid but does not complete successfully, we return a specific Error code.
+
+<h3>Error code ranges</h3>
+<table style="height: 2138px;" width="1340">
+<tbody>
+<tr>
+<th class="confluenceTh">
+<h5><strong>Group</strong></h5>
+</th>
+<th class="confluenceTh">
+<h5><strong>Type</strong></h5>
+</th>
+<th class="confluenceTh" colspan="1">
+<h5><strong>Subtype</strong></h5>
+</th>
+<th class="confluenceTh">
+<h5><strong>Code range</strong></h5>
+</th>
+</tr>
+<tr>
+<th class="confluenceTh" colspan="1">
+<h6>global</h6>
+</th>
+<th class="confluenceTh" colspan="1">
+<h6>N/A</h6>
+</th>
+<th class="confluenceTh" colspan="1">
+<h6>N/A</h6>
+</th>
+<th class="confluenceTh" colspan="1">
+<h6>0 - 999</h6>
+</th>
+</tr>
+<tr>
+<td class="confluenceTd">lobal</td>
+<td class="confluenceTd">general errors</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd">0 - 499</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">global</td>
+<td class="confluenceTd" colspan="1">header parameter</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">500 - 999</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">global</td>
+<td class="confluenceTd" colspan="1">not defined</td>
+<td class="confluenceTd" colspan="1">not defined</td>
+<td class="confluenceTd" colspan="1">1000 - 1999</td>
+</tr>
+<tr>
+<th class="confluenceTh" colspan="1">
+<h5>query</h5>
+</th>
+<th class="confluenceTh" colspan="1">
+<h5>N/A</h5>
+</th>
+<th class="confluenceTh" colspan="1">
+<h5>N/A</h5>
+</th>
+<th class="confluenceTh" colspan="1">
+<h5>2000 - 3999</h5>
+</th>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">query</td>
+<td class="confluenceTd" colspan="1">query parameters</td>
+<td class="confluenceTd" colspan="1">filtering</td>
+<td class="confluenceTd" colspan="1">2000 - 2999
+<table class="wrapped confluenceTable">
+<tbody>
+<tr>
+<th class="confluenceTh">Group</th>
+<th class="confluenceTh">Range</th>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">global</td>
+<td class="confluenceTd" colspan="1">2000 - 2099</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">customer</td>
+<td class="confluenceTd" colspan="1">2100 - 2199</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">addresses</td>
+<td class="confluenceTd" colspan="1">2200 - 2299</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">personas</td>
+<td class="confluenceTd" colspan="1">2300 - 2399</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">payment-instruments</td>
+<td class="confluenceTd" colspan="1">2400 - 2499</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">orders</td>
+<td class="confluenceTd" colspan="1">2500 - 2599</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">not defined</td>
+<td class="confluenceTd" colspan="1">2600 - 2999</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">query</td>
+<td class="confluenceTd" colspan="1">query parameters</td>
+<td class="confluenceTd" colspan="1">ordering</td>
+<td class="confluenceTd" colspan="1">3000 - 3999
+<table class="wrapped confluenceTable">
+<tbody>
+<tr>
+<th class="confluenceTh">Group</th>
+<th class="confluenceTh">Range</th>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">Group</td>
+<td class="confluenceTd" colspan="1">Range</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">global</td>
+<td class="confluenceTd" colspan="1">3000 - 3099</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">customer</td>
+<td class="confluenceTd" colspan="1">3100 - 3199</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">addresses</td>
+<td class="confluenceTd" colspan="1">3200 - 3299</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">personas</td>
+<td class="confluenceTd" colspan="1">3300 - 3399</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">payment-instruments</td>
+<td class="confluenceTd" colspan="1">3400 - 3499</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">orders</td>
+<td class="confluenceTd" colspan="1">3500 - 3599</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">not defined</td>
+<td class="confluenceTd" colspan="1">3600 - 3999</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr>
+<th class="confluenceTh" colspan="1"><strong>customers</strong></th>
+<th class="confluenceTh" colspan="1"><strong>N/A</strong></th>
+<th class="confluenceTh" colspan="1"><strong>N/A</strong></th>
+<th class="confluenceTh" colspan="1"><strong>4000 - 5999</strong></th>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">customers</td>
+<td class="confluenceTd" colspan="1">general</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">4000 - 4099</td>
+</tr>
+<tr>
+<td class="confluenceTd">customers</td>
+<td class="confluenceTd">uri parameter</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd">4100 - 4199</td>
+</tr>
+<tr>
+<td class="confluenceTd">customers</td>
+<td class="confluenceTd">body parameters</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd">4200 - 4999</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">customers</td>
+<td class="confluenceTd" colspan="1">not defined</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">5000 - 5999</td>
+</tr>
+<tr>
+<th class="confluenceTh" colspan="1"><strong>addresses</strong></th>
+<th class="confluenceTh" colspan="1"><strong>N/A</strong></th>
+<th class="confluenceTh" colspan="1"><strong>N/A</strong></th>
+<th class="confluenceTh" colspan="1"><strong>6000 - 7999</strong></th>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">addresses</td>
+<td class="confluenceTd" colspan="1">general</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">6000 - 6099</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">addresses</td>
+<td class="confluenceTd" colspan="1">uri parameter</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">6100 - 6199</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">addresses</td>
+<td class="confluenceTd" colspan="1">body parameters</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">6200 - 6999</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">addresses</td>
+<td class="confluenceTd" colspan="1">not defined</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">7000 - 7999</td>
+</tr>
+<tr>
+<th class="confluenceTh" colspan="1"><strong>personas</strong></th>
+<th class="confluenceTh" colspan="1"><strong>N/A</strong></th>
+<th class="confluenceTh" colspan="1"><strong>N/A</strong></th>
+<th class="confluenceTh" colspan="1"><strong>8000 - 9999</strong></th>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">personas</td>
+<td class="confluenceTd" colspan="1">general</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">8000 - 8099</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">personas</td>
+<td class="confluenceTd" colspan="1">uri parameter</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">8100 - 8199</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">personas</td>
+<td class="confluenceTd" colspan="1">body parameters</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">8200 - 8999</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">personas</td>
+<td class="confluenceTd" colspan="1">not defined</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">9000 - 9999</td>
+</tr>
+<tr>
+<th class="confluenceTh" colspan="1"><strong>payment-instruments</strong></th>
+<th class="confluenceTh" colspan="1"><strong>N/A</strong></th>
+<th class="confluenceTh" colspan="1"><strong>N/A</strong></th>
+<th class="confluenceTh" colspan="1"><strong>10000 - 11999</strong></th>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">payment-instruments</td>
+<td class="confluenceTd" colspan="1">general</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">10000 - 10099</td>
+</tr>
+<tr>
+<td class="confluenceTd">payment-instruments</td>
+<td class="confluenceTd">uri parameter</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd">10100 - 10199</td>
+</tr>
+<tr>
+<td class="confluenceTd">payment-instruments</td>
+<td class="confluenceTd">body parameters</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd">10200 - 10999</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">payment-instruments</td>
+<td class="confluenceTd" colspan="1">not defined</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">11000 - 11999</td>
+</tr>
+<tr>
+<th class="confluenceTh" colspan="1"><strong>orders</strong></th>
+<th class="confluenceTh" colspan="1"><strong>N/A</strong></th>
+<th class="confluenceTh" colspan="1"><strong>N/A</strong></th>
+<th class="confluenceTh" colspan="1"><strong><span class="inline-comment-marker" data-ref="d44efae9-9571-4bc8-9f29-688ee5343360">12000 - 13999</span></strong></th>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">orders</td>
+<td class="confluenceTd" colspan="1">general</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">12000 - 12099</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">orders</td>
+<td class="confluenceTd" colspan="1">uri parameter</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">12100 - 12199</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">orders</td>
+<td class="confluenceTd" colspan="1">body parameters</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">12200 - 12999</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">orders</td>
+<td class="confluenceTd" colspan="1">not defined</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">13000 - 13999</td>
+</tr>
+<tr>
+<th class="confluenceTh" colspan="1"><strong>transactions</strong></th>
+<th class="confluenceTh" colspan="1"><strong>N/A</strong></th>
+<th class="confluenceTh" colspan="1"><strong>N/A</strong></th>
+<th class="confluenceTh" colspan="1"><strong>14000 - 15999</strong></th>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">transactions</td>
+<td class="confluenceTd" colspan="1">general</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">14000 - 14099</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">transactions</td>
+<td class="confluenceTd" colspan="1">uri parameter</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">14100 - 14199</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">transactions</td>
+<td class="confluenceTd" colspan="1">body parameters</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">14200 - 14999</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">transactions</td>
+<td class="confluenceTd" colspan="1">not defined</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">15000 - 15999</td>
+</tr>
+<tr>
+<th class="confluenceTh" colspan="1"><strong>payment</strong></th>
+<th class="confluenceTh" colspan="1"><strong>N/A</strong></th>
+<th class="confluenceTh" colspan="1"><strong>N/A</strong></th>
+<th class="confluenceTh" colspan="1"><strong>16000 - 16999</strong></th>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">payment</td>
+<td class="confluenceTd" colspan="1">body parameters</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">16000 - 16999</td>
+</tr>
+<tr>
+<th class="confluenceTh" colspan="1">not defined</th>
+<th class="confluenceTh" colspan="1">not defined</th>
+<th class="confluenceTh" colspan="1">N/A</th>
+<th class="confluenceTh" colspan="1">17000 - 24999</th>
+</tr>
+<tr>
+<th class="confluenceTh" colspan="1">connectors</th>
+<th class="confluenceTh" colspan="1">N/A</th>
+<th class="confluenceTh" colspan="1">N/A</th>
+<th class="confluenceTh" colspan="1">25000 - n</th>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">general</td>
+<td class="confluenceTd" colspan="1">general</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">25000 - 25999</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">creditcard</td>
+<td class="confluenceTd" colspan="1">provider response</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">26000 - 26999</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">paypal</td>
+<td class="confluenceTd" colspan="1">provider response</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">27000 - 27999</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">paydirekt</td>
+<td class="confluenceTd" colspan="1">provider response</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">28000 - 28999</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">ratepay</td>
+<td class="confluenceTd" colspan="1">provider response</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">29000 - 29999</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">sepa</td>
+<td class="confluenceTd" colspan="1">provider response</td>
+<td class="confluenceTd" colspan="1">N/A</td>
+<td class="confluenceTd" colspan="1">30000 - 31999</td>
+</tr>
+<tr>
+<th class="confluenceTh" colspan="1"><strong>groups</strong></th>
+<th class="confluenceTh" colspan="1">N/A</th>
+<th class="confluenceTh" colspan="1">N/A</th>
+<th class="confluenceTh" colspan="1"><strong>40000 - 40999</strong></th>
+</tr>
+</tbody>
+</table>

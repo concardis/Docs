@@ -1,0 +1,42 @@
+[
+  {
+    "label": "Easy Integration",
+    "filter": "easyintegration",
+    "image": "easyintegration.png"
+  },
+  {
+    "label": "Custom Integration",
+    "filter": "customintegration",
+    "image": "customintegration.png"
+  },
+  {
+    "label": "System URLs / Errors",
+    "filter": "systemurls",
+    "image": "systemurls.png"
+  },
+  {
+    "label": "FAQ",
+    "filter": "faq",
+    "image": "faq.png"
+  },
+  {
+    "label": "Accounting",
+    "filter": "accounting",
+    "image": "accounting.png"
+  },
+  {
+    "label": "Fraud Management",
+    "filter": "fraudmanagement",
+    "image": "fraudmanagement.png"
+  },
+  {
+    "label": "User Management",
+    "filter": "usermanagement",
+    "image": "usermanagement.png"
+  },
+  {
+    "label": "Recurring payments",
+    "filter": "recurringpayments",
+    "image": "recurringpayments.png"
+  }
+]

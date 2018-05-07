@@ -1,0 +1,3094 @@
+<h3>POST /orders/debit</h3><br>
+Method: <code>POST</code><br>
+<br>
+URI: <code>/orders/debit</code><br>
+<br>
+Parent Error Code: <code>12000 Error while creating order.</code><br>
+<br>
+The HTTP Status is always <code>400 Bad Request</code><br>
+<br>
+<!-- <button id="debitButton">Hide tables with fields information</button> -->
+<div id="debit" style="display: block;">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Field</th>
+<th style="text-align: center;">Data Type</th>
+<th style="text-align: center;">Required for</th>
+<th style="text-align: center;">Unique</th>
+<th style="text-align: center;">Value Range</th>
+<th style="text-align: center;">Length</th>
+<th style="text-align: center;">Expectation</th>
+<th style="text-align: center;">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>initialAmount</td>
+<td>Number</td>
+<td>All</td>
+<td>No</td>
+<td>greater then min. authorizing amount in cents and less then 9999999</td>
+<td>7</td>
+<td>Integer between 1 and 9999999</td>
+<td>12200
+<!-- <ac:link>
+<ri:page ri:content-title="Er"/>
+<ac:plain-text-link-body><![CDATA[12200]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12201
+<!-- <ac:link ac:anchor="12201">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12201]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>currency</td>
+<td>String</td>
+<td>All</td>
+<td>No</td>
+<td>Processing, dependent on payment method and merchant configuration</td>
+<td>3</td>
+<td>Currency code in the range of <a href="https://en.wikipedia.org/wiki/ISO_4217" target="_blank" rel="noopener">ISO_4217</a></td>
+<td>12202
+<!-- <ac:link ac:anchor="12202">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12202]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12203
+<!-- <ac:link ac:anchor="12203">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12203]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>product</td>
+<td>String</td>
+<td>All</td>
+<td>No</td>
+<td>[creditcard, paypal, paydirekt, ratepay-invoice, ratepay-directdebit, ratepay-installment, sofort]</td>
+<td>128</td>
+<td>one of the following:
+[creditcard, paypal, paydirekt, ratepay-invoice, ratepay-directdebit, ratepay-installment, sofort]</td>
+<td>12256
+<!-- <ac:link ac:anchor="12256">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12256]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12257
+<!-- <ac:link ac:anchor="12257">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12257]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12602
+<!-- <ac:link ac:anchor="12602">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12602]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12603
+<!-- <ac:link ac:anchor="12603">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12603]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>async</td>
+<td>Object</td>
+<td>PayPal
+PayDirekt
+Sofort</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Object of type async
+<!-- -&gt; inline JSON schema or link to #definitions/Async --></td>
+<td>12204
+<!-- <ac:link ac:anchor="12204">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12204]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>async.successUrl</td>
+<td>String</td>
+<td>All</td>
+<td>No</td>
+<td><a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html" target="_blank" rel="noopener">Class URL</a></td>
+<td>{6 - 2048}</td>
+<td>Mandatory string representing a valid http URL according to:
+<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html" target="_blank" rel="noopener">Class URL</a> and
+<a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html" target="_blank" rel="noopener">UrlValidator</a></td>
+<td>12205
+<!-- <ac:link ac:anchor="12205">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12205]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12206
+<!-- <ac:link ac:anchor="12206">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12206]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>async.failureUrl</td>
+<td>String</td>
+<td>All</td>
+<td>No</td>
+<td><a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html" target="_blank" rel="noopener">Class URL</a></td>
+<td>{6 - 2048}</td>
+<td>Mandatory string representing a valid http URL according to:
+<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html" target="_blank" rel="noopener">Class URL</a>
+<a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html" target="_blank" rel="noopener">UrlValidator</a></td>
+<td>12207
+<!-- <ac:link ac:anchor="12207">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12207]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12208
+<!-- <ac:link ac:anchor="12208">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12208]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>async.cancelUrl</td>
+<td>String</td>
+<td>All</td>
+<td>No</td>
+<td><a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html" target="_blank" rel="noopener">Class URL</a></td>
+<td>{6 - 2048}</td>
+<td>Mandatory string representing a valid http URL according to:
+<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html" target="_blank" rel="noopener">Class URL</a>
+<a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html" target="_blank" rel="noopener">UrlValidator</a></td>
+<td>12209
+<!-- <ac:link ac:anchor="12209">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12209]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12210
+<!-- <ac:link ac:anchor="12210">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12210]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>terms</td>
+<td>Number</td>
+<td>RatePay</td>
+<td>No</td>
+<td>long</td>
+<td></td>
+<td>UNIX timestamp in ms</td>
+<td>12213
+<!-- <ac:link ac:anchor="12213">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12213]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12214
+<!-- <ac:link ac:anchor="12214">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12214]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>privacy</td>
+<td>Number</td>
+<td>RatePay</td>
+<td>No</td>
+<td>long</td>
+<td></td>
+<td>UNIX timestamp in ms</td>
+<td>12215
+<!-- <ac:link ac:anchor="12215">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12215]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12216
+<!-- <ac:link ac:anchor="12216">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12216]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>description</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>{1 - 128}</td>
+<td>String between 1 and 128 characters</td>
+<td>12217
+<!-- <ac:link ac:anchor="12217">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12217]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>statementDescription</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>{1 - 128}</td>
+<td>String between 1 and 128 characters</td>
+<td>12218
+<!-- <ac:link ac:anchor="12218">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12218]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>basket</td>
+<td>Array[item]</td>
+<td>RatePay</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Array of type "item"
+<!-- -&gt; inline JSON schema or link to #definitions/Item --></td>
+<td>12219
+<!-- <ac:link ac:anchor="12219">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12219]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12220
+<!-- <ac:link ac:anchor="12220">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12220]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>item.name</td>
+<td>String</td>
+<td>All(when basket is present)</td>
+<td>No</td>
+<td></td>
+<td>{1 - 128}</td>
+<td>String between 1 and 128 characters</td>
+<td>12220
+<!-- <ac:link ac:anchor="12220">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12221]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12220
+<!-- <ac:link ac:anchor="12220">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12222]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>item.articleNumber</td>
+<td>String</td>
+<td>Yes(when basket is present)</td>
+<td>No</td>
+<td></td>
+<td>{1 - 255}</td>
+<td>String between 1 and 255 characters</td>
+<td>12223
+<!-- <ac:link ac:anchor="12223">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12223]]></ac:plain-text-link-body> -->
+
+12224
+<!-- <ac:link ac:anchor="12224">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12224]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>item.totalPrice</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>greater than min. item total price amount in cents and less than 9999999</td>
+<td></td>
+<td>Number between min. item total price amount in cents and 9999999</td>
+<td>12225
+<!-- <ac:link ac:anchor="12225">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12225]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12226
+<!-- <ac:link ac:anchor="12226">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12226]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>item.totalPriceWithTax:</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>Number greater than item Total Price in cents</td>
+<td></td>
+<td>Number greater than item Total Price in cents</td>
+<td>12227
+<!-- <ac:link ac:anchor="1222">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12227]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12228
+<!-- <ac:link ac:anchor="12228">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12228]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>item.tax</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>Number between 0 and 100</td>
+<td></td>
+<td>Number between 0 and 100</td>
+<td>12229
+<!-- <ac:link ac:anchor="12229">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12229]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12230
+<!-- <ac:link ac:anchor="12230">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12230]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>item.unitPrice</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>Number between min. item unit price amount in cents and 9999999</td>
+<td></td>
+<td>Number between min. item unit price amount in cents and 9999999</td>
+<td>12231
+<!-- <ac:link ac:anchor="12231">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12231]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12232
+<!-- <ac:link ac:anchor="12232">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12232]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>item.unitPriceWithTax</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>Number greater than item.unitPrice</td>
+<td></td>
+<td>Number greater than item unit Price</td>
+<td>12233
+<!-- <ac:link ac:anchor="12233">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12233]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12234
+<!-- <ac:link ac:anchor="12234">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12234]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>item.quantity</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>Number between 1 and 9999999</td>
+<td></td>
+<td>Number between 1 and 9999999</td>
+<td>12235
+<!-- <ac:link ac:anchor="12235">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12235]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12236
+<!-- <ac:link ac:anchor="12236">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12236]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>customer</td>
+<td>String</td>
+<td>RatePay</td>
+<td>Yes</td>
+<td>Additional required fields for ratepay: email</td>
+<td>20</td>
+<td>Unique string representing a customer reference. May contain numbers, letters, dashes and underscores.</td>
+<td>12237
+<!-- <ac:link ac:anchor="12237">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12237]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12238
+<!-- <ac:link ac:anchor="12238">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12238]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12239
+<!-- <ac:link ac:anchor="12239">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12239]]></ac:plain-text-link-body>
+</ac:link> -->
+
+4020
+<!-- <span class="s1">
+<ac:link ac:anchor="4020">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[4020]]></ac:plain-text-link-body>
+</ac:link>
+</span> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>persona</td>
+<td>String</td>
+<td>RatePay</td>
+<td>Yes</td>
+<td>Additional required fields for ratepay: birthday and at least phone or mobile</td>
+<td>20</td>
+<td>Unique string representing a persona reference. May contain numbers, letters, dashes and underscores.</td>
+<td>12240
+<!-- <ac:link ac:anchor="12240">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12240]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12240
+<!-- <ac:link ac:anchor="12241">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12240]]></ac:plain-text-link-body> -->
+
+12240
+<!-- <ac:link ac:anchor="12242">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12240]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12243
+<!-- <ac:link ac:anchor="12243">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12243]]></ac:plain-text-link-body>
+</ac:link> -->
+
+8020
+<!-- <span class="s1">
+<ac:link ac:anchor="8020">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[8020]]></ac:plain-text-link-body>
+</ac:link>
+</span> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>billingAddress</td>
+<td>String</td>
+<td>RatePay</td>
+<td>Yes</td>
+<td></td>
+<td>20</td>
+<td>unique string representing a billing reference. May contain numbers, letters, dashes and underscores.</td>
+<td>12244
+<!-- <ac:link ac:anchor="12244">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12244]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12245
+<!-- <ac:link ac:anchor="12245">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12245]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>shippingAddress</td>
+<td>String</td>
+<td>RatePay</td>
+<td>Yes</td>
+<td></td>
+<td>20</td>
+<td>Unique string representing a shipping Address reference. May contain numbers, letters, dashes and underscores.</td>
+<td>12246
+<!-- <ac:link ac:anchor="12246">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12246]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12247
+<!-- <ac:link ac:anchor="12247">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12247]]></ac:plain-text-link-body>
+</ac:link> -->
+
+6020
+<!-- <span class="s1">
+<ac:link ac:anchor="6020">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[6020]]></ac:plain-text-link-body>
+</ac:link>
+</span> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>ipAddress</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>IPv4 - IPv6</td>
+<td>255</td>
+<td>String with length of 255 representing a valid ip address according to: <a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/InetAddressValidator.html" target="_blank" rel="noopener">InetAddressValidator</a></td>
+<td>12248
+<!-- <ac:link ac:anchor="12248">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12248]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12249
+<!-- <ac:link ac:anchor="12249">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12249]]></ac:plain-text-link-body>
+</ac:link> -->
+
+6020
+<!-- <span class="s1">
+<ac:link ac:anchor="6020">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[6020]]></ac:plain-text-link-body>
+</ac:link>
+</span> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>channel</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>[ MOTO, ECOM ]</td>
+<td>128</td>
+<td>String in range [MOTO, ECOM]</td>
+<td>12250
+<!-- <s>
+<ac:link ac:anchor="12250">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12250]]></ac:plain-text-link-body>
+</ac:link>
+</s> -->
+
+12251
+<!-- <ac:link ac:anchor="12251">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12251]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>source</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td>{1 - 128}</td>
+<td>String between 1 and 128 characters</td>
+<td>12252
+<!-- <ac:link ac:anchor="12252">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12252]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment</td>
+<td>Object</td>
+<td>CreditCardRatePaySepa</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Object of type payment</td>
+<td>12258
+<!-- <ac:link ac:anchor="12258">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12258]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12259
+<!-- <ac:link ac:anchor="12259">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12259]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.riskIdentId</td>
+<td>String</td>
+<td>RatePay ECOM</td>
+<td>No</td>
+<td>string</td>
+<td>{1-80}</td>
+<td>String between 1 and 80 characters</td>
+<td>12264
+<!-- <ac:link ac:anchor="12264">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12264]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12265
+<!-- <ac:link ac:anchor="12265">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12265]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.installmentTotalAmount</td>
+<td>Number</td>
+<td>RatePay Installment</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Number greater than 0</td>
+<td>12266
+<!-- <ac:link ac:anchor="12266">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12266]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12267
+<!-- <ac:link ac:anchor="12267">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12267]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.installmentNumber</td>
+<td>Number</td>
+<td>RatePay Installment</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Number greater than 0</td>
+<td>12268
+<!-- <ac:link ac:anchor="12268">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12268]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12269
+<!-- <ac:link ac:anchor="12269">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12269]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.installmentAmount</td>
+<td>Number</td>
+<td>RatePay Installment</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Number greater than 0 representing Installment Amount in cents.</td>
+<td>12270
+<!-- <ac:link ac:anchor="12270">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12270]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12271
+<!-- <ac:link ac:anchor="12271">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12271]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.lastInstallmentAmount</td>
+<td>Number</td>
+<td>RatePay Installment</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Number greater than 0 representing last Installment Amount in cents.</td>
+<td>12272
+<!-- <ac:link ac:anchor="12272">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12272]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12273
+<!-- <ac:link ac:anchor="12273">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12273]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.installmentInterestRate</td>
+<td>Float</td>
+<td>RatePay Installment</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Fractional number representing Interest Rate.</td>
+<td>12274
+<!-- <ac:link ac:anchor="12274">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12274]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12275
+<!-- <ac:link ac:anchor="12275">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12275]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.paymentFirstDay</td>
+<td>Number</td>
+<td>RatePay Installment - optional</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Number greater than 0</td>
+<td>12276
+<!-- <ac:link ac:anchor="12276">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12276]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+</tbody>
+</table>
+<h4>SAQ A-EP/SAQ A Use Cases</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Field</th>
+<th style="text-align: center;">Data Type</th>
+<th style="text-align: center;">Required for</th>
+<th style="text-align: center;">Unique</th>
+<th style="text-align: center;">Length</th>
+<th style="text-align: center;">Expectation</th>
+<th style="text-align: center;">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.paymentInstrumentId</td>
+<td>String</td>
+<td>CreditCard, if no credit card payment data provided.
+
+RatePay Direct Debit, if no sepa payment data provided.
+
+Not mandatory for RatePay Installment (see bank-transfer case).
+
+Denied for RatePay Invoice.
+
+Denied for PayPal.
+
+Denied for PayDirekt.
+
+Not mandatory for Sofort. Sepa payment instrument or sepa payment data may be provided.
+
+Required for PayPal.</td>
+<td>Yes</td>
+<td>20</td>
+<td>Unique string representing a payment Instrument Id. May contain numbers, letters, dashes and underscores.</td>
+<td>12260
+<!-- <ac:link ac:anchor="12260">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12260]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12261
+<!-- <ac:link ac:anchor="12261">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12261]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12262
+<!-- <ac:link ac:anchor="12262">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12262]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12263
+<!-- <ac:link ac:anchor="12263">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12263]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+</tbody>
+</table>
+<h4>Server to Server Use Case</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Field</th>
+<th style="text-align: center;">Data Type</th>
+<th style="text-align: center;">Required for</th>
+<th style="text-align: center;">Unique</th>
+<th style="text-align: center;">Value Range</th>
+<th style="text-align: center;">Length</th>
+<th style="text-align: center;">Expectation</th>
+<th style="text-align: center;">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>merchantPaymentInstrumentId</td>
+<td>String</td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>{1 - 255}</td>
+<td>Unique string representing a customer merchant generated unique identifier for a payment instrument.</td>
+<td>10205
+<!-- <ac:link ac:anchor="10205">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[10205]]></ac:plain-text-link-body>
+</ac:link> -->
+
+10206
+<!-- <ac:link ac:anchor="10206">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[10206]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.cardNumber</td>
+<td>String</td>
+<td>CreditCard</td>
+<td>No</td>
+<td>Depends on <a href="/faq" target="_blank" rel="noopener">Credit card types</a></td>
+<td>{12 - 19}</td>
+<td>Mandatory string between 12 and 19 symbols, representing a valid creditcard number</td>
+<td>16000
+<!-- <ac:link ac:anchor="16000">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16000]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16001
+<!-- <ac:link ac:anchor="16001">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16001]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.verification</td>
+<td>String</td>
+<td>CreditCard</td>
+<td>No</td>
+<td>Depends on <a href="/faq" target="_blank">Credit card types.</a>Not mandatory for maestro.</td>
+<td>max. 4</td>
+<td>Mandatory numeric string between 3 and 4 representing a valid creditcard verification number.</td>
+<td>16002
+<!-- <ac:link ac:anchor="16002">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16002]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16003
+<!-- <ac:link ac:anchor="16003">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16003]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.expiryMonth</td>
+<td>String</td>
+<td>CreditCard</td>
+<td>No</td>
+<td>['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']</td>
+<td>2</td>
+<td>Mandatory numeric string between "01" and "12" representing the month in a valid creditcard expiry date. Must be greater than current date.</td>
+<td>16004
+<!-- <ac:link ac:anchor="16004">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16004]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16005
+<!-- <ac:link ac:anchor="16005">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16005]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.expiryYear</td>
+<td>String</td>
+<td>CreditCard</td>
+<td>No</td>
+<td>['01', '02', ..., '99']</td>
+<td>2</td>
+<td>Mandatory numeric string between "01" and "99", representing the year in a valid creditcard expiry date. Must be greater than current date</td>
+<td>16006
+<!-- <ac:link ac:anchor="16006">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16006]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16007
+<!-- <ac:link ac:anchor="16007">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16007]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.expiryMonth AND payment.expiryYear</td>
+<td>Validation</td>
+<td>CreditCard</td>
+<td>No</td>
+<td>Expiry Year must be greater than currentYear and Expiry Month must be greater than currentMonth</td>
+<td></td>
+<td>Valid creditcard expiry date must be greater than current date.</td>
+<td>16008
+<!-- <ac:link ac:anchor="16008">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16008]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.cardHolder</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>{3 - 128}</td>
+<td>Mandatory string between 3 and 128 characters containing only letters, whitespaces, dots, apostrophes and dashes</td>
+<td>16009
+<!-- <ac:link ac:anchor="16009">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16009]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16010
+<!-- <ac:link ac:anchor="16010">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16010]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.bankName</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>{1 - 255}</td>
+<td>String between 1 and 255 characters containging only letters, whitespace and numbers</td>
+<td>16011
+<!-- <ac:link ac:anchor="16011">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16011]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.iban</td>
+<td>String</td>
+<td>Sepa</td>
+<td>Yes</td>
+<td></td>
+<td>34</td>
+<td>Mandatory string between 22 and 34 characters representing a valid german IBAN (should start with DE)</td>
+<td>16012
+<!-- <ac:link ac:anchor="16012">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16012]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16013
+<!-- <ac:link ac:anchor="16013">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16013]]></ac:plain-text-link-body>
+</ac:link> -->
+
+Bad value for '</td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.bic</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>8 or 11</td>
+<td>String from 8 or 11 characters representing a valid BIC</td>
+<td>16014
+<!-- <ac:link ac:anchor="16014">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16014]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.accountHolder</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>{4 - 128}</td>
+<td>String between 4 and 128 characters representing a valid account holder.May contain letters, whitespaces, dots, apostrophes, dashes and numbers.</td>
+<td>16016
+<!-- <ac:link ac:anchor="16016">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16016]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+</tbody>
+</table>
+</div>
+&nbsp;
+<h3>POST /orders/preauth</h3>
+Method: <code>POST</code>
+
+URI: <code>/orders/preauth</code>
+
+Parent Error Code: <code>12000 Error while creating order.</code>
+
+The HTTP Status is always <code>400 Bad Request</code>
+
+<!-- <button id="preauthButton">Show tables with fields information</button> -->
+<div id="preauth" style="display: block;">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Field</th>
+<th style="text-align: center;">Data Type</th>
+<th style="text-align: center;">Required for</th>
+<th style="text-align: center;">Unique</th>
+<th style="text-align: center;">Value Range</th>
+<th style="text-align: center;">Length</th>
+<th style="text-align: center;">Expectation</th>
+<th style="text-align: center;">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>initialAmount</td>
+<td>Number</td>
+<td>All</td>
+<td>No</td>
+<td>greater then min. authorizing amount in cents and less then 9999999</td>
+<td>7</td>
+<td>Integer between 1 and 9999999</td>
+<td>12200
+<!-- <ac:link>
+<ri:page ri:content-title="Er"/>
+<ac:plain-text-link-body><![CDATA[12200]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12201
+<!-- <ac:link ac:anchor="12201">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12201]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>currency</td>
+<td>String</td>
+<td>All</td>
+<td>No</td>
+<td>Processing, dependent on payment method and merchant configuration</td>
+<td>3</td>
+<td>Currency code in the range of <a href="https://en.wikipedia.org/wiki/ISO_4217" target="_blank" rel="noopener">ISO_4217</a></td>
+<td>12202
+<!-- <ac:link ac:anchor="12202">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12202]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12203
+<!-- <ac:link ac:anchor="12203">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12203]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>product</td>
+<td>String</td>
+<td>All</td>
+<td>No</td>
+<td>[creditcard, paypal, paydirekt, ratepay-invoice, ratepay-directdebit, ratepay-installment, sofort]</td>
+<td>128</td>
+<td>one of the following: [creditcard, paypal, paydirekt, ratepay-invoice, ratepay-directdebit, ratepay-installment]</td>
+<td>12256
+<!-- <ac:link ac:anchor="12256">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12256]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12257
+<!-- <ac:link ac:anchor="12257">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12257]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12602
+<!-- <ac:link ac:anchor="12602">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12602]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12603
+<!-- <ac:link ac:anchor="12603">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12603]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>async</td>
+<td>Object</td>
+<td>PayPal
+PayDirekt
+Sofort</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Object of type async
+<!-- -&gt; inline JSON schema or link to #definitions/Async --></td>
+<td>12204
+<!-- <ac:link ac:anchor="12204">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12204]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>async.successUrl</td>
+<td>String</td>
+<td>All</td>
+<td>No</td>
+<td><a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html" target="_blank" rel="noopener">Class URL</a></td>
+<td>{6 - 2048}</td>
+<td>Mandatory string representing a valid http URL according to:
+<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html" target="_blank" rel="noopener">Class URL</a> and
+<a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html" target="_blank" rel="noopener">UrlValidator</a></td>
+<td>12205
+<!-- <ac:link ac:anchor="12205">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12205]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12206
+<!-- <ac:link ac:anchor="12206">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12206]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>async.failureUrl</td>
+<td>String</td>
+<td>All</td>
+<td>No</td>
+<td><a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html" target="_blank" rel="noopener">Class URL</a></td>
+<td>{6 - 2048}</td>
+<td>Mandatory string representing a valid http URL according to:
+<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html" target="_blank" rel="noopener">Class URL</a>
+<a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html" target="_blank" rel="noopener">UrlValidator</a></td>
+<td>12207
+<!-- <ac:link ac:anchor="12207">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12207]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12208
+<!-- <ac:link ac:anchor="12208">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12208]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>async.cancelUrl</td>
+<td>String</td>
+<td>All</td>
+<td>No</td>
+<td><a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html" target="_blank" rel="noopener">Class URL</a></td>
+<td>{6 - 2048}</td>
+<td>Mandatory string representing a valid http URL according to:
+<a href="https://docs.oracle.com/javase/8/docs/api/java/net/URL.html" target="_blank" rel="noopener">Class URL</a>
+<a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/UrlValidator.html" target="_blank" rel="noopener">UrlValidator</a></td>
+<td>12209
+<!-- <ac:link ac:anchor="12209">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12209]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12210
+<!-- <ac:link ac:anchor="12210">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12210]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>terms</td>
+<td>Number</td>
+<td>RatePay</td>
+<td>No</td>
+<td>long</td>
+<td></td>
+<td>UNIX timestamp in ms</td>
+<td>12213
+<!-- <ac:link ac:anchor="12213">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12213]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12214
+<!-- <ac:link ac:anchor="12214">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12214]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>privacy</td>
+<td>Number</td>
+<td>RatePay</td>
+<td>No</td>
+<td>long</td>
+<td></td>
+<td>UNIX timestamp in ms</td>
+<td>12215
+<!-- <ac:link ac:anchor="12215">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12215]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12216
+<!-- <ac:link ac:anchor="12216">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12216]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>description</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>{1 - 128}</td>
+<td>String between 1 and 128 characters</td>
+<td>12217
+<!-- <ac:link ac:anchor="12217">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12217]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>statementDescription</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>{1 - 128}</td>
+<td>String between 1 and 128 characters</td>
+<td>12218
+<!-- <ac:link ac:anchor="12218">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12218]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>basket</td>
+<td>Array[item]</td>
+<td>RatePay</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Array of type 'item'
+<!-- -&gt; inline JSON schema or link to #definitions/Item --></td>
+<td>12219
+<!-- <ac:link ac:anchor="12219">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12219]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12220
+<!-- <ac:link ac:anchor="12220">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12220]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>item.name</td>
+<td>String</td>
+<td>All(when basket is present)</td>
+<td>No</td>
+<td></td>
+<td>{1 - 128}</td>
+<td>String between 1 and 128 characters</td>
+<td>12220
+<!-- <ac:link ac:anchor="12220">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12221]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12220
+<!-- <ac:link ac:anchor="12220">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12222]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>item.articleNumber</td>
+<td>String</td>
+<td>Yes(when basket is present)</td>
+<td>No</td>
+<td></td>
+<td>{1 - 255}</td>
+<td>String between 1 and 255 characters</td>
+<td>12223
+<!-- <ac:link ac:anchor="12223">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12223]]></ac:plain-text-link-body> -->
+
+12224
+<!-- <ac:link ac:anchor="12224">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12224]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>item.totalPrice</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>greater than min. item total price amount in cents and less than 9999999</td>
+<td></td>
+<td>Number between min. item total price amount in cents and 9999999</td>
+<td>12225
+<!-- <ac:link ac:anchor="12225">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12225]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12226
+<!-- <ac:link ac:anchor="12226">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12226]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>item.totalPriceWithTax:</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>Number greater than item Total Price in cents</td>
+<td></td>
+<td>Number greater than item Total Price in cents</td>
+<td>12227
+<!-- <ac:link ac:anchor="1222">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12227]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12228
+<!-- <ac:link ac:anchor="12228">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12228]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>item.tax</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>Number between 0 and 100</td>
+<td></td>
+<td>Number between 0 and 100</td>
+<td>12229
+<!-- <ac:link ac:anchor="12229">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12229]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12230
+<!-- <ac:link ac:anchor="12230">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12230]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>item.unitPrice</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>Number between min. item unit price amount in cents and 9999999</td>
+<td></td>
+<td>Number between min. item unit price amount in cents and 9999999</td>
+<td>12231
+<!-- <ac:link ac:anchor="12231">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12231]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12232
+<!-- <ac:link ac:anchor="12232">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12232]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>item.unitPriceWithTax</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>Number greater than item.unitPrice</td>
+<td></td>
+<td>Number greater than item unit Price</td>
+<td>12233
+<!-- <ac:link ac:anchor="12233">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12233]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12234
+<!-- <ac:link ac:anchor="12234">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12234]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>item.quantity</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>Number between 1 and 9999999</td>
+<td></td>
+<td>Number between 1 and 9999999</td>
+<td>12235
+<!-- <ac:link ac:anchor="12235">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12235]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12236
+<!-- <ac:link ac:anchor="12236">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12236]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>customer</td>
+<td>String</td>
+<td>RatePay</td>
+<td>Yes</td>
+<td>Additional required fields for ratepay: email</td>
+<td>20</td>
+<td>Unique string representing a customer reference. May contain numbers, letters, dashes and underscores.</td>
+<td>12237
+<!-- <ac:link ac:anchor="12237">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12237]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12238
+<!-- <ac:link ac:anchor="12238">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12238]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12239
+<!-- <ac:link ac:anchor="12239">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12239]]></ac:plain-text-link-body>
+</ac:link> -->
+
+4020
+<!-- <span class="s1">
+<ac:link ac:anchor="4020">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[4020]]></ac:plain-text-link-body>
+</ac:link>
+</span> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>persona</td>
+<td>String</td>
+<td>RatePay</td>
+<td>Yes</td>
+<td>Additional required fields for ratepay: birthday and at least phone or mobile</td>
+<td>20</td>
+<td>Unique string representing a persona reference. May contain numbers, letters, dashes and underscores.</td>
+<td>12240
+<!-- <ac:link ac:anchor="12240">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12240]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12240
+<!-- <ac:link ac:anchor="12241">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12240]]></ac:plain-text-link-body> -->
+
+12240
+<!-- <ac:link ac:anchor="12242">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12240]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12243
+<!-- <ac:link ac:anchor="12243">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12243]]></ac:plain-text-link-body>
+</ac:link> -->
+
+8020
+<!-- <span class="s1">
+<ac:link ac:anchor="8020">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[8020]]></ac:plain-text-link-body>
+</ac:link>
+</span> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>billingAddress</td>
+<td>String</td>
+<td>RatePay</td>
+<td>Yes</td>
+<td></td>
+<td>20</td>
+<td>unique string representing a shipping reference. May contain numbers, letters, dashes and underscores.</td>
+<td>12244
+<!-- <ac:link ac:anchor="12244">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12244]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12245
+<!-- <ac:link ac:anchor="12245">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12245]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>shippingAddress</td>
+<td>String</td>
+<td>RatePay</td>
+<td>Yes</td>
+<td></td>
+<td>20</td>
+<td>Unique string representing a shipping Address reference. May contain numbers, letters, dashes and underscores.</td>
+<td>12246
+<!-- <ac:link ac:anchor="12246">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12246]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12247
+<!-- <ac:link ac:anchor="12247">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12247]]></ac:plain-text-link-body>
+</ac:link> -->
+
+6020
+<!-- <span class="s1">
+<ac:link ac:anchor="6020">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[6020]]></ac:plain-text-link-body>
+</ac:link>
+</span> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>ipAddress</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>IPv4 - IPv6</td>
+<td>255</td>
+<td>String with length of 255 representing a valid ip address according to: <a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/InetAddressValidator.html" target="_blank" rel="noopener">InetAddressValidator</a></td>
+<td>12248
+<!-- <ac:link ac:anchor="12248">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12248]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12249
+<!-- <ac:link ac:anchor="12249">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12249]]></ac:plain-text-link-body>
+</ac:link> -->
+
+6020
+<!-- <span class="s1">
+<ac:link ac:anchor="6020">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[6020]]></ac:plain-text-link-body>
+</ac:link>
+</span> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>channel</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>[ MOTO, ECOM ]</td>
+<td>128</td>
+<td>String in range [MOTO, ECOM]</td>
+<td>12250
+<!-- <s>
+<ac:link ac:anchor="12250">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12250]]></ac:plain-text-link-body>
+</ac:link>
+</s> -->
+
+12251
+<!-- <ac:link ac:anchor="12251">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12251]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>source</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td>{1 - 128}</td>
+<td>String between 1 and 128 characters</td>
+<td>12252
+<!-- <ac:link ac:anchor="12252">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12252]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment</td>
+<td>Object</td>
+<td>CreditCardRatePaySepa</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Object of type payment</td>
+<td>12258
+<!-- <ac:link ac:anchor="12258">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12258]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12259
+<!-- <ac:link ac:anchor="12259">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12259]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.riskIdentId</td>
+<td>String</td>
+<td>RatePay ECOM</td>
+<td>No</td>
+<td>string</td>
+<td>{1-80}</td>
+<td>String between 1 and 80 characters</td>
+<td>12264
+<!-- <ac:link ac:anchor="12264">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12264]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12265
+<!-- <ac:link ac:anchor="12265">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12265]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.installmentTotalAmount</td>
+<td>Number</td>
+<td>RatePay Installment</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Number greater than 0</td>
+<td>12266
+<!-- <ac:link ac:anchor="12266">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12266]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12267
+<!-- <ac:link ac:anchor="12267">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12267]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.installmentNumber</td>
+<td>Number</td>
+<td>RatePay Installment</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Number greater than 0</td>
+<td>12268
+<!-- <ac:link ac:anchor="12268">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12268]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12269
+<!-- <ac:link ac:anchor="12269">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12269]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.installmentAmount</td>
+<td>Number</td>
+<td>RatePay Installment</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Number greater than 0 representing Installment Amount in cents.</td>
+<td>12270
+<!-- <ac:link ac:anchor="12270">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12270]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12271
+<!-- <ac:link ac:anchor="12271">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12271]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.lastInstallmentAmount</td>
+<td>Number</td>
+<td>RatePay Installment</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Number greater than 0 representing last Installment Amount in cents.</td>
+<td>12272
+<!-- <ac:link ac:anchor="12272">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12272]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12273
+<!-- <ac:link ac:anchor="12273">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12273]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.installmentInterestRate</td>
+<td>Float</td>
+<td>RatePay Installment</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Fractional number representing Interest Rate.</td>
+<td>12274
+<!-- <ac:link ac:anchor="12274">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12274]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12275
+<!-- <ac:link ac:anchor="12275">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12275]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.paymentFirstDay</td>
+<td>Number</td>
+<td>RatePay Installment - optional</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Number greater than 0</td>
+<td>12276
+<!-- <ac:link ac:anchor="12276">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12276]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+</tbody>
+</table>
+<h4>SAQ A-EP/SAQ A Use Cases</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Field</th>
+<th style="text-align: center;">Data Type</th>
+<th style="text-align: center;">Required for</th>
+<th style="text-align: center;">Unique</th>
+<th style="text-align: center;">Length</th>
+<th style="text-align: center;">Expectation</th>
+<th style="text-align: center;">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.paymentInstrumentId</td>
+<td>String</td>
+<td>CreditCard, if no credit card payment data provided.
+
+RatePay Direct Debit, if no sepa payment data provided.
+
+Not mandatory for RatePay Installment (see bank-transfer case).
+
+Denied for RatePay Invoice.
+
+Denied for PayPal.
+
+Denied for PayDirekt.
+
+Not mandatory for Sofort. Sepa payment instrument or sepa payment data may be provided.
+
+Required for PayPal.</td>
+<td>Yes</td>
+<td>20</td>
+<td>Unique string representing a payment Instrument Id. May contain numbers, letters, dashes and underscores.</td>
+<td>12260
+<!-- <ac:link ac:anchor="12260">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12260]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12261
+<!-- <ac:link ac:anchor="12261">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12261]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12262
+<!-- <ac:link ac:anchor="12262">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12262]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12263
+<!-- <ac:link ac:anchor="12263">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12263]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+</tbody>
+</table>
+<h4>Server to Server Use Case</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Field</th>
+<th style="text-align: center;">Data Type</th>
+<th style="text-align: center;">Required for</th>
+<th style="text-align: center;">Unique</th>
+<th style="text-align: center;">Value Range</th>
+<th style="text-align: center;">Length</th>
+<th style="text-align: center;">Expectation</th>
+<th style="text-align: center;">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>merchantPaymentInstrumentId</td>
+<td>String</td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>{1 - 255}</td>
+<td>Unique string representing a customer merchant generated unique identifier for a payment instrument.</td>
+<td>10205
+<!-- <ac:link ac:anchor="10205">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[10205]]></ac:plain-text-link-body>
+</ac:link> -->
+
+10206
+<!-- <ac:link ac:anchor="10206">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[10206]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.cardNumber</td>
+<td>String</td>
+<td>CreditCard</td>
+<td>No</td>
+<td>Depends on <a href="/faq" target="_blank" rel="noopener">Credit card types</a></td>
+<td>{12 - 19}</td>
+<td>Mandatory string between 12 and 19 symbols, representing a valid creditcard number</td>
+<td>16000
+<!-- <ac:link ac:anchor="16000">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16000]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16001
+<!-- <ac:link ac:anchor="16001">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16001]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.verification</td>
+<td>String</td>
+<td>CreditCard</td>
+<td>No</td>
+<td>Depends on <a href="/faq" target="_blank" rel="noopener">Credit card types.</a>Not mandatory for maestro.</td>
+<td>max. 4</td>
+<td>Mandatory numeric string between 3 and 4 representing a valid creditcard verification number.</td>
+<td>16002
+<!-- <ac:link ac:anchor="16002">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16002]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16003
+<!-- <ac:link ac:anchor="16003">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16003]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.expiryMonth</td>
+<td>String</td>
+<td>CreditCard</td>
+<td>No</td>
+<td>['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']</td>
+<td>2</td>
+<td>Mandatory numeric string between "01" and "12" representing the month in a valid creditcard expiry date. Must be greater than current date.</td>
+<td>16004
+<!-- <ac:link ac:anchor="16004">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16004]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16005
+<!-- <ac:link ac:anchor="16005">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16005]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.expiryYear</td>
+<td>String</td>
+<td>CreditCard</td>
+<td>No</td>
+<td>['01', '02', ..., '99']</td>
+<td>2</td>
+<td>Mandatory numeric string between "01" and "99", representing the year in a valid creditcard expiry date. Must be greater than current date</td>
+<td>16006
+<!-- <ac:link ac:anchor="16006">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16006]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16007
+<!-- <ac:link ac:anchor="16007">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16007]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.expiryMonth AND payment.expiryYear</td>
+<td>Validation</td>
+<td>CreditCard</td>
+<td>No</td>
+<td>Expiry Year must be greater than currentYear and Expiry Month must be greater than currentMonth</td>
+<td></td>
+<td>Valid creditcard expiry date must be greater than current date.</td>
+<td>16008
+<!-- <ac:link ac:anchor="16008">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16008]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.cardHolder</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>{3 - 128}</td>
+<td>Mandatory string between 3 and 128 characters containing only letters, whitespaces, dots, apostrophes and dashes</td>
+<td>16009
+<!-- <ac:link ac:anchor="16009">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16009]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16010
+<!-- <ac:link ac:anchor="16010">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16010]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.bankName</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>{1 - 255}</td>
+<td>String between 1 and 255 characters containging only letters, whitespace and numbers</td>
+<td>16011
+<!-- <ac:link ac:anchor="16011">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16011]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.iban</td>
+<td>String</td>
+<td>Sepa</td>
+<td>Yes</td>
+<td></td>
+<td>34</td>
+<td>Mandatory string between 22 and 34 characters representing a valid german IBAN (should start with DE)</td>
+<td>16012
+<!-- <ac:link ac:anchor="16012">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16012]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16013
+<!-- <ac:link ac:anchor="16013">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16013]]></ac:plain-text-link-body>
+</ac:link> -->
+
+Bad value for '</td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.bic</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>8 or 11</td>
+<td>String from 8 or 11 characters representing a valid BIC</td>
+<td>16014
+<!-- <ac:link ac:anchor="16014">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16014]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.accountHolder</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>{4 - 128}</td>
+<td>String between 4 and 128 characters representing a valid account holder.May contain letters, whitespaces, dots, apostrophes, dashes and numbers.</td>
+<td>16016
+<!-- <ac:link ac:anchor="16016">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16016]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+</tbody>
+</table>
+</div>
+&nbsp;
+<h3>POST /orders/credit</h3>
+Method: <code>POST</code>
+
+URI: <code>/orders/credit</code>
+
+Parent Error Code: <code>12000 Error while creating order.</code>
+
+The HTTP Status is always <code>400 Bad Request</code>
+
+<!-- <button id="creditButton">Show tables with fields information</button> -->
+<div id="credit" style="display: block;">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Field</th>
+<th style="text-align: center;">Data Type</th>
+<th style="text-align: center;">Required for</th>
+<th style="text-align: center;">Unique</th>
+<th style="text-align: center;">Value Range</th>
+<th style="text-align: center;">Length</th>
+<th style="text-align: center;">Expectation</th>
+<th style="text-align: center;">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>initialAmount</td>
+<td>Number</td>
+<td>All</td>
+<td>No</td>
+<td>greater then min. authorizing amount in cents and less then 9999999</td>
+<td>7</td>
+<td>Integer between 1 and 9999999</td>
+<td>12200
+<!-- <ac:link>
+<ri:page ri:content-title="Er"/>
+<ac:plain-text-link-body><![CDATA[12200]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12201
+<!-- <ac:link ac:anchor="12201">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12201]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>currency</td>
+<td>String</td>
+<td>All</td>
+<td>No</td>
+<td>Processing, dependent on payment method and merchant configuration</td>
+<td>3</td>
+<td>Currency code in the range of <a href="https://en.wikipedia.org/wiki/ISO_4217" target="_blank" rel="noopener">ISO_4217</a></td>
+<td>12202
+<!-- <ac:link ac:anchor="12202">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12202]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12203
+<!-- <ac:link ac:anchor="12203">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12203]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>product</td>
+<td>String</td>
+<td>All</td>
+<td>No</td>
+<td>[creditcard]</td>
+<td>128</td>
+<td>[creditcard]</td>
+<td>12256
+<!-- <ac:link ac:anchor="12256">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12256]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12257
+<!-- <ac:link ac:anchor="12257">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12257]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12602
+<!-- <ac:link ac:anchor="12602">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12602]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12603
+<!-- <ac:link ac:anchor="12603">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12603]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>terms</td>
+<td>Number</td>
+<td>RatePay</td>
+<td>No</td>
+<td>long</td>
+<td></td>
+<td>UNIX timestamp in ms</td>
+<td>12213
+<!-- <ac:link ac:anchor="12213">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12213]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12214
+<!-- <ac:link ac:anchor="12214">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12214]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>privacy</td>
+<td>Number</td>
+<td>RatePay</td>
+<td>No</td>
+<td>long</td>
+<td></td>
+<td>UNIX timestamp in ms</td>
+<td>12215
+<!-- <ac:link ac:anchor="12215">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12215]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12216
+<!-- <ac:link ac:anchor="12216">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12216]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>description</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>{1 - 128}</td>
+<td>String between 1 and 128 characters</td>
+<td>12217
+<!-- <ac:link ac:anchor="12217">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12217]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>statementDescription</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>{1 - 128}</td>
+<td>String between 1 and 128 characters</td>
+<td>12218
+<!-- <ac:link ac:anchor="12218">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12218]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>basket</td>
+<td>Array[item]</td>
+<td>RatePay</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Array of type 'item'
+<!-- -&gt; inline JSON schema or link to #definitions/Item --></td>
+<td>12219
+<!-- <ac:link ac:anchor="12219">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12219]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12220
+<!-- <ac:link ac:anchor="12220">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12220]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>item.name</td>
+<td>String</td>
+<td>All(when basket is present)</td>
+<td>No</td>
+<td></td>
+<td>{1 - 128}</td>
+<td>String between 1 and 128 characters</td>
+<td>12220
+<!-- <ac:link ac:anchor="12220">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12221]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12220
+<!-- <ac:link ac:anchor="12220">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12222]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>item.articleNumber</td>
+<td>String</td>
+<td>Yes(when basket is present)</td>
+<td>No</td>
+<td></td>
+<td>{1 - 255}</td>
+<td>String between 1 and 255 characters</td>
+<td>12223
+<!-- <ac:link ac:anchor="12223">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12223]]></ac:plain-text-link-body> -->
+
+12224
+<!-- <ac:link ac:anchor="12224">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12224]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>item.totalPrice</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>greater than min. item total price amount in cents and less than 9999999</td>
+<td></td>
+<td>Number between min. item total price amount in cents and 9999999</td>
+<td>12225
+<!-- <ac:link ac:anchor="12225">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12225]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12226
+<!-- <ac:link ac:anchor="12226">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12226]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>item.totalPriceWithTax:</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>Number greater than item Total Price in cents</td>
+<td></td>
+<td>Number greater than item Total Price in cents</td>
+<td>12227
+<!-- <ac:link ac:anchor="1222">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12227]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12228
+<!-- <ac:link ac:anchor="12228">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12228]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>item.tax</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>Number between 0 and 100</td>
+<td></td>
+<td>Number between 0 and 100</td>
+<td>12229
+<!-- <ac:link ac:anchor="12229">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12229]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12230
+<!-- <ac:link ac:anchor="12230">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12230]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>item.unitPrice</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>Number between min. item unit price amount in cents and 9999999</td>
+<td></td>
+<td>Number between min. item unit price amount in cents and 9999999</td>
+<td>12231
+<!-- <ac:link ac:anchor="12231">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12231]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12232
+<!-- <ac:link ac:anchor="12232">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12232]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>item.unitPriceWithTax</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>Number greater than item.unitPrice</td>
+<td></td>
+<td>Number greater than item unit Price</td>
+<td>12233
+<!-- <ac:link ac:anchor="12233">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12233]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12234
+<!-- <ac:link ac:anchor="12234">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12234]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>item.quantity</td>
+<td>Number</td>
+<td>Yes
+
+when basket is present</td>
+<td>No</td>
+<td>Number between 1 and 9999999</td>
+<td></td>
+<td>Number between 1 and 9999999</td>
+<td>12235
+<!-- <ac:link ac:anchor="12235">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12235]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12236
+<!-- <ac:link ac:anchor="12236">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12236]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>customer</td>
+<td>String</td>
+<td>RatePay</td>
+<td>Yes</td>
+<td>Additional required fields for ratepay: email</td>
+<td>20</td>
+<td>Unique string representing a customer reference. May contain numbers, letters, dashes and underscores.</td>
+<td>12237
+<!-- <ac:link ac:anchor="12237">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12237]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12238
+<!-- <ac:link ac:anchor="12238">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12238]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12239
+<!-- <ac:link ac:anchor="12239">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12239]]></ac:plain-text-link-body>
+</ac:link> -->
+
+4020
+<!-- <span class="s1">
+<ac:link ac:anchor="4020">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[4020]]></ac:plain-text-link-body>
+</ac:link>
+</span> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>persona</td>
+<td>String</td>
+<td>RatePay</td>
+<td>Yes</td>
+<td>Additional required fields for ratepay: birthday and at least phone or mobile</td>
+<td>20</td>
+<td>Unique string representing a persona reference. May contain numbers, letters, dashes and underscores.</td>
+<td>12240
+<!-- <ac:link ac:anchor="12240">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12240]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12240
+<!-- <ac:link ac:anchor="12241">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12240]]></ac:plain-text-link-body> -->
+
+12240
+<!-- <ac:link ac:anchor="12242">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12240]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12243
+<!-- <ac:link ac:anchor="12243">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12243]]></ac:plain-text-link-body>
+</ac:link> -->
+
+8020
+<!-- <span class="s1">
+<ac:link ac:anchor="8020">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[8020]]></ac:plain-text-link-body>
+</ac:link>
+</span> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>billingAddress</td>
+<td>String</td>
+<td>RatePay</td>
+<td>Yes</td>
+<td></td>
+<td>20</td>
+<td>unique string representing a billing reference. May contain numbers, letters, dashes and underscores.</td>
+<td>12244
+<!-- <ac:link ac:anchor="12244">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12244]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12245
+<!-- <ac:link ac:anchor="12245">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12245]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>shippingAddress</td>
+<td>String</td>
+<td>RatePay</td>
+<td>Yes</td>
+<td></td>
+<td>20</td>
+<td>Unique string representing a shipping Address reference. May contain numbers, letters, dashes and underscores.</td>
+<td>12246
+<!-- <ac:link ac:anchor="12246">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12246]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12247
+<!-- <ac:link ac:anchor="12247">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12247]]></ac:plain-text-link-body>
+</ac:link> -->
+
+6020
+<!-- <span class="s1">
+<ac:link ac:anchor="6020">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[6020]]></ac:plain-text-link-body>
+</ac:link>
+</span> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>ipAddress</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>IPv4 - IPv6</td>
+<td>255</td>
+<td>String with length of 255 representing a valid ip address according to: <a href="https://commons.apache.org/proper/commons-validator/apidocs/org/apache/commons/validator/routines/InetAddressValidator.html" target="_blank" rel="noopener">InetAddressValidator</a></td>
+<td>12248
+<!-- <ac:link ac:anchor="12248">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12248]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12249
+<!-- <ac:link ac:anchor="12249">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12249]]></ac:plain-text-link-body>
+</ac:link> -->
+
+6020
+<!-- <span class="s1">
+<ac:link ac:anchor="6020">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[6020]]></ac:plain-text-link-body>
+</ac:link>
+</span> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>channel</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td>[ MOTO, ECOM ]</td>
+<td>128</td>
+<td>The only possible channel is MOTO</td>
+<td>12250
+<!-- <s>
+<ac:link ac:anchor="12250">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12250]]></ac:plain-text-link-body>
+</ac:link>
+</s> -->
+
+12251
+<!-- <ac:link ac:anchor="12251">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12251]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>source</td>
+<td>String</td>
+<td>No</td>
+<td>No</td>
+<td></td>
+<td>{1 - 128}</td>
+<td>String between 1 and 128 characters</td>
+<td>12252
+<!-- <ac:link ac:anchor="12252">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12252]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment</td>
+<td>Object</td>
+<td>CreditCardRatePaySepa</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Object of type payment</td>
+<td>12258
+<!-- <ac:link ac:anchor="12258">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12258]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12259
+<!-- <ac:link ac:anchor="12259">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12259]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.riskIdentId</td>
+<td>String</td>
+<td>RatePay ECOM</td>
+<td>No</td>
+<td>string</td>
+<td>{1-80}</td>
+<td>String between 1 and 80 characters</td>
+<td>12264
+<!-- <ac:link ac:anchor="12264">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12264]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12265
+<!-- <ac:link ac:anchor="12265">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12265]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.installmentTotalAmount</td>
+<td>Number</td>
+<td>RatePay Installment</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Number greater than 0</td>
+<td>12266
+<!-- <ac:link ac:anchor="12266">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12266]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12267
+<!-- <ac:link ac:anchor="12267">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12267]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.installmentNumber</td>
+<td>Number</td>
+<td>RatePay Installment</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Number greater than 0</td>
+<td>12268
+<!-- <ac:link ac:anchor="12268">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12268]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12269
+<!-- <ac:link ac:anchor="12269">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12269]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.installmentAmount</td>
+<td>Number</td>
+<td>RatePay Installment</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Number greater than 0 representing Installment Amount in cents.</td>
+<td>12270
+<!-- <ac:link ac:anchor="12270">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12270]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12271
+<!-- <ac:link ac:anchor="12271">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12271]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.lastInstallmentAmount</td>
+<td>Number</td>
+<td>RatePay Installment</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Number greater than 0 representing last Installment Amount in cents.</td>
+<td>12272
+<!-- <ac:link ac:anchor="12272">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12272]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12273
+<!-- <ac:link ac:anchor="12273">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12273]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.installmentInterestRate</td>
+<td>Float</td>
+<td>RatePay Installment</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Fractional number representing Interest Rate.</td>
+<td>12274
+<!-- <ac:link ac:anchor="12274">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12274]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12275
+<!-- <ac:link ac:anchor="12275">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12275]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.paymentFirstDay</td>
+<td>Number</td>
+<td>RatePay Installment - optional</td>
+<td>No</td>
+<td></td>
+<td></td>
+<td>Number greater than 0</td>
+<td>12276
+<!-- <ac:link ac:anchor="12276">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12276]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+</tbody>
+</table>
+<h3>SAQ A-EP/SAQ A Use Cases</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Field</th>
+<th style="text-align: center;">Data Type</th>
+<th style="text-align: center;">Required for</th>
+<th style="text-align: center;">Unique</th>
+<th style="text-align: center;">Length</th>
+<th style="text-align: center;">Expectation</th>
+<th style="text-align: center;">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.paymentInstrumentId</td>
+<td>String</td>
+<td>CreditCard, if no credit card payment data provided.
+
+RatePay Direct Debit, if no sepa payment data provided.
+
+Not mandatory for RatePay Installment (see bank-transfer case).
+
+Denied for RatePay Invoice.
+
+Denied for PayPal.
+
+Denied for PayDirekt.
+
+Not mandatory for Sofort. Sepa payment instrument or sepa payment data may be provided.
+
+Required for PayPal.</td>
+<td>Yes</td>
+<td>20</td>
+<td>Unique string representing a payment Instrument Id. May contain numbers, letters, dashes and underscores.</td>
+<td>12260
+<!-- <ac:link ac:anchor="12260">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12260]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12261
+<!-- <ac:link ac:anchor="12261">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12261]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12262
+<!-- <ac:link ac:anchor="12262">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12262]]></ac:plain-text-link-body>
+</ac:link> -->
+
+12263
+<!-- <ac:link ac:anchor="12263">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[12263]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+</tbody>
+</table>
+<h4>Server to Server Use Case</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Field</th>
+<th style="text-align: center;">Data Type</th>
+<th style="text-align: center;">Required for</th>
+<th style="text-align: center;">Unique</th>
+<th style="text-align: center;">Value Range</th>
+<th style="text-align: center;">Length</th>
+<th style="text-align: center;">Expectation</th>
+<th style="text-align: center;">Code</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>merchantPaymentInstrumentId</td>
+<td>String</td>
+<td>No</td>
+<td>Yes</td>
+<td></td>
+<td>{1 - 255}</td>
+<td>Unique string representing a customer merchant generated unique identifier for a payment instrument.</td>
+<td>10205
+<!-- <ac:link ac:anchor="10205">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[10205]]></ac:plain-text-link-body>
+</ac:link> -->
+
+10206
+<!-- <ac:link ac:anchor="10206">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[10206]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.cardNumber</td>
+<td>String</td>
+<td>CreditCard</td>
+<td>No</td>
+<td>Depends on <a href="/faq" target="_blank" rel="noopener">Credit card types</a></td>
+<td>{12 - 19}</td>
+<td>Mandatory string between 12 and 19 symbols, representing a valid creditcard number</td>
+<td>16000
+<!-- <ac:link ac:anchor="16000">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16000]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16001
+<!-- <ac:link ac:anchor="16001">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16001]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.verification</td>
+<td>String</td>
+<td>CreditCard</td>
+<td>No</td>
+<td>Depends on <a href="/faq" target="_blank" rel="noopener">Credit card types.</a>Not mandatory for maestro.</td>
+<td>max. 4</td>
+<td>Mandatory numeric string between 3 and 4 representing a valid creditcard verification number.</td>
+<td>16002
+<!-- <ac:link ac:anchor="16002">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16002]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16003
+<!-- <ac:link ac:anchor="16003">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16003]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.expiryMonth</td>
+<td>String</td>
+<td>CreditCard</td>
+<td>No</td>
+<td>['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']</td>
+<td>2</td>
+<td>Mandatory numeric string between "01" and "12" representing the month in a valid creditcard expiry date. Must be greater than current date.</td>
+<td>16004
+<!-- <ac:link ac:anchor="16004">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16004]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16005
+<!-- <ac:link ac:anchor="16005">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16005]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.expiryYear</td>
+<td>String</td>
+<td>CreditCard</td>
+<td>No</td>
+<td>['01', '02', ..., '99']</td>
+<td>2</td>
+<td>Mandatory numeric string between "01" and "99", representing the year in a valid creditcard expiry date. Must be greater than current date</td>
+<td>16006
+<!-- <ac:link ac:anchor="16006">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16006]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16007
+<!-- <ac:link ac:anchor="16007">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16007]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.expiryMonth AND payment.expiryYear</td>
+<td>Validation</td>
+<td>CreditCard</td>
+<td>No</td>
+<td>Expiry Year must be greater than currentYear and Expiry Month must be greater than currentMonth</td>
+<td></td>
+<td>Valid creditcard expiry date must be greater than current date.</td>
+<td>16008
+<!-- <ac:link ac:anchor="16008">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16008]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.cardHolder</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>{3 - 128}</td>
+<td>Mandatory string between 3 and 128 characters containing only letters, whitespaces, dots, apostrophes and dashes</td>
+<td>16009
+<!-- <ac:link ac:anchor="16009">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16009]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16010
+<!-- <ac:link ac:anchor="16010">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16010]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.bankName</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>{1 - 255}</td>
+<td>String between 1 and 255 characters containging only letters, whitespace and numbers</td>
+<td>16011
+<!-- <ac:link ac:anchor="16011">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16011]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.iban</td>
+<td>String</td>
+<td>Sepa</td>
+<td>Yes</td>
+<td></td>
+<td>34</td>
+<td>Mandatory string between 22 and 34 characters representing a valid german IBAN (should start with DE)</td>
+<td>16012
+<!-- <ac:link ac:anchor="16012">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16012]]></ac:plain-text-link-body>
+</ac:link> -->
+
+16013
+<!-- <ac:link ac:anchor="16013">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16013]]></ac:plain-text-link-body>
+</ac:link> -->
+
+Bad value for '</td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>payment.bic</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>8 or 11</td>
+<td>String from 8 or 11 characters representing a valid BIC</td>
+<td>16014
+<!-- <ac:link ac:anchor="16014">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16014]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>payment.accountHolder</td>
+<td>String</td>
+<td>None</td>
+<td>No</td>
+<td></td>
+<td>{4 - 128}</td>
+<td>String between 4 and 128 characters representing a valid account holder.May contain letters, whitespaces, dots, apostrophes, dashes and numbers.</td>
+<td>16016
+<!-- <ac:link ac:anchor="16016">
+<ri:page ri:content-title="Error messages(Work in progress)"/>
+<ac:plain-text-link-body><![CDATA[16016]]></ac:plain-text-link-body>
+</ac:link> --></td>
+</tr>
+</tbody>
+</table>
+</div>

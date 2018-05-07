@@ -1,0 +1,227 @@
+<h1>How to preform a Payment</h1><br>
+In this how to we will perform a paypal payment via curl.<br>
+<br>
+We start with the body of our request:<br>
+<pre>
+{
+    "initialAmount": 100,
+    "currency": "EUR",
+    "product": "paypal",
+    "async": {
+        "successUrl": "https://myshop.com/success/",
+        "failureUrl": "https://myshop.com/fail/",
+        "cancelUrl": "https://myshop.com/cancel/"
+    },
+    "merchantOrderId": "#0000000001",
+    "description": "Order at myshop.com",
+    "customer": "Customer-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+}
+</pre>
+<br>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <caption>PayPal Debit Payment Body - JSON Format</caption>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Parameter</th>
+                <th>Mandatory</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>initialAmount</td>
+                <td>mandatory</td>
+                <td>Amount as smallest currency unit e.g 100€ will be result in amount = 10000</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>currency</td>
+                <td>mandatory</td>
+                <td>Currency code according to <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a></td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>product</td>
+                <td>mandatory</td>
+                <td>Payment product (method) to be used for this order</td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td>async</td>
+                <td>mandatory*</td>
+                <td>Mandatory for asynchronous payment products like PayPal</td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td>merchantOrderId</td>
+                <td>optional</td>
+                <td>The order id from your system/shop</td>
+            </tr>
+            <tr>
+                <th scope="row">6</th>
+                <td>description</td>
+                <td>optional</td>
+                <td>The description from your system/shop of this order</td>
+            </tr>
+            <tr>
+                <th scope="row">7</th>
+                <td>customer</td>
+                <td>mandatory</td>
+                <td>The customer id which will be used to process this order</td>
+            </tr>
+        </tbody>
+    </table>
+</div><br>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <caption>PayPal Debit Payment Body - async - JSON Format</caption>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Parameter</th>
+                <th>Mandatory</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>successUrl</td>
+                <td>mandatory</td>
+                <td>In case of a successful order the customer will be redirected to the given URL</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>failureUrl</td>
+                <td>mandatory</td>
+                <td>In case of a failed order the customer will be redirected to the given URL</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>cancelUrl</td>
+                <td>mandatory</td>
+                <td>In case of a cancellation by the customer, the customer will be redirected to the given URL</td>
+            </tr>
+        </tbody>
+    </table>
+</div><br>
+
+See <a href="/buildyourown/restapi"> orders > debit</a> for further information on possible body parameters.<br>
+<br>
+With the body ready we can now send the request via curl.<br>
+<br>
+<pre>
+curl --user MerchantID:APIKey -H "Content-Type: application/json" -X POST -d '{"initialAmount": 100,"currency": "EUR","product": "paypal","async": {"successUrl": "https://myshop.com/success/","failureUrl": "https://myshop.com/fail/","cancelUrl": "https://myshop.com/cancel/"},"merchantOrderId": "#0000000001","description": "Order at myshop.com","customer": "Customer-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}' https://apitest.payengine.de/v1/orders/debit/
+</pre><br>
+<br>
+We will now touch on every part of this command.<br>
+<br>
+<strong>--user MerchantID:APIKey</strong><br>
+Curl Option for HTTP basic access authentication.<br>
+<br>
+<strong>-H "Content-Type: application/json"</strong><br>
+content-type header "application/json" for our API.<br>
+<br>
+<strong>-X POST</strong><br>
+We want the request to be a HTTP POST.<br>
+<br>
+<strong>-d '{"initialAmount": 100,"currency": "EUR","product": "paypal","async": {"successUrl": "https://myshop.com/success/","failureUrl": "https://myshop.com/fail/","cancelUrl": "https://myshop.com/cancel/"},"merchantOrderId": "#0000000001","description": "Order at myshop.com","customer": "Customer-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"}'</strong>
+The body for our request in JSON format.<br>
+<br>
+<strong>https://apitest.payengine.de/v1/orders/debit/</strong><br>
+The orders debit endpoint of our API (Test in this case).<br>
+<br>
+If the Request was successful we should get a response that looks like this:<br>
+<br>
+<pre>
+{
+    "createdAt": 1502092403541,
+    "modifiedAt": 1502092403557,
+    "merchantId": "Merchant-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "terms": null,
+    "privacy": null,
+    "orderId": "xxxxxxxxx",
+    "merchantOrderId": "#0000000001",
+    "paymentProviderTransactionId": null,
+    "description": "Order at myshop.com",
+    "statementDescription": null,
+    "initialAmount": 100,
+    "preauthorizedAmount": 0,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "EUR",
+    "basket": [],
+    "customer": {
+        "createdAt": 1501757581860,
+        "modifiedAt": 1501757581860,
+        "email": "jane@doe.com",
+        "merchantCustomerId": "xyz",
+        "customerId": "Customer-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "addresses": [],
+        "personas": [],
+        "paymentInstruments": [
+            {
+                "paymentInstrumentId": "PaymentInstrument-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                "merchantPaymentInstrumentId": null,
+                "attributes": null,
+                "encrypted": false,
+                "origin": "paypal",
+                "type": "paypal",
+                "recurring": false,
+                "createdAt": 1502092403535,
+                "modifiedAt": 1502092403535
+            }
+        ]
+    },
+    "persona": null,
+    "billingAddress": null,
+    "shippingAddress": null,
+    "ipAddress": null,
+    "paymentInstrument": {
+        "paymentInstrumentId": "PaymentInstrument-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "merchantPaymentInstrumentId": null,
+        "attributes": null,
+        "encrypted": false,
+        "origin": "paypal",
+        "type": "paypal",
+        "recurring": false,
+        "createdAt": 1502092403535,
+        "modifiedAt": 1502092403535
+    },
+    "transactions": [
+        {
+            "createdAt": 1502092403555,
+            "modifiedAt": 1502092403555,
+            "type": "DEBIT",
+            "transactionId": "DebitTransaction-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "description": "Order at myshop.com",
+            "initialAmount": 100,
+            "refundedAmount": 0,
+            "currency": "EUR",
+            "status": "PENDING",
+            "order": "xxxxxxxxx",
+            "parentTransaction": null,
+            "transactions": null,
+            "basket": []
+        }
+    ],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": null,
+    "settled": null,
+    "settlementDate": null,
+    "allowedProducts": [],
+    "product": "paypal",
+    "transactionType": "DEBIT",
+    "meta": null,
+    "async": null,
+    "redirectUrl": "https://apitest.payengine.de/order/paypal/1.0/redirect/Order-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+}
+</pre>
+<br>
+See <a href="/buildyourown/restapi"> orders > debit</a> for further information on the response parameters.

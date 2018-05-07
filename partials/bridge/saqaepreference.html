@@ -1,0 +1,350 @@
+<h1>SAQ-AEP Reference</h1><br>	
+
+Here you can find all needed methods and respective parameters to further enrich your checkout workflow for SAQ-AEP solution.
+
+<em>! Important -> All methods should be called on PayEngine object (e.g PayEngine.desiredMethod(parameters)).</em>
+
+<hr />
+
+<code>createPaymentInstrument</code>
+Receives a payment identifier from the Bridge API based on the given credit card data. 
+
+<strong>Signature</strong>
+<code>createPaymentInstrument(type, paymentData, mpid, callback)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th style="width: 100px; text-align: center;">Name</th>
+<th style="width: 100px; text-align: center;">Mandatory</th>
+<th style="width: 100px; text-align: center;">Type</th>
+<th style="width: 100px; text-align: center;">Default Value</th>
+<th style="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>type</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td style="text-align: left;">The requested payment instrument type. Possible values are 'creditcard' or 'sepa'. It's recommended to use PayEngine.userVariables.paymentInstrumenTypes definitions.</td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>paymentData</td>
+<td>YES</td>
+<td>Object</td>
+<td>N/A</td>
+<td style="text-align: left;">All the raw payment data. 
+If type is credit card: 'cardNumber', 'verification', 'expiryMonth', expiryYear' and 'cardHolder'
+If type is SEPA: 'iban' and 'bic', 'bankName', 'accountHolder'
+Fore more information please refer to the API definition of the the paymen-instruments endpoint.
+</td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>mpid</td>
+<td>NO</td>
+<td>String</td>
+<td>N/A</td>
+<td style="text-align: left;">Unique identifier/slug provided by the merchant, can be <code>null</code></td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>callback</td>
+<td>YES</td>
+<td>function</td>
+<td>N/A</td>
+<td style="text-align: left;">Custom function which should handle the async responce from the Bridge API</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+The Bridge API provides various validation methods. They give the merchant a handy tool to validate the user input and can be attached to various events like blur, onkeydown, etc. Note that all this checks are always applied when the function <code>PayEngine.createPaymentInstrument()</code> is called.
+
+<hr />
+
+<code>validateCardNumber</code> 
+Validates the card number. Returns empty object on success or array of errors on failure.
+
+<strong>Signature</strong>
+<code>validateCardNumber(value)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th style="width: 100px; text-align: center;">Name</th>
+<th style="width: 100px; text-align: center;">Mandatory</th>
+<th style="width: 100px; text-align: center;">Type</th>
+<th style="width: 100px; text-align: center;">Default Value</th>
+<th style="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>value</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td style="text-align: left;">The 16 to 19 number sequence on the front side of the card</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<code>getCardType</code> 
+Returns the type of the card, e.g. VISA, MasterCard, JBC, etc.
+
+<strong>Signature</strong>
+<code>getCardType(value)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th style="width: 100px; text-align: center;">Name</th>
+<th style="width: 100px; text-align: center;">Mandatory</th>
+<th style="width: 100px; text-align: center;">Type</th>
+<th style="width: 100px; text-align: center;">Default Value</th>
+<th style="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>value</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td style="text-align: left;">The 16 to 19 number sequence on the front side of the card</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<code>validateVerification</code> 
+Validates the verification code. Returns empty object on success or array of errors on failure.
+
+<strong>Signature</strong>
+<code>validateVerification(value, ccNumberOrType)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th style="width: 100px; text-align: center;">Name</th>
+<th style="width: 100px; text-align: center;">Mandatory</th>
+<th style="width: 100px; text-align: center;">Type</th>
+<th style="width: 100px; text-align: center;">Default Value</th>
+<th style="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>value</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td style="text-align: left;">The 3 to 4 number sequence on the back side of the card</td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>ccNumberOrType</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td style="text-align: left;">The card type, e.g. VISA, MasterCard, JBC, etc.</td>                              
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<code>validateCardHolder</code> 
+Validates the name on the card. Returns empty object on success or array of errors on failure.
+
+<strong>Signature</strong>
+<code>validateCardHolder(value)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th style="width: 100px; text-align: center;">Name</th>
+<th style="width: 100px; text-align: center;">Mandatory</th>
+<th style="width: 100px; text-align: center;">Type</th>
+<th style="width: 100px; text-align: center;">Default Value</th>
+<th style="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>value</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td style="text-align: left;">A sequence of characters on the front side of the card &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<code>validateExpiry</code> 
+Validates the name on the card. Returns empty object on success or array of errors on failure.
+
+<strong>Signature</strong>
+<code>validateExpiry(expiryYear, expiryMonth)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th style="width: 100px; text-align: center;">Name</th>
+<th style="width: 100px; text-align: center;">Mandatory</th>
+<th style="width: 100px; text-align: center;">Type</th>
+<th style="width: 100px; text-align: center;">Default Value</th>
+<th style="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>expiryYear</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td style="text-align: left;">2-digits number representing the year &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>expiryMonth</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td style="text-align: left;">2-digits number representing the month &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<code>validateIban</code> 
+Validates the given IBAN. Returns empty object on success or array of errors on failure.
+
+<strong>Signature</strong>
+<code>validateIban(value)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th style="width: 100px; text-align: center;">Name</th>
+<th style="width: 100px; text-align: center;">Mandatory</th>
+<th style="width: 100px; text-align: center;">Type</th>
+<th style="width: 100px; text-align: center;">Default Value</th>
+<th style="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>value</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td style="text-align: left;">The bank account IBAN &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<code>validateBic</code> 
+Validates the given BIC. Returns empty object on success or array of errors on failure.
+
+<strong>Signature</strong>
+<code>validateBic(value)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th style="width: 100px; text-align: center;">Name</th>
+<th style="width: 100px; text-align: center;">Mandatory</th>
+<th style="width: 100px; text-align: center;">Type</th>
+<th style="width: 100px; text-align: center;">Default Value</th>
+<th style="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>value</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td style="text-align: left;">The bank account BIC/SWIFT &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<code>validateBankName</code> 
+Validates the given Bank Name. Returns empty object on success or array of errors on failure.
+
+<strong>Signature</strong>
+<code>validateBankName(value)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th style="width: 100px; text-align: center;">Name</th>
+<th style="width: 100px; text-align: center;">Mandatory</th>
+<th style="width: 100px; text-align: center;">Type</th>
+<th style="width: 100px; text-align: center;">Default Value</th>
+<th style="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>value</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td style="text-align: left;">A sequence of characters &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<code>validateAccountHolder</code> 
+Validates the name of the account holder. Returns empty object on success or array of errors on failure.
+
+<strong>Signature</strong>
+<code>validateAccountHolder(value)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th style="width: 100px; text-align: center;">Name</th>
+<th style="width: 100px; text-align: center;">Mandatory</th>
+<th style="width: 100px; text-align: center;">Type</th>
+<th style="width: 100px; text-align: center;">Default Value</th>
+<th style="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>value</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td style="text-align: left;">A sequence of characters &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</tr>
+</tbody>
+</table>
+
+<hr />

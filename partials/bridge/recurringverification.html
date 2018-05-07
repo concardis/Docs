@@ -1,0 +1,49 @@
+<h1>Recurring verification Reference</h1><br>
+Here you can find all needed helper functions for recurring payments. These functions will allow you to force the end user to re-enter his verification code for a selected payment instrument.
+
+<hr />
+
+<code>verifyPaymentInstrument</code>
+This method will cause a payment instrument verification code to be overwritten.
+
+<strong>Signature</strong>
+<code>verifyPaymentInstrument (paymentInstrumentId, verification, callback)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th style="width: 100px; text-align: center;">Name</th>
+<th style="width: 100px; text-align: center;">Mandatory</th>
+<th style="width: 100px; text-align: center;">Type</th>
+<th style="width: 100px; text-align: center;">Default Value</th>
+<th style="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>paymentInstrumentId</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td style="text-align: left;">The ID of the payment instrument that the verification code belongs to</td>
+</tr>
+<tr style="text-align: center; border-top: 1px solid black;">
+<td>verification</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td style="text-align: left;">The verification code</td>
+</tr>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>callback</td>
+<td>YES</td>
+<td>function</td>
+<td>N/A</td>
+<td style="text-align: left;">Function with following signature – callback (error)
+<em>error</em> parameter is an object, containing a message with the reason what has failed. Please see Error object for further information.</td>
+</tr>
+</tbody>
+</table>
+
+<hr />

@@ -1,0 +1,260 @@
+<h1>How to refund a Payment</h1><br>
+In this how to we will perform a refund of paypal payment via curl. Refunds can only be applied on <strong>refund</strong> or <strong>capture</strong> transaction with the status <strong>SUCCESS</strong>.<br>
+<br>
+We start with the body of the request:<br>
+<pre>
+{
+  "initialAmount": 100,
+  "currency": "EUR"
+}
+</pre><br>
+<br>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <caption>PayPal Refund Payment Body - JSON Format</caption>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Parameter</th>
+                <th>Mandatory</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>initialAmount</td>
+                <td>mandatory</td>
+                <td>Amount as smallest currency unit e.g 100€ will be result in amount = 10000</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>currency</td>
+                <td>mandatory</td>
+                <td>Currency code according to <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <br>
+
+See <a href="/buildyourown/restapi"> orders > {orderId} > transactions > {transactionId} > refund</a> for further information on possible body parameters.<br>
+<br>
+With the body ready we can now send the request via curl.<br>
+<br>
+<pre>
+curl --user MerchantID:APIKey -H "Content-Type: application/json" -X POST -d '{"initialAmount": 100,"currency": "EUR"}' https://apitest.payengine.de/v1/orders/{orderId}/transactions/{transactionId}/refund/
+</pre><br>
+<br>
+We will now touch on every part of this command.<br>
+<br>
+<strong>--user MerchantID:APIKey</strong><br>
+Curl Option for HTTP basic access authentication.<br>
+<br>
+<strong>-H "Content-Type: application/json"</strong><br>
+content-type header "application/json" for our API.<br>
+<br>
+<strong>-X POST</strong><br>
+We want the request to be a HTTP POST.<br>	
+<br>
+<strong>-d '{"initialAmount": 100,"currency": "EUR"}'</strong><br>
+The body for our request in JSON format.<br>
+<br>
+<strong>https://apitest.payengine.de/v1/orders/{orderId}/transactions/{transactionId}/refund/</strong><br>
+The transactions refund endpoint of our API (Test in this case). <strong>Important:</strong> Prequisites need to be fullfilled for a successful <strong>refund</strong> transaction:
+<ul>
+    <li>Refunds can only be applied to successful (status: SUCCESS) <strong>debit</strong> or <strong>capture</strong> transactions
+    <li>We need the <strong>orderId</strong>, the orderId will be returned upon a successful <strong>debit</strong> or <strong>capture</strong></li>
+    <li>We need the <strong>transactionId</strong>, the orderId will be returned upon a successful <strong>debit</strong> or <strong>capture</strong></li>
+</ul>
+<br>
+If the Request was successful we should get a response that looks like this:<br>
+<br>
+<pre>
+{
+    "createdAt": 1502096296617,
+    "modifiedAt": 1502096298619,
+    "type": "REFUND",
+    "transactionId": "RefundTransaction-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "description": null,
+    "initialAmount": 100,
+    "currency": "EUR",
+    "status": "SUCCESS",
+    "order": {
+        "createdAt": 1502092403541,
+        "modifiedAt": 1502096298611,
+        "merchantId": "Merchant-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "terms": null,
+        "privacy": null,
+        "orderId": "xxxxxxxxx",
+        "merchantOrderId": "#0000000001",
+        "paymentProviderTransactionId": null,
+        "description": "Order at myshop.com",
+        "statementDescription": null,
+        "initialAmount": 100,
+        "preauthorizedAmount": 0,
+        "capturedAmount": 0,
+        "refundedAmount": 0,
+        "canceledAmount": 0,
+        "currency": "EUR",
+        "basket": [],
+        "customer": {
+            "createdAt": 1501757581860,
+            "modifiedAt": 1501757581860,
+            "email": "jane@doe.com",
+            "merchantCustomerId": "xyz",
+            "customerId": "Customer-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "addresses": [],
+            "personas": [],
+            "paymentInstruments": [
+                {
+                    "paymentInstrumentId": "PaymentInstrument-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                    "merchantPaymentInstrumentId": null,
+                    "attributes": null,
+                    "encrypted": false,
+                    "origin": "paypal",
+                    "type": "paypal",
+                    "recurring": false,
+                    "createdAt": 1502092403535,
+                    "modifiedAt": 1502092403535
+                }
+            ]
+        },
+        "persona": null,
+        "billingAddress": null,
+        "shippingAddress": null,
+        "ipAddress": null,
+        "paymentInstrument": {
+            "paymentInstrumentId": "PaymentInstrument-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "merchantPaymentInstrumentId": null,
+            "attributes": null,
+            "encrypted": false,
+            "origin": "paypal",
+            "type": "paypal",
+            "recurring": false,
+            "createdAt": 1502092403535,
+            "modifiedAt": 1502092403535
+        },
+        "transactions": [
+            {
+                "createdAt": 1502092403555,
+                "modifiedAt": 1502092403555,
+                "type": "DEBIT",
+                "transactionId": "DebitTransaction-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                "description": "Order at myshop.com",
+                "initialAmount": 100,
+                "refundedAmount": 0,
+                "currency": "EUR",
+                "status": "SUCCESS",
+                "order": "xxxxxxxxx",
+                "parentTransaction": null,
+                "transactions": [
+                    "RefundTransaction-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                ],
+                "basket": []
+            }
+        ],
+        "status": "OPEN",
+        "channel": "ECOM",
+        "source": null,
+        "settled": null,
+        "settlementDate": null,
+        "allowedProducts": [],
+        "product": "paypal",
+        "transactionType": "DEBIT",
+        "meta": null,
+        "async": null,
+        "redirectUrl": "https://apitest.payengine.de/order/paypal/1.0/redirect/Order-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    },
+    "parentTransaction": {
+        "createdAt": 1502092403555,
+        "modifiedAt": 1502092403555,
+        "type": "DEBIT",
+        "transactionId": "DebitTransaction-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "description": "Order at myshop.com",
+        "initialAmount": 100,
+        "refundedAmount": 0,
+        "currency": "EUR",
+        "status": "SUCCESS",
+        "order": {
+            "createdAt": 1502092403541,
+            "modifiedAt": 1502096298611,
+            "merchantId": "Merchant-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "terms": null,
+            "privacy": null,
+            "orderId": "xxxxxxxxx",
+            "merchantOrderId": "#0000000001",
+            "paymentProviderTransactionId": null,
+            "description": "Order at myshop.com",
+            "statementDescription": null,
+            "initialAmount": 100,
+            "preauthorizedAmount": 0,
+            "capturedAmount": 0,
+            "refundedAmount": 0,
+            "canceledAmount": 0,
+            "currency": "EUR",
+            "basket": [],
+            "customer": {
+                "createdAt": 1501757581860,
+                "modifiedAt": 1501757581860,
+                "email": "jane@doe.com",
+                "merchantCustomerId": "xyz",
+                "customerId": "Customer-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                "addresses": [],
+                "personas": [],
+                "paymentInstruments": [
+                    {
+                        "paymentInstrumentId": "PaymentInstrument-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                        "merchantPaymentInstrumentId": null,
+                        "attributes": null,
+                        "encrypted": false,
+                        "origin": "paypal",
+                        "type": "paypal",
+                        "recurring": false,
+                        "createdAt": 1502092403535,
+                        "modifiedAt": 1502092403535
+                    }
+                ]
+            },
+            "persona": null,
+            "billingAddress": null,
+            "shippingAddress": null,
+            "ipAddress": null,
+            "paymentInstrument": {
+                "paymentInstrumentId": "PaymentInstrument-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                "merchantPaymentInstrumentId": null,
+                "attributes": null,
+                "encrypted": false,
+                "origin": "paypal",
+                "type": "paypal",
+                "recurring": false,
+                "createdAt": 1502092403535,
+                "modifiedAt": 1502092403535
+            },
+            "transactions": [
+                "DebitTransaction-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+            ],
+            "status": "OPEN",
+            "channel": "ECOM",
+            "source": null,
+            "settled": null,
+            "settlementDate": null,
+            "allowedProducts": [],
+            "product": "paypal",
+            "transactionType": "DEBIT",
+            "meta": null,
+            "async": null,
+            "redirectUrl": "https://apitest.payengine.de/order/paypal/1.0/redirect/Order-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        },
+        "parentTransaction": null,
+        "transactions": [
+            "RefundTransaction-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        ],
+        "basket": []
+    },
+    "transactions": null,
+    "basket": []
+}
+</pre><br>
+<br>
+See <a href="/buildyourown/restapi"> orders > {orderId} > transactions > {transactionId} > refund</a> for further information on the response parameters.<br>

@@ -1,0 +1,80 @@
+<strong>Important!</strong><br>
+<strong>Device Ident is available only for "ECOM" transactions</strong><br>
+
+<br>
+If Device Ident is set to true, Device Ident Token will be send with the transaction object on transaction create<br>
+<br>
+<code>
+{
+  "terms": 1468590412476,
+  "privacy": 1468590412476,
+  "description": "test transaction",
+  "statementDescription": "statement description",
+  "amount": 1904,
+  "currency": "EUR",
+  "basket": [
+    {
+      "name": "USB-Stick",
+      "articleNumber": "SW10029",
+      "totalPrice": 1000,
+      "totalPriceWithTax": 1190,
+      "unitPrice": 100,
+      "unitPriceWithTax": 119,
+      "tax": 19,
+      "quantity": 10
+    },
+    {
+      "name": "24\" Monitor",
+      "articleNumber": "SW10030",
+      "totalPrice": 600,
+      "totalPriceWithTax": 714,
+      "unitPrice": 300,
+      "unitPriceWithTax": 357,
+      "tax": 19,
+      "quantity": 2
+    }
+  ],
+  <strong>“deviceIdent”: {
+    “deviceIdentToken”: “493cc7a1f5874323a7b30c04c75wa435e”
+  },</strong>
+  "ipAddress": "82.120.21.79",
+  "async": {
+    "successUrl": "https://www.google.de?q=success",
+    "failureUrl": "https://www.google.de?q=failure",
+    "cancelUrl": "https://www.google.de?q=cancel"
+  },
+  "channel": "ECOM",
+  "source": "Postman Test"
+}
+</code><br>
+<br>
+Then on Order details Request will return full information of the Device in "deviceIdent" object:<br>
+<br>
+<code>
+“deviceIdent”: {
+       “token”: “493cc7a1f5874323a7b30c04c75wa435e”,
+       “fraudscore”: 3,
+       “city”: “Plovdiv”,
+       “ip”: “78.130.201.xxx”,
+       “regioncode”: “51",
+       “continent”: “EU”,
+       “countryname”: “Bulgaria”,
+       “regionname”: “Varna”,
+       “countrycode”: “BG”,
+       “latitude”: 42.15,
+       “longitude”: 24.75,
+       “exactid”: “AMPX_x-JaG7zGz6VQ0zyl61bkmkw”,
+       “confidencelevel”: 100,
+       “smartid”: “ADADtFFODkOMiArFAYcN6XFioZoM”,
+       “confidencelevelhistory”: 100,
+       “languages”: “en-us”,
+       “fraudscore_raw”: 2,
+       “rule_scores”: “ExactVelocityDuring30d>=002=0.0,SmartVelocityDuring30d>=002=0.0,fromLowRiskCountry=2.0”,
+       “fraudscore_rulematches”: “ExactVelocityDuring30d>=002,SmartVelocityDuring30d>=002,fromLowRiskCountry”,
+       “exactid_created”: “2018-04-26T10:10:54.317Z”,
+       “smartid_created”: “2018-04-26T10:10:54.317Z”,
+       “verified_os”: “Mac”,
+       “device_type”: “Personal computer”
+   },
+</code>
+<br>

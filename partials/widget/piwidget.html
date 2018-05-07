@@ -1,0 +1,62 @@
+In order to use this functionality, every integrator should execute only 3 steps:<br>
+<br>
+<strong>1. Add payengine.widget.min.js (get it <a href="/systemurl">here</a>)</strong><br>
+<strong>2. Call initAsInlineComponentPi() function on PayEngineWidget object to display the payment form</strong><br>
+<strong>3. Handle Widget initialization result in <em>initCallback</em></strong><br>
+<br>
+<em>! Important -&gt; Please be aware that this integration option is meant to result in a payment instrument.</em><br>
+<br>
+Here is snippet how your html could look like:<br>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+  &lt;script src="https://pp.payengine.de/widgetjs/payengine.widget.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
+   var widgetReference;
+
+   function initCallback(error, result) {
+     if (error) {
+	//There was an error
+	//You will find more details in the error object
+	return;
+     }
+     widgetReference = result;
+   }
+
+   function resultCallback(error, result) {
+     if (error) {
+	//There was an error
+	//You will find more details in the error object
+	return;
+     }
+     //Payment instrument id is in the result
+   }
+
+   window.onload = function() {
+     var container = document.getElementById("widget-container");
+     var publishableKey = "merchant_kdanvgjnhx";
+     var paymentMethods = ["creditcard", "sepa"];
+     var optionalParameters = new Object;
+     optionalParameters.initCallback = initCallback;
+     optionalParameters.products = ["creditcard", "sepa"];
+     optionalParameters.language = "en";
+     optionalParameters.customStyleId = "customstyle_qdxnyzokmk";
+     optionalParameters.hidePayButton = false;
+     optionalParameters.hideTitleIcons = false;
+     optionalParameters.redirectUser = true;
+     PayEngineWidget.initAsInlineComponentPi(
+	container,
+	publishableKey,
+	optionalParameters,
+	resultCallback
+     );
+   }
+  &lt;/script&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+   //Your website html code here
+   &lt;div id="widget-container"&gt;&lt;/div&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</pre>
+<em>! Important -&gt; Check out all mandatory and optional parameters in Widget as a Bridge <a href="/outofthebox/widgetmenu/piwidgetreference">Reference</a>.</em><br>

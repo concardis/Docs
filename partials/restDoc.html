@@ -1,0 +1,57 @@
+<div class="container">
+    <h4 class="p-title" style="color:#DA4405;"><span>REST API</span></h4>
+</div>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div ng-init="menu=true;" class="col-md-3 btn-group-vertical" >
+    	<button type="button" class="btn btn-light text-left" ng-click="menu=!menu">Menu <span ng-show="menu" class="pull-right glyph-icon icon-chevron-down"></span><span ng-show="!menu" class="pull-right glyph-icon icon-chevron-up"></span></button>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restdoc/aboutourapi">About our API</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restdoc/authentication">Authentication</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restdoc/errors">Errors</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restdoc/createcustomer">How to create a customer</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restdoc/preformpayment">How to preform a payment</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restdoc/refundpayment">How to refund a payment</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restdoc/providercodes">Provider Codes</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restdoc/phpsdk">PHP SDK</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restdoc/simulator">Test Your integration (Simulator)</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restapi" >Example</a>
+    </div>
+    <div class="col-md-7">
+        <div ng-show="cur=='aboutourapi'">
+            <div  ng-include="'/partials/restdoc/aboutourapi.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='authentication'">
+        	<div  ng-include="'/partials/restdoc/authentication.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='errors'">
+        	<div  ng-include="'/partials/restdoc/errors.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='createcustomer'">
+          	<div  ng-include="'/partials/restdoc/createcustomer.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='preformpayment'">
+          	<div  ng-include="'/partials/restdoc/preformpayment.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='refundpayment'">
+        	<div  ng-include="'/partials/restdoc/refundpayment.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='providercodes'">
+        	<div  ng-include="'/partials/restdoc/providercodes.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='simulator'">
+        	<div  ng-include="'/partials/restdoc/simulator.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='phpsdk'">
+        	<div  ng-include="'/partials/restdoc/phpsdk.html'">
+            </div>
+        </div>
+    </div>
+</div>

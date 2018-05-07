@@ -1,0 +1,35 @@
+ Our RESTful API comes with validations and dedicated error messages that help you as integrator to deal with any kind of exception. The following sections contain detailed information on how validation on API level work, what error messages are transmitted and in which format they are sent.
+
+<h4>General Message structure</h4>
+
+API responses can contain nested error messages in case multiple validation errors occurred. The response contains an http status (see <a href="/buildyourown/restdoc">here</a>) and a message as well as a code (see <a href="/buildyourown/restdoc">here</a>).
+The globalTrackId is useful for debugging and general troubleshooting communication with the Concardis Payengine Team!
+
+A single error item includes a code, the according validated field and a message that is corresponding to the validation error. Please check the following paragraphs for detailed descriptions of every field, 
+<br>
+<p><code>
+{
+  "status": 400,
+  "message": "Filtering /customers failed. Check 'errors' array for further details.",
+  "code": 6000,
+  "globalTrackId": "Request ID",
+  "errors": [
+    {
+      "code": 6001,
+      "field": "size",
+      "message": "size not valid. Expected: positive integer >= 1 ."
+    },
+    {
+      "code": 6002,
+      "field": "page",
+      "message": "page not valid. Expected: positive integer >= 1 ."
+    }
+   ]
+   }
+</code></p><br>
+<em>Example response with a nested error message</em>
+
+Please click on a certain object to be redirected to the according sub page that lists all validation rules and according exception codes & messages per endpoint:
+<h5><a href="/buildyourown/restapi">Orders</a></h5>
+<h5><a href="/buildyourown/restapi">Customers (including Personas & Addresses)</a></h5>
+<h5><a href="/buildyourown/restapi">PaymentInstruments</a></h5>

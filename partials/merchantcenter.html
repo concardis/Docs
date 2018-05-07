@@ -1,0 +1,138 @@
+<div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+        
+        <br>
+    </div>
+    <div class="col-md-1">
+    </div>
+</div>
+<img src="img/CC_MC.jpeg" width="100%"></img>
+<div class="row">
+    <br>
+    <div class="col-md-1"></div>
+    <div ng-init="menu=true;" class="col-md-2 btn-group-vertical">
+        <button type="button" class="btn btn-light text-left" ng-click="menu=!menu">Menu <span ng-show="menu" class="pull-right glyph-icon icon-chevron-down"></span><span ng-show="!menu" class="pull-right glyph-icon icon-chevron-up"></span></button>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/registration">Registration</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/login">Login</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/navigation">Navigation</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/dashboard">Dashboard</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createtransaction">Orders - Create transactions</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/errortransaction">Orders - Errors in transactions</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/settlement">Settlements</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/customer">Customers</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createcustomer">Customers - Create</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/myaccount">My Account</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/paymentmethods">Payment Methods</a>
+        <hr>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/usermanagement"><h3><b>User Management</b></h3></a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/inviteuser">User Management - Invite User</a>
+        <hr>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/paymentinstrument"><h3><b>Payment Instruments</b></h3></a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createpaymentinstrument">Payment Instruments - Create</a>
+        <hr>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/risksetting"><h3><b>Manage risk settings</b></h3></a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/managenotification">How to manage Notifications</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/manageblacklist">How to manage blacklists</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/manageriskcard">How to manage risk cards</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/rulecomparison">Ruletype I: Comparison (simple)</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/rulevelocityrisk">Ruletype II: Limits (velocity) Risks</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/gicc">Messages by External Systems<br/>( GICC )</a>
+        <br/>
+    </div>
+    <div class="col-md-8">
+        <div ng-show="cur=='registration'">
+            <div  ng-include="'/partials/merchant/registration.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='login'">
+            <div  ng-include="'/partials/merchant/login.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='navigation'">
+           <div  ng-include="'/partials/merchant/navigation.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='dashboard'">
+            <div  ng-include="'/partials/merchant/dashboard.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='createtransaction'">
+           <div ng-include="'/partials/merchant/createtransaction.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='errortransaction'">
+            <div  ng-include="'/partials/merchant/errortransaction.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='usermanagement'">
+            <div  ng-include="'/partials/merchant/usermanagement.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='inviteuser'">
+            <div  ng-include="'/partials/merchant/inviteuser.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='paymentmethods'">
+           <div  ng-include="'/partials/merchant/paymentmethods.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='paymentinstrument'">
+           <div  ng-include="'/partials/merchant/paymentinstrument.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='createpaymentinstrument'">
+            <div  ng-include="'/partials/merchant/createpaymentinstrument.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='customer'">
+            <div  ng-include="'/partials/merchant/customer.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='createcustomer'">
+            <div  ng-include="'/partials/merchant/createcustomer.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='myaccount'">
+            <div  ng-include="'/partials/merchant/myaccount.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='settlement'">
+            <div  ng-include="'/partials/merchant/settlement.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='managenotification'">
+            <div  ng-include="'/partials/merchant/managenotification.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='risksetting'">
+            <div  ng-include="'/partials/merchant/risksetting.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='manageblacklist'">
+            <div  ng-include="'/partials/merchant/manageblacklist.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='manageriskcard'">
+            <div  ng-include="'/partials/merchant/manageriskcard.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='rulecomparison'">
+           <div  ng-include="'/partials/merchant/rulecomparison.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='rulevelocityrisk'">
+            <div  ng-include="'/partials/merchant/rulevelocityrisk.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='gicc'">
+            <div  ng-include="'/partials/merchant/gicc.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='errortransaction'">
+            <div  ng-include="'/partials/merchant/errortransaction.html'">
+            </div>
+        </div>
+    </div>
+</div>

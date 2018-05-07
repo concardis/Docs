@@ -1,0 +1,138 @@
+<p>The Payment Card Industry Data Security Standards (PCI DSS) is a set of security standards for businesses that handle credit cards from the major card schemes. Its aim is to provide security requirements that help protect sensitive credit card data (also known as the Cardholder Data Environment CDE)<br><br>
+The CDE defines the storage, processing and transmission of credit card information. All merchants that accept credit cards must meet PCI compliance with varying requirements depending on a number of factors. These are laid down in different assessments, of which the Self Assessment Questionnaires (SAQ) are the most common ones.</p>
+<h5>PCI Compliance for Ecommerce Websites</h5><br>
+<p>As an ecommerce merchant you need to become familiar with the importance of PCI compliance. Even though the PCI DSS must be met by all merchants that process, store or transmit cardholder data, a formal validation of PCI DSS compliance is not compulsory for all merchants. Currently, both Visa and MasterCard require merchants and service providers to be validated annually according to the PCI DSS. If a security breach occurs, any compromised entity which did not comply with PCI DSS at the time of breach will face additional penalties (e.g. fines) by card schemes.</p>
+<h5>PCI Requirements</h5><br>
+<p>The PCI requirements are divided into 6 major categories with 12 requirements in total:</p>
+<ol type="1">
+ 	<li>Build and Maintain a Secure Network
+<ul>
+ 	<li>Requirement 1 - Install and maintain a firewall.</li>
+ 	<li>Requirement 2 - Do not use vendor-supplied defaults for system passwords or other security parameters.</li>
+</ul>
+</li>
+ 	<li>Protect Cardholder Data
+<ul>
+ 	<li>Requirement 3 - Protect stored cardholder data.</li>
+ 	<li>Requirement 4 - Encrypt transmission or cardholder data across public networks.</li>
+</ul>
+</li>
+ 	<li>Maintain a Vulnerability Management Program
+<ul>
+ 	<li>Requirement 5 - Protect all systems against malware and regularly update anti-virus programs.</li>
+ 	<li>Requirement 6 - Develop and maintain secure systems and applications.</li>
+</ul>
+</li>
+ 	<li>Implement Strong Access Control Measures
+<ul>
+ 	<li>Requirement 7 - Restrict access to card holder data by business need-to know.</li>
+ 	<li>Requirement 8 - Identify and authenticate access to system components.</li>
+ 	<li>Requirement 9 - Restrict physical access to card holder data.</li>
+</ul>
+</li>
+ 	<li>Regularly Test and Monitor Networks
+<ul>
+ 	<li>Requirement 10 - Track and monitor all access to network resources and card holder data.</li>
+ 	<li>Requirement 11 - Regularly test security systems and processes.</li>
+</ul>
+</li>
+ 	<li>Maintain an Information Security Policy
+<ul>
+ 	<li>Requirement 12- Maintain an information security policy.</li>
+</ul>
+</li>
+</ol>
+<p>The above listed 12 requirements cover different business aspects that in turn break down into more than 200 sub-requirements. Each of these sub-requirements is represented by a check box in the SAQ that a merchant is obliged to follow.</p>
+<h5>Self Assessment Questionnaires (SAQ)</h5><br>
+<p>Regarding ecommerce merchants, we need to focus specifically on SAQ Type A, SAQ Type A-EP and SAQ Type D. The type of SAQ depends on the way a merchant handles credit card data:</p>
+<br>
+SAQ A:
+<ul>
+ 	<li>Merchant accepts only card-not-present (e-commerce or mail/telephone-order) transactions;</li>
+ 	<li>All payment acceptance and processing are entirely outsourced to PCI DSS validated third-party service providers;</li>
+ 	<li>Merchant has no direct control of the manner in which cardholder data is captured, processed, transmitted, or stored;</li>
+ 	<li>Merchant does not electronically store, process, or transmit any cardholder data on his systems or premises, but relies entirely on a third party(s) to handle all these functions;</li>
+ 	<li>Merchant has confirmed that all third party(s) handling acceptance, storage, processing, and/or transmission of cardholder data are PCI DSS compliant; and</li>
+ 	<li>Merchant retains only paper reports or receipts with cardholder data, and these documents are not received electronically.</li>
+ 	<li>Additionally, for e-commerce channels: The entirety of all payment pages delivered to the consumer’s browser originates directly from a third-party PCI DSS validated service provider(s).</li>
+</ul>
+SAQ A-EP:
+<ul>
+ 	<li>Merchant accepts only e-commerce transactions;</li>
+ 	<li>All processing of cardholder data is outsourced to a PCI DSS validated third-party payment processor;</li>
+ 	<li>Merchant's e-commerce website does not receive cardholder data but controls how consumers, or their cardholder data, are redirected to a PCI DSS validated third-party payment processor;</li>
+ 	<li>Merchant's e-commerce website is not connected to any other systems within his environment (this can be achieved via network segmentation to isolate the website from all other systems);</li>
+ 	<li>If merchant website is hosted by a third-party provider, the provider is validated to all applicable PCI DSS requirements (e.g., including PCI DSS Appendix A if the provider is a shared hosting provider);</li>
+ 	<li>All elements of payment pages that are delivered to the consumer’s browser originate from either the merchant’s website or a PCI DSS compliant service provider(s);</li>
+ 	<li>Merchant does not electronically store, process, or transmit any cardholder data on his systems or premises, but relies entirely on a third party(s) to handle all these functions;</li>
+ 	<li>Merchant has confirmed that all third party(s) handling storage, processing, and/or transmission of cardholder data are PCI DSS compliant; and</li>
+ 	<li>Merchant retains only paper reports or receipts with cardholder data, and these documents are not received electronically.</li>
+</ul>
+SAQ D-Merchant:
+<ul>
+ 	<li>E-commerce merchant that cannot meet the criteria for SAQ A or SAQ A-EP, OR</li>
+ 	<li>E-commerce merchant that stores credit card data, OR</li>
+ 	<li>Payment pages are delivered from the merchant’s website.</li>
+</ul>
+<h5>Defining Your Scope with PCI</h5>
+Concerning PCI, it all comes down to reducing scope. Scope depends on the way a merchant handles credit cards on his site (i.e., how a customer enters his information and where it goes). The following aspects should be thought of in terms of the CDE:
+<ul>
+ 	<li>Storage: How will the data be stored (e.g. store it as an organization or use a third-party provider)?</li>
+ 	<li>Transmission: How will the data be transmitted (e.g. how will the data proceed to the gateway and are there any SSL Certificates in place)?</li>
+ 	<li>Collection: How will the data be collected (e.g. through a form on or off the page)?</li>
+ 	<li>Processing: How will the data be processed (e.g. locally by the merchant or through a service provider)?</li>
+</ul>
+<p>Depending on the specific choices above, it impacts which SAQ you must fulfill and the corresponding precautions you have to take to ensure security. In general, it is highly recommended for ecommerce merchants not to store or process credit card data within their environment (locally) and instead leverage us to do this. In this case, you are only obliged to meet the fairly decent requirements laid down by SAQ A or SAQ A-EP. Whether SAQ A, SAQ A-EP or SAQ D apply, is determined by the checkout type as follows:</p><br>
+<table style="border-collapse: collapse;">
+<thead>
+<tr>
+<th style="width: 200px; text-align: left; padding: 10px;"><b>Checkout Type</b></th>
+<th style="width: 100px; text-align: center; padding: 3px;"><b>SAQ</b></th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;"><a href="/buildyourown/restdoc">REST API (for all payment methods, especially Cards)</a></td>
+<td style="text-align: center; padding: 3px;">D</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;"><a href="/buildyourown/bridge">JS Bridge (with merchant forms for Cards)</a> + <a href="/buildyourown/restdoc">REST API (for all other payment methods)</a></td>
+<td style="text-align: center; padding: 3px;">AEP</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;"><a href="/buildyourown/bridge">JS Bridge (with iFrame forms for Cards)</a>
++ <a href="/buildyourown/restdoc">REST API (for all other payment methods)</a></td>
+<td style="text-align: center; padding: 3px;">A</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;"><a href="/outofthebox/widgetmenu">Widget (JS: as lightbox)</a></td>
+<td style="text-align: center; padding: 3px;">A</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;"><a href="/outofthebox/widgetmenu">Widget (JS: inline / iFrame)</a></td>
+<td style="text-align: center; padding: 3px;">A</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;"><a href="/buildyourown/bridge">Widget (JS: as bridge)</a></td>
+<td style="text-align: center; padding: 3px;">A</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;"><a href="/outofthebox/paymentpage">Dynamic Payment Page (redirect, dynamic parameters via API)</a></td>
+<td style="text-align: center; padding: 3px;">A</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;"><a href="/outofthebox/paymentpage">Static Payment Page (redirect to static URL)</a></td>
+<td style="text-align: center; padding: 3px;">A</td>
+</tr>
+</tbody>
+</table>
+<h5>PCI-DSS Platform</h5><br>
+<p>All merchants are required to provide necessary merchant data on our PCI-DSS Platform. For further information please visit <a href="https://www.pciplatform.concardis.com">https://www.pciplatform.concardis.com</a>.</p>
+<h5>External links</h5><br>
+The corresponding SAQs (Version 3.2) can be found here:
+
+<a href="https://www.pcisecuritystandards.org/documents/PCI-DSS-v3_2-SAQ-A.pdf">SAQ A</a>
+
+<a href="https://www.pcisecuritystandards.org/documents/PCI-DSS-v3_2-SAQ-A_EP.pdf">SAQ A-EP</a>
+
+<a href="https://www.pcisecuritystandards.org/documents/PCI-DSS-v3_2-SAQ-D_ServiceProvider.pdf">SAQ D</a>

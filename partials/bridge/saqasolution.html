@@ -1,0 +1,85 @@
+<h1>How to implement SAQ-A solution</h1><br>
+In order to use this functionality, every integrator should execute only 2 steps:<br>
+<br>
+<strong>1. Prepare the HTML form</strong><br>
+<strong>2. Initialize iframes, call the tokenization JS function and add a callback</strong><br>
+<br>
+The following HTML snippet contains the neccessary data for card tokenization with Bridge iframes. Note that the minimal code is the form itself and the input tags, which <strong>must <em>not</em> contain name attributes</strong>:<br>
+<pre>&lt;div&gt;
+  &lt;form id="saq-a"&gt;
+    &lt;div&gt;
+      &lt;div&gt;Card Number&lt;/div&gt;
+      &lt;div id="a_credit_card_number_container"&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div&gt;Expiry Date&lt;/div&gt;
+      &lt;div&gt;
+        &lt;input
+          id="a_expiry"
+          placeholder="MM/YY"
+          autocomplete="off" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div&gt;Card holder&lt;/div&gt;
+      &lt;div&gt;
+        &lt;input
+          id="a_cardholder"
+          type="text"
+          placeholder="John Rambo"
+          autocomplete="off" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div&gt;Verification&lt;/div&gt;
+      &lt;div id="a_verification_container"&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div&gt;
+        &lt;button id="submit" type="button"&gt;
+          Pay now
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</pre>
+<strong>Initialize iframes, call the tokenization JS function and add a callback</strong>
+The following snippet shows how to initialize the PayEngine iframes and gather the requied parametes and to call <code>PayEngine.iframesCreatePaymentInstrument()</code>
+<code>&lt;script type="text/javascript"&gt;
+var iframesReference;
+
+function initIframesCallback ( error, result ) {
+  if( error ) {
+    console.log( JSON.stringify( error ) );
+  } else {
+    iframesReference = result;
+  }
+}
+
+function callback( error, result ) {
+  if( error ) {
+    console.log( JSON.stringify( error ) );
+  } else {
+    console.log( JSON.stringify( result ) );
+  }
+}
+
+window.onload = function() {
+  PayEngine.iframesInit("a_credit_card_number_container", "a_verification_container", null, initIframesCallback);
+
+  document.getElementById('submit').addEventListener( 'click', function( event ) {
+    var expiry = document.getElementById( "a_expiry" ).value.split( "/" );
+    var paymentData = {
+      expiryMonth:  expiry[0],
+      expiryYear:   expiry[1],
+      cardHolder:   document.getElementById( "a_cardholder" ).value
+    };
+
+    PayEngine.iframesCreatePaymentInstrument( iframesReference, paymentData, null, callback );
+  } );
+}
+
+&lt;/script&gt;</code><br>
+<em>! Important -&gt; Check out all methods and parameters in details in SAQ-A <a href="/buildyourown/bridge/saqareference">Reference</a>.</em>

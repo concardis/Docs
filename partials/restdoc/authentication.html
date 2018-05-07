@@ -1,0 +1,31 @@
+<h1>Authentication</h1><br>
+Authorization of requests is done via <a href="https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side">HTTP basic access authentication</a>.<br>
+
+<strong>HTTP basic accesss authentication header example</strong><br>
+<pre>Authorization: Basic TWVyY2hhbnRJRDpBUElLZXk=</pre><br>
+	<br>
+TWVyY2hhbnRJRDpBUElLZXk= is the base64 encoded version of "MerchantID:APIKey". A merchant id could look like "Merchant-00000000-0000-0000-0000-00000000", and an API key could look like "xXxXxXxXxXxXxXxX".<br>
+The merchant id and the API Key can be found in the Payengine Merchant Center under "My Account".<br>
+
+Now that we know how to authenticate we will try our first connection.<br>
+
+Following examples are using <a href="https://curl.haxx.se">curl</a> to establish a connection.<br>
+
+We will now establish the first connection to the API.<br>
+
+<pre>
+curl --user MerchantID:APIKey https://apitest.payengine.de/v1/customers
+</pre><br>
+
+The response should look like following.<br>
+
+<pre>
+{
+    elements: []
+    totalpages: 1
+}
+</pre><br>
+
+Since it is the first request there are no customers whom could be returned.<br>
+<br>
+<strong>https://apitest.payengine.de/v1</strong> is the test system which should always be used for development purposes, the live api endpoint would be <strong>https://api.payengine.de/v1</strong>. For more information on the system URLs see <a href="/faq">System URLs</a>.

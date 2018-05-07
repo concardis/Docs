@@ -1,0 +1,85 @@
+<h1>How to implement SAQ-AEP solution</h1><br>
+In order to use this functionality, every integrator should execute only 2 steps:<br>
+<br>
+<strong>1. Prepare the HTML form</strong><br>
+<strong>2. Call the tokenization JS function and add a callback</strong><br>
+<br>
+The following HTML snippet contains the necessary data for card tokenization with Bridge iframes. Note that the minimal code is the form itself and the input tags, which <strong>must <em>not</em> contain name attributes</strong>:
+<pre>&lt;div&gt;
+  &lt;form id="saq-aep"&gt;
+    &lt;div&gt;
+      &lt;div&gt;Card Number&lt;/div&gt;
+      &lt;div&gt;
+        &lt;input
+          id="aep_credit_card_number"
+          type="text"
+          placeholder="Card Number"
+          maxlength="19"
+          autocomplete="off" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div&gt;Expiry Date&lt;/div&gt;
+      &lt;div&gt;
+        &lt;input
+          id="aep_expiry"
+          placeholder="MM/YY"
+          autocomplete="off" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div&gt;Card holder&lt;/div&gt;
+      &lt;div&gt;
+        &lt;input
+          id="aep_cardholder"
+          type="text"
+          placeholder="John Rambo"
+          autocomplete="off" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div&gt;Verification&lt;/div&gt;
+      &lt;div&gt;
+        &lt;input
+          id="aep_verification"
+          type="text"
+          placeholder="1234"
+          maxlength="4" /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+      &lt;div&gt;
+        &lt;button id="submit" type="button"&gt;
+          Pay now
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/form&gt;
+&lt;/div&gt;</pre>
+<strong>Call the tokenization JS function and add a callback</strong>
+The following snippet shows how to gather the requied parametes and to call <code>PayEngine.createPaymentInstrument()</code>
+<pre>&lt;script type="text/javascript"&gt;
+function callback( error, result ) {
+  if( error ) {
+    console.log( JSON.stringify( error ) );
+  } else {
+    console.log( JSON.stringify( result ) );
+  }
+}
+
+window.onload = function() {
+  document.getElementById('submit').addEventListener( 'click', function( event ) {
+    var expiry = document.getElementById( "aep_expiry" ).value.split( "/" );
+    var paymentData = {
+      cardNumber:   document.getElementById( "aep_credit_card_number" ).value,
+      verification: document.getElementById( "aep_verification" ).value,
+      expiryMonth:  expiry[0],
+      expiryYear:   expiry[1],
+      cardHolder:   document.getElementById( "aep_cardholder" ).value
+    };
+
+    PayEngine.createPaymentInstrument( 'creditcard', paymentData, null, callback );
+  } );
+}
+&lt;/script&gt;</pre><br>
+<em>! Important -&gt; Check out all methods and parameters in details in SAQ-AEP <a href="/buildyourown/bridge/saqaepreference">Reference</a>.</em>

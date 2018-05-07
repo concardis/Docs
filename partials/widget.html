@@ -1,0 +1,210 @@
+<div class="container">
+<!--<button type="button" onclick="loadWidget();" class="btn btn-default">Load Widget</button>-->
+<div id="widgetconfig" class="row" >
+<div>
+<div class="panel panel-success">
+<div class="panel-heading">
+<h3 class="panel-title">Init widget</h3>
+</div>
+<div class="panel-body">
+<div id="accordion" class="panel-group" role="tablist" aria-multiselectable="true">
+<div class="panel panel-default">
+<div id="headingOne" class="panel-heading" role="tab"><a role="button" href="#collapseOne" data-toggle="collapse" data-parent="#accordion" aria-expanded="true" aria-controls="collapseOne">Init As Modal</a></div>
+<div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+<div class="panel-body"><form>
+<div class="form-group"><label for="merchantIdModal">MerchantID</label>
+<input id="merchantIdModal" class="form-control" type="text" value="Merchant-000cf2c9-66fe-4730-ac9e-674f7c552d42" /></div>
+<div class="form-group"><label for="orderIdModal">OrderID</label>
+<input id="orderIdModal" class="form-control" type="text" /></div>
+<div class="form-group"><label for="languageModal">Language</label>
+<input id="languageModal" class="form-control" type="text" value="en" placeholder="Language" /></div>
+<div class="form-group">
+
+<label for="productsModal">Products</label>
+<div class="checkbox"><input id="productsAllModal" checked="checked" type="checkbox" /><label><b>All</b></label></div>
+<div class="col-md-6" style="padding-left: 0px;">
+<div class="checkbox"><input id="productscreditcardModal" disabled="disabled" type="checkbox" /><label><b>Credit Card</b></label></div>
+<div class="checkbox"><input id="productspaypalModal" disabled="disabled" type="checkbox" /><label> <b>Paypal</b></label></div>
+<div class="checkbox"><input id="productspaydirektModal" disabled="disabled" type="checkbox" /><label> <b>Paydirekt</b></label></div>
+<!--
+<div class="checkbox"><input id="productssofortModal" type="checkbox" disabled/> <label onclick="toggleCheckbox('#productssofortModal');"><b>Sofort</b></label></div>
+-->
+
+</div>
+</div>
+<div class="col-md-6" style="padding-left: 0px;">
+<div class="checkbox"><input id="productsratepay-installmentModal" disabled="disabled" type="checkbox" /> <label> <b>Ratepay Installment</b></label></div>
+<div class="checkbox"><input id="productsratepay-directdebitModal" disabled="disabled" type="checkbox" /> <label> <b>Ratepay Directdebit</b></label></div>
+<div class="checkbox"><input id="productsratepay-invoiceModal" disabled="disabled" type="checkbox" /> <label><b>Ratepay Invoice</b></label></div>
+<!-- <input id="productsModal" class="form-control" type="text" placeholder="Products" /> -->
+
+</div>
+<div class="form-group">
+
+<label for="themeModal">Color theme</label>
+<div class="radio"><input id="themeModalDark" name="themeModal" type="radio" value="dark" /><label>Dark</label></div>
+<div class="radio"><input id="themeModalLight" name="themeModal" type="radio" value="light" /><label>Light</label></div>
+</div>
+<div><button class="btn btn-block primary" style="background-color:#dc4405" type="button" ng-click="mm()"><h4 style="color:white">INIT</h4></button></div>
+</form></div>
+<div class="panel-footer"></div>
+</div>
+</div>
+<div class="panel panel-default">
+<div id="headingTwo" class="panel-heading" role="tab"><a class="collapsed" role="button" href="#collapseTwo" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseTwo">Init As Inline Component</a></div>
+<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+<div class="panel-body"><form>
+<div class="form-group"><label for="merchantIdInline">MerchantID</label>
+<input id="merchantIdInline" class="form-control" type="text" value="Merchant-000cf2c9-66fe-4730-ac9e-674f7c552d42" /></div>
+<div class="form-group"><label for="orderIdInline">OrderID</label>
+<input id="orderIdInline" class="form-control" type="text" placeholder="OrderID" /></div>
+<div class="form-group"><label for="languageInline">Language</label>
+<input id="languageInline" class="form-control" type="text" value="en" placeholder="Language" /></div>
+<div class="form-group">
+
+<label for="productsInline">Products</label>
+<div class="checkbox"><input id="productsAllInline" checked="checked" type="checkbox" /><label><b>All</b></label></div>
+<div class="col-md-6" style="padding-left: 0px;">
+<div class="checkbox"><input id="productscreditcardInline" disabled="disabled" type="checkbox" /><label><b>Credit Card</b></label></div>
+<div class="checkbox"><input id="productspaypalInline" disabled="disabled" type="checkbox" /><label> <b>Paypal</b></label></div>
+<div class="checkbox"><input id="productspaydirektInline" disabled="disabled" type="checkbox" /><label> <b>Paydirekt</b></label></div>
+<!--
+<div class="checkbox"><input id="productssofortInline" type="checkbox" disabled/> <label onclick="toggleCheckbox('#productssofortInline');"><b>Sofort</b></label></div>
+-->
+
+</div>
+<div class="col-md-6" style="padding-left: 0px;">
+<div class="checkbox"><input id="productsratepay-installmentInline" disabled="disabled" type="checkbox" /> <label> <b>Ratepay Installment</b></label></div>
+<div class="checkbox"><input id="productsratepay-directdebitInline" disabled="disabled" type="checkbox" /> <label> <b>Ratepay Directdebit</b></label></div>
+<div class="checkbox"><input id="productsratepay-invoiceInline" disabled="disabled" type="checkbox" /> <label><b>Ratepay Invoice</b></label></div>
+</div>
+<!-- <input id="productsInline" class="form-control" type="text" placeholder="Products" /> -->
+
+</div>
+<div class="form-group"><label for="layoutInline">Layout</label>
+<input id="layoutInline" class="form-control" type="text" value="dropdown" placeholder="Layout" /></div>
+<div class="form-group"><label for="customStyleInline">Custom Style ID</label>
+<input id="customStyleInline" class="form-control" type="text" placeholder="Custom Style ID" /></div>
+<div class="form-group">
+<div class="checkbox"><input id="redirectUserInline" type="checkbox" /> <label> <b>Redirect user</b></label></div>
+</div>
+<div class="form-group">
+<div class="checkbox"><input id="hideButtonInline" type="checkbox" /><label> <b> Hide Pay Button</b></label></div>
+</div>
+<div class="form-group">
+<div class="checkbox"><input id="hideTitleIconsInline" type="checkbox" /><label><b>Hide Title Icons</b></label></div>
+</div>
+<div>
+	<button class="btn btn-block primary medium" type="button" ng-click="initInline()" style="background-color:#dc4405"><h3 style="color:white">INIT</h3></button>
+</div>
+<br>
+<div>
+<div class="col-md-6"><button class="btn btn-block col-md-6 btn-info" type="button">Add listener</button>
+<button class="btn btn-block col-md-6 btn-info" type="button">Remove listener</button></div>
+<div class="col-md-6"><button class="btn btn-block col-md-6 btn-info" type="button">Validate</button>
+<button class="btn btn-block col-md-6 btn-info" type="button">PAY</button></div>
+<br>
+</div>
+<br>
+</form><br>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div id="headingThree" class="panel-heading" role="tab"><a class="collapsed" role="button" href="#collapseThree" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseThree">Init As Inline Component PI</a></div>
+<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+<div class="panel-body"><form>
+<div class="form-group"><label for="merchantIdInlinePi">MerchantID</label>
+<input id="merchantIdInlinePi" class="form-control" type="text" value="Merchant-000cf2c9-66fe-4730-ac9e-674f7c552d42" /></div>
+<div class="form-group"><label for="languageInlinePi">Language</label>
+<input id="languageInlinePi" class="form-control" type="text" value="en" placeholder="Language" /></div>
+<div class="form-group">
+
+<label for="productsInlinePi">Products</label>
+<div class="checkbox"><input id="productsAllInlinePi" checked="checked" type="checkbox" /><label><b>All</b></label></div>
+<div class="col-md-6" style="padding-left: 0px;">
+<div class="checkbox"><input id="productscreditcardInlinePi" disabled="disabled" type="checkbox" /><label><b>Credit Card</b></label></div>
+<div class="checkbox"><input id="productspaypalInlinePi" disabled="disabled" type="checkbox" /><label> <b>Paypal</b></label></div>
+<div class="checkbox"><input id="productspaydirektInlinePi" disabled="disabled" type="checkbox" /><label> <b>Paydirekt</b></label></div>
+<!--
+<div class="checkbox"><input id="productssofortInlinePi" type="checkbox" disabled/> <label onclick="toggleCheckbox('#productssofortInlinePi');"><b>Sofort</b></label></div>
+-->
+
+</div>
+<div class="col-md-6" style="padding-left: 0px;">
+<div class="checkbox"><input id="productsratepay-installmentInlinePi" disabled="disabled" type="checkbox" /> <label> <b>Ratepay Installment</b></label></div>
+<div class="checkbox"><input id="productsratepay-directdebitInlinePi" disabled="disabled" type="checkbox" /> <label> <b>Ratepay Directdebit</b></label></div>
+<div class="checkbox"><input id="productsratepay-invoiceInlinePi" disabled="disabled" type="checkbox" /> <label><b>Ratepay Invoice</b></label></div>
+</div>
+<!-- <input id="productsInlinePi" class="form-control" type="text" placeholder="Products" /> -->
+
+</div>
+<div class="form-group"><label for="layoutInlinePi">Layout</label>
+<input id="layoutInlinePi" class="form-control" type="text" value="dropdown" placeholder="Layout" /></div>
+<div class="form-group"><label for="customStyleInlinePi">Custom Style ID</label>
+<input id="customStyleInlinePi" class="form-control" type="text" placeholder="Custom Style ID" /></div>
+<div class="form-group">
+<div class="checkbox"><input id="hideButtonInlinePi" type="checkbox" /><label> <b> Hide Pay Button</b></label></div>
+</div>
+<div class="form-group">
+<div class="checkbox"><input id="hideTitleIconsInlinePi" type="checkbox" /><label><b>Hide Title Icons</b></label></div>
+</div>
+<div><button class="btn btn-block primary medium" type="button" ng-click="initInlinePi()" style="background-color:#dc4405"><h3 style="color:white">INIT</h3></button></div>
+&nbsp; <br>
+<div class="col-md-6"><button class="btn btn-block col-md-6 btn-info" type="button">Add listener</button>
+<button class="btn btn-block col-md-6 btn-info" type="button">Remove listener</button></div>
+<div class="col-md-6"><button class="btn btn-block col-md-6 btn-info" type="button">Validate</button>
+<button class="btn btn-block col-md-6 btn-info" type="button">PAY</button></div>
+<br>
+</form> <br></div>
+</div>
+</div>
+
+
+
+
+<div class="panel panel-default">
+<div id="headingFour" class="panel-heading" role="tab"><a class="collapsed" role="button" href="#collapseFour" data-toggle="collapse" data-parent="#accordion" aria-expanded="false" aria-controls="collapseFour">Test Your PI</a></div>
+<div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+<div class="panel-body">
+	<form>
+		<div class="form-group"><label for="merchantIdModal">MerchantID</label>
+		<input id="merchantIdModal" class="form-control" type="text" value="Merchant-000cf2c9-66fe-4730-ac9e-674f7c552d42" /></div>
+		<div class="form-group"><label for="payPi">PaymentInstrumendID</label>
+		<input id="payPi" class="form-control" type="text" value="paymentinstrument_twnv71bkkb" /></div>
+
+		<div><button class="btn btn-block primary" style="background-color:#dc4405" type="button" ng-click="payWithPi()"><h4 style="color:white">Pay!</h4></button></div>
+	</form>
+<div class="panel-footer"></div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="panel panel-warning">
+<div class="panel-heading">
+<h3 class="panel-title">Widget Results</h3>
+</div>
+<div class="panel-body results">Error:Results:
+<p id="widgetResults" class="alert alert-success"></p>
+
+</div>
+</div>
+<div class="panel panel-success">
+<div class="panel-heading">
+<h3 class="panel-title">Widget</h3>
+</div>
+<div class="panel-body">
+<div id="windgetcontainer" style="height: 750px;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>

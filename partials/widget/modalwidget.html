@@ -1,0 +1,40 @@
+<div>
+In order to use this functionality, every integrator should execute only 2 steps:<br>
+
+<strong>1. Add payengine.widget.min.js (get it <a href="/systemurl">here</a>)</strong><br>
+<strong>2. Call initAsModal() function on PayEngineWidget object to display the payment form in modal view</strong><br>
+
+Here is snippet how your html could look like:<br>
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+  &lt;script src="https://pp.payengine.de/widgetjs/payengine.widget.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;
+   var callback = function (error, result) {
+     if (error) {
+       //There was an error
+       //You will find more details in the error object
+       return;
+     }
+     //Handle transaction successfully created
+   }
+
+   function openModal() {
+     var publishableKey = "merchant_kdanvgjnhx";
+     var orderId = "order_564c4d97f7";
+     var optionalParameters = new Object;
+     optionalParameters.products= ["creditcard", "sepa", "paypal", "paydirekt", "ratepay-directdebit", "ratepay-invoice"];
+     optionalParameters.language = "en";
+     optionalParameters.theme = "light";
+     PayEngineWidget.initAsModal(publishableKey, orderId, optionalParameters, callback);
+   }
+  &lt;/script&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+   //Your website html code here
+   &lt;button onclick="openModal()"&gt;Open modal&lt;/button&gt;
+ &lt;/body&gt;
+&lt;/html&gt;</pre>
+<em>! Important -&gt; Check out all mandatory and optional parameters in Modal Widget <a href="/outofthebox/widgetmenu/modalwidgetreference">Reference</a>.</em>
+</div>

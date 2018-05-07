@@ -1,0 +1,135 @@
+<h1>How to create a customer</h1><br>
+    Creating a customer is pretty simple, since there is only one value which is mandatory.<br>
+    <br>
+	<pre>
+	{
+	  "email": "jane@doe.com",
+	  "merchantCustomerId": "xyz"
+	}
+	</pre><br>
+	<br>
+
+	<div class="table-responsive">
+	    <table class="table table-striped">
+	        <caption>Create Customer Body - JSON Format</caption>
+	        <thead>
+	            <tr>
+	                <th>#</th>
+	                <th>Parameter</th>
+	                <th>Mandatory</th>
+	                <th>Description</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            <tr>
+	                <th scope="row">1</th>
+	                <td>email</td>
+	                <td>mandatory</td>
+	                <td>E-Mail address of the customer</td>
+	            </tr>
+	            <tr>
+	                <th scope="row">2</th>
+	                <td>merchantCustomerId</td>
+	                <td>optional</td>
+	                <td>Optional merchant side id for the customer</td>
+	            </tr>
+	        </tbody>
+	    </table>
+	</div>
+
+	<br>
+	With the body ready we can now send the request via curl.<br>
+	<br>
+
+	<pre>
+	curl --user MerchantID:APIKey -H "Content-Type: application/json" -X POST -d '{"email":"jane@doe.com","merchantCustomerId":"xyz"}' https://apitest.payengine.de/v1/customers
+	</pre><br>
+	<br>
+
+	We will now touch on every part of this command.<br>
+	<br>
+	<strong>--user MerchantID:APIKey</strong><br>
+	Curl Option for HTTP basic access authentication.<br>
+	<br>
+	<strong>-H "Content-Type: application/json"</strong><br<br>>
+	content-type header "application/json" for our API.
+	<br>
+	<strong>-X POST</strong><br>
+	We want the request to be a HTTP POST.<br>
+	<br>
+	<strong>-d '{"email":"jane@doe.com","merchantCustomerId":"xyz"}'</strong><br>
+	The body for our request in JSON format.<br>
+	<br>
+	<strong>https://apitest.payengine.de/v1/customers</strong><br>
+	The customers endpoint of our API (Test in this case).<br>
+	<br>
+	If the Request was successful we should get a response that looks like this:<br>
+	<br>
+	<pre>
+	{
+	  "createdAt": 1501757581860,
+	  "modifiedAt": 1501757581860,
+	  "email": "jane@doe.com",
+	  "merchantCustomerId": "xyz",
+	  "customerId": "Customer-xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+	  "addresses": [],
+	  "personas": [],
+	  "paymentInstruments": []
+	}
+	</pre>
+	<br>
+	<br>
+	<div class="table-responsive">
+	    <table class="table table-striped">
+	        <caption>Customer Response Body - JSON Format</caption>
+	        <thead>
+	            <tr>
+	                <th>#</th>
+	                <th>Parameter</th>
+	                <th>Description</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	            <tr>
+	                <th scope="row">1</th>
+	                <td>createdAt</td>
+	                <td>Unix timestamp of the creation of the customer</td>
+	            </tr>
+	            <tr>
+	                <th scope="row">2</th>
+	                <td>modifiedAt</td>
+	                <td>Unix timestamp of last modification of the customer</td>
+	            </tr>
+	            <tr>
+	                <th scope="row">3</th>
+	                <td>email</td>
+	                <td>The email address set for the customer. Should be the same as in the request.</td>
+	            </tr>
+	            <tr>
+	                <th scope="row">4</th>
+	                <td>merchantCustomerId</td>
+	                <td>The customer ID you defined. Should be the same as in the request. </td>
+	            </tr>
+	            <tr>
+	                <th scope="row">5</th>
+	                <td>customerId</td>
+	                <td>The Payengine customer id, important for further requests.</td>
+	            </tr>
+	            <tr>
+	                <th scope="row">6</th>
+	                <td>addresses</td>
+	                <td>Addresses associated with the customer.</td>
+	            </tr>
+	            <tr>
+	                <th scope="row">7</th>
+	                <td>personas</td>
+	                <td>Personas associated with the customer.</td>
+	            </tr>
+	            <tr>
+	                <th scope="row">8</th>
+	                <td>paymentInstruments</td>
+	                <td>Payment Instruments associated with the customer.</td>
+	            </tr>
+	        </tbody>
+	    </table>
+	</div>

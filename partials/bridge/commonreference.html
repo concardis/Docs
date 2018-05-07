@@ -1,0 +1,181 @@
+<h1>Common Reference</h1><br>	
+Here you can find all methods and variables common for every BridgeJS solution.
+
+<em>! Important -> All methods should be called on PayEngine object (e.g PayEngine.desiredMethod(parameters)).</em>
+
+<hr />
+
+<code>setPublishableKey</code>
+Identifies the merchant against the Bridge API, based on the given publishableKey (Merchant ID). 
+
+<strong>Signature</strong>
+<code> setPublishableKey (publishableKey)</code>
+
+<strong>Arguments</strong>
+<table>
+<thead>
+<tr>
+<th style="width: 100px; text-align: center;">Name</th>
+<th style="width: 100px; text-align: center;">Mandatory</th>
+<th style="width: 100px; text-align: center;">Type</th>
+<th style="width: 100px; text-align: center;">Default Value</th>
+<th style="width: 250px; text-align: center;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+<td>publishableKey</td>
+<td>YES</td>
+<td>String</td>
+<td>N/A</td>
+<td style="text-align: left;">The MerchantID given to every user on registration in Merchant Center (can be found in My Account section)</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<code>Error object</code> 
+Can be returned in any callback function as the error parameter.
+
+<strong>Signature</strong>
+<pre><code>{
+error: {General error message},
+status: {General status code},
+message: {
+&emsp;properties: [
+&emsp;key: {Error details key},
+&emsp;code: {Error details code},
+&emsp;message: {Error details message}
+&emsp;]
+}
+}</code></pre>
+
+<strong>Error codes</strong>
+<table>
+<thead>
+<tr>
+<th style="width: 100px; text-align: center;">Code</th>
+<th style="width: 700px; text-align: left;">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color: white; border-top: 1px solid black;">
+<td style="text-align: center;">202</td>
+<td style="text-align: left;">Not fully loaded</td>
+</tr>
+<tr style="border-top: 1px solid black;">
+<td style="text-align: center;">400</td>
+<td style="text-align: left;">Wrong type</td>
+</tr>
+<tr style="background-color: white; border-top: 1px solid black;">
+<td style="text-align: center;">404</td>
+<td style="text-align: left;">Not found</td>
+</tr>
+<tr style="border-top: 1px solid black;">
+<td style="text-align: center;">408</td>
+<td style="text-align: left;">Timed out</td>
+</tr>
+<tr style="background-color: white; border-top: 1px solid black;">
+<td style="text-align: center;">412</td>
+<td style="text-align: left;">Precondition failed</td>
+</tr>
+<tr style="border-top: 1px solid black;">
+<td style="text-align: center;">4121</td>
+<td style="text-align: left;">Field is required</td>
+</tr>
+<tr style="background-color: white; border-top: 1px solid black;">
+<td style="text-align: center;">4122</td>
+<td style="text-align: left;">Property should not be empty if present</td>
+</tr>
+<tr style="border-top: 1px solid black;">
+<td style="text-align: center;">4123</td>
+<td style="text-align: left;">Value shaould be numeric</td>
+</tr>
+<tr style="background-color: white; border-top: 1px solid black;">
+<td style="text-align: center;">4124</td>
+<td style="text-align: left;">Value shaould be alphanumeric</td>
+</tr>
+<tr style="border-top: 1px solid black;">
+<td style="text-align: center;">4125</td>
+<td style="text-align: left;">Credit card type unrecognizable</td>
+</tr>
+<tr style="background-color: white; border-top: 1px solid black;">
+<td style="text-align: center;">4126</td>
+<td style="text-align: left;">Invalid length</td>
+</tr>
+<tr style="border-top: 1px solid black;">
+<td style="text-align: center;">4127</td>
+<td style="text-align: left;">Invalid credit card number</td>
+</tr>
+<tr style="background-color: white; border-top: 1px solid black;">
+<td style="text-align: center;">4128</td>
+<td style="text-align: left;">Invalid cvc length</td>
+</tr>
+<tr style="border-top: 1px solid black;">
+<td style="text-align: center;">4129</td>
+<td style="text-align: left;">Invalid expiry month</td>
+</tr>
+<tr style="background-color: white; border-top: 1px solid black;">
+<td style="text-align: center;">41210</td>
+<td style="text-align: left;">Invalid expiry month format</td>
+</tr>
+<tr style="border-top: 1px solid black;">
+<td style="text-align: center;">41211</td>
+<td style="text-align: left;">Invalid expiry year</td>
+</tr>
+<tr style="background-color: white; border-top: 1px solid black;">
+<td style="text-align: center;"> 41212 </td>
+<td style="text-align: left;">Invalid expiry year format</td>
+</tr>
+<tr style="border-top: 1px solid black;">
+<td style="text-align: center;"> 41213 </td>
+<td style="text-align: left;">Country not supported</td>
+</tr>
+<tr style="background-color: white; border-top: 1px solid black;">
+<td style="text-align: center;"> 41214 </td>
+<td style="text-align: left;">Invalid iban length</td>
+</tr>
+<tr style="border-top: 1px solid black;">
+<td style="text-align: center;"> 41215 </td>
+<td style="text-align: left;">Invalid iban</td>
+</tr>
+<tr style="background-color: white; border-top: 1px solid black;">
+<td style="text-align: center;"> 41216 </td>
+<td style="text-align: left;">Invalid bic length</td>
+</tr>
+<tr style="border-top: 1px solid black;">
+<td style="text-align: center;"> 41217</td>
+<td style="text-align: left;">Bic country not supported</td>
+</tr>
+<tr style="background-color: white; border-top: 1px solid black;">
+<td style="text-align: center;"> 41218</td>
+<td style="text-align: left;">Property should not be undefined</td>
+</tr>
+</table>
+
+<hr />
+
+<code>User variables</code> 
+For convenience you can access the userVariables object under PayEngine
+
+<code>
+PayEngine.userVariables.optionsKeys.cardNumberStyle
+PayEngine.userVariables.optionsKeys.verificationStyle
+PayEngine.userVariables.optionsKeys.cardNumberPlaceholder
+PayEngine.userVariables.optionsKeys.verificationPlaceholder
+PayEngine.userVariables.paymentInstrumenTypes.creditcard
+PayEngine.userVariables.paymentInstrumenTypes.sepa
+PayEngine.userVariables.iframeTypes.cardNumber
+PayEngine.userVariables.iframeTypes.verification
+PayEngine.userVariables.fieldEvents.blur
+PayEngine.userVariables.fieldEvents.enter
+PayEngine.userVariables.fieldEvents.focus
+PayEngine.userVariables.fieldEvents.input
+PayEngine.userVariables.fieldEvents.mouseOver
+PayEngine.userVariables.fieldEvents.mouseOut
+PayEngine.userVariables.fieldEvents.shiftTab
+PayEngine.userVariables.fieldEvents.tab
+</code>
+
+<hr />

@@ -1,0 +1,61 @@
+<h1>Test your integration (Simulator)</h1><br>
+Our simulator is the simplest way to test your integration in our test enviroment. (apitest.payengine.de)<br>
+<br>
+With the simulator you are able to test positive/negative use cases.<br>
+<br>
+To get a postive response use "1,00" as amount. To get a negative response use "1,01" as amount.<br>
+This works for all our products (<span class="post-message__text">paypal, sofort, ratepay, paydirekt</span>).<br>
+<br>
+To test your credit card integration, create transactions with these PANs:<br>
+<ul>
+ 	<li>VISA: 4111111111111111</li>
+ 	<li>VISA 3DS: 4000000000000002</li>
+ 	<li>Master Card: 5399999999999999</li>
+ 	<li>Master Card 3DS: 5555555555554444</li>
+ 	<li>American Express: 374111111111111</li>
+ 	<li>American Express Safekey: 371449635398431</li>
+ 	<li>Maestro: 6400051234567895</li>
+ 	<li>VISA Debit: 4462030000000000</li>
+</ul><br>
+&nbsp;<br>
+<h3><strong>Example scenarios:</strong></h3><br>
+<h4>Without 3DS:</h4><br>
+<strong>Scenario: MoTo credit card transaction without 3DS with amount of 1,00 € should pass</strong><br>
+<br>
+A new MoTo transaction with amount of 1,00 € should result in success<br>
+<br>
+<strong>Scenario: MoTo credit card transaction without 3DS with amount of 1,01 € should fail</strong><br>
+<br>
+A new MoTo transaction with amount of 1,01 € should result in failure<br>
+<br>
+<strong>Scenario: Ecom credit card transaction without 3DS with amount of 1,00 € should pass</strong><br>
+<br>
+Given customer has opened the PP with total amount of 1,00 €<br>
+When customer enters all values for credit card transaction<br>
+Then that transaction should result in success<br>
+<br>
+<strong>Scenario: Ecom credit card transaction without 3DS with amount of 1,01 € should fail</strong><br>
+<br>
+Given customer has opened the PP with total amount of 1,01 Euro<br>
+When customer enters all values for credit card transaction<br>
+Then that transaction should result in failure<br>
+<h4>With 3DS:</h4><br>
+<strong>Scenario: Check Ecom credit card transaction with 3DS with amount of 1,00 €</strong><br>	
+<br>
+Given customer has opened the PP with total amount of 1,00 Euro<br>
+When customer enters all values for credit card transaction<br>
+Then customer should be redirected to the input form of the Issuer to enter his 3DS Code<br>
+When that entered Code was correct<br>
+Then that transaction should result in success<br>
+When that entered Code was incorrect<br>
+Then that transaction should result in failure<br>
+<br>
+<strong>Scenario: Check Ecom credit card transaction with 3DS with amount of 1,01 €</strong><br>
+<br>
+Given customer has opened the PP with total amount of 1,01 Euro<br>
+When customer enters all values for credit card transaction<br>
+Then customer should be redirected to the input form of the Issuer to enter his 3DS Code<br>
+When that entered Code was correct<br>
+Then that transaction should result in failure<br>
+When that entered Code was incorrect<br>
+Then that transaction should result in failure<br>

@@ -1,0 +1,135 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8"><br/>
+            <div class="panel-body">
+                <form class="form-horizontal bordered-row">
+                    <div class="form-group">
+                        <div class="row mrg10B">
+                            <label class="col-sm-2 control-label">Customer-ID</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control"  ng-model="customerJSON.customerId" id="" placeholder="e.g. Customer-e75acbdd-32a4-4b8f-b156-8783a06b6ccd">
+                            </div>
+                            <div class="col-sm-1"></div>
+                            <button class="btn btn-success">GET</button>
+                            <button class="btn btn-warning">PATCH</button>
+                        </div>
+                    </div>
+                </form>                
+                <form class="form-horizontal bordered-row">
+                    <div class="form-group">
+                        <div class="row mrg10B">
+                            <label class="col-sm-2 control-label">E-Mail</label>
+                            <div class="col-sm-6">
+                                <input type="text" ng-model="customerJSON.email" class="form-control" id="" placeholder="e.g. info@benschbrothers.com">
+                            </div>
+                            <label class="col-sm-2 control-label" style="color:red;">Required</label>
+                        </div>
+                    </div>
+                </form>
+                <form class="form-horizontal bordered-row">
+                    <div class="form-group">
+                        <div class="row mrg10B">
+                            <label class="col-sm-2 control-label">Merchant Customer ID</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" ng-model="customerJSON.merchantCustomerId" placeholder="e.g. xyz">
+                            </div>
+                            <label class="col-sm-2 control-label" style="color:green;">Optional</label>
+                        </div>
+                    </div>
+                </form>
+                <form class="form-horizontal bordered-row">
+                    <div class="form-group">
+                        <div class="row mrg10B">
+                            <label class="col-sm-2 control-label">Personas</label>
+                            <div class="col-sm-2"> <select class="form-control">
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select></div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="" placeholder="First Name">
+                            </div>
+                             <div class="col-sm-2">
+                                <input type="text" class="form-control" id="" placeholder="Last Name">
+                            </div>
+                            <label class="col-sm-2 control-label" style="color:green;">Optional</label>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="row mrg10B">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="Phone">
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+                        <div class="row mrg10B">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="Fax">
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+                    </div>
+                </form>
+                <form class="form-horizontal bordered-row">
+                    <div class="form-group">
+                        <div class="row mrg10B">
+                            <label class="col-sm-2 control-label">Address</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="" placeholder="Street">
+                            </div>
+                            <label class="col-sm-2 control-label" style="color:green;">Optional</label>
+                            <div class="col-sm-1"></div>
+                        </div>
+                        <div class="row mrg10B">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="" placeholder="ZIP">
+                            </div>
+                             <div class="col-sm-3">
+                                <input type="text" class="form-control" id="" placeholder="City">
+                            </div>
+                            <div class="col-sm-3"></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>  
+        <div class="col-md-4"><br/>
+            <div class="content-box">
+                <h3 class="content-box-header bg-primary">
+                    Customer Information
+                </h3>
+                <div class="content-box-wrapper">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <td>CustomerID</td>
+                            <td>{{customerId}}</td>
+                        </tr>
+                        <tr>
+                            <td>Created</td>
+                            <td>{{createdAt}}</td>
+                        </tr>
+                        <tr>
+                            <td>Modified</td>
+                            <td>{{modifiedAt}}</td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>Row 1</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="content-box">
+                <h3 class="content-box-header bg-primary">
+                    CustomerID Json
+                </h3>
+                <div class="content-box-wrapper">
+                    <pre id="json">{{customerJSON}}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

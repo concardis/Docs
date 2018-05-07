@@ -1,0 +1,177 @@
+<h1>Provider Codes</h1><br>
+The Provider Code is the original response Code from the payment provider/ acquirer.<br>
+It can be found in every transaction response:<br>
+<br>
+<code>{
+"createdAt":1508131693828,
+"modifiedAt":1508131693914,
+"type":"CAPTURE",
+"transactionId":"transaction_XXXXX",
+"description":null,
+"initialAmount":100,
+"refundedAmount":0,
+"currency":"EUR",
+"status":"SUCCESS",
+"order":"XXX",
+"parentTransaction":"transaction_XXXXX",
+"transactions":null,
+"basket":[
+],
+<strong>"providerCode": "00" </strong>
+}</code><br>
+<br>
+Here is a full list of the Provider (GICC) Codes for creditcards:<br>
+<table>
+<tbody>
+<tr>
+<th><strong>Code     </strong></th>
+<th><strong>Description</strong></th>
+</tr>
+<tr>
+<td>00</td>
+<td>Approved or completed successfully</td>
+</tr>
+<tr>
+<td>02</td>
+<td>Call Voice-authorization number; Initialization Data</td>
+</tr>
+<tr>
+<td>03</td>
+<td>Invalid merchant number</td>
+</tr>
+<tr>
+<td>04</td>
+<td>Retain card</td>
+</tr>
+<tr>
+<td>05</td>
+<td>Authorization declined</td>
+</tr>
+<tr>
+<td>06</td>
+<td>Sequence- generation- number error - diagnostics necessary; the POS Terminal must
+carry out reconciliation with a 0800 message</td>
+</tr>
+<tr>
+<td>09</td>
+<td>The value "09" has special significance as it indicates a "wait" message and the POS-
+System should expect to wait at most 30 seconds more. The host may send several of these "wait messages" until the true reply is ready. A wait message contains only the following fields: Message Type, Bit Map, PAN, System Trace Audit number, POS Terminal ID Code, Response Code, and Additional Response Data.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Partial approval</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Invalid transaction</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Invalid amount</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Invalid card</td>
+</tr>
+<tr>
+<td>21</td>
+<td>No action taken</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Format Error</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Card expired</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Suspicion of Manipulation</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Requested function not supported</td>
+</tr>
+<tr>
+<td>43</td>
+<td>Stolen Card, pick up</td>
+</tr>
+<tr>
+<td>55</td>
+<td>Incorrect personal identification number</td>
+</tr>
+<tr>
+<td>56</td>
+<td>Card not in authorizer's database</td>
+</tr>
+<tr>
+<td>57</td>
+<td>referencing transaction (e.g. reversal, Booking pre-authorization ...) was not carried out with the card which was used for the original transaction.</td>
+</tr>
+<tr>
+<td>58</td>
+<td>Terminal ID unknown</td>
+</tr>
+<tr>
+<td>62</td>
+<td>Restricted Card</td>
+</tr>
+<tr>
+<td>64</td>
+<td>The transaction amount of the referencing transaction is higher than the transaction amount of the original transaction</td>
+</tr>
+<tr>
+<td>65</td>
+<td>Contactless request declined – retry in contact mode</td>
+</tr>
+<tr>
+<td>75</td>
+<td>PIN entered incorrectly too often</td>
+</tr>
+<tr>
+<td>77</td>
+<td>PIN entry necessary</td>
+</tr>
+<tr>
+<td>78</td>
+<td>Stop payment order (for forwarding the Visa response code "R0" of the Visa BASE I interface): the transaction was declined or returned because the cardholder requested that payment of a specific recurring or installment payment transaction be stopped.</td>
+</tr>
+<tr>
+<td>79</td>
+<td>Revocation of authorization order (for forwarding the Visa response codes "R1" or “R3” of the Visa BASE I interface): the transaction was declined or returned because the cardholder requested that payment of all recurring or installment payment transactions for a specific merchant account be stopped.</td>
+</tr>
+<tr>
+<td>80</td>
+<td>Amount no longer available</td>
+</tr>
+<tr>
+<td>81</td>
+<td>Message-flow error85: Cash back declined – pls. retry purchase only</td>
+</tr>
+<tr>
+<td>91</td>
+<td>Card issuer temporarily not reachable</td>
+</tr>
+<tr>
+<td>92</td>
+<td>The card type is not processed by the authorization center</td>
+</tr>
+<tr>
+<td>96</td>
+<td>Processing temporarily not possible</td>
+</tr>
+<tr>
+<td>97</td>
+<td>Security breach - MAC check indicates error condition</td>
+</tr>
+<tr>
+<td>98</td>
+<td>Date and time not plausible - The POS Terminal must set itself to the date and time of the response message</td>
+</tr>
+<tr>
+<td>99</td>
+<td>Error in PAC encryption detected</td>
+</tr>
+</tbody>
+</table>

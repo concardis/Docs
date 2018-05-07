@@ -1,0 +1,41 @@
+<div class="container">
+	<!--<div class="col-md-3">
+		<h3 ng-show="activefilter!=''">Active Filters</h3><br/>
+		<div ng-show="activefilter!=''" class="list-item" ng-repeat="f in filters">
+	        <button ng-show="activefilter==f.filter" type="button" class="btn btn-block" ng-click="setfilter('');">{{f.label}}</button>
+	    </div>
+		<h3 ng-show="activefilter==''">Filters</h3><br/>
+		<div ng-show="activefilter==''" class="list-item" ng-repeat="f in filters">
+	        <button type="button" class="btn btn-light btn-light-search" ng-click="setfilter(f.filter);">
+	        	<div class="col-md-3"><img ng-src="/img/newIcons/{{f.image}}" height="30px"></img></div>
+	        	<div class="col-md-9 text-left">{{f.label}}</div>
+	        </button>
+	    </div>
+	</div>-->
+	<div class="col-md-8 col-md-offset-2">
+		<div class="input-group">
+		    <input type="text" class="form-control" ng-model="searchString" placeholder="Search for...">
+	    	<span class="input-group-btn">
+	        	<button class="btn btn-default" type="button">Go!</button>
+	      	</span>
+		</div>
+		<h3 ng-show="searchString">Results for {{searchString}}</h3>
+		<div class="list">
+			<div class="list-item" ng-repeat="i in items | searchFor:searchString">
+				<a href="{{i.url}}">
+					<div class="row">
+						<!--<div class="col-md-1">
+							<img ng-src="/img/newIcons/{{i.filter}}.png" height="50px"></img>
+						</div>-->
+						<div class="col-md-11">
+							{{i.title}}<br/>
+							http://docs.payengine.de{{i.url}}<br>
+							<small>{{i.content | limitTo: 100 }}{{i.content.length > 100 ? '&hellip;' : ''}}</small>
+						</div>
+					</div>
+				</a>
+				<hr>
+			</div>
+		</div>
+	</div>
+</div>

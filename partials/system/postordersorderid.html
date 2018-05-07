@@ -1,0 +1,161 @@
+<h3>POST /orders/{orderId}</h3>
+<p>Method: <code>POST</code></p>
+<p>URI: <code>/orders/{orderId}/transactions/{transactionId}/refund</code></p>
+<p>URI: <code>/orders/{orderId}/transactions/{transactionId}/cancel</code></p>
+<p>URI: <code>/orders/{orderId}/transactions/{transactionId}/capture</code></p>
+<p>Parent Error Code: <code>14000 "Error while creating transaction."</code></p>
+<p>The HTTP Status is always <code>400 Bad Request</code></p>
+<br/>
+<table width="100%">
+  <thead>
+    <tr>
+      <th style="text-align: center;">Field</th>
+      <th style="text-align: center;">Type</th>
+      <th style="text-align: center;">Expectation</th>
+      <th style="text-align: center;">HTTP Status</th>
+      <th style="text-align: center;">Code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>orderId</td>
+      <td>String</td>
+      <td>A valid order identifier</td>
+      <td>400</td>
+      <td>12101</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>transactionId</td>
+      <td>String</td>
+      <td>A valid transaction identifier</td>
+      <td>400</td>
+      <td>14101</td>
+    </tr>
+  </tbody>
+</table>
+<br/>
+<p>Parent Error Code: <code>14000 "Error while creating transaction."</code></p>
+<p>The HTTP Status is always <code>400 Bad Request</code></p>
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center;">Field</th>
+      <th style="text-align: center;">Type</th>
+      <th style="text-align: center;">Required</th>
+      <th style="text-align: center;">Value range</th>
+      <th style="text-align: center;">Length</th>
+      <th style="text-align: center;">Expectation</th>
+      <th style="text-align: center;">Code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>initialAmount</td>
+      <td>Number</td>
+      <td>Yes</td>
+      <td>Number greater than min. authorizing amount in cents and less then 9999999</td>
+      <td></td>
+      <td>Mandatory number greater than min. authorizing amount in cents and less then 9999999</td>
+      <td>12200<br/>12201<br/>14200<br/>14201</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>currency</td>
+      <td>String</td>
+      <td>Yes</td>
+      <td>Dependent on payment method and merchant configuration</td>
+      <td>3</td>
+      <td>Currency code in the range of <a target="_blank" href="https://en.wikipedia.org/wiki/ISO_4217">ISO_4217</a></td>
+      <td>12202<br/>12203</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>description</td>
+      <td></td>
+      <td>No</td>
+      <td></td>
+      <td>{1 - 128}</td>
+      <td>String between 1 and 128 characters</td>
+      <td>12217</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>basket</td>
+      <td>Array[item]</td>
+      <td>RatePay</td>
+      <td></td>
+      <td></td>
+      <td>Array of type item</td>
+      <td>12219<br/>12220</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>item.name</td>
+      <td>String</td>
+      <td>Yes<br/>when basket is present</td>
+      <td></td>
+      <td>{1 - 128}</td>
+      <td>Mandatory string between 1 and 128 characters</td>
+      <td>12221<br/>12222</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>item.articleNumber</td>
+      <td>String</td>
+      <td>Yes<br/>when basket is present</td>
+      <td></td>
+      <td>{1 - 255}</td>
+      <td>Mandatory string between 1 and 255 characters</td>
+      <td>12223<br/>12224</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>item.totalPrice</td>
+      <td>Number</td>
+      <td>Yes<br/>when basket is present</td>
+      <td>Number between min. item total price amount in cents and 9999999</td>
+      <td></td>
+      <td>andatory Number between min. item total price amount in cents and 9999999</td>
+      <td>12225<br/>12226</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>item.totalPriceWithTax</td>
+      <td>Number</td>
+      <td>Yes<br/>when basket is present</td>
+      <td>long; Greater then item.totalPrice</td>
+      <td></td>
+      <td>Mandatory number greater than item total price</td>
+      <td>12227<br/>12228</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>item.tax</td>
+      <td>Number</td>
+      <td>Yes<br/>when basket is present</td>
+      <td>Number between 0 and 100</td>
+      <td></td>
+      <td>Mandatory number between 0 and 100</td>
+      <td>12229<br/>12230</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>item.unitPrice</td>
+      <td>Number</td>
+      <td>Yes<br/>when basket is present</td>
+      <td>Number between min. item unit price amount in cents and 9999999</td>
+      <td></td>
+      <td>Mandatory number between min. item unit price amount in cents and 9999999</td>
+      <td>12231<br/>12232</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>item.unitPriceWithTax</td>
+      <td>Number</td>
+      <td>Yes<br/>when basket is present</td>
+      <td>Number greater than item.unitPrice</td>
+      <td></td>
+      <td>Mandatory number greater than item unit price in cents.</td>
+      <td>12233<br/>12234</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>item.quantity</td>
+      <td>Number</td>
+      <td>Yes<br/>when basket is present</td>
+      <td>Number greater than 1</td>
+      <td></td>
+      <td>Mandatory number greater than 1</td>
+      <td>12235<br/>12236</td>
+    </tr>
+  </tbody>
+</table>

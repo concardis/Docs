@@ -1,0 +1,337 @@
+<h2>Transaction State Transitions</h2>
+
+<br>
+Concardis Payengine comes with an order and state transition concept that allows you as merchant and/or integrator to get information on the current state of a payment, i.e. if funds have been transferred or if a customer got declined by a processor etc.<br>
+<br>
+Based on the dedicated status that is always returned through our API, you may take appropriate actions, such as shipping the goods, contact the customer for clarification or similar.<br>
+<br>
+It's worth mentioning that "listening" to the Payengine order and transaction state changes is enough to deal with any possible business case that may arise with any supported payment method- you don't need to translate each payment method's individual states. This job is done by Concardis Payengine, offering you a sole source of aggregated payment status information.<br>
+<br>
+This following section allows you to understand (also in the context of a certain payment method that was used by the customer)<br>
+<br>
+a) what each status means<br>
+<br>
+b) when a certain status occurs<br>
+<br>
+c) what a possible following status could be.
+<br>
+<h5></h5>
+<br>
+<h4>State Transitions: Order</h4>
+<br>
+Payengine payment transactions always need a parenting entity: the order. An order carries all required information to perform multiple types of transactions, that is a customer, a persona, shipping &amp; billing addresses and payment information. Before you can debit a payment instrument (e.g. a credit card of your customer), you need to create an order. Therefore, the initial status of an order is CREATED. During the 'lifetime' of an order, it remains OPEN but as soon as no further action can follow, it will change to CLOSED.
+
+<img class="aligncenter wp-image-5403 size-large" src="img/transaction_state_transistion_order.jpg" alt="" width="1024" height="600" />
+<table>
+<thead>
+<tr>
+<th style="width: 120px; text-align: left; padding: 5px;"><b>STATUS</b></th>
+<th style="width: 250px; text-align: left; padding: 5px;"><b>Meaning & Rules</b></th>
+<th style="width: 95px; text-align: left; padding: 5px;"><b>Cards</b></th>
+<th style="width: 95px; text-align: left; padding: 5px;"><b>PayPal</b></th>
+<th style="width: 95px; text-align: left; padding: 5px;"><b>Paydirekt</b></th>
+<th style="width: 95px; text-align: left; padding: 5px;"><b>RatePay</b></th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">CREATED</td>
+<td style="padding: 5px;">Initial Status. As long as no transaction is created within order, it remains in CREATED. As soon as first transaction is created it changes to OPEN.</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">OPEN</td>
+<td style="padding: 5px;">Remains until one of the amounts are used up, i.e. 100% of initial amount is refunded or 100% of initial amount in cancelled. The order gets expired by scheduler.</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">CLOSED</td>
+<td style="padding: 5px;">Final Status. No change on order possible (i.e. no refund/cancel/debit/capture/preauth possible). API replies with according exception „no more transaction possible“ or similar.</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+</tbody>
+</table>&nbsp;
+
+<h5>State Transitions: debit &amp; capture</h5>
+Transaction types debit and capture are both booking a certain amount on the customers payment instrument, which is the reason why state transitions are handled identically for these two transaction types. Based on the payment method and its individual payment flows, timeframes for each state transition may vary as well as the meaning behind some of the status. Both debit and capture transactions are initially CREATED and will result in a final state- either in a successful or in a failed one.
+
+<img class="aligncenter wp-image-5404 size-large" src="img/transaction_state_transistion_debit_capture.jpg" alt="" width="1024" height="738" />
+<table>
+<thead>
+<tr>
+<th style="width: 120px; text-align: left; padding: 5px;"><b>STATUS</b></th>
+<th style="width: 250px; text-align: left; padding: 5px;"><b>Meaning & Rules</b></th>
+<th style="width: 95px; text-align: left; padding: 5px;"><b>Cards</b></th>
+<th style="width: 95px; text-align: left; padding: 5px;"><b>PayPal</b></th>
+<th style="width: 95px; text-align: left; padding: 5px;"><b>Paydirekt</b></th>
+<th style="width: 95px; text-align: left; padding: 5px;"><b>RatePay</b></th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">CREATED</td>
+<td style="padding: 5px;">Initial Status. As long as no contact to processor it remains in CREATED. As soon as processor is contacted it changes to PENDING</td>
+<td style="padding: 5px;">Valid for 3ds. Non-3ds result in a direct change to INPROGRESS.</td>
+<td style="padding: 5px;">Until customer is not redirected to any of the URLs (Success, Cancel, Failure), the status remains PENDING</td>
+<td style="padding: 5px;">Until customer is not redirected to any of the URLs (Success, Cancel, Failure), the status remains PENDING</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">PENDING</td>
+<td style="padding: 5px;">(Customer) Interaction needed. Mostly for async flows (eg PayPal). Directly changes to eg INPROGRESS in case of sync flow or where needed. Might change to INPROGRESS, meaning that the data input has happened and processor can begin with processing. Might change into FAILURE, DECLINED, ABORTED and EXPIRED.</td>
+<td style="padding: 5px;">Valid for 3ds. Non-3ds result in a direct change to INPROGRESS. </td>
+<td style="padding: 5px;">Until customer is not redirected to any of the URLs (Success, Cancel, Failure), the status remains PENDING</td>
+<td style="padding: 5px;">Until customer is not redirected to any of the URLs (Success, Cancel, Failure), the status remains PENDING</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">IN PROGRESS</td>
+<td style="padding: 5px;">Data input successful. Processor is processing the transaction. </td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">OK</td>
+<td style="padding: 5px;">Processing technically successful. However it is not clear yet if the funds will arrive at all. Also a following risk analysis might result in a DECLINE, depending on the following processes and/or payment method used. </td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">SUCCESS</td>
+<td style="padding: 5px;">Funds have been booked correctly (SEPA) or got confirmed by processor (see payment method)</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="padding: 5px;">Mapped to SUCCESS status via IPN</td>
+<td style="padding: 5px;">Mapped to SUCCESS status</td>
+<td style="padding: 5px;">Mapped to SUCCESS status</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">FAILURE</td>
+<td style="padding: 5px;">Processor declined the transaction. Technical issue caused an excpetion on processor side. </td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="padding: 5px;">mapped to according PayPal API exceptions</td>
+<td style="padding: 5px;">mapped to according Paydirekt API exceptions</td>
+<td style="padding: 5px;">mapped to according RatePay API exceptions</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">DECLINED</td>
+<td style="padding: 5px;">Evasion / Payengine declines the transaction (Risk Engine).</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">ABORTED</td>
+<td style="padding: 5px;">Customer aborts transaction. Mostly in async flow on processors payment page. Not supported by all payment methods.</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="padding: 5px;">if customer hits „Back to Shop“ on PP payment page and gets redirected to CancelURL</td>
+<td style="padding: 5px;">if customer hits „Back to Shop“ on pd payment page and gets redirected to CancelURL</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">EXPIRED</td>
+<td style="padding: 5px;">Automatic expiration of non-handled transactions (ie pending for X days)</td>
+<td style="padding: 5px;">60 days</td>
+<td style="padding: 5px;">60 days</td>
+<td style="padding: 5px;">60 days</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+</tbody>
+</table>
+Note: Especially in the async flow (but not limited to it), a status update might come in through backchannel/processor notification service (eg IPN for paypal). These updates will change the evasion transaction state as descibed in the table, even after checkout has happened.
+
+&nbsp;
+<h5>State transitions: preauth</h5>
+Transaction type preauth (preauthorisation) is a non-booking reservation on the according customers payment instrument. It needs to be captured by the merchant, either through API or using the Payengine Merchant Center. A preauth is handled quite similarly to both debit and capture with regards to state transitions, the most important differences are expiration times and the lack of final status SUCCESS (which expresses that funds have been successfully transferred which is not the case within a preauth).
+
+<img class="aligncenter wp-image-5405 size-large" src="img/transaction_state_transistion_preauth.jpg" alt="" width="1024" height="715" />
+<table>
+<thead>
+<tr>
+<th style="width: 120px; text-align: left; padding: 5px;"><b>STATUS</b></th>
+<th style="width: 250px; text-align: left; padding: 5px;"><b>Meaning & Rules</b></th>
+<th style="width: 95px; text-align: left; padding: 5px;"><b>Cards</b></th>
+<th style="width: 95px; text-align: left; padding: 5px;"><b>PayPal</b></th>
+<th style="width: 95px; text-align: left; padding: 5px;"><b>Paydirekt</b></th>
+<th style="width: 95px; text-align: left; padding: 5px;"><b>RatePay</b></th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">CREATED</td>
+<td style="padding: 5px;">Initial Status. As long as no contact to processor it remains in CREATED. As soon as processor is contacted it changes to PENDING. </td>
+<td style="padding: 5px;">Valid for 3ds. Non-3ds result in a direct change to INPROGRESS. </td>
+<td style="padding: 5px;">Until customer is not redirected to any of the URLs (Success, Cancel, Failure), the status remains PENDING</td>
+<td style="padding: 5px;">Until customer is not redirected to any of the URLs (Success, Cancel, Failure), the status remains PENDING</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">PENDING</td>
+<td style="padding: 5px;">(Customer) Interaction needed. Mostly for async flows (eg PayPal). Directly changes to eg INPROGRESS in case of sync flow or where needed. Might change to INPROGRESS, meaning that the data input has happened and processor can begin with processing. Might change into FAILURE, DECLINED, ABORTED and EXPIRED. </td>
+<td style="padding: 5px;">Valid for 3ds. Non-3ds result in a direct change to INPROGRESS. </td>
+<td style="padding: 5px;">Until customer is not redirected to any of the URLs (Success, Cancel, Failure), the status remains PENDING</td>
+<td style="padding: 5px;">Until customer is not redirected to any of the URLs (Success, Cancel, Failure), the status remains PENDING</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">IN PROGRESS</td>
+<td style="padding: 5px;">Data input successful. Processor is processing the transaction. </td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">OK</td>
+<td style="padding: 5px;">Processing technically successful. However it is not clear yet if the funds will arrive at all. Also a following risk analysis might result in a DECLINE, depending on the following processes and/or payment method used. </td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">FAILURE</td>
+<td style="padding: 5px;">Processor declined the transaction. Technical issue caused an excpetion on processor side. </td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="padding: 5px;">mapped to according PayPal API exceptions</td>
+<td style="padding: 5px;">mapped to according Paydirekt API exceptions</td>
+<td style="padding: 5px;">mapped to according RatePay API exceptions</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">DECLINED</td>
+<td style="padding: 5px;">Evasion / Payengine declines the transaction (Risk Engine).</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">ABORTED</td>
+<td style="padding: 5px;">Customer aborts transaction. Mostly in async flow on processors payment page. Not supported by all payment methods.</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="padding: 5px;">if customer hits „Back to Shop“ on PP payment page and gets redirected to CancelURL</td>
+<td style="padding: 5px;">if customer hits „Back to Shop“ on pd payment page and gets redirected to CancelURL</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">EXPIRED</td>
+<td style="padding: 5px;">Automatic expiration of non-handled transactions (ie pending for X days). </td>
+<td style="padding: 5px;">14days for pending transactions ( 3DS not run ), 365 days for OK → Expired, if no capture in this timeframe</td>
+<td style="padding: 5px;">365 days</td>
+<td style="padding: 5px;">365 days</td>
+<td style="padding: 5px;">180 days</td>
+</tr>
+</tbody>
+</table>
+<h5></h5>
+<h5>State transitions: cancel &amp; refund</h5>
+Whereas cancel allows you to reverse a non-booked transaction (i.e. a preauth) only, a refund is the equivalent for booked transactions (i.e. debit and capture). <img class="aligncenter wp-image-5406 size-large" src="img/transaction_state_transistion_refund-and-cancel-1024x705.jpg" alt="" width="1024" height="705" />
+<table>
+<thead>
+<tr>
+<th style="width: 120px; text-align: left; padding: 5px;"><b>STATUS</b></th>
+<th style="width: 250px; text-align: left; padding: 5px;"><b>Meaning & Rules</b></th>
+<th style="width: 95px; text-align: left; padding: 5px;"><b>Cards</b></th>
+<th style="width: 95px; text-align: left; padding: 5px;"><b>PayPal</b></th>
+<th style="width: 95px; text-align: left; padding: 5px;"><b>Paydirekt</b></th>
+<th style="width: 95px; text-align: left; padding: 5px;"><b>RatePay</b></th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">CREATED</td>
+<td style="padding: 5px;">Initial Status. As long as no contact to processor it remains in CREATED. As soon as processor is contacted it changes to PENDING. </td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">IN PROGRESS</td>
+<td style="padding: 5px;">Data input successful. Processor is processing the transaction. </td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">OK</td>
+<td style="padding: 5px;">Processing technically successful. However it is not clear yet if the funds will arrive at all. Also a following risk analysis might result in a DECLINE, depending on the following processes and/or payment method used. </td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">SUCCESS</td>
+<td style="padding: 5px;">Funds have been booked correctly (SEPA) or got confirmed by processor (see payment method). </td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">FAILURE</td>
+<td style="padding: 5px;">Processor declines the transaction (rule engine). Technical issue caused an exception on processor side. </td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+</tbody>
+</table>
+&nbsp;
+<h2></h2>
+<h5 id="TransactionStateTransitions-Rulesforbackofficetransactions">Rules for backoffice transactions</h5>
+<table>
+<thead>
+<tr>
+<th style="width: 100px; text-align: left; padding: 5px;"><b>Type</b></th>
+<th style="width: 250px; text-align: left; padding: 5px;"><b>General Descrition</b></th>
+<th style="width: 100px; text-align: left; padding: 5px;"><b>Cards</b></th>
+<th style="width: 100px; text-align: left; padding: 5px;"><b>PayPal</b></th>
+<th style="width: 100px; text-align: left; padding: 5px;"><b>Paydirekt</b></th>
+<th style="width: 100px; text-align: left; padding: 5px;"><b>RatePay</b></th>
+</tr>
+</thead>
+<tbody>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">cancel</td>
+<td style="padding: 5px;">Cancels an amount up to 100% of preauth amount. A preauth must exist. The status of a preauth must be OK. </td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">refund</td>
+<td style="padding: 5px;">Reverts funds to a specific payment instrument used for a debit or capture. Up to 100% of captured amount (capture+debit) can be refunded. Captured amount must exist. The status of the debit and/or capture transactions must be SUCCESS. </td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+<tr style="text-align: left; background-color: white; border-top: 1px solid black;">
+<td style="padding: 5px;">capture</td>
+<td style="padding: 5px;">Books up to 100% of a preceding preauth. Preauth must be in status OK. </td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+<td style="text-align:center; padding: 5px;">n/a</td>
+</tr>
+</tbody>
+</table>
+</div>

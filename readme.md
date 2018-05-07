@@ -18,10 +18,10 @@ Move into the directory and run
 
 ## Tech Stack
 ### Base
-[https://angularjs.org/](https://angularjs.org/)
-[https://getbootstrap.com/](https://getbootstrap.com/)
+ - [https://angularjs.org/](https://angularjs.org/)
+ - [https://getbootstrap.com/](https://getbootstrap.com/)
 
 ### UI
-[Swagger UI](https://swagger.io/swagger-ui/)
-[Monarch UI](https://agileui.com/demo/monarch/demo/admin-template/index.html)
+ - [Swagger UI](https://swagger.io/swagger-ui/)
+ - [Monarch UI](https://agileui.com/demo/monarch/demo/admin-template/index.html)
 

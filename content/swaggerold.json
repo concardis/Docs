@@ -1,7 +1,6 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "v1",
     "title": "Payengine Public",
     "description": "Documentation for Payengine API v1.0\n",
     "license": {
@@ -14,13 +13,7 @@
   "securityDefinitions": {
     "basicAuth": {
       "type": "basic",
-      "description": "Authorization for all server to server API calls.\nThe following syntax must be used in the 'Authorization' header :\n\nAuthorization: Basic base64(merchantId:apiKey)\n"
-    },
-    "Bearer": {
-      "type": "apiKey",
-      "name": "Authorization",
-      "in": "header",
-      "description": "Authentication for all client to server API calls.\nThe following syntax must be used in the 'Authorization' header :\n\nAuthorization: Bearer merchantId\n"
+      "description": "Authorization for all server to server API calls.\nThe following syntax must be used in the 'Authorization' header :\n\nAuthorization: Basic base64(merchantId:apiKey)\n Test your Account here with: merchantId=Username apiKey=Password and press 'Authorize'"
     }
   },
   "schemes": [
@@ -35,7 +28,7 @@
   "paths": {
     "/health": {
       "get": {
-        "summary": "Endpoint that reports an aggregated boolean value describing the general health of the system.\n",
+        "description": "Endpoint that reports an aggregated boolean value describing the general health of the system.\n",
         "tags": [
           "health"
         ],
@@ -62,7 +55,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to create a credit transaction.\nInitialise a transaction and book an amount. The creditor is the customer and the debitor is the merchant.\nCredit transaction is always processed synchronously, 'channel' has to be MOTO.\n",
+        "description": "Endpoint to create a credit transaction.\nInitialise a transaction and book an amount. The creditor is the customer and the debitor is the merchant.\nCredit transaction is always processed synchronously, 'channel' has to be MOTO.\n",
         "tags": [
           "orders"
         ],
@@ -104,7 +97,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to create a debit.\n\nThe debit transaction is a initial transaction to create an order. It is directly booking the initialAmount (No capture needed to receive the funds).\n\nThere are 2 workflows to process an order: ASYNC and SYNC.\n\nWith SYNC payment methods the transaction will directly result in a SUCCESS or a negative status.\n\nWith ASYNC payment methods the transaction will result in a PENDING or a negative status. If the status of the transaction is in PENDING the response will contain a redirectUrl.\n\nThe merchant system needs to redirect the shopper to the redirectUrl. After the shopper completes the payment action the transaction status will change to SUCCESS or a negative status.\n",
+        "description": "Endpoint to create a debit.\n\nThe debit transaction is a initial transaction to create an order. It is directly booking the initialAmount (No capture needed to receive the funds).\n\nThere are 2 workflows to process an order: ASYNC and SYNC.\n\nWith SYNC payment methods the transaction will directly result in a SUCCESS or a negative status.\n\nWith ASYNC payment methods the transaction will result in a PENDING or a negative status. If the status of the transaction is in PENDING the response will contain a redirectUrl.\n\nThe merchant system needs to redirect the shopper to the redirectUrl. After the shopper completes the payment action the transaction status will change to SUCCESS or a negative status.\n",
         "tags": [
           "orders"
         ],
@@ -146,7 +139,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to create a preauth.\n\nThe preauth transaction is a initial transaction to create an order. It is not directly booking the initialAmount (A capture is needed to receive the funds).\n\nThere are 2 workflows to process an order: ASYNC and SYNC.\n\nWith SYNC payment methods the transaction will directly result in a OK/SUCCESS or a negative status.\n\nWith ASYNC payment methods the transaction will result in a PENDING or FAILURE/DECLINED/ABORTED status. If the status of the transaction is in PENDING the response will contain a redirectUrl.\n\nThe merchant system needs to redirect the shopper to the redirectUrl. After the shopper completes the payment action the transaction status will change to OK or a negative status.\n",
+        "description": "Endpoint to create a preauth.\n\nThe preauth transaction is a initial transaction to create an order. It is not directly booking the initialAmount (A capture is needed to receive the funds).\n\nThere are 2 workflows to process an order: ASYNC and SYNC.\n\nWith SYNC payment methods the transaction will directly result in a OK/SUCCESS or a negative status.\n\nWith ASYNC payment methods the transaction will result in a PENDING or FAILURE/DECLINED/ABORTED status. If the status of the transaction is in PENDING the response will contain a redirectUrl.\n\nThe merchant system needs to redirect the shopper to the redirectUrl. After the shopper completes the payment action the transaction status will change to OK or a negative status.\n",
         "tags": [
           "orders"
         ],
@@ -188,7 +181,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to create a refund on a debit or capture transaction.\n\nA refund transaction can be applied on an existing debit or capture transaction in the status SUCCESS.\n\nIt can be used to refund the shopper with the given initialAmont.\n",
+        "description": "Endpoint to create a refund on a debit or capture transaction.\n\nA refund transaction can be applied on an existing debit or capture transaction in the status SUCCESS.\n\nIt can be used to refund the shopper with the given initialAmont.\n",
         "tags": [
           "orders"
         ],
@@ -244,7 +237,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to create a capture on a preauth transaction.\n\nA capture transaction can be applied on an existing and not expired preauth transaction in the status SUCCESS.\n\nIt can be used to capture the given initialAmount and can not be higher then the initialAmount of the given preauth transaction.\n",
+        "description": "Endpoint to create a capture on a preauth transaction.\n\nA capture transaction can be applied on an existing and not expired preauth transaction in the status SUCCESS.\n\nIt can be used to capture the given initialAmount and can not be higher then the initialAmount of the given preauth transaction.\n",
         "tags": [
           "orders"
         ],
@@ -300,7 +293,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to create a cancel on a preauth transaction.\n\nA cancel transaction can be applied on an existing and not expired preauth transaction in the status SUCCESS.\n\nIt can be used to cancel the given initialAmount and can not be higher then the initialAmount of the given preauth transaction.\n",
+        "description": "Endpoint to create a cancel on a preauth transaction.\n\nA cancel transaction can be applied on an existing and not expired preauth transaction in the status SUCCESS.\n\nIt can be used to cancel the given initialAmount and can not be higher then the initialAmount of the given preauth transaction.\n",
         "tags": [
           "orders"
         ],
@@ -357,7 +350,6 @@
           }
         ],
         "description": "Endpoint to receive a specific transaction.\n",
-        "summary": "OrdersTransactionsByOrderId",
         "tags": [
           "orders"
         ],
@@ -402,7 +394,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to update a specific transaction.\n\nCurrently only available for non captured preauth transactions for the following payment methods: ratepay-invoice, ratepay-directdebit and ratepay-installment.\n",
+        "description": "Endpoint to update a specific transaction.\n\nCurrently only available for non captured preauth transactions for the following payment methods: ratepay-invoice, ratepay-directdebit and ratepay-installment.\n",
         "tags": [
           "orders"
         ],
@@ -458,7 +450,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to get a list of all transactions for a specific order.\n",
+        "description": "Endpoint to get a list of all transactions for a specific order.\n",
         "tags": [
           "orders"
         ],
@@ -498,7 +490,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to get a specific order.\n\nThe  object represents an order and includes multiple transactions for different actions ( preauth, debit, capture, cancel, refund).\n",
+        "description": "Endpoint to get a specific order.\n\nThe  object represents an order and includes multiple transactions for different actions ( preauth, debit, capture, cancel, refund).\n",
         "tags": [
           "orders"
         ],
@@ -536,7 +528,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to update an order.\n\nOnly available for orders in status CREATED.\n",
+        "description": "Endpoint to update an order.\n\nOnly available for orders in status CREATED.\n",
         "tags": [
           "orders"
         ],
@@ -579,7 +571,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to receive a list of orders.\n\nThe following parameters can be used as filter.\n\n- terms\n\n- privacy\n\n- orderId\n\n- merchantOrderId\n\n- paymentProviderTransactionId\n\n- initialAmount\n\n- currency\n\n- customerId\n\n- ipAddress\n\n- status\n\n- channel\n\n- source\n\n- product\n\n- settled\n\n- settlementDate\n\n- createdAt\n\n- modifiedAt\n\nThe following parameters can be used as a range filter.\n\nDates\n\n- terms\n\n- privacy\n\n- settlementDate\n\n- createdAt\n\n- modifiedAt\n\nNumbers\n\n- initialAmount\n",
+        "description": "Endpoint to receive a list of orders.\n\nThe following parameters can be used as filter.\n\n- terms\n\n- privacy\n\n- orderId\n\n- merchantOrderId\n\n- paymentProviderTransactionId\n\n- initialAmount\n\n- currency\n\n- customerId\n\n- ipAddress\n\n- status\n\n- channel\n\n- source\n\n- product\n\n- settled\n\n- settlementDate\n\n- createdAt\n\n- modifiedAt\n\nThe following parameters can be used as a range filter.\n\nDates\n\n- terms\n\n- privacy\n\n- settlementDate\n\n- createdAt\n\n- modifiedAt\n\nNumbers\n\n- initialAmount\n",
         "tags": [
           "orders"
         ],
@@ -603,7 +595,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to create an order intent ( order with status CREATED)\n\nAn order with this status will not result in any charges, untill executed. The actual execution is done by some of the integration components (e.g. widget)\n",
+        "description": "Endpoint to create an order intent ( order with status CREATED)\n\nAn order with this status will not result in any charges, untill executed. The actual execution is done by some of the integration components (e.g. widget)\n",
         "tags": [
           "orders"
         ],
@@ -639,7 +631,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to receive a specific persona connected to a given customer.\n",
+        "description": "Endpoint to receive a specific persona connected to a given customer.\n",
         "tags": [
           "customers"
         ],
@@ -686,7 +678,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to receive a list of personas for a specific customer.\n",
+        "description": "Endpoint to receive a list of personas for a specific customer.\n",
         "tags": [
           "customers"
         ],
@@ -724,7 +716,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to create a new persona for a specific customer.\n\nPersonas contain person related attributes of a customer which are needed to process some payment methods.\n",
+        "description": "Endpoint to create a new persona for a specific customer.\n\nPersonas contain person related attributes of a customer which are needed to process some payment methods.\n",
         "tags": [
           "customers"
         ],
@@ -773,7 +765,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to receive a specific address of a specific customer.\n",
+        "description": "Endpoint to receive a specific address of a specific customer.\n",
         "tags": [
           "customers"
         ],
@@ -820,7 +812,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to receive a list of addresses of a specific customer.\n",
+        "description": "Endpoint to receive a list of addresses of a specific customer.\n",
         "tags": [
           "customers"
         ],
@@ -858,7 +850,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to create a new address for a specific customer.\n\nAddresses containing address related attributes of a customer which are needed to process some payment methods.\n",
+        "description": "Endpoint to create a new address for a specific customer.\n\nAddresses containing address related attributes of a customer which are needed to process some payment methods.\n",
         "tags": [
           "customers"
         ],
@@ -907,7 +899,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to delete a specific paymentinstrument from a customer.\n",
+        "description": "Endpoint to delete a specific paymentinstrument from a customer.\n",
         "tags": [
           "customers"
         ],
@@ -951,7 +943,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to receive a list of paymentinstrument of a specific customer.\n",
+        "description": "Endpoint to receive a list of paymentinstrument of a specific customer.\n",
         "tags": [
           "customers"
         ],
@@ -989,7 +981,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to assign a paymentinstrument to a specific customer.\n",
+        "description": "Endpoint to assign a paymentinstrument to a specific customer.\n",
         "tags": [
           "customers"
         ],
@@ -1035,7 +1027,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to receive a specific customer.\n",
+        "description": "Endpoint to receive a specific customer.\n",
         "tags": [
           "customers"
         ],
@@ -1073,7 +1065,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to update a specific customer.\n",
+        "description": "Endpoint to update a specific customer.\n",
         "tags": [
           "customers"
         ],
@@ -1122,7 +1114,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to receive a list of customers.\n\nThe following parameters can be used as filter.\n\n- customerId\n\n- email\n\n- merchantCustomerId\n\n- createdAt\n\n- modifiedAt\n\nThe following parameters can be used as a range filter.\n\n- createdAt\n\n- modifiedAt\n",
+        "description": "Endpoint to receive a list of customers.\n\nThe following parameters can be used as filter.\n\n- customerId\n\n- email\n\n- merchantCustomerId\n\n- createdAt\n\n- modifiedAt\n\nThe following parameters can be used as a range filter.\n\n- createdAt\n\n- modifiedAt\n",
         "tags": [
           "customers"
         ],
@@ -1146,7 +1138,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to create a new customer.\n\nA customer acts as a container for customer specific personas and addresses.\n\nIf the email address of the given customer is already known to the platform the API will respond with HTTP status 200 OK.\n\nFor every new created customer the platform will respond with the HTTP status 201 CREATED\n",
+        "description": "Endpoint to create a new customer.\n\nA customer acts as a container for customer specific personas and addresses.\n\nIf the email address of the given customer is already known to the platform the API will respond with HTTP status 200 OK.\n\nFor every new created customer the platform will respond with the HTTP status 201 CREATED\n",
         "tags": [
           "customers"
         ],
@@ -1189,7 +1181,6 @@
           }
         ],
         "description": "Endpoint to receive a specific paymentinstrument.\n\nPayment instruments are objects representing the payment information used by the end customer.\n\nA payment instrument can be created either explicitly ( creditcard & sepa via javascript bridge ) or implicitly with a debit or preauth transaction.\n\nDepending on the type, payment instruments have different attributes, whereas some values will be masked to remain PCI conform ( e.g. creditcard number)\n\nPayment instruments can be used for recurring payments, if the flag \"recurring\" is set to true.\n\nPayment instruments are unique ( e.g. if a creditcard number is used twice, it will result in one payment instrument )\n",
-        "summary": "PaymentInstrumentsByPaymentInstrumentId",
         "tags": [
           "payment"
         ],
@@ -1227,7 +1218,7 @@
             "Bearer": []
           }
         ],
-        "summary": "Endpoint to update the data associated with the specified paymentinstrument.\n\nAlso used to refresh the CVC of a creditcard payment instrument. In case of a recurring transaction the shopper can be forced to re-enter the verification code (cvc) - depends on the creditcard settings configuration.\n\nNormally handled by the javascript bridge.\n",
+        "description": "Endpoint to update the data associated with the specified paymentinstrument.\n\nAlso used to refresh the CVC of a creditcard payment instrument. In case of a recurring transaction the shopper can be forced to re-enter the verification code (cvc) - depends on the creditcard settings configuration.\n\nNormally handled by the javascript bridge.\n",
         "tags": [
           "payment"
         ],
@@ -1270,7 +1261,7 @@
             "basicAuth": []
           }
         ],
-        "summary": "Endpoint to receive a list of paymentinstruments.\n\nThe following parameters can be used as filter.\n\n- paymentInstrumentId\n\n- merchantPaymentInstrumentId\n\n- type\n\n- origin\n\n- recurring\n\n- createdAt\n\n- modifiedAt\n",
+        "description": "Endpoint to receive a list of paymentinstruments.\n\nThe following parameters can be used as filter.\n\n- paymentInstrumentId\n\n- merchantPaymentInstrumentId\n\n- type\n\n- origin\n\n- recurring\n\n- createdAt\n\n- modifiedAt\n",
         "tags": [
           "payment"
         ],
@@ -1294,7 +1285,7 @@
             "Bearer": []
           }
         ],
-        "summary": "Endpoint to create a new paymentinstrument.\n\nExplicitly creating  payment instruments is possible for credit card and SEPA and should be done from the end customer's browser.\n\nCall would normally be handled by the javascript bridge.\n",
+        "description": "Endpoint to create a new paymentinstrument.\n\nExplicitly creating  payment instruments is possible for credit card and SEPA and should be done from the end customer's browser.\n\nCall would normally be handled by the javascript bridge.\n",
         "tags": [
           "payment"
         ],
@@ -1337,7 +1328,6 @@
           }
         ],
         "description": "The Configuration Request allows the merchant to read the stored configuration parameters for his merchant profile.\n",
-        "summary": "Installment Configuration",
         "tags": [
           "installments"
         ],
@@ -1363,7 +1353,6 @@
           }
         ],
         "description": "The Calculation Request calculates and returns an installment plan depending on the request parameters and the stored parameters of the merchant profile.\n",
-        "summary": "Installment Calculation Rate",
         "tags": [
           "installments"
         ],
@@ -1405,7 +1394,6 @@
           }
         ],
         "description": "The Calculation Request calculates and returns an installment plan depending on the request parameters and the stored parameters of the merchant profile.\n",
-        "summary": "Installment Calculation Time",
         "tags": [
           "installments"
         ],

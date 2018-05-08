@@ -13,7 +13,7 @@
   "securityDefinitions": {
     "basicAuth": {
       "type": "basic",
-      "description": "Authorization for all server to server API calls.\nThe following syntax must be used in the 'Authorization' header :\n\nAuthorization: Basic base64(merchantId:apiKey)\n Test your Account here with: merchantId=Username apiKey=Password and press 'Authorize'"
+      "description": "Authorization for all server to server API calls.\nThe following syntax must be used in the 'Authorization' header :\n\nAuthorization: Basic base64(merchantId:apiKey)\n\n  Test your Account here with: \n- merchantId=Username \n- apiKey=Password \n\n and press 'Authorize'"
     }
   },
   "schemes": [
@@ -1105,6 +1105,38 @@
             }
           }
         }
+      },
+      "delete": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "description": "Endpoint to delete a specific customer.\n",
+        "tags": [
+          "customers"
+        ],
+        "operationId": "DeleteCustomerByCustomerId",
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the specific customer."
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response."
+          },
+          "404": {
+            "description": "Not found casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/CustomersGetNotFound"
+            }
+          }
+        }
       }
     },
     "/customers": {
@@ -1249,6 +1281,38 @@
             "description": "Bad request casued by invalid input.",
             "schema": {
               "$ref": "#/definitions/PaymentInstrumentsPatchBadRequest"
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "description": "Endpoint to delete payment instrument with a given ID.\n",
+        "tags": [
+          "payment"
+        ],
+        "operationId": "DeletePaymentInstrumentByPaymentInstrumentId",
+        "parameters": [
+          {
+            "name": "paymentInstrumentId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the specific paymentinstrument."
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Not found casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentsGetNotFound"
             }
           }
         }
@@ -2118,6 +2182,17 @@
         "mandateText": {
           "description": "Mandate text displayed to the customer (mandatory)",
           "type": "string"
+        },
+        "directDebitType": {
+          "title": "DirectDebitType",
+          "type": "string",
+          "description": "The current mandate type of the direct debit type.\nThe mandate type can be one of the following.\nFIRST: It's the first execution of the mandate SINGLE: It's used only for one execution of the mandate RECURRING: It's used for recurring mandate usage FINAL: It's the last execution of the recurring mandate\n",
+          "enum": [
+            "FIRST",
+            "SINGLE",
+            "RECURRING",
+            "FINAL"
+          ]
         }
       }
     },
@@ -3194,6 +3269,9 @@
           "type": "string",
           "minLength": 4,
           "maxLength": 128
+        },
+        "mandate": {
+          "$ref": "#/definitions/MandateRequest"
         }
       }
     },
@@ -3251,6 +3329,9 @@
         "accountHolder": {
           "description": "The name of the bank account holder. (SEPA only)",
           "type": "string"
+        },
+        "mandate": {
+          "$ref": "#/definitions/MandateRequest"
         }
       }
     },

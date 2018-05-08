@@ -1,27 +1,525 @@
-<img class="img-responsive" src="/uploads/2017/09/Create-Transaction-1.png" />
-To create a transaction, select a payment method in the first step. You can get more Information about the status of your available payment methods <a href="">here</a>.
-<img class="img-responsive" src="/uploads/2017/09/Create-Transaction-2.png" />
-<table class="table table-striped">
-<tbody>
-<tr>
-    <td><span class="badge badge-warning"> 1 </span></td>
-    <td>You can change the payment method before saving the transaction in the first field.</td>
-</tr>
-<tr>
-    <td><span class="badge badge-warning"> 2 </span></td>
-    <td>A custom MerchantOrder ID, a description aswell as a statement description can be added here, these fields are not mandatory.</td>
-</tr>
-<tr>
-    <td><span class="badge badge-warning"> 2 </span></td>
-    <td>The currency and the amount</td>
-</tr>
-<tr>
-    <td><span class="badge badge-warning"> 2 </span></td>
-    <td>Information about the credit card and the card holder can be added here.</td>
-</tr>
-<tr>
-    <td><span class="badge badge-warning"> 2 </span></td>
-    <td>Selecting "Add Basket" or "Add customer information" will open additional fields to add basket items or a customer. Information how to view or edit your costumers can be found <a href="">here</a>. </td>
-</tr>
-</tbody>
-</table>
+<h3>Create new order</h3>
+The Merchant can create different types of order depending of the Payment Method:
+<ul>
+    <li><a href="#order_create_cc" name="">Create new Credit Card Order</a></li>
+    <li><a href="#order_create_ratepay_dd" name="">Create new RatePAY Direct Debit Order</a></li>
+    <li><a href="#order_create_ratepay_inv" name="">Create new RatePAY Invoice Order</a></li>
+</ul>
+<div id="order_create_cc"></div>
+&nbsp;
+<h3>Create new Credit Card Order</h3>
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>Click on „Plus“ icon on top right corner</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7664 size-large" src="/uploads/2018/04/order_add-1024x529.png" alt="" width="100%"  />
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>New window will open to create a order</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7666 size-full" src="/uploads/2018/04/order_create.png" alt="" width="100%"  />
+
+&nbsp;
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>Select order Payment method type. (In this case Credit Card)</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7670 size-full" src="/uploads/2018/04/oreder_create_cc_pm.png" alt="" width="100%"  />
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>New input fields will appear for creating a credit card order.</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7672 size-full" src="/uploads/2018/04/oreder_create_cc_fields.png" alt="" width="100%"  />
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>First part are optional information input fields</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7675 size-full" src="/uploads/2018/04/orders_create_cc_optional.png" alt="" width="100%"  />
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li><strong>MerchantOrder ID -</strong> Id of the order for merchant</li>
+    <li><b>Description  - </b>Description of the order</li>
+    <li><strong>Statement description -</strong> Statement description</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+    <li>Second part are input fields for credit card</li>
+</ul>
+<img class="alignnone wp-image-7676 size-full" src="/uploads/2018/04/orders_create_cc_ccflds.png" alt="" width="100%"  />
+<ul>
+    <li><strong>Amount (Required) -</strong> Amount of the order</li>
+    <li><b>Currency <strong>(Required)</strong>  - </b>Currency of the order. You can select from list of available currencies  (<a href="https://en.wikipedia.org/wiki/ISO_4217">Learn more about currency codes...</a>)</li>
+</ul>
+<img class="alignnone wp-image-7707 size-full" src="/uploads/2018/04/order_create_currency.png" alt="" width="100%"  />
+<ul>
+    <li><strong>Card Number<b> (Required)</b> -</strong> Credit card number</li>
+    <li><strong>Expiry Date<b> (Required)</b> - </strong>Expiry Date of the credit card ( mm/yy )</li>
+    <li><strong>Security code<b> (Required)</b> -</strong> Security code of the Credit card ( 3 digit code on back of credit card)</li>
+    <li><strong>Card Holder -</strong> Credit card holder</li>
+</ul>
+&nbsp;
+
+&nbsp;
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>Third part are for adding additional information.<img class="alignnone wp-image-7708 size-full" src="/uploads/2018/04/orders_create_cc_add_info.png" alt="" width="100%" /></li>
+</ul>
+</li>
+</ul>
+If you check on "Add Basket", it will open new section with basket additional fields.
+
+<img class="alignnone wp-image-7709 size-full" src="/uploads/2018/04/order_create_cc_basket.png" alt="" width="100%"  />
+More about basket you can find in <a href="/merchantcenter/managebaskets">"How to manage Baskets"</a>.
+
+If you check on "Add Customer informattion", it will open new section with customer additional fields.
+
+<img class="alignnone wp-image-7711 size-full" src="/uploads/2018/04/order_create_add_customer.png" alt="" width="100%"  /><img class="alignnone wp-image-7566 size-full" src="/uploads/2018/03/orders_select.png" alt="" width="100%" " />
+<ul>
+    <li>Last part are type of the transaction action. There are tree types of credit card transaction actions: Preauth, Debit and Credit.</li>
+</ul>
+&nbsp;
+
+<img class="alignnone wp-image-7713 size-full" src="/uploads/2018/04/orders_create_cc_action.png" alt="" width="100%"  />
+
+<strong>Important: </strong>
+
+By default, the "Preauth" option is selected when you create a new order. So, if you want to create different type, you must change it explicitly!
+<ul>
+    <li>Click on "Save" Button</li>
+</ul>
+After you fill all required information you must save your newly created order.
+
+<img class="alignnone wp-image-7714 size-full" src="/uploads/2018/04/orders_create_cc_save.png" alt="" width="100%"  />
+
+If the order is saved successfully you will see new created order in orders list.
+
+<img class="alignnone wp-image-7715 size-full" src="/uploads/2018/04/order_list-1.png" alt="" width="100%"  />
+<div id="order_create_ratepay_dd"></div>
+&nbsp;
+<h3>Create new RatePAY Direct Debit Order</h3>
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>Click on „Plus“ icon on top right corner</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7664 size-large" src="/uploads/2018/04/order_add-1024x529.png" alt="" width="100%"  />
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>New window will open to create a order</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7666 size-full" src="/uploads/2018/04/order_create.png" alt="" width="100%"  />
+
+&nbsp;
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>Select order Payment method type. (In this case RatePAY Direct debit)</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7717 size-full" src="/uploads/2018/04/order_create_RP_dd.png" alt="" width="100%"  />
+
+&nbsp;
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>New input fields will appear for creating a RatePAY Direct debit order.</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7718 size-full" src="/uploads/2018/04/order_create_RP_dd_flds.png" alt="" width="100%"  />
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>First part are optional information input fields</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7755 size-full" src="/uploads/2018/05/order_create_ratepay_opt.png" alt="" width="100%"  />
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li><strong>MerchantOrder ID -</strong> Id of the order for merchant</li>
+    <li><b>Description  - </b>Description of the order</li>
+    <li><strong>Statement description -</strong> Statement description</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>Second part are fields with information about the Total amount of the order</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7756 size-full" src="/uploads/2018/05/order_create_rp_amount.png" alt="" width="100%"  />
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li><strong>Amount -</strong> Total amount of the order</li>
+    <li><b>Currency  - </b>Currency of the order  (<a href="https://en.wikipedia.org/wiki/ISO_4217">Learn more about currency codes...</a>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+    <li>Third part are input fields for bank account</li>
+</ul>
+<img class="alignnone wp-image-7757 size-full" src="/uploads/2018/05/order_rp_create_iban.png" alt="" width="100%"  />
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li><strong>Owner -</strong> Owner of the bank account</li>
+    <li><b>Bank name  - </b>Name of the bank</li>
+    <li><strong>IBAN (Required)</strong> - IBAN for bank account</li>
+    <li><strong>BIC</strong> - BIC of the bank account</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+    <li>Next part is required Basket</li>
+</ul>
+<img class="alignnone wp-image-7759 size-full" src="/uploads/2018/05/order_rp_create_basket-1.png" alt="" width="100%"  />
+<ul>
+    <li>To add basket Item you must click on "Add Item" button</li>
+</ul>
+<img class="alignnone wp-image-7760 size-full" src="/uploads/2018/05/order_rp_create_basket_add.png" alt="" width="100%"  />
+
+&nbsp;
+<ul>
+    <li>It will open new section with basket additional fields.</li>
+</ul>
+&nbsp;
+
+<img class="alignnone wp-image-7709 size-full" src="/uploads/2018/04/order_create_cc_basket.png" alt="" width="100%"  />
+More about basket you can find in <a href="/merchantcenter/managebaskets">"How to manage Baskets"</a>.
+&nbsp
+<ul>
+    <li>Next part is "Customer information", it contains section with customer information fields.</li>
+</ul>
+<img class="alignnone wp-image-7761 size-full" src="/uploads/2018/05/order_create_RP_customer.png" alt="" width="100%"  />
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>Email (Required)</li>
+    <li>Merchant customer Id</li>
+    <li>Additional Persona information
+<ul>
+    <li>Title</li>
+    <li>First name (Required)</li>
+    <li>Last name (Required)</li>
+    <li>Phone</li>
+    <li>Fax</li>
+    <li>Mobile</li>
+    <li>Birthday (Required)</li>
+    <li>Gender</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<strong><img class="alignnone wp-image-7566 size-full" src="/uploads/2018/03/orders_select.png" alt="" width="100%"  />Important! - </strong>Be careful with the required fields, because otherwise you can't save the Order.
+<ul>
+    <li>Next part is "Billing Address".</li>
+</ul>
+<img class="alignnone wp-image-7762 size-full" src="/uploads/2018/05/order_create_RP_billing_addr.png" alt="" width="100%"  />
+
+This part contains information about Billing Address.
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>Title</li>
+    <li>First name (Required)</li>
+    <li>Last name (Required)</li>
+    <li>Street (Required)</li>
+    <li>Street Number (Required)</li>
+    <li>City (Required)</li>
+    <li>Zip (Required)</li>
+    <li>Country (Required)</li>
+    <li>State</li>
+    <li>Phone (Required)</li>
+    <li>Fax</li>
+    <li>Mobile</li>
+    <li>Additional details</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<strong><img class="alignnone wp-image-7566 size-full" src="/uploads/2018/03/orders_select.png" alt="" width="100%" " />Important! - </strong>Be careful with the required fields, because otherwise you can't save the Order.
+<ul>
+    <li>Next part are type of the transaction action. There are two types of transaction actions for RatePAY Direct Debit: Preauth and Debit.</li>
+</ul>
+<img class="alignnone wp-image-7768 size-full" src="/uploads/2018/05/order_create_rp_dd_action.png" alt="" width="100%"  />
+
+&nbsp;
+<ul>
+    <li>Last part for Accepting Terms and Privacy. <strong> Both checkboxes are required.</strong></li>
+</ul>
+<img class="alignnone wp-image-7764 size-full" src="/uploads/2018/05/order_create_rp_dd_terms.png" alt="" width="100%"  />
+
+&nbsp;
+
+&nbsp;
+<ul>
+    <li>Click on "Save" Button</li>
+</ul>
+After you fill all required information you must save your newly created order.
+
+<img class="alignnone wp-image-7765 size-full" src="/uploads/2018/05/order_create_rp_dd_save.png" alt="" width="100%"  />
+
+If the order is saved successfully you will see new created order in orders list.
+
+<img class="alignnone wp-image-7715 size-full" src="/uploads/2018/04/order_list-1.png" alt="" width="100%" " />
+&nbsp;
+<div id="order_create_ratepay_inv"></div>
+&nbsp;
+<h3>Create new RatePAY Invoice Order</h3>
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>Click on „Plus“ icon on top right corner</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7664 size-large" src="/uploads/2018/04/order_add-1024x529.png" alt="" width="100%"  />
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>New window will open to create a order</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7666 size-full" src="/uploads/2018/04/order_create.png" alt="" width="100%"  />
+
+&nbsp;
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>Select order Payment method type. (In this case RatePAY Invoice)</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7770 size-full" src="/uploads/2018/05/ordere_create_rp_inv.png" alt="" width="100%"  />
+
+&nbsp;
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>New input fields will appear for creating a RatePAY Invoice order.</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7771 size-full" src="/uploads/2018/05/order_create_rp_inv_fields.png" alt="" width="100%" " />
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>First part are optional information input fields</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7772 size-full" src="/uploads/2018/05/order_create_rp_inv_opt.png" alt="" width="100%" " />
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li><strong>MerchantOrder ID -</strong> Id of the order for merchant</li>
+    <li><b>Description  - </b>Description of the order</li>
+    <li><strong>Statement description -</strong> Statement description</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>Second part are fields with information about the Total amount of the order</li>
+</ul>
+</li>
+</ul>
+<img class="alignnone wp-image-7773 size-full" src="/uploads/2018/05/order_create_rp_inv_tot_amount.png" alt="" width="100%" " />
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li><strong>Amount -</strong> Total amount of the order</li>
+    <li><b>Currency  - </b>Currency of the order  (<a href="https://en.wikipedia.org/wiki/ISO_4217">Learn more about currency codes...</a>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+    <li>Third part is required Basket</li>
+</ul>
+<img class="alignnone wp-image-7774 size-full" src="/uploads/2018/05/order_create_rp_inv_basket.png" alt="" width="100%" " />
+<ul>
+    <li>To add basket Item you must click on "Add Item" button</li>
+</ul>
+<img class="alignnone wp-image-7775 size-full" src="/uploads/2018/05/order_create_rp_inv_basket_add.png" alt="" width="100%" " />
+
+&nbsp;
+<ul>
+    <li>It will open new section with basket additional fields.</li>
+</ul>
+&nbsp;
+
+<img class="alignnone wp-image-7709 size-full" src="/uploads/2018/04/order_create_cc_basket.png" alt="" width="100%"  />
+More about basket you can find in <a href="/merchantcenter/managebaskets">"How to manage Baskets"</a>.
+&nbsp;
+<ul>
+    <li>Next part is "Customer information", it contains section with customer information fields.</li>
+</ul>
+<img class="alignnone wp-image-7761 size-full" src="/uploads/2018/05/order_create_RP_customer.png" alt="" width="100%" " />
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>Email (Required)</li>
+    <li>Merchant customer Id</li>
+    <li>Additional Persona information
+<ul>
+    <li>Title</li>
+    <li>First name (Required)</li>
+    <li>Last name (Required)</li>
+    <li>Phone</li>
+    <li>Fax</li>
+    <li>Mobile</li>
+    <li>Birthday (Required)</li>
+    <li>Gender</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<strong><img class="alignnone wp-image-7566 size-full" src="/uploads/2018/03/orders_select.png" alt="" width="100%" " />Important! - </strong>Be careful with the required fields, because otherwise you can't save the Order.
+<ul>
+    <li>Next part is "Billing Address".</li>
+</ul>
+<img class="alignnone wp-image-7762 size-full" src="/uploads/2018/05/order_create_RP_billing_addr.png" alt="" width="100%" " />
+
+This part contains information about Billing Address.
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li style="list-style-type: none;">
+<ul>
+    <li>Title</li>
+    <li>First name (Required)</li>
+    <li>Last name (Required)</li>
+    <li>Street (Required)</li>
+    <li>Street Number (Required)</li>
+    <li>City (Required)</li>
+    <li>Zip (Required)</li>
+    <li>Country (Required)</li>
+    <li>State</li>
+    <li>Phone (Required)</li>
+    <li>Fax</li>
+    <li>Mobile</li>
+    <li>Additional details</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<strong><img class="alignnone wp-image-7566 size-full" src="/uploads/2018/03/orders_select.png" alt="" width="100%" " />Important! - </strong>Be careful with the required fields, because otherwise you can't save the Order.
+<ul>
+    <li>Next part are type of the transaction action. There are two types of transaction actions for RatePAY Direct Debit: Preauth and Debit.</li>
+</ul>
+<img class="alignnone wp-image-7768 size-full" src="/uploads/2018/05/order_create_rp_dd_action.png" alt="" width="100%"  />
+
+&nbsp;
+<ul>
+    <li>Last part for Accepting Terms and Privacy. <strong> Both checkboxes are required.</strong></li>
+</ul>
+<img class="alignnone wp-image-7764 size-full" src="/uploads/2018/05/order_create_rp_dd_terms.png" alt="" width="100%"  />
+
+&nbsp;
+
+&nbsp;
+<ul>
+    <li>Click on "Save" Button</li>
+</ul>
+After you fill all required information you must save your newly created order.
+
+<img class="alignnone wp-image-7765 size-full" src="/uploads/2018/05/order_create_rp_dd_save.png" alt="" width="100%"  />
+
+If the order is saved successfully you will see new created order in orders list.
+
+<img class="alignnone wp-image-7715 size-full" src="/uploads/2018/04/order_list-1.png" alt="" width="100%" " />
+
+&nbsp;

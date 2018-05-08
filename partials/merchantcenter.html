@@ -18,19 +18,20 @@
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/login">Login</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/navigation">Navigation</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/dashboard">Dashboard</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createtransaction">Orders - Create transactions</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/errortransaction">Orders - Errors in transactions</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createtransaction">Orders - Create </a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/errortransaction">Orders - Errors </a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/settlement">Settlements</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/customer">Customers</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createcustomer">Customers - Create</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createcustomer">Manage customers</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/myaccount">My Account</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/paymentmethods">Payment Methods</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/managebaskets">Manage baskets</a>
         <hr>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/usermanagement"><h3><b>User Management</b></h3></a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/inviteuser">User Management - Invite User</a>
         <hr>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/paymentinstrument"><h3><b>Payment Instruments</b></h3></a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createpaymentinstrument">Payment Instruments - Create</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createpaymentinstrument">How to manage Payment Instruments</a>
         <hr>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/risksetting"><h3><b>Manage risk settings</b></h3></a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/managenotification">How to manage Notifications</a>
@@ -78,6 +79,10 @@
            <div  ng-include="'/partials/merchant/paymentmethods.html'">
             </div>
         </div>
+        <div ng-show="cur=='managebaskets'">
+           <div  ng-include="'/partials/merchant/manage_baskets.html'">
+            </div>
+        </div>
         <div ng-show="cur=='paymentinstrument'">
            <div  ng-include="'/partials/merchant/paymentinstrument.html'">
             </div>
@@ -91,7 +96,7 @@
             </div>
         </div>
         <div ng-show="cur=='createcustomer'">
-            <div  ng-include="'/partials/merchant/createcustomer.html'">
+            <div  ng-include="'/partials/merchant/manage_customers.html'">
             </div>
         </div>
         <div ng-show="cur=='myaccount'">

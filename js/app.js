@@ -18,8 +18,8 @@ angular.module('StudyCraneApp',[
   .when('/search', {templateUrl: 'partials/search.html', controller:'searchCtrl'})
   .when('/search/:term', {templateUrl: 'partials/search.html', controller:'searchCtrl'})
   .when('/buildyourown', {templateUrl: 'partials/buildyourown.html'})
-  .when('/buildyourown/restApi', {templateUrl: 'partials/api.html'})
-  .when('/buildyourown/restapi', {templateUrl: 'partials/api.html'})
+  .when('/buildyourown/restApi', {templateUrl: 'partials/api.html', controller:'apiCtrl'})
+  .when('/buildyourown/restapi', {templateUrl: 'partials/api.html', controller:'apiCtrl'})
   .when('/buildyourown/restdoc', {templateUrl: 'partials/restDoc.html', controller:'restdocCtrl'})
   .when('/buildyourown/restdoc/:id', {templateUrl: 'partials/restDoc.html', controller:'restdocCtrl'})
   .when('/buildyourown/bridge', {templateUrl: 'partials/bridge.html', controller:'bridgeCtrl'})
@@ -72,26 +72,6 @@ angular.module('StudyCraneApp',[
   };
 
 })
-.factory('apitest', ['$http', function($http) {
-	var apitest = {};
-	
-	//@Chris: Setzt den header Authorisation, ist ALLGEMEIN gültig (cookies)
-	apitest.setSettings = function(token){
-		$http.defaults.headers.common['Authorization'] = 'Basic ' + token;
-	};
-
-  //
-  apitest.getOrders = function(){
-    return $http.get("https://apitest.payengine.de/v1/orders");
-  };
-
-	apitest.getCustomer = function(){
-		return $http.get("https://apitest.payengine.de/v1/customers");
-	};
-
-
-	return apitest;
-}])
 .factory('backendService', ['$http', function($http) {
 	// queryService function body
 	return {
@@ -108,6 +88,31 @@ angular.module('StudyCraneApp',[
       return $http.get("/content/searchFilters.json");
     }
 	}
+}])
+.controller('apiCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', function($rootScope, $scope, $http, backendService, $timeout) {
+  const DisableTryItOutPlugin = function() {
+    return {
+    statePlugins: {
+      spec: {
+        wrapSelectors: {
+          allowTryItOutFor: () => () => false
+        }
+      }
+    }
+    }
+  }
+
+  const ui = SwaggerUIBundle({
+    url: "content/swagger.json",
+    dom_id: '#swagger-ui',
+    deepLinking: false,
+    docExpansion: "none",
+    operationsSorter: "alpha",
+    plugins: [
+      DisableTryItOutPlugin
+    ]
+  })
+
 }])
 .controller('searchCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', '$routeParams', '$filter', function($rootScope, $scope, $http, backendService, $timeout, $routeParams, $filter) {
   $rootScope.site = "search";

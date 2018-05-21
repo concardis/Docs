@@ -10,12 +10,6 @@
   },
   "host": "apitest.payengine.de",
   "basePath": "/v1",
-  "securityDefinitions": {
-    "basicAuth": {
-      "type": "basic",
-      "description": "Authorization for all server to server API calls.\nThe following syntax must be used in the 'Authorization' header :\n\nAuthorization: Basic base64(merchantId:apiKey)\n\n  Test your Account here with: \n- merchantId=Username \n- apiKey=Password \n\n and press 'Authorize'"
-    }
-  },
   "schemes": [
     "https"
   ],

@@ -1,253 +1,252 @@
-Here you can find all needed methods and respective parameters to further enrich your checkout workflow.<br>	
+Here you can find all needed methods and respective parameters to further enrich your checkout workflow.<br>
 <br>
 <em>! Important -&gt; All methods should be called on PayEngineWidget object (e.g PayEngineWidget.desiredMethod(parameters)).</em><br>
 <br>
 <hr />
 <br>
-<code>initAsInlineComponentPi</code><br>
-Initialize iframe with payment form. Always called on PayEngineWidget object. It's meant to result in a payment instrument.<br>
+<code>initAsInlineComponentPi</code><br> Initialize iframe with payment form. Always called on PayEngineWidget object. It's meant to result in a payment instrument.<br>
 <br>
 <strong>Signature</strong><br>
 <code> initAsInlineComponentPi(container, publishableKey, optionalParameters, resultCallback)</code><br>
 <br>
 <strong>Arguments</strong><br>
 <table>
-<thead>
-<tr>
-<th style="width: 100px; text-align: center;">Name</th>
-<th style="width: 100px; text-align: center;">Mandatory</th>
-<th style="width: 100px; text-align: center;">Type</th>
-<th style="width: 100px; text-align: center;">Default Value</th>
-<th style="width: 250px; text-align: center;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
-<td>container</td>
-<td>YES</td>
-<td>String or DOM Element</td>
-<td>N/A</td>
-<td style="text-align: left;">The id of container html element or DOM Element, where iframe with payment form/s will be rendered</td>
-</tr>
-<tr style="text-align: center; border-top: 1px solid black;">
-<td>publishableKey</td>
-<td>YES</td>
-<td>String</td>
-<td>N/A</td>
-<td style="text-align: left;">The MerchantID given to every user on registration in Merchant Center (can be found in My Account section)</td>
-</tr>
-<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td style="text-align: left;"></td>
-</tr>
-<tr style="text-align: center; border-top: 1px solid black;">
-<td>optionalParameters.initCallback</td>
-<td>YES</td>
-<td>Function</td>
-<td>N/A</td>
-<td style="text-align: left;">Function with following signature - callback (error, result)</td>
-</tr>
-<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
-<td>resultCallback</td>
-<td>YES</td>
-<td>Function</td>
-<td>N/A</td>
-<td style="text-align: left;">Function with following signature - callback (error, result)</td>
-</tr>
-<tr style="text-align: center; border-top: 1px solid black;">
-<td>optionalParameters.products</td>
-<td>NO</td>
-<td>Array</td>
-<td>inherited from order object</td>
-<td style="text-align: left;">Array with all supported payment methods. For this integration option as it is meant to result in a payment instrument only Credit Card and SEPA are supported.</td>
-</tr>
-<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
-<td>optionalParameters.layout</td>
-<td>NO</td>
-<td>String</td>
-<td>“dropdown”</td>
-<td style="text-align: left;">The layout used for displaying different payment forms. Available options are:
-"dropdown" - dropdown with all available payments methods, which shows only one payment form (for the selected payment method)
-“full-list” - all payment forms for all available payment methods are shown one after another in same view</td>
-</tr>
-<tr style="text-align: center; border-top: 1px solid black;">
-<td>optionalParameters.language</td>
-<td>NO</td>
-<td>String</td>
-<td>“en”</td>
-<td style="text-align: left;">The language used throughout the Widget. Available options are:
-"en" - English
-“de” - German</td>
-</tr>
-<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
-<td>optionalParameters.customStyleId</td>
-<td>NO</td>
-<td>String</td>
-<td>N/A</td>
-<td style="text-align: left;">Appy custom UI appearance. Custom styles can be defined in the section "Styling" in the Merchant Center. Every custom style gets unique ID, which should be placeа as value for customStyleId parameter. Found out how it works here (link to Styling)</td>
-</tr>
-<tr style="text-align: center; border-top: 1px solid black;">
-<td>optionalParameters.hidePayButton</td>
-<td>NO</td>
-<td>Boolean</td>
-<td>false</td>
-<td style="text-align: left;">Only available for dropdown or fulllist with only one payment method.
-If <em>true</em> default widget pay button will be hidden.
-<em>! In this case you should implement your own pay button.</em></td>
-</tr>
-<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
-<td>optionalParameters.hideTitleIcons</td>
-<td>NO</td>
-<td>Boolean</td>
-<td>false</td>
-<td style="text-align: left;">If <em>true</em> default widget Product icons will be hidden.</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th style="width: 100px; text-align: center;">Name</th>
+      <th style="width: 100px; text-align: center;">Mandatory</th>
+      <th style="width: 100px; text-align: center;">Type</th>
+      <th style="width: 100px; text-align: center;">Default Value</th>
+      <th style="width: 250px; text-align: center;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>container</td>
+      <td>YES</td>
+      <td>String or DOM Element</td>
+      <td>N/A</td>
+      <td style="text-align: left;">The id of container html element or DOM Element, where iframe with payment form/s will be rendered</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>publishableKey</td>
+      <td>YES</td>
+      <td>String</td>
+      <td>N/A</td>
+      <td style="text-align: left;">The MerchantID given to every user on registration in Merchant Center (can be found in My Account section)</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td style="text-align: left;"></td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>optionalParameters.initCallback</td>
+      <td>YES</td>
+      <td>Function</td>
+      <td>N/A</td>
+      <td style="text-align: left;">Function with following signature - callback (error, result)</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>resultCallback</td>
+      <td>YES</td>
+      <td>Function</td>
+      <td>N/A</td>
+      <td style="text-align: left;">Function with following signature - callback (error, result)</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>optionalParameters.products</td>
+      <td>NO</td>
+      <td>Array</td>
+      <td>inherited from order object</td>
+      <td style="text-align: left;">Array with all supported payment methods. For this integration option as it is meant to result in a payment instrument only Credit Card and SEPA are supported.</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>optionalParameters.layout</td>
+      <td>NO</td>
+      <td>String</td>
+      <td>“dropdown”</td>
+      <td style="text-align: left;">The layout used for displaying different payment forms. Available options are: "dropdown" - dropdown with all available payments methods, which shows only one payment form (for the selected payment method) “full-list” - all payment forms for all
+        available payment methods are shown one after another in same view</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>optionalParameters.language</td>
+      <td>NO</td>
+      <td>String</td>
+      <td>“en”</td>
+      <td style="text-align: left;">The language used throughout the Widget. Available options are: "en" - English “de” - German</td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>optionalParameters.customStyleId</td>
+      <td>NO</td>
+      <td>String</td>
+      <td>N/A</td>
+      <td style="text-align: left;">Appy custom UI appearance. Custom styles can be defined in the section "Styling" in the Merchant Center. Every custom style gets unique ID, which should be placeа as value for customStyleId parameter. Found out how it works here (link to Styling)</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>optionalParameters.hidePayButton</td>
+      <td>NO</td>
+      <td>Boolean</td>
+      <td>false</td>
+      <td style="text-align: left;">Only available for dropdown or fulllist with only one payment method. If <em>true</em> default widget pay button will be hidden.
+        <em>! In this case you should implement your own pay button.</em></td>
+    </tr>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>optionalParameters.hideTitleIcons</td>
+      <td>NO</td>
+      <td>Boolean</td>
+      <td>false</td>
+      <td style="text-align: left;">If <em>true</em> default widget Product icons will be hidden.</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>optionalParameters.skipFinalResultView</td>
+      <td>NO</td>
+      <td>boolean</td>
+      <td>false</td>
+      <td style="text-align: left;">Optional parameter for skipping Final Result. When set to true the widget will just return the callback to the integrator with the proper result without displaying the general success/failure view.
+      </td>
+    </tr>
+  </tbody>
 </table>
 <br>
 <hr />
 
-<code>pay</code><br>
-Triggers the payment instrument creation process. It will only be relevant if the pay button of the widget is being hidden (please see <code>initAsInlineComponentPi</code>).<br>
+<code>pay</code><br> Triggers the payment instrument creation process. It will only be relevant if the pay button of the widget is being hidden (please see <code>initAsInlineComponentPi</code>).<br>
 <br>
 <strong>Signature</strong><br>
 <code>pay(widgetReference)</code><br>
 <br>
 <strong>Arguments</strong><br>
 <table>
-<thead>
-<tr>
-<th style="width: 100px; text-align: center;">Name</th>
-<th style="width: 100px; text-align: center;">Mandatory</th>
-<th style="width: 100px; text-align: center;">Type</th>
-<th style="width: 100px; text-align: center;">Default Value</th>
-<th style="width: 250px; text-align: center;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
-<td>widgetReference</td>
-<td>YES</td>
-<td>Object</td>
-<td>N/A</td>
-<td style="text-align: left;">Reference to the Widget inline component, which is being targeted. It's received on the initCallback as result</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th style="width: 100px; text-align: center;">Name</th>
+      <th style="width: 100px; text-align: center;">Mandatory</th>
+      <th style="width: 100px; text-align: center;">Type</th>
+      <th style="width: 100px; text-align: center;">Default Value</th>
+      <th style="width: 250px; text-align: center;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>widgetReference</td>
+      <td>YES</td>
+      <td>Object</td>
+      <td>N/A</td>
+      <td style="text-align: left;">Reference to the Widget inline component, which is being targeted. It's received on the initCallback as result</td>
+    </tr>
+  </tbody>
 </table>
 <br>
 <hr />
 
 <br>
-<code>validate</code><br>
-This function will return validation result on the callback provided<br>
+<code>validate</code><br> This function will return validation result on the callback provided<br>
 <br>
 <strong>Signature</strong><br>
 <code>validate(widgetReference, callback)</code><br>
 <br>
 <strong>Arguments</strong><br>
 <table>
-<thead>
-<tr>
-<th style="width: 100px; text-align: center;">Name</th>
-<th style="width: 100px; text-align: center;">Mandatory</th>
-<th style="width: 100px; text-align: center;">Type</th>
-<th style="width: 100px; text-align: center;">Default Value</th>
-<th style="width: 250px; text-align: center;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
-<td>widgetReference</td>
-<td>YES</td>
-<td>Object</td>
-<td>N/A</td>
-<td style="text-align: left;">Reference to the Widget inline component, which is being targeted. It's received on the initCallback as result</td>
-</tr>
-<tr style="text-align: center; border-top: 1px solid black;">
-<td>callback</td>
-<td>YES</td>
-<td>Function</td>
-<td>N/A</td>
-<td style="text-align: left;">Function with following signature - callback (error, result)</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th style="width: 100px; text-align: center;">Name</th>
+      <th style="width: 100px; text-align: center;">Mandatory</th>
+      <th style="width: 100px; text-align: center;">Type</th>
+      <th style="width: 100px; text-align: center;">Default Value</th>
+      <th style="width: 250px; text-align: center;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>widgetReference</td>
+      <td>YES</td>
+      <td>Object</td>
+      <td>N/A</td>
+      <td style="text-align: left;">Reference to the Widget inline component, which is being targeted. It's received on the initCallback as result</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>callback</td>
+      <td>YES</td>
+      <td>Function</td>
+      <td>N/A</td>
+      <td style="text-align: left;">Function with following signature - callback (error, result)</td>
+    </tr>
+  </tbody>
 </table>
 <br>
 <hr />
 <br>
-<code>addValidationListener</code><br>
-Registers validation listener for a certain widget inline component instance<br>
+<code>addValidationListener</code><br> Registers validation listener for a certain widget inline component instance<br>
 <br>
 <strong>Signature</strong><br>
 <code>addValidationListener(widgetReference, listener)</code><br>
 <br>
 <strong>Arguments</strong><br>
 <table>
-<thead>
-<tr>
-<th style="width: 100px; text-align: center;">Name</th>
-<th style="width: 100px; text-align: center;">Mandatory</th>
-<th style="width: 100px; text-align: center;">Type</th>
-<th style="width: 100px; text-align: center;">Default Value</th>
-<th style="width: 250px; text-align: center;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
-<td>widgetReference</td>
-<td>YES</td>
-<td>Object</td>
-<td>N/A</td>
-<td style="text-align: left;">Reference to the Widget inline component, which is being targeted. It's received on the initCallback as result</td>
-</tr>
-<tr style="text-align: center; border-top: 1px solid black;">
-<td>listener</td>
-<td>YES</td>
-<td>Function</td>
-<td>N/A</td>
-<td style="text-align: left;">As a listener it takes only one parameter, which will be the result of the validation. The function will be triggered each time the widget validates the payment form fields.</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th style="width: 100px; text-align: center;">Name</th>
+      <th style="width: 100px; text-align: center;">Mandatory</th>
+      <th style="width: 100px; text-align: center;">Type</th>
+      <th style="width: 100px; text-align: center;">Default Value</th>
+      <th style="width: 250px; text-align: center;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>widgetReference</td>
+      <td>YES</td>
+      <td>Object</td>
+      <td>N/A</td>
+      <td style="text-align: left;">Reference to the Widget inline component, which is being targeted. It's received on the initCallback as result</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>listener</td>
+      <td>YES</td>
+      <td>Function</td>
+      <td>N/A</td>
+      <td style="text-align: left;">As a listener it takes only one parameter, which will be the result of the validation. The function will be triggered each time the widget validates the payment form fields.</td>
+    </tr>
+  </tbody>
 </table>
 <br>
 <hr />
 <br>
-<code>removeValidationListener</code><br>
-Removes validation listener for a certain widget inline component instance<br>
+<code>removeValidationListener</code><br> Removes validation listener for a certain widget inline component instance<br>
 <br>
 <strong>Signature</strong><br>
 <code>removeValidationListener(widgetReference, listener)</code><br>
 <br>
 <strong>Arguments</strong>
 <table>
-<thead>
-<tr>
-<th style="width: 100px; text-align: center;">Name</th>
-<th style="width: 100px; text-align: center;">Mandatory</th>
-<th style="width: 100px; text-align: center;">Type</th>
-<th style="width: 100px; text-align: center;">Default Value</th>
-<th style="width: 250px; text-align: center;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr style="text-align: center; background-color: white; border-top: 1px solid black;">
-<td>widgetReference</td>
-<td>YES</td>
-<td>Object</td>
-<td>N/A</td>
-<td style="text-align: left;">Reference to the Widget inline component, which is being targeted. It's received on the initCallback as result</td>
-</tr>
-<tr style="text-align: center; border-top: 1px solid black;">
-<td>listener</td>
-<td>YES</td>
-<td>Function</td>
-<td>N/A</td>
-<td style="text-align: left;">Previously added validation listener</td>
-</tr>
-</tbody>
+  <thead>
+    <tr>
+      <th style="width: 100px; text-align: center;">Name</th>
+      <th style="width: 100px; text-align: center;">Mandatory</th>
+      <th style="width: 100px; text-align: center;">Type</th>
+      <th style="width: 100px; text-align: center;">Default Value</th>
+      <th style="width: 250px; text-align: center;">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="text-align: center; background-color: white; border-top: 1px solid black;">
+      <td>widgetReference</td>
+      <td>YES</td>
+      <td>Object</td>
+      <td>N/A</td>
+      <td style="text-align: left;">Reference to the Widget inline component, which is being targeted. It's received on the initCallback as result</td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
+      <td>listener</td>
+      <td>YES</td>
+      <td>Function</td>
+      <td>N/A</td>
+      <td style="text-align: left;">Previously added validation listener</td>
+    </tr>
+  </tbody>
 </table>
 <br>
 <hr /><br>

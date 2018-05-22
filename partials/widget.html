@@ -184,6 +184,35 @@
 								</label>
 							</div>
 
+							<div class="col-md-6">
+								<label>
+									<span> <b>Paypal:</b></span>
+								</label>
+							</div>
+							<div class="col-md-6">
+								<hr />
+								<label class="col-md-12" for="paypalRecurringBillingAgreement">
+									<input id="paypalRecurringBillingAgreement" type="checkbox" name="paypalRecurringBillingAgreement"
+													ng-model="optionalParameters.paypalRecurringBillingAgreement">
+									<label>Recurring Billing Agreement</label>
+								</label>
+							</div>
+
+						</div>
+						<div ng-if="currExample!=examplesList.modalExample">
+							<div class="col-md-6">
+								<label>
+									<span> <b>Final result:</b></span>
+								</label>
+							</div>
+							<div class="col-md-6">
+								<hr />
+								<label class="col-md-12" for="skipFinalResultView">
+									<input id="skipFinalResultView" type="checkbox" name="skipFinalResultView"
+													ng-model="optionalParameters.skipFinalResultView">
+									<label>Skip final result view</label>
+								</label>
+							</div>
 						</div>
 
 					</div>

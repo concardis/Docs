@@ -29,6 +29,10 @@ code {
 .authorization__btn {
 }
 
+.try-out__btn {
+    display: none;
+}
+
 .url{
     display: none;
 }

@@ -90,27 +90,13 @@ angular.module('StudyCraneApp',[
 	}
 }])
 .controller('apiCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', function($rootScope, $scope, $http, backendService, $timeout) {
-  const DisableTryItOutPlugin = function() {
-    return {
-    statePlugins: {
-      spec: {
-        wrapSelectors: {
-          allowTryItOutFor: () => () => false
-        }
-      }
-    }
-    }
-  }
 
   const ui = SwaggerUIBundle({
     url: "content/swagger.json",
     dom_id: '#swagger-ui',
     deepLinking: false,
     docExpansion: "none",
-    operationsSorter: "alpha",
-    plugins: [
-      DisableTryItOutPlugin
-    ]
+    operationsSorter: "alpha"
   })
 
 }])

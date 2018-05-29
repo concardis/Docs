@@ -1,7 +1,8 @@
 angular.module('StudyCraneApp',[
 	'ui.bootstrap',
 	'ngRoute',
-  'swaggerUi'
+  'swaggerUi',
+	'docsWidgetExample'
 	])
 .config(['$routeProvider', '$httpProvider', '$locationProvider', '$compileProvider', function($routeProvider, $httpProvider, $locationProvider, $compileProvider) {
    
@@ -111,7 +112,7 @@ angular.module('StudyCraneApp',[
       DisableTryItOutPlugin
     ]
   })
-  
+
 }])
 .controller('searchCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', '$routeParams', '$filter', function($rootScope, $scope, $http, backendService, $timeout, $routeParams, $filter) {
   $rootScope.site = "search";
@@ -134,7 +135,7 @@ angular.module('StudyCraneApp',[
     $scope.items = result.data;
   });
 
- 
+
 }])
 .controller('shopCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', function($rootScope, $scope, $http, backendService, $timeout) {
 	$scope.json = {};

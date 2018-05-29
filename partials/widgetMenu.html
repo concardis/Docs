@@ -13,6 +13,7 @@
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/outofthebox/widgetmenu/piwidget">How to implement Widget as a Bridge</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/outofthebox/widgetmenu/piwidgetreference">Widget as a Bridge Reference</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/outofthebox/widgetmenu/deviceident">Device Ident</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/outofthebox/widgetmenu/widgetexample" >Example</a>
     </div>
     <div class="col-md-7">
         <div ng-show="cur=='ourwidget'">
@@ -45,7 +46,11 @@
         </div>
         <div ng-show="cur=='deviceident'">
         	<div  ng-include="'/partials/widget/deviceident.html'">
-           	</div> 
+           	</div>
+        </div>
+        <div ng-show="cur=='widgetexample'">
+        	<div  ng-include="'/partials/widget.html'">
+           	</div>
         </div>
     </div>
 </div>

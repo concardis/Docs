@@ -13,7 +13,6 @@
 }
 
 .btn-block:hover {
-    text-decoration: line-through;
 }
 .btn-light:hover, .btn-primary:active, .btn-primary:visited{
     color: #DA4405 !important;

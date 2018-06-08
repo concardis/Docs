@@ -33,6 +33,7 @@ angular.module('StudyCraneApp',[
   .when('/systemurl', {templateUrl: 'partials/systemUrl.html', controller:'systemurlCtrl'})
   .when('/systemurl/:id', {templateUrl: 'partials/systemUrl.html', controller:'systemurlCtrl'})
   .when('/faq', {templateUrl: 'partials/faq.html'})
+  .when('/contact', {templateUrl: 'partials/contact.html'})
   .when('/merchantcenter', {templateUrl: 'partials/merchantcenter.html', controller:'merchantcenterCtrl'})
   .when('/merchantcenter/:id', {templateUrl: 'partials/merchantcenter.html', controller:'merchantcenterCtrl'});
 
@@ -239,8 +240,9 @@ angular.module('StudyCraneApp',[
 	$rootScope.site = "home";
 	
 }])
-.controller('mainCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', '$location', function($rootScope, $scope, $http, backendService, $timeout, $location) {
+.controller('mainCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', '$location',  function($rootScope, $scope, $http, backendService, $timeout, $location) {
 	$rootScope.site = "home";
+
 
 	$scope.openSearch = function(){
     $location.path("/search/" + $scope.searchString);

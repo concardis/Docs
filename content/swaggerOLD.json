@@ -202,7 +202,7 @@
             "name": "body",
             "in": "body",
             "required": true,
-            "description": "Request body for creating a refund.",
+            "description": "Response body for creating a refund.",
             "schema": {
               "$ref": "#/definitions/TransactionRequest"
             }
@@ -1484,116 +1484,6 @@
           }
         }
       }
-    },
-    "/settlements": {
-      "get": {
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
-        "description": "Endpoint to get all settlements. \n",
-        "tags": [
-          "settlements"
-        ],
-        "operationId": "SettlementsList",
-        "responses": {
-          "200": {
-            "description": "Successful response.",
-            "schema": {
-              "$ref": "#/definitions/SettlementsList"
-            }
-          },
-          "404": {
-            "description": "Not found casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/SettlementsNotFound"
-            }
-          }
-        }
-      }
-    },
-    "/settlements/{settlementId}": {
-      "patch": {
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
-        "description": "Endpoint to update settlement. \n",
-        "tags": [
-          "settlements"
-        ],
-        "operationId": "SettlementsUpdate",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "settlementId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the settlement."
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response.",
-            "schema": {
-              "$ref": "#/definitions/SettlementResponse"
-            }
-          },
-          "404": {
-            "description": "Not found casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/SettlementsNotFound"
-            }
-          }
-        }
-      }
-    },
-    "/settlements/download": {
-      "get": {
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
-        "description": "Download settlement. If there is only one id  the end point download csv file containing the file. If there are more than one id, the end point download zip containing csv files.\n",
-        "tags": [
-          "settlements"
-        ],
-        "operationId": "SettlementsGet",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "query",
-            "type": "array",
-            "items": {
-              "type": "string"
-            },
-            "description": "List of settlement ids"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response.",
-            "schema": {
-              "$ref": "#/definitions/SettlementResponse"
-            }
-          },
-          "404": {
-            "description": "Not found casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/SettlementsNotFound"
-            }
-          }
-        }
-      }
     }
   },
   "definitions": {
@@ -1700,13 +1590,6 @@
           "type": "number",
           "format": "int",
           "minimum": 1
-        },
-        "discount": {
-          "description": "item specific discount",
-          "type": "number",
-          "format": "int",
-          "minimum": -9999998,
-          "maximum": -1
         }
       }
     },
@@ -1775,7 +1658,7 @@
           "format": "integer"
         },
         "merchantOrderId": {
-          "description": "The order id from your system/shop for Creditcards only 30 alphanumeric characters.",
+          "description": "The order id from your system/shop",
           "type": "string",
           "minLength": 1,
           "maxLength": 255
@@ -1877,7 +1760,7 @@
           "format": "integer"
         },
         "merchantOrderId": {
-          "description": "The order id from your system/shop for Creditcards only 30 alphanumeric characters.",
+          "description": "The order id from your system/shop",
           "type": "string",
           "minLength": 1,
           "maxLength": 255
@@ -2002,7 +1885,7 @@
           "format": "integer"
         },
         "merchantOrderId": {
-          "description": "The order id from your system/shop for Creditcards only 30 alphanumeric characters.",
+          "description": "The order id from your system/shop",
           "type": "string",
           "minLength": 1,
           "maxLength": 255
@@ -2070,9 +1953,6 @@
         },
         "deviceIdent": {
           "$ref": "#/definitions/DeviceIdentRequest"
-        },
-        "meta": {
-          "$ref": "#/definitions/MetaRequest"
         }
       },
       "required": [
@@ -2113,7 +1993,7 @@
           "format": "integer"
         },
         "merchantOrderId": {
-          "description": "The order id from your system/shop for Creditcards only 30 alphanumeric characters.",
+          "description": "The order id from your system/shop",
           "type": "string",
           "minLength": 1,
           "maxLength": 255
@@ -2193,7 +2073,7 @@
     "OrderOpenPaymentRequest": {
       "title": "OrderOpenPaymentRequest",
       "type": "object",
-      "description": "Additional information Payment needed to proceed the order.",
+      "description": "Additional information Payment neede to proceed the order.",
       "properties": {
         "paymentInstrumentId": {
           "description": "An ID of an already created paymentinstrument. Used to proceed the order. (optional)",
@@ -2395,7 +2275,7 @@
           "format": "integer"
         },
         "merchantOrderId": {
-          "description": "The order id from your system/shop for Creditcards only 30 alphanumeric characters.",
+          "description": "The order id from your system/shop",
           "type": "string",
           "minLength": 1,
           "maxLength": 255
@@ -2977,12 +2857,6 @@
           "minLength": 1,
           "maxLength": 255
         },
-        "descriptor": {
-          "description": "Identifier which holds the orderId",
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 10
-        },
         "capturedAmount": {
           "description": "The amount which has been captured.",
           "type": "number",
@@ -3145,9 +3019,6 @@
           "items": {
             "$ref": "#/definitions/Item"
           }
-        },
-        "meta": {
-          "$ref": "#/definitions/MetaRequest"
         }
       },
       "required": [
@@ -3540,80 +3411,6 @@
         },
         "languages": {
           "type": "string"
-        }
-      }
-    },
-    "MetaRequest": {
-      "title": "MetaRequest",
-      "type": "object",
-      "description": "Contains specific information for different payment methods.",
-      "properties": {
-        "invoicing": {
-          "type": "object",
-          "description": "RatePAY specific parameter.",
-          "$ref": "#/definitions/Invoicing"
-        },
-        "tracking": {
-          "description": "RatePAY specific parameter, array of object of type Tracking",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Tracking"
-          }
-        },
-        "preferredLanguage": {
-          "type": "string",
-          "description": "RatePAY specific parameter, 2-letter language code, lower case.",
-          "maxLength": 2
-        },
-        "referenceId": {
-          "type": "string",
-          "description": "RatePAY specific parameter.",
-          "maxLength": 255
-        }
-      }
-    },
-    "Invoicing": {
-      "title": "Invoicing",
-      "type": "object",
-      "properties": {
-        "invoiceId": {
-          "type": "string",
-          "maxLength": 50
-        },
-        "invoiceDate": {
-          "description": "Timestamp - earliest - 7 days before request, latest - day of request.",
-          "type": "integer"
-        },
-        "deliveryDate": {
-          "description": "Timestamp - earliest - 365 days before request, latest - 365 days after request.",
-          "type": "integer"
-        },
-        "dueDate": {
-          "description": "Timestamp - not before date of request AND not before invoice-date (if present).",
-          "type": "integer"
-        }
-      }
-    },
-    "Tracking": {
-      "title": "Tracking",
-      "type": "object",
-      "properties": {
-        "trackingId": {
-          "type": "string",
-          "maxLength": 50
-        },
-        "provider": {
-          "type": "string",
-          "enum": [
-            "DPD",
-            "GLS",
-            "DHL",
-            "HLG",
-            "HVS",
-            "UPS",
-            "TNT",
-            "OTH"
-          ]
         }
       }
     },
@@ -4528,74 +4325,6 @@
         }
       }
     },
-    "SettlementResponse": {
-      "title": "SettlementResponse",
-      "type": "object",
-      "properties": {
-        "id": {
-          "description": "The identifier of the settlements. Created by payengine",
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 255
-        },
-        "settlementsFile": {
-          "description": "Settlements file.",
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 255
-        },
-        "product": {
-          "description": "Product",
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 255
-        },
-        "receivedAt": {
-          "description": "This timestamp indicates the arrival of this settlement.",
-          "type": "number",
-          "format": "date-time"
-        },
-        "fileName": {
-          "description": "Name of the file",
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 255
-        },
-        "downloaded": {
-          "description": "Product",
-          "type": "boolean"
-        },
-        "merchantId": {
-          "description": "Merchant Id",
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 255
-        }
-      }
-    },
-    "SettlementsList": {
-      "title": "SettlementsList",
-      "type": "object",
-      "properties": {
-        "elements": {
-          "description": "A list of settlements.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SettlementResponse"
-          }
-        },
-        "totalPages": {
-          "description": "A counter for the total pages returned.",
-          "type": "number",
-          "format": "int",
-          "minimum": 1
-        }
-      },
-      "required": [
-        "elements",
-        "totalPages"
-      ]
-    },
     "Error": {
       "type": "object",
       "properties": {
@@ -4607,30 +4336,6 @@
         },
         "message": {
           "type": "string"
-        }
-      }
-    },
-    "SettlementsNotFound": {
-      "type": "object",
-      "properties": {
-        "status": {
-          "type": "number",
-          "example": 404
-        },
-        "code": {
-          "type": "number",
-          "example": 50001
-        },
-        "globalTrackId": {
-          "type": "string",
-          "example": "Some Request ID"
-        },
-        "elements": {
-          "title": "Errors",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/SettlementsPatchErrors"
-          }
         }
       }
     },
@@ -6742,19 +6447,6 @@
           "code": 16016,
           "field": "payment.accountHolder",
           "message": "Bad value for payment.accountHolder. Expected: string of length between 4 and 128."
-        }
-      ]
-    },
-    "SettlementsPatchErrors": {
-      "title": "Error",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/Error"
-      },
-      "example": [
-        {
-          "code": 50001,
-          "message": "A Settlement with specified id can not be found. Expected: A valid string identifier representing a Settlement object between 1 and 255 characters."
         }
       ]
     }

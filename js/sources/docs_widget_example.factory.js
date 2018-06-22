@@ -17,7 +17,7 @@ function docsWidgetExampleApi($http) {
         data: order,
         headers: {
           'Content-Type': "application/json",
-          'Authorization': 'Basic TWVyY2hhbnQtMDAwY2YyYzktNjZmZS00NzMwLWFjOWUtNjc0ZjdjNTUyZDQyOkwwekxDZGZaeGlFT2MwdmM='
+          'Authorization': 'Basic TWVyY2hhbnQtMDAwY2YyYzktNjZmZS00NzMwLWFjOWUtNjc0ZjdjNTUyZDQyOkV3bURmNlhtd0dOVmNGVUY='
         }
       })
       .then(
@@ -36,7 +36,7 @@ function docsWidgetExampleApi($http) {
         data: order,
         headers: {
           'Content-Type': "application/json",
-          'Authorization': 'Basic TWVyY2hhbnQtMDAwY2YyYzktNjZmZS00NzMwLWFjOWUtNjc0ZjdjNTUyZDQyOkwwekxDZGZaeGlFT2MwdmM='
+          'Authorization': 'Basic TWVyY2hhbnQtMDAwY2YyYzktNjZmZS00NzMwLWFjOWUtNjc0ZjdjNTUyZDQyOkV3bURmNlhtd0dOVmNGVUY='
         }
       })
       .then(

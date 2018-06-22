@@ -73,7 +73,7 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
 
   function createOrder() {
     var OrderRequest = '{ "initialAmount": 100, "currency": "EUR", "transactionType": "DEBIT", "async": { "successUrl": "https://www.google.de/#newwindow=1&q=success", "failureUrl": "https://www.google.de/#newwindow=1&q=failure", "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel" }}';
-    docsWidgetExampleApi.createOrder(OrderRequest, successCallback)
+    docsWidgetExampleApi.createOrder(OrderRequest, successCallback, failureCallback)
   }
 
   function changeExampleType(exampleType) {
@@ -86,11 +86,35 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
       $scope.optionalParameters.language = 'en';
       $scope.optionalParameters.products = [];
       $scope.allSelected = false;
-      onAllProductsSelect();
-      if(exampleType==$scope.examplesList.inlineExample || exampleType==$scope.examplesList.inlinePiExample){
+      if(exampleType==$scope.examplesList.modalExample){
+        onAllProductsSelect();
+      }
+      if(exampleType==$scope.examplesList.inlineExample){
+        onAllProductsSelect();
         $scope.optionalParameters.initCallback = initCallback;
+        $scope.showContainer = true;
+      }
+      if(exampleType==$scope.examplesList.inlinePiExample){
+        $scope.productsArray = [
+          { type:'creditcard', label:'Credit Card', enabled: true},
+          { type:'ratepay-installment', label:'Ratepay Installment', enabled: false},
+          { type:'paypal', label:'Paypal', enabled: false},
+          { type:'ratepay-directdebit', label:'Ratepay Directdebit', enabled: false},
+          { type:'paydirekt', label:'Paydirekt', enabled: false},
+          { type:'ratepay-invoice', label:'Ratepay Invoice', enabled: false}
+          // { type:'sofort', label:'Sofort', enabled: true}
+        ];
+        $scope.optionalParameters.products.push('creditcard');
+        $scope.optionalParameters.initCallback = initCallback;
+        $scope.showContainer = true;
       }
     }
+    $scope.currExample = exampleType;
+     var container = angular.element("#widgetcontainer")[0];
+      if(container.innerHTML){
+        container.innerHTML="";
+      }
+      createOrder();
   }
 
   function failureCallback(response){
@@ -130,6 +154,7 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
   function initExample(){
     //Init Modal Example
     if ($scope.currExample==$scope.examplesList.modalExample){
+      console.log("init Modal example");
       PayEngineWidget.initAsModal(
         $scope.merchantId,
         $scope.orderId,
@@ -140,6 +165,7 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
     //Init Inline Example
     if ($scope.currExample==$scope.examplesList.inlineExample){
       $scope.showContainer = true;
+      console.log("init inline example");
       var container = angular.element("#widgetcontainer")[0];
       if(container.innerHTML){
         container.innerHTML="";
@@ -157,6 +183,7 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
     //Init Inline PI Example
     if ($scope.currExample==$scope.examplesList.inlinePiExample){
       $scope.showContainer = true;
+      console.log("init PI example");
       var container = angular.element("#widgetcontainer")[0];
       if(container.innerHTML){
         container.innerHTML="";

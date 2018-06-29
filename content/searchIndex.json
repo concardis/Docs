@@ -63,7 +63,7 @@
 		"content": "Important! Device Ident is available only for ECOM transactions If Device Ident is set to true, Device Ident Token will be send with the transaction object on transaction create"
 	},
 	{
-		"url": "/outofthebox/widgetexample",
+		"url": "/outofthebox/widgetmenu/widgetexample",
 		"title": "Widget Example",
 		"filter": "easyintegration",
 		"tags": "Widget Example",

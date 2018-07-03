@@ -1,27 +1,220 @@
-The Merchant Center provides reconciliation and settlement files for credit card transactions. When a transaction is settled the corresponding data becomes available in a merchant downloadable csv file which can be found under the Settlements section of the Merchant Center. These files contain detailed information for each transaction including:
+<h3>Credit Card Settlements</h3>
+</br>
+<p>
+  The Merchant Center provides reconciliation and settlement files for different transactions. When a transaction is settled the corresponding data becomes available in a merchant downloadable csv file.
+</p>
 <ul>
-    <li>GUID of the transaction</li>
-    <li>VP-Number</li>
-    <li>Terminal-ID</li>
-    <li>ARN</li>
-    <li>Trx.-Date</li>
-    <li>Time</li>
-    <li>Author.-Nr</li>
-    <li>Trace ID</li>
-    <li>Merchant Order ID / Order ID</li>
-    <li>Credit- Debitindikator</li>
-    <li>Revenue in transaction currency (gross)</li>
-    <li>Transaction currency</li>
-    <li>Renvenue in settlement currency (gross)</li>
-    <li>Settlement currency</li>
-    <li>Interchange Fee (payout currency)</li>
-    <li>Card Scheme Fee (payout currency)</li>
-    <li>Acquirer Service Fee (payout currency)</li>
-    <li>MSC Fee (payout currency)</li>
-    <li>VAT (payout currency)</li>
-    <li>Revenue in settlement currency (net amount)</li>
-    <li>GUID Settlement</li>
-    <li>Payment method</li>
-    <li>payment date</li>
-    <li>Sequence Number des Payments</li>
+    <li><a href="#settlements_nav" name="">Navigation</a></li>
+    <li><a href="#filters" name="">Filters</a></li>
+    <li><a href="#sorting" name="">Sorting</a></li>
 </ul>
+
+<div id="settlements_nav"></div>
+&nbsp;
+<h3>Navigation to Settlements</h3>
+&nbsp;
+<p>
+  Settlement files can be found under the "Settlements" section of the Merchant Center.
+</p>
+</br>
+<img src="/img/settlements/settlements_nav.png" alt="" width="100%"  />
+
+<div id="filters"></div>
+&nbsp;
+<h3>Filter Settlements</h3>
+&nbsp;
+<p>
+  Settlement files can be found under the "Settlements" section of the Merchant Center.
+</p>
+</br>
+<img src="/img/settlements/settlements_nav.png" alt="" width="100%"  />
+
+<div id="sorting"></div>
+&nbsp;
+<h3>Sorting Settlements list</h3>
+&nbsp;
+<p>
+  Settlement files can be found under the "Settlements" section of the Merchant Center.
+</p>
+</br>
+<img src="/img/settlements/settlements_nav.png" alt="" width="100%"  />
+
+
+<ul>
+    <li><a href="#cc_settlements" name="">Credit Card Settlements</a></li>
+    <li><a href="#paypal_settlements" name="">Paypal Settlements</a></li>
+</ul>
+
+<div id="cc_settlements"></div>
+&nbsp;
+<h3>Credit Card Settlements</h3>
+Credit Card Settlements files are in .csv format and contain detailed information for each transaction.
+<img src="/img/settlements/cc_settlement.png" alt="" width="100%"  />
+
+<p>You can find more information about fields in settlement file in folowing table:</p>
+
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Lf. Nr.</th>
+      <th>Filed</th>
+      <th>English translations</th>
+      <th width="50%">Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>GUID der Transaktion</td>
+      <td>GUID of transaction</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>VP-Nummer</td>
+      <td>VP-Number</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Terminal-ID</td>
+      <td>Terminal-ID</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>ARN</td>
+      <td>ARN</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Trx.-Datum</td>
+      <td>Trx.-date</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Uhrzeit</td>
+      <td>Time</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Autor.-Nr.</td>
+      <td>Autor.-Nr.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Trace ID</td>
+      <td>Trace ID</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Merchant Order ID / Order ID</td>
+      <td>Merchant Order ID / Order ID</td>
+      <td>Händlerreferenz/individuelle Nummer (wenn nicht vom Händler angeliefert, wird Order ID verwendet)</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Kredit- Debitindikator</td>
+      <td>Credit- Debit indicator</td>
+      <td>Zeigt, ob es sich um eine positive oder negative Zahlung handet
+        C = Credit (Gutschriftbetrag); D = Debit (Belastungsbetrag)</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Umsatz in Transaktionswährung (Brutto)</td>
+      <td>Revenue in transaction currency</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Transaktionswährung</td>
+      <td>Transaction currency</td>
+      <td>ISO Währungscode der Einreichung</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Abrechnunsmodell Indikator</td>
+      <td>Settlement model indicator</td>
+      <td>Nach welchem Abrechnungsmodell wird der Kunde abgerechnet</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Umsatz in Abrechnungswährung (Brutto)</td>
+      <td>Revenue in settlement currency (gross)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Abrechnungswährung</td>
+      <td>Settlement currency</td>
+      <td>Alpha ISO Währungscode der Abrechnung</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Interchange Fee (Auszahlwährung)</td>
+      <td>Interchange Fee</td>
+      <td>Interchange Betrag in Auszahlwährung</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Card Scheme Fee (Auszahlwährung)</td>
+      <td>Card Scheme Fee</td>
+      <td>Card Scheme Fee in Auszahlwährung</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Acquirer Service Fee (Auszahlwährung)</td>
+      <td>Acquirer Service Fee</td>
+      <td>Acquirer Servce Fee in Auszahlwährung</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>MSC Entgelt (Auszahlwährung)</td>
+      <td>MSC charges (settlement currency)</td>
+      <td>Disagio</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Mehrwertsteuer (Auszahlwährung)</td>
+      <td>VAT (settlement currency)</td>
+      <td>Mehrwertsteuer Betrag in Auszahlwährung</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Umsatz in Abrechnungswährung (Netto)</td>
+      <td>Revenue in settlement currency (net)</td>
+      <td>Netto in Händlerabrechnungsbetrag</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>GUID Settlement</td>
+      <td>GUID Settlement</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Payment Methode</td>
+      <td>Payment method</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Zahldatum</td>
+      <td>Payment date</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Sequence Number des Payments</td>
+      <td>Sequence Number of payment	Yes	6 stellige Nummer FDD</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

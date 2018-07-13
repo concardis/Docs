@@ -25,15 +25,17 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
     { type:'full-list', label:'Full list'}
   ];
   $scope.showContainer = false;
-  $scope.productsArray = [
-    { type:'creditcard', label:'Credit Card', enabled: true},
-    { type:'ratepay-installment', label:'Ratepay Installment', enabled: true},
-    { type:'paypal', label:'Paypal', enabled: true},
-    { type:'ratepay-directdebit', label:'Ratepay Directdebit', enabled: true},
-    { type:'paydirekt', label:'Paydirekt', enabled: true},
-    { type:'ratepay-invoice', label:'Ratepay Invoice', enabled: true}
-    // { type:'sofort', label:'Sofort', enabled: true}
-  ];
+  $scope.productsArray = {
+    'creditcard':{label:'Credit Card', enabled: false},
+    'ratepay-installment':{label:'Ratepay Installment', enabled: false},
+    'paypal':{label:'Paypal', enabled: false},
+    'ratepay-directdebit':{label:'Ratepay Directdebit', enabled: false},
+    'paydirekt':{label:'Paydirekt', enabled: false},
+    'ratepay-invoice':{label:'Ratepay Invoice', enabled: false},
+    'sofort':{label:'Sofort', enabled: false},
+    'sepa':{label:'SEPA', enabled: false},
+    'prepayment':{label:'Prepayment', enabled: false}
+  };
   $scope.createOrder = createOrder;
   $scope.changeExampleType = changeExampleType;
   $scope.initExample = initExample;
@@ -49,72 +51,51 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
   function onAllProductsSelect() {
     $scope.allSelected = !$scope.allSelected
     if ($scope.allSelected) {
-      for (ii = 0; ii < $scope.productsArray.length; ii++) {
-        $scope.productsArray[ii].enabled = true;
-        $scope.optionalParameters.products.push($scope.productsArray[ii].type);
+      for (var ii in $scope.order.allowedProducts) {
+        $scope.productsArray[$scope.order.allowedProducts[ii]].enabled = true;
+        var index = $scope.optionalParameters.products.indexOf($scope.order.allowedProducts[ii]);
+        if(index<0){
+          $scope.optionalParameters.products.push($scope.order.allowedProducts[ii]);
+        }
       }
     }else{
-      for (ii = 0; ii < $scope.productsArray.length; ii++) {
-        $scope.productsArray[ii].enabled = false;
-        var index = $scope.optionalParameters.products.indexOf($scope.productsArray[ii].type);
+      for (var ii in $scope.order.allowedProducts) {
+        $scope.productsArray[$scope.order.allowedProducts[ii]].enabled = false;
+        var index = $scope.optionalParameters.products.indexOf($scope.order.allowedProducts[ii]);
         $scope.optionalParameters.products.splice(index, 1);
       }
     }
   }
 
   function onProductSelect(product) {
-    if (product.enabled) {
-      $scope.optionalParameters.products.push(product.type);
+    if ($scope.productsArray[product].enabled) {
+      $scope.optionalParameters.products.push(product);
     }else{
-      var index = $scope.optionalParameters.products.indexOf(product.type);
+      var index = $scope.optionalParameters.products.indexOf(product);
       $scope.optionalParameters.products.splice(index, 1);
     }
-  }
-
-  function createOrder() {
-    var OrderRequest = '{ "initialAmount": 100, "currency": "EUR", "transactionType": "DEBIT", "async": { "successUrl": "https://www.google.de/#newwindow=1&q=success", "failureUrl": "https://www.google.de/#newwindow=1&q=failure", "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel" }}';
-    docsWidgetExampleApi.createOrder(OrderRequest, successCallback, failureCallback)
   }
 
   function changeExampleType(exampleType) {
     $scope.showContainer = false;
     $scope.currExample = exampleType;
     $scope.optionalParameters={};
+
+    var container = angular.element("#widgetcontainer")[0];
+    if(container.innerHTML){
+    container.innerHTML="";
+    }
+
     if(exampleType==$scope.examplesList.testPIExample){
       $scope.paymentInstrumentId = "paymentinstrument_twnv71bkkb";
     }else{
-      $scope.optionalParameters.language = 'en';
-      $scope.optionalParameters.products = [];
-      $scope.allSelected = false;
-      if(exampleType==$scope.examplesList.modalExample){
-        onAllProductsSelect();
-      }
-      if(exampleType==$scope.examplesList.inlineExample){
-        onAllProductsSelect();
-        $scope.optionalParameters.initCallback = initCallback;
-        $scope.showContainer = true;
-      }
-      if(exampleType==$scope.examplesList.inlinePiExample){
-        $scope.productsArray = [
-          { type:'creditcard', label:'Credit Card', enabled: true},
-          { type:'ratepay-installment', label:'Ratepay Installment', enabled: false},
-          { type:'paypal', label:'Paypal', enabled: false},
-          { type:'ratepay-directdebit', label:'Ratepay Directdebit', enabled: false},
-          { type:'paydirekt', label:'Paydirekt', enabled: false},
-          { type:'ratepay-invoice', label:'Ratepay Invoice', enabled: false}
-          // { type:'sofort', label:'Sofort', enabled: true}
-        ];
-        $scope.optionalParameters.products.push('creditcard');
-        $scope.optionalParameters.initCallback = initCallback;
-        $scope.showContainer = true;
-      }
-    }
-    $scope.currExample = exampleType;
-     var container = angular.element("#widgetcontainer")[0];
-      if(container.innerHTML){
-        container.innerHTML="";
-      }
       createOrder();
+    }
+  }
+
+  function createOrder() {
+    var OrderRequest = '{ "initialAmount": 100, "currency": "EUR", "transactionType": "DEBIT", "async": { "successUrl": "https://www.google.de/#newwindow=1&q=success", "failureUrl": "https://www.google.de/#newwindow=1&q=failure", "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel" }}';
+    docsWidgetExampleApi.createOrder(OrderRequest, successCallback, failureCallback)
   }
 
   function failureCallback(response){
@@ -125,7 +106,23 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
 
   function successCallback(response){
     var orderResponse = response.data;
-    $scope.orderId = orderResponse.orderId;
+    $scope.order = orderResponse;
+
+    $scope.optionalParameters.products = [];
+    $scope.allSelected = false;
+    $scope.optionalParameters.language = 'en';
+
+    if($scope.currExample==$scope.examplesList.inlineExample){
+      $scope.optionalParameters.initCallback = initCallback;
+      $scope.showContainer = true;
+    }
+    if($scope.currExample==$scope.examplesList.inlinePiExample){
+      $scope.allSelected = true;
+      $scope.optionalParameters.initCallback = initCallback;
+      $scope.showContainer = true;
+    }
+
+    onAllProductsSelect();
     console.log("createOrderResponse",orderResponse);
   }
 
@@ -137,33 +134,56 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
   function initExampleResultsCallback(error, results) {
     console.log('Result callback');
     console.log(error);
+    $('#widgetError').text(JSON.stringify(error));
     console.log(results);
-    $scope.widgetError = JSON.stringify(error);
-    $scope.widgetResults = JSON.stringify(results);
+    $('#widgetResults').text(JSON.stringify(results));
   }
 
   function initCallback(error, iframeName) {
     console.log("Init callback");
     console.log(error);
-    console.log(iframeName);
-    widgetRef = iframeName;
     $('#widgetError').text(JSON.stringify(error));
+    widgetRef = iframeName;
     $('#widgetResults').text(JSON.stringify(iframeName));
   }
 
   function initExample(){
+
+    var requestContainer = angular.element("#widgetRequest")[0];
+    if(requestContainer.innerHTML){
+      requestContainer.innerHTML="";
+    }
+    var errorContainer = angular.element("#widgetError")[0];
+    if(errorContainer.innerHTML){
+      errorContainer.innerHTML="";
+    }
+    var resultsContainer = angular.element("#widgetResults")[0];
+    if(resultsContainer.innerHTML){
+      resultsContainer.innerHTML="";
+    }
+
     //Init Modal Example
     if ($scope.currExample==$scope.examplesList.modalExample){
+
+      console.log("init Request");
+      $('#widgetRequest').text(
+        "PayEngineWidget.initAsModal(" +
+        JSON.stringify($scope.merchantId) + "," +
+        JSON.stringify($scope.order.orderId) + "," +
+        JSON.stringify($scope.optionalParameters) + "," +
+        "initExampleResultsCallback);");
+
       console.log("init Modal example");
       PayEngineWidget.initAsModal(
         $scope.merchantId,
-        $scope.orderId,
+        $scope.order.orderId,
         $scope.optionalParameters,
         initExampleResultsCallback
       );
     }
     //Init Inline Example
     if ($scope.currExample==$scope.examplesList.inlineExample){
+
       $scope.showContainer = true;
       console.log("init inline example");
       var container = angular.element("#widgetcontainer")[0];
@@ -171,10 +191,19 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
         container.innerHTML="";
       }
 
+      console.log("init Request");
+      $('#widgetRequest').text(
+        "PayEngineWidget.initAsInlineComponent(" +
+        JSON.stringify(container) + "," +
+        JSON.stringify($scope.merchantId) + "," +
+        JSON.stringify($scope.order.orderId) + "," +
+        JSON.stringify($scope.optionalParameters) + "," +
+        "initExampleResultsCallback);");
+
       PayEngineWidget.initAsInlineComponent(
         container,
         $scope.merchantId,
-        $scope.orderId,
+        $scope.order.orderId,
         $scope.optionalParameters,
         initExampleResultsCallback
       );
@@ -182,12 +211,21 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
 
     //Init Inline PI Example
     if ($scope.currExample==$scope.examplesList.inlinePiExample){
+
       $scope.showContainer = true;
       console.log("init PI example");
       var container = angular.element("#widgetcontainer")[0];
       if(container.innerHTML){
         container.innerHTML="";
       }
+
+      console.log("init Request");
+      $('#widgetRequest').text(
+        "PayEngineWidget.initAsModal(" +
+        JSON.stringify(container) + "," +
+        JSON.stringify($scope.merchantId) + "," +
+        JSON.stringify($scope.optionalParameters) + "," +
+        "initExampleResultsCallback);");
 
       PayEngineWidget.initAsInlineComponentPi(
         container,
@@ -204,6 +242,11 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
   }
 
   function validateExample() {
+    console.log("init Request");
+    $('#widgetRequest').text(
+      "PayEngineWidget.validate(" +
+      JSON.stringify(widgetRef) + "," +
+      "onValidationCallback);");
     PayEngineWidget.validate(widgetRef, onValidationCallback);
   }
 
@@ -223,21 +266,37 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
   }
 
   function addListener() {
+    console.log("init Request");
+    $('#widgetRequest').text(
+      "PayEngineWidget.addValidationListener(" +
+      JSON.stringify(widgetRef) + "," +
+      "onListenerCallback);");
     PayEngineWidget.addValidationListener(widgetRef, onListenerCallback);
   }
 
   function removeListener() {
+    console.log("init Request");
+    $('#widgetRequest').text(
+      "PayEngineWidget.removeValidationListener(" +
+      JSON.stringify(widgetRef) + "," +
+      "onListenerCallback);");
     PayEngineWidget.removeValidationListener(widgetRef, onListenerCallback);
   }
 
+  function onPayCallback(error, result) {
+    console.log("On pay callback");
+    console.log(error);
+    console.log(result);
+    $('#widgetError').text(JSON.stringify(error));
+    $('#widgetResults').text(JSON.stringify(result));
+  }
+
   function payExample() {
-    function onPayCallback(error, result) {
-      console.log("On pay callback");
-      console.log(error);
-      console.log(result);
-      $('#widgetError').text(JSON.stringify(error));
-      $('#widgetResults').text(JSON.stringify(result));
-    }
+    console.log("init Request");
+    $('#widgetRequest').text(
+      "PayEngineWidget.pay(" +
+      JSON.stringify(widgetRef) + "," +
+      "onPayCallback);");
     PayEngineWidget.pay(widgetRef, onPayCallback);
   }
 

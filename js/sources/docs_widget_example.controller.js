@@ -162,78 +162,87 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
       resultsContainer.innerHTML="";
     }
 
-    //Init Modal Example
+    if($scope.optionalParameters.products.length == 0){
+      $('#widgetError').text("products should be an array if provided.");
+    }
+
     if ($scope.currExample==$scope.examplesList.modalExample){
-
-      console.log("init Request");
-      $('#widgetRequest').text(
-        "PayEngineWidget.initAsModal(" +
-        JSON.stringify($scope.merchantId) + "," +
-        JSON.stringify($scope.order.orderId) + "," +
-        JSON.stringify($scope.optionalParameters) + "," +
-        "initExampleResultsCallback);");
-
-      console.log("init Modal example");
-      PayEngineWidget.initAsModal(
-        $scope.merchantId,
-        $scope.order.orderId,
-        $scope.optionalParameters,
-        initExampleResultsCallback
-      );
+      initModalExample();
     }
-    //Init Inline Example
     if ($scope.currExample==$scope.examplesList.inlineExample){
-
-      $scope.showContainer = true;
-      console.log("init inline example");
-      var container = angular.element("#widgetcontainer")[0];
-      if(container.innerHTML){
-        container.innerHTML="";
-      }
-
-      console.log("init Request");
-      $('#widgetRequest').text(
-        "PayEngineWidget.initAsInlineComponent(" +
-        JSON.stringify(container) + "," +
-        JSON.stringify($scope.merchantId) + "," +
-        JSON.stringify($scope.order.orderId) + "," +
-        JSON.stringify($scope.optionalParameters) + "," +
-        "initExampleResultsCallback);");
-
-      PayEngineWidget.initAsInlineComponent(
-        container,
-        $scope.merchantId,
-        $scope.order.orderId,
-        $scope.optionalParameters,
-        initExampleResultsCallback
-      );
+      initInlineExample();
     }
-
-    //Init Inline PI Example
     if ($scope.currExample==$scope.examplesList.inlinePiExample){
-
-      $scope.showContainer = true;
-      console.log("init PI example");
-      var container = angular.element("#widgetcontainer")[0];
-      if(container.innerHTML){
-        container.innerHTML="";
-      }
-
-      console.log("init Request");
-      $('#widgetRequest').text(
-        "PayEngineWidget.initAsModal(" +
-        JSON.stringify(container) + "," +
-        JSON.stringify($scope.merchantId) + "," +
-        JSON.stringify($scope.optionalParameters) + "," +
-        "initExampleResultsCallback);");
-
-      PayEngineWidget.initAsInlineComponentPi(
-        container,
-        $scope.merchantId,
-        $scope.optionalParameters,
-        initExampleResultsCallback
-      );
+      initInlinePIExample();
     }
+  }
+
+  function initModalExample(){
+    console.log("init Request");
+    $('#widgetRequest').text(
+      "PayEngineWidget.initAsModal(" +
+      JSON.stringify($scope.merchantId) + "," +
+      JSON.stringify($scope.order.orderId) + "," +
+      JSON.stringify($scope.optionalParameters) + "," +
+      "initExampleResultsCallback);");
+
+    console.log("init Modal example");
+    PayEngineWidget.initAsModal(
+      $scope.merchantId,
+      $scope.order.orderId,
+      $scope.optionalParameters,
+      initExampleResultsCallback
+    );
+  }
+
+  function initInlineExample(){
+    $scope.showContainer = true;
+    console.log("init inline example");
+    var container = angular.element("#widgetcontainer")[0];
+    if(container.innerHTML){
+      container.innerHTML="";
+    }
+
+    console.log("init Request");
+    $('#widgetRequest').text(
+      "PayEngineWidget.initAsInlineComponent(" +
+      JSON.stringify(container) + "," +
+      JSON.stringify($scope.merchantId) + "," +
+      JSON.stringify($scope.order.orderId) + "," +
+      JSON.stringify($scope.optionalParameters) + "," +
+      "initExampleResultsCallback);");
+
+    PayEngineWidget.initAsInlineComponent(
+      container,
+      $scope.merchantId,
+      $scope.order.orderId,
+      $scope.optionalParameters,
+      initExampleResultsCallback
+    );
+  }
+
+  function initInlinePIExample(){
+    $scope.showContainer = true;
+    console.log("init PI example");
+    var container = angular.element("#widgetcontainer")[0];
+    if(container.innerHTML){
+      container.innerHTML="";
+    }
+
+    console.log("init Request");
+    $('#widgetRequest').text(
+      "PayEngineWidget.initAsModal(" +
+      JSON.stringify(container) + "," +
+      JSON.stringify($scope.merchantId) + "," +
+      JSON.stringify($scope.optionalParameters) + "," +
+      "initExampleResultsCallback);");
+
+    PayEngineWidget.initAsInlineComponentPi(
+      container,
+      $scope.merchantId,
+      $scope.optionalParameters,
+      initExampleResultsCallback
+    );
   }
 
   function payWithPi(){

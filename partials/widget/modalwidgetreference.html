@@ -58,6 +58,14 @@ Here you can find all needed methods and respective parameters to further enrich
       <td style="text-align: left;">The language used throughout the Widget. Available options are: "en" - English “de” - German</td>
     </tr>
     <tr style="text-align: center; border-top: 1px solid black;">
+      <td>optionalParameters.redirectUser</td>
+      <td>NO</td>
+      <td>Boolean</td>
+      <td>true</td>
+      <td style="text-align: left;">Decides if end customer redirect (e.g. by PayPal payment) is handled by the Widget or manually. If <em>true</em> the Widget handles all redirects. If <em>false</em> redirects are handled manually by the integrator.
+        <em>! In this case you should use the redirect URL given by the resultCallback.</em></td>
+    </tr>
+    <tr style="text-align: center; border-top: 1px solid black;">
       <td>optionalParameters.colorTheme</td>
       <td>NO</td>
       <td>string</td>

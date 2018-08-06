@@ -26,6 +26,7 @@ Here is snippet how your html could look like:<br>
      var optionalParameters = new Object;
      optionalParameters.products= ["creditcard", "sepa", "paypal", "paydirekt", "ratepay-directdebit", "ratepay-invoice"];
      optionalParameters.language = "en";
+     optionalParameters.redirectUser = true;
      optionalParameters.theme = "light";
      PayEngineWidget.initAsModal(publishableKey, orderId, optionalParameters, callback);
    }

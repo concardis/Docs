@@ -8,7 +8,7 @@
       "url": "http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT"
     }
   },
-  "host": "apitest.payengine.de",
+  "host": "https://apitest.payengine.de",
   "basePath": "/v1",
   "schemes": [
     "https"

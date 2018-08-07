@@ -2,7 +2,7 @@
     <div class="col-md-1">
     </div>
     <div class="col-md-10">
-        
+
         <br>
     </div>
     <div class="col-md-1">
@@ -12,35 +12,123 @@
 <div class="row">
     <br>
     <div class="col-md-1"></div>
-    <div ng-init="menu=true;" class="col-md-2 btn-group-vertical">
-        <button type="button" class="btn btn-light text-left" ng-click="menu=!menu">Menu <span ng-show="menu" class="pull-right glyph-icon icon-chevron-down"></span><span ng-show="!menu" class="pull-right glyph-icon icon-chevron-up"></span></button>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/registration">Registration</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/login">Login</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/navigation">Navigation</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/dashboard">Dashboard</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createtransaction">Orders - Create </a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/errortransaction">Orders - Errors </a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/currencies"> Currencies</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/settlement">Settlements</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/customer">Customers</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createcustomer">Manage customers</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/myaccount">My Account</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/paymentmethods">Payment Methods</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/managebaskets">Manage baskets</a>
+    <div ng-init="general=true;dashboard=true;orders=true;" class="col-md-2 btn-group-vertical">
+        <!-- <button type="button" class="btn btn-light text-left" ng-click="menu=!menu">Menu <span ng-show="menu" class="pull-right glyph-icon icon-chevron-down"></span><span ng-show="!menu" class="pull-right glyph-icon icon-chevron-up"></span></button> -->
+
+        <hr/>
+        <a type="button" ng-click="general=!general" class="btn btn-light text-left" href="/merchantcenter/general">
+          <h3><b>General</b></h3>
+        </a>
+        <hr/>
+        <a type="button" ng-show="general" class="btn btn-light text-left" href="/merchantcenter/registration">Registration</a>
+        <a type="button" ng-show="general" class="btn btn-light text-left" href="/merchantcenter/login">Login</a>
+        <a type="button" ng-show="general" class="btn btn-light text-left" href="/merchantcenter/navigation">Navigation</a>
+        <a type="button" ng-show="general" class="btn btn-light text-left" href="/merchantcenter/languages">Languages</a>
+
+        <hr/>
+        <a type="button" ng-click="dashboard=!dashboard" class="btn btn-light text-left" href="/merchantcenter/dashboard">
+          <h3><b>Dashboard</b></h3>
+        </a>
+        <hr/>
+        <a type="button" ng-show="dashboard" class="btn btn-light text-left" href="/merchantcenter/layouts">Layouts</a>
+        <a type="button" ng-show="dashboard" class="btn btn-light text-left" href="/merchantcenter/filters">Filters</a>
+        <a type="button" ng-show="dashboard" class="btn btn-light text-left" href="/merchantcenter/widgets">Widgets</a>
+
+        <hr/>
+        <a type="button" ng-click="orders=!orders" class="btn btn-light text-left" href="/merchantcenter/orders">
+          <h3><b>Orders</b></h3>
+        </a>
+        <hr/>
+        <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/filters">Filters</a>
+        <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/exportfile">Export CSV File</a>
+        <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/createtransaction">Create Order</a>
+        <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/orderdetails">Order Details</a>
+        <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/transactionoperations">Transaction Operations</a>
+        <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/currencies"> Currencies</a>
+        <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/managebaskets">Baskets</a>
+
+        <hr/>
+        <a type="button" ng-click="settlement=!settlement" class="btn btn-light text-left" href="/merchantcenter/settlement">
+          <h3><b>Settlements</b></h3>
+        </a>
+        <hr/>
+        <a type="button" ng-show="settlement" class="btn btn-light text-left" href="/merchantcenter/settlement/download">Download Settlements</a>
+        <a type="button" ng-show="settlement" class="btn btn-light text-left" href="/merchantcenter/settlement/filters">Filters</a>
+
+        <hr/>
+        <a type="button" ng-click="users=!users" class="btn btn-light text-left" href="/merchantcenter/usermanagement">
+          <h3><b>User Management</b></h3>
+        </a>
+        <hr/>
+        <a type="button" ng-show="users" class="btn btn-light text-left" href="/merchantcenter/inviteuser">Users</a>
+        <a type="button" ng-show="users" class="btn btn-light text-left" href="/merchantcenter/inviteuser">Invite User</a>
+
+        <hr/>
+        <a type="button" ng-click="paymentmethods=!paymentmethods" class="btn btn-light text-left" href="/merchantcenter/paymentmethods">
+          <h3><b>Payment Methods</b></h3>
+        </a>
+        <hr/>
+        <a type="button" ng-show="paymentmethods" class="btn btn-light text-left" href="/merchantcenter/paymentmethods">Payment Method Details</a>
+
+        <hr/>
+        <a type="button" ng-click="paymentinstrument=!paymentinstrument" class="btn btn-light text-left" href="/merchantcenter/paymentinstrument">
+          <h3><b>Payment Instruments</b></h3>
+        </a>
         <hr>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/usermanagement"><h3><b>User Management</b></h3></a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/inviteuser">User Management - Invite User</a>
+        <a type="button" ng-show="paymentinstrument" class="btn btn-light text-left" href="/merchantcenter/createpaymentinstrument">How to manage Payment Instruments</a>
+
+        <hr/>
+        <a type="button" ng-click="customer=!customer" class="btn btn-light text-left" href="/merchantcenter/customer">
+          <h3><b>Customers</b></h3>
+        </a>
         <hr>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/paymentinstrument"><h3><b>Payment Instruments</b></h3></a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createpaymentinstrument">How to manage Payment Instruments</a>
+        <a type="button" ng-show="customer" class="btn btn-light text-left" href="/merchantcenter/createcustomer">Manage customers</a>
+
+        <hr/>
+        <a type="button" ng-click="myaccount=!myaccount" class="btn btn-light text-left" href="/merchantcenter/myaccount">
+          <h3><b>My Account</b></h3>
+        </a>
         <hr>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/risksetting"><h3><b>Manage risk settings</b></h3></a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/managenotification">How to manage Notifications</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/manageblacklist">How to manage blacklists</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/manageriskcard">How to manage risk cards</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/rulecomparison">Ruletype I: Comparison (simple)</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/rulevelocityrisk">Ruletype II: Limits (velocity) Risks</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/gicc">Messages by External Systems<br/>( GICC )</a>
+        <a type="button" ng-show="myaccount" class="btn btn-light text-left" href="/merchantcenter/myaccount">My Account</a>
+
+        <hr/>
+        <a type="button" ng-click="customstyles=!customstyles" class="btn btn-light text-left" href="/merchantcenter/customstyles">
+          <h3><b>Custom Styles</b></h3>
+        </a>
+        <hr/>
+        <a type="button" ng-show="customstyles" class="btn btn-light text-left" href="/merchantcenter/myaccount">Custom Styles</a>
+
+        <hr/>
+        <a type="button" ng-click="notifications=!notifications" class="btn btn-light text-left" href="/merchantcenter/notifications">
+          <h3><b>Notifications</b></h3>
+        </a>
+        <hr/>
+        <a type="button" ng-show="notifications" class="btn btn-light text-left" href="/merchantcenter/managenotification">How to manage Notifications</a>
+
+        <hr/>
+        <a type="button" ng-click="risksetting=!risksetting" class="btn btn-light text-left" href="/merchantcenter/risksetting">
+          <h3><b>Risk settings</b></h3>
+        </a>
+        <hr/>
+        <a type="button" ng-show="risksetting" class="btn btn-light text-left" href="/merchantcenter/manageblacklist">How to manage blacklists</a>
+        <a type="button" ng-show="risksetting" class="btn btn-light text-left" href="/merchantcenter/manageriskcard">How to manage risk cards</a>
+        <a type="button" ng-show="risksetting" class="btn btn-light text-left" href="/merchantcenter/rulecomparison">Ruletype I: Comparison (simple)</a>
+        <a type="button" ng-show="risksetting" class="btn btn-light text-left" href="/merchantcenter/rulevelocityrisk">Ruletype II: Limits (velocity) Risks</a>
+
+        <hr/>
+        <a type="button" ng-click="widgettranslations=!widgettranslations" class="btn btn-light text-left" href="/merchantcenter/widgettranslations">
+          <h3><b>Widget Translations</b></h3>
+        </a>
+        <hr/>
+        <a type="button" ng-show="widgettranslations" class="btn btn-light text-left" href="/merchantcenter/widgettranslations">Widget Translations</a>
+
+        <hr/>
+        <a type="button" ng-click="other=!other" class="btn btn-light text-left" href="/merchantcenter/other">
+          <h3><b>Others</b></h3>
+        </a>
+        <hr/>
+        <a type="button" ng-show="other" class="btn btn-light text-left" href="/merchantcenter/gicc">Messages by External Systems<br/>( GICC )</a>
+
         <br/>
     </div>
     <div class="col-md-8">

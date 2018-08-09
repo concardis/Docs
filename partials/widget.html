@@ -19,14 +19,14 @@
 				<h3 class="panel-title">Init widget</h3>
 			</div>
 			<div class="panel-body">
-				<form ng-init="createOrder()">
+				<form>
 					<div class="form-group">
 						<label class="col-md-12" class="control-label" for="merchantId">MerchantID</label>
 						<input id="merchantId" class="form-control" type="text" ng-model="merchantId" />
 					</div>
 					<div class="form-group" ng-if="currExample!=examplesList.inlinePiExample">
 						<label class="col-md-12" for="orderId">OrderID</label>
-						<input id="orderId" class="form-control" type="text" ng-model="orderId"/>
+						<input id="orderId" class="form-control" type="text" ng-model="order.orderId"/>
 					</div>
 					<div class="form-group">
 						<label class="col-md-12" for="language">Language</label>
@@ -41,10 +41,10 @@
 							</label>
 							<hr />
 							<div>
-								<label ng-repeat="product in productsArray" class="col-md-6">
-					        <input type="checkbox" id="product.type" ng-model="product.enabled" ng-disabled="allSelected"
+								<label ng-repeat="product in order.allowedProducts" class="col-md-6">
+					        <input type="checkbox" id="product" ng-model="productsArray[product].enabled" ng-disabled="allSelected"
 													ng-change="onProductSelect(product)">
-					        <span>{{product.label}}</span>
+					        <span>{{productsArray[product].label}}</span>
 					      </label>
 							</div>
 						</div>
@@ -262,6 +262,14 @@
 					<button class="btn primary btn-block" type="button" ng-click="payExample()"><span>PAY</span></button>
 				</div>
 			</div>
+		</div>
+	</div>
+  <div class="panel">
+    <div class="panel-heading">
+			<h3 class="panel-title">Widget Request</h3>
+		</div>
+		<div class="panel-body results">Request:
+			<p id="widgetRequest" class="alert alert-warning" ng-model="widgetRequest"></p>
 		</div>
 	</div>
 	<div class="panel">

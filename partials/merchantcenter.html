@@ -20,6 +20,7 @@
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/dashboard">Dashboard</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createtransaction">Orders - Create </a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/errortransaction">Orders - Errors </a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/currencies"> Currencies</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/settlement">Settlements</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/customer">Customers</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createcustomer">Manage customers</a>
@@ -101,6 +102,10 @@
         </div>
         <div ng-show="cur=='myaccount'">
             <div  ng-include="'/partials/merchant/myaccount.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='currencies'">
+            <div  ng-include="'/partials/merchant/currencies.html'">
             </div>
         </div>
         <div ng-show="cur=='settlement'">

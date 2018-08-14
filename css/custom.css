@@ -1,3 +1,12 @@
 .table-tr{
   border: 1px solod black;
 }
+.label-align-right {
+    text-align: right;
+}
+.info-table-text {
+  padding: 0 10px;
+  text-align: right;
+  color: #6f6f6f;
+  font-weight: normal;
+}

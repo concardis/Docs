@@ -2,7 +2,7 @@
     <div class="col-md-1">
     </div>
     <div class="col-md-10">
-        
+
         <br>
     </div>
     <div class="col-md-1">
@@ -19,6 +19,7 @@
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/navigation">Navigation</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/dashboard">Dashboard</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createtransaction">Orders - Create </a>
+        <!-- <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/transactionoperations">Orders - Operation </a> -->
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/errortransaction">Orders - Errors </a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/currencies"> Currencies</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/settlement">Settlements</a>
@@ -64,6 +65,10 @@
            <div ng-include="'/partials/merchant/createtransaction.html'">
             </div>
         </div>
+        <!-- <div ng-show="cur=='transactionoperations'">
+           <div ng-include="'/partials/merchant/transactionoperations.html'">
+            </div>
+        </div> -->
         <div ng-show="cur=='errortransaction'">
             <div  ng-include="'/partials/merchant/errortransaction.html'">
             </div>

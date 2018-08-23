@@ -86,6 +86,10 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
     container.innerHTML="";
     }
 
+    if(exampleType==$scope.examplesList.inlineExample){
+       $scope.optionalParameters.layout="dropdown" ;
+    }
+
     if(exampleType==$scope.examplesList.testPIExample){
       $scope.paymentInstrumentId = "paymentinstrument_twnv71bkkb";
     }else{

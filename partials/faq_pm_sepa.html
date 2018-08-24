@@ -1,0 +1,834 @@
+<div>
+	<h3>Payment Method Overview</h3>
+	</br>
+	<div class="content-box-wrapper">
+		<div class="pricing-box-alt row clearfix">
+			<div class="col-md-3 plans-features">
+				<ul>
+					<li class="header ms-hover"></li>
+					<li class="ms-hover">Name</li>
+					<li class="ms-hover">Type</li>
+					<li class="ms-hover">Flow</li>
+					<li class="ms-hover">Redirect user</li>
+					<li class="header ms-hover"></li>
+					<li class="ms-hover">Channel</li>
+					<li class="ms-hover">Supported Currencies</li>
+					<li class="ms-hover">Supported Countries</li>
+					<li class="header ms-hover"></li>
+					<li class="ms-hover">Debits</li>
+					<li class="ms-hover">Preauthorizations</li>
+					<li class="ms-hover">Cancelation</li>
+					<li class="ms-hover">Partial Cancelation</li>
+					<li class="ms-hover">Captures</li>
+					<li class="ms-hover">Partial Captures</li>
+					<li class="ms-hover">Refunds</li>
+					<li class="ms-hover">Partial refunds</li>
+					<li class="ms-hover">Chargebacks</li>
+					<li class="header ms-hover"></li>
+					<li class="ms-hover">Recurring Transactions</li>
+					<li class="ms-hover">Reusable Payment Instruments</li>
+					<li class="header ms-hover"></li>
+					<li class="ms-hover">Settlements</li>
+					<li class="header ms-hover"></li>
+					<li class="ms-hover">Bridge Integration</li>
+					<li class="ms-hover">Widget Integration</li>
+					<li class="ms-hover">PayLink Integration</li>
+					<li class="ms-hover">Shop Modules Integration</li>
+					<li class="header ms-hover"></li>
+					<li class="ms-hover">Notifications</li>
+				</ul>
+			</div>
+			<div class="individual-plan">
+				<ul>
+					<li class="header ms-hover"></li>
+					<li class="ms-hover">SEPA</li>
+					<li class="ms-hover">Direct Debit</li>
+					<li class="ms-hover">Asynchronous</li>
+					<li class="ms-hover">No</li>
+					<li class="header ms-hover"></li>
+					<li class="ms-hover">ECOM, MOTO</li>
+					<li class="ms-hover">EUR</li>
+					<li class="ms-hover">DE</li>
+					<li class="header ms-hover"></li>
+					<li class="ms-hover">Yes</li>
+					<li class="ms-hover">Yes</li>
+					<li class="ms-hover">Yes</li>
+					<li class="ms-hover">Yes</li>
+					<li class="ms-hover">Yes</li>
+					<li class="ms-hover">Yes</li>
+					<li class="ms-hover">No (on the roadmap)</li>
+					<li class="ms-hover">No (on the roadmap)</li>
+					<li class="ms-hover">Yes</li>
+					<li class="header ms-hover"></li>
+					<li class="ms-hover">Yes</li>
+					<li class="ms-hover">Yes</li>
+					<li class="header ms-hover"></li>
+					<li class="ms-hover">Yes</li>
+					<li class="header ms-hover"></li>
+					<li class="ms-hover">Partial (on the roadmap)</li>
+					<li class="ms-hover">Yes</li>
+					<li class="ms-hover">Yes*(please contact support or account manager for this feature)</li>
+					<li class="ms-hover">Yes*(please contact support or account manager for this feature)</li>
+					<li class="header ms-hover"></li>
+					<li class="ms-hover">email, webhook</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<br/>
+<div>
+	<h3>GENERAL</h3>
+	</br>
+	<div>
+		<p>
+			<strong>What is SEPA?</strong>
+		</p>
+		<p>
+			<strong> </strong>
+		</p>
+		<p>Single Euro Payments Area (SEPA) is an initiative of the European Payment Council (EPC) which aims at easing the process of payments within the Europe. Please visit EPC website section About SEPA (<a href="https://www.europeanpaymentscouncil.eu/about-sepa">https://www.europeanpaymentscouncil.eu/about-sepa</a>)
+			for further information.</p>
+		<br/>
+		<p>
+			<strong>What is the payment method flow?</strong>
+		</p>
+		<br/>
+		<p>
+			The SEPA Direct Debit in Payengine follows an <strong>asynchronous</strong> flow in which the confirmation of processing the payment is received only after a delay.
+			<!-- With SEPA this delay is usually …. -->Until the confirmation is received the transaction status is <strong>OK </strong>meaning that the Payengine accepts the request but further processing is still pending. After processing the payment the status of the transaction will change to either
+			<strong>success</strong> or <strong>failure</strong> depending on the result.
+		</p>
+		<br/>
+		<p>
+			With Payengine’s SEPA Deirect Debit your customer <strong>won’t be redirected</strong> out of your shop integration and after providing his payment details no further action is required on his side.
+		</p>
+		<br/>
+		<p>
+			Optionally the Payengine provides a convenient way to setup <strong>email prenotifications</strong> for SEPA Direct Debit. There is a general prenotification template which can be found <strong>below. </strong>For prenotifications you should enable them via the Merchant Center and also provide customer email within the order request.
+		</p>
+		<br/>
+		<p>
+			<div class="example-box-wrapper">
+				<div class="content-box" ng-init="sepaPrenotificationsShow=false">
+					<h3 class="content-box-header bg-default">
+							More about prenotifications...
+							<div class="header-buttons-separator">
+									<a href class="icon-separator toggle-button" ng-click="sepaPrenotificationsShow!=sepaPrenotificationsShow; console.log(sepaPrenotificationsShow)">
+										<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+										<i class="glyph-icon icon-chevron-up" ng-if="sepaPrenotificationsShow"></i>
+										<i class="glyph-icon icon-chevron-down" ng-if="!sepaPrenotificationsShow"></i>
+									</a>
+							</div>
+					</h3>
+					<!-- <div class="content-box-wrapper" ng-if="sepaPrenotificationsShow"> -->
+					<div class="content-box-wrapper">
+						<p>
+							Pre-notification ("Pre-Notification") is any notification (eg invoice, policy, contract) of the direct debit recipient to the payer, which announces a debit via SEPA direct debit. The preliminary information must contain the due date and the exact amount and can also announce several direct debits. It must be sent to the payer in due time (at least 14 calendar days before the due date, unless a different period has been agreed with the payer) before the due date, so that he can adjust to the account balance and provide adequate cover. The manner in which the preliminary information can be given results from the regulations of the respective debt collection agreement between the payee and his payment service provider.
+						</p>
+					</div>
+				</div>
+			</div>
+		</p>
+		<p>
+			<div class="example-box-wrapper">
+				<div class="content-box">
+					<h3 class="content-box-header bg-default">
+		          Template for the SEPA Prenotification
+              <div class="header-buttons-separator">
+                  <a href="#" class="icon-separator toggle-button">
+                      <i class="glyph-icon icon-chevron-up"></i>
+                  </a>
+              </div>
+          </h3>
+					<!-- <div class="content-box">//////!!!!! closed
+						<h3 class="content-box-header bg-default">
+                Template for the SEPA Prenotification
+                <div class="header-buttons-separator">
+                    <a href="#" class="icon-separator toggle-button">
+                        <i class="glyph-icon icon-chevron-down"></i>
+                    </a>
+                </div>
+            </h3>
+						<div class="content-box-wrapper hide">
+							This content boxes has the header with <code>.bg-default</code>.
+						</div>
+					</div> -->
+					<div class="content-box-wrapper">
+						<p>
+							Dies ist eine automatisch generierte E-Mail. Neue SEPA-Lastschriftvorankündigung
+							</br>
+							Sehr geehrte Kundin,
+							</br>
+							sehr geehrter Kunde,
+							</br>
+							Vielen Dank für Ihren Bestellung/Buchung bei {merchant name}
+							</br>
+							Die Forderung von {currency} {amount} ziehen wir mit der SEPA-Lastschrift zum Mandat Nr. {mandate id} zu der Gläubiger-Identifikationsnummer {creditor id} von Ihrem Konto IBAN {iban} bei der Hamburger Sparkasse BIC {bic} zum Fälligkeitstag {due date}
+							ein.
+							</br>
+							Aus rechtlichen Gründen sind wir verpflichtet Sie über jede SEPA-Lastschrift vorab zu informieren.
+							</br>
+							Bei Fragen zu Ihrer Rechnung wenden Sie sich bitte an service@concardis.com
+							</br>
+							Mit freundlichen Grüßen,
+							</br>
+							Concardis GmbH
+							</br>
+							Concardis GmbH
+							</br>
+							Helfmann-Park 7
+							</br>
+							65760 Eschborn
+							</br>
+							Germany
+							</br>
+							Telefon: +49 69 7922-0
+							</br>
+							Telefax: +49 69 7922-4500
+							</br>
+							E-Mail: service@concardis.com
+							</br>
+							Geschäftsführung: Marcus W. Mosen (Vorsitzender), Jens Mahlke. Vorsitzender des Aufsichtsrates: Stuart Gent
+							</br>
+							USt-IdNr : DE 228 965 682.
+							</br>
+							</br>
+							Wenn diese Email nicht für Sie bestimmt ist, bitten wir Sie, uns umgehend über den irrtümlichen Empfang zu informieren und diese Email zu löschen. Wir danken Ihnen für Ihre Unterstützung.
+							</br>
+						</p>
+					</div>
+				</div>
+			</div>
+		</p>
+		<br/>
+		<p>
+			<strong>What the customer needs to provide for SEPA Direct Debit?</strong>
+		</p>
+		<br/>
+		<p>The customer should provide a valid <strong>IBAN</strong><strong>, </strong>
+			<strong>BIC</strong>, <strong>Account Holder, Bank Name </strong>name.</p>
+		<p>He needs as well to agree with a <strong>Mandate</strong> statement which should be displayed to him on the payment form.</p>
+		<p>Based on this information a Payengine Payment Instrument is created securely which can be used for either onetime or recurring payments.</p>
+		<br/>
+		<p>
+			<strong>What is a Mandate?</strong>
+		</p>
+		<br/>
+		<p>
+			The SEPA mandate is usually a paper document, but since it is not possible to implement a paper document in eCommerce, electronic mandates (eMandates) are used. The Mandates are <strong>stored within the Payengine Payment Instrument</strong>. <!--(<em>API link)</em>-->
+		</p>
+		<br/>
+		<p>
+			These mandates have a <strong>unique identifier</strong> and store the <strong>text </strong><em>(see the text below)</em> and <strong>timestamp</strong> the customer agreed to this specific mandate.
+		</p>
+		<br/>
+		<p>
+			<div class="example-box-wrapper">
+				<div class="content-box">
+					<h3 class="content-box-header bg-default">
+		          SEPA Mandatstext
+              <div class="header-buttons-separator">
+                  <a href="#" class="icon-separator toggle-button">
+                      <i class="glyph-icon icon-chevron-up"></i>
+                  </a>
+              </div>
+          </h3>
+					<!-- <div class="content-box">//////!!!!! closed
+						<h3 class="content-box-header bg-default">
+                SEPA Mandatstext
+                <div class="header-buttons-separator">
+                    <a href="#" class="icon-separator toggle-button">
+                        <i class="glyph-icon icon-chevron-down"></i>
+                    </a>
+                </div>
+            </h3>
+						<div class="content-box-wrapper hide">
+							This content boxes has the header with <code>.bg-default</code>.
+						</div>
+					</div> -->
+					<div class="content-box-wrapper">
+						<p>
+							Ich ermächtige die Concardis GmbH, Helfman-Park 7 in 65760 Eschborn, GläubigerID DE82CC000000346626, Zahlungen von meinem Konto mittels SEPA-Lastschrift unter der Mandatsreferenz [mandateId] einzuziehen. Zugleich weise ich mein Kreditinstitut an, die
+							von Concardis GmbH auf mein Konto gezogenen SEPA-Lastschriften einzulösen.
+							</br>
+							Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belasteten Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen.
+							</br>
+							</br>
+							Verkürzung der Ankündigungsfrist:
+							</br>
+							Die Frist für die Vorabinformation der SEPA-Lastschrift wird auf einen Tag verkürzt.
+							</br>
+						</p>
+					</div>
+				</div>
+			</div>
+		</p>
+		<br/>
+		<p>
+			Apart from that within Payengine the mandate object of a payment instrument is used for tracking the usage of a payment instrument through the type property.
+		</p>
+		<br/>
+		<p>There are four types of direct debit mandate:</p>
+		<br/>
+		<div class="hide-columns">
+      <table class="table table-bordered table-striped table-condensed">
+          <thead>
+            <tr>
+              <th>Mandate directDebitType</th>
+              <th>Description</th>
+              <th>Purpose</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>Single</td>
+            <td>One execution</td>
+            <td>Onetime payments</td>
+          </tr>
+          <tr>
+						<td>First</td>
+            <td>The initial usage of the payment instrument</td>
+            <td>Recurring Payments</td>
+          </tr>
+          <tr>
+						<td>Recurring</td>
+            <td>Any further usage of the payment instrument</td>
+            <td>Recurring Payments</td>
+          </tr>
+          <tr>
+						<td>Last</td>
+            <td>The last usage of a payment instrument</td>
+            <td>Recurring Payments</td>
+          </tr>
+          </tbody>
+      </table>
+		</div>
+		<br/>
+	</div>
+</div>
+<br/>
+<div>
+	<h3>ONETIME PAYMENTS</h3>
+	<div>
+		</br>
+		<p>
+			<strong>What are onetime payments?</strong>
+		</p>
+		</br>
+		<p>
+			When a customer authorizes you for a single usage of his bank details for a payment.
+		</p>
+		</br>
+		<p>
+			<strong>How to handle onetime payments?</strong>
+		</p>
+		<ul>
+			<li>
+				Collect payment data and place the order in your shop
+				<!-- <p>[AN APPROPRIATE VISUAL EXAMPLE OF A MOCK PAYMENT FORM SHOULD GO HERE]</p> -->
+			</li>
+			<li>
+				Perform the backend-to-backend order debit request.
+				<a href="/buildyourown/restapi#operations-orders-OrdersDebit">(Api documentation)</a>
+				<p>
+					<div class="example-box-wrapper">
+						<div class="content-box">
+							<h3 class="content-box-header bg-default">
+								<span class="header-wrapper">
+                  Request Example
+									</br>
+                  <small>POST /orders/debit</small>
+                </span>
+									<div class="header-buttons-separator">
+										<a href="#" class="icon-separator toggle-button">
+											<i class="glyph-icon icon-chevron-up"></i>
+										</a>
+									</div>
+							</h3>
+							<!-- <div class="content-box">//////!!!!! closed
+							<h3 class="content-box-header bg-default">
+								<span class="header-wrapper">
+                  Example
+									</br>
+                  <small>POST /orders/debit</small>
+                </span>
+									<div class="header-buttons-separator">
+										<a href="#" class="icon-separator toggle-button">
+											<i class="glyph-icon icon-chevron-down"></i>
+										</a>
+									</div>
+							</h3>
+								<div class="content-box-wrapper hide">
+									This content boxes has the header with <code>.bg-default</code>.
+								</div>
+							</div> -->
+							<div>
+								<code>
+{
+    "initialAmount": 1190,
+    "currency": "EUR",
+    "product": "sepa",
+    "payment": {
+        "iban": "DE15111111111111111199",
+        "bankName": "Bank Name",
+        "bic": "BENEDEPPY",
+        "accountHolder": "Max Muster",
+        "mandate": {
+            "mandateId": "mandate_id_000000",
+            "createdDateTime": 1532507015,
+            "mandateText": "Ich ermächtige die Concardis GmbH, Helfman-Park 7 in 65760 Eschborn, GläubigerID DE82CC000000346626, Zahlungen von meinem Konto mittels SEPA-Lastschrift unter der Mandatsreferenz mandate_id_000000 einzuziehen. Zugleich weise ich mein Kreditinstitut an, die von Concardis GmbH auf mein Konto gezogenen SEPA-Lastschriften einzulösen. Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belasteten Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen. Verkürzung der Ankündigungsfrist: Die Frist für die Vorabinformation der SEPA-Lastschrift wird auf einen Tag verkürzt.",
+            "directDebitType": "SINGLE"
+        }
+    },
+    "customer": "customer_vlp5nrhwcz",
+    "persona": "persona_6ahp3hzik3",
+    "address": "address_0cwxchdzrc",
+    "basket": [
+        {
+            "name": "Usb flash drive",
+            "articleNumber": "420",
+            "totalPrice": 1000,
+            "totalPriceWithTax": 1190,
+            "unitPrice": 1000,
+            "unitPriceWithTax": 1190,
+            "tax": 19,
+            "quantity": 1
+        }
+    ]
+}
+								</code>
+							</div>
+						</div>
+					</div>
+				</p>
+				<br/>
+				<p>This request will lead to a response similar to the one below.</p>
+				<br/>
+				<p>
+					<div class="example-box-wrapper">
+						<div class="content-box">
+							<h3 class="content-box-header bg-default">
+								<span class="header-wrapper">
+                  Response Example
+									</br>
+                  <small>POST /orders/debit</small>
+                </span>
+									<div class="header-buttons-separator">
+										<a href="#" class="icon-separator toggle-button">
+											<i class="glyph-icon icon-chevron-up"></i>
+										</a>
+									</div>
+							</h3>
+							<!-- <div class="content-box">//////!!!!! closed
+							<h3 class="content-box-header bg-default">
+								<span class="header-wrapper">
+                  Example
+									</br>
+                  <small>POST /orders/debit</small>
+                </span>
+									<div class="header-buttons-separator">
+										<a href="#" class="icon-separator toggle-button">
+											<i class="glyph-icon icon-chevron-down"></i>
+										</a>
+									</div>
+							</h3>
+								<div class="content-box-wrapper hide">
+									This content boxes has the header with <code>.bg-default</code>.
+								</div>
+							</div> -->
+							<div>
+								<code>
+{    
+	"createdAt": 1532511122290,    
+	"modifiedAt": 1532511122303,    
+	"merchantId": "Merchant-11111111-1111-1111-1111-111111111111",    
+	"terms": null,    
+	"privacy": null,    
+	"orderId": "d0kokqu9b0",    
+	"merchantOrderId": null,    
+	"paymentProviderTransactionId":null,    
+	"description": null,    
+	"statementDescription": null,    
+	"initialAmount": 1190,    
+	"preauthorizedAmount": 1190,    
+	"capturedAmount": 1190,    
+	"refundedAmount": 0,    
+	"canceledAmount": 0,    
+	"currency": "EUR",    
+	"basket": [        
+		{
+			"id": "Article-52b5384f-0f1c-4352-9783-90924eb7b4b9",            
+			"name": "Usb flash drive",            
+			"articleNumber": "420",            
+			"totalPrice": 1000,            
+			"totalPriceWithTax": 1190,            
+			"unitPrice": 1000,           
+			"unitPriceWithTax": 1190,            
+			"quantity": 1,            
+			"tax": 19,            
+			"discount": null        
+		}    
+	],
+	"customer": {
+		//customer details
+	},
+	"persona": {
+		//persona details
+	},    
+	"billingAddress": {
+		//billingAddress details
+	},    
+	"shippingAddress": {        
+		//shippingAddress details    
+	},    
+	"ipAddress": null,    
+	"paymentInstrument": {        
+		"createdAt": 1532511122288,        
+		"modifiedAt": 1532511122288,        
+		"paymentInstrumentId": "paymentinstrument_oaou5h6czn",        
+		"merchantPaymentInstrumentId": null,        
+		"attributes": {            
+			"iban": "DE15111111111111111199",            
+			"bic": null,            
+			"accountHolder": "Max Muster",            
+			"bankName": "Bank Name",
+			"mandate": {                
+				"mandateReference": "mandate_id_000000",                
+				"createdDateTime": 1532507000,                
+				"mandateText": "Ich ermächtige die Concardis GmbH, Helfman-Park 7 in 65760 Eschborn, GläubigerID DE82CC000000346626, Zahlungen von meinem Konto mittels SEPA-Lastschrift unter der Mandatsreferenz mandate_id_000000 einzuziehen. Zugleich weise ich mein Kreditinstitut an, die von Concardis GmbH auf mein Konto gezogenen SEPA-Lastschriften einzulösen. Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belasteten Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen. Verkürzung der Ankündigungsfrist: Die Frist für die Vorabinformation der SEPA-Lastschrift wird auf einen Tag verkürzt.",                
+				"directDebitType": "SINGLE"            
+			}        
+		},        
+		"encrypted": false,        
+		"origin": "sepa",        
+		"type": "sepa",        
+		"recurring": false    
+	},
+	"transactions": [        
+	{           
+		"createdAt": 1532511122293,            
+		"modifiedAt": 1532511122300,            
+		"type": "DEBIT",            
+		"transactionId": "transaction_7yjx4k4upl",            
+		"description": null,            
+		"initialAmount": 1190,           
+		"refundedAmount":0,            
+		"currency": "EUR",            
+		"status": "OK",            
+		"order": "d0kokqu9b0",            
+		"parentTransaction": null,            
+		"transactions": null,            
+		"basket": [                
+		{                    
+			"id": "Article-52b5384f-0f1c-4352-9783-90924eb7b4b9",
+			"name": "Usb flash drive",                    
+			"articleNumber": "420",                    
+			"totalPrice": 1000,                    
+			"totalPriceWithTax": 1190,                    
+			"unitPrice": 1000,                    
+			"unitPriceWithTax": 1190,                    
+			"quantity": 1,                    
+			"tax": 19,                    
+			"discount": null                
+		}],
+		"providerCode": null,            
+		"merchantMessage": null,            
+		"customerMessage": null,
+		"descriptor": null        
+	},    
+	"status": "OPEN",    
+	"channel": "ECOM",    
+	"source": null,    
+	"settled": false,    
+	"settlementDate": null,    
+	"allowedProducts": [],    
+	"product": "sepa",    
+	"transactionType": "DEBIT",    
+	"meta": {       
+		"mandate": {            
+			"mandateId": "mandate_id_000000",            
+			"createdDateTime": 1532507000,            
+			"mandateText": "Ich ermächtige die Concardis GmbH, Helfman-Park 7 in 65760 Eschborn, GläubigerID DE82CC000000346626, Zahlungen von meinem Konto mittels SEPA-Lastschrift unter der Mandatsreferenz mandate_id_000000 einzuziehen. Zugleich weise ich mein Kreditinstitut an, die von Concardis GmbH auf mein Konto gezogenen SEPA-Lastschriften einzulösen. Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belasteten Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen. Verkürzung der Ankündigungsfrist: Die Frist für die Vorabinformation der SEPA-Lastschrift wird auf einen Tag verkürzt.",            
+			"directDebitType": "SINGLE"        
+		}    
+	},    
+	"async": null,    
+	"deviceIdent": null
+}
+								</code>
+							</div>
+						</div>
+					</div>
+				</p>
+				<p>
+					Please pay special attention to the mandate object which was attached both to the resulting payment instrument and to the order’s meta object. This is a convenience via which you can easily track the usage of a certain mandate through this relations.
+				</p>
+			</li>
+			<li>
+				Notify user of a successful SEPA payment and the notification he is about to receive via email.
+			<!-- <p>[AN APPROPRIATE VISUAL EXAMPLE OF A MOCK PAYMENT FORM SHOULD GO HERE]</p> -->
+			</li>
+		</ul>
+		<br/>
+	</div>
+</div>
+<br/>
+<div>
+	<h3>RECURRING PAYMENTS</h3>
+	<br/>
+	<div>
+		<p>
+			<strong>What are recurring payments?</strong>
+		</p>
+		<br/>
+		<p>When a customer authorizes you to perform a series of payments with his bank details.</p>
+		<br/>
+		<p>
+			<strong>How to handle recurring payments?</strong>
+		</p>
+		<br/>
+		<p>
+			Recurring payments are handled with the use of the directDebitType of the mandate object which points to the type of usage for the particular order. You should mark orders as First, Recurring and Last according to the table provided above <!-- !!!!!!(link)-->.
+		</p>
+		<br/>
+		<ul>
+			<li>
+				Collect payment data and place the order in your shop
+				<!-- <p>[AN APPROPRIATE VISUAL EXAMPLE OF A MOCK PAYMENT FORM SHOULD GO HERE]</p> -->
+			</li>
+			<li>
+				Perform the backend-to-backend payment-instrument request
+				<a href="/buildyourown/restapi#operations-payment-PaymentInstruments1">(Api documentation)</a>
+				<p>
+					<div class="example-box-wrapper">
+						<div class="content-box">
+							<h3 class="content-box-header bg-default">
+								<span class="header-wrapper">
+                  Request Example
+									</br>
+                  <small>POST /payment-instruments</small>
+                </span>
+									<div class="header-buttons-separator">
+										<a href="#" class="icon-separator toggle-button">
+											<i class="glyph-icon icon-chevron-up"></i>
+										</a>
+									</div>
+							</h3>
+							<!-- <div class="content-box">//////!!!!! closed
+							<h3 class="content-box-header bg-default">
+								<span class="header-wrapper">
+                  Request Example
+									</br>
+                  <small>POST /payment-instruments</small>
+                </span>
+									<div class="header-buttons-separator">
+										<a href="#" class="icon-separator toggle-button">
+											<i class="glyph-icon icon-chevron-down"></i>
+										</a>
+									</div>
+							</h3>
+								<div class="content-box-wrapper hide">
+									This content boxes has the header with <code>.bg-default</code>.
+								</div>
+							</div> -->
+							<div>
+								<code>
+{
+    "type": "sepa",
+    "merchantPaymentInstrumentId": "my-pi-00000",
+    "payment": {
+        "iban": "DE82370502991390006124",
+        "bic": "COKSDE33XXX",
+        "bankName": "DKB",
+        "accountHolder": "Max Mustermann",
+        "mandate": {
+            "mandateId": "mandate_id_000000",
+            "createdDateTime": 1532507000,
+            "mandateText": "Ich ermächtige die Concardis GmbH, Helfman-Park 7 in 65760 Eschborn, GläubigerID DE82CC000000346626, Zahlungen von meinem Konto mittels SEPA-Lastschrift unter der Mandatsreferenz mandate_id_000000 einzuziehen. Zugleich weise ich mein Kreditinstitut an, die von Concardis GmbH auf mein Konto gezogenen SEPA-Lastschriften einzulösen. Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belasteten Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen. Verkürzung der Ankündigungsfrist: Die Frist für die Vorabinformation der SEPA-Lastschrift wird auf einen Tag verkürzt.",
+            "directDebitType": "FIRST"
+        }
+    }
+}
+								</code>
+							</div>
+						</div>
+					</div>
+				</p>
+				<br/>
+				<p>This request should result in a recurring payment instrument.(See Example below)</p>
+				<br/>
+				<p>
+					<div class="example-box-wrapper">
+						<div class="content-box">
+							<h3 class="content-box-header bg-default">
+								<span class="header-wrapper">
+                  Response Example
+									</br>
+                  <small>POST /payment-instruments</small>
+                </span>
+									<div class="header-buttons-separator">
+										<a href="#" class="icon-separator toggle-button">
+											<i class="glyph-icon icon-chevron-up"></i>
+										</a>
+									</div>
+							</h3>
+							<!-- <div class="content-box">//////!!!!! closed
+							<h3 class="content-box-header bg-default">
+								<span class="header-wrapper">
+                  Response Example
+									</br>
+                  <small>POST /payment-instruments</small>
+                </span>
+									<div class="header-buttons-separator">
+										<a href="#" class="icon-separator toggle-button">
+											<i class="glyph-icon icon-chevron-down"></i>
+										</a>
+									</div>
+							</h3>
+								<div class="content-box-wrapper hide">
+									This content boxes has the header with <code>.bg-default</code>.
+								</div>
+							</div> -->
+							<div>
+								<code>
+{
+  "createdAt": 1532526478832,
+  "modifiedAt": 1532526478832,
+  "paymentInstrumentId": "paymentinstrument_x35efhsbzq",
+  "merchantPaymentInstrumentId": "my-pi-00000",
+  "attributes": {
+      "iban": "DE82370502991390006124",
+      "bic": "COKSDE33XXX",
+      "accountHolder": "Max Mustermann",
+      "bankName": "DKB",
+      "mandate": {
+          "mandateReference": "mandate_id_000000",
+          "createdDateTime": 1532507000,
+          "mandateText": "Ich ermächtige die Concardis GmbH, Helfman-Park 7 in 65760 Eschborn, GläubigerID DE82CC000000346626, Zahlungen von meinem Konto mittels SEPA-Lastschrift unter der Mandatsreferenz mandate_id_000000 einzuziehen. Zugleich weise ich mein Kreditinstitut an, die von Concardis GmbH auf mein Konto gezogenen SEPA-Lastschriften einzulösen. Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belasteten Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen. Verkürzung der Ankündigungsfrist: Die Frist für die Vorabinformation der SEPA-Lastschrift wird auf einen Tag verkürzt.",
+          "directDebitType": "FIRST"
+      }
+  },
+  "encrypted": false,
+  "origin": "sepa",
+  "type": "sepa",
+  "recurring": true
+}
+								</code>
+							</div>
+						</div>
+					</div>
+				</p>
+			</li>
+			<li>
+				Use the already created payment instrument for executing orders providing only the directDebitType that stands for the current usage of the mandate. (FIRST/RECURRING/LAST)
+				<a href="/buildyourown/restapi#operations-orders-OrdersDebit">(Api documentation)</a>
+				<p>
+					<div class="example-box-wrapper">
+						<div class="content-box">
+							<h3 class="content-box-header bg-default">
+								<span class="header-wrapper">
+									Request Example
+									</br>
+									<small>POST /orders/debit</small>
+								</span>
+									<div class="header-buttons-separator">
+										<a href="#" class="icon-separator toggle-button">
+											<i class="glyph-icon icon-chevron-up"></i>
+										</a>
+									</div>
+							</h3>
+							<!-- <div class="content-box">//////!!!!! closed
+							<h3 class="content-box-header bg-default">
+								<span class="header-wrapper">
+									Request Example
+									</br>
+									<small>POST /orders/debit</small>
+								</span>
+									<div class="header-buttons-separator">
+										<a href="#" class="icon-separator toggle-button">
+											<i class="glyph-icon icon-chevron-down"></i>
+										</a>
+									</div>
+							</h3>
+								<div class="content-box-wrapper hide">
+									This content boxes has the header with <code>.bg-default</code>.
+								</div>
+							</div> -->
+							<div>
+								<code>
+{
+  "initialAmount": 1190,
+  "currency": "EUR",
+  "product": "sepa",
+  "payment": {
+    "paymentInstrumentId": "paymentinstrument_x35efhsbzq",
+    "mandate": {
+      "directDebitType": "RECURRING"
+    }
+  },
+  "customer": "customer_vlp5nrhwcz",
+  "persona": "persona_6ahp3hzik3",
+  "address": "address_0cwxchdzrc",
+  "basket": [
+    {
+      "name": "Usb flash drive",
+      "articleNumber": "420",
+      "totalPrice": 1000,
+      "totalPriceWithTax": 1190,
+      "unitPrice": 1000,
+      "unitPriceWithTax": 1190,
+      "tax": 19,
+      "quantity": 1
+    }
+  ]
+}
+								</code>
+							</div>
+						</div>
+					</div>
+				</p>
+			<li>
+				Notify user of a successful SEPA payment and the notification he is about to receive via email.
+			<!-- <p>[AN APPROPRIATE VISUAL EXAMPLE OF A MOCK PAYMENT FORM SHOULD GO HERE]</p> -->
+			</li>
+		</ul>
+	</div>
+</div>
+<br/>
+<div>
+	<h3>SEPA NOTIFICATIONS</h3>
+	<br/>
+	<div>
+		<p>
+			We strongly recomment to subscribe the webhooks for transaction success and after that to send the goods to the end customer.
+		</p>
+		<p>
+			You can found how to setup webhooks in <a href="/merchantcenter/managenotification">Notifications section</a>.
+		</p>
+		<p>
+			To receive notification on transaction success you will need to activate "transaction create success" option:
+		</p>
+		</br>
+		<img class="" src="/img/faq/sepa_webhook.png" width="100%" />
+	</div>
+</div>
+<br/>
+<div>
+	<h3>SEPA SETTLEMENTS</h3>
+	<br/>
+	<div>
+		You can find more information about settlements in <a target="_blank" href="/merchantcenter/settlement">"Merchant center" "Settlements" section</a>.
+	</div>
+</div>
+<br/>
+<div>
+	<h3>BACKOFFICE OPERATIONS AND MOTO VIA THE MERCHANT CENTER</h3>
+	<br/>
+	<div>
+		You can find more information about Create Order via the Merchant Center in <a target="_blank" href="/merchantcenter/createtransaction">"Merchant center" "Create Order" section</a>.
+	</div>
+	<!-- <div>
+		About cancel/capture operations via the Merchant Center find more information in <a target="_blank" href="/merchantcenter/createtransaction">"Merchant center" "Order Operations" section</a>.
+	</div> -->
+</div>

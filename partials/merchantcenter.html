@@ -46,6 +46,7 @@
         <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/transactionoperations">Transaction Operations</a>
         <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/currencies"> Currencies</a>
         <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/managebaskets">Baskets</a>
+        <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/errortransaction">Orders - Errors </a>
 
         <hr/>
         <a type="button" ng-click="settlement=!settlement" class="btn btn-light text-left" href="/merchantcenter/settlement">
@@ -73,8 +74,7 @@
         <hr/>
         <a type="button" ng-click="paymentinstrument=!paymentinstrument" class="btn btn-light text-left" href="/merchantcenter/paymentinstrument">
           <h3><b>Payment Instruments</b></h3>
-        </a>
-        <hr>
+        </a>        <hr>
         <a type="button" ng-show="paymentinstrument" class="btn btn-light text-left" href="/merchantcenter/createpaymentinstrument">How to manage Payment Instruments</a>
 
         <hr/>
@@ -152,6 +152,10 @@
            <div ng-include="'/partials/merchant/createtransaction.html'">
             </div>
         </div>
+        <!-- <div ng-show="cur=='transactionoperations'">
+           <div ng-include="'/partials/merchant/transactionoperations.html'">
+            </div>
+        </div> -->
         <div ng-show="cur=='errortransaction'">
             <div  ng-include="'/partials/merchant/errortransaction.html'">
             </div>
@@ -226,10 +230,6 @@
         </div>
         <div ng-show="cur=='gicc'">
             <div  ng-include="'/partials/merchant/gicc.html'">
-            </div>
-        </div>
-        <div ng-show="cur=='errortransaction'">
-            <div  ng-include="'/partials/merchant/errortransaction.html'">
             </div>
         </div>
     </div>

@@ -86,6 +86,10 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
     container.innerHTML="";
     }
 
+    if(exampleType==$scope.examplesList.inlineExample){
+       $scope.optionalParameters.layout="dropdown" ;
+    }
+
     if(exampleType==$scope.examplesList.testPIExample){
       $scope.paymentInstrumentId = "paymentinstrument_twnv71bkkb";
     }else{
@@ -94,7 +98,8 @@ function docsWidgetExampleCtrl ($rootScope, $scope, $http, backendService, $time
   }
 
   function createOrder() {
-    var OrderRequest = '{ "initialAmount": 100, "currency": "EUR", "transactionType": "DEBIT", "async": { "successUrl": "https://www.google.de/#newwindow=1&q=success", "failureUrl": "https://www.google.de/#newwindow=1&q=failure", "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel" }}';
+    var OrderRequest = '{ "initialAmount": 100, "currency": "EUR", "transactionType": "DEBIT", "terms":' + Date.now() +', "privacy":' +Date.now() + ', "async": { "successUrl": "https://www.google.de/#newwindow=1&q=success", "failureUrl": "https://www.google.de/#newwindow=1&q=failure", "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel" }, "basket": [ { "name": "usbstick", "articleNumber": "sasdfas", "totalPrice": 100, "totalPriceWithTax": 100, "unitPrice": 100, "unitPriceWithTax": 100, "tax": 0, "quantity": 1}],"customer":"customer_so3ebpstus", "persona":"persona_8ffxlizwgp", "billingAddress":"address_l7dilnrxkv", "shippingAddress":"address_l7dilnrxkv"}';
+    console.log("CREATE ORDER");
     docsWidgetExampleApi.createOrder(OrderRequest, successCallback, failureCallback)
   }
 

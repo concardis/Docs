@@ -12,225 +12,381 @@
 <div class="row">
     <br>
     <div class="col-md-1"></div>
-    <div ng-init="general=true;dashboard=true;orders=true;" class="col-md-2 btn-group-vertical">
-        <!-- <button type="button" class="btn btn-light text-left" ng-click="menu=!menu">Menu <span ng-show="menu" class="pull-right glyph-icon icon-chevron-down"></span><span ng-show="!menu" class="pull-right glyph-icon icon-chevron-up"></span></button> -->
+    <div ng-init="" class="col-md-2 btn-group-vertical">
 
+      <div> <!-- General -->
         <hr/>
-        <a type="button" ng-click="general=!general" class="btn btn-light text-left" href="/merchantcenter/general">
-          <h3><b>General</b></h3>
+        <a type="button" class=" btn-light text-left" ng-click="general=!general">
+          <h4>
+            <b>General</b>
+            <span ng-show="!general" class="pull-right glyph-icon icon-chevron-down"></span>
+            <span ng-show="general" class="pull-right glyph-icon icon-chevron-up"></span>
+          </h4>
         </a>
+        <div ng-show="general">
+          <hr/>
+          <!-- <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/general">General Information</a> -->
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/registration">Registration</a>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/login">Login</a>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/navigation">Navigation</a>
+          <!-- <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/languages">Languages</a> -->
+        </div>
+      </div>
+      <div> <!-- Dashboard -->
         <hr/>
-        <a type="button" ng-show="general" class="btn btn-light text-left" href="/merchantcenter/registration">Registration</a>
-        <a type="button" ng-show="general" class="btn btn-light text-left" href="/merchantcenter/login">Login</a>
-        <a type="button" ng-show="general" class="btn btn-light text-left" href="/merchantcenter/navigation">Navigation</a>
-        <a type="button" ng-show="general" class="btn btn-light text-left" href="/merchantcenter/languages">Languages</a>
-
-        <hr/>
-        <a type="button" ng-click="dashboard=!dashboard" class="btn btn-light text-left" href="/merchantcenter/dashboard">
-          <h3><b>Dashboard</b></h3>
+        <a type="button" class="btn-light text-left" ng-click="dashboard=!dashboard">
+          <h4>
+            <b>Dashboard</b>
+            <span ng-show="!dashboard" class="pull-right glyph-icon icon-chevron-down"></span>
+            <span ng-show="dashboard" class="pull-right glyph-icon icon-chevron-up"></span>
+          </h4>
         </a>
+        <div ng-show="dashboard">
+          <hr/>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/dashboard">General Information</a>
+          <!-- <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/dashboard_layouts">Layouts</a>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/dashboard_filters">Filters</a>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/dashboard_widgets">Widgets</a> -->
+        </div>
+      </div>
+      <div> <!-- Orders -->
         <hr/>
-        <a type="button" ng-show="dashboard" class="btn btn-light text-left" href="/merchantcenter/layouts">Layouts</a>
-        <a type="button" ng-show="dashboard" class="btn btn-light text-left" href="/merchantcenter/filters">Filters</a>
-        <a type="button" ng-show="dashboard" class="btn btn-light text-left" href="/merchantcenter/widgets">Widgets</a>
-
-        <hr/>
-        <a type="button" ng-click="orders=!orders" class="btn btn-light text-left" href="/merchantcenter/orders">
-          <h3><b>Orders</b></h3>
+        <a type="button" class="btn-light text-left" ng-click="orders=!orders">
+          <h4>
+            <b>Orders</b>
+            <span ng-show="!orders" class="pull-right glyph-icon icon-chevron-down"></span>
+            <span ng-show="orders" class="pull-right glyph-icon icon-chevron-up"></span>
+          </h4>
         </a>
+        <div ng-show="orders">
+          <hr/>
+          <!-- <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/orders">General Information</a> -->
+          <!-- <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/orders_filters">Filters</a> -->
+          <!-- <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/orders_exportfile">Export CSV File</a> -->
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/orders_create">Create Order</a>
+          <!-- <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/orders_details">Order Details</a> -->
+          <!-- <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/transaction_operations">Transaction Operations</a> -->
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/currencies"> Currencies</a>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/managebaskets">Baskets</a>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/errortransaction">Messages by external systems </a>
+        </div>
+      </div>
+      <div> <!-- Settlements -->
         <hr/>
-        <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/filters">Filters</a>
-        <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/exportfile">Export CSV File</a>
-        <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/createtransaction">Create Order</a>
-        <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/orderdetails">Order Details</a>
-        <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/transactionoperations">Transaction Operations</a>
-        <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/currencies"> Currencies</a>
-        <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/managebaskets">Baskets</a>
-        <a type="button" ng-show="orders" class="btn btn-light text-left" href="/merchantcenter/errortransaction">Orders - Errors </a>
-
-        <hr/>
-        <a type="button" ng-click="settlement=!settlement" class="btn btn-light text-left" href="/merchantcenter/settlement">
-          <h3><b>Settlements</b></h3>
+        <a type="button" class="btn-light text-left" ng-click="settlement=!settlement">
+          <h4>
+            <b>Settlements</b>
+            <span ng-show="!settlement" class="pull-right glyph-icon icon-chevron-down"></span>
+            <span ng-show="settlement" class="pull-right glyph-icon icon-chevron-up"></span>
+          </h4>
         </a>
+        <div ng-show="settlement">
+          <hr/>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/settlement">General Information</a>
+          <!-- <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/settlement/settlement_download">Download Settlements</a>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/settlement/settlement_filters">Filters</a> -->
+        </div>
+      </div>
+      <div> <!-- User Management -->
         <hr/>
-        <a type="button" ng-show="settlement" class="btn btn-light text-left" href="/merchantcenter/settlement/download">Download Settlements</a>
-        <a type="button" ng-show="settlement" class="btn btn-light text-left" href="/merchantcenter/settlement/filters">Filters</a>
-
-        <hr/>
-        <a type="button" ng-click="users=!users" class="btn btn-light text-left" href="/merchantcenter/usermanagement">
-          <h3><b>User Management</b></h3>
+        <a type="button" class="btn-light text-left" ng-click="users=!users">
+          <h4>
+            <b>User Management</b>
+            <span ng-show="!users" class="pull-right glyph-icon icon-chevron-down"></span>
+            <span ng-show="users" class="pull-right glyph-icon icon-chevron-up"></span>
+          </h4>
         </a>
+        <div ng-show="users">
+          <hr/>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/user_management">General Information</a>
+          <!-- <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/user_list">Users</a> -->
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/user_invite">Invite User</a>
+        </div>
+      </div>
+      <div> <!-- Payment Methods -->
         <hr/>
-        <a type="button" ng-show="users" class="btn btn-light text-left" href="/merchantcenter/inviteuser">Users</a>
-        <a type="button" ng-show="users" class="btn btn-light text-left" href="/merchantcenter/inviteuser">Invite User</a>
-
-        <hr/>
-        <a type="button" ng-click="paymentmethods=!paymentmethods" class="btn btn-light text-left" href="/merchantcenter/paymentmethods">
-          <h3><b>Payment Methods</b></h3>
+        <a type="button" class="btn-light text-left" ng-click="paymentmethods=!paymentmethods">
+          <h4>
+            <b>Payment Methods</b>
+            <span ng-show="!paymentmethods" class="pull-right glyph-icon icon-chevron-down"></span>
+            <span ng-show="paymentmethods" class="pull-right glyph-icon icon-chevron-up"></span>
+          </h4>
         </a>
+        <div ng-show="paymentmethods">
+          <hr/>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/paymentmethods">General Information</a>
+        </div>
+      </div>
+      <div> <!-- Payment Instruments -->
         <hr/>
-        <a type="button" ng-show="paymentmethods" class="btn btn-light text-left" href="/merchantcenter/paymentmethods">Payment Method Details</a>
-
-        <hr/>
-        <a type="button" ng-click="paymentinstrument=!paymentinstrument" class="btn btn-light text-left" href="/merchantcenter/paymentinstrument">
-          <h3><b>Payment Instruments</b></h3>
-        </a>        <hr>
-        <a type="button" ng-show="paymentinstrument" class="btn btn-light text-left" href="/merchantcenter/createpaymentinstrument">How to manage Payment Instruments</a>
-
-        <hr/>
-        <a type="button" ng-click="customer=!customer" class="btn btn-light text-left" href="/merchantcenter/customer">
-          <h3><b>Customers</b></h3>
+        <a type="button" class="btn-light text-left" ng-click="paymentinstrument=!paymentinstrument">
+          <h4>
+            <b>Payment Instruments</b>
+            <span ng-show="!paymentinstrument" class="pull-right glyph-icon icon-chevron-down"></span>
+            <span ng-show="paymentinstrument" class="pull-right glyph-icon icon-chevron-up"></span>
+          </h4>
         </a>
-        <hr>
-        <a type="button" ng-show="customer" class="btn btn-light text-left" href="/merchantcenter/createcustomer">Manage customers</a>
-
+        <div ng-show="paymentinstrument">
+          <hr/>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/paymentinstrument">General Information</a>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/createpaymentinstrument">How to manage Payment Instrumentsn</a>
+        </div>
+      </div>
+      <div> <!-- Customers -->
         <hr/>
-        <a type="button" ng-click="myaccount=!myaccount" class="btn btn-light text-left" href="/merchantcenter/myaccount">
-          <h3><b>My Account</b></h3>
+        <a type="button" class="btn-light text-left" ng-click="customer=!customer">
+          <h4>
+            <b>Customers</b>
+            <span ng-show="!customer" class="pull-right glyph-icon icon-chevron-down"></span>
+            <span ng-show="customer" class="pull-right glyph-icon icon-chevron-up"></span>
+          </h4>
         </a>
-        <hr>
-        <a type="button" ng-show="myaccount" class="btn btn-light text-left" href="/merchantcenter/myaccount">My Account</a>
-
+        <div ng-show="customer">
+          <hr/>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/customer">General Information</a>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/createcustomer">Create Customer</a>
+        </div>
+      </div>
+      <div> <!-- My Account -->
         <hr/>
-        <a type="button" ng-click="customstyles=!customstyles" class="btn btn-light text-left" href="/merchantcenter/customstyles">
-          <h3><b>Custom Styles</b></h3>
+        <a type="button" class="btn-light text-left" ng-click="myaccount=!myaccount">
+          <h4>
+            <b>My Account</b>
+            <span ng-show="!myaccount" class="pull-right glyph-icon icon-chevron-down"></span>
+            <span ng-show="myaccount" class="pull-right glyph-icon icon-chevron-up"></span>
+          </h4>
         </a>
-        <hr/>
-        <a type="button" ng-show="customstyles" class="btn btn-light text-left" href="/merchantcenter/myaccount">Custom Styles</a>
-
-        <hr/>
-        <a type="button" ng-click="notifications=!notifications" class="btn btn-light text-left" href="/merchantcenter/notifications">
-          <h3><b>Notifications</b></h3>
+        <div ng-show="myaccount">
+          <hr/>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/myaccount">General Information</a>
+        </div>
+        </div>
+      <div> <!-- Custom Stylest -->
+        <!-- <hr/>
+        <a type="button" class="btn-light text-left" ng-click="customstyles=!customstyles">
+          <h4>
+            <b>Custom Styles</b>
+            <span ng-show="!customstyles" class="pull-right glyph-icon icon-chevron-down"></span>
+            <span ng-show="customstyles" class="pull-right glyph-icon icon-chevron-up"></span>
+          </h4>
         </a>
+        <div ng-show="customstyles">
+          <hr/>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/customstyles">General Information</a>
+        </div> -->
+      </div>
+      <div> <!-- Notifications -->
         <hr/>
-        <a type="button" ng-show="notifications" class="btn btn-light text-left" href="/merchantcenter/managenotification">How to manage Notifications</a>
-
-        <hr/>
-        <a type="button" ng-click="risksetting=!risksetting" class="btn btn-light text-left" href="/merchantcenter/risksetting">
-          <h3><b>Risk settings</b></h3>
+        <a type="button" class="btn-light text-left" ng-click="notifications=!notifications">
+          <h4>
+            <b>Notifications</b>
+            <span ng-show="!notifications" class="pull-right glyph-icon icon-chevron-down"></span>
+            <span ng-show="notifications" class="pull-right glyph-icon icon-chevron-up"></span>
+          </h4>
         </a>
+        <div ng-show="notifications">
+          <hr/>
+          <!-- <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/notifications">General Information</a> -->
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/managenotification">How to manage Notifications</a>
+        </div>
+      </div>
+      <div> <!-- Risk settings -->
         <hr/>
-        <a type="button" ng-show="risksetting" class="btn btn-light text-left" href="/merchantcenter/manageblacklist">How to manage blacklists</a>
-        <a type="button" ng-show="risksetting" class="btn btn-light text-left" href="/merchantcenter/manageriskcard">How to manage risk cards</a>
-        <a type="button" ng-show="risksetting" class="btn btn-light text-left" href="/merchantcenter/rulecomparison">Ruletype I: Comparison (simple)</a>
-        <a type="button" ng-show="risksetting" class="btn btn-light text-left" href="/merchantcenter/rulevelocityrisk">Ruletype II: Limits (velocity) Risks</a>
-
-        <hr/>
-        <a type="button" ng-click="widgettranslations=!widgettranslations" class="btn btn-light text-left" href="/merchantcenter/widgettranslations">
-          <h3><b>Widget Translations</b></h3>
+        <a type="button" class="btn-light text-left" ng-click="risksetting=!risksetting">
+          <h4>
+            <b>Risk settings</b>
+            <span ng-show="!risksetting" class="pull-right glyph-icon icon-chevron-down"></span>
+            <span ng-show="risksetting" class="pull-right glyph-icon icon-chevron-up"></span>
+          </h4>
         </a>
-        <hr/>
-        <a type="button" ng-show="widgettranslations" class="btn btn-light text-left" href="/merchantcenter/widgettranslations">Widget Translations</a>
-
-        <hr/>
-        <a type="button" ng-click="other=!other" class="btn btn-light text-left" href="/merchantcenter/other">
-          <h3><b>Others</b></h3>
+        <div ng-show="risksetting">
+          <hr/>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/risksetting">General Information</a>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/manageblacklist">How to manage blacklists</a>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/manageriskcard">How to manage risk cards</a>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/rulecomparison">Ruletype I: Comparison (simple)</a>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/rulevelocityrisk">Ruletype II: Limits (velocity) Risks</a>
+        </div>
+        </div>
+      <div> <!-- Widget Translations -->
+        <!-- <hr/>
+        <a type="button" class="btn-light text-left" ng-click="widgettranslations=!widgettranslations">
+          <h4>
+            <b>Widget Translations</b>
+            <span ng-show="!widgettranslations" class="pull-right glyph-icon icon-chevron-down"></span>
+            <span ng-show="widgettranslations" class="pull-right glyph-icon icon-chevron-up"></span>
+          </h4>
         </a>
+        <div ng-show="widgettranslations">
+          <hr/>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/widgettranslations">General Information</a>
+        </div> -->
+      </div>
+      <div> <!-- Others -->
         <hr/>
-        <a type="button" ng-show="other" class="btn btn-light text-left" href="/merchantcenter/gicc">Messages by External Systems<br/>( GICC )</a>
-
-        <br/>
+        <a type="button" class="btn-light text-left" ng-click="other=!other">
+          <h4>
+            <b>Others</b>
+            <span ng-show="!other" class="pull-right glyph-icon icon-chevron-down"></span>
+            <span ng-show="other" class="pull-right glyph-icon icon-chevron-up"></span>
+          </h4>
+        </a>
+        <div ng-show="other">
+          <hr/>
+          <a type="button" class="btn btn-light text-left col-md-12" href="/merchantcenter/gicc">Messages by External Systems<br/>( GICC )</a>
+        </div>
+      </div>
+      <br/>
     </div>
     <div class="col-md-8">
+      <div> <!-- General -->
+        <!-- <div ng-show="cur=='general'">
+          <div ng-include="'/partials/merchant/general.html'"></div>
+        </div> -->
         <div ng-show="cur=='registration'">
-            <div  ng-include="'/partials/merchant/registration.html'">
-            </div>
+          <div ng-include="'/partials/merchant/registration.html'"></div>
         </div>
         <div ng-show="cur=='login'">
-            <div  ng-include="'/partials/merchant/login.html'">
-            </div>
+          <div ng-include="'/partials/merchant/login.html'"></div>
         </div>
         <div ng-show="cur=='navigation'">
-           <div  ng-include="'/partials/merchant/navigation.html'">
-            </div>
+          <div ng-include="'/partials/merchant/navigation.html'"></div>
         </div>
-        <div ng-show="cur=='dashboard'">
-            <div  ng-include="'/partials/merchant/dashboard.html'">
-            </div>
-        </div>
-        <div ng-show="cur=='createtransaction'">
-           <div ng-include="'/partials/merchant/createtransaction.html'">
-            </div>
-        </div>
-        <!-- <div ng-show="cur=='transactionoperations'">
-           <div ng-include="'/partials/merchant/transactionoperations.html'">
-            </div>
+        <!-- <div ng-show="cur=='languages'">
+          <div ng-include="'/partials/merchant/languages.html'"></div>
         </div> -->
-        <div ng-show="cur=='errortransaction'">
-            <div  ng-include="'/partials/merchant/errortransaction.html'">
-            </div>
+      </div>
+      <div> <!-- Dashboard -->
+          <div ng-show="cur=='dashboard'">
+            <div ng-include="'/partials/merchant/dashboard.html'"></div>
+          </div>
+          <!-- <div ng-show="cur=='dashboard_layouts'">
+            <div ng-include="'/partials/merchant/dashboard_layouts.html'"></div>
+          </div>
+          <div ng-show="cur=='dashboard_filters'">
+            <div ng-include="'/partials/merchant/dashboard_filters.html'"></div>
+          </div>
+          <div ng-show="cur=='dashboard_widgets'">
+            <div ng-include="'/partials/merchant/dashboard_widgets.html'"></div>
+          </div> -->
+      </div>
+      <div> <!-- Orders -->
+        <!-- <div ng-show="cur=='orders'">
+          <div ng-include="'/partials/merchant/orders.html'"></div>
+        </div> -->
+        <!-- <div ng-show="cur=='orders_filters'">
+          <div ng-include="'/partials/merchant/orders_filters.html'"></div>
+        </div> -->
+        <!-- <div ng-show="cur=='orders_exportfile'">
+          <div ng-include="'/partials/merchant/orders_exportfile.html'"></div>
+        </div> -->
+        <div ng-show="cur=='orders_create'">
+          <div ng-include="'/partials/merchant/createtransaction.html'"></div>
         </div>
-        <div ng-show="cur=='usermanagement'">
-            <div  ng-include="'/partials/merchant/usermanagement.html'">
-            </div>
-        </div>
-        <div ng-show="cur=='inviteuser'">
-            <div  ng-include="'/partials/merchant/inviteuser.html'">
-            </div>
-        </div>
-        <div ng-show="cur=='paymentmethods'">
-           <div  ng-include="'/partials/merchant/paymentmethods.html'">
-            </div>
+        <!-- <div ng-show="cur=='orders_details'">
+          <div ng-include="'/partials/merchant/orders_details.html'"></div>
+        </div> -->
+        <!-- <div ng-show="cur=='transactionoperations'">
+          <div ng-include="'/partials/merchant/transaction_operations.html'"></div>
+        </div> -->
+        <div ng-show="cur=='currencies'">
+          <div ng-include="'/partials/merchant/currencies.html'"></div>
         </div>
         <div ng-show="cur=='managebaskets'">
-           <div  ng-include="'/partials/merchant/manage_baskets.html'">
-            </div>
+          <div ng-include="'/partials/merchant/manage_baskets.html'"></div>
         </div>
-        <div ng-show="cur=='paymentinstrument'">
-           <div  ng-include="'/partials/merchant/paymentinstrument.html'">
-            </div>
+        <div ng-show="cur=='errortransaction'">
+          <div ng-include="'/partials/merchant/errortransaction.html'"></div>
+        </div>
+      </div>
+      <div> <!-- Settlements -->
+        <div ng-show="cur=='settlement'">
+          <div ng-include="'/partials/merchant/settlement.html'"></div>
+        </div>
+        <!-- <div ng-show="cur=='settlement_download'">
+          <div ng-include="'/partials/merchant/settlement_download.html'"></div>
+        </div>
+        <div ng-show="cur=='settlement_filters'">
+          <div ng-include="'/partials/merchant/settlement_filters.html'"></div>
+        </div> -->
+      </div>
+      <div> <!-- User Management -->
+        <div ng-show="cur=='user_management'">
+          <div ng-include="'/partials/merchant/usermanagement.html'"></div>
+        </div>
+        <!-- <div ng-show="cur=='user_list'">
+          <div ng-include="'/partials/merchant/user_list.html'"></div>
+        </div> -->
+        <div ng-show="cur=='user_invite'">
+          <div ng-include="'/partials/merchant/inviteuser.html'"></div>
+        </div>
+      </div>
+      <div> <!-- Payment Methods -->
+        <div ng-show="cur=='paymentmethods'">
+          <div ng-include="'/partials/merchant/paymentmethods.html'"></div>
+        </div>
+      </div>
+      <div> <!-- Payment Instruments -->
+        <div ng-show="cur=='paymentinstruments'">
+          <div ng-include="'/partials/merchant/paymentinstruments.html'"></div>
         </div>
         <div ng-show="cur=='createpaymentinstrument'">
-            <div  ng-include="'/partials/merchant/createpaymentinstrument.html'">
-            </div>
+          <div ng-include="'/partials/merchant/createpaymentinstrument.html'"></div>
         </div>
+      </div>
+      <div> <!-- Customers -->
         <div ng-show="cur=='customer'">
-            <div  ng-include="'/partials/merchant/customer.html'">
-            </div>
+          <div ng-include="'/partials/merchant/customer.html'"></div>
         </div>
         <div ng-show="cur=='createcustomer'">
-            <div  ng-include="'/partials/merchant/manage_customers.html'">
-            </div>
+          <div ng-include="'/partials/merchant/manage_customers.html'"></div>
         </div>
+      </div>
+      <div> <!-- My Account -->
         <div ng-show="cur=='myaccount'">
-            <div  ng-include="'/partials/merchant/myaccount.html'">
-            </div>
+          <div ng-include="'/partials/merchant/myaccount.html'"></div>
         </div>
-        <div ng-show="cur=='currencies'">
-            <div  ng-include="'/partials/merchant/currencies.html'">
-            </div>
-        </div>
-        <div ng-show="cur=='settlement'">
-            <div  ng-include="'/partials/merchant/settlement.html'">
-            </div>
-        </div>
+      </div>
+      <div> <!-- Custom Stylest -->
+        <!-- <div ng-show="cur=='customstyles'">
+          <div ng-include="'/partials/merchant/customstyles.html'"></div>
+        </div> -->
+      </div>
+      <div> <!-- Notifications -->
+        <!-- <div ng-show="cur=='notifications'">
+          <div ng-include="'/partials/merchant/notifications.html'"></div>
+        </div> -->
         <div ng-show="cur=='managenotification'">
-            <div  ng-include="'/partials/merchant/managenotification.html'">
-            </div>
+          <div ng-include="'/partials/merchant/managenotification.html'"></div>
         </div>
+      </div>
+      <div> <!-- Risk settings -->
         <div ng-show="cur=='risksetting'">
-            <div  ng-include="'/partials/merchant/risksetting.html'">
-            </div>
+          <div ng-include="'/partials/merchant/risksetting.html'"></div>
         </div>
         <div ng-show="cur=='manageblacklist'">
-            <div  ng-include="'/partials/merchant/manageblacklist.html'">
-            </div>
+          <div ng-include="'/partials/merchant/manageblacklist.html'"></div>
         </div>
         <div ng-show="cur=='manageriskcard'">
-            <div  ng-include="'/partials/merchant/manageriskcard.html'">
-            </div>
+          <div ng-include="'/partials/merchant/manageriskcard.html'"></div>
         </div>
         <div ng-show="cur=='rulecomparison'">
-           <div  ng-include="'/partials/merchant/rulecomparison.html'">
-            </div>
+          <div ng-include="'/partials/merchant/rulecomparison.html'"></div>
         </div>
         <div ng-show="cur=='rulevelocityrisk'">
-            <div  ng-include="'/partials/merchant/rulevelocityrisk.html'">
-            </div>
+          <div ng-include="'/partials/merchant/rulevelocityrisk.html'"></div>
         </div>
+      </div>
+      <div> <!-- Widget Translations -->
+        <!-- <div ng-show="cur=='widgettranslations'">
+          <div ng-include="'/partials/merchant/widgettranslations.html'"></div>
+        </div> -->
+      </div>
+      <div> <!-- Others -->
         <div ng-show="cur=='gicc'">
-            <div  ng-include="'/partials/merchant/gicc.html'">
-            </div>
+          <div ng-include="'/partials/merchant/gicc.html'"></div>
         </div>
+      </div>
+
     </div>
 </div>

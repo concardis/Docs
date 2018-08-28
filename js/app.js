@@ -20,6 +20,7 @@ angular.module('StudyCraneApp',[
   .when('/buildyourown', {templateUrl: 'partials/buildyourown.html'})
   .when('/buildyourown/restApi', {templateUrl: 'partials/api.html', controller:'apiCtrl'})
   .when('/buildyourown/restapi', {templateUrl: 'partials/api.html', controller:'apiCtrl'})
+  .when('/redocrest', {templateUrl: 'partials/redocrest.html', controller:'redocCtrl'})
   .when('/buildyourown/restdoc', {templateUrl: 'partials/restDoc.html', controller:'restdocCtrl'})
   .when('/buildyourown/restdoc/:id', {templateUrl: 'partials/restDoc.html', controller:'restdocCtrl'})
   .when('/buildyourown/bridge', {templateUrl: 'partials/bridge.html', controller:'bridgeCtrl'})
@@ -89,6 +90,17 @@ angular.module('StudyCraneApp',[
       return $http.get("/content/searchFilters.json");
     }
 	}
+}])
+.controller('redocCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', function($rootScope, $scope, $http, backendService, $timeout) {
+
+console.log("trying start REDOCS");
+  Redoc.init('content/swagger.json', {
+  scrollYOffset: 0,
+  requiredPropsFirst: true,
+  hideDownloadButton: true
+
+}, document.getElementById('redoc-container'))
+
 }])
 .controller('apiCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', function($rootScope, $scope, $http, backendService, $timeout) {
 

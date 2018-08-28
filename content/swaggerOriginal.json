@@ -1199,72 +1199,6 @@
         }
       }
     },
-	"/payment-instruments": {
-      "get": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Endpoint to receive a list of paymentinstruments.\n\nThe following parameters can be used as filter.\n\n- paymentInstrumentId\n\n- merchantPaymentInstrumentId\n\n- type\n\n- origin\n\n- recurring\n\n- createdAt\n\n- modifiedAt\n",
-        "tags": [
-          "payment"
-        ],
-        "operationId": "Get all Payment Instruments",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successful response.",
-            "schema": {
-              "$ref": "#/definitions/PaymentInstrumentList"
-            }
-          }
-        }
-      },
-      "post": {
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
-        "description": "Endpoint to create a new paymentinstrument.\n\nExplicitly creating  payment instruments is possible for credit card and SEPA and should be done from the end customer's browser.\n",
-        "tags": [
-          "payment"
-        ],
-        "operationId": "Create Payment Instrument",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "Request body to create a new paymentinstrument.",
-            "schema": {
-              "$ref": "#/definitions/PaymentInstrumentRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response.",
-            "schema": {
-              "$ref": "#/definitions/PaymentInstrumentResponse"
-            }
-          },
-          "400": {
-            "description": "Bad request based on invalid input.",
-            "schema": {
-              "$ref": "#/definitions/PaymentInstrumentsPostBadRequest"
-            }
-          }
-        }
-      }
-    },
     "/payment-instruments/{paymentInstrumentId}": {
       "get": {
         "security": [
@@ -1276,7 +1210,7 @@
         "tags": [
           "payment"
         ],
-        "operationId": "Get Payment Instrument",
+        "operationId": "PaymentInstrumentsByPaymentInstrumentId",
         "produces": [
           "application/json"
         ],
@@ -1310,11 +1244,11 @@
             "Bearer": []
           }
         ],
-        "description": "Endpoint to update the data associated with the specified paymentinstrument.\n\nAlso used to refresh the CVC of a creditcard payment instrument. In case of a recurring transaction the shopper can be forced to re-enter the verification code (cvc) - depends on the creditcard settings configuration.\n",
+        "description": "Endpoint to update the data associated with the specified paymentinstrument.\n\nAlso used to refresh the CVC of a creditcard payment instrument. In case of a recurring transaction the shopper can be forced to re-enter the verification code (cvc) - depends on the creditcard settings configuration.\n\nNormally handled by the javascript bridge.\n",
         "tags": [
           "payment"
         ],
-        "operationId": "Update Payment Instrument",
+        "operationId": "PaymentInstrumentsByPaymentInstrumentId1",
         "parameters": [
           {
             "name": "paymentInstrumentId",
@@ -1355,7 +1289,7 @@
         "tags": [
           "payment"
         ],
-        "operationId": "Delete Payment Instrument",
+        "operationId": "DeletePaymentInstrumentByPaymentInstrumentId",
         "parameters": [
           {
             "name": "paymentInstrumentId",
@@ -1373,6 +1307,72 @@
             "description": "Not found casued by invalid input.",
             "schema": {
               "$ref": "#/definitions/PaymentInstrumentsGetNotFound"
+            }
+          }
+        }
+      }
+    },
+    "/payment-instruments": {
+      "get": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "description": "Endpoint to receive a list of paymentinstruments.\n\nThe following parameters can be used as filter.\n\n- paymentInstrumentId\n\n- merchantPaymentInstrumentId\n\n- type\n\n- origin\n\n- recurring\n\n- createdAt\n\n- modifiedAt\n",
+        "tags": [
+          "payment"
+        ],
+        "operationId": "PaymentInstruments",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentList"
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "Endpoint to create a new paymentinstrument.\n\nExplicitly creating  payment instruments is possible for credit card and SEPA and should be done from the end customer's browser.\n\nCall would normally be handled by the javascript bridge.\n",
+        "tags": [
+          "payment"
+        ],
+        "operationId": "PaymentInstruments1",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "Request body to create a new paymentinstrument.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request based on invalid input.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentsPostBadRequest"
             }
           }
         }

@@ -8,7 +8,7 @@
       "url": "http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT"
     }
   },
-  "host": "apitest.payengine.de",
+  "host": "https://apitest.payengine.de",
   "basePath": "/v1",
   "schemes": [
     "https"
@@ -175,7 +175,7 @@
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to create a refund on a debit or capture transaction.\n\nA refund transaction can be applied on an existing debit or capture transaction in the status SUCCESS.\n\nIt can be used to refund the shopper with the given initialAmont.\nFor the payment method prepayment a refund will result in the status PENDING. The transaction response will contain a meta element with the TAN instructions. The TAN needs to be transmitted in subsequent request. See \"/prepayment/transactions/{transactionId}/tan\"\n",
+        "description": "Endpoint to create a refund on a debit or capture transaction.\n\nA refund transaction can be applied on an existing debit or capture transaction in the status SUCCESS.\n\nIt can be used to refund the shopper with the given initialAmont.\n",
         "tags": [
           "orders"
         ],
@@ -343,7 +343,7 @@
             "basicAuth": []
           }
         ],
-        "description": "OrdersTransactionsByOrderId",
+        "description": "Endpoint to receive a specific transaction.\n",
         "tags": [
           "orders"
         ],
@@ -614,46 +614,6 @@
             "schema": {
               "$ref": "#/definitions/OrderResponse"
             }
-          }
-        }
-      }
-    },
-    "/prepayment/transactions/{transactionId}/tan": {
-      "patch": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Endpoint to attach a online banking tan to a PENDING prepayment transaction.\n",
-        "tags": [
-          "orders"
-        ],
-        "operationId": "PrepaymentTransactionsByTransactionIdTan",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "transactionId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the specific transaction."
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "Request body for updating an order.",
-            "schema": {
-              "$ref": "#/definitions/TanRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response."
           }
         }
       }
@@ -1239,6 +1199,72 @@
         }
       }
     },
+	"/payment-instruments": {
+      "get": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "description": "Endpoint to receive a list of paymentinstruments.\n\nThe following parameters can be used as filter.\n\n- paymentInstrumentId\n\n- merchantPaymentInstrumentId\n\n- type\n\n- origin\n\n- recurring\n\n- createdAt\n\n- modifiedAt\n",
+        "tags": [
+          "payment"
+        ],
+        "operationId": "Get all Payment Instruments",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentList"
+            }
+          }
+        }
+      },
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "description": "Endpoint to create a new paymentinstrument.\n\nExplicitly creating  payment instruments is possible for credit card and SEPA and should be done from the end customer's browser.\n",
+        "tags": [
+          "payment"
+        ],
+        "operationId": "Create Payment Instrument",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "Request body to create a new paymentinstrument.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request based on invalid input.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentsPostBadRequest"
+            }
+          }
+        }
+      }
+    },
     "/payment-instruments/{paymentInstrumentId}": {
       "get": {
         "security": [
@@ -1246,11 +1272,11 @@
             "basicAuth": []
           }
         ],
-        "description": "PaymentInstrumentsByPaymentInstrumentId",
+        "description": "Endpoint to receive a specific paymentinstrument.\n\nPayment instruments are objects representing the payment information used by the end customer.\n\nA payment instrument can be created either explicitly ( creditcard & sepa via javascript bridge ) or implicitly with a debit or preauth transaction.\n\nDepending on the type, payment instruments have different attributes, whereas some values will be masked to remain PCI conform ( e.g. creditcard number)\n\nPayment instruments can be used for recurring payments, if the flag \"recurring\" is set to true.\n\nPayment instruments are unique ( e.g. if a creditcard number is used twice, it will result in one payment instrument )\n",
         "tags": [
           "payment"
         ],
-        "operationId": "PaymentInstrumentsByPaymentInstrumentId",
+        "operationId": "Get Payment Instrument",
         "produces": [
           "application/json"
         ],
@@ -1284,11 +1310,11 @@
             "Bearer": []
           }
         ],
-        "description": "Endpoint to update the data associated with the specified paymentinstrument.\n\nAlso used to refresh the CVC of a creditcard payment instrument. In case of a recurring transaction the shopper can be forced to re-enter the verification code (cvc) - depends on the creditcard settings configuration.\n\nNormally handled by the javascript bridge.\n",
+        "description": "Endpoint to update the data associated with the specified paymentinstrument.\n\nAlso used to refresh the CVC of a creditcard payment instrument. In case of a recurring transaction the shopper can be forced to re-enter the verification code (cvc) - depends on the creditcard settings configuration.\n",
         "tags": [
           "payment"
         ],
-        "operationId": "PaymentInstrumentsByPaymentInstrumentId1",
+        "operationId": "Update Payment Instrument",
         "parameters": [
           {
             "name": "paymentInstrumentId",
@@ -1329,7 +1355,7 @@
         "tags": [
           "payment"
         ],
-        "operationId": "DeletePaymentInstrumentByPaymentInstrumentId",
+        "operationId": "Delete Payment Instrument",
         "parameters": [
           {
             "name": "paymentInstrumentId",
@@ -1347,72 +1373,6 @@
             "description": "Not found casued by invalid input.",
             "schema": {
               "$ref": "#/definitions/PaymentInstrumentsGetNotFound"
-            }
-          }
-        }
-      }
-    },
-    "/payment-instruments": {
-      "get": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Endpoint to receive a list of paymentinstruments.\n\nThe following parameters can be used as filter.\n\n- paymentInstrumentId\n\n- merchantPaymentInstrumentId\n\n- type\n\n- origin\n\n- recurring\n\n- createdAt\n\n- modifiedAt\n",
-        "tags": [
-          "payment"
-        ],
-        "operationId": "PaymentInstruments",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successful response.",
-            "schema": {
-              "$ref": "#/definitions/PaymentInstrumentList"
-            }
-          }
-        }
-      },
-      "post": {
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
-        "description": "Endpoint to create a new paymentinstrument.\n\nExplicitly creating  payment instruments is possible for credit card and SEPA and should be done from the end customer's browser.\n\nCall would normally be handled by the javascript bridge.\n",
-        "tags": [
-          "payment"
-        ],
-        "operationId": "PaymentInstruments1",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "Request body to create a new paymentinstrument.",
-            "schema": {
-              "$ref": "#/definitions/PaymentInstrumentRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response.",
-            "schema": {
-              "$ref": "#/definitions/PaymentInstrumentResponse"
-            }
-          },
-          "400": {
-            "description": "Bad request based on invalid input.",
-            "schema": {
-              "$ref": "#/definitions/PaymentInstrumentsPostBadRequest"
             }
           }
         }
@@ -1532,7 +1492,7 @@
             "Bearer": []
           }
         ],
-        "description": "Endpoint to get all settlements.\n",
+        "description": "Endpoint to get all settlements. \n",
         "tags": [
           "settlements"
         ],
@@ -1560,7 +1520,7 @@
             "Bearer": []
           }
         ],
-        "description": "Endpoint to update settlement.\n",
+        "description": "Endpoint to update settlement. \n",
         "tags": [
           "settlements"
         ],
@@ -1750,31 +1710,6 @@
         }
       }
     },
-    "NotificationSubscriptionRequest": {
-      "title": "NotificationSubscriptionRequest",
-      "type": "object",
-      "description": "An data structure that specifies callback URN and any other callback settings.",
-      "properties": {
-        "notificationUrn": {
-          "description": "Callback URN which will receive the contents of the notification. For http listeners, use an URN like https://your-domain-listener/specific-handler. For email listeners, use an URN like mailto:specific-handler@your-domain-listener.",
-          "type": "string",
-          "format": "url",
-          "minLength": 6,
-          "maxLength": 2048
-        },
-        "notificationState": {
-          "description": "A choice of what kind of updates to receive by this handler as specified in this object's notificationUrn. Add \"CREATE\" to the array to receive notification on object creation. Add \"UPDATE\" to the array to receive notification on object property changes.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/NotificationStateEnum"
-          }
-        }
-      },
-      "required": [
-        "notificationUrn",
-        "notificationState"
-      ]
-    },
     "Async": {
       "title": "Async",
       "type": "object",
@@ -1800,13 +1735,6 @@
           "format": "url",
           "minLength": 6,
           "maxLength": 2048
-        },
-        "notifications": {
-          "description": "Optional notification subscription requests. This enables receiving notification for this order's transactions.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/NotificationSubscriptionRequest"
-          }
         }
       },
       "required": [
@@ -1923,15 +1851,6 @@
         "currency",
         "async",
         "transactionType"
-      ]
-    },
-    "NotificationStateEnum": {
-      "title": "NotificationStateEnum",
-      "type": "string",
-      "description": "A choice of what kind of updates to receive by this handler as specified in this object's notificationUrn. \"CREATED\" to receive notification on object creation. \"UPDATED\" to receive notification on object property changes.",
-      "enum": [
-        "CREATED",
-        "UPDATED"
       ]
     },
     "InitialTransactionTypeBaseTypeEnum": {
@@ -2258,7 +2177,7 @@
           "maxLength": 128
         },
         "payment": {
-          "$ref": "#/definitions/CreditOrderPaymentRequest"
+          "$ref": "#/definitions/OrderOpenPaymentRequest"
         },
         "deviceIdent": {
           "$ref": "#/definitions/DeviceIdentRequest"
@@ -2335,10 +2254,6 @@
           "minLength": 4,
           "maxLength": 128
         },
-        "deferred": {
-          "description": "Indicates if the order should be deferred. (only available for paypal preauth/execute, optional)",
-          "type": "boolean"
-        },
         "numberOfRates": {
           "description": "Number of rates for ratepay installment",
           "type": "integer"
@@ -2361,119 +2276,6 @@
         },
         "mandate": {
           "$ref": "#/definitions/MandateRequest"
-        }
-      }
-    },
-    "CreditOrderPaymentRequest": {
-      "title": "CreditOrderPaymentRequest",
-      "type": "object",
-      "description": "Additional information Payment needed to proceed the order.",
-      "properties": {
-        "paymentInstrumentId": {
-          "description": "An ID of an already created paymentinstrument. Used to proceed the order. (optional)",
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 255
-        },
-        "cardNumber": {
-          "description": "The Creditcard PAN used to proceed. (mandatory for creditcard, optional if a creditcard paymentInstrumentId was passed)",
-          "type": "string",
-          "minLength": 12,
-          "maxLength": 19
-        },
-        "verification": {
-          "description": "The verification number of the creditcard. (mandatory for creditcard, optional if a creditcard paymentInstrumentId was passed)",
-          "type": "string",
-          "minLength": 3,
-          "maxLength": 4
-        },
-        "expiryMonth": {
-          "description": "The expiry month of the creditcard. Format: 01 -> january, 02 -> February, etc. (mandatory for creditcard, optional if a creditcard paymentInstrumentId was passed)",
-          "type": "string",
-          "minLength": 2,
-          "maxLength": 2
-        },
-        "expiryYear": {
-          "description": "The expiry year of the creditcard. Format: 01 -> 2001, 02 -> 2002, etc. (mandatory for creditcard, optional if a creditcard paymentInstrumentId was passed)",
-          "type": "string",
-          "minLength": 2,
-          "maxLength": 2
-        },
-        "cardHolder": {
-          "description": "The full name of the cardholder.",
-          "type": "string",
-          "minLength": 3,
-          "maxLength": 128
-        },
-        "bankName": {
-          "description": "The name of the bank of the SEPA account. (mandatory for sepa, optional if a sepa paymentInstrumentId was passed)",
-          "type": "string",
-          "minLength": 1,
-          "maxLength": 255
-        },
-        "iban": {
-          "description": "IBAN of the SEPA account. (mandatory for sepa, optional if a sepa paymentInstrumentId was passed)",
-          "type": "string",
-          "maxLength": 34
-        },
-        "bic": {
-          "description": "BIC of the SEPA account. (mandatory for sepa, optional if a sepa paymentInstrumentId was passed)",
-          "type": "string",
-          "minLength": 8,
-          "maxLength": 11
-        },
-        "accountHolder": {
-          "description": "The account holders name of the SEPA account. (mandatory for sepa, optional if a sepa paymentInstrumentId was passed)",
-          "type": "string",
-          "minLength": 4,
-          "maxLength": 128
-        },
-        "deferred": {
-          "description": "Indicates if the order should be deferred. (only available for paypal preauth/execute, optional)",
-          "type": "boolean"
-        },
-        "numberOfRates": {
-          "description": "Number of rates for ratepay installment",
-          "type": "integer"
-        },
-        "rate": {
-          "description": "Rate for ratepay installment",
-          "type": "integer"
-        },
-        "lastRate": {
-          "description": "Last rate for ratepay installment",
-          "type": "integer"
-        },
-        "interestRate": {
-          "description": "Interest rate for ratepay installment",
-          "type": "number"
-        },
-        "totalAmount": {
-          "description": "Total amount for ratepay installment",
-          "type": "integer"
-        },
-        "mandate": {
-          "$ref": "#/definitions/MandateRequest"
-        },
-        "emailSubject": {
-          "description": "Only for paypal. The subject line of the email that PayPal sends when the transaction is completed.",
-          "type": "string"
-        },
-        "receiverType": {
-          "description": "Only for paypal. Indicates how you identify the recipients of payments in this call to MassPay. Must be either EmailAddress, PhoneNumber, or UserID.",
-          "type": "string"
-        },
-        "receiverEmail": {
-          "description": "Only for paypal. Email address of recipient. Mandatory if receiverType is EmailAddress.",
-          "type": "string"
-        },
-        "receiverPhone": {
-          "description": "Only for paypal. Mobile phone number of recipient. Mandatory if receiverType is PhoneNumber.",
-          "type": "string"
-        },
-        "receiverId": {
-          "description": "Only for paypal. Unique PayPal customer account number. Mandatory if receiverType is UserID.",
-          "type": "string"
         }
       }
     },
@@ -2681,9 +2483,6 @@
         },
         "deviceIdent": {
           "$ref": "#/definitions/DeviceIdentResponse"
-        },
-        "meta": {
-          "$ref": "#/definitions/OrderMetaInfResponse"
         }
       },
       "required": [
@@ -2700,36 +2499,6 @@
         "createdAt",
         "modifiedAt"
       ]
-    },
-    "OrderMetaInfResponse": {
-      "title": "OrderMetaInfResponse",
-      "type": "object",
-      "properties": {
-        "deferred": {
-          "description": "Indicates if the order is marked as deferred. Available only for paypal.",
-          "type": "boolean"
-        },
-        "emailSubject": {
-          "description": "Available only for paypal. The subject line of the email that PayPal sends when the transaction is completed.",
-          "type": "string"
-        },
-        "receiverType": {
-          "description": "Available only for paypal. Indicates how you identify the recipients of payments in this call to MassPay.",
-          "type": "string"
-        },
-        "receiverEmail": {
-          "description": "Available only for paypal. Email address of recipient.",
-          "type": "string"
-        },
-        "receiverPhone": {
-          "description": "Available only for paypal. Mobile phone number of recipient.",
-          "type": "string"
-        },
-        "receiverId": {
-          "description": "Available only for paypal. Unique PayPal customer account number.",
-          "type": "string"
-        }
-      }
     },
     "CustomerResponse": {
       "title": "CustomerResponse",
@@ -3234,9 +3003,6 @@
           "format": "int",
           "minimum": 1,
           "maximum": 99999900
-        },
-        "meta": {
-          "$ref": "#/definitions/TransactionMeta"
         }
       },
       "required": [
@@ -3254,29 +3020,6 @@
         "refundedAmount",
         "canceledAmount"
       ]
-    },
-    "TransactionMeta": {
-      "title": "TransactionMeta",
-      "type": "object",
-      "description": "Contains payment method specifc meta data. For prepayment TAN instructions.\n",
-      "properties": {
-        "title": {
-          "description": "The title of the prepayment TAN challange (can be displayed in the TAN form)\n",
-          "type": "string"
-        },
-        "label": {
-          "description": "The label of the prepayment tan challange (can be displayed in the TAN form)\n",
-          "type": "string"
-        },
-        "format": {
-          "description": "The TAN format for prepayment (iTAN, photoTAN, etc.)\n",
-          "type": "string"
-        },
-        "data": {
-          "description": "Optional data field for prepayment is needed for some TAN formats e.g. photoTAN\n",
-          "type": "string"
-        }
-      }
     },
     "TransactionStatesBaseTypeEnum": {
       "title": "TransactionStatesBaseTypeEnum",
@@ -4851,19 +4594,6 @@
       "required": [
         "elements",
         "totalPages"
-      ]
-    },
-    "TanRequest": {
-      "title": "TanRequest",
-      "type": "object",
-      "properties": {
-        "tan": {
-          "description": "The online banking TAN",
-          "type": "string"
-        }
-      },
-      "required": [
-        "tan"
       ]
     },
     "Error": {

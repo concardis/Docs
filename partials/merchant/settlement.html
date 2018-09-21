@@ -226,10 +226,27 @@
 <br/>
 <div id="sepa_settlements">
   <h3>SEPA Settlements</h3>
-  SEPA Settlements files are in .csv format and contain detailed information for each transaction.
+  <br/>
+  <h4>General</h4>
+
+  The SEPA settlement files are generated once on 4. of the month and are available :
+  <br/>
+   - via API (GET /settlements/download)
+   <br/>
+   - via Merchant Center
+   <br/>
+   <br/>
+   <h4>File definition</h4>
+  <p><strong>File Format</strong></p>
+  The generated settlement file is in a semi-colon separated values .csv format.
+  The decimal separation is a point.
+  <p><strong>File name</strong></p>
+   [dd.MM.yyyy]_payengine_SST.csv   e.g. 28.09.2018.csv_payengine_SST.csv
   <br/>
   <br/>
-  <span class="col-md-6">SEPA Example:</span>
+  <h4>SEPA settlement file example</h4>
+  <br/>
+  <span class="col-md-6"></span>
   <span class="col-md-6 label-align-right">
     <a href="/img/settlements/sepa.csv" download target="_blank" style="align: right">Download example file</a>
   </span>
@@ -239,7 +256,9 @@ Merchant-33333333-3333-3333-3333-333333333333;retail;11.09.2018;11.08.2018;;0.2;
 Merchant-33333333-3333-3333-3333-333333333333;retail;11.08.2018;11.08.2018;;1.0;EUR;transaction_z8ll1wotsn;Order-f72a31b7-e514-4137-a187-d1b64b46f9e6;1536674203;1d254c1d292e466c81a7eb6c548188ee
 
   </code>
+  <br/>
   <p>You can find more information about fields in SEPA settlement file in folowing table:</p>
+  <br/>
   <table class="table table-condensed">
     <thead>
       <tr>

@@ -5,8 +5,9 @@
 </p>
 <ul>
     <li><a href="#settlements_nav" name="">Navigation</a></li>
-    <li><a href="#filters" name="">Filters</a></li>
-    <li><a href="#sorting" name="">Sorting</a></li>
+    <!-- <li><a href="#filters" name="">Filters</a></li>
+    <li><a href="#sorting" name="">Sorting</a></li> -->
+    <li><a href="#settlements_files" name="">Settlement Files</a></li>
 </ul>
 
 <div id="settlements_nav"></div>
@@ -21,7 +22,7 @@
 
 <div id="filters"></div>
 &nbsp;
-<h3>Filter Settlements</h3>
+<!-- <h3>Filter Settlements</h3>
 &nbsp;
 <p>
   Settlement files can be found under the "Settlements" section of the Merchant Center.
@@ -37,9 +38,9 @@
   Settlement files can be found under the "Settlements" section of the Merchant Center.
 </p>
 </br>
-<img src="/img/settlements/settlements_nav.png" alt="" width="100%"  />
+<img src="/img/settlements/settlements_nav.png" alt="" width="100%"  /> -->
 
-
+<div id="settlements_files"></div>
 <ul>
     <li><a href="#cc_settlements" name="">Credit Card Settlements</a></li>
     <!-- <li><a href="#paypal_settlements" name="">Paypal Settlements</a></li> -->
@@ -51,16 +52,9 @@
   Credit Card Settlements files are in .csv format and contain detailed information for each transaction.
   <br/>
   <img src="/img/settlements/cc_settlement.png" alt="" width="100%"  />
-</div>
-<div id="sepa_settlementsv">
-  <h3>SEPA Settlements</h3>
-  SEPA Settlements files are in .csv format and contain detailed information for each transaction.
-  <br/>
-  Chargeback Example File:
-  <img src="/img/settlements/sepa_settlement.png" alt="" width="100%"  />
-</div>
 
-<p>You can find more information about fields in settlement file in folowing table:</p>
+
+<p>You can find more information about fields in Credit Card settlement file in folowing table:</p>
 
 <table class="table table-condensed">
   <thead>
@@ -227,3 +221,92 @@
     </tr>
   </tbody>
 </table>
+
+</div>
+<br/>
+<div id="sepa_settlements">
+  <h3>SEPA Settlements</h3>
+  SEPA Settlements files are in .csv format and contain detailed information for each transaction.
+  <br/>
+  SEPA Example File:
+  <img src="/img/settlements/sepa_settlement.png" alt="" width="100%"  />
+  <p>You can find more information about fields in SEPA settlement file in folowing table:</p>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>merchantId</td>
+        <td>The Payengine merchant id</td>
+        <td>Merchant-000cf2c9-66fe-4730-ac9e-674f7c552d36</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>trxType</td>
+        <td>The type of record included in a report. Allowed values:  {retail, refund, chargeback} </td>
+        <td>chargeback</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>createdAt</td>
+        <td>The timestamp indicating when the capture was received by Concardis. Format: DD.MM.YYYY.</td>
+        <td>28.09.2017</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>settledAt</td>
+        <td>The timestamp indicating when the payout from concardis to the merchant was initializedFormat: DD.MM.YYYY</td>
+        <td>28.09.2017</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>chargebackDate</td>
+        <td>Date on which the chargeback is settled in the Payengine system. Format:  DD.MM.YYYY</td>
+        <td>28.09.2017</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>initialAmount</td>
+        <td>Retail amount</td>
+        <td>20.45</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>currency</td>
+        <td>Retail currency</td>
+        <td>EUR</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>transactionId</td>
+        <td>The Payengine transaction id</td>
+        <td>transaction_pwff2milt7</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>orderIdD</td>
+        <td>The Payengine order id</td>
+        <td>pf3lseokll</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>merchantOrderId</td>
+        <td>The merchant order id</td>
+        <td>KB1234</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>referenceId</td>
+        <td>EndToEndId of the SEPA transfer to the merchant. One settlement file could contain more than one referenceID depending on the number of the payouts which were carried out in the time period which is covered by the settlement reporty</td>
+        <td>e.g. 20 positions in one file will be with the same referenceID</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

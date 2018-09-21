@@ -228,8 +228,17 @@
   <h3>SEPA Settlements</h3>
   SEPA Settlements files are in .csv format and contain detailed information for each transaction.
   <br/>
-  SEPA Example File:
-  <img src="/img/settlements/sepa_settlement.png" alt="" width="100%"  />
+  <br/>
+  <span class="col-md-6">SEPA Example:</span>
+  <span class="col-md-6 label-align-right">
+    <a href="/img/settlements/sepa.csv" download target="_blank" style="align: right">Download example file</a>
+  </span>
+  <br/>
+  <code>merchantID;trx-type;createdAt;settledAt;chargebackDate;initialAmount;currency;transactionId;orderId;merchantOrderId;referenceID
+Merchant-33333333-3333-3333-3333-333333333333;retail;11.09.2018;11.08.2018;;0.2;EUR;transaction_cizo4enzcx;Order-841efcd2-2581-4b20-b0f2-52e67cf16f97;1536672478;055ca058b48243d0aa9ec4d155617dd6
+Merchant-33333333-3333-3333-3333-333333333333;retail;11.08.2018;11.08.2018;;1.0;EUR;transaction_z8ll1wotsn;Order-f72a31b7-e514-4137-a187-d1b64b46f9e6;1536674203;1d254c1d292e466c81a7eb6c548188ee
+
+  </code>
   <p>You can find more information about fields in SEPA settlement file in folowing table:</p>
   <table class="table table-condensed">
     <thead>

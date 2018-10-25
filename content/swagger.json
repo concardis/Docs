@@ -1,6 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
+    "version": "v1",
     "title": "Payengine Public",
     "description": "Documentation for Payengine API v1.0\n",
     "license": {
@@ -10,6 +11,18 @@
   },
   "host": "apitest.payengine.de",
   "basePath": "/v1",
+  "securityDefinitions": {
+    "basicAuth": {
+      "type": "basic",
+      "description": "Authorization for all server to server API calls.\nThe following syntax must be used in the 'Authorization' header :\n\nAuthorization: Basic base64(merchantId:apiKey)\n"
+    },
+    "Bearer": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "in": "header",
+      "description": "Authentication for all client to server API calls.\nThe following syntax must be used in the 'Authorization' header :\n\nAuthorization: Bearer merchantId\n"
+    }
+  },
   "schemes": [
     "https"
   ],
@@ -343,7 +356,7 @@
             "basicAuth": []
           }
         ],
-        "description": "OrdersTransactionsByOrderId",
+        "description": "Endpoint to receive a specific transaction.\n",
         "tags": [
           "orders"
         ],
@@ -1246,7 +1259,7 @@
             "basicAuth": []
           }
         ],
-        "description": "PaymentInstrumentsByPaymentInstrumentId",
+        "description": "Endpoint to receive a specific paymentinstrument.\n\nPayment instruments are objects representing the payment information used by the end customer.\n\nA payment instrument can be created either explicitly ( creditcard & sepa via javascript bridge ) or implicitly with a debit or preauth transaction.\n\nDepending on the type, payment instruments have different attributes, whereas some values will be masked to remain PCI conform ( e.g. creditcard number)\n\nPayment instruments can be used for recurring payments, if the flag \"recurring\" is set to true.\n\nPayment instruments are unique ( e.g. if a creditcard number is used twice, it will result in one payment instrument )\n",
         "tags": [
           "payment"
         ],
@@ -1634,6 +1647,186 @@
           }
         }
       }
+    },
+    "/batch": {
+      "get": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "description": "Get all batch transactions.\n",
+        "tags": [
+          "batch"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of transactions.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BatchResponse"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/batch/{batchId}": {
+      "get": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "description": "Get specific batch transactions detail.\n",
+        "tags": [
+          "batch"
+        ],
+        "operationId": "BatchResponse",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "batchId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Specific batch transaction"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          },
+          "404": {
+            "description": "Not found casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/BatchNotFound"
+            }
+          }
+        }
+      }
+    },
+    "/batch/{batchId}/request/download": {
+      "get": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "description": "Download csv uploaded file with transactions.\n",
+        "tags": [
+          "batch"
+        ],
+        "operationId": "BatchRequestDownload",
+        "produces": [
+          "text/csv"
+        ],
+        "parameters": [
+          {
+            "name": "batchId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "List csv uploaded file with transactions."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          },
+          "404": {
+            "description": "Not found casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/BatchNotFound"
+            }
+          }
+        }
+      }
+    },
+    "/batch/{batchId}/response/download": {
+      "get": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "description": "Download csv generated file with transactions.\n",
+        "tags": [
+          "batch"
+        ],
+        "operationId": "BatchResponseDownload",
+        "produces": [
+          "text/csv"
+        ],
+        "parameters": [
+          {
+            "name": "batchId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "List of csv generated file when the uploaded file is successfully parsed."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          },
+          "404": {
+            "description": "Not found casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/BatchResponseNotFound"
+            }
+          }
+        }
+      }
+    },
+    "/batch/upload": {
+      "post": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "description": "Upload csv file with transactions\n",
+        "tags": [
+          "batch"
+        ],
+        "operationId": "BatchFileUpload",
+        "produces": [
+          "application/json"
+        ],
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "uploadedFile",
+            "in": "formData",
+            "type": "file",
+            "description": "File with batch transactions"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/BatchResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request.",
+            "schema": {
+              "$ref": "#/definitions/BatchUploadBadFile"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -1750,20 +1943,109 @@
         }
       }
     },
+    "NotificationContent": {
+      "title": "NotificationContent",
+      "type": "object",
+      "description": "This is the data structure being sent to subscribed merchant notification URN.\n\nTo validate the notification contents please invoke an HTTPS POST to \"/notifications/validate?address=yourUrlencodedNotificationUrn\" with body carrying the NotificationContent exactly as received by the listener.\n\nValidation result would simply respond with \"VALIDATED\" or \"INVALID\".",
+      "properties": {
+        "eventId": {
+          "type": "string",
+          "description": "The unique identifier for this event."
+        },
+        "apiVersion": {
+          "type": "string",
+          "description": "The API version that triggered the event."
+        },
+        "ipAddress": {
+          "type": "string",
+          "description": "The ip address that caused the request."
+        },
+        "globalTrackId": {
+          "type": "string",
+          "description": "A string corresponding to the ID of the request that cause the event. Can be null."
+        },
+        "mode": {
+          "type": "string",
+          "description": "String \"live\" or \"test\"."
+        },
+        "type": {
+          "type": "string",
+          "description": "There are many notification types. Very common and useful are:\n\norder.create.success\norder.update.success\ntransaction.create.success\ntransaction.update.success"
+        },
+        "notificationId": {
+          "type": "string",
+          "description": "The id of the configured notification that caused this event to be fired."
+        },
+        "notificationApiVersion": {
+          "type": "string",
+          "description": "Currently only \"1.0\" api version is available."
+        },
+        "createdAt": {
+          "type": "number",
+          "description": "Unix timestamp."
+        },
+        "payload": {
+          "type": "object",
+          "description": "For create notifications, the payload contains the object being created. For update notifications, please see DiffPayload. The payload depends on NotificationContent's type."
+        }
+      }
+    },
+    "DiffPayload": {
+      "title": "DiffPayload",
+      "type": "object",
+      "properties": {
+        "asyncNotificationSubscriptionId": {
+          "type": "string",
+          "description": "Optional guid for this notification subscription. Present for all per-order notifications."
+        },
+        "oldObject": {
+          "type": "object",
+          "description": "The object state before any changes. See DiffPayload.diff as a shortcut to find what has changed between oldObject and newObject."
+        },
+        "newObject": {
+          "type": "object",
+          "description": "The object state after any changes. See DiffPayload.diff as a shortcut to find what has changed between oldObject and newObject."
+        },
+        "diff": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ChangeObject"
+          }
+        }
+      }
+    },
+    "ChangeObject": {
+      "title": "ChangeObject",
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "Name of the changed property. For example for transaction's status: \"status\"."
+        },
+        "source": {
+          "type": "string",
+          "description": "String representation of the property value before the change. For example for transaction's status: \"PENDING\"."
+        },
+        "destination": {
+          "type": "string",
+          "description": "String representation of the property value after the change. For example for transaction's status: \"IN_PROGRESS\"."
+        }
+      }
+    },
     "NotificationSubscriptionRequest": {
       "title": "NotificationSubscriptionRequest",
       "type": "object",
       "description": "An data structure that specifies callback URN and any other callback settings.",
       "properties": {
         "notificationUrn": {
-          "description": "Callback URN which will receive the contents of the notification. For http listeners, use an URN like https://your-domain-listener/specific-handler. For email listeners, use an URN like mailto:specific-handler@your-domain-listener.",
+          "description": "Callback URN which will receive the contents of the notification. For http listeners, use an URN like https://your-domain-listener/specific-handler. For email listeners, use an URN like mailto:specific-handler@your-domain-listener. See the content to expect in the listener: NotificationContent.",
           "type": "string",
           "format": "url",
           "minLength": 6,
           "maxLength": 2048
         },
         "notificationState": {
-          "description": "A choice of what kind of updates to receive by this handler as specified in this object's notificationUrn. Add \"CREATE\" to the array to receive notification on object creation. Add \"UPDATE\" to the array to receive notification on object property changes.",
+          "description": "A choice of what kind of updates to receive by this handler as specified in this object's notificationUrn. Add \"CREATED\" to the array to receive notification on object creation. Add \"UPDATED\" to the array to receive notification on object property changes.",
           "type": "array",
           "items": {
             "$ref": "#/definitions/NotificationStateEnum"
@@ -2046,6 +2328,10 @@
         },
         "transactionType": {
           "$ref": "#/definitions/InitialTransactionTypeBaseTypeEnum"
+        },
+        "executeOrder": {
+          "description": "Paypal specific parameter. If true the order will be processed after the update. This property is used to finish the processing of order, when the Paypal debit or preauth is created with 'addressOverride=false'. Defaut is false.",
+          "type": "boolean"
         }
       }
     },
@@ -2474,6 +2760,29 @@
         "receiverId": {
           "description": "Only for paypal. Unique PayPal customer account number. Mandatory if receiverType is UserID.",
           "type": "string"
+        }
+      }
+    },
+    "BasketRequest": {
+      "title": "Basket",
+      "type": "object",
+      "descritpion": "Basket of the customer (only mandatory for Klarna Orders)",
+      "properties": {
+        "name": {
+          "descritpion": "name of the article",
+          "type": "string"
+        },
+        "quantity": {
+          "description": "quantity of the article",
+          "type": "number"
+        },
+        "unitPrice": {
+          "description": "unit price of the article",
+          "type": "number"
+        },
+        "totalPrice": {
+          "description": "total price of the article",
+          "type": "number"
         }
       }
     },
@@ -2989,7 +3298,7 @@
           "type": "integer"
         },
         "attributes": {
-          "description": "Additional attributes of this paymentinstrument. E.g. masked bank- or creditcarddata.",
+          "description": "Additional attributes of this paymentinstrument. E.g. masked bank- or creditcarddata. For Klarna we will have paymentMethods object in the response (e.g. PAY_OVER_TIME, PAY_LATER, PAY_NOW) Also we will have country, locale and selectedPaymentMethod, which will be null on creating of payment instrument",
           "type": "object"
         }
       },
@@ -3603,6 +3912,22 @@
           "minLength": 12,
           "maxLength": 19
         },
+        "country": {
+          "description": "The country which is used. (mandatory for klarna)",
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 2
+        },
+        "currency": {
+          "description": "The currency which is used. (mandatory for klarna)",
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 3
+        },
+        "locale": {
+          "description": "The locale which is used. (mandatory for klarna)",
+          "type": "string"
+        },
         "verification": {
           "description": "The verification number of the creditcard. (mandatory for creditcard, optional if a creditcard paymentInstrumentId was passed)",
           "type": "string",
@@ -3652,6 +3977,9 @@
         },
         "mandate": {
           "$ref": "#/definitions/MandateRequest"
+        },
+        "basket": {
+          "$ref": "#/definitions/BasketRequest"
         }
       }
     },
@@ -3710,8 +4038,43 @@
           "description": "The name of the bank account holder. (SEPA only)",
           "type": "string"
         },
+        "country": {
+          "description": "Country which is used",
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 2
+        },
+        "currency": {
+          "description": "Currency which is used",
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 3
+        },
+        "locale": {
+          "description": "Locale which is used",
+          "type": "string"
+        },
+        "selectedPaymentMethod": {
+          "description": "Selected payment method by the customer e.g. PAY_NOW, PAY_LATER, PAY_OVER_TIME",
+          "type": "string"
+        },
+        "customer": {
+          "description": "The id of the customer",
+          "type": "string"
+        },
+        "billingAddress": {
+          "description": "The id of the billing address",
+          "type": "string"
+        },
+        "shippingAddress": {
+          "description": "The id of the shipping address",
+          "type": "string"
+        },
         "mandate": {
           "$ref": "#/definitions/MandateRequest"
+        },
+        "basket": {
+          "$ref": "#/definitions/BasketRequest"
         }
       }
     },
@@ -3826,6 +4189,10 @@
           "type": "string",
           "description": "RatePAY specific parameter.",
           "maxLength": 255
+        },
+        "addressOverride": {
+          "type": "boolean",
+          "description": "Paypal specific parameter. If false the shipping address passed with the request will be editable on the paypal site. Default value is true."
         }
       }
     },
@@ -4830,6 +5197,48 @@
         }
       }
     },
+    "BatchResponse": {
+      "title": "BatchResponse",
+      "type": "object",
+      "properties": {
+        "batchId": {
+          "description": "The identifier of the batch transaction. Created by payengine",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "createdAt": {
+          "description": "This timestamp indicates the creation date.",
+          "type": "number",
+          "format": "date-time"
+        },
+        "generatedAt": {
+          "description": "This timestamp indicates the generation date",
+          "type": "number",
+          "format": "date-time"
+        },
+        "batchSequence": {
+          "description": "Match the number of operation line records in file header",
+          "type": "number"
+        },
+        "version": {
+          "description": "Match the version in file header",
+          "type": "number"
+        },
+        "batchRequestFileName": {
+          "description": "Uploaded file with batch transactions",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "batchResponseFileName": {
+          "description": "Parsed result file with batch transactions",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        }
+      }
+    },
     "SettlementsList": {
       "title": "SettlementsList",
       "type": "object",
@@ -4900,6 +5309,74 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/SettlementsPatchErrors"
+          }
+        }
+      }
+    },
+    "BatchNotFound": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "example": 404
+        },
+        "code": {
+          "type": "number",
+          "example": 70013
+        },
+        "globalTrackId": {
+          "type": "string",
+          "example": "Batch file with such id does not exist"
+        },
+        "elements": {
+          "title": "Errors",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BatchFileErrors"
+          }
+        }
+      }
+    },
+    "BatchResponseNotFound": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "number",
+          "example": 404
+        },
+        "code": {
+          "type": "number",
+          "example": 70014
+        },
+        "globalTrackId": {
+          "type": "string",
+          "example": "The result file is not available yet"
+        },
+        "elements": {
+          "title": "Errors",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BatchFileResultErrors"
+          }
+        }
+      }
+    },
+    "BatchUploadBadFile": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "number",
+          "example": 70000
+        },
+        "globalTrackId": {
+          "type": "string",
+          "example": "Could not process batch file."
+        },
+        "elements": {
+          "title": "Errors",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BatchUploadError"
           }
         }
       }
@@ -7025,6 +7502,50 @@
         {
           "code": 50001,
           "message": "A Settlement with specified id can not be found. Expected: A valid string identifier representing a Settlement object between 1 and 255 characters."
+        }
+      ]
+    },
+    "BatchFileErrors": {
+      "title": "Error",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Error"
+      },
+      "example": [
+        {
+          "code": 70013,
+          "message": "Batch file with such id does not exist.",
+          "BatchFileErrors": null
+        }
+      ]
+    },
+    "BatchFileResultErrors": {
+      "title": "Error",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Error"
+      },
+      "example": [
+        {
+          "code": 70014,
+          "message": "The result file is not available yet."
+        }
+      ]
+    },
+    "BatchUploadError": {
+      "title": "Error",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Error"
+      },
+      "example": [
+        {
+          "code": 70009,
+          "message": "Sequence number from filename doesn't match the file header."
+        },
+        {
+          "code": 70015,
+          "message": "Batch file with this sequence number already exists."
         }
       ]
     }

@@ -1,0 +1,694 @@
+<div class="container">
+	<div ng-init="menu=true;" class="col-md-3 btn-group-vertical">
+		<button type="button" class="btn btn-light text-left" ng-click="menu=!menu">
+			Menu
+			<span ng-show="menu" class="pull-right glyph-icon icon-chevron-down">
+			<span ng-show="!menu" class="pull-right glyph-icon icon-chevron-up">
+		</button>
+		<a type="button" ng-show="menu" class="btn btn-light text-left" href="/systemurl/urls">System URLs</a>
+		<a type="button" ng-show="menu" class="btn btn-light text-left" href="/systemurl/pcidss">PCI DSS</a>
+		<a type="button" ng-show="menu" class="btn btn-light text-left" href="/systemurl/errormessages">Error Messages</a>
+		<a type="button" ng-show="menu" class="btn btn-light text-left" href="/systemurl/transactionstate">Transaction State Transitions</a>
+	</div>
+	<div class="col-md-9">
+			<h2>Overview</h2>
+			<br/>
+			<p>
+				Batch processing is a feature allowing the merchant to upload a file with multiple transactions data that will be processed asynchronously by the Payengine. It aims at easing the integration of automated back-office operations and recurring payments processing.
+			</p>
+			<ul>
+				<li>The Payengine provides a light API interface for uploading batch files.</li>
+				<li>Batch processing is achieved via API upload of csv files containing the requested operations.</li>
+				<li>When the csv batch file is uploaded the Payengine will start processing the operations asynchronously.</li>
+				<li>You can submit up to 5000 operations per file which are then picked up and processed by the system. </li>
+				<li>After completion of the execution of a batch file request the Payengine provides a response file listing all the operations results.</li>
+				<li>There are flexible options for receiving notifications about batch files processing via email or webhooks.</li>
+			</ul>
+			<br/>
+			<h2>Payment Methods</h2>
+			<br/>
+			<h3>Authorizing Transactions (Preauth/Debit)</h3>
+			<br/>
+			<p>
+				Batch processing can be used for the following payment methods' <strong>recurring orders only</strong> by providing a valid paymentInstrumentId.
+			</p>
+			<strong>
+				<ul>
+					<li>Credit Card</li>
+					<li>SEPA</li>
+					<li>PayPal</li>
+				</ul>
+			</strong>
+			<br/>
+			<h3>Referencing Transactions (Capture/Cancel/Refund)</h3>
+			<br/>
+			<p>Referencing transactions (cancel, capture, refund) are available via Batch for <strong>all payment methods</strong>.</p>
+			<p><br /></p>
+			<p><strong>*</strong> Authorising Transactions are called the initial payment </p>
+			<p><strong>*</strong> Referencing Transactions are payment transactions that implement a transaction ID from a previously authorised transaction to process a further backoffice operation - e.g. cancel, capture, refund.
+			</p>
+			<br/>
+			<h2>Files Definition</h2>
+			<br/>
+			<h3>Request File</h3>
+			<br/>
+			<p>
+				In order to upload a batch file, the merchant must first create one. In order to initiate a batch processing you need to first upload a request file via the batch/upload endpoint or via the Merchant Center batch upload interface. The request file contains both authorising and referencing transactions. Once being submitted, the merchant will receive an immediate result “200 OK” if the file type is correct and will be later able to find the file by its sequential number. The request file has a specific structure that needs to be followed. It contains lines, the type of which is defined by the first position within the line (eg. record type=rqst_hdr), thus each new line represents one of the following - File Header Record, Authorising Operation Line Record, Referencing Operation Line Record, Basket Item Line Record and File Trailer Record.
+			</p>
+			<br/>
+			<h4><em>File Name</em></h4>
+			<p>[ merchantId]_[sequence_number].csv </p>
+			<p>e.g. merchant_123334_12.csv</p>
+			<br/>
+			<h4><em>File Contents</em></h4>
+			<br/>
+			<strong>rqst_hdr - File Header Record</strong>
+			<table class="table table-bordered table-striped table-condensed">
+				<thead>
+					<tr>
+						<td>Position</td>
+						<td>Name</td>
+						<td>Required</td>
+						<td>Example</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>Record Type</td>
+						<td>Yes</td>
+						<td>rqst_hdr <em>(Fixed)</em></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Version</td>
+						<td>Yes</td>
+						<td>1.0 <em>(Default is 1.0)</em></td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Merchant ID</td>
+						<td>Yes</td>
+						<td>merchant_123</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Creation Date/Timestamp</td>
+						<td>Yes</td>
+						<td>1234556777</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Sequence number (from filename)</td>
+						<td>Yes</td>
+						<td>12</td>
+					</tr>
+				</tbody>
+			</table>
+			<br />
+			<strong>auth_dtl - Authorizing Operation Line Record </strong>
+			<br />
+			<table class="table table-bordered table-striped table-condensed">
+				<thead>
+					<tr>
+						<td>Position</td>
+						<td>Name</td>
+						<td>Required</td>
+						<td>Example <em>(Allowed values)</em></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>Record Type</td>
+						<td>Yes</td>
+						<td>auth_dtl <em>(Fixed)</em></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Operation Sequential Number</td>
+						<td>Yes</td>
+						<td>11</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Operataion Type</td>
+						<td>Yes</td>
+						<td>DEBIT <em>(DEBIT/PREAUTH)</em></td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Initial Amount</td>
+						<td>Yes</td>
+						<td>1000</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Currency</td>
+						<td>Yes</td>
+						<td>EUR</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>Description</td>
+						<td>No</td>
+						<td>Snikers</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>Product</td>
+						<td>Yes</td>
+						<td>creditcard <em>(creditcard, sepa, paypal are expected)</em></td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>Channel</td>
+						<td>Yes</td>
+						<td>MOTO <em>(MOTO/ECOM)</em></td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>MerchantOrderId</td>
+						<td>No</td>
+						<td>shop ref - 11223</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>Statement Description</td>
+						<td>No</td>
+						<td>Snikers - 11223</td>
+					</tr>
+					<tr>
+						<td>11</td>
+						<td>Customer Id</td>
+						<td>No</td>
+						<td>customer_1234</td>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>Persona Id</td>
+						<td>No</td>
+						<td>persona_1234</td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>Billong Address Id</td>
+						<td>No</td>
+						<td>address_1234</td>
+					</tr>
+					<tr>
+						<td>14</td>
+						<td>Shipping Address Id</td>
+						<td>No</td>
+						<td>address_1234</td>
+					</tr>
+					<tr>
+						<td>15</td>
+						<td>Payment Instrument Id</td>
+						<td>Yes</td>
+						<td>pi_123456</td>
+					</tr>
+					<tr>
+						<td>16</td>
+						<td>Recurring Mandate</td>
+						<td>No (Yes for SEPA)</td>
+						<td>RECURRING</td>
+					</tr>
+				</tbody>
+			</table>
+			<p><em>Between 1 and 5000 per file</em></p>
+			<br/>
+			<strong>rfop_dtl - Referencing Operation Line Record</strong>
+			<table class="table table-bordered table-striped table-condensed">
+				<thead>
+					<tr>
+						<td><strong>Position</strong></td>
+						<td><strong>Name</strong></td>
+						<td><strong>Required</strong></td>
+						<td><strong>Example <em>(Allowed values)</em></strong></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>Record Type</td>
+						<td>Yes</td>
+						<td>rfop_dtl <em>(Fixed)</em></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Operation Sequential Number</td>
+						<td>Yes</td>
+						<td>11</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Operataion Type</td>
+						<td>Yes</td>
+						<td>CAPTURE <em>(CAPTURE/CANCEL/REFUND)</em></td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Initial Amount</td>
+						<td>Yes</td>
+						<td>1000</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Currency</td>
+						<td>Yes</td>
+						<td>EUR</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>Description</td>
+						<td>No</td>
+						<td>Snikers</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>Parent order Id</td>
+						<td>Yes</td>
+						<td>order_123457661</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>Parent transaction Id</td>
+						<td>Yes</td>
+						<td>preauth_1234566</td>
+					</tr>
+				</tbody>
+			</table>
+			<p><em>Between 1 and 5000 per file</em></p>
+			</br>
+			<strong>item_dtl - Basket Item Line Record</strong>
+			<table class="table table-bordered table-striped table-condensed">
+				<thead>
+					<tr>
+						<td><strong>Position</strong></td>
+						<td><strong>Name</strong></td>
+						<td><strong>Required</strong></td>
+						<td><strong>Example <em>(Allowed values)</em></strong></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr style="background-color: white; border-top: 1px solid black;">
+						<td>1</td>
+						<td>Record Type</td>
+						<td>Yes</td>
+						<td>item_dtl <em>(Fixed)</em></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Article Number</td>
+						<td>No</td>
+						<td>112233-e</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Quantity</td>
+						<td>No</td>
+						<td>10</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Unit Price</td>
+						<td>No</td>
+						<td>10</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Total Price</td>
+						<td>No</td>
+						<td>100</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>Tax</td>
+						<td>No</td>
+						<td>20</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>Unit Price With Tax</td>
+						<td>No</td>
+						<td>12</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>Total Price With Tax</td>
+						<td>No</td>
+						<td>120</td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>Item Name</td>
+						<td>No</td>
+						<td>Shoes</td>
+					</tr>
+				</tbody>
+			</table>
+			</br>
+			<strong><strong><br /></strong>rqst_trl - File Trailer Record </strong>
+			<table class="table table-bordered table-striped table-condensed">
+				<thead>
+					<tr>
+						<td><strong>Position</strong></td>
+						<td><strong>Name</strong></td>
+						<td><strong>Required</strong></td>
+						<td><strong>Example</strong></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr style="background-color: white; border-top: 1px solid black;">
+						<td>1</td>
+						<td>Record Type</td>
+						<td>Yes</td>
+						<td>rqst_trl <em>(Fixed)</em></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Number of operation lines</td>
+						<td>Yes</td>
+						<td>122 <em>(Between 1 and 5000)</em></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<p><em>Only one per file</em></p>
+			<br/>
+			<h4><em>File Example</em></h4>
+			<br />
+
+<code>rqst_hdr;1.0;merchant_123;1234556777;12
+
+auth_dtl;1;DEBIT;360000;EUR;Snikers;creditcard;ECOM;shop ref - 11223;Snikers - 11223;customer_1234;persona_1234;address_1234;address_1234;payment_12345556;
+
+item_dtl;112233-e;10;10000;100000;20;12000;120000;Snikers
+
+item_dtl;112233-a;20;10000;200000;20;24000;240000,More Snikers
+
+rfop_dtl;2;CAPTURE;2400;EUR;flash drive-2;preauth_123;order_123
+
+item_dtl;fd-2;2;1000;2000;20;1200;2400;flash drive
+
+auth_dtl;3;DEBIT;1000;EUR;blanket;sepa;ECOM;shop ref - bl1;Blanket - 1;customer_1234;persona_1234;address_1234;address_1234;payment_12345557;RECURRING
+
+item_dtl;bl-1;1;1000;1000;0;100;1000;Blanket
+
+rqst_trl;3</code>
+		<br />
+			<h3> Response File </h3>
+			<br/>
+			<p>The result of a single batch containing multiple operations is also available as a csv file with a simple format. Each line within the response file contains references to the corresponding business objects the are consequently created on the api. The response file gives basic information for the orders and transactions processed. It matches the naming convention of the request file.</p>
+			<br/>
+			<p>The result of the individual operations are available via the api order and transaction endpoints. You can match the records within the request and response file of a single batch by the operation sequence number.</p>
+			<br/>
+			<h4><em>File Name</em></h4>
+			<br/>
+			<p>[ merchantId]_[sequence_number]_result.csv </p>
+			<p>e.g.merchantId1234_12_result.csv</p>
+			<br/>
+			<h4><em>File Contents</em></h4>
+			<strong>rslt_hdr - File Header Record</strong>
+			<table class="table table-bordered table-striped table-condensed">
+				<thead>
+					<tr>
+						<td><strong>Position</strong></td>
+						<td><strong>Name</strong></td>
+						<td><strong>Required</strong></td>
+						<td><strong>Example</strong></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr style="background-color: white; border-top: 1px solid black;">
+						<td>1</td>
+						<td>Record Type</td>
+						<td>Yes</td>
+						<td>rslt_hdr <em>(Fixed)</em></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Version</td>
+						<td>No</td>
+						<td>1.0 <em>(Default is 1.0)</em></td>
+					</tr>
+				</tbody>
+			</table>
+			<p><em>Only one per file</em></p>
+			<br/>
+			<strong>rslt_dtl - Result LIne Record</strong>
+			<table class="table table-bordered table-striped table-condensed">
+				<thead>
+					<tr>
+						<td><strong>Position</strong></td>
+						<td><strong>Name</strong></td>
+						<td><strong>Required</strong></td>
+						<td><strong>Example <em>(Allowed values)</em></strong></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr style="background-color: white; border-top: 1px solid black;">
+						<td>1</td>
+						<td>Record Type</td>
+						<td>Yes</td>
+						<td>rslt_dtl <em>(Fixed)</em></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Operation Sequential Number (matches request file)</td>
+						<td>Yes</td>
+						<td>11</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Operataion Type</td>
+						<td>Yes</td>
+						<td>PREAUTH <em>(PREAUTH/DEBIT/CAPTURE/CANCEL/REFUND)</em></td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Order Id</td>
+						<td>No</td>
+						<td>order_123</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Order Status</td>
+						<td>No</td>
+						<td>OPEN</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>Transaction Id</td>
+						<td>No</td>
+						<td>transaction_1234</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>Transaction Status</td>
+						<td>No</td>
+						<td>SUCCESS</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Initial Amount</td>
+						<td>Yes</td>
+						<td>1000 <em>(operation transaction)</em></td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>Currency</td>
+						<td>Yes</td>
+						<td>EUR <em>(operation transaction)</em></td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>Description</td>
+						<td>No</td>
+						<td>Snikers <em>(operation transaction)</em></td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>API Error Code</td>
+						<td>No</td>
+						<td>42000 <em>(only for sanity checks)</em></td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>API Error Message</td>
+						<td>No</td>
+						<td>The exact api error code <em>(only for sanity checks)</em></td>
+					</tr>
+				</tbody>
+			</table>
+			<p><em>Between 1 and 5000 per file</em></p>
+			<br/>
+			<strong>rslt_trl - File Trailer Record </strong>
+			<table class="table table-bordered table-striped table-condensed">
+				<thead>
+					<tr>
+						<td><strong>Position</strong></td>
+						<td><strong>Name</strong></td>
+						<td><strong>Required</strong></td>
+						<td><strong>Example</strong></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr style="background-color: white; border-top: 1px solid black;">
+						<td>1</td>
+						<td>Record Type</td>
+						<td>Yes</td>
+						<td>rslt_trl <em>(Fixed)</em></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Number of operation lines</td>
+						<td>Yes</td>
+						<td>122 <em>(Between 1 and 5000)</em></td>
+					</tr>
+				</tbody>
+			</table>
+			<br/>
+			<h4><em>File Example</em></h4>
+			<br/>
+			<code>rslt_hdr;1.0;merchant_123;1234556777;12
+rslt_dtl;1;DEBIT;bf4wkmyhgh;OPEN;transaction_07yktnd9q1;SUCCESS;360000;EUR;Snikers;;
+rslt_dtl;2;CAPTURE;;;transaction_4w77yuak4a;SUCCESS;2400;EUR;flash drive-2;;
+rslt_dtl;3;DEBIT;nak0gv5zuj;OPEN;transaction_0jigd3jm4p;OK;1000;EUR;blanket;;
+rslt_trl;3</code>
+		<br/>
+		<br/>
+
+			<h3>API Interface </h3>
+			<br/>
+			<h4>Upload a Batch File</h4>
+			<br/>
+			<table class="table table-bordered table-striped table-condensed">
+				<thead>
+					<tr>
+						<td>API Endpoint</td>
+						<td>Usage</td>
+						<td>Request Example</td>
+						<td width="40%">Response Example</td>
+					</tr>
+				</thead>
+				<tbody valign="top">
+					<tr style="background-color: white; border-top: 1px solid black;">
+						<td>POST /batch/upload</td>
+						<td>
+							<p>Upload csv file with transactions</p>
+							<p>The request should be encoded as multipart/form data, meaning that the csv file will be included in the data</p>
+						</td>
+						<td>POST /batch/upload</td>
+						<td>
+							<code>{
+"id": "BatchFile-05ce4c67-0586-46ff-b6ed-08493c6ecfce",
+"batchSequence": 12121,
+"version": 1,
+"createdAt": 1538667971000,
+"generatedAt": 1234556777,
+"batchRequestFileName": "merchant_123_12.csv",
+"batchResponseFileName": null,
+"processStatus": "PENDING"
+}</code>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<br/>
+			<h4>Batch Information</h4>
+			<table class="table table-bordered table-striped table-condensed">
+				<thead>
+					<tr>
+						<td>API Endpoint</td>
+						<td>Usage</td>
+						<td>Request Example</td>
+						<td width="40%">Response Example</td>
+					</tr>
+				</thead>
+				<tbody valign="top">
+					<tr>
+						<td>GET /batch</td>
+						<td>Get all batch transactions</td>
+						<td>GET /batch</td>
+						<td>
+<code>{
+"elements":
+ [{
+    "id": "BatchFile-0cdecdf5-e957-49b5-9324-b5734545aaec",
+    "batchSequence": 14359,
+    "version": 1,
+    "createdAt": 1538587140000,
+    "generatedAt": 1234556777,
+    "batchRequestFileName": "merchant_123_12.csv",
+    "batchResponseFileName": "merchant_123_12_result.csv",
+    "processStatus": "COMPLETE"
+  }],
+"totalPages": 1
+}</code>
+						</td>
+					</tr>
+					<tr style="background-color: grey;">
+						<td>
+							<p>GET /batch/{batchId}</p>
+						</td>
+						<td>Get specific batch transactions detail</td>
+						<td>GET /batch/BatchFile-0cdecdf5-e957-49b5-9324-b5734545aaec</td>
+						<td>
+<code>{
+  "id": "BatchFile-0cdecdf5-e957-49b5-9324-b5734545aaec",
+  "batchSequence": 14359,
+  "version": 1,
+  "createdAt": 1538587140000,
+  "generatedAt": 1234556777,
+  "batchRequestFileName": "merchant_123_12.csv",
+  "batchResponseFileName": "merchant_123_12.csv_result.csv",
+  "processStatus": "COMPLETE"
+}</code>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<p>GET /batch/{batchId}/request/download </p>
+						</td>
+						<td>Download csv uploaded file with transactions</td>
+						<td>GET /batch/BatchFile-0cdecdf5-e957-49b5-9324-b5734545aaec/request/download</td>
+						<td>Successful response</td>
+					</tr>
+					<tr>
+						<td>
+							<p>GET /batch/{batchId}/response/download</p>
+						</td>
+						<td>Download csv generated file when the uploaded file is successfully parsed</td>
+						<td>GET /batch/BatchFile-4388f63a-98ba-46aa-a509-76d026c66615/response/download</td>
+						<td>Successful response</td>
+					</tr>
+				</tbody>
+			</table>
+			<br />
+			<h2>Merchant Center Interface</h2>
+			<br />
+			<h3>Upload a Batch File</h3>
+			<br />
+			<p>Once the request file has been created, it can be uploaded via the Merchant Centre. Click on Batch on the right side menu. </p>
+			<p>
+				<img class="" src="/img/batch/batch_1.png" width="20%" />
+			</p>
+			<br />
+			<p>You then need to select and upload the csv file by clicking on Upload and then Save. <span style="color: rgb(51,51,51);">There is a status filed on the API which shows will correspond to &quot;processStatus&quot;: &quot;PENDING&quot; after you upload the file. </p>
+
+			<p><br /></p>
+			<p>
+				<img class="" src="/img/batch/batch_2.png" width="100%" />
+			</p>
+			<br />
+			<h2>Batch Information</h2>
+			<p>A few seconds after the upload, you will be able to see the request file as well as the corresponding response file within the Merchant Center Batch list. The status field on the API will then change to &quot;processStatus&quot;: &quot;COMPLETE&quot;.</p>
+			<p>
+				<img class="" src="/img/batch/batch_3.png" width="100%" />
+			</p>
+			<br />
+
+	</div>
+</div>

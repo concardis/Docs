@@ -35,7 +35,8 @@ angular.module('StudyCraneApp',[
   .when('/systemurl/:id', {templateUrl: 'partials/systemUrl.html', controller:'systemurlCtrl'})
   .when('/faq', {templateUrl: 'partials/faq.html'})
   .when('/contact', {templateUrl: 'partials/contact.html'})
-	.when('/batch', {templateUrl: 'partials/batch/batch_processing.html'})
+	.when('/batch', {templateUrl: 'partials/batch.html', controller:'batchCtrl'})
+	.when('/batch/:id', {templateUrl: 'partials/batch.html', controller:'batchCtrl'})
   .when('/merchantcenter', {templateUrl: 'partials/merchantcenter.html', controller:'merchantcenterCtrl'})
   .when('/merchantcenter/:id', {templateUrl: 'partials/merchantcenter.html', controller:'merchantcenterCtrl'});
 
@@ -211,6 +212,16 @@ console.log("trying start REDOCS");
     $scope.cur = $routeParams.id;
   else
     $scope.cur ="registration";
+
+
+}])
+.controller('batchCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', '$routeParams', function($rootScope, $scope, $http, backendService, $timeout, $routeParams) {
+	$rootScope.site = "batch";
+
+  if($routeParams.id)
+    $scope.cur = $routeParams.id;
+  else
+    $scope.cur ="overview";
 
 
 }])

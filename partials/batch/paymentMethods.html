@@ -1,0 +1,33 @@
+	<h2>Payment Methods</h2>
+
+<ul>
+	<li><a type="button" class="btn btn-light text-left" href="/batch/#h3_pm_authorizing">Authorizing Transactions</a></li>
+	<li><a type="button" class="btn btn-light text-left" href="/batch/#h3_pm_referencing">Referencing Transactions</a></li>
+</ul>
+
+<br/>
+<div id="h3_pm_authorizing">
+	<h3>Authorizing Transactions (Preauth/Debit)</h3>
+	<br/>
+	<p>
+		Batch processing can be used for the following payment methods' <strong>recurring orders only</strong> by providing a valid paymentInstrumentId.
+	</p>
+	<strong>
+		<ul>
+			<li>Credit Card</li>
+			<li>SEPA</li>
+			<li>PayPal</li>
+		</ul>
+	</strong>
+	<br/>
+</div>
+<div id="h3_pm_referencing">
+	<h3>Referencing Transactions (Capture/Cancel/Refund)</h3>
+	<br/>
+	<p>Referencing transactions (cancel, capture, refund) are available via Batch for <strong>all payment methods</strong>.</p>
+	<p><br /></p>
+	<p><strong>*</strong> Authorising Transactions are called the initial payment </p>
+	<p><strong>*</strong> Referencing Transactions are payment transactions that implement a transaction ID from a previously authorised transaction to process a further backoffice operation - e.g. cancel, capture, refund.
+	</p>
+	<br/>
+</div>

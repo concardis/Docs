@@ -27,6 +27,7 @@
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createcustomer">Manage customers</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/myaccount">My Account</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/paymentmethods">Payment Methods</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/flexible3ds">Flexible 3DS Rules</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/managebaskets">Manage baskets</a>
         <hr>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/usermanagement"><h3><b>User Management</b></h3></a>
@@ -84,6 +85,10 @@
         </div>
         <div ng-show="cur=='paymentmethods'">
            <div  ng-include="'/partials/merchant/paymentmethods.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='flexible3ds'">
+           <div  ng-include="'/partials/merchant/flexible3ds.html'">
             </div>
         </div>
         <div ng-show="cur=='managebaskets'">

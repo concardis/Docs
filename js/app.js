@@ -5,12 +5,12 @@ angular.module('StudyCraneApp',[
 	'docsWidgetExample'
 	])
 .config(['$routeProvider', '$httpProvider', '$locationProvider', '$compileProvider', function($routeProvider, $httpProvider, $locationProvider, $compileProvider) {
-   
+
   new WOW().init();
 
-	$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|ftp|blob):|data:image\//); 
+	$compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|file|ftp|blob):|data:image\//);
 
-  $locationProvider.html5Mode(true); 
+  $locationProvider.html5Mode(true);
   $locationProvider.html5Mode(true).hashPrefix('!');
 
 	$routeProvider
@@ -35,6 +35,8 @@ angular.module('StudyCraneApp',[
   .when('/systemurl/:id', {templateUrl: 'partials/systemUrl.html', controller:'systemurlCtrl'})
   .when('/faq', {templateUrl: 'partials/faq.html'})
   .when('/contact', {templateUrl: 'partials/contact.html'})
+	.when('/batch', {templateUrl: 'partials/batch.html', controller:'batchCtrl'})
+	.when('/batch/:id', {templateUrl: 'partials/batch.html', controller:'batchCtrl'})
   .when('/merchantcenter', {templateUrl: 'partials/merchantcenter.html', controller:'merchantcenterCtrl'})
   .when('/merchantcenter/:id', {templateUrl: 'partials/merchantcenter.html', controller:'merchantcenterCtrl'});
 
@@ -138,7 +140,7 @@ console.log("trying start REDOCS");
 }])
 .controller('shopCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', function($rootScope, $scope, $http, backendService, $timeout) {
 	$scope.json = {};
-	
+
 }])
 .controller('customerCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', function($rootScope, $scope, $http, backendService, $timeout) {
 	$scope.customerId = "none";
@@ -147,7 +149,7 @@ console.log("trying start REDOCS");
 	$scope.customerJSON = {};
 
 	//$scope.customerJSONstring = JSON.stringify($scope.customerJSON, undefined, 2);
-	
+
 }])
 .controller('buildyourownCtrl', ['$rootScope', '$scope', '$http','backendService', 'apitest', '$timeout', function($rootScope, $scope, $http, backendService, apitest, $timeout) {
 	$rootScope.site = "byo";
@@ -211,7 +213,17 @@ console.log("trying start REDOCS");
   else
     $scope.cur ="registration";
 
-	
+
+}])
+.controller('batchCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', '$routeParams', function($rootScope, $scope, $http, backendService, $timeout, $routeParams) {
+	$rootScope.site = "batch";
+
+  if($routeParams.id)
+    $scope.cur = $routeParams.id;
+  else
+    $scope.cur ="overview";
+
+
 }])
 .controller('restdocCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', '$routeParams', function($rootScope, $scope, $http, backendService, $timeout, $routeParams) {
   $rootScope.site = "rd";
@@ -250,7 +262,7 @@ console.log("trying start REDOCS");
 		$rootScope.selectedSolution = solution;
 	};
 	$rootScope.site = "home";
-	
+
 }])
 .controller('mainCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', '$location',  function($rootScope, $scope, $http, backendService, $timeout, $location) {
 	$rootScope.site = "home";

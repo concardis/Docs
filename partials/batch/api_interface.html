@@ -1,0 +1,117 @@
+<h2>API Interface</h2>
+
+	<ul>
+	 	<li><a href="#h3_apiUploadFile" name="">Upload a Batch File</a></li>
+	 	<li><a href="#h3_apiBatchInfo" name="">Batch Information</a></li>
+	</ul>
+
+	<br/>
+	<div id="h3_apiUploadFile">
+	<h3>Upload a Batch File</h3>
+	<br/>
+	<table class="table table-bordered table-striped table-condensed">
+		<thead>
+			<tr>
+				<td>API Endpoint</td>
+				<td>Usage</td>
+				<td>Request Example</td>
+				<td width="40%">Response Example</td>
+			</tr>
+		</thead>
+		<tbody valign="top">
+			<tr style="background-color: white; border-top: 1px solid black;">
+				<td>POST /batch/upload</td>
+				<td>
+					<p>Upload csv file with transactions</p>
+					<p>The request should be encoded as multipart/form data, meaning that the csv file will be included in the data</p>
+				</td>
+				<td>POST /batch/upload</td>
+				<td>
+					<code>{
+"id": "BatchFile-05ce4c67-0586-46ff-b6ed-08493c6ecfce",
+"batchSequence": 12121,
+"version": 1,
+"createdAt": 1538667971000,
+"generatedAt": 1234556777,
+"batchRequestFileName": "merchant_123_12.csv",
+"batchResponseFileName": null,
+"processStatus": "PENDING"
+}</code>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br/>
+</div>
+<div id="h3_apiBatchInfo">
+	<h3>Batch Information</h3>
+	<table class="table table-bordered table-striped table-condensed">
+		<thead>
+			<tr>
+				<td>API Endpoint</td>
+				<td>Usage</td>
+				<td>Request Example</td>
+				<td width="40%">Response Example</td>
+			</tr>
+		</thead>
+		<tbody valign="top">
+			<tr>
+				<td>GET /batch</td>
+				<td>Get all batch transactions</td>
+				<td>GET /batch</td>
+				<td>
+<code>{
+"elements":
+ [{
+    "id": "BatchFile-0cdecdf5-e957-49b5-9324-b5734545aaec",
+    "batchSequence": 14359,
+    "version": 1,
+    "createdAt": 1538587140000,
+    "generatedAt": 1234556777,
+    "batchRequestFileName": "merchant_123_12.csv",
+    "batchResponseFileName": "merchant_123_12_result.csv",
+    "processStatus": "COMPLETE"
+  }],
+"totalPages": 1
+}</code>
+				</td>
+			</tr>
+			<tr style="background-color: grey;">
+				<td>
+					<p>GET /batch/{batchId}</p>
+				</td>
+				<td>Get specific batch transactions detail</td>
+				<td>GET /batch/BatchFile-0cdecdf5-e957-49b5-9324-b5734545aaec</td>
+				<td>
+<code>{
+  "id": "BatchFile-0cdecdf5-e957-49b5-9324-b5734545aaec",
+  "batchSequence": 14359,
+  "version": 1,
+  "createdAt": 1538587140000,
+  "generatedAt": 1234556777,
+  "batchRequestFileName": "merchant_123_12.csv",
+  "batchResponseFileName": "merchant_123_12.csv_result.csv",
+  "processStatus": "COMPLETE"
+}</code>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p>GET /batch/{batchId}/request/download </p>
+				</td>
+				<td>Download csv uploaded file with transactions</td>
+				<td>GET /batch/BatchFile-0cdecdf5-e957-49b5-9324-b5734545aaec/request/download</td>
+				<td>Successful response</td>
+			</tr>
+			<tr>
+				<td>
+					<p>GET /batch/{batchId}/response/download</p>
+				</td>
+				<td>Download csv generated file when the uploaded file is successfully parsed</td>
+				<td>GET /batch/BatchFile-4388f63a-98ba-46aa-a509-76d026c66615/response/download</td>
+				<td>Successful response</td>
+			</tr>
+		</tbody>
+	</table>
+	<br />
+</div>

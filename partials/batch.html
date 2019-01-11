@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+
+        <br>
+    </div>
+    <div class="col-md-1">
+    </div>
+</div>
+<img src="img/CC_MC.jpeg" width="100%"></img>
+<div class="row">
+    <br>
+    <div class="col-md-1"></div>
+    <div ng-init="menu=true;" class="col-md-2 btn-group-vertical">
+        <button type="button" class="btn btn-light text-left" ng-click="menu=!menu"><h3>Batch Processing</h3> </button>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/batch/overview">Overview</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/batch/paymentMethods">Payment Methods</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/batch/filesDefinition">Files Definition</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/batch/apiInterface">API Interface</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/batch/merchantCenter">Merchant Center Interface</a>
+        <br/>
+    </div>
+    <div class="col-md-8">
+        <div ng-show="cur=='overview'">
+            <div  ng-include="'/partials/batch/overview.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='paymentMethods'">
+            <div  ng-include="'/partials/batch/paymentMethods.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='filesDefinition'">
+           <div  ng-include="'/partials/batch/filesDefinition.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='apiInterface'">
+            <div  ng-include="'/partials/batch/api_interface.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='merchantCenter'">
+           <div ng-include="'/partials/batch/merchantCenter.html'">
+            </div>
+        </div>
+    </div>
+</div>

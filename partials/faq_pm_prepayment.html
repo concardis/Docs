@@ -1,0 +1,647 @@
+
+<br/>
+<div>
+	<h2>Overview</h2>
+	</br>
+	<p>
+		The customer receives an e-mail with the payment details and has to transfer the money for the ordered goods in advance. First after the full amount has been received on the merchant bank account the goods will be shipped.
+	</p>
+	</br>
+	<h2>Payengine Details</h2>
+	</br>
+	<div>
+		<div class="content-box-wrapper">
+			<div class="pricing-box-alt row clearfix">
+				<div class="col-md-3 plans-features">
+					<ul>
+						<li class="header ms-hover"><strong>General</strong></li>
+						<li class="ms-hover">Product</li>
+						<li class="ms-hover">Channels</li>
+						<li class="ms-hover">Currencies</li>
+						<li class="ms-hover">Countries</li>
+						<li class="ms-hover">Technical Flow</li>
+						<li class="ms-hover">Recurring</li>
+						<li class="ms-hover">Chargebacks</li>
+					</ul>
+				</div>
+				<div class="individual-plan">
+					<ul>
+						<li class="header ms-hover"></li>
+						<li class="ms-hover">prepayment</li>
+						<li class="ms-hover">ecom</li>
+						<li class="ms-hover">EUR</li>
+						<li class="ms-hover">DE</li>
+						<li class="ms-hover">synchronous</li>
+						<li class="ms-hover">no</li>
+						<li class="ms-hover">no</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		</br>
+		<div class="content-box-wrapper">
+			<div class="pricing-box-alt row clearfix">
+				<div class="col-md-3 plans-features">
+					<ul>
+						<li class="header ms-hover"><strong>Supported Features</strong></li>
+						<li class="header ms-hover"><strong>& Services</strong></li>
+						<li class="ms-hover">Debit</li>
+						<li class="ms-hover">Preauth</li>
+						<li class="ms-hover">Cancelation</li>
+						<li class="ms-hover">Capture</li>
+						<li class="ms-hover">Refunds</li>
+						<li class="ms-hover">Notifications</li>
+						<li class="ms-hover">Settlement Reporting</li>
+					</ul>
+				</div>
+				<div class="individual-plan">
+					<ul>
+						<li class="header ms-hover"></li>
+						<li class="header ms-hover"></li>
+						<li class="ms-hover">no</li>
+						<li class="ms-hover">yes</li>
+						<li class="ms-hover">yes (full, partial)</li>
+						<li class="ms-hover">yes (full, partial)</li>
+						<li class="ms-hover">yes* - refunds can only be exceuted via merchant bank account as a SEPA credit transfer</li>
+						<li class="ms-hover">yes - webhook, email</li>
+						<li class="ms-hover">yes</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<h4>Integration Types</h4>
+		</br>
+		<div class="content-box-wrapper">
+			<div class="pricing-box-alt row clearfix">
+				<div class="col-md-3 plans-features">
+					<ul>
+						<li class="header ms-hover"><strong>Integration Types</strong></li>
+						<li class="ms-hover">API</li>
+						<li class="ms-hover">Widget</li>
+						<li class="ms-hover">Bridge</li>
+						<li class="ms-hover">Shop Plugin</li>
+					</ul>
+				</div>
+				<div class="individual-plan">
+					<ul>
+						<li class="header ms-hover"><strong></strong></li>
+						<li class="ms-hover">yes</li>
+						<li class="ms-hover">yes</li>
+						<li class="ms-hover">no</li>
+						<li class="ms-hover">no</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	</br>
+	<h2>Payment Method Configuration</h2>
+	</br>
+	<div>
+		<p>
+			To be able to activate the prepayment payment method, first a bank account connection should be configured.
+		</p>
+		<p>
+			To set Bank account configuration settings:
+		</p>
+		<ul>
+			<li>
+				<p>Go to "Bank Account" section from vertical menu in Merchant Center. It will open page where you can fill your bank account data</p>
+				<img class="" src="/img/faq/prepayment/bank_account_1.png" width="100%" />
+			</li>
+			<li>
+				<p>Select Country, fill BIC of your Bank account and Click on "Create User"</p>
+				<img class="" src="/img/faq/prepayment/bank_account_2.png" width="100%" />
+			</li>
+			<li>
+				<p>It will open additional fields section to fill user and PIN:</p>
+				<img class="" src="/img/faq/prepayment/bank_account_3.png" width="100%" />
+			</li>
+			<li>
+				<p>After Bank account is saved successfully, you will see message that you account is in Pending status :</p>
+				<img class="" src="/img/faq/prepayment/bank_account_4.png" width="100%" />
+			</li>
+			<li>
+				<p>Now you must activate the bank account in your bank account. After that you must come back, and you will see details of your account, and you can select "Tan Schemes".</p>
+				<img class="" src="/img/faq/prepayment/bank_account_4.png" width="100%" />
+			</li>
+			<li>
+				<p>To activate the payment method you must contact to Account manager or admin.</p>
+			</li>
+		</ul>
+	</div>
+	<h2>Integration via Widget</h2>
+	</br>
+	<div>
+		<a href="https://docs.payengine.de/outofthebox/widgetmenu/ourwidget">
+			https://docs.payengine.de/outofthebox/widgetmenu/ourwidget
+		</a>
+		</br>
+		<h3>Customer experience</h3>
+		</br>
+		<ul>
+			<li>
+				<p>After the customer finish with the shopping, and select PAY button , he will see dialog with available payment methods:</p>
+				<img class="" src="/img/faq/prepayment/widget_1.png" width="50%" />
+			</li>
+			<li>
+				<p>After he select payment method he will see confirmation screen with payment amount and Pay button:</p>
+				<img class="" src="/img/faq/prepayment/widget_pay_2.png" width="50%" />
+			</li>
+			<li>
+				<p>After the customer finish the payment, he will be redirected to Success or Failure page.</p>
+				<img class="" src="/img/faq/prepayment/widget_pay_3.png" width="50%" />
+			</li>
+		</ul>
+	</div>
+	<div>
+		<h2>Integration via API</h2>
+		</br>
+		<h4>Step 1: Create customer (POST/customers)</h4>
+		</br>
+		<p>create customer specific request parameters</p>
+		<table class="table table-bordered table-striped table-condensed">
+				<thead>
+					<tr>
+						<th>Parameter</th>
+						<th>Mandatory/Optional</th>
+						<th>Description</th>
+						<th>Example</th>
+					</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>email</td>
+					<td>M</td>
+					<td>the e-mail adress of the customer</td>
+					<td>user@example.com</td>
+				</tr>
+				</tbody>
+		</table>
+		<p>Alternatively to create a new customer an already existing customerID can be use.</p>
+		<p>Example:</p>
+		<p><b>Create Customer (POST/customers)</b></p>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerRequestShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Customer Request
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+  "email": "user@example.com",
+  "merchantCustomerId": "merchantCustomerId_696501538"
+}
+					</code>
+				</div>
+			</div>
+		</div>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Customer Response
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+  "customerId": "customer_fl6wae2jqn",
+  "email": "user@example.com",
+  "merchantCustomerId": "merchantCustomerId_696501538",
+  "addresses": [
+    {
+      "addressId": "string",
+      "createdAt": 0,
+      "modifiedAt": 0,
+      "firstName": "string",
+      "lastName": "string",
+      "street": "string",
+      "houseNumber": "string",
+      "city": "string",
+      "zip": "string",
+      "country": "string",
+      "state": "string",
+      "phone": "string",
+      "fax": "string",
+      "mobile": "string",
+      "title": "string",
+      "additionalDetails": "string"
+    }
+  ],
+  "personas": [
+    {
+      "personaId": "string",
+      "createdAt": 0,
+      "modifiedAt": 0,
+      "firstName": "string",
+      "lastName": "string",
+      "phone": "string",
+      "mobile": "string",
+      "fax": "string",
+      "birthday": 0,
+      "gender": "MALE",
+      "title": "string"
+    }
+  ],
+  "paymentInstruments": [
+    {
+      "paymentInstrumentId": "string",
+      "merchantPaymentInstrumentId": "string",
+      "origin": "creditcard",
+      "type": "sepa",
+      "recurring": true,
+      "createdAt": 0,
+      "modifiedAt": 0,
+      "attributes": {}
+    }
+  ]
+}
+					</code>
+				</div>
+			</div>
+		</div>
+
+		<h4>Step 2: Create preauth</h4>
+		</br>
+		<p>After successful processed preauth there are the 2 following options for sending the prepayment payment details to the customer:</p>
+		<ul>
+			<li class="ms-hover">The Payengine generate and sends an e-mail with the payment details to the customer.</li>
+			<li class="ms-hover">The merchant generates and sends out an e-mail with the payment details to the customer. (the automated e-mail sending function should be disabled at the merchant center)</li>
+		</ul>
+		<p><b>Important:</b> The Payengine generates and provides a unique <b>descriptor</b>, which must be given by the customer as a payment reason in the bank transfer.</p>
+		<p>Example:</p>
+		<p><b>Preauth (POST/orders/preauth)</b></p>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="Preauth Request=false">
+				<h3 class="content-box-header bg-default">
+						Preauth Request
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="Preauth Request!=Preauth Request; console.log(Preauth Request)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="Preauth Request"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!Preauth Request"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="Preauth Request"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+  "product" : "prepayment",
+  "merchantOrderId": "merchantOrderId",
+  "description": "description",
+  "statementDescription": "statementDescription",
+  "initialAmount": 2,
+  "currency": "EUR",
+   "basket": [
+       {
+       "name": "USB-lighter",
+       "articleNumber": "SW10029",
+       "totalPrice": 2,
+       "totalPriceWithTax": 2,
+       "unitPrice": 2,
+       "unitPriceWithTax": 2,
+       "tax": 0,
+       "quantity": 1
+    }
+  ],
+  "customer": "customer_fl6wae2jqn",
+  "persona": "persona_lj3hiym60n",
+  "billingAddress": "address_ocvqns2gnb",
+  "shippingAddress": "address_ocvqns2gnb",
+  "ipAddress": "82.120.21.79",
+  "channel": "ECOM",
+  "source": "source"
+}
+					</code>
+				</div>
+			</div>
+		</div>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="preauthResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Preauth Response
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="preauthResponseShow!=preauthResponseShow; console.log(preauthResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="preauthResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!preauthResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="preauthResponseShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+	{
+    "createdAt": 1537878271910,
+    "modifiedAt": 1537878271910,
+    "merchantId": "string",
+    "terms": null,
+    "privacy": null,
+    "orderId": "string",
+    "merchantOrderId": "string",
+    "paymentProviderTransactionId": null,
+    "description": "string",
+    "statementDescription": "string",
+    "initialAmount": 100,
+    "preauthorizedAmount": 100,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "EUR",
+    "basket": [
+        {
+            "id": "Article-58885972-290f-4fcf-bf8d-19290cb891a7",
+            "name": "string",
+            "articleNumber": "string",
+            "totalPrice": 100,
+            "totalPriceWithTax": 100,
+            "unitPrice": 100,
+            "unitPriceWithTax": 100,
+            "quantity": 1,
+            "tax": 0,
+            "discount": null
+        }
+    ],
+    "customer": {
+        "merchantCustomerId": null,
+        "email": null,
+        "customerId": "string",
+        "addresses": [],
+        "personas": [],
+        "paymentInstruments": [
+            {
+                "createdAt": 1537878271901,
+                "modifiedAt": 1537878271901,
+                "paymentInstrumentId": "string",
+                "merchantPaymentInstrumentId": null,
+                "attributes": null,
+                "encrypted": false,
+                "origin": "prepayment",
+                "type": "prepayment",
+                "recurring": false
+            }
+        ],
+        "createdAt": 1537878271904,
+        "modifiedAt": 1537878271904
+    },
+    "persona": null,
+    "billingAddress": null,
+    "shippingAddress": null,
+    "ipAddress": null,
+    "paymentInstrument": {
+        "createdAt": 1537878271901,
+        "modifiedAt": 1537878271901,
+        "paymentInstrumentId": "string",
+        "merchantPaymentInstrumentId": null,
+        "attributes": null,
+        "encrypted": false,
+        "origin": "prepayment",
+        "type": "prepayment",
+        "recurring": false
+    },
+    "transactions": [
+        {
+            "createdAt": 1537878271900,
+            "modifiedAt": 1537878271900,
+            "type": "PREAUTH",
+            "transactionId": "string",
+            "description": "string",
+            "initialAmount": 100,
+            "capturedAmount": 0,
+            "canceledAmount": 0,
+            "currency": "EUR",
+            "status": "OK",
+            "order": "string",
+            "parentTransaction": null,
+            "transactions": null,
+            "basket": [
+                {
+                    "id": "Article-58885972-290f-4fcf-bf8d-19290cb891a7",
+                    "name": "string",
+                    "articleNumber": "string",
+                    "totalPrice": 100,
+                    "totalPriceWithTax": 100,
+                    "unitPrice": 100,
+                    "unitPriceWithTax": 100,
+                    "quantity": 1,
+                    "tax": 0,
+                    "discount": null
+                }
+            ],
+            "providerCode": null,
+            "merchantMessage": null,
+            "customerMessage": null,
+            "descriptor": "string",
+            "meta": null,
+            "asyncNotificationSubscriptionId": null
+        }
+    ],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": null,
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": [],
+    "product": "prepayment",
+    "transactionType": "PREAUTH",
+    "meta": null,
+    "async": null,
+    "deviceIdent": null,
+    "asyncNotificationSubscriptionId": null
+}
+					</code>
+				</div>
+			</div>
+		</div>
+		<h4>Preauth specific response parameters</h4>
+		<br/>
+		<table class="table table-bordered table-striped table-condensed">
+			<thead>
+				<tr>
+					<th>Parameter</th>
+					<th>Mandatory/Optional</th>
+					<th>Description</th>
+				</tr>
+			</thead>
+			<tbody>
+			<tr>
+				<td>descriptor</td>
+				<td>M</td>
+				<td>The Payengine generates and provides a unique descriptor, which must be given by the customer as a payment reason in the bank transfer.</td>
+			</tr>
+			</tbody>
+		</table>
+		<h4>Step 3: Money received</h4>
+		<br/>
+		<ul>
+			<li class="ms-hover">After money is received on the merchant bank account the Payengine captured automatically the received amount.</li>
+			<li class="ms-hover">The Payengine sends out a notification to the merchant when the money is received on the merchant bank account so that the order can be dispatched.</li>
+		</ul>
+		<h4>Payment disruptions</h4>
+		<br/>
+		<ul>
+			<li class="ms-hover">Wrong "descriptor": In case of the customer provided wrong "descriptor" in the payment reason the Payengine is not able to match the received money on the right Transaction. In this case possible refunds should be triggered manually by the merchant</li>
+			<li class="ms-hover">Bank transfer amount is too high: The Payengine don't refund the balance automatically.</li>
+			<li class="ms-hover">Bank transfer amount is too low: The Payengine set a partial capture for the received amount and is waiting for rest amount to be paid. If the customer have not paid the rest amount, the transaction should be canceled by the merchant (without sending the goods) and refund of the already paid amount should be carrie out manually</li>
+			<li class="ms-hover">No money received on the merchant bank account: The created order is valid for 7 days. After 7 days the order will be automatically cancelled.</li>
+		</ul>
+	</div>
+	<div>
+		<h2>Notifications</h2>
+		</br>
+		<h4>Step 1: Set up notifications</h4>
+		<br/>
+		<p>For receiving Notifications from the Payengine on status changes for prepayment the notification service should be set up</p>
+		<ul>
+			<li class="ms-hover"><a href="https://docs.payengine.de/buildyourown/restapi">via API</a></li>
+			<li class="ms-hover"><a href="https://docs.payengine.de/merchantcenter/managenotification">via Merchant Center</a></li>
+		</ul>
+		<h4>Step 2: Receive and process notifications </h4>
+		<br/>
+		<table class="table table-bordered table-striped table-condensed">
+				<thead>
+					<tr>
+						<th>Status</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>capture</td>
+					<td>A notification will be send if the full or a partial amount is received on the merchant bank account.</td>
+				</tr>
+				</tbody>
+		</table>
+		<h4>Testing</h4>
+		<p>The testing is processed via the <b>Payengine Simulator</b>.</p>
+		<p><b>Testable functionalities:</b></p>
+		<p>Successful</p>
+		<p>order decline (use 11.11 or 111.11 as amount to cause a decline)</p>
+		<p>Payment details e-mail (on the roadmap)</p>
+		<p>Payment received information e-mail(on the roadmap)</p>
+		<p>Partial/full cancel</p>
+		<p>Capture</p>
+		<p>Partial/full refund</p>
+		<p>Notifications</p>
+		<ul>
+			<li class="ms-hover">capture</li>
+			<li class="ms-hover">settled</li>
+		</ul>
+		<!-- <h4>Settlement file </h4> -->
+	</div>
+	<div>
+		</br>
+		<h2>Order Details</h2>
+		</br>
+		<p>Prepayment Orders can be found under the "Orders" section of the Merchant Center.</p>
+		<img class="" src="/img/faq/prepayment/prepayment_orders_1.png" width="100%" />
+		<p>To view order details, click on the Actions button for selected order:</p>
+		<img class="" src="/img/faq/prepayment/prepayment_orders_2.png" width="100%" />
+		<p>It will open detailed view of the Prepayment Order</p>
+		<img class="" src="/img/faq/prepayment/prepayment_order_details_new.png" width="100%" />
+		<p>In the top Info container can be found information about Order:</p>
+		<ul>
+			<li>Payment method Icon</li>
+			<li>Amount and currency for the order</li>
+			<li>Status of the order</li>
+		</ul>
+		<img class="" src="/img/faq/prepayment/prepayment_order_details_1.png" width="100%" />
+		<p>Second part contain sections with additional information:</p>
+		<ul>
+			<li>Summary of the order</li>
+			<li>Billing Address</li>
+			<li>Shipping Address</li>
+			<li>Customer information</li>
+			<li>Persona information</li>
+			<li>Payment instrument information</li>
+		</ul>
+		<img class="" src="/img/faq/prepayment/prepayment_order_details_2.png" width="100%" />
+		<p>Next part contains Transactions information</p>
+		<img class="" src="/img/faq/prepayment/prepayment_order_details_3.png" width="100%" />
+		<p>The left part of the section contains list of created transactions:</p>
+		<img class="" src="/img/faq/prepayment/prepayment_order_trans_prep_1.png" width="100%" />
+		<p>The right contains detailed information about the selected transaction:</p>
+		<img class="" src="/img/faq/prepayment/prepayment_order_trans_prep_2.png" width="100%" />
+		</br>
+		<h3>Prepayment Order Details</h3>
+		</br>
+		<p>After the order is created in the transactions section can be found information about created transaction.</p>
+		<p>In the left part you will see general information about the transaction:</p>
+		<ul>
+			<li>transaction Id</li>
+			<li>Date and time when transaction was created</li>
+			<li>Amount and currency if the transaction</li>
+			<li>Status of the transaction</li>
+			<li>Transaction type</li>
+		</ul>
+		<img class="" src="/img/faq/prepayment/prepayment_order_transactions_1.png" width="100%" />
+		<p>In the right part you will see detailed information about the selected transaction and a button to cancel it:</p>
+		<img class="" src="/img/faq/prepayment/prepayment_order_transactions_2.png" width="100%" />
+		<p>Depending on the order status, there are different transaction types and statuses:</p>
+		<p><b>Created Order</b></p>
+		<p>When the order is created:</p>
+		<ul>
+			<li>Status of the transaction is "OK"</li>
+			<li>Transaction type is "PREAUTH"</li>
+		</ul>
+		<img class="" src="/img/faq/prepayment/prepayment_order_transactions_1_1.png" width="100%" />
+		<br/>
+		<p><b>Full Cancellation of Order</b></p>
+		<p>When the order is canceled, In the left part you will see additional transaction with:</p>
+		<ul>
+			<li>Status of the transaction - "SUCCESS"</li>
+			<li>Transaction type - "CANCEL"</li>
+			<li>Amount - full amount of the order</li>
+		</ul>
+		<img class="" src="/img/faq/prepayment/prepayment_order_transactions_3.png" width="100%" />
+		<p>There are list of connected transactions in PREAUTH transaction details section, and the "Cancel" button is missing.</p>
+		<img class="" src="/img/faq/prepayment/prepayment_order_transactions_4.png" width="100%" />
+		<p><b>Partial Cancellation of Order</b></p>
+		<p>When the order is partially canceled, In the left part you will see additional transaction with:</p>
+		<ul>
+			<li>Status of the transaction - "SUCCESS"</li>
+			<li>Transaction type - "CANCEL"</li>
+			<li>Parent - parent PREAUTH transaction</li>
+			<li>Amount - canceled amount of the order</li>
+		</ul>
+		<img class="" src="/img/faq/prepayment/prepayment_order_transactions_5.png" width="100%" />
+		<ul>
+			<li>There are list of connected transactions in PREAUTH transaction details section.</li>
+			<li>Canceled amount is visible in transaction details section</li>
+			<li>The "Cancel" button is available, but only for the remaining amount.</li>
+		</ul>
+		<img class="" src="/img/faq/prepayment/prepayment_order_transactions_6.png" width="100%" />
+		<p><b>Captured Order</b></p>
+		<p>When the order is payed in the left part you will see additional transaction with:</p>
+		<ul>
+			<li>Status of the transaction is "SETTLED"</li>
+			<li>Transaction type is "CAPTURE"</li>
+		</ul>
+		<p><b>Expired time for payment</b></p>
+		<p>When the time for payment is expired in the left part you will see PREAUTH transaction with:</p>
+		<ul>
+			<li>Status of the transaction is "PREAUTH"</li>
+			<li>Transaction type is "EXPIRED"</li>
+			<li>There is no Cancel option.</li>
+		</ul>
+		<img class="" src="/img/faq/prepayment/prepayment_order_transactions_8.png" width="100%" />
+	</div>
+</div>

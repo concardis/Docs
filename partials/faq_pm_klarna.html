@@ -1,0 +1,2595 @@
+
+<br/>
+<div>
+	<h2>Overview</h2>
+	</br>
+	<p>
+		Klarna is a Swedish payment service provider and a licensed bank that offers a wide variety of payment solutions for e-commerce business eliminating the risk for seller and buyer. Klarna offers the following three payment methods which are all factored, meaning that there is a guaranteed payment for the merchant:
+	</p>
+	<ul>
+		<li>
+			Pay Now - customers pay in full at checkout
+		</li>
+		<li>
+			Pay Later - customers buy now, but pay in full after certain amount of time
+		</li>
+		<li>
+			Slice It - customers buy now, but pay later in fixed or flexible slices
+		</li>
+	</ul>
+	<p>
+		Merchants can choose which of these payment methods should be enabled for them, depending on their preferences and specific characteristics of their business.
+	</p>
+	</br>
+	<h2>Customer Experience</h2>
+	<ol>
+		<li>
+			After the customer is done with the web checkout and triggers the payment process, he/she will see a dialog with available payment methods.
+			<br/>
+			<img class="" src="/img/faq/klarna/Widget_Klarna_initial.png" width="50%" />
+		</li>
+		<li>
+			After the customer selects Klarna all available Klarna payment methods (enabled by the merchant) will be displayed.
+			<br/>
+			<img class="" src="/img/faq/klarna/Widget_Klarna_PM.png" width="50%" />
+		</li>
+		<li>
+			When the customer selects one of the options he/she will be redirected to Klarna. For 'Pay Now' he/she can then select one of the available payment options.
+			<br/>
+			<img class="" src="/img/faq/klarna/Klarna_HPP_Pay-Now.png" width="50%" />
+		</li>
+		<li>
+			For Direct Debit the customer has to enter the date of birth, ...
+			<br/>
+			<img class="" src="/img/faq/klarna/Klarna_HPP_input.png" width="50%" />
+		</li>
+		<li>
+			... followed by the IBAN.
+			<br/>
+			<img class="" src="/img/faq/klarna/Klarna_HPP_iban.png" width="50%" />
+		</li>
+		<li>
+			Afterwards the customer has to verify the payment details and confirm the payment.
+			<br/>
+			<img class="" src="/img/faq/klarna/Klarna_HPP_verify.png" width="50%" />
+		</li>
+		<li>
+			The customer will see a confirmation page and will be redirected back to the shop once he/she clicks on the 'Continue' button
+			<br/>
+			<img class="" src="/img/faq/klarna/Klarna_HPP_success.png" width="50%" />
+		</li>
+	</ol>
+
+	</br>
+	<h2>Payengine Details</h2>
+	</br>
+	<p>
+		Klarna offers solutions for B2C and B2B to merchants. Details for those two cases can be found below.
+	</p>
+	</br>
+	<p>
+		All Klarna Payment Methods are applicable in case the end customer is an individual.
+	</p>
+	</br>
+	<div>
+		<div class="content-box-wrapper">
+			<table class="row clearfix">
+				<tr class="header ms-hover">
+					<td class="plans-features pm-table-header-cell" colspan="4">
+						<strong>General Details for B2C Cases</strong>
+					</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-header-cell">
+						<strong>Parameters of Payment Method</strong>
+					</td>
+					<td class="pm-table-header-cell">
+						<strong>PAY NOW</strong>
+					</td>
+					<td class="pm-table-header-cell">
+						<strong>PAY LATER</strong>
+					</td>
+					<td class="pm-table-header-cell">
+						<strong>SLICE IT</strong>
+					</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell">Channels</td>
+					<td class="pm-table-row-cell pm-cell-color">KLARNA_PAY_NOW</td>
+					<td class="pm-table-row-cell pm-cell-color">KLARNA_PAY_LATER</td>
+					<td class="pm-table-row-cell pm-cell-color">KLARNA_SLICE_IT</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell">
+						<strong>Payment Options (for Customer)</strong>
+					</td>
+					<td class="pm-table-row-cell pm-cell-color">
+						<ul>
+							<li>Debit/Credit Card</li>
+							<li>Bank Account including:</li>
+							<ul>
+								<li>Direct Debit</li>
+								<li>Online Bank Transfer</li>
+							</ul>
+						</ul>
+					</td>
+					<td class="pm-table-row-cell pm-cell-color">Invoice - Pay in 14 days</td>
+					<td class="pm-table-row-cell pm-cell-color">Flexible Payments</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Channels</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">Ecom</td>
+					<td class="pm-table-row-cell pm-cell-color">Ecom</td>
+					<td class="pm-table-row-cell pm-cell-color">Ecom</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Currencies</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">EUR, NOK, SEK, GBP, DKK</td>
+					<td class="pm-table-row-cell pm-cell-color">EUR, NOK, SEK, GBP, DKK</td>
+					<td class="pm-table-row-cell pm-cell-color">EUR, NOK, SEK, GBP, DKK </td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Countries</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">DE, AT, SE, NO, FI, DK, NL, GB</td>
+					<td class="pm-table-row-cell pm-cell-color">DE, AT, SE, NO, FI, DK, NL, GB</td>
+					<td class="pm-table-row-cell pm-cell-color">DE, SE, NO, FI, DK, GB</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Technical Flow</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">Asynchronous</td>
+					<td class="pm-table-row-cell pm-cell-color">Asynchronous</td>
+					<td class="pm-table-row-cell pm-cell-color">Asynchronous</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Recurring</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">Yes</td>
+					<td class="pm-table-row-cell pm-cell-color">Yes</td>
+					<td class="pm-table-row-cell pm-cell-color">Yes</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Chargebacks</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">No</td>
+					<td class="pm-table-row-cell pm-cell-color">No</td>
+					<td class="pm-table-row-cell pm-cell-color">No</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Reusable Payment Instruments</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">Yes</td>
+					<td class="pm-table-row-cell pm-cell-color">Yes</td>
+					<td class="pm-table-row-cell pm-cell-color">Yes</td>
+				</tr>
+			</table>
+		</div>
+
+		</br>
+		<p>
+			Only 'Pay Later' payment method is applicable in case the end customer is a business.
+		</p>
+		</br>
+		<div class="content-box-wrapper">
+			<table class="row clearfix">
+				<tr class="header ms-hover">
+					<td class="plans-features pm-table-header-cell" colspan="4">
+						<strong>General Details for B2B Cases</strong>
+					</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-header-cell">
+						<strong>Parameters of Payment Method</strong>
+					</td>
+					<td class="pm-table-header-cell">
+						<strong>PAY LATER</strong>
+					</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Payengine Product</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">KLARNA_PAY_LATER</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Payment Options (for Customer)</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">Invoice</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Channels</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">Ecom</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Currencies</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">EUR, NOK, SEK, DKK</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Countries</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">SE, NO, FI, DK, DE</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Technical Flow</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">Asynchronous</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Recurring</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">Yes</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Chargebacks</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">No</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Reusable Payment Instruments</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">Yes</td>
+				</tr>
+			</table>
+		</div>
+
+		</br>
+		<div class="content-box-wrapper">
+			<table class="row clearfix">
+				<tr class="header ms-hover">
+					<td class="plans-features pm-table-header-cell" colspan="4">
+						<strong>Supported Features and Services</strong>
+					</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Debit</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">yes</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Preauthorization</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">yes</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Capture</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">Yes (full & partial)</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Cancellation</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">Yes (full & partial)</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Refunds</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">Yes (full & partial)</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Notifications</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">Yes - webhook, email</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>PayLink Integration</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">no</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Settlement Reporting</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">Yes</td>
+				</tr>
+			</table>
+		</div>
+
+		</br>
+		<p>
+			Listed types of integration are present for all three Klarna payment methods
+		</p>
+		</br>
+		<div class="content-box-wrapper">
+			<table class="row clearfix">
+				<tr class="header ms-hover">
+					<td class="plans-features pm-table-header-cell" colspan="4">
+						<strong>INTEGRATION TYPES</strong>
+					</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>API</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">yes</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Widget</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">yes</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Bridge</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">no</td>
+				</tr>
+				<tr class="">
+					<td class="pm-table-row-cell"><strong>Shop Plugin</strong></td>
+					<td class="pm-table-row-cell pm-cell-color">no</td>
+				</tr>
+			</table>
+		</div>
+
+	</div>
+	</br>
+	<h2>Integration via Widget</h2>
+	</br>
+	<div>
+		<p>
+			Widget integration for Klarna Payment Methods follows general rules and flow of widget integration for all payment methods and it has no specific differences.
+		</p>
+		<p>
+			Information about general types of widget integration and their associated flows can be found under the following link: <a>https://docs.payengine.de/outofthebox/widgetmenu/ourwidget</a>
+		</p>
+	</div>
+	</br>
+	<div>
+		<h2>Integration via API</h2>
+		</br>
+		<h4>Step 1: General prerequisites for transactions</h4>
+		</br>
+		<p><strong>Prerequisites for transactions in B2C Cases<strong></p>
+		<p>In case the end customer is an individual Klarna requires additional customer and address information.</p>
+		<p>Therefore <b>prior to</b> the creation of any payment transaction the merchant needs to have a <b>Customer</b> in place connected with <b>Persona</b> and <b>Billing/Shipping Address</b> data.</p>
+		</br>
+		<p><strong><u>Customer</u><strong></p>
+		<p>A new customer has to be created or existing customer ID has to be provided.</p>
+		</br>
+		<p><i>Create Customer</i> (POST/customer) - for the creation of a new customer the following specific request parameter must be available:</p>
+		<table class="table table-bordered table-striped table-condensed">
+				<thead>
+					<tr>
+						<th>Parameter</th>
+						<th>Mandatory/Optional</th>
+						<th>Description</th>
+						<th>Example</th>
+					</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>email</td>
+					<td>M</td>
+					<td>email address of the customer</td>
+					<td>john@doe.com</td>
+				</tr>
+				</tbody>
+		</table>
+		</br>
+		<p>Examples for <i>Create Customer</i> request and <i>Create Customer</i> response when the customer is an individual can be found below.</p>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerRequestShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Customer Request
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+  "email": "john@doe.com"
+}
+					</code>
+				</div>
+			</div>
+		</div>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Customer Response
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+    "merchantCustomerId": null,
+    "email": "john@doe.com",
+    "organizationRegistrationRegister": null,
+    "organizationRegistrationId": null,
+    "organizationEntityType": null,
+    "organizationVatId": null,
+    "customerId": "customer_kh8mkrh4gr",
+    "addresses": [],
+    "personas": [],
+    "paymentInstruments": [],
+    "createdAt": 1547476853402,
+    "modifiedAt": 1547476853402,
+    "customerType": null
+}
+					</code>
+				</div>
+			</div>
+		</div>
+
+		<p><strong><u>Persona</u><strong></p>
+		<p>Specific request parameters for Persona element can be found in the table below.</p>
+		</br>
+		<table class="table table-bordered table-striped table-condensed">
+				<thead>
+					<tr>
+						<th>Parameter</th>
+						<th>Mandatory/Optional</th>
+						<th>Description</th>
+						<th>Example</th>
+					</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td>First Name</td>
+					<td>M</td>
+					<td>first name of the customer</td>
+					<td>John</td>
+				</tr>
+				<tr>
+					<td>Last Name</td>
+					<td>M</td>
+					<td>last name of the customer</td>
+					<td>Doe</td>
+				</tr>
+				<tr>
+					<td>Phone</td>
+					<td>O</td>
+					<td>home phone of the customer</td>
+					<td>00493012345</td>
+				</tr>
+				<tr>
+					<td>Mobile</td>
+					<td>O</td>
+					<td>mobile phone of the customer</td>
+					<td>00493012345</td>
+				</tr>
+				<tr>
+					<td>Fax</td>
+					<td>O</td>
+					<td>fax number of the customer</td>
+					<td>00493012345</td>
+				</tr>
+				<tr>
+					<td>Birthday</td>
+					<td>O</td>
+					<td>birthday date of the customer</td>
+					<td>358293600000</td>
+				</tr>
+				<tr>
+					<td>Gender</td>
+					<td>O</td>
+					<td>gender of the customer</td>
+					<td>MALE</td>
+				</tr>
+				<tr>
+					<td>Title</td>
+					<td>O</td>
+					<td>title of the customer</td>
+					<td>Prof. Dr.</td>
+				</tr>
+				</tbody>
+		</table>
+		</br>
+		<p>Examples for <i>Create Persona</i> request and <i>Create Persona</i> response can be found below</p>
+
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Persona Request
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "phone": "00493012345",
+  "mobile": "00493012345",
+  "fax": "00493012345",
+  "birthday": 358293600000,
+  "gender": "MALE",
+  "title": "Prof. Dr."
+}
+					</code>
+				</div>
+			</div>
+		</div>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Persona Response
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+    "personaId": "persona_eb8xzm0aki",
+    "firstName": "John",
+    "lastName": "Doe",
+    "phone": "00493012345",
+    "mobile": "00493012345",
+    "fax": "00493012345",
+    "birthday": 358293600000,
+    "gender": "MALE",
+    "title": "Prof. Dr.",
+    "createdAt": 1547568579219,
+    "modifiedAt": 1547568579219
+}
+					</code>
+				</div>
+			</div>
+		</div>
+		</br>
+		<p><strong><u>Billing Address & Shipping Address</u><strong></p>
+		<p>Billing Address and Shipping Address have to be created as separate objects. However, when the end customer is an individual, in most of the cases, Billing Address and Shipping Address are identical.</p>
+		<p>In such scenario both objects will have identical ID.</p>
+		<p>If this is not the case a different shipping address has to be specified and it will have different ID compared to Billing Address.</p>
+		<p>For both type of addresses the specific request parameters are the same and they can be found in the table below.</p>
+		</br>
+		<table class="table table-bordered table-striped table-condensed">
+			<thead>
+				<tr>
+					<th>Parameter</th>
+					<th>Mandatory/Optional</th>
+					<th>Description</th>
+					<th>Example</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>First Name</td>
+					<td>M</td>
+					<td>first name of the customer/recipient</td>
+					<td>John</td>
+				</tr>
+				<tr>
+					<td>Last Name</td>
+					<td>M</td>
+					<td>last name of the customer/recipient</td>
+					<td>Doe</td>
+				</tr>
+				<tr>
+					<td>Street</td>
+					<td>M</td>
+					<td>street name of the customer/recipient</td>
+					<td>Lützowstraße 23</td>
+				</tr>
+				<tr>
+					<td>House Number</td>
+					<td>M</td>
+					<td>precise house location of the customer/recipient</td>
+					<td>9b</td>
+				</tr>
+				<tr>
+					<td>City</td>
+					<td>M</td>
+					<td>city of the customer/recipient</td>
+					<td>Berlin</td>
+				</tr>
+				<tr>
+					<td>ZIP</td>
+					<td>M</td>
+					<td>precise zip code of location of the customer/recipient</td>
+					<td>10785</td>
+				</tr>
+				<tr>
+					<td>Country</td>
+					<td>M</td>
+					<td>country abbreviation of the customer/recipient</td>
+					<td>DE</td>
+				</tr>
+				<tr>
+					<td>State</td>
+					<td>O</td>
+					<td>state/province of location of the customer/recipient</td>
+					<td>Berlin</td>
+				</tr>
+				<tr>
+					<td>Phone</td>
+					<td>O</td>
+					<td>home phone number of the customer/recipient</td>
+					<td>00493012345</td>
+				</tr>
+				<tr>
+					<td>Fax</td>
+					<td>O</td>
+					<td>fax number of the customer/recipient</td>
+					<td>00493012345</td>
+				</tr>
+				<tr>
+					<td>Mobile</td>
+					<td>O</td>
+					<td>mobile phone of the customer</td>
+					<td>00493012345</td>
+				</tr>
+				<tr>
+					<td>Title</td>
+					<td>O</td>
+					<td>title of the customer</td>
+					<td>Prof. Dr.</td>
+				</tr>
+			</tbody>
+		</table>
+		</br>
+		<p>Examples for Create <i>Billing/Shipping Address</i> request and Create <i>Billing/Shipping Address</i> response can be found below.</p>
+
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Billing/Shipping Address Request
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "street": "Lützowstraße 23",
+  "houseNumber": "9b",
+  "city": "Berlin",
+  "zip": "10785",
+  "country": "DE",
+  "state": "Berlin",
+  "phone": "00493012345",
+  "fax": "00493012345",
+  "mobile": "00493012345",
+  "title": "herr"
+}
+					</code>
+				</div>
+			</div>
+		</div>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Billing/Shipping Address Response
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+    "companyName": null,
+    "reference": null,
+    "firstName": "John",
+    "lastName": "Doe",
+    "street": "Lützowstraße 23",
+    "houseNumber": "9b",
+    "city": "Berlin",
+    "zip": "10785",
+    "country": "DE",
+    "state": "Berlin",
+    "phone": "00493012345",
+    "fax": "00493012345",
+    "mobile": "00493012345",
+    "title": "herr",
+    "additionalDetails": null,
+    "addressId": "address_smdb1hgddf",
+    "createdAt": 1547476855000,
+    "modifiedAt": 1547476855000
+}
+					</code>
+				</div>
+			</div>
+		</div>
+
+		<p><strong>Prerequisites for transactions in B2B Cases<strong></p>
+		<p>Similar to the B2C requirements described above customer and address information is also required for B2B.</p>
+		<p>The main difference compared to B2C cases is that the Customer and Billing Address elements must contain additional parameters.</p>
+		</br>
+		<p><strong><u>Customer</u></strong></p>
+		<p>All specific request parameters for Customer  element in case the end customer is an organization can be found in the table below.  .</p>
+		</br>
+		<table class="table table-bordered table-striped table-condensed">
+			<thead>
+				<tr>
+					<th>Parameter</th>
+					<th>Mandatory/Optional</th>
+					<th>Description</th>
+					<th>Example</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Email</td>
+					<td>M</td>
+					<td>email address from the customer organization</td>
+					<td>John.Dou@organization.com</td>
+				</tr>
+				<tr>
+					<td>Customer Type</td>
+					<td>M</td>
+					<td>when customer is an organization, this parameter has one possible value - organization</td>
+					<td>organization</td>
+				</tr>
+				<tr>
+					<td>Organization Registration ID</td>
+					<td>M</td>
+					<td>unique registration ID number of the organization</td>
+					<td>DE1234</td>
+				</tr>
+				<tr>
+					<td>Organization Entity Type</td>
+					<td>M</td>
+					<td>legal form of the organization</td>
+					<td>LIMITED_COMPANY</td>
+				</tr>
+				<tr>
+					<td>Organization VAT ID</td>
+					<td>M</td>
+					<td>unique VAT ID number of the organization</td>
+					<td>DE123456789</td>
+				</tr>
+			</tbody>
+		</table>
+		</br>
+		<p>Examples for <i>Create Customer</i> request and <i>Create Customer</i> response when customer is an organization can be found below.</p>
+
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Customer Request - B2B example
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+  "email": "{{randomString}}@test.com",
+  "merchantCustomerId": "merchantCustomerId_{{timestamp}}",
+  "customerType": "organization",
+  "organizationRegistrationId": "DE1234",
+  "organizationEntityType": "LIMITED_COMPANY",
+  "organizationVatId": "DE999999999"
+}
+					</code>
+				</div>
+			</div>
+		</div>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Customer Response - B2B example
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+  "merchantCustomerId": "merchantCustomerId_772274219",
+  "email": "customer@test.com",
+  "organizationRegistrationRegister": null,
+  "organizationRegistrationId": "DE1234",
+  "organizationEntityType": "LIMITED_COMPANY",
+  "organizationVatId": "DE999999999",
+  "customerId": "customer_zwpz1ix49d",
+  "addresses": [],
+  "personas": [],
+  "paymentInstruments": [],
+  "createdAt": 1545125432945,
+  "modifiedAt": 1545125432945,
+  "customerType": "organization"
+}
+					</code>
+				</div>
+			</div>
+		</div>
+
+		<p><strong>Billing Address<strong></p>
+		<p>The <i>Billing Address</i> element must contain two additional parameters compared to its parameters in B2C cases.</p>
+		<p>Additional parameters for element Billing Address can be found in the table below.</p>
+		</br>
+		<table class="table table-bordered table-striped table-condensed">
+			<thead>
+				<tr>
+					<th>Parameter</th>
+					<th>Mandatory/Optional</th>
+					<th>Description</th>
+					<th>Example</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Organization Name</td>
+					<td>M</td>
+					<td>legal name of customer organization</td>
+					<td>Klarna AB</td>
+				</tr>
+				<tr>
+					<td>Reference</td>
+					<td>M</td>
+					<td></td>
+					<td>Product Dpt</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h4>Step 2 A:  Preauth & Capture</h4>
+		</br>
+		<p><strong>Preauth & Capture<strong></p>
+		<p>The 'Preauth' transaction unlike the 'Debit' transaction isn't directly booking the initial amount of the order, it should be followed by 'Capture' transaction in order to receive the funds.</p>
+		</br>
+		<p><strong><u>Create Preauth</u><strong></p>
+		<p>Examples for <i>Create Preauth</i> request and <i>Create Preauth</i> response can be found below:</p>
+		</br>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerRequestShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Preauth Request
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 42745,
+    "currency": "EUR",
+    "product": "klarna-pay-later",
+    "basket": [
+        {
+            "articleType": "PHYSICAL",
+            "articleUrl": "http://google.com",
+            "imageUrl": "http://google2.com",
+            "name": "USB-Stick",
+            "articleNumber": "SW10029",
+            "totalPrice": 40000,
+            "totalPriceWithTax": 47600,
+            "unitPrice": 20000,
+            "unitPriceWithTax": 23800,
+            "tax": 19,
+            "quantity": 2,
+            "discount": -2380
+        },
+        {
+            "name": "Socks",
+            "articleType": "physical",
+            "articleUrl": "http://google.com",
+            "imageUrl": "http://google2.com",
+            "articleNumber": "SOCKS_NUMBER",
+            "totalPrice": 20,
+            "totalPriceWithTax": 24,
+            "unitPrice": 10,
+            "unitPriceWithTax": 12,
+            "tax": 19,
+            "quantity": 2
+        },
+        {
+            "articleType": "discount",
+            "articleNumber": "SOCKS_NUMBER",
+            "name": "Sale",
+            "quantity": 1,
+            "unitPrice": -100,
+            "unitPriceWithTax": -119,
+            "tax": 19,
+            "totalPrice": -100,
+            "totalPriceWithTax": -119
+        }
+    ],
+    "payment": {
+        "initializeCustomerTokenization": true,
+        "country": "DE",
+        "locale": "en-US",
+        "paymentInstrumentId": "{{paymentInstrumentId}}"
+    },
+    "customer": "{{customerId}}",
+    "billingAddress": "{{addressId}}",
+    "shippingAddress": "{{addressId}}",
+    "ipAddress": "82.120.21.79",
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "async": {
+        "successUrl": "http://successsss.com",
+        "failureUrl": "http://failure.com",
+        "cancelUrl": "http://cancel.com"
+    }
+}
+					</code>
+				</div>
+			</div>
+		</div>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Preauth Response
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+    "createdAt": 1547721949140,
+    "modifiedAt": 1547721949150,
+    "merchantId": "merchant_yxnszjsrf3",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "orderId": "cliwf51s04",
+    "merchantOrderId": null,
+    "paymentProviderTransactionId": null,
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 42745,
+    "preauthorizedAmount": 42745,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "EUR",
+    "basket": [
+        {
+            "id": "Article-c231f711-b0da-47d0-9cac-8da168cd6c3e",
+            "name": "Sale",
+            "articleNumber": "SOCKS_NUMBER",
+            "totalPrice": -100,
+            "totalPriceWithTax": -119,
+            "unitPrice": -100,
+            "unitPriceWithTax": -119,
+            "quantity": 1,
+            "tax": 19,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": "discount"
+        },
+        {
+            "id": "Article-2c0b38ef-c86a-4df8-93cd-b112f5858efc",
+            "name": "USB-Stick",
+            "articleNumber": "SW10029",
+            "totalPrice": 40000,
+            "totalPriceWithTax": 47600,
+            "unitPrice": 20000,
+            "unitPriceWithTax": 23800,
+            "quantity": 2,
+           "tax": 19,
+            "discount": -2380,
+            "imageUrl": "http://google2.com",
+            "articleUrl": "http://google.com",
+            "articleType": "physical"
+        },
+        {
+            "id": "Article-87bc703b-ccca-4c75-88d2-226ecb623022",
+            "name": "Socks",
+            "articleNumber": "SOCKS_NUMBER",
+            "totalPrice": 20,
+            "totalPriceWithTax": 24,
+            "unitPrice": 10,
+            "unitPriceWithTax": 12,
+            "quantity": 2,
+            "tax": 19,
+            "discount": null,
+            "imageUrl": "http://google2.com",
+            "articleUrl": "http://google.com",
+            "articleType": "physical"
+        }
+    ],
+    "customer": {
+        "merchantCustomerId": null,
+        "email": "john@doe.com",
+        "organizationRegistrationRegister": null,
+        "organizationRegistrationId": null,
+        "organizationEntityType": null,
+        "organizationVatId": null,
+        "customerId": "customer_yykrykxb7z",
+        "addresses": [
+            {
+                "companyName": null,
+                "reference": null,
+                "firstName": "John",
+                "lastName": "Doe",
+                "street": "Lützowstraße 23",
+                "houseNumber": "9b",
+                "city": "Berlin",
+                "zip": "10785",
+                "country": "DE",
+                "state": "Berlin",
+                "phone": "00493012345",
+                "fax": "00493012345",
+                "mobile": "00493012345",
+                "title": "herr",
+                "additionalDetails": null,
+                "addressId": "address_u4bcc37xdr",
+                "createdAt": 1547721010000,
+                "modifiedAt": 1547721010000
+            }
+        ],
+        "personas": [],
+        "paymentInstruments": [
+            {
+                "createdAt": 1547721014000,
+                "modifiedAt": 1547721039000,
+                "paymentInstrumentId": "paymentinstrument_wencepxgkw",
+                "merchantPaymentInstrumentId": null,
+                "attributes": {
+                    "possibleTypes": [
+                        "klarna-pay-later",
+                        "klarna-slice-it",
+                        "klarna-pay-now"
+                    ],
+                    "country": "DE",
+                    "locale": "de-DE"
+                },
+                "encrypted": false,
+                "origin": "klarna",
+                "type": "klarna-pay-later",
+                "recurring": true
+            },
+            {
+                "createdAt": 1547721151000,
+                "modifiedAt": 1547721188000,
+                "paymentInstrumentId": "paymentinstrument_rmewiyhqu8",
+                "merchantPaymentInstrumentId": null,
+                "attributes": {
+                    "possibleTypes": [
+                        "klarna-pay-later",
+                        "klarna-slice-it",
+                        "klarna-pay-now"
+                    ],
+                    "country": "DE",
+                    "locale": "de-DE"
+                },
+                "encrypted": false,
+                "origin": "klarna",
+                "type": "klarna-pay-later",
+                "recurring": true
+            }
+        ],
+        "createdAt": 1547721006000,
+        "modifiedAt": 1547721006000,
+        "customerType": null
+    },
+    "persona": null,
+    "billingAddress": {
+        "companyName": null,
+        "reference": null,
+        "firstName": "John",
+        "lastName": "Doe",
+        "street": "Lützowstraße 23",
+        "houseNumber": "9b",
+        "city": "Berlin",
+        "zip": "10785",
+        "country": "DE",
+        "state": "Berlin",
+        "phone": "00493012345",
+        "fax": "00493012345",
+        "mobile": "00493012345",
+        "title": "herr",
+        "additionalDetails": null,
+        "addressId": "address_u4bcc37xdr",
+        "createdAt": 1547721010000,
+        "modifiedAt": 1547721010000
+    },
+    "shippingAddress": {
+        "companyName": null,
+        "reference": null,
+        "firstName": "John",
+        "lastName": "Doe",
+        "street": "Lützowstraße 23",
+        "houseNumber": "9b",
+        "city": "Berlin",
+        "zip": "10785",
+        "country": "DE",
+        "state": "Berlin",
+        "phone": "00493012345",
+        "fax": "00493012345",
+        "mobile": "00493012345",
+        "title": "herr",
+        "additionalDetails": null,
+        "addressId": "address_u4bcc37xdr",
+        "createdAt": 1547721010000,
+        "modifiedAt": 1547721010000
+    },
+    "ipAddress": "82.120.21.79",
+    "paymentInstrument": {
+        "createdAt": 1547721151000,
+        "modifiedAt": 1547721188000,
+        "paymentInstrumentId": "paymentinstrument_rmewiyhqu8",
+        "merchantPaymentInstrumentId": null,
+        "attributes": {
+            "possibleTypes": [
+                "klarna-pay-later",
+                "klarna-slice-it",
+                "klarna-pay-now"
+            ],
+            "country": "DE",
+            "locale": "de-DE"
+        },
+        "encrypted": false,
+        "origin": "klarna",
+        "type": "klarna-pay-later",
+        "recurring": true
+    },
+    "transactions": [
+        {
+            "createdAt": 1547721949144,
+            "modifiedAt": 1547721949144,
+            "type": "PREAUTH",
+            "transactionId": "transaction_bglhp9ovci",
+            "description": "test transaction",
+            "initialAmount": 42745,
+            "capturedAmount": 0,
+            "canceledAmount": 0,
+            "currency": "EUR",
+            "status": "OK",
+            "order": "cliwf51s04",
+            "parentTransaction": null,
+            "transactions": null,
+            "basket": [
+                {
+                    "id": "Article-c231f711-b0da-47d0-9cac-8da168cd6c3e",
+                    "name": "Sale",
+                    "articleNumber": "SOCKS_NUMBER",
+                    "totalPrice": -100,
+                    "totalPriceWithTax": -119,
+                    "unitPrice": -100,
+                    "unitPriceWithTax": -119,
+                    "quantity": 1,
+                    "tax": 19,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": "discount"
+                },
+                {
+                    "id": "Article-2c0b38ef-c86a-4df8-93cd-b112f5858efc",
+                    "name": "USB-Stick",
+                    "articleNumber": "SW10029",
+                    "totalPrice": 40000,
+                    "totalPriceWithTax": 47600,
+                    "unitPrice": 20000,
+                    "unitPriceWithTax": 23800,
+                    "quantity": 2,
+                    "tax": 19,
+                    "discount": -2380,
+                    "imageUrl": "http://google2.com",
+                    "articleUrl": "http://google.com",
+                    "articleType": "physical"
+                },
+                {
+                    "id": "Article-87bc703b-ccca-4c75-88d2-226ecb623022",
+                    "name": "Socks",
+                    "articleNumber": "SOCKS_NUMBER",
+                    "totalPrice": 20,
+                    "totalPriceWithTax": 24,
+                    "unitPrice": 10,
+                    "unitPriceWithTax": 12,
+                    "quantity": 2,
+                    "tax": 19,
+                    "discount": null,
+                    "imageUrl": "http://google2.com",
+                    "articleUrl": "http://google.com",
+                    "articleType": "physical"
+                }
+            ],
+            "providerCode": null,
+            "merchantMessage": null,
+            "customerMessage": null,
+            "descriptor": null,
+            "meta": null,
+            "challenge": null,
+            "asyncNotificationSubscriptionId": null,
+            "tracking": null
+        }
+    ],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": null,
+    "product": "klarna-pay-later",
+    "transactionType": "PREAUTH",
+    "meta": null,
+    "async": null,
+    "deviceIdent": null,
+    "asyncNotificationSubscriptionId": null,
+    "redirectUrl": null
+}
+					</code>
+				</div>
+			</div>
+		</div>
+
+		<p><strong><u>Create Capture</u><strong></p>
+		<p><strong>Important:<strong>Existing and not expired 'Preauth' transaction in 'Success' status has to be in place when creating a 'Capture' transaction.</p>
+		<p>A 'Capture' transaction can be created for amount not bigger than initial amount of 'Preauth' transaction. Klarna payment methods enable full and partial capture of the initial amount of the order.</p>
+		</br>
+		<p>Examples for <i>Create Capture</i> request and <i>Create Capture</i> response can be found below:</p>
+
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Capture Request
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+    "description": "description for transaction.",
+    "initialAmount": 3,
+    "currency": "EUR",
+    "meta": {
+        "backgroundImageUrl": "https://i.pinimg.com/originals/d6/68/ab/d668abc72809303852c27275e6a56775.gif",
+        "backgroundImageWidth": 1280,
+        "pageTitle": "payengine",
+        "logoUrl": "https://i.pinimg.com/originals/16/ab/7a/16ab7a13d24a9a7950dcaef23c7a129a.gif"
+    }
+}
+					</code>
+				</div>
+			</div>
+		</div>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Capture Response
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+    "createdAt": 1547721491000,
+    "modifiedAt": 1547721492000,
+    "type": "CAPTURE",
+    "transactionId": "transaction_l1yskoix2g",
+    "description": "description for transaction.",
+    "initialAmount": 3,
+    "refundedAmount": 0,
+    "currency": "EUR",
+    "status": "SUCCESS",
+    "order": {
+        "createdAt": 1547721323000,
+        "modifiedAt": 1547721323000,
+        "merchantId": "merchant_yxnszjsrf3",
+        "terms": 1468590412476,
+        "privacy": 1468590412476,
+        "orderId": "3xzhrqfccc",
+        "merchantOrderId": null,
+        "paymentProviderTransactionId": null,
+        "description": "test transaction",
+        "statementDescription": "statement description",
+        "initialAmount": 42745,
+        "preauthorizedAmount": 42745,
+        "capturedAmount": 3,
+        "refundedAmount": 0,
+        "canceledAmount": 0,
+        "currency": "EUR",
+        "basket": [
+            {
+                "id": "Article-e8abdefd-4cce-4676-97f4-9e96d240f520",
+                "name": "Sale",
+                "articleNumber": "SOCKS_NUMBER",
+                "totalPrice": -100,
+                "totalPriceWithTax": -119,
+                "unitPrice": -100,
+                "unitPriceWithTax": -119,
+                "quantity": 1,
+                "tax": 19,
+                "discount": null,
+                "imageUrl": null,
+                "articleUrl": null,
+                "articleType": "discount"
+            },
+            {
+                "id": "Article-f086fab9-9890-4a35-b02c-17bb15cce5ec",
+                "name": "Socks",
+                "articleNumber": "SOCKS_NUMBER",
+                "totalPrice": 20,
+                "totalPriceWithTax": 24,
+                "unitPrice": 10,
+                "unitPriceWithTax": 12,
+                "quantity": 2,
+                "tax": 19,
+                "discount": null,
+                "imageUrl": "http://google2.com",
+                "articleUrl": "http://google.com",
+                "articleType": "physical"
+            },
+            {
+                "id": "Article-db49619c-55ce-4710-8609-ee6299b98306",
+                "name": "USB-Stick",
+                "articleNumber": "SW10029",
+                "totalPrice": 40000,
+                "totalPriceWithTax": 47600,
+                "unitPrice": 20000,
+                "unitPriceWithTax": 23800,
+                "quantity": 2,
+                "tax": 19,
+                "discount": -2380,
+                "imageUrl": "http://google2.com",
+                "articleUrl": "http://google.com",
+                "articleType": "physical"
+            }
+        ],
+        "customer": {
+            "merchantCustomerId": null,
+            "email": "john@doe.com",
+            "organizationRegistrationRegister": null,
+            "organizationRegistrationId": null,
+            "organizationEntityType": null,
+            "organizationVatId": null,
+            "customerId": "customer_yykrykxb7z",
+            "addresses": [
+                {
+                    "companyName": null,
+                    "reference": null,
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "street": "Lützowstraße 23",
+                    "houseNumber": "9b",
+                    "city": "Berlin",
+                    "zip": "10785",
+                    "country": "DE",
+                    "state": "Berlin",
+                    "phone": "00493012345",
+                    "fax": "00493012345",
+                    "mobile": "00493012345",
+                    "title": "herr",
+                    "additionalDetails": null,
+                    "addressId": "address_u4bcc37xdr",
+                    "createdAt": 1547721010000,
+                    "modifiedAt": 1547721010000
+                }
+            ],
+            "personas": [],
+            "paymentInstruments": [
+                {
+                    "createdAt": 1547721014000,
+                    "modifiedAt": 1547721039000,
+                    "paymentInstrumentId": "paymentinstrument_wencepxgkw",
+                    "merchantPaymentInstrumentId": null,
+                    "attributes": {
+                        "possibleTypes": [
+                            "klarna-pay-later",
+                            "klarna-slice-it",
+                            "klarna-pay-now"
+                        ],
+                        "country": "DE",
+                        "locale": "de-DE"
+                    },
+                    "encrypted": false,
+                    "origin": "klarna",
+                    "type": "klarna-pay-later",
+                    "recurring": true
+                },
+                {
+                    "createdAt": 1547721151000,
+                    "modifiedAt": 1547721188000,
+                    "paymentInstrumentId": "paymentinstrument_rmewiyhqu8",
+                    "merchantPaymentInstrumentId": null,
+                    "attributes": {
+                        "possibleTypes": [
+                            "klarna-pay-later",
+                            "klarna-slice-it",
+                            "klarna-pay-now"
+                        ],
+                        "country": "DE",
+                        "locale": "de-DE"
+                    },
+                    "encrypted": false,
+                    "origin": "klarna",
+                    "type": "klarna-pay-later",
+                    "recurring": true
+                }
+            ],
+            "createdAt": 1547721006000,
+            "modifiedAt": 1547721006000,
+            "customerType": null
+        },
+        "persona": null,
+        "billingAddress": {
+            "companyName": null,
+            "reference": null,
+            "firstName": "John",
+            "lastName": "Doe",
+            "street": "Lützowstraße 23",
+            "houseNumber": "9b",
+            "city": "Berlin",
+            "zip": "10785",
+            "country": "DE",
+            "state": "Berlin",
+            "phone": "00493012345",
+            "fax": "00493012345",
+            "mobile": "00493012345",
+            "title": "herr",
+            "additionalDetails": null,
+            "addressId": "address_u4bcc37xdr",
+            "createdAt": 1547721010000,
+            "modifiedAt": 1547721010000
+        },
+        "shippingAddress": {
+            "companyName": null,
+            "reference": null,
+            "firstName": "John",
+            "lastName": "Doe",
+            "street": "Lützowstraße 23",
+            "houseNumber": "9b",
+            "city": "Berlin",
+            "zip": "10785",
+            "country": "DE",
+            "state": "Berlin",
+            "phone": "00493012345",
+            "fax": "00493012345",
+            "mobile": "00493012345",
+            "title": "herr",
+            "additionalDetails": null,
+            "addressId": "address_u4bcc37xdr",
+            "createdAt": 1547721010000,
+            "modifiedAt": 1547721010000
+        },
+        "ipAddress": "82.120.21.79",
+        "paymentInstrument": {
+            "createdAt": 1547721151000,
+            "modifiedAt": 1547721188000,
+            "paymentInstrumentId": "paymentinstrument_rmewiyhqu8",
+            "merchantPaymentInstrumentId": null,
+            "attributes": {
+                "possibleTypes": [
+                    "klarna-pay-later",
+                    "klarna-slice-it",
+                    "klarna-pay-now"
+                ],
+                "country": "DE",
+                "locale": "de-DE"
+            },
+            "encrypted": false,
+            "origin": "klarna",
+            "type": "klarna-pay-later",
+            "recurring": true
+        },
+        "transactions": [
+            {
+                "createdAt": 1547721323000,
+                "modifiedAt": 1547721492490,
+                "type": "PREAUTH",
+                "transactionId": "transaction_uptq1om0tl",
+                "description": "test transaction",
+                "initialAmount": 42745,
+                "capturedAmount": 3,
+                "canceledAmount": 0,
+                "currency": "EUR",
+                "status": "OK",
+                "order": "3xzhrqfccc",
+                "parentTransaction": null,
+                "transactions": [
+                    "transaction_l1yskoix2g"
+                ],
+                "basket": [
+                    {
+                        "id": "Article-e8abdefd-4cce-4676-97f4-9e96d240f520",
+                        "name": "Sale",
+                        "articleNumber": "SOCKS_NUMBER",
+                        "totalPrice": -100,
+                        "totalPriceWithTax": -119,
+                        "unitPrice": -100,
+                        "unitPriceWithTax": -119,
+                        "quantity": 1,
+                        "tax": 19,
+                        "discount": null,
+                        "imageUrl": null,
+                        "articleUrl": null,
+                        "articleType": "discount"
+                    },
+                    {
+                        "id": "Article-f086fab9-9890-4a35-b02c-17bb15cce5ec",
+                        "name": "Socks",
+                        "articleNumber": "SOCKS_NUMBER",
+                        "totalPrice": 20,
+                        "totalPriceWithTax": 24,
+                        "unitPrice": 10,
+                        "unitPriceWithTax": 12,
+                        "quantity": 2,
+                        "tax": 19,
+                        "discount": null,
+                        "imageUrl": "http://google2.com",
+                        "articleUrl": "http://google.com",
+                        "articleType": "physical"
+                    },
+                    {
+                        "id": "Article-db49619c-55ce-4710-8609-ee6299b98306",
+                        "name": "USB-Stick",
+                        "articleNumber": "SW10029",
+                        "totalPrice": 40000,
+                        "totalPriceWithTax": 47600,
+                        "unitPrice": 20000,
+                        "unitPriceWithTax": 23800,
+                        "quantity": 2,
+                        "tax": 19,
+                        "discount": -2380,
+                        "imageUrl": "http://google2.com",
+                        "articleUrl": "http://google.com",
+                        "articleType": "physical"
+                    }
+                ],
+                "providerCode": null,
+                "merchantMessage": null,
+                "customerMessage": null,
+                "descriptor": null,
+                "meta": null,
+                "challenge": null,
+                "asyncNotificationSubscriptionId": null,
+                "tracking": [
+                    {
+                        "trackingId": "TD-123",
+                        "provider": "DHL"
+                    },
+                    {
+                        "trackingId": "CP-456",
+                        "provider": "GLS"
+                    }
+                ]
+            }
+        ],
+        "status": "OPEN",
+        "channel": "ECOM",
+        "source": "Postman Test",
+        "settled": false,
+        "settlementDate": null,
+        "allowedProducts": [],
+        "product": "klarna-pay-later",
+        "transactionType": "PREAUTH",
+        "meta": null,
+        "async": null,
+        "deviceIdent": null,
+        "asyncNotificationSubscriptionId": null
+    },
+    "parentTransaction": {
+        "createdAt": 1547721323000,
+        "modifiedAt": 1547721492490,
+        "type": "PREAUTH",
+        "transactionId": "transaction_uptq1om0tl",
+        "description": "test transaction",
+        "initialAmount": 42745,
+        "capturedAmount": 3,
+        "canceledAmount": 0,
+        "currency": "EUR",
+        "status": "OK",
+        "order": {
+            "createdAt": 1547721323000,
+            "modifiedAt": 1547721323000,
+            "merchantId": "merchant_yxnszjsrf3",
+            "terms": 1468590412476,
+            "privacy": 1468590412476,
+            "orderId": "3xzhrqfccc",
+            "merchantOrderId": null,
+            "paymentProviderTransactionId": null,
+            "description": "test transaction",
+            "statementDescription": "statement description",
+            "initialAmount": 42745,
+            "preauthorizedAmount": 42745,
+            "capturedAmount": 3,
+            "refundedAmount": 0,
+            "canceledAmount": 0,
+            "currency": "EUR",
+            "basket": [
+                {
+                    "id": "Article-e8abdefd-4cce-4676-97f4-9e96d240f520",
+                    "name": "Sale",
+                    "articleNumber": "SOCKS_NUMBER",
+                    "totalPrice": -100,
+                    "totalPriceWithTax": -119,
+                    "unitPrice": -100,
+                    "unitPriceWithTax": -119,
+                    "quantity": 1,
+                    "tax": 19,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": "discount"
+                },
+                {
+                    "id": "Article-f086fab9-9890-4a35-b02c-17bb15cce5ec",
+                    "name": "Socks",
+                    "articleNumber": "SOCKS_NUMBER",
+                    "totalPrice": 20,
+                    "totalPriceWithTax": 24,
+                    "unitPrice": 10,
+                    "unitPriceWithTax": 12,
+                    "quantity": 2,
+                    "tax": 19,
+                    "discount": null,
+                    "imageUrl": "http://google2.com",
+                    "articleUrl": "http://google.com",
+                    "articleType": "physical"
+                },
+                {
+                    "id": "Article-db49619c-55ce-4710-8609-ee6299b98306",
+                    "name": "USB-Stick",
+                    "articleNumber": "SW10029",
+                    "totalPrice": 40000,
+                    "totalPriceWithTax": 47600,
+                    "unitPrice": 20000,
+                    "unitPriceWithTax": 23800,
+                    "quantity": 2,
+                    "tax": 19,
+                    "discount": -2380,
+                    "imageUrl": "http://google2.com",
+                    "articleUrl": "http://google.com",
+                    "articleType": "physical"
+                }
+            ],
+            "customer": {
+                "merchantCustomerId": null,
+                "email": "john@doe.com",
+                "organizationRegistrationRegister": null,
+                "organizationRegistrationId": null,
+                "organizationEntityType": null,
+                "organizationVatId": null,
+                "customerId": "customer_yykrykxb7z",
+                "addresses": [
+                    {
+                        "companyName": null,
+                        "reference": null,
+                        "firstName": "John",
+                        "lastName": "Doe",
+                        "street": "Lützowstraße 23",
+                        "houseNumber": "9b",
+                        "city": "Berlin",
+                        "zip": "10785",
+                        "country": "DE",
+                        "state": "Berlin",
+                        "phone": "00493012345",
+                        "fax": "00493012345",
+                        "mobile": "00493012345",
+                        "title": "herr",
+                        "additionalDetails": null,
+                        "addressId": "address_u4bcc37xdr",
+                        "createdAt": 1547721010000,
+                        "modifiedAt": 1547721010000
+                    }
+                ],
+                "personas": [],
+                "paymentInstruments": [
+                    {
+                        "createdAt": 1547721014000,
+                        "modifiedAt": 1547721039000,
+                        "paymentInstrumentId": "paymentinstrument_wencepxgkw",
+                        "merchantPaymentInstrumentId": null,
+                        "attributes": {
+                            "possibleTypes": [
+                                "klarna-pay-later",
+                                "klarna-slice-it",
+                                "klarna-pay-now"
+                            ],
+                            "country": "DE",
+                            "locale": "de-DE"
+                        },
+                        "encrypted": false,
+                        "origin": "klarna",
+                        "type": "klarna-pay-later",
+                        "recurring": true
+                    },
+                    {
+                        "createdAt": 1547721151000,
+                        "modifiedAt": 1547721188000,
+                        "paymentInstrumentId": "paymentinstrument_rmewiyhqu8",
+                        "merchantPaymentInstrumentId": null,
+                        "attributes": {
+                            "possibleTypes": [
+                                "klarna-pay-later",
+                                "klarna-slice-it",
+                                "klarna-pay-now"
+                            ],
+                            "country": "DE",
+                            "locale": "de-DE"
+                        },
+                        "encrypted": false,
+                        "origin": "klarna",
+                        "type": "klarna-pay-later",
+                        "recurring": true
+                    }
+                ],
+                "createdAt": 1547721006000,
+                "modifiedAt": 1547721006000,
+                "customerType": null
+            },
+            "persona": null,
+            "billingAddress": {
+                "companyName": null,
+                "reference": null,
+                "firstName": "John",
+                "lastName": "Doe",
+                "street": "Lützowstraße 23",
+                "houseNumber": "9b",
+                "city": "Berlin",
+                "zip": "10785",
+                "country": "DE",
+                "state": "Berlin",
+                "phone": "00493012345",
+                "fax": "00493012345",
+                "mobile": "00493012345",
+                "title": "herr",
+                "additionalDetails": null,
+                "addressId": "address_u4bcc37xdr",
+                "createdAt": 1547721010000,
+                "modifiedAt": 1547721010000
+            },
+            "shippingAddress": {
+                "companyName": null,
+                "reference": null,
+                "firstName": "John",
+                "lastName": "Doe",
+                "street": "Lützowstraße 23",
+                "houseNumber": "9b",
+                "city": "Berlin",
+                "zip": "10785",
+                "country": "DE",
+                "state": "Berlin",
+                "phone": "00493012345",
+                "fax": "00493012345",
+                "mobile": "00493012345",
+                "title": "herr",
+                "additionalDetails": null,
+                "addressId": "address_u4bcc37xdr",
+                "createdAt": 1547721010000,
+                "modifiedAt": 1547721010000
+            },
+            "ipAddress": "82.120.21.79",
+            "paymentInstrument": {
+                "createdAt": 1547721151000,
+                "modifiedAt": 1547721188000,
+                "paymentInstrumentId": "paymentinstrument_rmewiyhqu8",
+                "merchantPaymentInstrumentId": null,
+                "attributes": {
+                    "possibleTypes": [
+                        "klarna-pay-later",
+                        "klarna-slice-it",
+                        "klarna-pay-now"
+                    ],
+                    "country": "DE",
+                    "locale": "de-DE"
+                },
+                "encrypted": false,
+                "origin": "klarna",
+                "type": "klarna-pay-later",
+                "recurring": true
+            },
+            "transactions": [
+                "transaction_uptq1om0tl"
+            ],
+            "status": "OPEN",
+            "channel": "ECOM",
+            "source": "Postman Test",
+            "settled": false,
+            "settlementDate": null,
+            "allowedProducts": [],
+            "product": "klarna-pay-later",
+            "transactionType": "PREAUTH",
+            "meta": null,
+            "async": null,
+            "deviceIdent": null,
+            "asyncNotificationSubscriptionId": null
+        },
+        "parentTransaction": null,
+        "transactions": [
+            "transaction_l1yskoix2g"
+        ],
+        "basket": [
+            {
+                "id": "Article-e8abdefd-4cce-4676-97f4-9e96d240f520",
+                "name": "Sale",
+                "articleNumber": "SOCKS_NUMBER",
+                "totalPrice": -100,
+                "totalPriceWithTax": -119,
+                "unitPrice": -100,
+                "unitPriceWithTax": -119,
+                "quantity": 1,
+                "tax": 19,
+                "discount": null,
+                "imageUrl": null,
+                "articleUrl": null,
+                "articleType": "discount"
+            },
+            {
+                "id": "Article-f086fab9-9890-4a35-b02c-17bb15cce5ec",
+                "name": "Socks",
+                "articleNumber": "SOCKS_NUMBER",
+                "totalPrice": 20,
+                "totalPriceWithTax": 24,
+                "unitPrice": 10,
+                "unitPriceWithTax": 12,
+                "quantity": 2,
+                "tax": 19,
+                "discount": null,
+                "imageUrl": "http://google2.com",
+                "articleUrl": "http://google.com",
+                "articleType": "physical"
+            },
+            {
+                "id": "Article-db49619c-55ce-4710-8609-ee6299b98306",
+                "name": "USB-Stick",
+                "articleNumber": "SW10029",
+                "totalPrice": 40000,
+                "totalPriceWithTax": 47600,
+                "unitPrice": 20000,
+                "unitPriceWithTax": 23800,
+                "quantity": 2,
+                "tax": 19,
+                "discount": -2380,
+                "imageUrl": "http://google2.com",
+                "articleUrl": "http://google.com",
+                "articleType": "physical"
+            }
+        ],
+        "providerCode": null,
+        "merchantMessage": null,
+        "customerMessage": null,
+        "descriptor": null,
+        "meta": null,
+        "challenge": null,
+        "asyncNotificationSubscriptionId": null,
+        "tracking": [
+            {
+                "trackingId": "TD-123",
+                "provider": "DHL"
+            },
+            {
+                "trackingId": "CP-456",
+                "provider": "GLS"
+            }
+        ]
+    },
+    "transactions": null,
+    "basket": [],
+    "providerCode": null,
+    "merchantMessage": null,
+    "customerMessage": null,
+    "descriptor": null,
+    "meta": null,
+    "challenge": null,
+    "asyncNotificationSubscriptionId": null,
+    "tracking": []
+}
+					</code>
+				</div>
+			</div>
+		</div>
+
+		<p>The flow of  both 'Preauth' and 'Capture' transactions is presented in the diagram below:</p>
+		</br>
+		<img class="" src="/img/faq/klarna/Preauth Capture Flow.png" width="100%" />
+		</br>
+		<p><strong><u>Cancel</u></strong></p>
+		</br>
+		<p>Any pre-authorized order can still be cancelled as long as the order has not been captured.</p>
+		<p>A 'Cancel' transaction can be created for amount not bigger than initial amount of 'Preauth' transaction.</p>
+		<p>Klarna payment methods enable full and partial cancelations of the initial amount of the order.</p>
+		<p>The flow of 'Cancel' transactions is presented in the diagram below:</p>
+		<img class="" src="/img/faq/klarna/Cancellation Flow.png" width="100%" />
+<br/>
+<br/>
+		<h4>Step 2 B: Debit</h4>
+		<br/>
+		<p><strong>Important Note</strong>Debit transaction is only possible for merchants of digital goods.</p>
+		<br/>
+		<p>Both 'Debit' and 'Preauth' are <b>alternative variants</b> of the initial transaction to create an order.</p>
+		<br/>
+		<p><strong><u>Create Debit</u></strong></p>
+		<br/>
+		<p>The 'Debit' transaction is directly booking the full amount of the order.</p>
+		<p>The flow of 'Debit' transaction is presented in the diagram below:</p>
+		<img class="" src="/img/faq/klarna/Klarna Debit Sequence.png" width="100%" />
+<br/>
+<br/>
+		<h4>Step 3: Refund for Klarna orders</h4>
+		<br/>
+		<p>A 'Refund' transaction is only possible when there is previously successfully initiated 'Debit' or 'Capture' transaction.</p>
+		<p>Klarna payment methods enable full and partial refund of the initial amount of the order.</p>
+		<p>The flow of 'Refund' transaction is presented in the diagram below:</p>
+		<img class="" src="/img/faq/klarna/Refund Flow.png" width="100%" />
+<br/>
+<br/>
+		<h2>Recurring Payments</h2>
+		<p>Recurring payments are possible for Klarna payment methods and they are based on reusing existing payment instrument.</p>
+		</br>
+		<p>The following steps lead to successful execution of a recurring payment:</p>
+		<br/>
+		<p><strong>Step 1</strong> - Create payment instrument in either Preauth or Debit transaction</p>
+		<p>In the <i>Create Preauth</i> request or <i>Create Debit</i> request it is necessary to set following parameter true:</p>
+		<code>
+'initializeCustomerTokenization": true
+		</code>
+		<br/>
+		<br/>
+		<p>When the 'Preauth' or 'Debit' transaction is successful, a payment instrument will be created.</p>
+		<p>When the transaction was initiated successfully the Create Preauth response or Create Debit response will be included the following parameters:</p>
+		<ul>
+			<li class="ms-hover">paymentInstrumentId</li>
+			<li class="ms-hover">merchantPaymentInstrumentId</li>
+		</ul>
+		<p>An example for Create Preauth response where payment instrument is newly-created can be found below.</p>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Preauth response with newly created Payment Instrument
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+    "createdAt": 1548149184084,
+    "modifiedAt": 1548149184101,
+    "merchantId": "merchant_i3zcoedrbg",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "orderId": "wgk03cwg6h",
+    "merchantOrderId": null,
+    "paymentProviderTransactionId": null,
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 42745,
+    "preauthorizedAmount": 0,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "EUR",
+    "basket": [
+        {
+            "id": "Article-5445a3fe-e4ed-4fd1-b2e3-878503958c88",
+            "name": "Socks",
+            "articleNumber": "SOCKS_NUMBER",
+            "totalPrice": 20,
+            "totalPriceWithTax": 24,
+            "unitPrice": 10,
+            "unitPriceWithTax": 12,
+            "quantity": 2,
+            "tax": 19,
+            "discount": null,
+            "imageUrl": "http://google2.com",
+            "articleUrl": "http://google.com",
+            "articleType": "physical"
+        },
+        {
+            "id": "Article-1ec9a8a3-c24c-4a40-9ce3-1143d7f06e1f",
+            "name": "Sale",
+            "articleNumber": "SOCKS_NUMBER",
+            "totalPrice": -100,
+            "totalPriceWithTax": -119,
+            "unitPrice": -100,
+            "unitPriceWithTax": -119,
+            "quantity": 1,
+            "tax": 19,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": "discount"
+        },
+        {
+            "id": "Article-8c5dd890-3c43-4b9e-bb37-052fe8f3bba3",
+            "name": "USB-Stick",
+            "articleNumber": "SW10029",
+            "totalPrice": 40000,
+            "totalPriceWithTax": 47600,
+            "unitPrice": 20000,
+            "unitPriceWithTax": 23800,
+            "quantity": 2,
+            "tax": 19,
+            "discount": -2380,
+            "imageUrl": "http://google2.com",
+            "articleUrl": "http://google.com",
+            "articleType": "physical"
+        }
+    ],
+    "customer": {
+        "merchantCustomerId": null,
+        "email": "john@doe.com",
+        "organizationRegistrationRegister": null,
+        "organizationRegistrationId": null,
+        "organizationEntityType": null,
+        "organizationVatId": null,
+        "customerId": "customer_m7zgcrparv",
+        "addresses": [
+            {
+                "companyName": null,
+                "reference": null,
+                "firstName": "John",
+                "lastName": "Doe",
+                "street": "Lützowstraße 23",
+                "houseNumber": "9b",
+                "city": "Berlin",
+               "zip": "10785",
+                "country": "DE",
+                "state": "Berlin",
+                "phone": "00493012345",
+                "fax": "00493012345",
+                "mobile": "00493012345",
+                "title": "herr",
+                "additionalDetails": null,
+                "addressId": "address_cedarahn5r",
+                "createdAt": 1548070209846,
+                "modifiedAt": 1548070209846
+            }
+        ],
+        "personas": [],
+        "paymentInstruments": [
+            {
+                "createdAt": 1548070213416,
+                "modifiedAt": 1548070239985,
+                "paymentInstrumentId": "paymentinstrument_1vjdkdk51y",
+                "merchantPaymentInstrumentId": null,
+                "attributes": {
+                    "possibleTypes": [
+                        "klarna-slice-it",
+                        "klarna-pay-later",
+                        "klarna-pay-now"
+                    ],
+                    "country": "DE",
+                    "locale": "de-DE"
+                },
+                "encrypted": false,
+                "origin": "klarna",
+                "type": "klarna-pay-later",
+                "recurring": true
+            },
+            {
+                "createdAt": 1548149176193,
+                "modifiedAt": 1548149180435,
+                "paymentInstrumentId": "paymentinstrument_usmt7yr8zw",
+                "merchantPaymentInstrumentId": null,
+                "attributes": {
+                    "possibleTypes": [
+                        "klarna-slice-it",
+                        "klarna-pay-later",
+                        "klarna-pay-now"
+                    ],
+                    "country": "DE",
+                    "locale": "de-DE"
+                },
+                "encrypted": false,
+                "origin": "klarna",
+                "type": "klarna-pay-later",
+                "recurring": false
+            }
+        ],
+        "createdAt": 1548070206114,
+        "modifiedAt": 1548070206114,
+        "customerType": null
+    },
+    "persona": null,
+    "billingAddress": {
+        "companyName": null,
+        "reference": null,
+        "firstName": "John",
+        "lastName": "Doe",
+        "street": "Lützowstraße 23",
+        "houseNumber": "9b",
+        "city": "Berlin",
+        "zip": "10785",
+        "country": "DE",
+        "state": "Berlin",
+        "phone": "00493012345",
+        "fax": "00493012345",
+        "mobile": "00493012345",
+        "title": "herr",
+        "additionalDetails": null,
+        "addressId": "address_cedarahn5r",
+        "createdAt": 1548070209846,
+        "modifiedAt": 1548070209846
+    },
+    "shippingAddress": {
+        "companyName": null,
+        "reference": null,
+        "firstName": "John",
+        "lastName": "Doe",
+        "street": "Lützowstraße 23",
+        "houseNumber": "9b",
+        "city": "Berlin",
+        "zip": "10785",
+        "country": "DE",
+        "state": "Berlin",
+        "phone": "00493012345",
+        "fax": "00493012345",
+        "mobile": "00493012345",
+        "title": "herr",
+        "additionalDetails": null,
+        "addressId": "address_cedarahn5r",
+        "createdAt": 1548070209846,
+        "modifiedAt": 1548070209846
+    },
+    "ipAddress": "82.120.21.79",
+    "paymentInstrument": {
+        "createdAt": 1548149176193,
+        "modifiedAt": 1548149180435,
+        "paymentInstrumentId": "paymentinstrument_usmt7yr8zw",
+        "merchantPaymentInstrumentId": null,
+        "attributes": {
+            "possibleTypes": [
+                "klarna-slice-it",
+                "klarna-pay-later",
+                "klarna-pay-now"
+            ],
+            "country": "DE",
+            "locale": "de-DE"
+        },
+        "encrypted": false,
+        "origin": "klarna",
+        "type": "klarna-pay-later",
+        "recurring": false
+    },
+    "transactions": [
+        {
+            "createdAt": 1548149184097,
+            "modifiedAt": 1548149184097,
+            "type": "PREAUTH",
+            "transactionId": "transaction_kakhvg188j",
+            "description": "test transaction",
+            "initialAmount": 42745,
+            "capturedAmount": 0,
+            "canceledAmount": 0,
+            "currency": "EUR",
+            "status": "PENDING",
+            "order": "wgk03cwg6h",
+            "parentTransaction": null,
+            "transactions": null,
+            "basket": [
+                {
+                    "id": "Article-5445a3fe-e4ed-4fd1-b2e3-878503958c88",
+                    "name": "Socks",
+                    "articleNumber": "SOCKS_NUMBER",
+                    "totalPrice": 20,
+                    "totalPriceWithTax": 24,
+                    "unitPrice": 10,
+                    "unitPriceWithTax": 12,
+                    "quantity": 2,
+                    "tax": 19,
+                    "discount": null,
+                    "imageUrl": "http://google2.com",
+                    "articleUrl": "http://google.com",
+                    "articleType": "physical"
+                },
+                {
+                    "id": "Article-1ec9a8a3-c24c-4a40-9ce3-1143d7f06e1f",
+                    "name": "Sale",
+                    "articleNumber": "SOCKS_NUMBER",
+                    "totalPrice": -100,
+                    "totalPriceWithTax": -119,
+                    "unitPrice": -100,
+                    "unitPriceWithTax": -119,
+                    "quantity": 1,
+                    "tax": 19,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": "discount"
+                },
+                {
+                    "id": "Article-8c5dd890-3c43-4b9e-bb37-052fe8f3bba3",
+                    "name": "USB-Stick",
+                    "articleNumber": "SW10029",
+                    "totalPrice": 40000,
+                    "totalPriceWithTax": 47600,
+                    "unitPrice": 20000,
+                    "unitPriceWithTax": 23800,
+                    "quantity": 2,
+                    "tax": 19,
+                    "discount": -2380,
+                    "imageUrl": "http://google2.com",
+                    "articleUrl": "http://google.com",
+                    "articleType": "physical"
+                }
+            ],
+            "providerCode": null,
+            "merchantMessage": null,
+            "customerMessage": null,
+            "descriptor": null,
+            "meta": null,
+            "challenge": null,
+            "asyncNotificationSubscriptionId": null
+        }
+    ],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": null,
+    "product": "klarna-pay-later",
+    "transactionType": "PREAUTH",
+    "meta": null,
+    "async": null,
+    "deviceIdent": null,
+    "asyncNotificationSubscriptionId": null,
+    "redirectUrl": "https://public-api-app51te.psp.cardtech.de/v1/klarna/redirect/wgk03cwg6h"
+}
+					</code>
+				</div>
+			</div>
+		</div>
+		<p><strong>Step 2</strong> - Reuse created payment instrument</p>
+		<p>When the customer, for whom the payment instrument is already created, initiates a subsequent order and chooses to pay with Klarna, then the created payment instrument can be used for the processing of recurring payment.</p>
+		<p>In this case Create Preauth request will be identical with Create Preauth request for the case where payment instrument is newly created (an example can be found in section <b>Create Preauth<b> in Step 2A  Preauth & Capture vs. Preauth & Cancel)</p>
+		<p>The only difference will be in received response for <i>Create Preauth.</i></p>
+		<p>An example for <i>Create Preauth</i> response where payment instrument is already existing (created in older Preauth transaction) can be found below.</p>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Preauth response with existing Payment Instrument
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+    "createdAt": 1547721949140,
+    "modifiedAt": 1547721949150,
+    "merchantId": "merchant_yxnszjsrf3",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "orderId": "cliwf51s04",
+    "merchantOrderId": null,
+    "paymentProviderTransactionId": null,
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 42745,
+    "preauthorizedAmount": 42745,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "EUR",
+    "basket": [
+        {
+            "id": "Article-c231f711-b0da-47d0-9cac-8da168cd6c3e",
+            "name": "Sale",
+            "articleNumber": "SOCKS_NUMBER",
+            "totalPrice": -100,
+            "totalPriceWithTax": -119,
+            "unitPrice": -100,
+            "unitPriceWithTax": -119,
+            "quantity": 1,
+            "tax": 19,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": "discount"
+        },
+        {
+            "id": "Article-2c0b38ef-c86a-4df8-93cd-b112f5858efc",
+            "name": "USB-Stick",
+            "articleNumber": "SW10029",
+            "totalPrice": 40000,
+            "totalPriceWithTax": 47600,
+            "unitPrice": 20000,
+            "unitPriceWithTax": 23800,
+            "quantity": 2,
+           "tax": 19,
+            "discount": -2380,
+            "imageUrl": "http://google2.com",
+            "articleUrl": "http://google.com",
+            "articleType": "physical"
+        },
+        {
+            "id": "Article-87bc703b-ccca-4c75-88d2-226ecb623022",
+            "name": "Socks",
+            "articleNumber": "SOCKS_NUMBER",
+            "totalPrice": 20,
+            "totalPriceWithTax": 24,
+            "unitPrice": 10,
+            "unitPriceWithTax": 12,
+            "quantity": 2,
+            "tax": 19,
+            "discount": null,
+            "imageUrl": "http://google2.com",
+            "articleUrl": "http://google.com",
+            "articleType": "physical"
+        }
+    ],
+    "customer": {
+        "merchantCustomerId": null,
+        "email": "john@doe.com",
+        "organizationRegistrationRegister": null,
+        "organizationRegistrationId": null,
+        "organizationEntityType": null,
+        "organizationVatId": null,
+        "customerId": "customer_yykrykxb7z",
+        "addresses": [
+            {
+                "companyName": null,
+                "reference": null,
+                "firstName": "John",
+                "lastName": "Doe",
+                "street": "Lützowstraße 23",
+                "houseNumber": "9b",
+                "city": "Berlin",
+                "zip": "10785",
+                "country": "DE",
+                "state": "Berlin",
+                "phone": "00493012345",
+                "fax": "00493012345",
+                "mobile": "00493012345",
+                "title": "herr",
+                "additionalDetails": null,
+                "addressId": "address_u4bcc37xdr",
+                "createdAt": 1547721010000,
+                "modifiedAt": 1547721010000
+            }
+        ],
+        "personas": [],
+        "paymentInstruments": [
+            {
+                "createdAt": 1547721014000,
+                "modifiedAt": 1547721039000,
+                "paymentInstrumentId": "paymentinstrument_wencepxgkw",
+                "merchantPaymentInstrumentId": null,
+                "attributes": {
+                    "possibleTypes": [
+                        "klarna-pay-later",
+                        "klarna-slice-it",
+                        "klarna-pay-now"
+                    ],
+                    "country": "DE",
+                    "locale": "de-DE"
+                },
+                "encrypted": false,
+                "origin": "klarna",
+                "type": "klarna-pay-later",
+                "recurring": true
+            },
+            {
+                "createdAt": 1547721151000,
+                "modifiedAt": 1547721188000,
+                "paymentInstrumentId": "paymentinstrument_rmewiyhqu8",
+                "merchantPaymentInstrumentId": null,
+                "attributes": {
+                    "possibleTypes": [
+                        "klarna-pay-later",
+                        "klarna-slice-it",
+                        "klarna-pay-now"
+                    ],
+                    "country": "DE",
+                    "locale": "de-DE"
+                },
+                "encrypted": false,
+                "origin": "klarna",
+                "type": "klarna-pay-later",
+                "recurring": true
+            }
+        ],
+        "createdAt": 1547721006000,
+        "modifiedAt": 1547721006000,
+        "customerType": null
+    },
+    "persona": null,
+    "billingAddress": {
+        "companyName": null,
+        "reference": null,
+        "firstName": "John",
+        "lastName": "Doe",
+        "street": "Lützowstraße 23",
+        "houseNumber": "9b",
+        "city": "Berlin",
+        "zip": "10785",
+        "country": "DE",
+        "state": "Berlin",
+        "phone": "00493012345",
+        "fax": "00493012345",
+        "mobile": "00493012345",
+        "title": "herr",
+        "additionalDetails": null,
+        "addressId": "address_u4bcc37xdr",
+        "createdAt": 1547721010000,
+        "modifiedAt": 1547721010000
+    },
+    "shippingAddress": {
+        "companyName": null,
+        "reference": null,
+        "firstName": "John",
+        "lastName": "Doe",
+        "street": "Lützowstraße 23",
+        "houseNumber": "9b",
+        "city": "Berlin",
+        "zip": "10785",
+        "country": "DE",
+        "state": "Berlin",
+        "phone": "00493012345",
+        "fax": "00493012345",
+        "mobile": "00493012345",
+        "title": "herr",
+        "additionalDetails": null,
+        "addressId": "address_u4bcc37xdr",
+        "createdAt": 1547721010000,
+        "modifiedAt": 1547721010000
+    },
+    "ipAddress": "82.120.21.79",
+    "paymentInstrument": {
+        "createdAt": 1547721151000,
+        "modifiedAt": 1547721188000,
+        "paymentInstrumentId": "paymentinstrument_rmewiyhqu8",
+        "merchantPaymentInstrumentId": null,
+        "attributes": {
+            "possibleTypes": [
+                "klarna-pay-later",
+                "klarna-slice-it",
+                "klarna-pay-now"
+            ],
+            "country": "DE",
+            "locale": "de-DE"
+        },
+        "encrypted": false,
+        "origin": "klarna",
+        "type": "klarna-pay-later",
+        "recurring": true
+    },
+    "transactions": [
+        {
+            "createdAt": 1547721949144,
+            "modifiedAt": 1547721949144,
+            "type": "PREAUTH",
+            "transactionId": "transaction_bglhp9ovci",
+            "description": "test transaction",
+            "initialAmount": 42745,
+            "capturedAmount": 0,
+            "canceledAmount": 0,
+            "currency": "EUR",
+            "status": "OK",
+            "order": "cliwf51s04",
+            "parentTransaction": null,
+            "transactions": null,
+            "basket": [
+                {
+                    "id": "Article-c231f711-b0da-47d0-9cac-8da168cd6c3e",
+                    "name": "Sale",
+                    "articleNumber": "SOCKS_NUMBER",
+                    "totalPrice": -100,
+                    "totalPriceWithTax": -119,
+                    "unitPrice": -100,
+                    "unitPriceWithTax": -119,
+                    "quantity": 1,
+                    "tax": 19,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": "discount"
+                },
+                {
+                    "id": "Article-2c0b38ef-c86a-4df8-93cd-b112f5858efc",
+                    "name": "USB-Stick",
+                    "articleNumber": "SW10029",
+                    "totalPrice": 40000,
+                    "totalPriceWithTax": 47600,
+                    "unitPrice": 20000,
+                    "unitPriceWithTax": 23800,
+                    "quantity": 2,
+                    "tax": 19,
+                    "discount": -2380,
+                    "imageUrl": "http://google2.com",
+                    "articleUrl": "http://google.com",
+                    "articleType": "physical"
+                },
+                {
+                    "id": "Article-87bc703b-ccca-4c75-88d2-226ecb623022",
+                    "name": "Socks",
+                    "articleNumber": "SOCKS_NUMBER",
+                    "totalPrice": 20,
+                    "totalPriceWithTax": 24,
+                    "unitPrice": 10,
+                    "unitPriceWithTax": 12,
+                    "quantity": 2,
+                    "tax": 19,
+                    "discount": null,
+                    "imageUrl": "http://google2.com",
+                    "articleUrl": "http://google.com",
+                    "articleType": "physical"
+                }
+            ],
+            "providerCode": null,
+            "merchantMessage": null,
+            "customerMessage": null,
+            "descriptor": null,
+            "meta": null,
+            "challenge": null,
+            "asyncNotificationSubscriptionId": null,
+            "tracking": null
+        }
+    ],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": null,
+    "product": "klarna-pay-later",
+    "transactionType": "PREAUTH",
+    "meta": null,
+    "async": null,
+    "deviceIdent": null,
+    "asyncNotificationSubscriptionId": null,
+    "redirectUrl": null
+}
+					</code>
+				</div>
+			</div>
+		</div>
+
+		<h2>Notifications</h2>
+		<p>Notifications for merchants working with Klarna payment methods can be set up in two ways:</p>
+		<ul>
+			<li class="ms-hover">via API - more details can be found under the following link -Notifications
+				<a href="https://docs.payengine.de/merchantcenter/managenotification" target="_blank">
+					Notifications
+				</a>
+			</li>
+			<li class="ms-hover">via Merchant Center - more details can be found under the following link
+				<a href="https://docs.payengine.de/merchantcenter/managenotification" target="_blank">
+					https://docs.payengine.de/merchantcenter/managenotification
+				</a>
+			</li>
+		</ul>
+
+		<h2>Testing</h2>
+		<p>Testing of the Klarna payment methods can be executed directly via Klarna Sandbox.</p>
+		<p>The Klarna Sandbox is a self-contained virtual testing environment that mimics the live Klarna production environment.</p>
+		<p>Test credentials for Klarna Sandbox can be received from Klarna.</p>
+
+	</div>
+
+</div>

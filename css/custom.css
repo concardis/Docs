@@ -10,3 +10,29 @@
   color: #6f6f6f;
   font-weight: normal;
 }
+.pm-table-row-cell{
+  height: 32px;
+  width: 230px;
+  line-height: 32px;
+  padding: 0 10px;
+  border-bottom: #f0f0f0 solid 1px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: right;
+  border-right: #c6c6c6 solid 1px;
+}
+.pm-cell-color{
+  color: #0093d9;
+  text-align: center;
+}
+.pm-table-header-cell{
+  width: 230px;
+  background: #f9f9f9;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: left;
+  font-size: 14px;
+  color: #000;
+  border-bottom: #f0f0f0 solid 1px;
+  border-right: #c6c6c6 solid 1px;
+}

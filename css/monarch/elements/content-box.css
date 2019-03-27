@@ -51,6 +51,7 @@
 .content-box .content-box-wrapper {
     line-height: 1.6em;
     padding: 15px;
+    overflow-wrap: break-word;
 }
 .content-box .content-box-wrapper .scrollable-content,
 .content-box .content-box-wrapper p:last-child {

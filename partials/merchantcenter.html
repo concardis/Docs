@@ -23,6 +23,7 @@
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/errortransaction">Orders - Errors </a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/currencies"> Currencies</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/settlement">Settlements</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/settlement_report">Unified Settlement Report</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/customer">Customers</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createcustomer">Manage customers</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/myaccount">My Account</a>
@@ -125,6 +126,10 @@
         </div>
         <div ng-show="cur=='settlement'">
             <div  ng-include="'/partials/merchant/settlement.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='settlement_report'">
+            <div  ng-include="'/partials/merchant/settlement_report.html'">
             </div>
         </div>
         <div ng-show="cur=='managenotification'">

@@ -834,6 +834,235 @@
 			</tbody>
 		</table>
 
+		</br>
+		</br>
+		<p><strong>Payment Instrument<strong></p>
+		</br>
+		<p><i>POST {{publicApiUrl}}/v1/payment-instruments</i></p>
+		</br>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Payment Instrument request
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+	"type": "klarna",
+	"payment": {
+		"customer": "{{customerId}}",
+		"country": "DE",
+		"currency": "EUR",
+		"locale": "de-DE",
+		"basket": [
+			{
+				"articleType": "PHYSICAL",
+				"articleUrl": "http://google.com",
+				"imageUrl": "http://google2.com",
+				"name": "USB-Stick",
+				"articleNumber": "SW10029",
+				"totalPrice": 40000,
+				"totalPriceWithTax": 47600,
+				"unitPrice": 20000,
+				"unitPriceWithTax": 23800,
+				"tax": 19,
+				"quantity": 2,
+				"discount": -2380
+			},
+			{
+				"name": "Socks",
+				"articleType": "physical",
+				"articleUrl": "http://google.com",
+				"imageUrl": "http://google2.com",
+				"articleNumber": "SOCKS_NUMBER",
+				"totalPrice": 20,
+				"totalPriceWithTax": 24,
+				"unitPrice": 10,
+				"unitPriceWithTax": 12,
+				"tax": 19,
+				"quantity": 2
+			},
+			{
+				"articleType": "discount",
+				"name": "Sale",
+				"quantity": 1,
+				"unitPrice": -100,
+				"unitPriceWithTax": -119,
+				"tax": 19,
+				"totalPrice": -100,
+				"totalPriceWithTax": -119
+			}
+		]
+	}
+}
+					</code>
+				</div>
+			</div>
+		</div>
+		</br>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Create Payment Instrument response
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+	"createdAt": 1552309333110,
+	"modifiedAt": 1552309333110,
+	"paymentInstrumentId": "paymentinstrument_vx3r63sxt0",
+	"merchantPaymentInstrumentId": null,
+	"attributes": {
+    "possibleTypes": [
+      "klarna-slice-it",
+      "klarna-pay-now",
+      "klarna-pay-later"
+    ],
+    "country": "DE",
+    "locale": "de-DE"
+	},
+	"encrypted": false,
+	"origin": "klarna",
+	"type": "klarna",
+	"recurring": false,
+	"recurringConsent": null
+}
+					</code>
+				</div>
+			</div>
+		</div>
+
+
+		</br>
+		</br>
+		<p><strong>PATCH the Payment Instrument<strong></p>
+		</br>
+		<p>The preffered Klarna product  should be set in the parameter "type" (e.g klarna-pay-later)</p>
+		<p><i>PATCH {{publicApiUrl}}/v1/payment-instruments/{{paymentInstrumentId}}</i></p>
+		</br>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Patch Payment Instrument request
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+  "country": "DE",
+  "currency": "EUR",
+  "locale": "de-DE",
+  "type": "klarna-slice-it",
+  "basket": [
+  {
+    "articleType": "PHYSICAL",
+    "articleUrl": "http://google.com",
+    "imageUrl": "http://google2.com",
+    "name": "USB-Stick",
+    "articleNumber": "SW10029",
+    "totalPrice": 40000,
+    "totalPriceWithTax": 47600,
+    "unitPrice": 20000,
+    "unitPriceWithTax": 23800,
+    "tax": 19,
+    "quantity": 2,
+    "discount": -2380
+  },
+  {
+    "name": "Socks",
+    "articleType": "physical",
+    "articleUrl": "http://google.com",
+    "imageUrl": "http://google2.com",
+    "articleNumber": "SOCKS_NUMBER",
+    "totalPrice": 20,
+    "totalPriceWithTax": 24,
+    "unitPrice": 10,
+    "unitPriceWithTax": 12,
+    "tax": 19,
+    "quantity": 2
+  },
+  {
+    "articleType": "discount",
+    "name": "Sale",
+    "quantity": 1,
+    "unitPrice": -100,
+    "unitPriceWithTax": -119,
+    "tax": 19,
+    "totalPrice": -100,
+    "totalPriceWithTax": -119
+  }],
+  "customer": "customer_t3bqrssuqq",
+  "billingAddress": "address_qo0qi52poj",
+  "shippingAddress": "address_qo0qi52poj"
+}
+					</code>
+				</div>
+			</div>
+		</div>
+		</br>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Patch Payment Instrument response
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+    "createdAt": 1552309333115,
+    "modifiedAt": 1552309341848,
+    "paymentInstrumentId": "paymentinstrument_vx3r63sxt0",
+    "merchantPaymentInstrumentId": null,
+    "attributes": {
+        "possibleTypes": [
+            "klarna-slice-it",
+            "klarna-pay-now",
+            "klarna-pay-later"
+        ],
+        "country": "DE",
+        "locale": "de-DE"
+    },
+    "encrypted": false,
+    "origin": "klarna",
+    "type": "klarna-slice-it",
+    "recurring": false,
+    "recurringConsent": null
+}
+					</code>
+				</div>
+			</div>
+		</div>
+
 		<h4>Step 2 A:  Preauth & Capture</h4>
 		</br>
 		<p><strong>Preauth & Capture<strong></p>

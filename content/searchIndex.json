@@ -399,7 +399,7 @@
 		"content": "A risk management tool is essential for reducing fraudulent activity on the platform, protectint our merchants from monetary loss and broadening Concardis' market appearance and reputation."
 	},
 	{
-		"url": "/merchantcenter/managenotification",
+		"url": "/merchantcenter/notifications_mc",
 		"title": "Merchant Center - How to manage notifications",
 		"filter": "fraudmanagement",
 		"tags": "Merchant Center Risk Settings  Fraud Management risksettings fraudmanagement fraudmanagements risksetting",

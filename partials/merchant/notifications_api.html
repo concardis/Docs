@@ -1,0 +1,1430 @@
+ <p>A notifications tool allows to merchant to receive notifications about multiple events in the system. Notifications can be sent to e-mail or specific url.</p>
+
+ <ul>
+   <li><a href="#importance" name="">Importance of Notifications</a></li>
+   <li><a href="#events" name="">Notification Events</a></li>
+   <li><a href="#types" name="">Notification Types</a></li>
+   <ul>
+     <li><a href="#webhook" name="">Webhook (URL) Notifications</a></li>
+     <li><a href="#email" name="">Email Notifications</a></li>
+   </ul>
+   <li><a href="#api" name="">Notifications via API</a></li>
+   <ul>
+     <li><a href="#service_subscription" name="">Scope of Notification Service Subscription</a></li>
+     <li><a href="#setting_up" name="">Setting up Notifications</a></li>
+     <li><a href="#validation" name="">Validation of Notifications</a></li>
+
+   </ul>
+ </ul>
+
+ <div id="importance">
+   <br/>
+   <br/>
+   <h2>Importance of Notifications</h2>
+   <br/>
+   <p>Main purpose of notifications is to properly inform merchants when specific events occur within a payment process.</p>
+   <p>Notifications are highly recommended for all asynchronous payment methods (when end customer is redirected to a hosted payment page of the payment method). For synchronous payment methods notifications are possible but not critical from security perspective.
+   </p>
+</div>
+
+<div id="events">
+  <br/>
+  <br/>
+  <h2>Notification Events</h2>
+  <br/>
+  <p>Concardis Payengine system enables merchants to be notified for occurrence of various events. Depending on their underlying subject, events can be grouped in the following four categories:
+  </p>
+  <br/>
+  <table>
+    <thead>
+      <tr>
+        <th style="text-align: center;">Events Category</th>
+        <th style="text-align: center;">Event Type</th>
+        <th style="text-align: center;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Transaction Events</td>
+        <td>transaction create success</td>
+        <td>A transaction has been created successfully</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>transaction create failure </td>
+        <td>Creating of a transaction has failed</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>transaction update success </td>
+        <td>A transaction has been updated successfully</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>transaction update failure</td>
+        <td>Updating of a transaction has failed</td>
+      </tr>
+
+      <tr>
+        <td>Customer Events</td>
+        <td>customer update success</td>
+        <td>A customer object has been updated successfully</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>customer update failure</td>
+        <td>Updating of a customer object has failed</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>customer persona create success</td>
+        <td>An object persona for a customer has been created successfully</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>customer persona create failure</td>
+        <td>Creating of an object persona for a customer has failed</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>customer persona duplicate success</td>
+        <td>All parameters of an object persona for a customer have been duplicated successfully</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>customer paymentInstrument add success</td>
+        <td>An object payment instrument has been added successfully for a customer</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>customer paymentInstrument add failure</td>
+        <td>Adding of an object payment instrument for a customer has failed</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>customer paymentInstrument delete success</td>
+        <td>An object payment instrument for a customer has been deleted successfully</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>customer paymentInstrument delete failure</td>
+        <td>Deleting of an object payment instrument for a customer has failed</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>customer address create success</td>
+        <td>An object address of a customer has been created successfully</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>customer address create failure</td>
+        <td>Creating of an object address of a customer has failed</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>customer address duplicate success</td>
+        <td>All parameters of an object address for a customer have been duplicated successfully</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>customer create success</td>
+        <td>A customer object has been created successfully</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>customer create failure</td>
+        <td>Creating of a customer object has failed</td>
+      </tr>
+      <tr>
+        <td>Payment Instrument Events</td>
+        <td>paymentInstrument create success</td>
+        <td>A payment instrument (not bounded to a customer) has been created successfully</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>paymentInstrument create failure</td>
+        <td>Creating of a payment instrument has failed</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>paymentInstrument expires</td>
+        <td>A payment instrument has expired</td>
+      </tr>
+      <tr>
+        <td>Order Events</td>
+        <td>order create success</td>
+        <td>An order has been created successfully</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>order create failure</td>
+        <td>Creating of an order has failed</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>order update success</td>
+        <td>An order has been updated successfully</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>order update failure	</td>
+        <td>Updating of an order has failed</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="types">
+  <br/>
+  <br/>
+  <h2>Notification Types</h2>
+  <br/>
+  <p>There are two types of notifications depending on the way in which a merchant is notified for a particular event or set of events - webhook (url) notifications and email notifications. Both types of notifications are available when notifications are set up via Merchant Center and via API.</p>
+
+  <div id="webhook">
+    <br/>
+    <br/>
+    <h3>Webhook (URL) Notifications</h3>
+    <br/>
+
+    <p><u>Definition</u></p>
+    <br/>
+    <p>Webhooks are notifications that deliver event information directly to a merchant's system by calling a script hosted on the merchant's server.
+    </p>
+    <br/>
+
+    <p><u>Mechanism</u></p>
+    <br/>
+    <p>Webhooks are sent as HTTP POST requests on a given URI. Ports that are accepted are 80,8080 and 443 for HTTPS. Receiving notifications via HTTPS is highly recommended from security perspective.
+    </p>
+    <br/>
+
+    <p><u>Prerequisite</u></p>
+    <br/>
+    <p>A valid SSL certificate has to be in place in order to receive webhooks via HTTPS.
+    </p>
+    <br/>
+  </div>
+
+  <div id="email">
+    <br/>
+    <br/>
+    <h3>Email Notifications</h3>
+    <br/>
+
+    <p><u>Definition</u></p>
+    <br/>
+    <p>Email notifications enable a merchant to be notified for a chosen event/s by receiving an email to a specified in advance email address.
+    </p>
+    <br/>
+
+    <p><u>Example</u></p>
+    <br/>
+    <p>When a merchant has already subscribed to receive notifications via email for chosen events, when events occur, he/she will receive an email from no-reply@payengine.de with content shown below.
+    </p>
+    <br/>
+
+    <div class="example-box-wrapper">
+      <div class="content-box" ng-init="createCustomerResponseShow=false">
+        <h3 class="content-box-header bg-default">
+            Email Notification example
+            <div class="header-buttons-separator">
+                <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+                  <!-- <i class="glyph-icon icon-chevron-up"></i> -->
+                  <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+                  <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+                </a>
+            </div>
+        </h3>
+        <!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+        <div class="content-box-wrapper">
+          <code>
+{
+   "notificationApiVersion":"1.0",
+   "createdAt":1548690419767,
+   "payload":{
+      "asyncNotificationSubscriptionId":null,
+      "transaction":{
+         "createdAt":1548690419677,
+         "modifiedAt":1548690419757,
+         "type":"PREAUTH",
+         "transactionId":"transaction_op5zlpaedw",
+         "description":"Test Order 02",
+         "initialAmount":555,
+         "capturedAmount":0,
+         "canceledAmount":0,
+         "currency":"EUR",
+         "status":"FAILURE",
+         "order":{
+            "createdAt":1548690419673,
+            "modifiedAt":1548690419755,
+            "merchantId":"merchant_g0yf9ooexi",
+            "terms":null,
+            "privacy":null,
+            "orderId":"5uxnneuczw",
+            "merchantOrderId":null,
+            "paymentProviderTransactionId":null,
+            "description":"Test Order 02",
+            "statementDescription":null,
+            "initialAmount":555,
+            "preauthorizedAmount":0,
+            "capturedAmount":0,
+            "refundedAmount":0,
+            "canceledAmount":0,
+            "currency":"EUR",
+            "basket":[
+               {
+                  "id":"Article-525ad05f-65fd-4a4c-b753-91a372c20d0a",
+                  "name":"Socks",
+                  "articleNumber":"121",
+                  "totalPrice":555,
+                  "totalPriceWithTax":555,
+                  "unitPrice":555,
+                  "unitPriceWithTax":555,
+                  "quantity":1,
+                  "tax":0,
+                  "discount":null,
+                  "imageUrl":null,
+                  "articleUrl":null,
+                  "articleType":null
+               }
+            ],
+            "customer":{
+               "merchantCustomerId":null,
+               "email":"attila_d@abv.bg",
+               "organizationRegistrationRegister":null,
+               "organizationRegistrationId":null,
+               "organizationEntityType":null,
+               "organizationVatId":null,
+               "customerId":"customer_3bzslanulk",
+               "addresses":[
+                  {
+                     "companyName":null,
+                     "reference":null,
+                     "firstName":"John",
+                     "lastName":"Dou",
+                     "street":"Maximilian Str.",
+                     "houseNumber":"23",
+                     "city":"Nuremberg",
+                     "zip":"90482",
+                     "country":"DE",
+                     "state":null,
+                     "phone":null,
+                     "fax":null,
+                     "mobile":null,
+                     "title":null,
+                     "additionalDetails":null,
+                     "addressId":"address_hvyzswfwcf",
+                     "createdAt":1548690047339,
+                     "modifiedAt":1548690047339
+                  }
+               ],
+               "personas":[
+                  {
+                     "personaId":"persona_fp1jmys4c5",
+                     "firstName":"John",
+                     "lastName":"Dou",
+                     "phone":null,
+                     "mobile":null,
+                     "fax":null,
+                     "birthday":null,
+                     "gender":null,
+                     "title":null,
+                     "createdAt":1548690047338,
+                     "modifiedAt":1548690047338
+                  }
+               ],
+               "paymentInstruments":[
+                  {
+                     "createdAt":1548690419450,
+                     "modifiedAt":1548690419467,
+                     "paymentInstrumentId":"paymentinstrument_5vnpi66cbv",
+                     "merchantPaymentInstrumentId":null,
+                     "attributes":{
+                        "issuerCountry":"US",
+                        "expiryMonth":"12",
+                        "cardHolder":"John Dou",
+                        "expiryYear":"21",
+                        "brand":"VISA",
+                        "cardNumber":"************4242"
+                     },
+                     "encrypted":true,
+                     "origin":"creditcard",
+                     "type":"creditcard",
+                     "recurring":true
+                  }
+               ],
+               "createdAt":1548689894749,
+               "modifiedAt":1548689894749,
+               "customerType":null
+            },
+            "persona":{
+               "personaId":"persona_fp1jmys4c5",
+               "firstName":"John",
+               "lastName":"Dou",
+               "phone":null,
+               "mobile":null,
+               "fax":null,
+               "birthday":null,
+               "gender":null,
+               "title":null,
+               "createdAt":1548690047338,
+               "modifiedAt":1548690047338
+            },
+            "billingAddress":{
+               "companyName":null,
+               "reference":null,
+               "firstName":"John",
+               "lastName":"Dou",
+               "street":"Maximilian Str.",
+               "houseNumber":"23",
+               "city":"Nuremberg",
+               "zip":"90482",
+               "country":"DE",
+               "state":null,
+               "phone":null,
+               "fax":null,
+               "mobile":null,
+               "title":null,
+               "additionalDetails":null,
+               "addressId":"address_hvyzswfwcf",
+               "createdAt":1548690047339,
+               "modifiedAt":1548690047339
+            },
+            "shippingAddress":{
+               "companyName":null,
+               "reference":null,
+               "firstName":"John",
+               "lastName":"Dou",
+               "street":"Maximilian Str.",
+               "houseNumber":"23",
+               "city":"Nuremberg",
+               "zip":"90482",
+               "country":"DE",
+               "state":null,
+               "phone":null,
+               "fax":null,
+               "mobile":null,
+               "title":null,
+               "additionalDetails":null,
+               "addressId":"address_hvyzswfwcf",
+               "createdAt":1548690047339,
+               "modifiedAt":1548690047339
+            },
+            "ipAddress":"92.247.90.174",
+            "paymentInstrument":{
+               "createdAt":1548690419450,
+               "modifiedAt":1548690419467,
+               "paymentInstrumentId":"paymentinstrument_5vnpi66cbv",
+               "merchantPaymentInstrumentId":null,
+               "attributes":{
+                  "issuerCountry":"US",
+                  "expiryMonth":"12",
+                  "cardHolder":"John Dou",
+                  "expiryYear":"21",
+                  "brand":"VISA",
+                  "cardNumber":"************4242"
+               },
+               "encrypted":true,
+               "origin":"creditcard",
+               "type":"creditcard",
+               "recurring":true
+            },
+            "transactions":[
+               "transaction_op5zlpaedw"
+            ],
+            "status":"CLOSED",
+            "channel":"MOTO",
+            "source":"MC",
+            "settled":false,
+            "settlementDate":null,
+            "allowedProducts":null,
+            "product":"creditcard",
+            "transactionType":"PREAUTH",
+            "meta":null,
+            "async":null,
+            "deviceIdent":null,
+            "asyncNotificationSubscriptionId":null
+         },
+         "parentTransaction":null,
+         "transactions":null,
+         "basket":[
+            {
+               "id":"Article-525ad05f-65fd-4a4c-b753-91a372c20d0a",
+               "name":"Socks",
+               "articleNumber":"121",
+               "totalPrice":555,
+               "totalPriceWithTax":555,
+               "unitPrice":555,
+               "unitPriceWithTax":555,
+               "quantity":1,
+               "tax":0,
+               "discount":null,
+               "imageUrl":null,
+               "articleUrl":null,
+               "articleType":null
+            }
+         ],
+         "providerCode":"56",
+         "merchantMessage":null,
+         "customerMessage":null,
+         "descriptor":null,
+         "meta":null,
+         "challenge":null,
+         "asyncNotificationSubscriptionId":null
+      }
+   },
+   "eventId":"66903637-1f96-4a05-9967-59222b73641d",
+   "apiVersion":"v1",
+   "ipAddress":"92.247.90.174",
+   "globalTrackId":"XE8j876zdCyqQu@bXEEZHAAAAA0",
+   "mode":"test",
+   "type":"transaction.create.success",
+   "notificationId":"notification_mh1czkjp83"
+}
+          </code>
+        </div>
+      </div>
+    </div>
+
+    <br/>
+    <p><strong>Note: </strong>Example covers email notification set up via Merchant Center for credit card payment method with subscription for the following events: transaction create failure, order create failure, transaction create success and order create success
+    </p>
+  </div>
+</div>
+
+<div id="api">
+  <br/>
+  <br/>
+  <h2>Notifications via API</h2>
+  <br/>
+
+  <div id="service_subscription">
+    <br/>
+    <br/>
+    <h3>Scope of Notification Service Subscription </h3>
+    <br/>
+    <p>Notifications via API are possible both for asynchronous and synchronous payment methods</p>
+
+    <p><u>Important Note</u></p>
+    <br/>
+    <p>When setting up notifications via API, a merchant can subscribe only for Transaction Events on order level. Therefore, once subscribed the merchant will continue to receive notifications for selected Transaction Events until the order reaches its end state.</p>
+    <p>Merchants can subscribe for the following states of transactions on order level:</p>
+    <ul>
+      <li>CREATED</li>
+      <li>UPDATED</li>
+    </ul>
+    <br/>
+  </div>
+
+  <div id="setting_up">
+    <br/>
+    <br/>
+    <h3>Setting up Notifications</h3>
+    <br/>
+    <p>Subscription for notifications via API can be done through specifying URNs in the object <strong>"notifications"<strong> within a Create Order request. </p>
+
+    <div class="example-box-wrapper">
+      <div class="content-box" ng-init="createCustomerResponseShow=false">
+        <h3 class="content-box-header bg-default">
+            Create Order request with setting up notifications
+            <div class="header-buttons-separator">
+                <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+                  <!-- <i class="glyph-icon icon-chevron-up"></i> -->
+                  <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+                  <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+                </a>
+            </div>
+        </h3>
+        <!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+        <div class="content-box-wrapper">
+          <code>
+{
+"product" : "paypal",
+"terms": 1468590412476,
+"privacy": 1468590412476,
+"merchantOrderId": "merchantOrderId_{{merchantOrderId}}",
+"description": "test transaction",
+"statementDescription": "statement description",
+"initialAmount": {{totalAmount}},
+"currency": "EUR",
+"basket": [
+  {
+    "name": "USB-Stick",
+    "articleNumber": "SW10029",
+    "totalPrice": {{totalAmount}},
+    "totalPriceWithTax": {{totalAmount}},
+    "unitPrice": {{totalAmount}},
+    "unitPriceWithTax": {{totalAmount}},
+    "tax": 0,
+    "quantity": 1
+  }
+],
+"customer": "{{customerId}}",
+"persona": "{{personaId}}",
+"billingAddress": "{{addressId}}",
+"shippingAddress": "{{addressId}}",
+"ipAddress": "82.120.21.79",
+"channel": "ECOM",
+"source": "Postman Test",
+"async": {
+  "successUrl": "https://www.google.de/#newwindow=1&q=success",
+  "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+  "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel",
+  "notifications":
+  [
+      {
+          "notificationUrn":"http://api.webhookinbox.com/i/1RlE1tXX/in/",
+          "notificationState": ["CREATED","UPDATED"]
+      },
+      {
+          "notificationUrn":"mailto:john.dou@example.com",
+          "notificationState": ["CREATED","UPDATED"]
+      }
+  ]
+}
+}
+          </code>
+        </div>
+      </div>
+    </div>
+
+    <p>Number of notification URNs which can be specified when setting up notifications via API is limited to 8 (with positions from 0 to 7).</p>
+    <p>There are three options regarding type of specified notification URNs as follows:</p>
+    <ul>
+      <li>Notification URNs to be specified only as URLs with upper limit eight URLs</li>
+      <li>Notification URNs to be specified only as email addresses with upper limit eight emails</li>
+      <li>Notification URNs to be specified as a combination of URLs and email addresses with combined upper limit eight URLs & emails</li>
+    </ul>
+
+    <p><u>Important Note</u></p>
+    <p>The URN (URL and/or email) transmitted via API overwrites the URNs set up in the MC.</p>
+    <br/>
+    <br/>
+
+    <p>When subscription event/s occur Concardis Payengine will send a notification which could look like example below.</p>
+
+    <div class="example-box-wrapper">
+      <div class="content-box" ng-init="createCustomerResponseShow=false">
+        <h3 class="content-box-header bg-default">
+            Notification via API example
+            <div class="header-buttons-separator">
+                <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+                  <!-- <i class="glyph-icon icon-chevron-up"></i> -->
+                  <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+                  <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+                </a>
+            </div>
+        </h3>
+        <!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+        <div class="content-box-wrapper">
+          <code>
+{
+ "notificationApiVersion": "1.0",
+ "createdAt": 1534959158570,
+ "payload": {
+  "asyncNotificationSubscriptionId": "140d5c25-952f-419d-afdb-71f91ef8cfe4",
+  "oldObject": {
+   "createdAt": 1534959146317,
+   "modifiedAt": 1534959146528,
+   "type": "DEBIT",
+   "transactionId": "transaction_iwyuo0f6tx",
+   "description": "test transaction",
+   "initialAmount": 1190,
+   "refundedAmount": 0,
+   "currency": "EUR",
+   "status": "PENDING",
+   "order": {
+    "createdAt": 1534959146283,
+    "modifiedAt": 1534959146537,
+    "merchantId": "merchant_0aayx2msk6",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "orderId": "kx1o5nhwwd",
+    "merchantOrderId": "fUHM2c3BgF",
+    "paymentProviderTransactionId": "74766-159895-5B7D9E2A-A099",
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 1190,
+    "preauthorizedAmount": 0,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "EUR",
+    "basket": [{
+     "id": "Article-a8c729ec-2884-442e-90cf-7d24f8b8ba2e",
+     "name": "USB-Stick",
+     "articleNumber": "SW10029",
+     "totalPrice": 1000,
+     "totalPriceWithTax": 1190,
+     "unitPrice": 100,
+     "unitPriceWithTax": 119,
+     "quantity": 10,
+     "tax": 19,
+     "discount": null
+    }],
+    "customer": {
+     "merchantCustomerId": "OHXvaW0ZEA",
+     "email": "alekapkcnj@payengine-test.de",
+     "customerId": "customer_v8uilepnoc",
+     "addresses": [{
+      "firstName": "Max",
+      "lastName": "Muster",
+      "street": "Musterweg",
+      "houseNumber": "1",
+      "city": "Musterhausen",
+      "zip": "12345",
+      "country": "DE",
+      "state": "Bayern",
+      "phone": "00493012345",
+      "fax": "00493012345",
+      "mobile": "00493012345",
+      "title": "Prof. Dr.",
+      "additionalDetails": "premium buyer",
+      "addressId": "address_pmpfmqbrhq",
+      "createdAt": 1534856225566,
+      "modifiedAt": 1534856225566
+     }],
+     "personas": [{
+      "personaId": "persona_sbeocysetl",
+      "firstName": "Max",
+      "lastName": "Muster",
+      "phone": "00493012345",
+      "mobile": "00493012345",
+      "fax": "00493012345",
+      "birthday": 358293600000,
+      "gender": "MALE",
+      "title": "Prof. Dr.",
+      "createdAt": 1534856225985,
+      "modifiedAt": 1534856225985
+     }],
+     "paymentInstruments": [{
+      "createdAt": 1534959146280,
+      "modifiedAt": 1534959146280,
+      "paymentInstrumentId": "paymentinstrument_juz0k0agpa",
+      "merchantPaymentInstrumentId": null,
+      "attributes": null,
+      "encrypted": false,
+      "origin": "sofort",
+      "type": "sepa",
+      "recurring": false
+     }],
+     "createdAt": 1534959144250,
+     "modifiedAt": 1534959144250
+    },
+    "persona": {
+     "personaId": "persona_sbeocysetl",
+     "firstName": "Max",
+     "lastName": "Muster",
+     "phone": "00493012345",
+     "mobile": "00493012345",
+     "fax": "00493012345",
+     "birthday": 358293600000,
+     "gender": "MALE",
+     "title": "Prof. Dr.",
+     "createdAt": 1534856225985,
+     "modifiedAt": 1534856225985
+    },
+    "billingAddress": {
+     "firstName": "Max",
+     "lastName": "Muster",
+     "street": "Musterweg",
+     "houseNumber": "1",
+     "city": "Musterhausen",
+     "zip": "12345",
+     "country": "DE",
+     "state": "Bayern",
+     "phone": "00493012345",
+     "fax": "00493012345",
+     "mobile": "00493012345",
+     "title": "Prof. Dr.",
+     "additionalDetails": "premium buyer",
+     "addressId": "address_pmpfmqbrhq",
+     "createdAt": 1534856225566,
+     "modifiedAt": 1534856225566
+    },
+    "shippingAddress": {
+     "firstName": "Max",
+     "lastName": "Muster",
+     "street": "Musterweg",
+     "houseNumber": "1",
+     "city": "Musterhausen",
+     "zip": "12345",
+     "country": "DE",
+     "state": "Bayern",
+     "phone": "00493012345",
+     "fax": "00493012345",
+     "mobile": "00493012345",
+     "title": "Prof. Dr.",
+     "additionalDetails": "premium buyer",
+     "addressId": "address_pmpfmqbrhq",
+     "createdAt": 1534856225566,
+     "modifiedAt": 1534856225566
+    },
+    "ipAddress": "82.120.21.79",
+    "paymentInstrument": {
+     "createdAt": 1534959146280,
+     "modifiedAt": 1534959146280,
+     "paymentInstrumentId": "paymentinstrument_juz0k0agpa",
+     "merchantPaymentInstrumentId": null,
+     "attributes": null,
+     "encrypted": false,
+     "origin": "sofort",
+     "type": "sepa",
+     "recurring": false
+    },
+    "transactions": ["transaction_iwyuo0f6tx"],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": [],
+    "product": "sofort",
+    "transactionType": "DEBIT",
+    "meta": null,
+    "async": null,
+    "deviceIdent": null,
+    "asyncNotificationSubscriptionId": "140d5c25-952f-419d-afdb-71f91ef8cfe4",
+    "redirectUrl": "https://public-api-app54te.psp.cardtech.de/order/sofort/1.0/redirect/transaction_iwyuo0f6tx"
+   },
+   "parentTransaction": null,
+   "transactions": null,
+   "basket": [{
+    "id": "Article-a8c729ec-2884-442e-90cf-7d24f8b8ba2e",
+    "name": "USB-Stick",
+    "articleNumber": "SW10029",
+    "totalPrice": 1000,
+    "totalPriceWithTax": 1190,
+    "unitPrice": 100,
+    "unitPriceWithTax": 119,
+    "quantity": 10,
+    "tax": 19,
+    "discount": null
+   }],
+   "providerCode": null,
+   "merchantMessage": null,
+   "customerMessage": null,
+   "descriptor": null,
+   "meta": null,
+   "asyncNotificationSubscriptionId": "140d5c25-952f-419d-afdb-71f91ef8cfe4"
+  },
+  "newObject": {
+   "createdAt": 1534959146317,
+   "modifiedAt": 1534959146528,
+   "type": "DEBIT",
+   "transactionId": "transaction_iwyuo0f6tx",
+   "description": "test transaction",
+   "initialAmount": 1190,
+   "refundedAmount": 0,
+   "currency": "EUR",
+   "status": "IN_PROGRESS",
+   "order": {
+    "createdAt": 1534959146283,
+    "modifiedAt": 1534959146537,
+    "merchantId": "merchant_0aayx2msk6",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "orderId": "kx1o5nhwwd",
+    "merchantOrderId": "fUHM2c3BgF",
+    "paymentProviderTransactionId": "74766-159895-5B7D9E2A-A099",
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 1190,
+    "preauthorizedAmount": 0,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "EUR",
+    "basket": [{
+     "id": "Article-a8c729ec-2884-442e-90cf-7d24f8b8ba2e",
+     "name": "USB-Stick",
+     "articleNumber": "SW10029",
+     "totalPrice": 1000,
+     "totalPriceWithTax": 1190,
+     "unitPrice": 100,
+     "unitPriceWithTax": 119,
+     "quantity": 10,
+     "tax": 19,
+     "discount": null
+    }],
+    "customer": {
+     "merchantCustomerId": "OHXvaW0ZEA",
+     "email": "alekapkcnj@payengine-test.de",
+     "customerId": "customer_v8uilepnoc",
+     "addresses": [{
+      "firstName": "Max",
+      "lastName": "Muster",
+      "street": "Musterweg",
+      "houseNumber": "1",
+      "city": "Musterhausen",
+      "zip": "12345",
+      "country": "DE",
+      "state": "Bayern",
+      "phone": "00493012345",
+      "fax": "00493012345",
+      "mobile": "00493012345",
+      "title": "Prof. Dr.",
+      "additionalDetails": "premium buyer",
+      "addressId": "address_pmpfmqbrhq",
+      "createdAt": 1534856225566,
+      "modifiedAt": 1534856225566
+     }],
+     "personas": [{
+      "personaId": "persona_sbeocysetl",
+      "firstName": "Max",
+      "lastName": "Muster",
+      "phone": "00493012345",
+      "mobile": "00493012345",
+      "fax": "00493012345",
+      "birthday": 358293600000,
+      "gender": "MALE",
+      "title": "Prof. Dr.",
+      "createdAt": 1534856225985,
+      "modifiedAt": 1534856225985
+     }],
+     "paymentInstruments": [{
+      "createdAt": 1534959146280,
+      "modifiedAt": 1534959146280,
+      "paymentInstrumentId": "paymentinstrument_juz0k0agpa",
+      "merchantPaymentInstrumentId": null,
+      "attributes": null,
+      "encrypted": false,
+      "origin": "sofort",
+      "type": "sepa",
+      "recurring": false
+     }],
+     "createdAt": 1534959144250,
+     "modifiedAt": 1534959144250
+    },
+    "persona": {
+     "personaId": "persona_sbeocysetl",
+     "firstName": "Max",
+     "lastName": "Muster",
+     "phone": "00493012345",
+     "mobile": "00493012345",
+     "fax": "00493012345",
+     "birthday": 358293600000,
+     "gender": "MALE",
+     "title": "Prof. Dr.",
+     "createdAt": 1534856225985,
+     "modifiedAt": 1534856225985
+    },
+    "billingAddress": {
+     "firstName": "Max",
+     "lastName": "Muster",
+     "street": "Musterweg",
+     "houseNumber": "1",
+     "city": "Musterhausen",
+     "zip": "12345",
+     "country": "DE",
+     "state": "Bayern",
+     "phone": "00493012345",
+     "fax": "00493012345",
+     "mobile": "00493012345",
+     "title": "Prof. Dr.",
+     "additionalDetails": "premium buyer",
+     "addressId": "address_pmpfmqbrhq",
+     "createdAt": 1534856225566,
+     "modifiedAt": 1534856225566
+    },
+    "shippingAddress": {
+     "firstName": "Max",
+     "lastName": "Muster",
+     "street": "Musterweg",
+     "houseNumber": "1",
+     "city": "Musterhausen",
+     "zip": "12345",
+     "country": "DE",
+     "state": "Bayern",
+     "phone": "00493012345",
+     "fax": "00493012345",
+     "mobile": "00493012345",
+     "title": "Prof. Dr.",
+     "additionalDetails": "premium buyer",
+     "addressId": "address_pmpfmqbrhq",
+     "createdAt": 1534856225566,
+     "modifiedAt": 1534856225566
+    },
+    "ipAddress": "82.120.21.79",
+    "paymentInstrument": {
+     "createdAt": 1534959146280,
+     "modifiedAt": 1534959146280,
+     "paymentInstrumentId": "paymentinstrument_juz0k0agpa",
+     "merchantPaymentInstrumentId": null,
+     "attributes": null,
+     "encrypted": false,
+     "origin": "sofort",
+     "type": "sepa",
+     "recurring": false
+    },
+    "transactions": ["transaction_iwyuo0f6tx"],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": [],
+    "product": "sofort",
+    "transactionType": "DEBIT",
+    "meta": null,
+    "async": null,
+    "deviceIdent": null,
+    "asyncNotificationSubscriptionId": "140d5c25-952f-419d-afdb-71f91ef8cfe4",
+    "redirectUrl": "https://public-api-app54te.psp.cardtech.de/order/sofort/1.0/redirect/transaction_iwyuo0f6tx"
+   },
+   "parentTransaction": null,
+   "transactions": null,
+   "basket": [{
+    "id": "Article-a8c729ec-2884-442e-90cf-7d24f8b8ba2e",
+    "name": "USB-Stick",
+    "articleNumber": "SW10029",
+    "totalPrice": 1000,
+    "totalPriceWithTax": 1190,
+    "unitPrice": 100,
+    "unitPriceWithTax": 119,
+    "quantity": 10,
+    "tax": 19,
+    "discount": null
+   }],
+   "providerCode": null,
+   "merchantMessage": null,
+   "customerMessage": null,
+   "descriptor": null,
+   "meta": null,
+   "asyncNotificationSubscriptionId": "140d5c25-952f-419d-afdb-71f91ef8cfe4"
+  },
+  "diff": [{
+   "key": "status",
+   "source": "PENDING",
+   "target": "IN_PROGRESS"
+  }]
+ },
+ "eventId": "68e67eb8-4649-4b60-b52c-06e156091154",
+ "apiVersion": "v1",
+ "ipAddress": "192.168.204.5",
+ "globalTrackId": "W32eNrvUr-HQC74YV3ySBQAAAAU",
+ "mode": "test",
+ "type": "transaction.update.success",
+ "notificationId": "notification_y6hfkz0dtm"
+}{
+ "notificationApiVersion": "1.0",
+ "createdAt": 1534959158570,
+ "payload": {
+  "asyncNotificationSubscriptionId": "140d5c25-952f-419d-afdb-71f91ef8cfe4",
+  "oldObject": {
+   "createdAt": 1534959146317,
+   "modifiedAt": 1534959146528,
+   "type": "DEBIT",
+   "transactionId": "transaction_iwyuo0f6tx",
+   "description": "test transaction",
+   "initialAmount": 1190,
+   "refundedAmount": 0,
+   "currency": "EUR",
+   "status": "PENDING",
+   "order": {
+    "createdAt": 1534959146283,
+    "modifiedAt": 1534959146537,
+    "merchantId": "merchant_0aayx2msk6",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "orderId": "kx1o5nhwwd",
+    "merchantOrderId": "fUHM2c3BgF",
+    "paymentProviderTransactionId": "74766-159895-5B7D9E2A-A099",
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 1190,
+    "preauthorizedAmount": 0,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "EUR",
+    "basket": [{
+     "id": "Article-a8c729ec-2884-442e-90cf-7d24f8b8ba2e",
+     "name": "USB-Stick",
+     "articleNumber": "SW10029",
+     "totalPrice": 1000,
+     "totalPriceWithTax": 1190,
+     "unitPrice": 100,
+     "unitPriceWithTax": 119,
+     "quantity": 10,
+     "tax": 19,
+     "discount": null
+    }],
+    "customer": {
+     "merchantCustomerId": "OHXvaW0ZEA",
+     "email": "alekapkcnj@payengine-test.de",
+     "customerId": "customer_v8uilepnoc",
+     "addresses": [{
+      "firstName": "Max",
+      "lastName": "Muster",
+      "street": "Musterweg",
+      "houseNumber": "1",
+      "city": "Musterhausen",
+      "zip": "12345",
+      "country": "DE",
+      "state": "Bayern",
+      "phone": "00493012345",
+      "fax": "00493012345",
+      "mobile": "00493012345",
+      "title": "Prof. Dr.",
+      "additionalDetails": "premium buyer",
+      "addressId": "address_pmpfmqbrhq",
+      "createdAt": 1534856225566,
+      "modifiedAt": 1534856225566
+     }],
+     "personas": [{
+      "personaId": "persona_sbeocysetl",
+      "firstName": "Max",
+      "lastName": "Muster",
+      "phone": "00493012345",
+      "mobile": "00493012345",
+      "fax": "00493012345",
+      "birthday": 358293600000,
+      "gender": "MALE",
+      "title": "Prof. Dr.",
+      "createdAt": 1534856225985,
+      "modifiedAt": 1534856225985
+     }],
+     "paymentInstruments": [{
+      "createdAt": 1534959146280,
+      "modifiedAt": 1534959146280,
+      "paymentInstrumentId": "paymentinstrument_juz0k0agpa",
+      "merchantPaymentInstrumentId": null,
+      "attributes": null,
+      "encrypted": false,
+      "origin": "sofort",
+      "type": "sepa",
+      "recurring": false
+     }],
+     "createdAt": 1534959144250,
+     "modifiedAt": 1534959144250
+    },
+    "persona": {
+     "personaId": "persona_sbeocysetl",
+     "firstName": "Max",
+     "lastName": "Muster",
+     "phone": "00493012345",
+     "mobile": "00493012345",
+     "fax": "00493012345",
+     "birthday": 358293600000,
+     "gender": "MALE",
+     "title": "Prof. Dr.",
+     "createdAt": 1534856225985,
+     "modifiedAt": 1534856225985
+    },
+    "billingAddress": {
+     "firstName": "Max",
+     "lastName": "Muster",
+     "street": "Musterweg",
+     "houseNumber": "1",
+     "city": "Musterhausen",
+     "zip": "12345",
+     "country": "DE",
+     "state": "Bayern",
+     "phone": "00493012345",
+     "fax": "00493012345",
+     "mobile": "00493012345",
+     "title": "Prof. Dr.",
+     "additionalDetails": "premium buyer",
+     "addressId": "address_pmpfmqbrhq",
+     "createdAt": 1534856225566,
+     "modifiedAt": 1534856225566
+    },
+    "shippingAddress": {
+     "firstName": "Max",
+     "lastName": "Muster",
+     "street": "Musterweg",
+     "houseNumber": "1",
+     "city": "Musterhausen",
+     "zip": "12345",
+     "country": "DE",
+     "state": "Bayern",
+     "phone": "00493012345",
+     "fax": "00493012345",
+     "mobile": "00493012345",
+     "title": "Prof. Dr.",
+     "additionalDetails": "premium buyer",
+     "addressId": "address_pmpfmqbrhq",
+     "createdAt": 1534856225566,
+     "modifiedAt": 1534856225566
+    },
+    "ipAddress": "82.120.21.79",
+    "paymentInstrument": {
+     "createdAt": 1534959146280,
+     "modifiedAt": 1534959146280,
+     "paymentInstrumentId": "paymentinstrument_juz0k0agpa",
+     "merchantPaymentInstrumentId": null,
+     "attributes": null,
+     "encrypted": false,
+     "origin": "sofort",
+     "type": "sepa",
+     "recurring": false
+    },
+    "transactions": ["transaction_iwyuo0f6tx"],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": [],
+    "product": "sofort",
+    "transactionType": "DEBIT",
+    "meta": null,
+    "async": null,
+    "deviceIdent": null,
+    "asyncNotificationSubscriptionId": "140d5c25-952f-419d-afdb-71f91ef8cfe4",
+    "redirectUrl": "https://public-api-app54te.psp.cardtech.de/order/sofort/1.0/redirect/transaction_iwyuo0f6tx"
+   },
+   "parentTransaction": null,
+   "transactions": null,
+   "basket": [{
+    "id": "Article-a8c729ec-2884-442e-90cf-7d24f8b8ba2e",
+    "name": "USB-Stick",
+    "articleNumber": "SW10029",
+    "totalPrice": 1000,
+    "totalPriceWithTax": 1190,
+    "unitPrice": 100,
+    "unitPriceWithTax": 119,
+    "quantity": 10,
+    "tax": 19,
+    "discount": null
+   }],
+   "providerCode": null,
+   "merchantMessage": null,
+   "customerMessage": null,
+   "descriptor": null,
+   "meta": null,
+   "asyncNotificationSubscriptionId": "140d5c25-952f-419d-afdb-71f91ef8cfe4"
+  },
+  "newObject": {
+   "createdAt": 1534959146317,
+   "modifiedAt": 1534959146528,
+   "type": "DEBIT",
+   "transactionId": "transaction_iwyuo0f6tx",
+   "description": "test transaction",
+   "initialAmount": 1190,
+   "refundedAmount": 0,
+   "currency": "EUR",
+   "status": "IN_PROGRESS",
+   "order": {
+    "createdAt": 1534959146283,
+    "modifiedAt": 1534959146537,
+    "merchantId": "merchant_0aayx2msk6",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "orderId": "kx1o5nhwwd",
+    "merchantOrderId": "fUHM2c3BgF",
+    "paymentProviderTransactionId": "74766-159895-5B7D9E2A-A099",
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 1190,
+    "preauthorizedAmount": 0,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "EUR",
+    "basket": [{
+     "id": "Article-a8c729ec-2884-442e-90cf-7d24f8b8ba2e",
+     "name": "USB-Stick",
+     "articleNumber": "SW10029",
+     "totalPrice": 1000,
+     "totalPriceWithTax": 1190,
+     "unitPrice": 100,
+     "unitPriceWithTax": 119,
+     "quantity": 10,
+     "tax": 19,
+     "discount": null
+    }],
+    "customer": {
+     "merchantCustomerId": "OHXvaW0ZEA",
+     "email": "alekapkcnj@payengine-test.de",
+     "customerId": "customer_v8uilepnoc",
+     "addresses": [{
+      "firstName": "Max",
+      "lastName": "Muster",
+      "street": "Musterweg",
+      "houseNumber": "1",
+      "city": "Musterhausen",
+      "zip": "12345",
+      "country": "DE",
+      "state": "Bayern",
+      "phone": "00493012345",
+      "fax": "00493012345",
+      "mobile": "00493012345",
+      "title": "Prof. Dr.",
+      "additionalDetails": "premium buyer",
+      "addressId": "address_pmpfmqbrhq",
+      "createdAt": 1534856225566,
+      "modifiedAt": 1534856225566
+     }],
+     "personas": [{
+      "personaId": "persona_sbeocysetl",
+      "firstName": "Max",
+      "lastName": "Muster",
+      "phone": "00493012345",
+      "mobile": "00493012345",
+      "fax": "00493012345",
+      "birthday": 358293600000,
+      "gender": "MALE",
+      "title": "Prof. Dr.",
+      "createdAt": 1534856225985,
+      "modifiedAt": 1534856225985
+     }],
+     "paymentInstruments": [{
+      "createdAt": 1534959146280,
+      "modifiedAt": 1534959146280,
+      "paymentInstrumentId": "paymentinstrument_juz0k0agpa",
+      "merchantPaymentInstrumentId": null,
+      "attributes": null,
+      "encrypted": false,
+      "origin": "sofort",
+      "type": "sepa",
+      "recurring": false
+     }],
+     "createdAt": 1534959144250,
+     "modifiedAt": 1534959144250
+    },
+    "persona": {
+     "personaId": "persona_sbeocysetl",
+     "firstName": "Max",
+     "lastName": "Muster",
+     "phone": "00493012345",
+     "mobile": "00493012345",
+     "fax": "00493012345",
+     "birthday": 358293600000,
+     "gender": "MALE",
+     "title": "Prof. Dr.",
+     "createdAt": 1534856225985,
+     "modifiedAt": 1534856225985
+    },
+    "billingAddress": {
+     "firstName": "Max",
+     "lastName": "Muster",
+     "street": "Musterweg",
+     "houseNumber": "1",
+     "city": "Musterhausen",
+     "zip": "12345",
+     "country": "DE",
+     "state": "Bayern",
+     "phone": "00493012345",
+     "fax": "00493012345",
+     "mobile": "00493012345",
+     "title": "Prof. Dr.",
+     "additionalDetails": "premium buyer",
+     "addressId": "address_pmpfmqbrhq",
+     "createdAt": 1534856225566,
+     "modifiedAt": 1534856225566
+    },
+    "shippingAddress": {
+     "firstName": "Max",
+     "lastName": "Muster",
+     "street": "Musterweg",
+     "houseNumber": "1",
+     "city": "Musterhausen",
+     "zip": "12345",
+     "country": "DE",
+     "state": "Bayern",
+     "phone": "00493012345",
+     "fax": "00493012345",
+     "mobile": "00493012345",
+     "title": "Prof. Dr.",
+     "additionalDetails": "premium buyer",
+     "addressId": "address_pmpfmqbrhq",
+     "createdAt": 1534856225566,
+     "modifiedAt": 1534856225566
+    },
+    "ipAddress": "82.120.21.79",
+    "paymentInstrument": {
+     "createdAt": 1534959146280,
+     "modifiedAt": 1534959146280,
+     "paymentInstrumentId": "paymentinstrument_juz0k0agpa",
+     "merchantPaymentInstrumentId": null,
+     "attributes": null,
+     "encrypted": false,
+     "origin": "sofort",
+     "type": "sepa",
+     "recurring": false
+    },
+    "transactions": ["transaction_iwyuo0f6tx"],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": [],
+    "product": "sofort",
+    "transactionType": "DEBIT",
+    "meta": null,
+    "async": null,
+    "deviceIdent": null,
+    "asyncNotificationSubscriptionId": "140d5c25-952f-419d-afdb-71f91ef8cfe4",
+    "redirectUrl": "https://public-api-app54te.psp.cardtech.de/order/sofort/1.0/redirect/transaction_iwyuo0f6tx"
+   },
+   "parentTransaction": null,
+   "transactions": null,
+   "basket": [{
+    "id": "Article-a8c729ec-2884-442e-90cf-7d24f8b8ba2e",
+    "name": "USB-Stick",
+    "articleNumber": "SW10029",
+    "totalPrice": 1000,
+    "totalPriceWithTax": 1190,
+    "unitPrice": 100,
+    "unitPriceWithTax": 119,
+    "quantity": 10,
+    "tax": 19,
+    "discount": null
+   }],
+   "providerCode": null,
+   "merchantMessage": null,
+   "customerMessage": null,
+   "descriptor": null,
+   "meta": null,
+   "asyncNotificationSubscriptionId": "140d5c25-952f-419d-afdb-71f91ef8cfe4"
+  },
+  "diff": [{
+   "key": "status",
+   "source": "PENDING",
+   "target": "IN_PROGRESS"
+  }]
+ },
+ "eventId": "68e67eb8-4649-4b60-b52c-06e156091154",
+ "apiVersion": "v1",
+ "ipAddress": "192.168.204.5",
+ "globalTrackId": "W32eNrvUr-HQC74YV3ySBQAAAAU",
+ "mode": "test",
+ "type": "transaction.update.success",
+ "notificationId": "notification_y6hfkz0dtm"
+}}
+          </code>
+        </div>
+      </div>
+    </div>
+
+    <p>It's highly recommended for the merchants to validate the notification they received.</p>
+
+  </div>
+
+  <div id="validation">
+    <br/>
+    <br/>
+    <h3>Validation of Notifications</h3>
+    <br/>
+    <p>When a merchant receives a notification set up via API, he/she can validate it by sending the received notification content without any modification to Concardis notification validation URL shown below.</p>
+
+    <p><a href="https://apitest.payengine.de/notifications/validate?address=yourUrlencodedNotificationUrn">
+      https://apitest.payengine.de/notifications/validate?address=yourUrlencodedNotificationUrn
+    </a></p>
+
+    <p>Merchants should use Post method for a validation request where post body should contain the notification content as received and shown in the above example for Notification via API.</p>
+    <br/>
+    <p>Merchants will receive one of the following responses of the validation request they sent:</p>
+    <ul>
+      <li>"VALIDATED" - when notification content can be verified for the notification URNs</li>
+      <li>"INVALID" - when notification content can't be verified for the notification URNs</li>
+    </ul>
+    <br/>
+    <p>Notifications via Merchant Center can be found under the following link:  - <a href="/merchantcenter/notifications_mc">(MC) Notifications</a></p>
+
+  </div>
+</div>

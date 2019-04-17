@@ -4,67 +4,27 @@
 	<h2>Overview</h2>
 	<br/>
 	<p>
-		<strong>Alipay</strong> is a third-party mobile and online payment platform. It is the world's number one mobile payment service organization and the second largest mobile payment service organization in the world.
+		<strong>Alipay</strong> is the most important e-wallet in China and has a potential reach to over 520 million registerd users.
 	</p>
 	<br/>
 	<p>
-		Alipay operates with more than 65 financial institutions including Visa and MasterCard to provide payment services for Taobao and Tmall as well as more than 460,000 online and local Chinese businesses.
+		A customer can place his cards or bank account behind the Alipay wallet as the prefered payment instruments.  A payment can either be executed in the web via a login into the Alipay account or via the Alipay mobile app which is most commonly used by the Alipay users. With the mobile app the user can either scan a QR-code referencing the order or the app will be automatically opened in case the user shops with the mobile device.
 	</p>
 	<br/>
 	<p>
-		Alipay provides multiple security mechanisms to make sure that user accounts are safe. An Alipay account requires the user to set up their own login password and separate payment password, which need to be different. The user can enter the login password up to five times and the payment password up to three times before the user is locked out of his or her account. To regain access to the account, the user must contact Alipay. A user must also install a digital certificate, which can encrypt information sent over a network, preventing hackers from stealing passwords, thereby enhancing the security of online transactions.
+		There are no chargebacks and there is a very high consumer trust due to the strong brand awareness. Therefore Alipay is a must-have payment method for any businesses that want to reach out to Chinese shoppers.
 	</p>
 	<br/>
 	<br/>
 	<h2>CUSTOMER EXPERIENCE</h2>
 	<br/>
 	<p>
-		In the Payengine Modal Widget the selection of the payment method and account holder look as per following screens.
+		<img class="" src="/img/faq/alipay/alipay_customer_flow.png" width="100%" />
 	</p>
 	<br/>
-	<table border="1" width="60%">
-		<thead>
-			<th>Step</th>
-			<th>Description</th>
-			<th >Screenshot</th>
-		</thead>
-		<tr>
-			<td>
-				1
-			</td>
-			<td>
-				Select Alipay
-			</td>
-			<td>
-				<img class="" src="/img/faq/alipay/alipay_widget_1.png" width="100%" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				2
-			</td>
-			<td>
-				Edit Account holder
-			</td>
-			<td>
-				<img class="" src="/img/faq/alipay/alipay_widget_2.png" width="100%" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				3
-			</td>
-			<td>
-				Redirect to Alipay login page
-			</td>
-			<td>
-				<img class="" src="/img/faq/alipay/alipay.png" width="100%" />
-			</td>
-		</tr>
-	</table>
-	<br/>
+
 	<p>
-		In his online Bank Account, following the steps, he can pay for his purchase:
+		Optionally a user could also scan a QR-code with his mobile app (step 3) and authorize and execute the payment via the app.
 	</p>
 	<br/>
 
@@ -77,7 +37,6 @@
 					<ul>
 						<li class="header ms-hover"><strong>General</strong></li>
 						<li class="ms-hover">Product</li>
-						<li class="ms-hover">Type</li>
 						<li class="ms-hover">Channels</li>
 						<li class="ms-hover">Currencies</li>
 						<li class="ms-hover">Countries</li>
@@ -90,10 +49,9 @@
 					<ul>
 						<li class="header ms-hover"></li>
 						<li class="ms-hover">Alipay</li>
-						<li class="ms-hover">sepa</li>
 						<li class="ms-hover">ecom</li>
 						<li class="ms-hover">AUD, CAD, EUR, GBP, HKD, SGD, USD</li>
-						<li class="ms-hover">crossborder</li>
+						<li class="ms-hover">crossborder (outside of China)</li>
 						<li class="ms-hover">asynchronous</li>
 						<li class="ms-hover">no</li>
 						<li class="ms-hover">no</li>
@@ -161,70 +119,18 @@
 	<br/>
 	<h2>Technical Flow</h2>
 	<br/>
-	<h3>Step 1: Set credentials</h3>
-	<br/>
-	<p>
-		Alipay payment method is available trough PPRO Payment Platform. For this reason, the merchant must have his own PPRO account. He must contact the merchant center administrator to provide his PPRO settings.
-	</p>
-	<br/>
-	<p>
-		PPRO SETTINGS PER MERCHANT
-	</p>
-	<br/>
-	<table border="1">
-		<thead>
-			<th>Field</th>
-			<th>Description</th>
-		</thead>
-		<tr>
-			<td>
-				Contract ID
-			</td>
-			<td>
-				should be provided by the PPRO
-			</td>
-		</tr>
-		<tr>
-			<td>
-				Shared Secret
-			</td>
-			<td>
-				should be provided by the PPRO
-			</td>
-		</tr>
-		<tr>
-			<td>
-				Notification Secret
-			</td>
-			<td>
-				should be provided by the PPRO
-			</td>
-		</tr>
-	</table>
-
-	<br/>
-	<h3>Step 2: Create debit</h3>
-	<br/>
-	<p>
-		Once the Customer chooses Alipay payment, he will be transferred to Alipay login page to proceed with the payment. The debit causes the immediately charging of the full amount.
-	</p>
-	<br/>
 	<p>
 		<img class="" src="/img/faq/alipay/alipay_flow.png" width="100%" />
-	</p>
-	<br/>
-
-	<br/>
-	<h3>Step 3: Confirm that the charge has succeeded</h3>
-	<br/>
-	<p>
-		As it is not ensured at the time of the redirect to the shop that the payment was 100% successful the Payengine waits for the final asynchronous notification from the bank before a status is moved from PENDING into SUCCESS or FAILURE.
 	</p>
 	<br/>
 	<h4>Webhook notifications</h4>
 	<br/>
 	<p>
-		A merchant should register for the Payengine webhook notifications in order to receive this final status update. A GET on the order or DEBIT transaction would also work, but it is not ensured that the final status will be available immediately after the redirect and a merchant might have to query the GET multiple times. Therefore it is strongly recommended that the asynchronous notifications from the Payengine are used insetad.
+		As it is not ensured at the time of the redirect to the shop that the payment was 100% successful the Payengine waits for the final asynchronous notification from the bank before a status is moved from PENDING into SUCCESS or FAILURE.
+	</p>
+	<br/>
+	<p>
+		A merchant should register for the Payengine webhook notifications in order to receive this final status update. A GET on the order or DEBIT transaction would also work, but it is not ensured that the final status will be available immediately after the redirect and a merchant might have to query the GET multiple times. Therefore it is strongly recommended that the asynchronous notifications from the Payengine are used insted.
 	</p>
 	<br/>
 	<p>
@@ -281,53 +187,7 @@
 		</tr>
 	</table>
 	<br/>
-	<h4>Merchant center view of order</h4>
-	<br/>
-	<p>
-		When the order is created the merchant can view order's details in Merchant center:
-	</p>
-	<br/>
-	<p>
-		<img class="" src="/img/faq/alipay/alipay_view.png" width="100%" />
-	</p>
 
-	<br/>
-	<br/>
-	<h3>Step 4: Refund transaction amount</h3>
-	<br/>
-	<p>
-		If the transaction is with status SUCCESS, merchant can refunt full or partial amount of the transaction.
-	</p>
-	<br/>
-	<p>
-		Select SUCCESS transaction from transactions list, and you will see Refund button above the transaction details.
-	</p>
-	<br/>
-	<p>
-		<img class="" src="/img/faq/alipay/alipay_refund_1.png" width="100%" />
-	</p>
-	<br/>
-	<p>
-		When merchant click on the 'Refund' button, it will open new window with the details for refund.
-	</p>
-	<br/>
-	<p>
-		<strong>Note:</strong> Merchant can refund full or partial amount of the transaction. If the merchant refund full amount the transaction 'Refund' button will disappear from transaction details. In the other case the merchant can refund rest of the amount later.
-	</p>
-	<br/>
-	<p>
-		<img class="" src="/img/faq/alipay/alipay_refund_2.png" width="100%" />
-	</p>
-	<br/>
-	<p>
-		When merchant refund all or part of the transaction amount, new transaction will appear in transaction details with type REFUND. Merchant can view refund transaction details in the left pane.
-	</p>
-	<br/>
-	<p>
-		<img class="" src="/img/faq/alipay/alipay_refund_3.png" width="100%" />
-	</p>
-	<br/>
-	<br/>
 	<div>
 		<br/>
 		<h2>Specifics</h2>
@@ -407,6 +267,20 @@
 					http://my.shop.com/cancel
 				</td>
 			</tr>
+			<tr>
+				<td>
+					meta.mobileView
+				</td>
+				<td>
+					O
+				</td>
+				<td>
+					Set to “true” for the mobile enabled variant of Alipay
+				</td>
+				<td>
+					true
+				</td>
+			</tr>
 		</table>
 		<br/>
 
@@ -434,30 +308,36 @@
 				<div class="content-box-wrapper">
 					<code>
 {
-  "product" : "Alipay",
+  "product" : "alipay",
   "terms": 1468590412476,
   "privacy": 1468590412476,
-  "merchantOrderId": "merchantOrderId1549459331",
+  "merchantOrderId": "merchantOrderId_45rw3",
   "description": "test transaction",
   "statementDescription": "statement description",
-  "initialAmount": 1190,
-  "currency": "EUR",
+  "initialAmount": 2380,
+  "currency": "USD",
   "basket": [
     {
-      "name": "USB-Stick ",
+      "name": "USB-Stick 1554964122",
       "articleNumber": "SW10029",
-      "totalPrice": 1000,
+      "totalPrice": 1190,
       "totalPriceWithTax": 1190,
-      "unitPrice": 100,
-      "unitPriceWithTax": 119,
-      "tax": 19,
-      "quantity": 10
+      "unitPrice": 1190,
+      "unitPriceWithTax": 1190,
+      "tax": 0,
+      "quantity": 2
     }
   ],
-  "customer": "customer_l2r3w5ztzb",
-  "persona": "persona_s7plfnwiuo",
-  "billingAddress": "address_htxg2ezmjq",
-  "shippingAddress": "address_htxg2ezmjq",
+  "meta": {
+    "mobileView": true
+  },
+  "payment": {
+    "accountHolder": "max max"
+  },
+  "customer": "customer_h4elq72qjb",
+  "persona": "persona_lki12nchxk",
+  "billingAddress": "address_2ignpvcsoc",
+  "shippingAddress": "address_2ignpvcsoc",
   "ipAddress": "82.120.21.79",
   "channel": "ECOM",
   "source": "Test",
@@ -472,6 +352,207 @@
 			</div>
 		</div>
 		<br/>
+
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerRequestShow=false">
+				<h3 class="content-box-header bg-default">
+						Alipay Debit response
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+    "createdAt": 1554964122158,
+    "modifiedAt": 1554964122173,
+    "merchantId": "merchant_pwtmsdg1wt",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "orderId": "upirfohyf3",
+    "merchantOrderId": "merchantOrderId_45rw3",
+    "paymentProviderTransactionId": "4a0a6229-57ed-436c-a",
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 2380,
+    "preauthorizedAmount": 0,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "USD",
+    "basket": [
+        {
+            "id": "Article-c4dea503-26bd-41bd-93a7-61010e3efd76",
+            "name": "USB-Stick 1554964122",
+            "articleNumber": "SW10029",
+            "totalPrice": 1190,
+            "totalPriceWithTax": 1190,
+            "unitPrice": 1190,
+            "unitPriceWithTax": 1190,
+            "quantity": 2,
+            "tax": 0,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+        }
+    ],
+    "customer": {
+        "merchantCustomerId": "my_customer_1231554964081",
+        "organizationRegistrationRegister": null,
+        "organizationRegistrationId": null,
+        "organizationEntityType": null,
+        "organizationVatId": null,
+        "companyName": null,
+        "reference": null,
+        "email": "1554964081@payengine-test.de",
+        "customerId": "customer_h4elq72qjb",
+        "addresses": [],
+        "personas": [],
+        "paymentInstruments": [],
+        "createdAt": 1554964081531,
+        "modifiedAt": 1554964081531,
+        "customerType": null
+    },
+    "persona": {
+        "personaId": "persona_lki12nchxk",
+        "firstName": "Max",
+        "lastName": "1554964087",
+        "phone": "00493012346",
+        "mobile": "00493012345",
+        "fax": "00493012345",
+        "birthday": 358293600000,
+        "gender": "MALE",
+        "title": "Prof. Dr.",
+        "createdAt": 1554964087243,
+        "modifiedAt": 1554964087243
+    },
+    "billingAddress": {
+        "firstName": "Max",
+        "lastName": "Muster",
+        "street": "Musterweg",
+        "houseNumber": "1554964085",
+        "city": "Musterhausen",
+        "zip": "12345",
+        "country": "DE",
+        "state": "Bayern",
+        "phone": "00493012345",
+        "fax": "00493012345",
+        "mobile": "00493012345",
+        "title": "Prof. Dr.",
+        "additionalDetails": "premium buyer",
+        "addressId": "address_2ignpvcsoc",
+        "createdAt": 1554964084554,
+        "modifiedAt": 1554964084554
+    },
+    "shippingAddress": {
+        "firstName": "Max",
+        "lastName": "Muster",
+        "street": "Musterweg",
+        "houseNumber": "1554964085",
+        "city": "Musterhausen",
+        "zip": "12345",
+        "country": "DE",
+        "state": "Bayern",
+        "phone": "00493012345",
+        "fax": "00493012345",
+        "mobile": "00493012345",
+        "title": "Prof. Dr.",
+        "additionalDetails": "premium buyer",
+        "addressId": "address_2ignpvcsoc",
+        "createdAt": 1554964084554,
+        "modifiedAt": 1554964084554
+    },
+    "ipAddress": "82.120.21.79",
+    "paymentInstrument": {
+        "createdAt": 1554964122147,
+        "modifiedAt": 1554964122147,
+        "paymentInstrumentId": "paymentinstrument_pj8pxaytkp",
+        "merchantPaymentInstrumentId": null,
+        "attributes": {
+            "accountHolder": "max max"
+        },
+        "encrypted": false,
+        "origin": "alipay",
+        "type": "ali-pay",
+        "recurring": false,
+        "recurringConsent": null
+    },
+    "transactions": [
+        {
+            "createdAt": 1554964122164,
+            "modifiedAt": 1554964122173,
+            "type": "DEBIT",
+            "transactionId": "transaction_4hsdffgwxg",
+            "description": "test transaction",
+            "initialAmount": 2380,
+            "refundedAmount": 0,
+            "currency": "USD",
+            "status": "PENDING",
+            "order": "upirfohyf3",
+            "parentTransaction": null,
+            "transactions": null,
+            "basket": [
+                {
+                    "id": "Article-c4dea503-26bd-41bd-93a7-61010e3efd76",
+                    "name": "USB-Stick 1554964122",
+                    "articleNumber": "SW10029",
+                    "totalPrice": 1190,
+                    "totalPriceWithTax": 1190,
+                    "unitPrice": 1190,
+                    "unitPriceWithTax": 1190,
+                    "quantity": 2,
+                    "tax": 0,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": null
+                }
+            ],
+            "providerCode": null,
+            "merchantMessage": null,
+            "customerMessage": null,
+            "descriptor": null,
+            "meta": null,
+            "challenge": null,
+            "asyncNotificationSubscriptionId": null,
+            "tracking": null
+        }
+    ],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": null,
+    "product": "alipay",
+    "transactionType": "DEBIT",
+    "meta": {
+        "mobileView": true
+    },
+    "async": {
+        "successUrl": "https://www.google.de/#newwindow=1&q=success",
+        "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+        "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
+    },
+    "deviceIdent": null,
+    "clientType": "BRW",
+    "asyncNotificationSubscriptionId": null,
+    "lastOperation": "TRANSACTION_DEBIT_PENDING",
+    "redirectUrl": "https://public-api-app76te.psp.cardtech.de/order/alipay/1.0/redirect/Order-fd133d91-e0d6-4ed6-9fe9-07ec7ca37ed7"
+}
+					</code>
+				</div>
+			</div>
+		</div>
+		<br/>
+
+
 		<br/>
 		<p>Refund endpoint: </p>
 		<br/>
@@ -492,7 +573,7 @@
 				<div class="content-box-wrapper">
 					<code>
 {
-  "initialAmount": 500,
+  "initialAmount": 10,
   "currency": "EUR",
   "description": "string",
   "basket": [
@@ -508,6 +589,415 @@
         "discount": null
     }
   ]
+}
+					</code>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Alipay refund response
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+    "createdAt": 1554966733820,
+    "modifiedAt": 1554966733821,
+    "type": "REFUND",
+    "transactionId": "transaction_x1a2qnj7yj",
+    "description": "string",
+    "initialAmount": 100,
+    "currency": "USD",
+    "status": "SUCCESS",
+    "order": {
+        "createdAt": 1554964122158,
+        "modifiedAt": 1554966733820,
+        "merchantId": "merchant_pwtmsdg1wt",
+        "terms": 1468590412476,
+        "privacy": 1468590412476,
+        "orderId": "upirfohyf3",
+        "merchantOrderId": "merchantOrderId_45rw3",
+        "paymentProviderTransactionId": "4a0a6229-57ed-436c-a",
+        "description": "test transaction",
+        "statementDescription": "statement description",
+        "initialAmount": 2380,
+        "preauthorizedAmount": 2380,
+        "capturedAmount": 2380,
+        "refundedAmount": 100,
+        "canceledAmount": 0,
+        "currency": "USD",
+        "basket": [
+            {
+                "id": "Article-c4dea503-26bd-41bd-93a7-61010e3efd76",
+                "name": "USB-Stick 1554964122",
+                "articleNumber": "SW10029",
+                "totalPrice": 1190,
+                "totalPriceWithTax": 1190,
+                "unitPrice": 1190,
+                "unitPriceWithTax": 1190,
+                "quantity": 2,
+                "tax": 0,
+                "discount": null,
+                "imageUrl": null,
+                "articleUrl": null,
+                "articleType": null
+            }
+        ],
+        "customer": {
+            "merchantCustomerId": "my_customer_1231554964081",
+            "organizationRegistrationRegister": null,
+            "organizationRegistrationId": null,
+            "organizationEntityType": null,
+            "organizationVatId": null,
+            "companyName": null,
+            "reference": null,
+            "email": "1554964081@payengine-test.de",
+            "customerId": "customer_h4elq72qjb",
+            "addresses": [],
+            "personas": [],
+            "paymentInstruments": [],
+            "createdAt": 1554964081531,
+            "modifiedAt": 1554964081531,
+            "customerType": null
+        },
+        "persona": {
+            "personaId": "persona_lki12nchxk",
+            "firstName": "Max",
+            "lastName": "1554964087",
+            "phone": "00493012346",
+            "mobile": "00493012345",
+            "fax": "00493012345",
+            "birthday": 358293600000,
+            "gender": "MALE",
+            "title": "Prof. Dr.",
+            "createdAt": 1554964087243,
+            "modifiedAt": 1554964087243
+        },
+        "billingAddress": {
+            "firstName": "Max",
+            "lastName": "Muster",
+            "street": "Musterweg",
+            "houseNumber": "1554964085",
+            "city": "Musterhausen",
+            "zip": "12345",
+            "country": "DE",
+            "state": "Bayern",
+            "phone": "00493012345",
+            "fax": "00493012345",
+            "mobile": "00493012345",
+            "title": "Prof. Dr.",
+            "additionalDetails": "premium buyer",
+            "addressId": "address_2ignpvcsoc",
+            "createdAt": 1554964084554,
+            "modifiedAt": 1554964084554
+        },
+        "shippingAddress": {
+            "firstName": "Max",
+            "lastName": "Muster",
+            "street": "Musterweg",
+            "houseNumber": "1554964085",
+            "city": "Musterhausen",
+            "zip": "12345",
+            "country": "DE",
+            "state": "Bayern",
+            "phone": "00493012345",
+            "fax": "00493012345",
+            "mobile": "00493012345",
+            "title": "Prof. Dr.",
+            "additionalDetails": "premium buyer",
+            "addressId": "address_2ignpvcsoc",
+            "createdAt": 1554964084554,
+            "modifiedAt": 1554964084554
+        },
+        "ipAddress": "82.120.21.79",
+        "paymentInstrument": {
+            "createdAt": 1554964122147,
+            "modifiedAt": 1554964122147,
+            "paymentInstrumentId": "paymentinstrument_pj8pxaytkp",
+            "merchantPaymentInstrumentId": null,
+            "attributes": {
+                "accountHolder": "max max"
+            },
+            "encrypted": false,
+            "origin": "alipay",
+            "type": "ali-pay",
+            "recurring": false,
+            "recurringConsent": null
+        },
+        "transactions": [
+            {
+                "createdAt": 1554964122164,
+                "modifiedAt": 1554966714733,
+                "type": "DEBIT",
+                "transactionId": "transaction_4hsdffgwxg",
+                "description": "test transaction",
+                "initialAmount": 2380,
+                "refundedAmount": 100,
+                "currency": "USD",
+                "status": "SUCCESS",
+                "order": "upirfohyf3",
+                "parentTransaction": null,
+                "transactions": [
+                    "transaction_x1a2qnj7yj"
+                ],
+                "basket": [
+                    {
+                        "id": "Article-c4dea503-26bd-41bd-93a7-61010e3efd76",
+                        "name": "USB-Stick 1554964122",
+                        "articleNumber": "SW10029",
+                        "totalPrice": 1190,
+                        "totalPriceWithTax": 1190,
+                        "unitPrice": 1190,
+                        "unitPriceWithTax": 1190,
+                        "quantity": 2,
+                        "tax": 0,
+                        "discount": null,
+                        "imageUrl": null,
+                        "articleUrl": null,
+                        "articleType": null
+                    }
+                ],
+                "providerCode": null,
+                "merchantMessage": null,
+                "customerMessage": null,
+                "descriptor": null,
+                "meta": null,
+                "challenge": null,
+                "asyncNotificationSubscriptionId": null,
+                "tracking": []
+            }
+        ],
+        "status": "OPEN",
+        "channel": "ECOM",
+        "source": "Postman Test",
+        "settled": false,
+        "settlementDate": null,
+        "allowedProducts": [],
+        "product": "alipay",
+        "transactionType": "DEBIT",
+        "meta": {
+            "mobileView": true
+        },
+        "async": null,
+        "deviceIdent": null,
+        "clientType": "BRW",
+        "asyncNotificationSubscriptionId": null,
+        "lastOperation": "TRANSACTION_REFUND_SUCCESS",
+        "redirectUrl": "https://public-api-app76te.psp.cardtech.de/order/alipay/1.0/redirect/Order-fd133d91-e0d6-4ed6-9fe9-07ec7ca37ed7"
+    },
+    "parentTransaction": {
+        "createdAt": 1554964122164,
+        "modifiedAt": 1554966714733,
+        "type": "DEBIT",
+        "transactionId": "transaction_4hsdffgwxg",
+        "description": "test transaction",
+        "initialAmount": 2380,
+        "refundedAmount": 100,
+        "currency": "USD",
+        "status": "SUCCESS",
+        "order": {
+            "createdAt": 1554964122158,
+            "modifiedAt": 1554966733820,
+            "merchantId": "merchant_pwtmsdg1wt",
+            "terms": 1468590412476,
+            "privacy": 1468590412476,
+            "orderId": "upirfohyf3",
+            "merchantOrderId": "merchantOrderId_45rw3",
+            "paymentProviderTransactionId": "4a0a6229-57ed-436c-a",
+            "description": "test transaction",
+            "statementDescription": "statement description",
+            "initialAmount": 2380,
+            "preauthorizedAmount": 2380,
+            "capturedAmount": 2380,
+            "refundedAmount": 100,
+            "canceledAmount": 0,
+            "currency": "USD",
+            "basket": [
+                {
+                    "id": "Article-c4dea503-26bd-41bd-93a7-61010e3efd76",
+                    "name": "USB-Stick 1554964122",
+                    "articleNumber": "SW10029",
+                    "totalPrice": 1190,
+                    "totalPriceWithTax": 1190,
+                    "unitPrice": 1190,
+                    "unitPriceWithTax": 1190,
+                    "quantity": 2,
+                    "tax": 0,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": null
+                }
+            ],
+            "customer": {
+                "merchantCustomerId": "my_customer_1231554964081",
+                "organizationRegistrationRegister": null,
+                "organizationRegistrationId": null,
+                "organizationEntityType": null,
+                "organizationVatId": null,
+                "companyName": null,
+                "reference": null,
+                "email": "1554964081@payengine-test.de",
+                "customerId": "customer_h4elq72qjb",
+                "addresses": [],
+                "personas": [],
+                "paymentInstruments": [],
+                "createdAt": 1554964081531,
+                "modifiedAt": 1554964081531,
+                "customerType": null
+            },
+            "persona": {
+                "personaId": "persona_lki12nchxk",
+                "firstName": "Max",
+                "lastName": "1554964087",
+                "phone": "00493012346",
+                "mobile": "00493012345",
+                "fax": "00493012345",
+                "birthday": 358293600000,
+                "gender": "MALE",
+                "title": "Prof. Dr.",
+                "createdAt": 1554964087243,
+                "modifiedAt": 1554964087243
+            },
+            "billingAddress": {
+                "firstName": "Max",
+                "lastName": "Muster",
+                "street": "Musterweg",
+                "houseNumber": "1554964085",
+                "city": "Musterhausen",
+                "zip": "12345",
+                "country": "DE",
+                "state": "Bayern",
+                "phone": "00493012345",
+                "fax": "00493012345",
+                "mobile": "00493012345",
+                "title": "Prof. Dr.",
+                "additionalDetails": "premium buyer",
+                "addressId": "address_2ignpvcsoc",
+                "createdAt": 1554964084554,
+                "modifiedAt": 1554964084554
+            },
+            "shippingAddress": {
+                "firstName": "Max",
+                "lastName": "Muster",
+                "street": "Musterweg",
+                "houseNumber": "1554964085",
+                "city": "Musterhausen",
+                "zip": "12345",
+                "country": "DE",
+                "state": "Bayern",
+                "phone": "00493012345",
+                "fax": "00493012345",
+                "mobile": "00493012345",
+                "title": "Prof. Dr.",
+                "additionalDetails": "premium buyer",
+                "addressId": "address_2ignpvcsoc",
+                "createdAt": 1554964084554,
+                "modifiedAt": 1554964084554
+            },
+            "ipAddress": "82.120.21.79",
+            "paymentInstrument": {
+                "createdAt": 1554964122147,
+                "modifiedAt": 1554964122147,
+                "paymentInstrumentId": "paymentinstrument_pj8pxaytkp",
+                "merchantPaymentInstrumentId": null,
+                "attributes": {
+                    "accountHolder": "max max"
+                },
+                "encrypted": false,
+                "origin": "alipay",
+                "type": "ali-pay",
+                "recurring": false,
+                "recurringConsent": null
+            },
+            "transactions": [
+                "transaction_4hsdffgwxg"
+            ],
+            "status": "OPEN",
+            "channel": "ECOM",
+            "source": "Postman Test",
+            "settled": false,
+            "settlementDate": null,
+            "allowedProducts": [],
+            "product": "alipay",
+            "transactionType": "DEBIT",
+            "meta": {
+                "mobileView": true
+            },
+            "async": null,
+            "deviceIdent": null,
+            "clientType": "BRW",
+            "asyncNotificationSubscriptionId": null,
+            "lastOperation": "TRANSACTION_REFUND_SUCCESS",
+            "redirectUrl": "https://public-api-app76te.psp.cardtech.de/order/alipay/1.0/redirect/Order-fd133d91-e0d6-4ed6-9fe9-07ec7ca37ed7"
+        },
+        "parentTransaction": null,
+        "transactions": [
+            "transaction_x1a2qnj7yj"
+        ],
+        "basket": [
+            {
+                "id": "Article-c4dea503-26bd-41bd-93a7-61010e3efd76",
+                "name": "USB-Stick 1554964122",
+                "articleNumber": "SW10029",
+                "totalPrice": 1190,
+                "totalPriceWithTax": 1190,
+                "unitPrice": 1190,
+                "unitPriceWithTax": 1190,
+                "quantity": 2,
+                "tax": 0,
+                "discount": null,
+                "imageUrl": null,
+                "articleUrl": null,
+                "articleType": null
+            }
+        ],
+        "providerCode": null,
+        "merchantMessage": null,
+        "customerMessage": null,
+        "descriptor": null,
+        "meta": null,
+        "challenge": null,
+        "asyncNotificationSubscriptionId": null,
+        "tracking": []
+    },
+    "transactions": null,
+    "basket": [
+        {
+            "id": "Article-ea34a24a-029f-4184-8fc8-f9f24c9a5c66",
+            "name": "USB-Stick 1541107031",
+            "articleNumber": "SW10029",
+            "totalPrice": 1000,
+            "totalPriceWithTax": 1190,
+            "unitPrice": 100,
+            "unitPriceWithTax": 119,
+            "quantity": 10,
+            "tax": 19,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+        }
+    ],
+    "providerCode": null,
+    "merchantMessage": null,
+    "customerMessage": null,
+    "descriptor": null,
+    "meta": null,
+    "challenge": null,
+    "asyncNotificationSubscriptionId": null,
+    "tracking": null
 }
 					</code>
 				</div>

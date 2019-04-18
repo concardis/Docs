@@ -1,0 +1,1001 @@
+
+<br/>
+<div>
+	<h2>Overview</h2>
+	<br/>
+	<p>
+		The Bancontact debit card (formerly also know as Mister Cash) is a popular payment method in Belgium and the most commonly used card in that country. It lets customers make real-time card transactions to buy products and services. A Bancontact card with a PIN number is issued to customers who open a Belgian bank account. It’s linked to a customer’s current account and is accepted in most retail stores in Belgium.
+	</p>
+	<br/>
+	<p>
+		Additionally customers can pay with their Bancontact app where they can place their Bancontact debit cards behind.
+	</p>
+	<br/>
+	<br/>
+	<h2>CUSTOMER EXPERIENCE</h2>
+	<br/>
+	<br/>
+		<img class="" src="/img/faq/bancontact/bancontact_widget_flow.png" width="100%" />
+	<br/>
+	<br/>
+	<p>
+		<strong>Important: </strong> The Bancontact payments via web always require a 3DS authentication.
+	</p>
+	<br/>
+	<p>
+		Optionally a user could also execute the payment via the Bancontact app (step 3) either scanning a QR-code or opening the app directly while shopping with the mobile device.
+	</p>
+	<br/>
+	<br/>
+		<img class="" src="/img/faq/bancontact/bancontact_pay.png" width="50%" />
+	<br/>
+	<p>
+		<strong>Important: </strong> Mobile payment options (QR code / open payment app via link i.e. URL intent) are only available for transactions up to 500EUR (due to scheme limitation).
+	</p>
+	<br/>
+	<br/>
+
+
+	<h2>Payengine Details</h2>
+	<br/>
+	<div>
+		<div class="content-box-wrapper">
+			<div class="pricing-box-alt row clearfix">
+				<div class="col-md-3 plans-features">
+					<ul>
+						<li class="header ms-hover"><strong>General</strong></li>
+						<li class="ms-hover">Product</li>
+						<li class="ms-hover">Channels</li>
+						<li class="ms-hover">Currencies</li>
+						<li class="ms-hover">Countries</li>
+						<li class="ms-hover">Technical Flow</li>
+						<li class="ms-hover">Recurring</li>
+						<li class="ms-hover">Chargebacks</li>
+					</ul>
+				</div>
+				<div class="individual-plan">
+					<ul>
+						<li class="header ms-hover"></li>
+						<li class="ms-hover">Bancontact</li>
+						<li class="ms-hover">ecom</li>
+						<li class="ms-hover">EUR</li>
+						<li class="ms-hover">Belgium</li>
+						<li class="ms-hover">asynchronous</li>
+						<li class="ms-hover">no</li>
+						<li class="ms-hover">no</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<br/>
+		<div class="content-box-wrapper">
+			<div class="pricing-box-alt row clearfix">
+				<div class="col-md-3 plans-features">
+					<ul>
+						<li class="header ms-hover"><strong>Supported Features</strong></li>
+						<li class="header ms-hover"><strong>& Services</strong></li>
+						<li class="ms-hover">Debit</li>
+						<li class="ms-hover">Preauthorization</li>
+						<li class="ms-hover">Cancelation</li>
+						<li class="ms-hover">Capture</li>
+						<li class="ms-hover">Refunds</li>
+						<li class="ms-hover">Notifications</li>
+						<li class="ms-hover">Settlement Reporting</li>
+					</ul>
+				</div>
+				<div class="individual-plan">
+					<ul>
+						<li class="header ms-hover"></li>
+						<li class="header ms-hover"></li>
+						<li class="ms-hover">yes</li>
+						<li class="ms-hover">no</li>
+						<li class="ms-hover">no</li>
+						<li class="ms-hover">no</li>
+						<li class="ms-hover">yes</li>
+						<li class="ms-hover">yes - webhook, email</li>
+						<li class="ms-hover">yes - unified settlement reporting</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<br/>
+		<div class="content-box-wrapper">
+			<div class="pricing-box-alt row clearfix">
+				<div class="col-md-3 plans-features">
+					<ul>
+						<li class="header ms-hover"><strong>Integration Types</strong></li>
+						<li class="ms-hover">API</li>
+						<li class="ms-hover">Widget</li>
+						<li class="ms-hover">Bridge</li>
+						<li class="ms-hover">Shop Plugin</li>
+					</ul>
+				</div>
+				<div class="individual-plan">
+					<ul>
+						<li class="header ms-hover"><strong></strong></li>
+						<li class="ms-hover">yes</li>
+						<li class="ms-hover">yes</li>
+						<li class="ms-hover">no</li>
+						<li class="ms-hover">no</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br/>
+	<h2>Technical Flow</h2>
+	<br/>
+	<img class="" src="/img/faq/bancontact/bancontact_flow.png" width="100%" />
+	<br/>
+	<br/>
+	<h4>Webhook notifications</h4>
+	<br/>
+	<p>
+		As it is not ensured at the time of the redirect to the shop that the payment was 100% successful the Payengine waits for the final asynchronous notification from the bank before a status is moved from PENDING into SUCCESS or FAILURE.
+	</p>
+	<br/>
+	<p>
+		A merchant should register for the Payengine webhook notifications in order to receive this final status update. A GET on the order or DEBIT transaction would also work, but it is not ensured that the final status will be available immediately after the redirect and a merchant might have to query the GET multiple times. Therefore it is strongly recommended that the asynchronous notifications from the Payengine are used insetad.
+	</p>
+	<br/>
+	<p>
+		The Bancontact notifications could be subscribed
+	</p>
+	<ul>
+		<li>via the payengine API
+			<a href="https://docs.payengine.de/buildyourown/restapi">
+			(Link to API documentation)
+			</a>
+	</li>
+		<li>via the Payengine merchant center
+			<a href="https://docs.payengine.de/merchantcenter/notifications_mc">
+			(Link to Merchant Center notifications documentation)
+			</a>
+		</li>
+	</ul>
+	<br/>
+	<p>
+		The following events have to be subscribed for in order to receive the Bancontact notifications, depending on the preferred source of notification.
+	</p>
+	<br/>
+	<table border="1">
+		<thead>
+			<th>Source</th>
+			<th>Event</th>
+		</thead>
+		<tr>
+			<td>
+				API
+			</td>
+			<td>
+				notificationState = UPDATED
+			</td>
+		</tr>
+		<tr>
+			<td>
+				Merchant Center
+			</td>
+			<td>
+				<table>
+				<tr>
+					<td>
+						event type = order update success
+					</td>
+				</tr>
+				<tr>
+					<td>
+						event type = order update failure
+					</td>
+				</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+	<br/>
+
+	<div>
+		<br/>
+		<h2>Specifics</h2>
+		<br/>
+		<h3>Bancontact input parameters</h3>
+		<br/>
+		<p>The following input parameters are required for initiating an Bancontact payment via direct API integration.</p>
+		<br/>
+		<table border="1">
+			<tr>
+				<td >
+					PARAMETER
+				</td>
+				<td >
+					MANDATORY/OPTIONAL
+				</td>
+				<td >
+					DESCRIPTION
+				</td>
+				<td >
+					EXAMPLE
+				</td>
+			</tr>
+			<tr>
+				<td>
+					payment.accountHolder
+				</td>
+				<td>
+					M
+				</td>
+				<td>
+					Name of the bank account holder
+				</td>
+				<td>
+					John Doe
+				</td>
+			</tr>
+			<tr>
+				<td>
+					async.successUrl
+				</td>
+				<td>
+					M
+				</td>
+				<td>
+					Redirect URL for successful payment
+				</td>
+				<td>
+					http://my.shop.com/success
+				</td>
+			</tr>
+			<tr>
+				<td>
+					async.failureUrl
+				</td>
+				<td>
+					M
+				</td>
+				<td>
+					Redirect URL for unsuccessful payment
+				</td>
+				<td>
+					http://my.shop.com/fail
+				</td>
+			</tr>
+			<tr>
+				<td>
+					async.cancelUrl
+				</td>
+				<td>
+					M
+				</td>
+				<td>
+					Redirect URL when payment is canceled
+				</td>
+				<td>
+					http://my.shop.com/cancel
+				</td>
+			</tr>
+		</table>
+		<br/>
+
+	</div>
+	<div>
+		<br/>
+		<br/>
+		<h2>Samples</h2>
+		<br/>
+		<p><strong>Debit transaction</strong></p>
+		<br/>
+		<p>POST /orders/debit</p>
+		<br/>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerRequestShow=false">
+				<h3 class="content-box-header bg-default">
+						Bancontact Debit request
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+  "product" : "bancontact",
+  "terms": 1468590412476,
+  "privacy": 1468590412476,
+  "merchantOrderId": "merchant_f9tpollbia",
+  "description": "test transaction",
+  "statementDescription": "statement description",
+  "initialAmount": 4760,
+  "currency": "EUR",
+  "basket": [
+    {
+      "name": "USB-Stick 1555313636",
+      "articleNumber": "SW10029",
+      "totalPrice": 2380,
+      "totalPriceWithTax": 2380,
+      "unitPrice": 2380,
+      "unitPriceWithTax": 2380,
+      "tax": 0,
+      "quantity": 2
+    }
+  ],
+  "payment": {
+    "accountHolder": "max max"
+  },
+  "customer": "customer_ydh6xnyzon",
+  "persona": "persona_16dbwkgcyw",
+  "billingAddress": "address_gqbly4mw9l",
+  "shippingAddress": "address_gqbly4mw9l",
+  "ipAddress": "82.120.21.79",
+  "channel": "ECOM",
+  "source": "Test",
+  "async": {
+    "successUrl": "https://www.google.de/#newwindow=1&q=success",
+    "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+    "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
+  }
+}
+					</code>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Bancontact Debit Responce
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+    "createdAt": 1555313635979,
+    "modifiedAt": 1555313636041,
+    "merchantId": "merchant_f9tpollbia",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "orderId": "julguipned",
+    "merchantOrderId": "merchantOrderId_h69dl",
+    "paymentProviderTransactionId": "8933821d-efe7-4373-8",
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 4760,
+    "preauthorizedAmount": 0,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "EUR",
+    "basket": [
+        {
+            "id": "Article-5694a0a3-a255-4d53-a4c5-f9a6de61b146",
+            "name": "USB-Stick 1555313636",
+            "articleNumber": "SW10029",
+            "totalPrice": 2380,
+            "totalPriceWithTax": 2380,
+            "unitPrice": 2380,
+            "unitPriceWithTax": 2380,
+            "quantity": 2,
+            "tax": 0,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+        }
+    ],
+    "customer": {
+        "merchantCustomerId": "my_customer_1231555313372",
+        "organizationRegistrationRegister": null,
+        "organizationRegistrationId": null,
+        "organizationEntityType": null,
+        "organizationVatId": null,
+        "companyName": null,
+        "reference": null,
+        "email": "1555313372@payengine-test.de",
+        "customerId": "customer_ydh6xnyzon",
+        "addresses": [],
+        "personas": [],
+        "paymentInstruments": [],
+        "createdAt": 1555313372504,
+        "modifiedAt": 1555313372504,
+        "customerType": null
+    },
+    "persona": {
+        "personaId": "persona_16dbwkgcyw",
+        "firstName": "Max",
+        "lastName": "1555313380",
+        "phone": "00493012346",
+        "mobile": "00493012345",
+        "fax": "00493012345",
+        "birthday": 358293600000,
+        "gender": "MALE",
+        "title": "Prof. Dr.",
+        "createdAt": 1555313379869,
+        "modifiedAt": 1555313379869
+    },
+    "billingAddress": {
+        "firstName": "Max",
+        "lastName": "Muster",
+        "street": "Musterweg",
+        "houseNumber": "1555313375",
+        "city": "Musterhausen",
+        "zip": "12345",
+        "country": "DE",
+        "state": "Bayern",
+        "phone": "00493012345",
+        "fax": "00493012345",
+        "mobile": "00493012345",
+        "title": "Prof. Dr.",
+        "additionalDetails": "premium buyer",
+        "addressId": "address_gqbly4mw9l",
+        "createdAt": 1555313375360,
+        "modifiedAt": 1555313375360
+    },
+    "shippingAddress": {
+        "firstName": "Max",
+        "lastName": "Muster",
+        "street": "Musterweg",
+        "houseNumber": "1555313375",
+        "city": "Musterhausen",
+        "zip": "12345",
+        "country": "DE",
+        "state": "Bayern",
+        "phone": "00493012345",
+        "fax": "00493012345",
+        "mobile": "00493012345",
+        "title": "Prof. Dr.",
+        "additionalDetails": "premium buyer",
+        "addressId": "address_gqbly4mw9l",
+        "createdAt": 1555313375360,
+        "modifiedAt": 1555313375360
+    },
+    "ipAddress": "82.120.21.79",
+    "paymentInstrument": {
+        "createdAt": 1555313635961,
+        "modifiedAt": 1555313635961,
+        "paymentInstrumentId": "paymentinstrument_e3omadqysz",
+        "merchantPaymentInstrumentId": null,
+        "attributes": {
+            "accountHolder": "max max"
+        },
+        "encrypted": false,
+        "origin": "bancontact",
+        "type": "bancontact",
+        "recurring": false,
+        "recurringConsent": null
+    },
+    "transactions": [
+        {
+            "createdAt": 1555313635998,
+            "modifiedAt": 1555313636042,
+            "type": "DEBIT",
+            "transactionId": "transaction_9vrttqcy0o",
+            "description": "test transaction",
+            "initialAmount": 4760,
+            "refundedAmount": 0,
+            "currency": "EUR",
+            "status": "PENDING",
+            "order": "julguipned",
+            "parentTransaction": null,
+            "transactions": null,
+            "basket": [
+                {
+                    "id": "Article-5694a0a3-a255-4d53-a4c5-f9a6de61b146",
+                    "name": "USB-Stick 1555313636",
+                    "articleNumber": "SW10029",
+                    "totalPrice": 2380,
+                    "totalPriceWithTax": 2380,
+                    "unitPrice": 2380,
+                    "unitPriceWithTax": 2380,
+                    "quantity": 2,
+                    "tax": 0,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": null
+                }
+            ],
+            "providerCode": null,
+            "merchantMessage": null,
+            "customerMessage": null,
+            "descriptor": null,
+            "meta": null,
+            "challenge": null,
+            "asyncNotificationSubscriptionId": null,
+            "tracking": null
+        }
+    ],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": null,
+    "product": "bancontact",
+    "transactionType": "DEBIT",
+    "meta": null,
+    "async": {
+        "successUrl": "https://www.google.de/#newwindow=1&q=success",
+        "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+        "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
+    },
+    "deviceIdent": null,
+    "clientType": "BRW",
+    "asyncNotificationSubscriptionId": null,
+    "lastOperation": "TRANSACTION_DEBIT_PENDING",
+    "redirectUrl": "https://public-api-app76te.psp.cardtech.de/order/bancontact/1.0/redirect/Order-493b86f0-d473-4854-a0a9-f0e906bd895b"
+}
+					</code>
+				</div>
+			</div>
+		</div>
+
+		<br/>
+		<p><strong>Refund transaction</strong> </p>
+		<br/>
+		<p>POST /orders/{{orderId}}/transactions/{{transactionId}}/refund</p>
+		<br/>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerRequestShow=false">
+				<h3 class="content-box-header bg-default">
+						Bancontact refund request
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+  "initialAmount": 2380,
+  "currency": "EUR",
+  "basket": [
+    {
+      "name": "USB-Stick 1555313636",
+      "articleNumber": "SW10029",
+      "totalPrice": 2380,
+      "totalPriceWithTax": 2380,
+      "unitPrice": 2380,
+      "unitPriceWithTax": 2380,
+      "tax": 0,
+      "quantity": 1
+    }
+  ]
+}
+					</code>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+						Bancontact refund response
+						<div class="header-buttons-separator">
+								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
+									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
+									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+								</a>
+						</div>
+				</h3>
+				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
+				<div class="content-box-wrapper">
+					<code>
+{
+    "createdAt": 1555313878801,
+    "modifiedAt": 1555313878807,
+    "type": "REFUND",
+    "transactionId": "transaction_pzl6hqd7uq",
+    "description": null,
+    "initialAmount": 2380,
+    "currency": "EUR",
+    "status": "SUCCESS",
+    "order": {
+        "createdAt": 1555313635979,
+        "modifiedAt": 1555313878807,
+        "merchantId": "merchant_f9tpollbia",
+        "terms": 1468590412476,
+        "privacy": 1468590412476,
+        "orderId": "julguipned",
+        "merchantOrderId": "merchantOrderId_h69dl",
+        "paymentProviderTransactionId": "8933821d-efe7-4373-8",
+        "description": "test transaction",
+        "statementDescription": "statement description",
+        "initialAmount": 4760,
+        "preauthorizedAmount": 4760,
+        "capturedAmount": 4760,
+        "refundedAmount": 2380,
+        "canceledAmount": 0,
+        "currency": "EUR",
+        "basket": [
+            {
+                "id": "Article-5694a0a3-a255-4d53-a4c5-f9a6de61b146",
+                "name": "USB-Stick 1555313636",
+                "articleNumber": "SW10029",
+                "totalPrice": 2380,
+                "totalPriceWithTax": 2380,
+                "unitPrice": 2380,
+                "unitPriceWithTax": 2380,
+                "quantity": 2,
+                "tax": 0,
+                "discount": null,
+                "imageUrl": null,
+                "articleUrl": null,
+                "articleType": null
+            }
+        ],
+        "customer": {
+            "merchantCustomerId": "my_customer_1231555313372",
+            "organizationRegistrationRegister": null,
+            "organizationRegistrationId": null,
+            "organizationEntityType": null,
+            "organizationVatId": null,
+            "companyName": null,
+            "reference": null,
+            "email": "1555313372@payengine-test.de",
+            "customerId": "customer_ydh6xnyzon",
+            "addresses": [],
+            "personas": [],
+            "paymentInstruments": [],
+            "createdAt": 1555313372504,
+            "modifiedAt": 1555313372504,
+            "customerType": null
+        },
+        "persona": {
+            "personaId": "persona_16dbwkgcyw",
+            "firstName": "Max",
+            "lastName": "1555313380",
+            "phone": "00493012346",
+            "mobile": "00493012345",
+            "fax": "00493012345",
+            "birthday": 358293600000,
+            "gender": "MALE",
+            "title": "Prof. Dr.",
+            "createdAt": 1555313379869,
+            "modifiedAt": 1555313379869
+        },
+        "billingAddress": {
+            "firstName": "Max",
+            "lastName": "Muster",
+            "street": "Musterweg",
+            "houseNumber": "1555313375",
+            "city": "Musterhausen",
+            "zip": "12345",
+            "country": "DE",
+            "state": "Bayern",
+            "phone": "00493012345",
+            "fax": "00493012345",
+            "mobile": "00493012345",
+            "title": "Prof. Dr.",
+            "additionalDetails": "premium buyer",
+            "addressId": "address_gqbly4mw9l",
+            "createdAt": 1555313375360,
+            "modifiedAt": 1555313375360
+        },
+        "shippingAddress": {
+            "firstName": "Max",
+            "lastName": "Muster",
+            "street": "Musterweg",
+            "houseNumber": "1555313375",
+            "city": "Musterhausen",
+            "zip": "12345",
+            "country": "DE",
+            "state": "Bayern",
+            "phone": "00493012345",
+            "fax": "00493012345",
+            "mobile": "00493012345",
+            "title": "Prof. Dr.",
+            "additionalDetails": "premium buyer",
+            "addressId": "address_gqbly4mw9l",
+            "createdAt": 1555313375360,
+            "modifiedAt": 1555313375360
+        },
+        "ipAddress": "82.120.21.79",
+        "paymentInstrument": {
+            "createdAt": 1555313635961,
+            "modifiedAt": 1555313635961,
+            "paymentInstrumentId": "paymentinstrument_e3omadqysz",
+            "merchantPaymentInstrumentId": null,
+            "attributes": {
+                "accountHolder": "max max"
+            },
+            "encrypted": false,
+            "origin": "bancontact",
+            "type": "bancontact",
+            "recurring": false,
+            "recurringConsent": null
+        },
+        "transactions": [
+            {
+                "createdAt": 1555313635998,
+                "modifiedAt": 1555313857549,
+                "type": "DEBIT",
+                "transactionId": "transaction_9vrttqcy0o",
+                "description": "test transaction",
+                "initialAmount": 4760,
+                "refundedAmount": 2380,
+                "currency": "EUR",
+                "status": "SUCCESS",
+                "order": "julguipned",
+                "parentTransaction": null,
+                "transactions": [
+                    "transaction_pzl6hqd7uq"
+                ],
+                "basket": [
+                    {
+                        "id": "Article-5694a0a3-a255-4d53-a4c5-f9a6de61b146",
+                        "name": "USB-Stick 1555313636",
+                        "articleNumber": "SW10029",
+                        "totalPrice": 2380,
+                        "totalPriceWithTax": 2380,
+                        "unitPrice": 2380,
+                        "unitPriceWithTax": 2380,
+                        "quantity": 2,
+                        "tax": 0,
+                        "discount": null,
+                        "imageUrl": null,
+                        "articleUrl": null,
+                        "articleType": null
+                    }
+                ],
+                "providerCode": null,
+                "merchantMessage": null,
+                "customerMessage": null,
+                "descriptor": null,
+                "meta": null,
+                "challenge": null,
+                "asyncNotificationSubscriptionId": null,
+                "tracking": []
+            }
+        ],
+        "status": "OPEN",
+        "channel": "ECOM",
+        "source": "Postman Test",
+        "settled": false,
+        "settlementDate": null,
+        "allowedProducts": [],
+        "product": "bancontact",
+        "transactionType": "DEBIT",
+        "meta": null,
+        "async": null,
+        "deviceIdent": null,
+        "clientType": "BRW",
+        "asyncNotificationSubscriptionId": null,
+        "lastOperation": "TRANSACTION_REFUND_SUCCESS",
+        "redirectUrl": "https://public-api-app76te.psp.cardtech.de/order/bancontact/1.0/redirect/Order-493b86f0-d473-4854-a0a9-f0e906bd895b"
+    },
+    "parentTransaction": {
+        "createdAt": 1555313635998,
+        "modifiedAt": 1555313857549,
+        "type": "DEBIT",
+        "transactionId": "transaction_9vrttqcy0o",
+        "description": "test transaction",
+        "initialAmount": 4760,
+        "refundedAmount": 2380,
+        "currency": "EUR",
+        "status": "SUCCESS",
+        "order": {
+            "createdAt": 1555313635979,
+            "modifiedAt": 1555313878807,
+            "merchantId": "merchant_f9tpollbia",
+            "terms": 1468590412476,
+            "privacy": 1468590412476,
+            "orderId": "julguipned",
+            "merchantOrderId": "merchantOrderId_h69dl",
+            "paymentProviderTransactionId": "8933821d-efe7-4373-8",
+            "description": "test transaction",
+            "statementDescription": "statement description",
+            "initialAmount": 4760,
+            "preauthorizedAmount": 4760,
+            "capturedAmount": 4760,
+            "refundedAmount": 2380,
+            "canceledAmount": 0,
+            "currency": "EUR",
+            "basket": [
+                {
+                    "id": "Article-5694a0a3-a255-4d53-a4c5-f9a6de61b146",
+                    "name": "USB-Stick 1555313636",
+                    "articleNumber": "SW10029",
+                    "totalPrice": 2380,
+                    "totalPriceWithTax": 2380,
+                    "unitPrice": 2380,
+                    "unitPriceWithTax": 2380,
+                    "quantity": 2,
+                    "tax": 0,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": null
+                }
+            ],
+            "customer": {
+                "merchantCustomerId": "my_customer_1231555313372",
+                "organizationRegistrationRegister": null,
+                "organizationRegistrationId": null,
+                "organizationEntityType": null,
+                "organizationVatId": null,
+                "companyName": null,
+                "reference": null,
+                "email": "1555313372@payengine-test.de",
+                "customerId": "customer_ydh6xnyzon",
+                "addresses": [],
+                "personas": [],
+                "paymentInstruments": [],
+                "createdAt": 1555313372504,
+                "modifiedAt": 1555313372504,
+                "customerType": null
+            },
+            "persona": {
+                "personaId": "persona_16dbwkgcyw",
+                "firstName": "Max",
+                "lastName": "1555313380",
+                "phone": "00493012346",
+                "mobile": "00493012345",
+                "fax": "00493012345",
+                "birthday": 358293600000,
+                "gender": "MALE",
+                "title": "Prof. Dr.",
+                "createdAt": 1555313379869,
+                "modifiedAt": 1555313379869
+            },
+            "billingAddress": {
+                "firstName": "Max",
+                "lastName": "Muster",
+                "street": "Musterweg",
+                "houseNumber": "1555313375",
+                "city": "Musterhausen",
+                "zip": "12345",
+                "country": "DE",
+                "state": "Bayern",
+                "phone": "00493012345",
+                "fax": "00493012345",
+                "mobile": "00493012345",
+                "title": "Prof. Dr.",
+                "additionalDetails": "premium buyer",
+                "addressId": "address_gqbly4mw9l",
+                "createdAt": 1555313375360,
+                "modifiedAt": 1555313375360
+            },
+            "shippingAddress": {
+                "firstName": "Max",
+                "lastName": "Muster",
+                "street": "Musterweg",
+                "houseNumber": "1555313375",
+                "city": "Musterhausen",
+                "zip": "12345",
+                "country": "DE",
+                "state": "Bayern",
+                "phone": "00493012345",
+                "fax": "00493012345",
+                "mobile": "00493012345",
+                "title": "Prof. Dr.",
+                "additionalDetails": "premium buyer",
+                "addressId": "address_gqbly4mw9l",
+                "createdAt": 1555313375360,
+                "modifiedAt": 1555313375360
+            },
+            "ipAddress": "82.120.21.79",
+            "paymentInstrument": {
+                "createdAt": 1555313635961,
+                "modifiedAt": 1555313635961,
+                "paymentInstrumentId": "paymentinstrument_e3omadqysz",
+                "merchantPaymentInstrumentId": null,
+                "attributes": {
+                    "accountHolder": "max max"
+                },
+                "encrypted": false,
+                "origin": "bancontact",
+                "type": "bancontact",
+                "recurring": false,
+                "recurringConsent": null
+            },
+            "transactions": [
+                "transaction_9vrttqcy0o"
+            ],
+            "status": "OPEN",
+            "channel": "ECOM",
+            "source": "Postman Test",
+            "settled": false,
+            "settlementDate": null,
+            "allowedProducts": [],
+            "product": "bancontact",
+            "transactionType": "DEBIT",
+            "meta": null,
+            "async": null,
+            "deviceIdent": null,
+            "clientType": "BRW",
+            "asyncNotificationSubscriptionId": null,
+            "lastOperation": "TRANSACTION_REFUND_SUCCESS",
+            "redirectUrl": "https://public-api-app76te.psp.cardtech.de/order/bancontact/1.0/redirect/Order-493b86f0-d473-4854-a0a9-f0e906bd895b"
+        },
+        "parentTransaction": null,
+        "transactions": [
+            "transaction_pzl6hqd7uq"
+        ],
+        "basket": [
+            {
+                "id": "Article-5694a0a3-a255-4d53-a4c5-f9a6de61b146",
+                "name": "USB-Stick 1555313636",
+                "articleNumber": "SW10029",
+                "totalPrice": 2380,
+                "totalPriceWithTax": 2380,
+                "unitPrice": 2380,
+                "unitPriceWithTax": 2380,
+                "quantity": 2,
+                "tax": 0,
+                "discount": null,
+                "imageUrl": null,
+                "articleUrl": null,
+                "articleType": null
+            }
+        ],
+        "providerCode": null,
+        "merchantMessage": null,
+        "customerMessage": null,
+        "descriptor": null,
+        "meta": null,
+        "challenge": null,
+        "asyncNotificationSubscriptionId": null,
+        "tracking": []
+    },
+    "transactions": null,
+    "basket": [
+        {
+            "id": "Article-430abca0-8fe9-49f0-b0c1-593c8f89d5a3",
+            "name": "USB-Stick 1555313879",
+            "articleNumber": "SW10029",
+            "totalPrice": 2380,
+            "totalPriceWithTax": 2380,
+            "unitPrice": 2380,
+            "unitPriceWithTax": 2380,
+            "quantity": 1,
+            "tax": 0,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+        }
+    ],
+    "providerCode": null,
+    "merchantMessage": null,
+    "customerMessage": null,
+    "descriptor": null,
+    "meta": null,
+    "challenge": null,
+    "asyncNotificationSubscriptionId": null,
+    "tracking": null
+}
+					</code>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	<div>
+		<br/>
+		<h2>Settlements</h2>
+		<br/>
+		<p>All settlement information will be provided in the Unified Settlement Report. The format and mappings can be found in the corresponding documentation (see
+			<a href="https://docs.payengine.de/merchantcenter/settlement_report">
+				Unified Settlement Report
+			</a>
+			).
+		</p>
+	</div>
+</div>

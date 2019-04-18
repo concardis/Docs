@@ -7,81 +7,34 @@
 		The Bancontact debit card (formerly also know as Mister Cash) is a popular payment method in Belgium and the most commonly used card in that country. It lets customers make real-time card transactions to buy products and services. A Bancontact card with a PIN number is issued to customers who open a Belgian bank account. It’s linked to a customer’s current account and is accepted in most retail stores in Belgium.
 	</p>
 	<br/>
+	<p>
+		Additionally customers can pay with their Bancontact app where they can place their Bancontact debit cards behind.
+	</p>
+	<br/>
 	<br/>
 	<h2>CUSTOMER EXPERIENCE</h2>
 	<br/>
-	<!-- <br/>
-		<img class="" src="/img/faq/ideal/ideal_customer_flow.png" width="100%" />
-	<br/> -->
-	<ol>
-		<li>Customer selects Bancontact payment method in checkout</li>
-		<li>Customer is redirected to a Bancontact page</li>
-		<li>Customer decides how to pay
-			<ol>
-				<li>Payment via Bancontact app
-					<ol>
-						<li>Customer scans a QR-code via his Bancontact app and confirms the payment</li>
-						<li>Customer opens his Bancontact app if he is shopping with his mobile device and confirms the payment</li>
-					</ol>
-				</li>
-				<li>Payment via Bancontact card
-					<ol>
-						<li>Customer enters the PAN and expiration date</li>
-						<li>Customer is asked to authenticate via 3d secure</li>
-						<li>Customer confirms the payment</li>
-					</ol>
-				</li>
-			</ol>
-		</li>
-		<li>Customer is redirected back to shop
-			<ol>
-				<li>Shop should receive IBAN (at least if Bancontact card is used) which could be used for a refund</li>
-			</ol>
-		</li>
-	</ol>
 	<br/>
-	<table border="1" width="60%">
-		<thead>
-			<th>Step</th>
-			<th>Description</th>
-			<th>Screenshot</th>
-		</thead>
-		<tr>
-			<td>
-				1
-			</td>
-			<td>
-				Select Bancontact
-			</td>
-			<td>
-				<img class="" src="/img/faq/bancontact/bancontact_widget_1.png" width="100%" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				2
-			</td>
-			<td>
-				Edit Account holder
-			</td>
-			<td>
-				<img class="" src="/img/faq/bancontact/bancontact_widget_1.png" width="100%" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				3
-			</td>
-			<td>
-				Redirect to Bancontact pay page
-			</td>
-			<td>
-				<img class="" src="/img/faq/bancontact/bancontact_pay.png" width="100%" />
-			</td>
-		</tr>
-	</table>
+		<img class="" src="/img/faq/bancontact/bancontact_widget_flow.png" width="100%" />
 	<br/>
 	<br/>
+	<p>
+		<strong>Important: </strong> The Bancontact payments via web always require a 3DS authentication.
+	</p>
+	<br/>
+	<p>
+		Optionally a user could also execute the payment via the Bancontact app (step 3) either scanning a QR-code or opening the app directly while shopping with the mobile device.
+	</p>
+	<br/>
+	<br/>
+		<img class="" src="/img/faq/bancontact/bancontact_pay.png" width="50%" />
+	<br/>
+	<p>
+		<strong>Important: </strong> Mobile payment options (QR code / open payment app via link i.e. URL intent) are only available for transactions up to 500EUR (due to scheme limitation).
+	</p>
+	<br/>
+	<br/>
+
 
 	<h2>Payengine Details</h2>
 	<br/>
@@ -108,7 +61,7 @@
 						<li class="ms-hover">EUR</li>
 						<li class="ms-hover">Belgium</li>
 						<li class="ms-hover">asynchronous</li>
-						<li class="ms-hover">no (PPRO doesn't support it)</li>
+						<li class="ms-hover">no</li>
 						<li class="ms-hover">no</li>
 					</ul>
 				</div>
@@ -176,54 +129,12 @@
 	<br/>
 	<img class="" src="/img/faq/bancontact/bancontact_flow.png" width="100%" />
 	<br/>
-	<p>
-		Bancontact payment method is available trough PPRO Payment Platform. For this reason, the merchant must have his own PPRO account.
-	</p>
 	<br/>
-	<p>
-		<strong>NEEDED PPRO SETTINGS</strong>
-	</p>
-	<br/>
-	<table border="1" width="60%">
-		<thead>
-			<th>Field</th>
-			<th>Description</th>
-		</thead>
-		<tr>
-			<td>
-				Contract ID
-			</td>
-			<td>
-				should be provided by the PPRO
-			</td>
-		</tr>
-		<tr>
-			<td>
-				Shared Secret
-			</td>
-			<td>
-				should be provided by the PPRO
-			</td>
-		</tr>
-		<tr>
-			<td>
-				Notification Secret
-			</td>
-			<td>
-				should be provided by the PPRO
-			</td>
-		</tr>
-	</table>
-	<br/>
-	<p>
-		Once the Customer chooses Bancontact payment, he will be transferred to Bancontact login page to proceed with the payment. The debit causes the immediately charging of the full amount.
-	</p>
+	<h4>Webhook notifications</h4>
 	<br/>
 	<p>
 		As it is not ensured at the time of the redirect to the shop that the payment was 100% successful the Payengine waits for the final asynchronous notification from the bank before a status is moved from PENDING into SUCCESS or FAILURE.
 	</p>
-	<br/>
-	<h4>Webhook notifications</h4>
 	<br/>
 	<p>
 		A merchant should register for the Payengine webhook notifications in order to receive this final status update. A GET on the order or DEBIT transaction would also work, but it is not ensured that the final status will be available immediately after the redirect and a merchant might have to query the GET multiple times. Therefore it is strongly recommended that the asynchronous notifications from the Payengine are used insetad.
@@ -283,11 +194,6 @@
 		</tr>
 	</table>
 	<br/>
-	<h4>Refund transaction</h4>
-	<br/>
-	<p>
-		If the transaction is with status SUCCESS, merchant can refund full or partial amount of the transaction.
-	</p>
 
 	<div>
 		<br/>
@@ -377,9 +283,9 @@
 		<br/>
 		<h2>Samples</h2>
 		<br/>
-		<p>Bancontact debit endpoint: </p>
+		<p><strong>Debit transaction</strong></p>
 		<br/>
-		<p>/orders/debit</p>
+		<p>POST /orders/debit</p>
 		<br/>
 		<div class="example-box-wrapper">
 			<div class="content-box" ng-init="createCustomerRequestShow=false">
@@ -635,9 +541,9 @@
 		</div>
 
 		<br/>
-		<p>Refund endpoint: </p>
+		<p><strong>Refund transaction</strong> </p>
 		<br/>
-		<p>/orders/{{orderId}}/transactions/{{transactionId}}/refund</p>
+		<p>POST /orders/{{orderId}}/transactions/{{transactionId}}/refund</p>
 		<br/>
 		<div class="example-box-wrapper">
 			<div class="content-box" ng-init="createCustomerRequestShow=false">

@@ -252,8 +252,8 @@
 			<div class="content-box-wrapper">
 				<code>
 {
- "email": "{{$timestamp}}@payengine-test.de",
- "merchantCustomerId": "merchantCustomerId_{{$timestamp}}"
+ "email": "{{{$timestamp}}}@payengine-test.de",
+ "merchantCustomerId": "merchantCustomerId_{{{$timestamp}}}"
 }
 				</code>
 			</div>
@@ -852,7 +852,7 @@
 &lt;script src="https://pp.payengine.de/bridge/1.0/payengine.min.js" type="text/javascript"&gt;&lt;/script&gt;
 &lt;script type="text/javascript">&gt;
 window.onload = function() {
-PayEngine.setPublishableKey( "<YOUR_MERCHANT_ID>" );
+PayEngine.setPublishableKey( "&lt;YOUR_MERCHANT_ID&gt;" );
 };
 &lt;/script&gt;
 Payengine.appendDeviceIdent(deviceIdentToken, deviceIdentSId, 'Checkout')
@@ -2970,8 +2970,7 @@ Payengine.appendDeviceIdent(deviceIdentToken, deviceIdentSId, 'Checkout')
 {
    "name":"discount",
    "articleNumber":"0000"
-
-´         "articleType "discount"
+	 "articleType "discount"
    "totalPrice":-84,
    "totalPriceWithTax":-100,
    "unitPrice":-84,
@@ -3023,8 +3022,7 @@ Payengine.appendDeviceIdent(deviceIdentToken, deviceIdentSId, 'Checkout')
 {
    "name":"socks",
    "articleNumber":"1234"
-
-´         "articleType "physical"
+	 "articleType "physical"
    "totalPrice":1000,
    "totalPriceWithTax":1190,
    "unitPrice":500,

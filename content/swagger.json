@@ -33,40 +33,206 @@
     "application/json"
   ],
   "paths": {
-    "/health": {
+    "/payment-instruments": {
+      "post": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "Tokenize payment instrument\n",
+        "description": "Endpoint to create a new payment instrument.\nThe service will store the payment credentials and return a paymentInstrumentId which can be used as a token for referencing the credentials for any payment operation.\n\nThe storage complies with the latest PCI standards and regulations.\n\nA payment instrument can be created either explicitly (e.g. for credit card & sepa) or implicitly as part of a preauth or debit transaction.\nPayment instruments can be used for recurring payments, if the flag \"recurring\" is set to true.\n",
+        "tags": [
+          "Manage tokenization"
+        ],
+        "operationId": "PaymentInstruments1",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "Request body to create a new paymentinstrument.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request based on invalid input.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentsPostBadRequest"
+            }
+          }
+        }
+      },
       "get": {
-        "description": "Endpoint that reports an aggregated boolean value describing the general health of the system.\n",
-        "tags": [
-          "health"
+        "security": [
+          {
+            "basicAuth": []
+          }
         ],
+        "summary": "Get list of payment instruments",
+        "description": "Endpoint to receive a list of available paymentinstruments.\n\n\nThe following parameters can be used as filter.\n- paymentInstrumentId\n- merchantPaymentInstrumentId\n- type\n- origin\n- recurring\n- createdAt\n- modifiedAt\n",
+        "tags": [
+          "Manage tokenization"
+        ],
+        "operationId": "PaymentInstruments",
         "produces": [
           "application/json"
         ],
+        "parameters": [],
         "responses": {
           "200": {
-            "description": "The system health is successfully measured.",
+            "description": "Successful response.",
             "schema": {
-              "$ref": "#/definitions/HealthResponse"
+              "$ref": "#/definitions/PaymentInstrumentList"
             }
-          },
-          "403": {
-            "description": "The health endpoint is disabled via configuration."
           }
         }
       }
     },
-    "/orders/credit": {
+    "/payment-instruments/{paymentInstrumentId}": {
+      "get": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "summary": "Get payment instrument\n",
+        "description": "Endpoint to receive a specific payment instrument referencing the paymentInstrumentId.\n",
+        "tags": [
+          "Manage tokenization"
+        ],
+        "operationId": "PaymentInstrumentsByPaymentInstrumentId",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "paymentInstrumentId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the specific paymentinstrument."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentResponse"
+            }
+          },
+          "404": {
+            "description": "Not found casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentsGetNotFound"
+            }
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "Bearer": []
+          }
+        ],
+        "summary": "Update payment instrument\n",
+        "description": "Endpoint to update an existing payment instrument referencing the paymentInstrumentId.\n\nCan be used to refresh the verification code (CVC) for card payment instruments, e.g. in case of a recurring transaction the shopper can be forced to re-enter the CVC.\n",
+        "tags": [
+          "Manage tokenization"
+        ],
+        "operationId": "PaymentInstrumentsByPaymentInstrumentId1",
+        "parameters": [
+          {
+            "name": "paymentInstrumentId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the specific paymentinstrument."
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "Request object containing some or all of the updateable fields applicable for the type of the specified payment instrument. (CC or SEPA)",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentUpdateRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentsPatchBadRequest"
+            }
+          }
+        }
+      },
+      "delete": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "summary": "Delete payment instrument",
+        "description": "Endpoint to delete an existing payment instrument referencing the paymentInstrumentId.\n",
+        "tags": [
+          "Manage tokenization"
+        ],
+        "operationId": "DeletePaymentInstrumentByPaymentInstrumentId",
+        "parameters": [
+          {
+            "name": "paymentInstrumentId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the specific paymentinstrument."
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Not found casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/PaymentInstrumentsGetNotFound"
+            }
+          }
+        }
+      }
+    },
+    "/orders": {
       "post": {
         "security": [
           {
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to create a credit transaction.\nInitialise a transaction and book an amount. The creditor is the customer and the debitor is the merchant.\nCredit transaction is always processed synchronously, 'channel' has to be MOTO.\n",
+        "summary": "Create order intent",
+        "description": "Endpoint to create an order intent.\n\nThis service will create a new order incl. all order details with status CREATED and returns a corresponding orderId.\n\nThe order intent is required for Payengine widget solutions which need an orderId as an input in order to execute an order at the end of the process.\n",
         "tags": [
-          "orders"
+          "Manage orders"
         ],
-        "operationId": "OrdersCredit",
+        "operationId": "Orders1",
         "produces": [
           "application/json"
         ],
@@ -75,65 +241,125 @@
             "name": "body",
             "in": "body",
             "required": true,
-            "description": "Request body for creating a credit transaction.",
+            "description": "Request body to create a order intent.",
             "schema": {
-              "$ref": "#/definitions/OrderCreditRequest"
+              "$ref": "#/definitions/OrderCreateRequest"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "successful response.",
+            "description": "Successful response.",
             "schema": {
               "$ref": "#/definitions/OrderResponse"
             }
-          },
-          "400": {
-            "description": "Bad request casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/OrdersCreditPostBadRequest"
-            }
           }
         }
-      }
-    },
-    "/orders/debit": {
-      "post": {
+      },
+      "get": {
         "security": [
           {
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to create a debit.\n\nThe debit transaction is a initial transaction to create an order. It is directly booking the initialAmount (No capture needed to receive the funds).\n\nThere are 2 workflows to process an order: ASYNC and SYNC.\n\nWith SYNC payment methods the transaction will directly result in a SUCCESS or a negative status.\n\nWith ASYNC payment methods the transaction will result in a PENDING or a negative status. If the status of the transaction is in PENDING the response will contain a redirectUrl.\n\nThe merchant system needs to redirect the shopper to the redirectUrl. After the shopper completes the payment action the transaction status will change to SUCCESS or a negative status.\n",
+        "summary": "Get list of orders",
+        "description": "Endpoint to receive a list of available orders.\n\n\nThe following parameters can be used as filter.\n- terms\n- privacy\n- orderId\n- merchantOrderId\n- paymentProviderTransactionId\n- initialAmount\n- currency\n- customerId\n- ipAddress\n- status\n- channel\n- source\n- product\n- settled\n- settlementDate\n- createdAt\n- modifiedAt\n\n\nThe following parameters can be used as a range filter.\n\n\nDates:\n- terms\n- privacy\n- settlementDate\n- createdAt\n- modifiedAt\n\nNumbers:\n- initialAmount\n",
         "tags": [
-          "orders"
+          "Manage orders"
         ],
-        "operationId": "OrdersDebit",
+        "operationId": "Orders",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/OrderList"
+            }
+          }
+        }
+      }
+    },
+    "/orders/{orderId}": {
+      "get": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "summary": "Get order",
+        "description": "Endpoint to receive a specific order referencing the orderId.\n\nThe returned order object includes all details and transactions of the whole lifecycle of the order.\n",
+        "tags": [
+          "Manage orders"
+        ],
+        "operationId": "OrdersByOrderId",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the specific order."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/OrderList"
+            }
+          },
+          "404": {
+            "description": "Not found casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/OrdersGetNotFound"
+            }
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "summary": "Update order",
+        "description": "Endpoint to update an order intent referencing the orderId.\n\n\nThis service can be used for updating order details as long as the order is still in status CREATED.\n",
+        "tags": [
+          "Manage orders"
+        ],
+        "operationId": "OrdersByOrderId1",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "orderId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the specific order."
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
-            "description": "Request body for creating a debit.",
+            "description": "Request body for updating an order.",
             "schema": {
-              "$ref": "#/definitions/OrderOpenRequest"
+              "$ref": "#/definitions/OrderUpdateRequest"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "successful response.",
+            "description": "Successful response.",
             "schema": {
               "$ref": "#/definitions/OrderResponse"
-            }
-          },
-          "400": {
-            "description": "Bad request casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/OrdersDebitPostBadRequest"
             }
           }
         }
@@ -146,9 +372,10 @@
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to create a preauth.\n\nThe preauth transaction is a initial transaction to create an order. It is not directly booking the initialAmount (A capture is needed to receive the funds).\n\nThere are 2 workflows to process an order: ASYNC and SYNC.\n\nWith SYNC payment methods the transaction will directly result in a OK/SUCCESS or a negative status.\n\nWith ASYNC payment methods the transaction will result in a PENDING or FAILURE/DECLINED/ABORTED status. If the status of the transaction is in PENDING the response will contain a redirectUrl.\n\nThe merchant system needs to redirect the shopper to the redirectUrl. After the shopper completes the payment action the transaction status will change to OK or a negative status.\n",
+        "summary": "Create preauth transaction",
+        "description": "Endpoint to create a preauth transaction.\nA preauth transaction only authorizes a payment and for certain methods also reserves the authorized amount. However no cash flow will be triggered as long as no corresponding capture transaction is initiated at a later stage.\n\nThere are 2 workflows to process a preauth: ASYNC and SYNC.\n\nWith SYNC payment methods the transaction will directly result in a OK/SUCCESS or a negative status. With ASYNC payment methods the transaction will result in a PENDING or FAILURE/DECLINED/ABORTED status.\n\nThe integrating system needs to redirect the shopper to the redirectUrl After the shopper completes the payment action the transaction status will change accordingly and the integrator can query the updated status.\n",
         "tags": [
-          "orders"
+          "Manage orders"
         ],
         "operationId": "OrdersPreauth",
         "produces": [
@@ -181,18 +408,105 @@
         }
       }
     },
-    "/orders/{orderId}/transactions/{transactionId}/refund": {
+    "/orders/debit": {
       "post": {
         "security": [
           {
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to create a refund on a debit or capture transaction.\n\nA refund transaction can be applied on an existing debit or capture transaction in the status SUCCESS.\n\nIt can be used to refund the shopper with the given initialAmont.\nFor the payment method prepayment a refund will result in the status PENDING. The transaction response will contain a meta element with the TAN instructions. The TAN needs to be transmitted in subsequent request. See \"/prepayment/transactions/{transactionId}/tan\"\n",
+        "summary": "Create debit transaction\n",
+        "description": "Endpoint to create a debit transaction.\n\nThe debit transaction authorizes the payment and triggers the cash flow as the money will be debited from the end customer account.\n\nNo further capture transaction is required anymore afterwards.\n\nThere are 2 workflows to process a debit: ASYNC and SYNC.\n\nWith SYNC payment methods the transaction will directly result in a OK/SUCCESS or a negative status.\n\nWith ASYNC payment methods the transaction will result in a PENDING or FAILURE/DECLINED/ABORTED status.\n\nIf the status of the transaction is in PENDING the response will contain a redirectUrl.\n\nThe integrating system needs to redirect the shopper to the redirectUrl.\n\nAfter the shopper completes the payment action the transaction status will change accordingly and the integrator can query the updated status.\n",
         "tags": [
-          "orders"
+          "Manage orders"
         ],
-        "operationId": "OrdersTransactionsRefundByOrderId",
+        "operationId": "OrdersDebit",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "Request body for creating a debit.",
+            "schema": {
+              "$ref": "#/definitions/OrderOpenRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response.",
+            "schema": {
+              "$ref": "#/definitions/OrderResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/OrdersDebitPostBadRequest"
+            }
+          }
+        }
+      }
+    },
+    "/orders/credit": {
+      "post": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "summary": "Create credit transaction",
+        "description": "Endpoint to create a credit transaction.\nInitialise a transaction and book an amount. The creditor is the customer and the debitor is the merchant.\nCredit transaction is always processed synchronously, 'channel' has to be MOTO.\n",
+        "tags": [
+          "Manage orders"
+        ],
+        "operationId": "OrdersCredit",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "description": "Request body for creating a credit transaction.",
+            "schema": {
+              "$ref": "#/definitions/OrderCreditRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful response.",
+            "schema": {
+              "$ref": "#/definitions/OrderResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/OrdersCreditPostBadRequest"
+            }
+          }
+        }
+      }
+    },
+    "/orders/{orderId}/transactions/{transactionId}/cancel": {
+      "post": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "summary": "Create cancel transaction",
+        "description": "Endpoint to create a cancelation a preauth transaction referencing the corresponding orderId and transactionId.\n\nA cancel transaction can only be applied to a non expired preauth transaction that is in status SUCCESS.\nPartial cancelations are supported but the initialAmount cannot be higher than the amount that was authorized\n",
+        "tags": [
+          "Manage orders"
+        ],
+        "operationId": "OrdersTransactionsCancelByOrderId",
         "produces": [
           "application/json"
         ],
@@ -209,13 +523,13 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "ID of the affected transaction. note: it must be a capture or a debit."
+            "description": "ID of the affected transaction. note: it must be a preauth."
           },
           {
             "name": "body",
             "in": "body",
             "required": true,
-            "description": "Request body for creating a refund.",
+            "description": "Request body for creating a cancel",
             "schema": {
               "$ref": "#/definitions/TransactionRequest"
             }
@@ -225,13 +539,13 @@
           "200": {
             "description": "Successful response.",
             "schema": {
-              "$ref": "#/definitions/TransactionResponse"
+              "$ref": "#/definitions/TransactionResponseParent"
             }
           },
           "400": {
             "description": "Bad request casued by invalid input.",
             "schema": {
-              "$ref": "#/definitions/OrdersTransactionsRefundPostBadRequest"
+              "$ref": "#/definitions/OrdersTransactionsCancelPostBadRequest"
             }
           }
         }
@@ -244,9 +558,10 @@
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to create a capture on a preauth transaction.\n\nA capture transaction can be applied on an existing and not expired preauth transaction in the status SUCCESS.\n\nIt can be used to capture the given initialAmount and can not be higher then the initialAmount of the given preauth transaction.\n",
+        "summary": "Create capture transaction",
+        "description": "Endpoint to capture a preauth transaction referencing the corresponding orderId and transactionId.\n\nA capture transaction can only be applied to a non expired preauth transaction that is in status SUCCESS.\nPartial captures are supported but the initialAmount cannot be higher than the amount that was authorized.\n",
         "tags": [
-          "orders"
+          "Manage orders"
         ],
         "operationId": "OrdersTransactionsCaptureByOrderId",
         "produces": [
@@ -293,18 +608,19 @@
         }
       }
     },
-    "/orders/{orderId}/transactions/{transactionId}/cancel": {
+    "/orders/{orderId}/transactions/{transactionId}/refund": {
       "post": {
         "security": [
           {
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to create a cancel on a preauth transaction.\n\nA cancel transaction can be applied on an existing and not expired preauth transaction in the status SUCCESS.\n\nIt can be used to cancel the given initialAmount and can not be higher then the initialAmount of the given preauth transaction.\n",
+        "summary": "Create refund transaction",
+        "description": "Endpoint to refund a capture transaction referencing the corresponding orderId and transactionId.\n\nA refund transaction can only be applied to a capture transaction that is in status SUCCESS.\nPartial refunds are supported but the initialAmount cannot be higher than the amount that was captured.\n\nIn case refunds for sepa/sofort/prepayment are executed using the online bank transfer feature the refund will result in the status PENDING.\n\nThe transaction response will contain a challenge element with the TAN instructions.\n\nThe TAN needs to be transmitted in subsequent request. See \"PATCH /orders/{orderId}/transactions/{transactionId}\"\n",
         "tags": [
-          "orders"
+          "Manage orders"
         ],
-        "operationId": "OrdersTransactionsCancelByOrderId",
+        "operationId": "OrdersTransactionsRefundByOrderId",
         "produces": [
           "application/json"
         ],
@@ -321,13 +637,13 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "ID of the affected transaction. note: it must be a preauth."
+            "description": "ID of the affected transaction. note: it must be a capture or a debit."
           },
           {
             "name": "body",
             "in": "body",
             "required": true,
-            "description": "Request body for creating a cancel",
+            "description": "Request body for creating a refund.",
             "schema": {
               "$ref": "#/definitions/TransactionRequest"
             }
@@ -337,13 +653,13 @@
           "200": {
             "description": "Successful response.",
             "schema": {
-              "$ref": "#/definitions/TransactionResponse"
+              "$ref": "#/definitions/TransactionResponseParent"
             }
           },
           "400": {
             "description": "Bad request casued by invalid input.",
             "schema": {
-              "$ref": "#/definitions/OrdersTransactionsCancelPostBadRequest"
+              "$ref": "#/definitions/OrdersTransactionsRefundPostBadRequest"
             }
           }
         }
@@ -356,9 +672,10 @@
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to receive a specific transaction.\n",
+        "description": "Endpoint to receive a specific transaction referencing the orderId and transactionId.\n",
+        "summary": "Get transaction",
         "tags": [
-          "orders"
+          "Manage orders"
         ],
         "operationId": "OrdersTransactionsByOrderId",
         "produces": [
@@ -384,7 +701,7 @@
           "200": {
             "description": "Successful response.",
             "schema": {
-              "$ref": "#/definitions/TransactionResponse"
+              "$ref": "#/definitions/TransactionResponseParent"
             }
           },
           "404": {
@@ -401,9 +718,10 @@
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to update a specific transaction.\n\nCurrently only available for non captured preauth transactions for the following payment methods: ratepay-invoice, ratepay-directdebit and ratepay-installment.\n",
+        "summary": "Update order transaction",
+        "description": "Endpoint to update a specific transaction referencing the orderId and transactionId.\n\nThe service can be used for updating preauth transactions for ratepay-invoice, ratepay-directdebit or ratepay-installment that have not been captured yet.\n\nThe service can also be used for updating the TAN for refund transactions using the online bank transfer feature for sepa/sofort/prepayment that are in status PENDING.\n",
         "tags": [
-          "orders"
+          "Manage orders"
         ],
         "operationId": "OrdersTransactionsByOrderId1",
         "produces": [
@@ -438,7 +756,7 @@
           "200": {
             "description": "Successful response.",
             "schema": {
-              "$ref": "#/definitions/TransactionResponse"
+              "$ref": "#/definitions/TransactionResponseParent"
             }
           },
           "400": {
@@ -457,9 +775,10 @@
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to get a list of all transactions for a specific order.\n",
+        "summary": "Get list of order transactions",
+        "description": "Endpoint to receive a list of all available transactions of an orders referencing the orderId.\n",
         "tags": [
-          "orders"
+          "Manage orders"
         ],
         "operationId": "OrdersTransactionsByOrderId2",
         "produces": [
@@ -490,99 +809,60 @@
         }
       }
     },
-    "/orders/{orderId}": {
-      "get": {
+    "/customers": {
+      "post": {
         "security": [
           {
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to get a specific order.\n\nThe  object represents an order and includes multiple transactions for different actions ( preauth, debit, capture, cancel, refund).\n",
+        "summary": "Create customer",
+        "description": "Endpoint to create a new customer returning a unique customerId.\n\nA customer object acts as a container for customer specific personas and addresses.\n\nIf the email address of the given customer is already known to the platform the service will respond with HTTP status 200 OK. For every newly created customer service will respond with the HTTP status 201 CREATED\n",
         "tags": [
-          "orders"
+          "Manage customers"
         ],
-        "operationId": "OrdersByOrderId",
+        "operationId": "Customers1",
         "produces": [
           "application/json"
         ],
         "parameters": [
-          {
-            "name": "orderId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the specific order."
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response.",
-            "schema": {
-              "$ref": "#/definitions/OrderList"
-            }
-          },
-          "404": {
-            "description": "Not found casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/OrdersGetNotFound"
-            }
-          }
-        }
-      },
-      "patch": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Endpoint to update an order.\n\nOnly available for orders in status CREATED.\n",
-        "tags": [
-          "orders"
-        ],
-        "operationId": "OrdersByOrderId1",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "orderId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the specific order."
-          },
           {
             "name": "body",
             "in": "body",
             "required": true,
-            "description": "Request body for updating an order.",
+            "description": "Request body to create a new customer.",
             "schema": {
-              "$ref": "#/definitions/OrderUpdateRequest"
+              "$ref": "#/definitions/CustomerRequest"
             }
           }
         ],
         "responses": {
-          "200": {
+          "201": {
             "description": "Successful response.",
             "schema": {
-              "$ref": "#/definitions/OrderResponse"
+              "$ref": "#/definitions/CustomerResponse"
+            }
+          },
+          "400": {
+            "description": "Bad request casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/CustomersPostBadRequest"
             }
           }
         }
-      }
-    },
-    "/orders": {
+      },
       "get": {
         "security": [
           {
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to receive a list of orders.\n\nThe following parameters can be used as filter.\n\n- terms\n\n- privacy\n\n- orderId\n\n- merchantOrderId\n\n- paymentProviderTransactionId\n\n- initialAmount\n\n- currency\n\n- customerId\n\n- ipAddress\n\n- status\n\n- channel\n\n- source\n\n- product\n\n- settled\n\n- settlementDate\n\n- createdAt\n\n- modifiedAt\n\nThe following parameters can be used as a range filter.\n\nDates\n\n- terms\n\n- privacy\n\n- settlementDate\n\n- createdAt\n\n- modifiedAt\n\nNumbers\n\n- initialAmount\n",
+        "summary": "Get list of customers",
+        "description": "Endpoint to receive a list of available customers.\n\n\nThe following parameters can be used as filter.\n- customerId\n- email\n- merchantCustomerId\n- createdAt\n- modifiedAt\n\n\nThe following parameters can be used as a range filter.\n- createdAt\n- modifiedAt\n",
         "tags": [
-          "orders"
+          "Manage customers"
         ],
-        "operationId": "Orders",
+        "operationId": "Customers",
         "produces": [
           "application/json"
         ],
@@ -591,33 +871,82 @@
           "200": {
             "description": "Successful response.",
             "schema": {
-              "$ref": "#/definitions/OrderList"
+              "$ref": "#/definitions/CustomerList"
             }
           }
         }
-      },
-      "post": {
+      }
+    },
+    "/customers/{customerId}": {
+      "get": {
         "security": [
           {
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to create an order intent ( order with status CREATED)\n\nAn order with this status will not result in any charges, untill executed. The actual execution is done by some of the integration components (e.g. widget)\n",
+        "summary": "Get customer",
+        "description": "Endpoint to receive a customer referencing the customerId.\n\n\nThe service will also return associated persona and address data\n",
         "tags": [
-          "orders"
+          "Manage customers"
         ],
-        "operationId": "Orders1",
+        "operationId": "CustomersByCustomerId",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the specific customer."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response.",
+            "schema": {
+              "$ref": "#/definitions/CustomerResponse"
+            }
+          },
+          "404": {
+            "description": "Not found casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/CustomersGetNotFound"
+            }
+          }
+        }
+      },
+      "patch": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "summary": "Update customer",
+        "description": "Endpoint to update the merchantCustomerId of a specific customer referencing the customerId\n",
+        "tags": [
+          "Manage customers"
+        ],
+        "operationId": "CustomersByCustomerId1",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the specific customer."
+          },
+          {
             "name": "body",
             "in": "body",
             "required": true,
-            "description": "Request body to create a order intent.",
+            "description": "Request body for updating a customer.",
             "schema": {
-              "$ref": "#/definitions/OrderCreateRequest"
+              "$ref": "#/definitions/CustomerUpdateRequest"
             }
           }
         ],
@@ -625,48 +954,47 @@
           "200": {
             "description": "Successful response.",
             "schema": {
-              "$ref": "#/definitions/OrderResponse"
+              "$ref": "#/definitions/CustomerResponse"
+            }
+          },
+          "400": {
+            "description": "Bad value caused by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/CustomersPatchBadRequest"
             }
           }
         }
-      }
-    },
-    "/prepayment/transactions/{transactionId}/tan": {
-      "patch": {
+      },
+      "delete": {
         "security": [
           {
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to attach a online banking tan to a PENDING prepayment transaction.\n",
+        "summary": "Delete customer",
+        "description": "Endpoint to delete a specific customer referencing the customerId.\n",
         "tags": [
-          "orders"
+          "Manage customers"
         ],
-        "operationId": "PrepaymentTransactionsByTransactionIdTan",
-        "produces": [
-          "application/json"
-        ],
+        "operationId": "DeleteCustomerByCustomerId",
         "parameters": [
           {
-            "name": "transactionId",
+            "name": "customerId",
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "ID of the specific transaction."
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "Request body for updating an order.",
-            "schema": {
-              "$ref": "#/definitions/TanRequest"
-            }
+            "description": "ID of the specific customer."
           }
         ],
         "responses": {
-          "200": {
+          "204": {
             "description": "Successful response."
+          },
+          "404": {
+            "description": "Not found casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/CustomersGetNotFound"
+            }
           }
         }
       }
@@ -678,9 +1006,10 @@
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to receive a specific persona connected to a given customer.\n",
+        "summary": "Get customer persona",
+        "description": "Endpoint to receive a specific persona data referencing the corresponding personaId and customerId.\n",
         "tags": [
-          "customers"
+          "Manage customers"
         ],
         "operationId": "CustomersPersonasByCustomerId",
         "produces": [
@@ -725,9 +1054,10 @@
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to receive a list of personas for a specific customer.\n",
+        "summary": "Get list of customer persona",
+        "description": "Endpoint to receive a list of available personas for a specific customer referencing the customerId.\n",
         "tags": [
-          "customers"
+          "Manage customers"
         ],
         "operationId": "CustomersPersonasByCustomerId1",
         "produces": [
@@ -763,9 +1093,10 @@
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to create a new persona for a specific customer.\n\nPersonas contain person related attributes of a customer which are needed to process some payment methods.\n",
+        "summary": "Assign persona to customer",
+        "description": "Endpoint to create a persona object and assign it to a specific customer referencing the customerId.\n\nPersonas contain person related attributes of a customer which are needed to process some payment methods.\n",
         "tags": [
-          "customers"
+          "Manage customers"
         ],
         "operationId": "CustomersPersonasByCustomerId2",
         "produces": [
@@ -812,9 +1143,10 @@
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to receive a specific address of a specific customer.\n",
+        "summary": "Get customer address",
+        "description": "Endpoint to receive a specific address data referencing the corresponding personaId and customerId.\n",
         "tags": [
-          "customers"
+          "Manage customers"
         ],
         "operationId": "CustomersAddressesByCustomerId",
         "produces": [
@@ -859,9 +1191,10 @@
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to receive a list of addresses of a specific customer.\n",
+        "summary": "Get list of customer addresses",
+        "description": "Endpoint to receive a list of available addresses for a specific customer referencing the customerId.\n",
         "tags": [
-          "customers"
+          "Manage customers"
         ],
         "operationId": "CustomersAddressesByCustomerId1",
         "produces": [
@@ -897,9 +1230,10 @@
             "basicAuth": []
           }
         ],
+        "summary": "Assign address to customer",
         "description": "Endpoint to create a new address for a specific customer.\n\nAddresses containing address related attributes of a customer which are needed to process some payment methods.\n",
         "tags": [
-          "customers"
+          "Manage customers"
         ],
         "operationId": "CustomersAddressesByCustomerId2",
         "produces": [
@@ -939,98 +1273,17 @@
         }
       }
     },
-    "/customers/{customerId}/payment-instruments/{paymentInstrumentId}": {
-      "delete": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Endpoint to delete a specific paymentinstrument from a customer.\n",
-        "tags": [
-          "customers"
-        ],
-        "operationId": "CustomersPaymentInstrumentsByCustomerId",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "customerId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the specific customer."
-          },
-          {
-            "name": "paymentInstrumentId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the specific paymentinstrument."
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Successful response."
-          },
-          "400": {
-            "description": "Bad request casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/CustomersPaymentInstrumentsDeleteBadRequest"
-            }
-          }
-        }
-      }
-    },
     "/customers/{customerId}/payment-instruments": {
-      "get": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Endpoint to receive a list of paymentinstrument of a specific customer.\n",
-        "tags": [
-          "customers"
-        ],
-        "operationId": "CustomersPaymentInstrumentsByCustomerId1",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "customerId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the specific customer."
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response.",
-            "schema": {
-              "$ref": "#/definitions/PaymentInstrumentList"
-            }
-          },
-          "400": {
-            "description": "Bad request casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/CustomersPaymentInstrumentsGetBadRequest"
-            }
-          }
-        }
-      },
       "post": {
         "security": [
           {
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to assign a paymentinstrument to a specific customer.\n",
+        "summary": "Assign payment instrument to customer",
+        "description": "Endpoint to assign a payment instrument to a specific customer referencing the customerId.\n",
         "tags": [
-          "customers"
+          "Manage customers"
         ],
         "operationId": "CustomersPaymentInstrumentsByCustomerId2",
         "produces": [
@@ -1065,20 +1318,19 @@
             }
           }
         }
-      }
-    },
-    "/customers/{customerId}": {
+      },
       "get": {
         "security": [
           {
             "basicAuth": []
           }
         ],
-        "description": "Endpoint to receive a specific customer.\n",
+        "summary": "Get list of customer payment instruments",
+        "description": "Endpoint to receive a list of available payment instruments for a specific customer referencing the customerId.\n",
         "tags": [
-          "customers"
+          "Manage customers"
         ],
-        "operationId": "CustomersByCustomerId",
+        "operationId": "CustomersPaymentInstrumentsByCustomerId1",
         "produces": [
           "application/json"
         ],
@@ -1091,341 +1343,62 @@
             "description": "ID of the specific customer."
           }
         ],
-        "responses": {
-          "200": {
-            "description": "Successful response.",
-            "schema": {
-              "$ref": "#/definitions/CustomerResponse"
-            }
-          },
-          "404": {
-            "description": "Not found casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/CustomersGetNotFound"
-            }
-          }
-        }
-      },
-      "patch": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Endpoint to update a specific customer.\n",
-        "tags": [
-          "customers"
-        ],
-        "operationId": "CustomersByCustomerId1",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "customerId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the specific customer."
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "Request body for updating a customer.",
-            "schema": {
-              "$ref": "#/definitions/CustomerUpdateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response.",
-            "schema": {
-              "$ref": "#/definitions/CustomerResponse"
-            }
-          },
-          "400": {
-            "description": "Bad value caused by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/CustomersPatchBadRequest"
-            }
-          }
-        }
-      },
-      "delete": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Endpoint to delete a specific customer.\n",
-        "tags": [
-          "customers"
-        ],
-        "operationId": "DeleteCustomerByCustomerId",
-        "parameters": [
-          {
-            "name": "customerId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the specific customer."
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Successful response."
-          },
-          "404": {
-            "description": "Not found casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/CustomersGetNotFound"
-            }
-          }
-        }
-      }
-    },
-    "/customers": {
-      "get": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Endpoint to receive a list of customers.\n\nThe following parameters can be used as filter.\n\n- customerId\n\n- email\n\n- merchantCustomerId\n\n- createdAt\n\n- modifiedAt\n\nThe following parameters can be used as a range filter.\n\n- createdAt\n\n- modifiedAt\n",
-        "tags": [
-          "customers"
-        ],
-        "operationId": "Customers",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Successful response.",
-            "schema": {
-              "$ref": "#/definitions/CustomerList"
-            }
-          }
-        }
-      },
-      "post": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Endpoint to create a new customer.\n\nA customer acts as a container for customer specific personas and addresses.\n\nIf the email address of the given customer is already known to the platform the API will respond with HTTP status 200 OK.\n\nFor every new created customer the platform will respond with the HTTP status 201 CREATED\n",
-        "tags": [
-          "customers"
-        ],
-        "operationId": "Customers1",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "Request body to create a new customer.",
-            "schema": {
-              "$ref": "#/definitions/CustomerRequest"
-            }
-          }
-        ],
-        "responses": {
-          "201": {
-            "description": "Successful response.",
-            "schema": {
-              "$ref": "#/definitions/CustomerResponse"
-            }
-          },
-          "400": {
-            "description": "Bad request casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/CustomersPostBadRequest"
-            }
-          }
-        }
-      }
-    },
-    "/payment-instruments/{paymentInstrumentId}": {
-      "get": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Endpoint to receive a specific paymentinstrument.\n\nPayment instruments are objects representing the payment information used by the end customer.\n\nA payment instrument can be created either explicitly ( creditcard & sepa via javascript bridge ) or implicitly with a debit or preauth transaction.\n\nDepending on the type, payment instruments have different attributes, whereas some values will be masked to remain PCI conform ( e.g. creditcard number)\n\nPayment instruments can be used for recurring payments, if the flag \"recurring\" is set to true.\n\nPayment instruments are unique ( e.g. if a creditcard number is used twice, it will result in one payment instrument )\n",
-        "tags": [
-          "payment"
-        ],
-        "operationId": "PaymentInstrumentsByPaymentInstrumentId",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "paymentInstrumentId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the specific paymentinstrument."
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response.",
-            "schema": {
-              "$ref": "#/definitions/PaymentInstrumentResponse"
-            }
-          },
-          "404": {
-            "description": "Not found casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/PaymentInstrumentsGetNotFound"
-            }
-          }
-        }
-      },
-      "patch": {
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
-        "description": "Endpoint to update the data associated with the specified paymentinstrument.\n\nAlso used to refresh the CVC of a creditcard payment instrument. In case of a recurring transaction the shopper can be forced to re-enter the verification code (cvc) - depends on the creditcard settings configuration.\n\nNormally handled by the javascript bridge.\n",
-        "tags": [
-          "payment"
-        ],
-        "operationId": "PaymentInstrumentsByPaymentInstrumentId1",
-        "parameters": [
-          {
-            "name": "paymentInstrumentId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the specific paymentinstrument."
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "description": "Request object containing some or all of the updateable fields applicable for the type of the specified payment instrument. (CC or SEPA)",
-            "schema": {
-              "$ref": "#/definitions/PaymentInstrumentUpdateRequest"
-            }
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Successful response"
-          },
-          "400": {
-            "description": "Bad request casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/PaymentInstrumentsPatchBadRequest"
-            }
-          }
-        }
-      },
-      "delete": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Endpoint to delete payment instrument with a given ID.\n",
-        "tags": [
-          "payment"
-        ],
-        "operationId": "DeletePaymentInstrumentByPaymentInstrumentId",
-        "parameters": [
-          {
-            "name": "paymentInstrumentId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the specific paymentinstrument."
-          }
-        ],
-        "responses": {
-          "204": {
-            "description": "Successful response"
-          },
-          "404": {
-            "description": "Not found casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/PaymentInstrumentsGetNotFound"
-            }
-          }
-        }
-      }
-    },
-    "/payment-instruments": {
-      "get": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Endpoint to receive a list of paymentinstruments.\n\nThe following parameters can be used as filter.\n\n- paymentInstrumentId\n\n- merchantPaymentInstrumentId\n\n- type\n\n- origin\n\n- recurring\n\n- createdAt\n\n- modifiedAt\n",
-        "tags": [
-          "payment"
-        ],
-        "operationId": "PaymentInstruments",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "Successful response.",
             "schema": {
               "$ref": "#/definitions/PaymentInstrumentList"
             }
+          },
+          "400": {
+            "description": "Bad request casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/CustomersPaymentInstrumentsGetBadRequest"
+            }
           }
         }
-      },
-      "post": {
+      }
+    },
+    "/customers/{customerId}/payment-instruments/{paymentInstrumentId}": {
+      "delete": {
         "security": [
           {
-            "Bearer": []
+            "basicAuth": []
           }
         ],
-        "description": "Endpoint to create a new paymentinstrument.\n\nExplicitly creating  payment instruments is possible for credit card and SEPA and should be done from the end customer's browser.\n\nCall would normally be handled by the javascript bridge.\n",
+        "summary": "Delete payment instrument from customer",
+        "description": "Endpoint to delete a specific payment instrument from a customer.\n",
         "tags": [
-          "payment"
+          "Manage customers"
         ],
-        "operationId": "PaymentInstruments1",
+        "operationId": "CustomersPaymentInstrumentsByCustomerId",
         "produces": [
           "application/json"
         ],
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
+            "name": "customerId",
+            "in": "path",
             "required": true,
-            "description": "Request body to create a new paymentinstrument.",
-            "schema": {
-              "$ref": "#/definitions/PaymentInstrumentRequest"
-            }
+            "type": "string",
+            "description": "ID of the specific customer."
+          },
+          {
+            "name": "paymentInstrumentId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID of the specific paymentinstrument."
           }
         ],
         "responses": {
-          "200": {
-            "description": "Successful response.",
-            "schema": {
-              "$ref": "#/definitions/PaymentInstrumentResponse"
-            }
+          "204": {
+            "description": "Successful response."
           },
           "400": {
-            "description": "Bad request based on invalid input.",
+            "description": "Bad request casued by invalid input.",
             "schema": {
-              "$ref": "#/definitions/PaymentInstrumentsPostBadRequest"
+              "$ref": "#/definitions/CustomersPaymentInstrumentsDeleteBadRequest"
             }
           }
         }
@@ -1438,9 +1411,10 @@
             "Bearer": []
           }
         ],
-        "description": "The Configuration Request allows the merchant to read the stored configuration parameters for his merchant profile.\n",
+        "description": "Endpoint to query the supported installment settings.\n\n\nThis service will return the minimum rate and the minimum & maximum monthly term of an installment that are supported based on the merchant configuration.\n\n\nA merchant can use these parameters as restrictions in case an input form is displayed directly to their customers chosing the available installment options.\n\n\n\nThis service is not needed in case the Payengine widget is used as this will execute the services automatically in the background.\n",
+        "summary": "Get supported installment settings",
         "tags": [
-          "installments"
+          "Manage installments"
         ],
         "operationId": "InstallmentConfig",
         "produces": [
@@ -1463,9 +1437,10 @@
             "Bearer": []
           }
         ],
-        "description": "The Calculation Request calculates and returns an installment plan depending on the request parameters and the stored parameters of the merchant profile.\n",
+        "description": "Endpoint to receive an installment plan based on the total amount and a selected rate for each installment payment.\n",
+        "summary": "Get installment rate",
         "tags": [
-          "installments"
+          "Manage installments"
         ],
         "operationId": "InstallmentCalculationRate",
         "produces": [
@@ -1504,9 +1479,10 @@
             "Bearer": []
           }
         ],
-        "description": "The Calculation Request calculates and returns an installment plan depending on the request parameters and the stored parameters of the merchant profile.\n",
+        "description": "Endpoint to receive an installment plan based on the total amount and a selected term of the installment payment (in months).\n",
+        "summary": "Get installment plan",
         "tags": [
-          "installments"
+          "Manage installments"
         ],
         "operationId": "InstallmentCalculationTime",
         "produces": [
@@ -1545,9 +1521,10 @@
             "Bearer": []
           }
         ],
-        "description": "Endpoint to get all settlements.\n",
+        "description": "Endpoint to receive a list of available settlement files.\n\nThe following parameters can be used as filter.\n- settlementId\n- receivedAt\n- product\n- downloaded\n- receivedAtAfter\n- receivedAtBefore\n- fileFormat\n- excludeFiles\n- settlementType\n\nThe following parameter names can be used for ordering the results.\n - settlementId\n - product\n - downloaded\n - receivedAt\n - fileFormat\n - settlementType\n",
+        "summary": "Get list of settlement files\n",
         "tags": [
-          "settlements"
+          "Manage settlements"
         ],
         "operationId": "SettlementsList",
         "responses": {
@@ -1566,46 +1543,6 @@
         }
       }
     },
-    "/settlements/{settlementId}": {
-      "patch": {
-        "security": [
-          {
-            "Bearer": []
-          }
-        ],
-        "description": "Endpoint to update settlement.\n",
-        "tags": [
-          "settlements"
-        ],
-        "operationId": "SettlementsUpdate",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "settlementId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "ID of the settlement."
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response.",
-            "schema": {
-              "$ref": "#/definitions/SettlementResponse"
-            }
-          },
-          "404": {
-            "description": "Not found casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/SettlementsNotFound"
-            }
-          }
-        }
-      }
-    },
     "/settlements/download": {
       "get": {
         "security": [
@@ -1613,9 +1550,10 @@
             "Bearer": []
           }
         ],
-        "description": "Download settlement. If there is only one id  the end point download csv file containing the file. If there are more than one id, the end point download zip containing csv files.\n",
+        "description": "Endpoint to download specific settlement files.\n\n\nThe files that should be downloaded have to be referenced via the settlementId in the body of the service request.\n\n\nIn case there is a list of settlementIds the files will be returned as a zip file.\n\n\nIn case only one settlementId is referenced the plain file will be returned.\n",
+        "summary": "Download settlement file",
         "tags": [
-          "settlements"
+          "Manage settlements"
         ],
         "operationId": "SettlementsGet",
         "produces": [
@@ -1648,144 +1586,6 @@
         }
       }
     },
-    "/batch": {
-      "get": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Get all batch transactions.\n",
-        "tags": [
-          "batch"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "responses": {
-          "200": {
-            "description": "List of transactions.",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/BatchResponse"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/batch/{batchId}": {
-      "get": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Get specific batch transactions detail.\n",
-        "tags": [
-          "batch"
-        ],
-        "operationId": "BatchResponse",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "batchId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "Specific batch transaction"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response."
-          },
-          "404": {
-            "description": "Not found casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/BatchNotFound"
-            }
-          }
-        }
-      }
-    },
-    "/batch/{batchId}/request/download": {
-      "get": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Download csv uploaded file with transactions.\n",
-        "tags": [
-          "batch"
-        ],
-        "operationId": "BatchRequestDownload",
-        "produces": [
-          "text/csv"
-        ],
-        "parameters": [
-          {
-            "name": "batchId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "List csv uploaded file with transactions."
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response."
-          },
-          "404": {
-            "description": "Not found casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/BatchNotFound"
-            }
-          }
-        }
-      }
-    },
-    "/batch/{batchId}/response/download": {
-      "get": {
-        "security": [
-          {
-            "basicAuth": []
-          }
-        ],
-        "description": "Download csv generated file with transactions.\n",
-        "tags": [
-          "batch"
-        ],
-        "operationId": "BatchResponseDownload",
-        "produces": [
-          "text/csv"
-        ],
-        "parameters": [
-          {
-            "name": "batchId",
-            "in": "path",
-            "required": true,
-            "type": "string",
-            "description": "List of csv generated file when the uploaded file is successfully parsed."
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful response."
-          },
-          "404": {
-            "description": "Not found casued by invalid input.",
-            "schema": {
-              "$ref": "#/definitions/BatchResponseNotFound"
-            }
-          }
-        }
-      }
-    },
     "/batch/upload": {
       "post": {
         "security": [
@@ -1793,9 +1593,10 @@
             "basicAuth": []
           }
         ],
-        "description": "Upload csv file with transactions\n",
+        "summary": "Upload batch file",
+        "description": "Endpoint to upload a csv batch file.\n",
         "tags": [
-          "batch"
+          "Manage batches"
         ],
         "operationId": "BatchFileUpload",
         "produces": [
@@ -1824,6 +1625,133 @@
             "schema": {
               "$ref": "#/definitions/BatchUploadBadFile"
             }
+          }
+        }
+      }
+    },
+    "/batch": {
+      "get": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "description": "Endpoint to receive a list of uploaded batch files.\n\nThe following parameters can be used as filter.\n- page\n- size\n- createdAtAfter\n- createdAtBefore\n- batchRequestFileName\n- batchSequence\n- generatedAtAfter\n- generatedAtBefore\n\nThe following parameter names can be used for ordering the results.\n- createdAt\n- batchRequestFileName\n- batchSequence\n- generatedAt\n",
+        "summary": "Get list of batch files",
+        "tags": [
+          "Manage batches"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of transactions.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/BatchResponse"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/batch/{batchId}": {
+      "get": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "description": "Endpoint to receive the meta data of a specific batch file referencing the batchId\n",
+        "summary": "Get specific batch file details",
+        "tags": [
+          "Manage batches"
+        ],
+        "operationId": "BatchResponse",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "batchId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Specific batch transaction"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          },
+          "404": {
+            "description": "Not found casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/BatchNotFound"
+            }
+          }
+        }
+      }
+    },
+    "/batch/{batchId}/response/download": {
+      "get": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "summary": "Download batch response file",
+        "description": "Endpoint to download the response file for a specific batch file that was uploaded.\n\n\nThe batchId of the corresponding batch file that was uploaded has to be provided as an input parameter.\n",
+        "tags": [
+          "Manage batches"
+        ],
+        "operationId": "BatchResponseDownload",
+        "produces": [
+          "text/csv"
+        ],
+        "parameters": [
+          {
+            "name": "batchId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "List of csv generated file when the uploaded file is successfully parsed."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response."
+          },
+          "404": {
+            "description": "Not found casued by invalid input.",
+            "schema": {
+              "$ref": "#/definitions/BatchResponseNotFound"
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "summary": "Get system health",
+        "description": "Endpoint to check the health status of the Payengine API.\n",
+        "tags": [
+          "Health check"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "The system health is successfully measured.",
+            "schema": {
+              "$ref": "#/definitions/HealthResponse"
+            }
+          },
+          "403": {
+            "description": "The health endpoint is disabled via configuration."
           }
         }
       }
@@ -1874,7 +1802,17 @@
         "ratepay-directdebit",
         "ratepay-installment",
         "sepa",
-        "sofort"
+        "sofort",
+        "klarna-pay-now",
+        "klarna-pay-later",
+        "klarna-slice-it",
+        "prepayment",
+        "giropay",
+        "eps",
+        "ideal",
+        "alipay",
+        "bancontact",
+        "wechat-pay"
       ]
     },
     "Item": {
@@ -1898,33 +1836,33 @@
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         },
         "totalPriceWithTax": {
-          "description": "The total price for this item including taxes. The total amount should be given as smallest currency unit.",
+          "description": "The total price for this item including taxes. The total amount should be given as smallest currency unit. If the item is of type discount, the value must be negative: min -9999998, max -1.",
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         },
         "unitPrice": {
           "description": "The unit price for this item excluding taxes. The unit amount should be given as smallest currency unit.",
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         },
         "unitPriceWithTax": {
           "description": "The unit price for this item including taxes. The unit amount should be given as smallest currency unit.",
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         },
         "tax": {
-          "description": "The tax for this item. The tax should be given as smallest currency unit.",
+          "description": "The tax rate for the corresponding item. Will be returned in float format only if scale part contains no trailing zeros. 10.99 -> 10.99 10.90 -> 10.9 10.00 -> 10 10.0 -> 10 10 -> 10",
           "type": "number",
-          "format": "int",
+          "format": "float",
           "minimum": 0,
           "maximum": 100
         },
@@ -1938,8 +1876,11 @@
           "description": "item specific discount",
           "type": "number",
           "format": "int",
-          "minimum": -9999998,
+          "minimum": -99999998,
           "maximum": -1
+        },
+        "articleType": {
+          "$ref": "#/definitions/ArticleTypeEnum"
         }
       }
     },
@@ -2262,7 +2203,7 @@
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         },
         "currency": {
           "description": "Currency code according to https://en.wikipedia.org/wiki/ISO_4217",
@@ -2344,7 +2285,7 @@
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         },
         "currency": {
           "description": "Currency code according to https://en.wikipedia.org/wiki/ISO_4217\n",
@@ -2438,6 +2379,13 @@
         "deviceIdent": {
           "$ref": "#/definitions/DeviceIdentRequest"
         },
+        "tracking": {
+          "description": "specific parameter for all payment methods, array of object of type Tracking",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Tracking"
+          }
+        },
         "meta": {
           "$ref": "#/definitions/MetaRequest"
         }
@@ -2458,7 +2406,7 @@
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         },
         "currency": {
           "description": "Currency code according to https://en.wikipedia.org/wiki/ISO_4217\n",
@@ -2599,24 +2547,24 @@
           "maxLength": 128
         },
         "bankName": {
-          "description": "The name of the bank of the SEPA account. (mandatory for sepa, optional if a sepa paymentInstrumentId was passed)",
+          "description": "The name of the bank of the bank account. (mandatory for sepa, optional if a sepa paymentInstrumentId was passed)",
           "type": "string",
           "minLength": 1,
           "maxLength": 255
         },
         "iban": {
-          "description": "IBAN of the SEPA account. (mandatory for sepa, optional if a sepa paymentInstrumentId was passed)",
+          "description": "IBAN of the bank account. (mandatory for sepa, optional if a sepa paymentInstrumentId was passed)",
           "type": "string",
           "maxLength": 34
         },
         "bic": {
-          "description": "BIC of the SEPA account. (mandatory for sepa, optional if a sepa paymentInstrumentId was passed)",
+          "description": "BIC of the bank account. (mandatory for sepa, optional if a sepa paymentInstrumentId was passed)",
           "type": "string",
           "minLength": 8,
           "maxLength": 11
         },
         "accountHolder": {
-          "description": "The account holders name of the SEPA account. (mandatory for sepa, optional if a sepa paymentInstrumentId was passed)",
+          "description": "The account holders name of the bank account. (mandatory for sepa, ideal, alipay, bancontact, wechat-pay optional if a paymentInstrumentId was passed)",
           "type": "string",
           "minLength": 4,
           "maxLength": 128
@@ -2645,8 +2593,103 @@
           "description": "Total amount for ratepay installment",
           "type": "integer"
         },
+        "initializeCustomerTokenization": {
+          "description": "Only for Klarna preauth or debit. True if we want to create token and next orders will be as recurring, false otherwise. Organization customers can't use initializeCustomerTokenization.",
+          "type": "boolean"
+        },
         "mandate": {
           "$ref": "#/definitions/MandateRequest"
+        },
+        "recurringUsage": {
+          "description": "For CreditCard only",
+          "type": "string",
+          "enum": [
+            "null",
+            "ONE_CLICK",
+            "SCHEDULED",
+            "UNSCHEDULED"
+          ]
+        },
+        "riskIdentId": {
+          "description": "Only for RatePay preauth or debit.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "countryCode": {
+          "description": "Only for WeChat Pay via PPRO debit. The 2-letter ISO country code of the country in which the payment instrument is issued/operated (e.g. DE) Format [https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2]",
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 2
+        }
+      }
+    },
+    "OrderCreditOpenPaymentRequest": {
+      "title": "OrderOpenPaymentRequest",
+      "type": "object",
+      "description": "Additional information Payment needed to proceed the order.",
+      "properties": {
+        "paymentInstrumentId": {
+          "description": "An ID of an already created paymentinstrument. Used to proceed the order. (optional)",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "cardNumber": {
+          "description": "The Creditcard PAN used to proceed. (mandatory for creditcard, optional if a creditcard paymentInstrumentId was passed)",
+          "type": "string",
+          "minLength": 12,
+          "maxLength": 19
+        },
+        "verification": {
+          "description": "The verification number of the creditcard. (mandatory for creditcard, optional if a creditcard paymentInstrumentId was passed)",
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 4
+        },
+        "expiryMonth": {
+          "description": "The expiry month of the creditcard. Format: 01 -> january, 02 -> February, etc. (mandatory for creditcard, optional if a creditcard paymentInstrumentId was passed)",
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 2
+        },
+        "expiryYear": {
+          "description": "The expiry year of the creditcard. Format: 01 -> 2001, 02 -> 2002, etc. (mandatory for creditcard, optional if a creditcard paymentInstrumentId was passed)",
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 2
+        },
+        "cardHolder": {
+          "description": "The full name of the cardholder.",
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 128
+        },
+        "bankName": {
+          "description": "The name of the bank of the SEPA account. (mandatory for sepa, optional if a sepa paymentInstrumentId was passed)",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "iban": {
+          "description": "IBAN of the SEPA account. (mandatory for sepa, optional if a sepa paymentInstrumentId was passed)",
+          "type": "string",
+          "maxLength": 34
+        },
+        "bic": {
+          "description": "BIC of the SEPA account. (mandatory for sepa, optional if a sepa paymentInstrumentId was passed)",
+          "type": "string",
+          "minLength": 8,
+          "maxLength": 11
+        },
+        "accountHolder": {
+          "description": "The account holders name of the SEPA account. (mandatory for sepa, optional if a sepa paymentInstrumentId was passed)",
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 128
+        },
+        "deferred": {
+          "description": "Indicates if the order should be deferred. (only available for paypal preauth/execute, optional)"
         }
       }
     },
@@ -2766,10 +2809,22 @@
     "BasketRequest": {
       "title": "Basket",
       "type": "object",
-      "descritpion": "Basket of the customer (only mandatory for Klarna Orders)",
+      "description": "Basket of the customer (only mandatory for Klarna Orders)",
       "properties": {
         "name": {
-          "descritpion": "name of the article",
+          "description": "name of the article",
+          "type": "string"
+        },
+        "articleType": {
+          "description": "currently is used and is required only for Klarna. Here are the values it can be used- physical, digital, discount, shipping_fee, gift_card (it's possible with capital letters as well)",
+          "type": "string"
+        },
+        "articleUrl": {
+          "description": "this is the url of the item in the basket",
+          "type": "string"
+        },
+        "imageUrl": {
+          "description": "the image url of the item in the basket",
           "type": "string"
         },
         "quantity": {
@@ -2783,6 +2838,10 @@
         "totalPrice": {
           "description": "total price of the article",
           "type": "number"
+        },
+        "discount": {
+          "description": "it is negative value between -99999998 and -1",
+          "type": "number"
         }
       }
     },
@@ -2792,7 +2851,7 @@
       "description": "SEPA mandate (only mandatory for SEPA orders)",
       "properties": {
         "mandateId": {
-          "description": "The mandateId assigned to the SEPA mandate (optional)",
+          "description": "The mandateId assigned to the SEPA mandate (optional, payengine will generate the id if not present) The id needs to follow the following pattern '^[a-zA-Z0-9\\-]{1,35}'",
           "type": "string"
         },
         "createdDateTime": {
@@ -2832,35 +2891,35 @@
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         },
         "preauthorizedAmount": {
           "description": "The amount which has been authorized.",
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         },
         "capturedAmount": {
           "description": "The amount which has been captured.",
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         },
         "refundedAmount": {
           "description": "The amount which has been refunded.",
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         },
         "canceledAmount": {
           "description": "The amount which has been cancelled.",
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         },
         "currency": {
           "description": "Currency code according to https://en.wikipedia.org/wiki/ISO_4217",
@@ -2872,7 +2931,7 @@
           "description": "A list of all underlying transactions.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/TransactionResponse"
+            "$ref": "#/definitions/TransactionResponseChildren"
           }
         },
         "status": {
@@ -3037,6 +3096,16 @@
         "receiverId": {
           "description": "Available only for paypal. Unique PayPal customer account number.",
           "type": "string"
+        },
+        "recurringUsage": {
+          "description": "For CreditCard only",
+          "type": "string",
+          "enum": [
+            "null",
+            "ONE_CLICK",
+            "SCHEDULED",
+            "UNSCHEDULED"
+          ]
         }
       }
     },
@@ -3242,7 +3311,7 @@
           "maxLength": 16
         },
         "birthday": {
-          "description": "The birthday of the persona. Format as milliseconds.",
+          "description": "The birthday of the persona. Format as milliseconds since epoch representing UTC Date.",
           "type": "number",
           "format": "date-time"
         },
@@ -3298,8 +3367,19 @@
           "type": "integer"
         },
         "attributes": {
-          "description": "Additional attributes of this paymentinstrument. E.g. masked bank- or creditcarddata. For Klarna we will have paymentMethods object in the response (e.g. PAY_OVER_TIME, PAY_LATER, PAY_NOW) Also we will have country, locale and selectedPaymentMethod, which will be null on creating of payment instrument",
+          "description": "Additional attributes of this paymentinstrument. E.g. masked bank- or creditcarddata. For Klarna we will have possibleTypes object in the response (e.g. klarna-pay-now, klarna-pay-later, klarna-slice-it) Also we will have country, and locale",
           "type": "object"
+        },
+        "recurringConsent": {
+          "description": "For CreditCard only",
+          "type": "string",
+          "enum": [
+            "null",
+            "NO_STORE",
+            "ONE_CLICK",
+            "MERCHANT_INITIATED",
+            "ONE_CLICK,MERCHANT_INITIATED"
+          ]
         }
       },
       "required": [
@@ -3453,8 +3533,8 @@
         "lastRate"
       ]
     },
-    "TransactionResponse": {
-      "title": "TransactionResponse",
+    "TransactionResponseChildren": {
+      "title": "TransactionResponseChildren",
       "type": "object",
       "properties": {
         "type": {
@@ -3474,7 +3554,7 @@
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         },
         "currency": {
           "description": "Currency code according to https://en.wikipedia.org/wiki/ISO_4217",
@@ -3528,21 +3608,139 @@
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         },
         "refundedAmount": {
           "description": "The amount which has been refunded.",
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         },
         "canceledAmount": {
           "description": "The amount which has been cancelled.",
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
+        },
+        "challange": {
+          "$ref": "#/definitions/Challange"
+        },
+        "tracking": {
+          "description": "specific parameter for all payment methods, array of object of type Tracking",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Tracking"
+          }
+        },
+        "meta": {
+          "$ref": "#/definitions/TransactionMeta"
+        }
+      },
+      "required": [
+        "transactionId",
+        "status",
+        "initialAmount",
+        "currency",
+        "description",
+        "createdAt",
+        "modifiedAt",
+        "order",
+        "transactions",
+        "parentTransaction",
+        "capturedAmount",
+        "refundedAmount",
+        "canceledAmount"
+      ]
+    },
+    "TransactionResponseParent": {
+      "title": "TransactionResponseParent",
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/TransactionType"
+        },
+        "transactionId": {
+          "description": "The identifier of the transaction. Created by payengine",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "status": {
+          "$ref": "#/definitions/TransactionStatesBaseTypeEnum"
+        },
+        "initialAmount": {
+          "description": "The initial amount given to create this transaction.",
+          "type": "number",
+          "format": "int",
+          "minimum": 1,
+          "maximum": 99999999
+        },
+        "currency": {
+          "description": "Currency code according to https://en.wikipedia.org/wiki/ISO_4217",
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 3
+        },
+        "description": {
+          "description": "The description from your system/shop of this transaction.",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "createdAt": {
+          "description": "This timestamp indicates the creation of this transaction.",
+          "type": "number",
+          "format": "date-time"
+        },
+        "modifiedAt": {
+          "description": "This timestamp indicates the last modification of this transaction.",
+          "type": "number",
+          "format": "date-time"
+        },
+        "order": {
+          "$ref": "#/definitions/OrderResponse"
+        },
+        "transactions": {
+          "description": "A list of underlying transactions.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/TransactionResponseChildren"
+          }
+        },
+        "parentTransaction": {
+          "$ref": "#/definitions/TransactionResponseChildren"
+        },
+        "descriptor": {
+          "description": "Identifier which holds the orderId",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10
+        },
+        "capturedAmount": {
+          "description": "The amount which has been captured.",
+          "type": "number",
+          "format": "int",
+          "minimum": 1,
+          "maximum": 99999999
+        },
+        "refundedAmount": {
+          "description": "The amount which has been refunded.",
+          "type": "number",
+          "format": "int",
+          "minimum": 1,
+          "maximum": 99999999
+        },
+        "canceledAmount": {
+          "description": "The amount which has been cancelled.",
+          "type": "number",
+          "format": "int",
+          "minimum": 1,
+          "maximum": 99999999
+        },
+        "challange": {
+          "$ref": "#/definitions/Challange"
         },
         "meta": {
           "$ref": "#/definitions/TransactionMeta"
@@ -3566,6 +3764,21 @@
     },
     "TransactionMeta": {
       "title": "TransactionMeta",
+      "type": "object",
+      "description": "Contains payment method specifc meta data. For prepayment TAN instructions.\n",
+      "properties": {
+        "tanSent": {
+          "description": "Flag which indicates if the TAN was sent to the bank\n",
+          "type": "boolean"
+        },
+        "tanSchema": {
+          "description": "The TAN schema which was used to finalize a online bank transfer based refund\n",
+          "type": "string"
+        }
+      }
+    },
+    "Challange": {
+      "title": "Challange",
       "type": "object",
       "description": "Contains payment method specifc meta data. For prepayment TAN instructions.\n",
       "properties": {
@@ -3613,6 +3826,24 @@
         "CLOSED"
       ]
     },
+    "OrganizationEntityTypeEnum": {
+      "title": "OrganizationEntityTypeEnum",
+      "type": "string",
+      "description": "Customers that are organizations use this to specify their entity type.\nLIMITED_COMPANY PUBLIC_LIMITED_COMPANY ENTREPRENEURIAL_COMPANY LIMITED_PARTNERSHIP_LIMITED_COMPANY LIMITED_PARTNERSHIP GENERAL_PARTNERSHIP REGISTERED_SOLE_TRADER SOLE_TRADER CIVIL_LAW_PARTNERSHIP PUBLIC_INSTITUTION OTHER\n",
+      "enum": [
+        "LIMITED_COMPANY",
+        "PUBLIC_LIMITED_COMPANY",
+        "ENTREPRENEURIAL_COMPANY",
+        "LIMITED_PARTNERSHIP_LIMITED_COMPANY",
+        "LIMITED_PARTNERSHIP",
+        "GENERAL_PARTNERSHIP",
+        "REGISTERED_SOLE_TRADER",
+        "SOLE_TRADER",
+        "CIVIL_LAW_PARTNERSHIP",
+        "PUBLIC_INSTITUTION",
+        "OTHER"
+      ]
+    },
     "PreauthResponse": {
       "title": "PreauthResponse",
       "type": "object",
@@ -3622,14 +3853,14 @@
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         },
         "canceledAmount": {
           "description": "The amount which has been cancelled.",
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         }
       },
       "required": [
@@ -3638,7 +3869,7 @@
       ],
       "allOf": [
         {
-          "$ref": "#/definitions/TransactionResponse"
+          "$ref": "#/definitions/TransactionResponseParent"
         }
       ]
     },
@@ -3651,7 +3882,7 @@
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         }
       },
       "required": [
@@ -3659,7 +3890,7 @@
       ],
       "allOf": [
         {
-          "$ref": "#/definitions/TransactionResponse"
+          "$ref": "#/definitions/TransactionResponseParent"
         }
       ]
     },
@@ -3672,7 +3903,7 @@
           "type": "number",
           "format": "int",
           "minimum": 1,
-          "maximum": 99999900
+          "maximum": 99999999
         }
       },
       "required": [
@@ -3680,7 +3911,7 @@
       ],
       "allOf": [
         {
-          "$ref": "#/definitions/TransactionResponse"
+          "$ref": "#/definitions/TransactionResponseParent"
         }
       ]
     },
@@ -3737,6 +3968,43 @@
           "type": "string",
           "minLength": 1,
           "maxLength": 255
+        },
+        "customerType": {
+          "description": "Customer type. Specified as \"organization\" for companies and organizations.",
+          "type": "string"
+        },
+        "organizationRegistrationId": {
+          "description": "Organization registration id. Only required for organization customer types.",
+          "minLength": 1,
+          "maxLength": 99,
+          "type": "string"
+        },
+        "organizationVatId": {
+          "description": "Organization VAT id. Only used for organization customer types.",
+          "minLength": 1,
+          "maxLength": 99,
+          "type": "string"
+        },
+        "organizationRegistrationRegister": {
+          "description": "Organization registers can be the court name that registered the company. The registry location name, or another other organization registering institution name. This field is optional.",
+          "minLength": 1,
+          "maxLength": 99,
+          "type": "string"
+        },
+        "organizationEntityType": {
+          "$ref": "#/definitions/OrganizationEntityTypeEnum"
+        },
+        "companyName": {
+          "description": "Company name. Required for organization customers. limited to 99 characters!",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 99
+        },
+        "reference": {
+          "description": "Additional reference within the company. i.e. 'Department XYZ'. Can be specified for organization customers. limited to 99 characters!",
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 99
         }
       },
       "required": [
@@ -3790,7 +4058,7 @@
           "maxLength": 16
         },
         "birthday": {
-          "description": "The birthday of the persona. Format as milliseconds.",
+          "description": "The birthday of the persona. Format as milliseconds since epoch representing UTC Date.",
           "type": "number",
           "format": "date-time"
         },
@@ -3975,11 +4243,26 @@
           "minLength": 4,
           "maxLength": 128
         },
+        "customer": {
+          "description": "ID of the customer",
+          "type": "string"
+        },
         "mandate": {
           "$ref": "#/definitions/MandateRequest"
         },
         "basket": {
           "$ref": "#/definitions/BasketRequest"
+        },
+        "recurringConsent": {
+          "description": "For CreditCard only",
+          "type": "string",
+          "enum": [
+            "null",
+            "NO_STORE",
+            "ONE_CLICK",
+            "MERCHANT_INITIATED",
+            "ONE_CLICK,MERCHANT_INITIATED"
+          ]
         }
       }
     },
@@ -4008,6 +4291,10 @@
       "title": "PaymentInstrumentUpdateRequest",
       "type": "object",
       "properties": {
+        "type": {
+          "description": "Type of the selected payment method provided by Klarna. E.g. klarna-pay-later",
+          "type": "string"
+        },
         "verification": {
           "description": "The verification number of the creditcard. (CC only)",
           "type": "string",
@@ -4052,10 +4339,6 @@
         },
         "locale": {
           "description": "Locale which is used",
-          "type": "string"
-        },
-        "selectedPaymentMethod": {
-          "description": "Selected payment method by the customer e.g. PAY_NOW, PAY_LATER, PAY_OVER_TIME",
           "type": "string"
         },
         "customer": {
@@ -4170,19 +4453,12 @@
       "properties": {
         "invoicing": {
           "type": "object",
-          "description": "RatePAY specific parameter.",
+          "description": "RatePAY/PayPal specific parameter.",
           "$ref": "#/definitions/Invoicing"
-        },
-        "tracking": {
-          "description": "RatePAY specific parameter, array of object of type Tracking",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Tracking"
-          }
         },
         "preferredLanguage": {
           "type": "string",
-          "description": "RatePAY specific parameter, 2-letter language code, lower case.",
+          "description": "Works with RatePay, iDEAL, Alipay, Bancontact and WeChat Pay. Two-letter language code, lower case.",
           "maxLength": 2
         },
         "referenceId": {
@@ -4193,6 +4469,14 @@
         "addressOverride": {
           "type": "boolean",
           "description": "Paypal specific parameter. If false the shipping address passed with the request will be editable on the paypal site. Default value is true."
+        },
+        "tan": {
+          "type": "string",
+          "description": "Second factor for online bank transfer based refunds"
+        },
+        "mobileView": {
+          "type": "boolean",
+          "description": "Set to true for the mobile enabled variant of Alipay."
         }
       }
     },
@@ -4201,6 +4485,7 @@
       "type": "object",
       "properties": {
         "invoiceId": {
+          "description": "For PayPal only this parameter is used.",
           "type": "string",
           "maxLength": 50
         },
@@ -4247,7 +4532,8 @@
       "description": "The product which is represented by a paymentinstrument.",
       "enum": [
         "creditcard",
-        "sepa"
+        "sepa",
+        "klarna"
       ]
     },
     "AddressList": {
@@ -4373,7 +4659,7 @@
           "description": "A list of transactions.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/TransactionResponse"
+            "$ref": "#/definitions/TransactionResponseParent"
           }
         },
         "totalPages": {
@@ -4397,8 +4683,7 @@
         "creditcard",
         "paypal",
         "paydirekt",
-        "bank-transfer",
-        "sofort"
+        "bank-transfer"
       ]
     },
     "TransactionType": {
@@ -4411,6 +4696,18 @@
         "CANCEL",
         "CAPTURE",
         "REFUND"
+      ]
+    },
+    "ArticleTypeEnum": {
+      "title": "ArticleTypeEnum",
+      "type": "string",
+      "description": "the type of the article",
+      "enum": [
+        "physical",
+        "digital",
+        "discount",
+        "shipping_fee",
+        "gift_card"
       ]
     },
     "ApiErrorResponse": {
@@ -5262,19 +5559,6 @@
         "totalPages"
       ]
     },
-    "TanRequest": {
-      "title": "TanRequest",
-      "type": "object",
-      "properties": {
-        "tan": {
-          "description": "The online banking TAN",
-          "type": "string"
-        }
-      },
-      "required": [
-        "tan"
-      ]
-    },
     "Error": {
       "type": "object",
       "properties": {
@@ -5391,12 +5675,12 @@
         {
           "code": 12200,
           "field": "initialAmount",
-          "message": "Field initialAmount is missing.  Expected: Positive integer between 1 and 9999999."
+          "message": "Field initialAmount is missing.  Expected: Positive integer between 1 and 99999999."
         },
         {
           "code": 12201,
           "field": "initialAmount",
-          "message": "Bad value for initialAmount. Expected: Positive integer between 1 and 9999999."
+          "message": "Bad value for initialAmount. Expeted: Positive integer between 1 and 99999999."
         },
         {
           "code": 12202,
@@ -5471,22 +5755,22 @@
         {
           "code": 12225,
           "field": "basket.item.totalPrice",
-          "message": "Field basket.item.totalPrice is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.totalPrice is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12226,
           "field": "basket.item.totalPrice",
-          "message": "Bad value for basket.item.totalPrice. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.totalPrice. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12227,
           "field": "basket.item.totalPriceWithTax",
-          "message": "Field basket.item.totalPriceWithTax is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.totalPriceWithTax is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12228,
           "field": "basket.item.totalPriceWithTax",
-          "message": "Bad value for basket.item.totalPriceWithTax. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.totalPriceWithTax. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12229,
@@ -5501,22 +5785,22 @@
         {
           "code": 12231,
           "field": "basket.item.unitPrice",
-          "message": "Field basket.item.unitPrice is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.unitPrice is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12232,
           "field": "basket.item.unitPrice",
-          "message": "Bad value for basket.item.unitPrice. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.unitPrice. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12233,
           "field": "basket.item.unitPriceWithTax",
-          "message": "Field basket.item.unitPriceWithTax is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.unitPriceWithTax is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12234,
           "field": "basket.item.unitPriceWithTax",
-          "message": "Bad value for basket.item.unitPriceWithTax. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.unitPriceWithTax. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12235,
@@ -5624,9 +5908,14 @@
           "message": "Field payment is missing. Expected: A valid object of type PaymentInstrumentPayment."
         },
         {
-          "code": 12998,
+          "code": 12264,
           "field": "payment.riskIdentId",
-          "message": "Bad value for payment.riskIdentId. Expected: A string object of length between 1 and 255."
+          "message": "Field payment.riskIdentId is missing. Expected: string between 1 and 80 characters."
+        },
+        {
+          "code": 12265,
+          "field": "payment.riskIdentId",
+          "message": "Bad value for payment.riskIdentId. Expected: string between 1 and 80 characters."
         },
         {
           "code": 129999,
@@ -5704,12 +5993,12 @@
         {
           "code": 12200,
           "field": "initialAmount",
-          "message": "Field initialAmount is missing.  Expected: Positive integer between 1 and 9999999."
+          "message": "Field initialAmount is missing.  Expected: Positive integer between 1 and 99999999."
         },
         {
           "code": 12201,
           "field": "initialAmount",
-          "message": "Bad value for initialAmount. Expected: Positive integer between 1 and 9999999."
+          "message": "Bad value for initialAmount. Expected: Positive integer between 1 and 99999999."
         },
         {
           "code": 12202,
@@ -5829,22 +6118,22 @@
         {
           "code": 12225,
           "field": "basket.item.totalPrice",
-          "message": "Field basket.item.totalPrice is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.totalPrice is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12226,
           "field": "basket.item.totalPrice",
-          "message": "Bad value for basket.item.totalPrice. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.totalPrice. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12227,
           "field": "basket.item.totalPriceWithTax",
-          "message": "Field basket.item.totalPriceWithTax is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.totalPriceWithTax is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12228,
           "field": "basket.item.totalPriceWithTax",
-          "message": "Bad value for basket.item.totalPriceWithTax. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.totalPriceWithTax. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12229,
@@ -5859,22 +6148,22 @@
         {
           "code": 12231,
           "field": "basket.item.unitPrice",
-          "message": "Field basket.item.unitPrice is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.unitPrice is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12232,
           "field": "basket.item.unitPrice",
-          "message": "Bad value for basket.item.unitPrice. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.unitPrice. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12233,
           "field": "basket.item.unitPriceWithTax",
-          "message": "Field basket.item.unitPriceWithTax is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.unitPriceWithTax is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12234,
           "field": "basket.item.unitPriceWithTax",
-          "message": "Bad value for basket.item.unitPriceWithTax. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.unitPriceWithTax. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12235,
@@ -6064,17 +6353,27 @@
         {
           "code": 16014,
           "field": "payment.bic",
-          "message": "Field payment.bic is missing. Expected: sstring of length 8 or 11 representing a valid BIC representing a valid german BIC."
+          "message": "Field payment.bic is missing. Expected: string of length 8 or 11 representing a valid BIC representing a valid german BIC."
         },
         {
           "code": 16015,
           "field": "payment.bic",
-          "message": "Bad value for payment.bic. Expected: sstring of length 8 or 11 representing a valid german BIC."
+          "message": "Bad value for payment.bic. Expected: string of length 8 or 11 representing a valid german BIC."
         },
         {
           "code": 16016,
           "field": "payment.accountHolder",
           "message": "Bad value for payment.accountHolder. Expected: string of length between 4 and 128."
+        },
+        {
+          "code": 16031,
+          "field": "payment.countryCode",
+          "message": "Field payment.countryCode is missing. Expected: 2 characters as per ISO 3166-1 alpha-2. Example: DE"
+        },
+        {
+          "code": 16032,
+          "field": "payment.countryCode",
+          "message": "Bad value for  payment.countryCode. Expected: 2 characters as per ISO 3166-1 alpha-2. Example: DE"
         }
       ]
     },
@@ -6087,12 +6386,12 @@
         {
           "code": 12200,
           "field": "initialAmount",
-          "message": "Field initialAmount is missing.  Expected: Positive integer between 1 and 9999999."
+          "message": "Field initialAmount is missing.  Expected: Positive integer between 1 and 99999999."
         },
         {
           "code": 12201,
           "field": "initialAmount",
-          "message": "Bad value for initialAmount. Expected: Positive integer between 1 and 9999999."
+          "message": "Bad value for initialAmount. Expected: Positive integer between 1 and 99999999."
         },
         {
           "code": 12202,
@@ -6212,22 +6511,22 @@
         {
           "code": 12225,
           "field": "basket.item.totalPrice",
-          "message": "Field basket.item.totalPrice is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.totalPrice is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12226,
           "field": "basket.item.totalPrice",
-          "message": "Bad value for basket.item.totalPrice. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.totalPrice. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12227,
           "field": "basket.item.totalPriceWithTax",
-          "message": "Field basket.item.totalPriceWithTax is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.totalPriceWithTax is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12228,
           "field": "basket.item.totalPriceWithTax",
-          "message": "Bad value for basket.item.totalPriceWithTax. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.totalPriceWithTax. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12229,
@@ -6242,22 +6541,22 @@
         {
           "code": 12231,
           "field": "basket.item.unitPrice",
-          "message": "Field basket.item.unitPrice is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.unitPrice is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12232,
           "field": "basket.item.unitPrice",
-          "message": "Bad value for basket.item.unitPrice. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.unitPrice. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12233,
           "field": "basket.item.unitPriceWithTax",
-          "message": "Field basket.item.unitPriceWithTax is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.unitPriceWithTax is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12234,
           "field": "basket.item.unitPriceWithTax",
-          "message": "Bad value for basket.item.unitPriceWithTax. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.unitPriceWithTax. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12235,
@@ -6470,12 +6769,12 @@
         {
           "code": 12200,
           "field": "initialAmount",
-          "message": "Field initialAmount is missing.  Expected: Positive integer between 1 and 9999999."
+          "message": "Field initialAmount is missing.  Expected: Positive integer between 1 and 99999999."
         },
         {
           "code": 12201,
           "field": "initialAmount",
-          "message": "Bad value for initialAmount. Expected: Positive integer between 1 and 9999999."
+          "message": "Bad value for initialAmount. Expected: Positive integer between 1 and 99999999."
         },
         {
           "code": 12202,
@@ -6525,22 +6824,22 @@
         {
           "code": 12225,
           "field": "basket.item.totalPrice",
-          "message": "Field basket.item.totalPrice is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.totalPrice is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12226,
           "field": "basket.item.totalPrice",
-          "message": "Bad value for basket.item.totalPrice. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.totalPrice. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12227,
           "field": "basket.item.totalPriceWithTax",
-          "message": "Field basket.item.totalPriceWithTax is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.totalPriceWithTax is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12228,
           "field": "basket.item.totalPriceWithTax",
-          "message": "Bad value for basket.item.totalPriceWithTax. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.totalPriceWithTax. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12229,
@@ -6555,22 +6854,22 @@
         {
           "code": 12231,
           "field": "basket.item.unitPrice",
-          "message": "Field basket.item.unitPrice is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.unitPrice is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12232,
           "field": "basket.item.unitPrice",
-          "message": "Bad value for basket.item.unitPrice. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.unitPrice. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12233,
           "field": "basket.item.unitPriceWithTax",
-          "message": "Field basket.item.unitPriceWithTax is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.unitPriceWithTax is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12234,
           "field": "basket.item.unitPriceWithTax",
-          "message": "Bad value for basket.item.unitPriceWithTax. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.unitPriceWithTax. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12235,
@@ -6593,12 +6892,12 @@
         {
           "code": 12200,
           "field": "initialAmount",
-          "message": "Field initialAmount is missing.  Expected: Positive integer between 1 and 9999999."
+          "message": "Field initialAmount is missing.  Expected: Positive integer between 1 and 99999999."
         },
         {
           "code": 12201,
           "field": "initialAmount",
-          "message": "Bad value for initialAmount. Expected: Positive integer between 1 and 9999999."
+          "message": "Bad value for initialAmount. Expected: Positive integer between 1 and 99999999."
         },
         {
           "code": 12202,
@@ -6648,22 +6947,22 @@
         {
           "code": 12225,
           "field": "basket.item.totalPrice",
-          "message": "Field basket.item.totalPrice is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.totalPrice is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12226,
           "field": "basket.item.totalPrice",
-          "message": "Bad value for basket.item.totalPrice. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.totalPrice. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12227,
           "field": "basket.item.totalPriceWithTax",
-          "message": "Field basket.item.totalPriceWithTax is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.totalPriceWithTax is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12228,
           "field": "basket.item.totalPriceWithTax",
-          "message": "Bad value for basket.item.totalPriceWithTax. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.totalPriceWithTax. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12229,
@@ -6678,22 +6977,22 @@
         {
           "code": 12231,
           "field": "basket.item.unitPrice",
-          "message": "Field basket.item.unitPrice is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.unitPrice is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12232,
           "field": "basket.item.unitPrice",
-          "message": "Bad value for basket.item.unitPrice. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.unitPrice. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12233,
           "field": "basket.item.unitPriceWithTax",
-          "message": "Field basket.item.unitPriceWithTax is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.unitPriceWithTax is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12234,
           "field": "basket.item.unitPriceWithTax",
-          "message": "Bad value for basket.item.unitPriceWithTax. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.unitPriceWithTax. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12235,
@@ -6716,12 +7015,12 @@
         {
           "code": 12200,
           "field": "initialAmount",
-          "message": "Field initialAmount is missing.  Expected: Positive integer between 1 and 9999999."
+          "message": "Field initialAmount is missing.  Expected: Positive integer between 1 and 99999999."
         },
         {
           "code": 12201,
           "field": "initialAmount",
-          "message": "Bad value for initialAmount. Expected: Positive integer between 1 and 9999999."
+          "message": "Bad value for initialAmount. Expected: Positive integer between 1 and 99999999."
         },
         {
           "code": 12202,
@@ -6771,22 +7070,22 @@
         {
           "code": 12225,
           "field": "basket.item.totalPrice",
-          "message": "Field basket.item.totalPrice is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.totalPrice is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12226,
           "field": "basket.item.totalPrice",
-          "message": "Bad value for basket.item.totalPrice. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.totalPrice. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12227,
           "field": "basket.item.totalPriceWithTax",
-          "message": "Field basket.item.totalPriceWithTax is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.totalPriceWithTax is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12228,
           "field": "basket.item.totalPriceWithTax",
-          "message": "Bad value for basket.item.totalPriceWithTax. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.totalPriceWithTax. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12229,
@@ -6801,22 +7100,22 @@
         {
           "code": 12231,
           "field": "basket.item.unitPrice",
-          "message": "Field basket.item.unitPrice is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.unitPrice is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12232,
           "field": "basket.item.unitPrice",
-          "message": "Bad value for basket.item.unitPrice. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.unitPrice. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12233,
           "field": "basket.item.unitPriceWithTax",
-          "message": "Field basket.item.unitPriceWithTax is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.unitPriceWithTax is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12234,
           "field": "basket.item.unitPriceWithTax",
-          "message": "Bad value for basket.item.unitPriceWithTax. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.unitPriceWithTax. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12235,
@@ -6867,12 +7166,12 @@
         {
           "code": 12200,
           "field": "initialAmount",
-          "message": "Field initialAmount is missing.  Expected: Positive integer between 1 and 9999999."
+          "message": "Field initialAmount is missing.  Expected: Positive integer between 1 and 99999999."
         },
         {
           "code": 12201,
           "field": "initialAmount",
-          "message": "Bad value for initialAmount. Expected: Positive integer between 1 and 9999999."
+          "message": "Bad value for initialAmount. Expected: Positive integer between 1 and 99999999."
         },
         {
           "code": 12202,
@@ -6922,22 +7221,22 @@
         {
           "code": 12225,
           "field": "basket.item.totalPrice",
-          "message": "Field basket.item.totalPrice is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.totalPrice is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12226,
           "field": "basket.item.totalPrice",
-          "message": "Bad value for basket.item.totalPrice. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.totalPrice. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12227,
           "field": "basket.item.totalPriceWithTax",
-          "message": "Field basket.item.totalPriceWithTax is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.totalPriceWithTax is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12228,
           "field": "basket.item.totalPriceWithTax",
-          "message": "Bad value for basket.item.totalPriceWithTax. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.totalPriceWithTax. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12229,
@@ -6952,22 +7251,22 @@
         {
           "code": 12231,
           "field": "basket.item.unitPrice",
-          "message": "Field basket.item.unitPrice is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.unitPrice is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12232,
           "field": "basket.item.unitPrice",
-          "message": "Bad value for basket.item.unitPrice. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.unitPrice. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12233,
           "field": "basket.item.unitPriceWithTax",
-          "message": "Field basket.item.unitPriceWithTax is missing. Expected: positive integer between 1 and 9999999."
+          "message": "Field basket.item.unitPriceWithTax is missing. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12234,
           "field": "basket.item.unitPriceWithTax",
-          "message": "Bad value for basket.item.unitPriceWithTax. Expected: positive integer between 1 and 9999999."
+          "message": "Bad value for basket.item.unitPriceWithTax. Expected: positive integer between 1 and 99999999."
         },
         {
           "code": 12235,
@@ -7082,7 +7381,7 @@
         {
           "code": 8208,
           "field": "birthday",
-          "message": "Bad value for 'birthday'. Expected: UNIX timestamp in ms."
+          "message": "Bad value for 'birthday'. Expected: Milliseconds since epoch representing UTC Date."
         },
         {
           "code": 8209,
@@ -7514,8 +7813,7 @@
       "example": [
         {
           "code": 70013,
-          "message": "Batch file with such id does not exist.",
-          "BatchFileErrors": null
+          "message": "Batch file with such id does not exist."
         }
       ]
     },

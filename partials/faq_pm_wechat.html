@@ -2,16 +2,16 @@
 <div>
 	<h2>Overview</h2>
 	<br/>
-	<h2>What is WeChat?</h2>
-	<br/>
 	<p>
-		With over 1.08 billion monthly active user accouts as of the third quarter of 2018, WeChat has become one of the most impactful mobile products on the planet. Since its start as a chat app, WeChat has grown to become a market-leading platform by connecting people, services, and businesses in China and around the world.
+		As the most popular instant messaging app in China with over 1.08 billion monthly active user accouts as of the third quarter of 2018, WeChat builds a unique social community for its users across the globe. On top of that WeChat built their own payment sollution called WeChat Pay.
 	</p>
 	<br/>
-	<h2>What is WeChat Pay?</h2>
+	<p>
+		WeChat Pay is a wallet solution where customers can place their cards or bank accounts in their WeChat account and initiate payments with their mobile app. With the app the user can either scan a QR-code referencing the order or the app will be automatically opened in case the user shops with the mobile device.
+	</p>
 	<br/>
 	<p>
-		WeChat Pay is China's largest payment processor for offline transactions, but also used all the time for online purchases.The users can connect their UnionPay debit or credit cards to their WeChat wallet, that then enables the user to pay in stores, transfer money to other mobile devices or online. WeChat heavily relies on QR codes, even for payments and transfers.
+		Similar to Alipay there is a very high consumer trust due to the strong brand awareness and WeChat Pay is also a must-have payment method for any businesses that want to reach out to Chinese shoppers.
 	</p>
 	<br/>
 	<br/>
@@ -19,15 +19,6 @@
 	<br/>
 	<p>
 		<img class="" src="/img/faq/wechat/wechat_flow.png" width="100%" />
-	</p>
-	<br/>
-
-	<p>
-		Optionally a user could also execute the payment via the WeChat app (step 2) either scanning a QR-code or opening the app directly while shopping with the mobile device.
-	</p>
-	<br/>
-	<p>
-		<img class="" src="/img/faq/wechat/wechatpayuserexp.png" width="100%" />
 	</p>
 	<br/>
 	<br/>
@@ -52,11 +43,16 @@
 				<div class="individual-plan">
 					<ul>
 						<li class="header ms-hover"></li>
-						<li class="ms-hover">WeChat</li>
+						<li class="ms-hover">wechat-pay</li>
 						<li class="ms-hover">ecom</li>
 						<li class="ms-hover">EUR, USD</li>
-						<li class="ms-hover">Denmark, Finland, France, Germany, Greece, Hungary Iceland, Ireland, Italy, Liechtenstein, Luxembourg Malta, Holland, Norway, Portugal, Spain, Sweden United Kingdom, Austria, Belgium
-						<br/>Important: Currently not working for Switzerland</li>
+						<li class="ms-hover">
+							crossborder outside of China
+							<br/>
+							supported merchant locations:
+							<br/>
+							AT, BE, DE, DK, FI, FR, ES, GB, GR, HU, IE, IT, IS, LI, LU, MT, NL, NO, PT, SE
+						</li>
 						<li class="ms-hover">asynchronous</li>
 						<li class="ms-hover">no</li>
 						<li class="ms-hover">no</li>
@@ -125,7 +121,7 @@
 	<h2>Technical Flow</h2>
 	<br/>
 	<p>
-		<img class="" src="/img/faq/wechat/alipay_flow.png" width="100%" />
+		<img class="" src="/img/faq/wechat/wechat_flow_diagram.png" width="100%" />
 	</p>
 	<br/>
 	<h4>Webhook notifications</h4>
@@ -135,7 +131,7 @@
 	</p>
 	<br/>
 	<p>
-		The Alipay notifications could be subscribed.
+		The WeChat notifications could be subscribed
 	</p>
 	<ul>
 		<li>via the payengine API
@@ -151,7 +147,7 @@
 	</ul>
 	<br/>
 	<p>
-		The following events have to be subscribed for in order to receive the Alipay notifications, depending on the preferred source of notification.
+		The following events have to be subscribed for in order to receive the WeChat notifications, depending on the preferred source of notification.
 	</p>
 	<br/>
 	<table border="1">
@@ -195,7 +191,7 @@
 		<br/>
 		<h3>WeChat input parameters</h3>
 		<br/>
-		<p>The following input parameters are required for initiating an Alipay payment via direct API integration.</p>
+		<p>The following input parameters are required for initiating an WeChat payment via direct API integration.</p>
 		<br/>
 		<table border="1">
 			<tr>
@@ -217,7 +213,7 @@
 					payment.accountHolder
 				</td>
 				<td>
-					M
+					O
 				</td>
 				<td>
 					Name of the bank account holder
@@ -280,20 +276,6 @@
 				</td>
 				<td>
 					http://my.shop.com/cancel
-				</td>
-			</tr>
-			<tr>
-				<td>
-					meta.mobileView
-				</td>
-				<td>
-					O
-				</td>
-				<td>
-					Set to “true” for the mobile enabled variant of Alipay
-				</td>
-				<td>
-					true
 				</td>
 			</tr>
 		</table>
@@ -973,12 +955,6 @@
 	<div>
 		<br/>
 		<h2>Settlements</h2>
-		<br/>
-		<p><strong>Settlement per amount:</strong> The minimum amount of transfer to Merchant is 800 USD or its equivalent in other currencies. If the settlement payment to Merchant is less than 800 USD or its equivalent in other currencies in any settlement period, such settlement payment will not be remitted to Merchant and will be accrued to the next settlement period.
-		</p>
-		<br/>
-		<p><strong>Settlement Period:</strong> The minimum amount of transfer to Merchant is 800 USD or its equivalent in other currencies. If the settlement payment to Merchant is less than 800 USD or its equivalent in other currencies in any settlement period, such settlement payment will not be remitted to Merchant and will be accrued to the next settlement period.
-		</p>
 		<br/>
 		<p>All settlement information will be provided in the Unified Settlement Report. The format and mappings can be found in the corresponding documentation (see
 			<a href="https://docs.payengine.de/merchantcenter/settlement_report">

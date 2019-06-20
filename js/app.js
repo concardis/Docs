@@ -37,6 +37,8 @@ angular.module('StudyCraneApp',[
   .when('/contact', {templateUrl: 'partials/contact.html'})
 	.when('/batch', {templateUrl: 'partials/batch.html', controller:'batchCtrl'})
 	.when('/batch/:id', {templateUrl: 'partials/batch.html', controller:'batchCtrl'})
+	.when('/notifications', {templateUrl: 'partials/notifications.html', controller:'notificationsCtrl'})
+	.when('/notifications/:id', {templateUrl: 'partials/notifications.html', controller:'notificationsCtrl'})
   .when('/merchantcenter', {templateUrl: 'partials/merchantcenter.html', controller:'merchantcenterCtrl'})
   .when('/merchantcenter/:id', {templateUrl: 'partials/merchantcenter.html', controller:'merchantcenterCtrl'});
 
@@ -222,6 +224,16 @@ console.log("trying start REDOCS");
     $scope.cur = $routeParams.id;
   else
     $scope.cur ="overview";
+
+
+}])
+.controller('notificationsCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', '$routeParams', function($rootScope, $scope, $http, backendService, $timeout, $routeParams) {
+	$rootScope.site = "notifications";
+
+  if($routeParams.id)
+    $scope.cur = $routeParams.id;
+  else
+    $scope.cur ="notifications_api";
 
 
 }])

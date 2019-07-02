@@ -23,7 +23,7 @@
    <h2>Introduction</h2>
    <br/>
    <p>Main purpose of notifications is to inform merchants properly when specific events or updates occur within a payment process.</p>
-   <p>Notifications are highly recommended for all asynchronous payment methods (when end customer is redirected to a hosted payment page of the payment method). For synchronous payment methods notifications are possible but not critical from security perspective.
+   <p>Notifications are highly recommended for all asynchronous payment methods (where further actions from end customer are required). For synchronous payment methods notifications are possible but not critical from security perspective.
    </p>
 </div>
 
@@ -1481,7 +1481,7 @@
     <p>Successful receiving of notifications for subscribed events is underpinned by Payengine retry mechanism.
     </p>
     <br/>
-    <p>Retry mechanism is applicable for both webhook and email notifications and it covers three tiers of attempts to send a notification described in the table below.
+    <p>Retry mechanism is applicable for both webhook and email notifications and it covers three tiers of attempts to send a notification which are described in the table below.
     </p>
     <br/>
     <table border="1px solid black">
@@ -1510,6 +1510,12 @@
         </tr>
       </tbody>
     </table>
+    <br/>
+    <p>When the server which is required to receive the notification is down a retry attempt will be executed. Depending on its number the retry attempt will be executed with a predefined delay which is specific for each tier of retries.
+    </p>
+    <br/>
+    <p>The total number of retry attempts for a notification is 16 - the sum of all attempts from all tiers and one more additional attempt.
+    </p>
     <br/>
   </div>
 

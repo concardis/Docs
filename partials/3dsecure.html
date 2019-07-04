@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+
+        <br>
+    </div>
+    <div class="col-md-1">
+    </div>
+</div>
+<img src="img/CC_MC.jpeg" width="100%"></img>
+<div class="row">
+    <br>
+    <div class="col-md-1"></div>
+    <div ng-init="menu=true;" class="col-md-2 btn-group-vertical">
+        <button type="button" class="btn btn-light text-left" ng-click="menu=!menu"><h3>3D Secure</h3> </button>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/3dsecure/3dsecure_v1">3DS 1.0</a>
+        <!-- <a type="button" ng-show="menu" class="btn btn-light text-left" href="/3dsecure/3dsecure_v2">3DS 2.0</a> -->
+        <br/>
+    </div>
+    <div class="col-md-8">
+      <div ng-show="cur=='3dsecure_v1'">
+          <div  ng-include="'/partials/3dsecure/3dsecure_v1.html'">
+          </div>
+      </div>
+      <!-- <div ng-show="cur=='3dsecure_v2'">
+          <div  ng-include="'/partials/3dsecure/3dsecure_v2.html'">
+          </div>
+      </div> -->
+    </div>
+</div>

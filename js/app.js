@@ -40,7 +40,10 @@ angular.module('StudyCraneApp',[
 	.when('/notifications', {templateUrl: 'partials/notifications.html', controller:'notificationsCtrl'})
 	.when('/notifications/:id', {templateUrl: 'partials/notifications.html', controller:'notificationsCtrl'})
   .when('/merchantcenter', {templateUrl: 'partials/merchantcenter.html', controller:'merchantcenterCtrl'})
-  .when('/merchantcenter/:id', {templateUrl: 'partials/merchantcenter.html', controller:'merchantcenterCtrl'});
+  .when('/merchantcenter/:id', {templateUrl: 'partials/merchantcenter.html', controller:'merchantcenterCtrl'})
+	.when('/3dsecure', {templateUrl: 'partials/3dsecure.html', controller:'3dsecureCtrl'})
+	.when('/3dsecure/:id', {templateUrl: 'partials/3dsecure.html', controller:'3dsecureCtrl'});
+
 
 	$httpProvider.defaults.useXDomain = true;
 	delete $httpProvider.defaults.headers.common['X-Requested-With'];
@@ -234,6 +237,17 @@ console.log("trying start REDOCS");
     $scope.cur = $routeParams.id;
   else
     $scope.cur ="notifications_api";
+
+
+}])
+
+.controller('3dsecureCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', '$routeParams', function($rootScope, $scope, $http, backendService, $timeout, $routeParams) {
+	$rootScope.site = "3dsecure";
+
+  if($routeParams.id)
+    $scope.cur = $routeParams.id;
+  else
+    $scope.cur ="3dsecure_v1";
 
 
 }])

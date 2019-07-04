@@ -13,19 +13,19 @@
     <br>
     <div class="col-md-1"></div>
     <div ng-init="menu=true;" class="col-md-2 btn-group-vertical">
-        <button type="button" class="btn btn-light text-left" ng-click="menu=!menu"><h3>Notifications</h3> </button>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/notifications/notifications_api">Notifications in API</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/notifications/notifications_mc">Notifications in MC</a>
+        <button type="button" class="btn btn-light text-left" ng-click="menu=!menu"><h3>3D Secure</h3> </button>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/3dsecure/3dsecure_v1">3DS 1.0</a>
+        <!-- <a type="button" ng-show="menu" class="btn btn-light text-left" href="/3dsecure/3dsecure_v2">3DS 2.0</a> -->
         <br/>
     </div>
     <div class="col-md-8">
-      <div ng-show="cur=='notifications_mc'">
-          <div  ng-include="'/partials/notifications/notifications_mc.html'">
+      <div ng-show="cur=='3dsecure_v1'">
+          <div  ng-include="'/partials/3dsecure/3dsecure_v1.html'">
           </div>
       </div>
-      <div ng-show="cur=='notifications_api'">
-          <div  ng-include="'/partials/notifications/notifications_api.html'">
+      <!-- <div ng-show="cur=='3dsecure_v2'">
+          <div  ng-include="'/partials/3dsecure/3dsecure_v2.html'">
           </div>
-      </div>
+      </div> -->
     </div>
 </div>

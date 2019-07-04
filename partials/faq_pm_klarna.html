@@ -2,7 +2,7 @@
 <br/>
 <div>
 	<h2>Overview</h2>
-	</br>
+	<br/>
 	<p>
 		Klarna is a Swedish payment service provider and a licensed bank that offers a wide variety of payment solutions for e-commerce business eliminating the risk for seller and buyer. Klarna offers the following three payment methods which are all factored, meaning that there is a guaranteed payment for the merchant:
 	</p>
@@ -20,7 +20,7 @@
 	<p>
 		Merchants can choose which of these payment methods should be enabled for them, depending on their preferences and specific characteristics of their business.
 	</p>
-	</br>
+	<br/>
 	<h2>Customer Experience</h2>
 	<ol>
 		<li>
@@ -60,17 +60,17 @@
 		</li>
 	</ol>
 
-	</br>
+	<br/>
 	<h2>Payengine Details</h2>
-	</br>
+	<br/>
 	<p>
 		Klarna offers solutions for B2C and B2B to merchants. Details for those two cases can be found below.
 	</p>
-	</br>
+	<br/>
 	<p>
 		All Klarna Payment Methods are applicable in case the end customer is an individual.
 	</p>
-	</br>
+	<br/>
 	<div>
 		<div class="content-box-wrapper">
 			<table class="row clearfix">
@@ -161,11 +161,11 @@
 			</table>
 		</div>
 
-		</br>
+		<br/>
 		<p>
 			Only 'Pay Later' payment method is applicable in case the end customer is a business.
 		</p>
-		</br>
+		<br/>
 		<div class="content-box-wrapper">
 			<table class="row clearfix">
 				<tr class="header ms-hover">
@@ -220,7 +220,7 @@
 			</table>
 		</div>
 
-		</br>
+		<br/>
 		<div class="content-box-wrapper">
 			<table class="row clearfix">
 				<tr class="header ms-hover">
@@ -263,11 +263,11 @@
 			</table>
 		</div>
 
-		</br>
+		<br/>
 		<p>
 			Listed types of integration are present for all three Klarna payment methods
 		</p>
-		</br>
+		<br/>
 		<div class="content-box-wrapper">
 			<table class="row clearfix">
 				<tr class="header ms-hover">
@@ -295,9 +295,9 @@
 		</div>
 
 	</div>
-	</br>
+	<br/>
 	<h2>Integration via Widget</h2>
-	</br>
+	<br/>
 	<div>
 		<p>
 			Widget integration for Klarna Payment Methods follows general rules and flow of widget integration for all payment methods and it has no specific differences.
@@ -306,19 +306,19 @@
 			Information about general types of widget integration and their associated flows can be found under the following link: <a>https://docs.payengine.de/outofthebox/widgetmenu/ourwidget</a>
 		</p>
 	</div>
-	</br>
+	<br/>
 	<div>
 		<h2>Integration via API</h2>
-		</br>
+		<br/>
 		<h4>Step 1: General prerequisites for transactions</h4>
-		</br>
+		<br/>
 		<p><strong>Prerequisites for transactions in B2C Cases<strong></p>
 		<p>In case the end customer is an individual Klarna requires additional customer and address information.</p>
 		<p>Therefore <b>prior to</b> the creation of any payment transaction the merchant needs to have a <b>Customer</b> in place connected with <b>Persona</b> and <b>Billing/Shipping Address</b> data.</p>
-		</br>
+		<br/>
 		<p><strong><u>Customer</u><strong></p>
 		<p>A new customer has to be created or existing customer ID has to be provided.</p>
-		</br>
+		<br/>
 		<p><i>Create Customer</i> (POST/customer) - for the creation of a new customer the following specific request parameter must be available:</p>
 		<table class="table table-bordered table-striped table-condensed">
 				<thead>
@@ -338,7 +338,7 @@
 				</tr>
 				</tbody>
 		</table>
-		</br>
+		<br/>
 		<p>Examples for <i>Create Customer</i> request and <i>Create Customer</i> response when the customer is an individual can be found below.</p>
 		<div class="example-box-wrapper">
 			<div class="content-box" ng-init="createCustomerRequestShow=false">
@@ -399,7 +399,7 @@
 
 		<p><strong><u>Persona</u><strong></p>
 		<p>Specific request parameters for Persona element can be found in the table below.</p>
-		</br>
+		<br/>
 		<table class="table table-bordered table-striped table-condensed">
 				<thead>
 					<tr>
@@ -460,7 +460,7 @@
 				</tr>
 				</tbody>
 		</table>
-		</br>
+		<br/>
 		<p>Examples for <i>Create Persona</i> request and <i>Create Persona</i> response can be found below</p>
 
 		<div class="example-box-wrapper">
@@ -524,13 +524,13 @@
 				</div>
 			</div>
 		</div>
-		</br>
+		<br/>
 		<p><strong><u>Billing Address & Shipping Address</u><strong></p>
 		<p>Billing Address and Shipping Address have to be created as separate objects. However, when the end customer is an individual, in most of the cases, Billing Address and Shipping Address are identical.</p>
 		<p>In such scenario both objects will have identical ID.</p>
 		<p>If this is not the case a different shipping address has to be specified and it will have different ID compared to Billing Address.</p>
 		<p>For both type of addresses the specific request parameters are the same and they can be found in the table below.</p>
-		</br>
+		<br/>
 		<table class="table table-bordered table-striped table-condensed">
 			<thead>
 				<tr>
@@ -615,7 +615,7 @@
 				</tr>
 			</tbody>
 		</table>
-		</br>
+		<br/>
 		<p>Examples for Create <i>Billing/Shipping Address</i> request and Create <i>Billing/Shipping Address</i> response can be found below.</p>
 
 		<div class="example-box-wrapper">
@@ -694,10 +694,10 @@
 		<p><strong>Prerequisites for transactions in B2B Cases<strong></p>
 		<p>Similar to the B2C requirements described above customer and address information is also required for B2B.</p>
 		<p>The main difference compared to B2C cases is that the Customer and Billing Address elements must contain additional parameters.</p>
-		</br>
+		<br/>
 		<p><strong><u>Customer</u></strong></p>
 		<p>All specific request parameters for Customer  element in case the end customer is an organization can be found in the table below.  .</p>
-		</br>
+		<br/>
 		<table class="table table-bordered table-striped table-condensed">
 			<thead>
 				<tr>
@@ -740,7 +740,7 @@
 				</tr>
 			</tbody>
 		</table>
-		</br>
+		<br/>
 		<p>Examples for <i>Create Customer</i> request and <i>Create Customer</i> response when customer is an organization can be found below.</p>
 
 		<div class="example-box-wrapper">
@@ -808,7 +808,7 @@
 		<p><strong>Billing Address<strong></p>
 		<p>The <i>Billing Address</i> element must contain two additional parameters compared to its parameters in B2C cases.</p>
 		<p>Additional parameters for element Billing Address can be found in the table below.</p>
-		</br>
+		<br/>
 		<table class="table table-bordered table-striped table-condensed">
 			<thead>
 				<tr>
@@ -834,12 +834,12 @@
 			</tbody>
 		</table>
 
-		</br>
-		</br>
+		<br/>
+		<br/>
 		<p><strong>Payment Instrument<strong></p>
-		</br>
+		<br/>
 		<p><i>POST {{publicApiUrl}}/v1/payment-instruments</i></p>
-		</br>
+		<br/>
 		<div class="example-box-wrapper">
 			<div class="content-box" ng-init="createCustomerResponseShow=false">
 				<h3 class="content-box-header bg-default">
@@ -907,7 +907,7 @@
 				</div>
 			</div>
 		</div>
-		</br>
+		<br/>
 		<div class="example-box-wrapper">
 			<div class="content-box" ng-init="createCustomerResponseShow=false">
 				<h3 class="content-box-header bg-default">
@@ -949,13 +949,13 @@
 		</div>
 
 
-		</br>
-		</br>
+		<br/>
+		<br/>
 		<p><strong>PATCH the Payment Instrument<strong></p>
-		</br>
+		<br/>
 		<p>The preffered Klarna product  should be set in the parameter "type" (e.g klarna-pay-later)</p>
 		<p><i>PATCH {{publicApiUrl}}/v1/payment-instruments/{{paymentInstrumentId}}</i></p>
-		</br>
+		<br/>
 		<div class="example-box-wrapper">
 			<div class="content-box" ng-init="createCustomerResponseShow=false">
 				<h3 class="content-box-header bg-default">
@@ -1022,7 +1022,7 @@
 				</div>
 			</div>
 		</div>
-		</br>
+		<br/>
 		<div class="example-box-wrapper">
 			<div class="content-box" ng-init="createCustomerResponseShow=false">
 				<h3 class="content-box-header bg-default">
@@ -1064,13 +1064,13 @@
 		</div>
 
 		<h4>Step 2 A:  Preauth & Capture</h4>
-		</br>
+		<br/>
 		<p><strong>Preauth & Capture<strong></p>
 		<p>The 'Preauth' transaction unlike the 'Debit' transaction isn't directly booking the initial amount of the order, it should be followed by 'Capture' transaction in order to receive the funds.</p>
-		</br>
+		<br/>
 		<p><strong><u>Create Preauth</u><strong></p>
 		<p>Examples for <i>Create Preauth</i> request and <i>Create Preauth</i> response can be found below:</p>
-		</br>
+		<br/>
 		<div class="example-box-wrapper">
 			<div class="content-box" ng-init="createCustomerRequestShow=false">
 				<h3 class="content-box-header bg-default">
@@ -1465,7 +1465,7 @@
 		<p><strong><u>Create Capture</u><strong></p>
 		<p><strong>Important:<strong>Existing and not expired 'Preauth' transaction in 'Success' status has to be in place when creating a 'Capture' transaction.</p>
 		<p>A 'Capture' transaction can be created for amount not bigger than initial amount of 'Preauth' transaction. Klarna payment methods enable full and partial capture of the initial amount of the order.</p>
-		</br>
+		<br/>
 		<p>Examples for <i>Create Capture</i> request and <i>Create Capture</i> response can be found below:</p>
 
 		<div class="example-box-wrapper">
@@ -2132,11 +2132,11 @@
 		</div>
 
 		<p>The flow of  both 'Preauth' and 'Capture' transactions is presented in the diagram below:</p>
-		</br>
+		<br/>
 		<img class="" src="/img/faq/klarna/Preauth Capture Flow.png" width="100%" />
-		</br>
+		<br/>
 		<p><strong><u>Cancel</u></strong></p>
-		</br>
+		<br/>
 		<p>Any pre-authorized order can still be cancelled as long as the order has not been captured.</p>
 		<p>A 'Cancel' transaction can be created for amount not bigger than initial amount of 'Preauth' transaction.</p>
 		<p>Klarna payment methods enable full and partial cancelations of the initial amount of the order.</p>
@@ -2167,7 +2167,7 @@
 <br/>
 		<h2>Recurring Payments</h2>
 		<p>Recurring payments are possible for Klarna payment methods and they are based on reusing existing payment instrument.</p>
-		</br>
+		<br/>
 		<p>The following steps lead to successful execution of a recurring payment:</p>
 		<br/>
 		<p><strong>Step 1</strong> - Create payment instrument in either Preauth or Debit transaction</p>

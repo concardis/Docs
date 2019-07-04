@@ -42,7 +42,7 @@ angular.module('StudyCraneApp',[
   .when('/merchantcenter', {templateUrl: 'partials/merchantcenter.html', controller:'merchantcenterCtrl'})
   .when('/merchantcenter/:id', {templateUrl: 'partials/merchantcenter.html', controller:'merchantcenterCtrl'})
 	.when('/3dsecure', {templateUrl: 'partials/3dsecure.html', controller:'3dsecureCtrl'})
-	.when('/3dsecure/:id', {templateUrl: 'partials/3dsecure.html', controller:'n3dsecureCtrl'});
+	.when('/3dsecure/:id', {templateUrl: 'partials/3dsecure.html', controller:'3dsecureCtrl'});
 
 
 	$httpProvider.defaults.useXDomain = true;
@@ -247,7 +247,7 @@ console.log("trying start REDOCS");
   if($routeParams.id)
     $scope.cur = $routeParams.id;
   else
-    $scope.cur ="3dsecure_api";
+    $scope.cur ="3dsecure_v1";
 
 
 }])

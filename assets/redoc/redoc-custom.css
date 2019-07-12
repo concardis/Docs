@@ -1,0 +1,34 @@
+
+
+div[data-section-id]:nth-of-type(2),
+div[data-section-id]:nth-of-type(3),
+div[data-section-id]:nth-of-type(2) > div[data-section-id] {
+  padding: 0 !important;
+}
+
+a[target] {
+  display: none !important;
+}
+.main-header{
+  visibility: hidden !important;
+  position: absolute;
+}
+
+label{
+  font-weight: normal !important;
+}
+
+.tabs-nav li a, .main-header .header-nav > li > a,
+.hero-heading, .hero-text, h1, h2, h3, h4, h5, h6,
+.main-header .header-nav > li > a, .hero-heading, .hero-text{
+  margin-block-start: 1em !important;
+  margin-block-end: 1em !important;
+  margin-inline-start: 0px !important;
+  margin-inline-end: 0px !important;
+}
+
+h3{
+  font-size: 1.17em  !important;
+  font-weight: bold !important;
+  font-family: Roboto,sans-serif !important;
+}

@@ -1,21 +1,8 @@
 
-<!-- <ul>
-  <li><a href="#overview" name="">3D Secure Overview - V2</a></li>
-  <ul>
-    <li><a href="#secure" name="">3D Secure at a Glance</a></li>
-    <li><a href="#benefits" name="">Benefits of 3D Secure usage</a></li>
-  </ul>
-  <li><a href="#steps" name="">3D Secure v1 Steps</a></li>
-  <ul>
-    <li><a href="#step_1" name="">Step 1 - Check Enrollment</a></li>
-    <li><a href="#step_2" name="">Step 2 - Cardholder Authentication</a></li>
-    <li><a href="#step_3" name="">Step 3 - Authorizing the transaction by the Acquiring bank</a></li>
-    <li><a href="#step_4" name="">Step 4 - Redirecting Cardholder to the payment result page</a></li>
-  </ul>
-</ul> -->
 <ul>
-  <li><a href="#overview" name="">Introduction</a></li>
-  <li><a href=""></a></li>
+  <li><a href="#authenticationWithPayment" name="">Authentication with Payment</a></li>
+  <li><a href="#authenticationWithoutPayment">Authentication without Payment</a></li>
+  <li><a href="#authenticationViaAgent">Authentication via Agent</a></li>
   <ul>
     <li><a href="#secure" name="">3D Secure at a Glance</a></li>
     <li><a href="#benefits" name="">Benefits of 3D Secure usage</a></li>
@@ -29,32 +16,65 @@
   </ul>
 </ul>
 
-<div id="overview">
+<div id="authenticationWithPayment">
   <br/>
   <br/>
-  <h2>3D Secure Overview</h2>
+  <h2>Authentication with Payment</h2>
+  <br/>
+  <p>An authentication with payment is the most common scenario of using a 3DS v2 authentication and the corresponding SCA. In this case the customer places an e-commerce order and the authentication will be initiated in the same session as the actual payment transaction.</p>
+  <br/>
+  <p>For such scenarios the payment authorization is always a cardholder initiated transaction (CIT).</p>
+  <br/>
+  <p>Once the card transaction is triggered the customer will first be sent into the authentication (frictionless or challenge flow) and afterwards the results of the authentication will be directly used for the payment transaction which could be an authorization or a debit.</p>
+  <br/>
+  <img class="" src="/img/3dsecure/authentication_with_payment.png" width="40%" />
+  <br/>
+  <p>The payment transaction could be a simple onetime purchase or could be the initial transaction using one of the credential-on-file use cases (oneclick, recurring unscheduled, recurring scheduled).</p>
+  <br/>
+  <p>More details about the credential-on-file feature & uses cases can be found <a href="https://concardis.stagil.de/confluence/pages/viewpage.action?pageId=21476684">here</a>.</p>
+  <br/>
+</div>
+<div id="authenticationWithoutPayment">
+  <br/>
+  <h2>Authentication without Payment</h2>
+  <br/>
+  <p>An authentication without a payment can be used in case a merchant wants to store the card credentials of a customer for future payment transactions, but no payment transaction should be initiated at this time.</p>
+  <br/>
+  <p>A typical use case could be the merchant account creation for a subscription model (recurrring). A merchant can already authenticate the cardholder at the time the card credentials are stored.</p>
+  <br/>
+  <img class="" src="/img/3dsecure/authentication_without_payment.png" width="40%" />
+  <br/>
+  <p>If such authentication is combined with a card-check (a zero amount authorization) the card check can be referenced as the initial transaction of a recurring model.</p>
+  <br/>
+  <p>The first actual payment transaction can then be done as a merchant initiated transaction (MIT) without any further 3DS authentication required. Only the initial authorization form the card check has to be referenced, which could be automatically be done by the Payengine if the merchant integrates the credential-on-file feature.</p>
+  <br/>
+</div>
+<div id="authenticationViaAgent">
+  <br/>
+  <h2>Authentication via Agent</h2>
+  <br/>
+  <p>In an agent model an agent is selling another merchant's products or services. Within a checkout a customer could just purchase products or services from one merchant but also from multiple at once. A typical example would be an online travel agency where the customer orders a travel combined with a rental car, both services from different providers.</p>
+  <br/>
+  <p>In such model the agent (e.g. travel agency) will trigger the authentication for the full purchase and forward the results to the various merchants that will initiate the actual payment transactions referencing the authentication done by the agent.</p>
+  <br/>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
   <div id="webhook">
-    <br/>
-    <br/>
-    <h3>3D Secure at a Glance</h3>
-    <br/>
-    <p>3D Secure is a security protocol that is designed to provide an additional layer of security for payment cards and online transactions. The name 3D comes from the three-domain model designed to provide an additional layer of secure authentication between the financial authorization process and online authentication process. The three domains used to provide this security are:</p>
-    <ul>
-      <li><strong>Acquirer Domain:</strong> It encompasses systems and functions of the acquiring bank (merchant's bank) and the merchant receiving the transaction payment. The main component of the domain is <strong>Merchant Plug-In (MPI)</strong> that creates and processes payer authentication messages and then returns control to the merchant software for further authorization processing.</li>
-      <li><strong>Issuer Domain:</strong> It encompasses systems and functions of the card issuing financial institutions and its customers. The main component of the domain is <strong>Access Control Server (ACS)</strong> that verifies whether authentication is available for a card number and device type</li>
-      <li><strong>Interoperability Domain: </strong> It encompasses systems, functions and messages that allow the Issuer Domain and Acquirer Domain to interoperate. Its components are globally operated and managed by card schemes. The main component of the domain is <strong>Directory Server (DS)</strong> that authenticates the 3DS Server requests and validates the 3DS requestor as trusted and registered.</li>
-    </ul>
-    <br/>
-    <p>Described three domains and corresponding components are presented below:</p>
-    <br/>
+    
     <img class="" src="/img/3dsecure/3ds_v1.png" width="60%" />
-    <br/>
-    <p>The following 3 D Security authentication services are supported and integrated on Payengine:</p>
-    <ul>
-      <li>American Express SafeKey</li>
-      <li>Mastercard SecureCode</li>
-      <li>Visa Secure (formerly Verified by Visa)</li>
-    </ul>
+    
   </div>
   <div id="secure">
     <br/>

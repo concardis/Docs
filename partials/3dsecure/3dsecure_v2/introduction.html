@@ -1,0 +1,94 @@
+
+<ul>
+  <li><a href="#overview" name="">3DS 2.0 and Strong Customer Authentication</a></li>
+  <li><a href="#frictionlessFlow">Frictionless Flow</a></li>
+  <li><a href="#mainDifferencesTo3ds">Main Differences to 3DS 1.0</a></li>
+</ul>
+
+<div id="strongCustomerAuthentication">
+  <br/>
+  <br/>
+  <h2>3DS 2.0 and Strong Customer Authentication</h2>
+  <div id="webhook">
+    <br/>
+    <p>By the 14th of September 2019 a strong customer authentication (SCA) will be required for online credit card payments according to the Payment Service Directive II (PSDII) announced by European Banking Authority (EBA).</p>
+    <br/>
+    <p>The cardholder has to authenticate him-/herself with two of the following three authentication factors.</p>
+    <br/>
+    <table border="1px solid black" class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th style="text-align: center;">
+            <img class="" src="/img/3dsecure/knowledge.png"/>
+            <p><b>Knowledge</b></p>
+            <br/>
+            <p>Something you know, e.g. a password, PIN or other security questions only known by the customer.</p>
+          </th>
+          <th style="text-align: center;">
+            <img class="" src="/img/3dsecure/possession.png"/>
+            <p><b>Possession</b></p>
+            <br/>
+            <p>Something you own, e.g. a a smartphone, token or any other item owned by the customer.</p>
+          </th>
+          <th style="text-align: center;">
+            <img class="" src="/img/3dsecure/inherence.png"/>
+            <p><b>Inherence</b></p>
+            <br/>
+            <p>Something you are, e.g. a fingerprint or any aspects or biometrical attributes which individually mark the customer.</p>
+          </th>
+        </tr>
+      </thead>
+    </table>
+    <br/>
+    <p>In order to fulfil the PSDII requirements for online credit card payments a new version of the 3D Secure authentication protocol has been designed by EMVCo, which all stakeholders in the credit card environment (card schemes, issuer, acquirer, merchant) have to support by the 14th of September 2019.</p>
+    <br/>
+    <p>A 3DS 2.0 authentication has to be initiated either as part of the storage of credit card credentials or before an actual credit card payment. The SCA will be performed as a challenge to the cardholder asking for two of the three mentioned authentication factors. Which factors will be used is up to the card issuing bank who will be in charge of the challenge. The challenge window can now be integrated as an iFrame into the checkout, rather than fully redirecting the cardholder to a page hosted by the issuer.</p>
+    <br/>
+    <p>As for 3DS 1.0 also 3DS 2.0 will give the merchant a full liability shift to the issuer if an authentication has been initiated successfully.</p>
+    <br/>
+  </div>
+  <div id="frictionlessFlow">
+    <br/>
+    <h2>Frictionless Flow</h2>
+    <br/>
+    <p>As there are much more input parameters supported with 3DS 2.0 (see <a href="https://concardis.stagil.de/confluence/display/PAY/%5BPubDoc%5D+3DSv2+-+Parameters">Parameters</a>) card issuing banks can perform their own transaction risk analysis based on that, wherever this allowed by PSDII.</p>
+    <br/>
+    <p>Depending on the outcome of the analysis this could mean that issuers fully authenticate cardholders without any challenge. This will improve the user experience but especially the conversion for merchants lot compared to version 3DS 1.0.</p>
+  </div>
+  <br/>
+  <div id="#mainDifferencesTo3ds">
+    <br/>
+    <h2>Main Differences to 3DS 1.0</h2>
+    <br/>
+    <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+      <thead>
+        <tr>
+          <th style="text-align: center;">3DS 1.0</th>
+          <th style="text-align: center;">3DS 2.0</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Authentication always connected to a payment transaction</td>
+          <td>Authentication can be initated without a payment</td>
+        </tr>
+        <tr>
+          <td>Cardholder is sent into challenge by default</td>
+          <td>Frictionless flow supported by issuers</td>
+        </tr>
+        <tr>
+          <td>Bad customer experience due to bad implementation with some issuing banks</td>
+          <td>Improved customer experience due to support of frictionless flow and standardized implementation for all issuers</td>
+        </tr>
+        <tr>
+          <td>Challenge/authentication via full redirect</td>
+          <td>Challenge can be integrated as an iFrame</td>
+        </tr>
+        <tr>
+          <td>Support of SCA is not mandatory</td>
+          <td>Support of SCA is mandatory</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

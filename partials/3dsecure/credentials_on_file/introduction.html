@@ -1,0 +1,150 @@
+
+<ul>
+  <li><a href="#whatIsCof" name="">What is credential-on-file?</a></li>
+    <ul>
+      <li><a href="#consent">Consent</a></li>
+      <li><a href="#flaggingOfCredential-on-fileTransactions">Flagging of credential-on-file transactions</a></li>
+    </ul>
+  <li><a href="#useCases">Use Cases</a></li>
+    <ul>
+      <li><a href="#oneClick">One-click</a></li>
+      <li><a href="#recurringScheduled">Recurring Scheduled</a></li>
+      <li><a href="#recurringUnscheduled">Recurring Unscheduled</a></li>
+      <li><a href="#installments">Installments</a></li>
+    </ul>
+</ul>
+
+<div id="whatIsCof">
+  <br/>
+  <br/>
+  <h2>What is credential-on-file?</h2>
+    <br/>
+    <p>A credential-on-file (COF) transaction is a card transaction where the cardholder allows the merchant to store the card credentials permanently for future usage.</p>
+    <br/>
+    <p>Such transactions and the storage of the credentials are regulated by the card schemes (e.g. Visa, Mastercard) and have to follow some rules.</p>
+    <br/>
+    <p>The main purpose of these rules is to enable easy identification of credentials storage and their further use in subsequent transactions which will ensure more appropriate processing of payment transactions, better authorization approval rates and increase in number of successfully completed commercial orders.</p>
+    <br/>
+</div>
+<div id="consent">
+  <br/>
+  <h3>Consent</h3>
+  <br/>
+  <p>Prior to storing any payment card related credentials a merchant or its agent, payment facilitator or staged digital wallet operator have to establish a consent with the cardholder.</p>
+</div>
+<br/>
+<div id="flaggingOfCredential-on-fileTransactions">
+  <br/>
+  <h3>Flagging of credential-on-file transactions</h3>
+  <br/>
+  <p>Each transaction using credential-on-file has to be flagged correctly in the payment transactions sent to the card schemes.</p>
+  <br/>
+  <p>t will be distinguished between <b>cardholder initiated transactions (CIT)</b> and <b>merchant initiated transactions (MIT).</b></p>
+  <br/>
+  <p>Even if the credentials are stored and don't have be provided again, <b>cardholder initiated transactions</b> will always be triggered by the cardholder, e.g. shopping with a One-Click payment account.</p>
+  <br/>
+  <p><b>Merchant initiated transactions</b> will always be triggered by the merchant and don't require the cardholder to be available, e.g. subsequent payments in a subscription model.</p>
+  <br/>
+  <p>In addition to the initiator of the transaction it has to be flagged if a payment transaction is the initial one using the credential-on-file or a subsequent one.<br/>
+    Subsequent payment transactions have to reference the initial transaction.</p>
+</div>
+<br/>
+
+<div id="useCases">
+  <br/>
+  <h2>Use Cases</h2>
+  <br/>
+  <p>The following use cases are affected by the credential-on-file requirements.</p>
+</div>
+<br/>
+<div id="oneClick">
+  <br/>
+  <h3>One-Click</h3>
+  <br/>
+  <p>A cardholder can create an account with the merchant and place the card credentials for future shopping. With every shopping session the cardholder can select the preferred card from the merchant account and initiate a payment for an order without entering the card details again (apart from the CVV). Combined with the storage of preferred shipping and billing addresses in the merchant account the simplified checkout is often called one-click checkout.</p>
+  <br/>
+  <p>One-Click payments are always cardholder initiated transactions (CIT) no matter if it is the initial or subsequent transaction with the shop.</p>
+</div>
+<br/>
+<div id="recurringScheduled">
+  <br/>
+  <h3>Recurring Scheduled</h3>
+  <br/>
+  <p>This use case describes recurring payments with a fixed schedule and a fixed amount. </p>
+  <br/>
+  <p>A typical example would be a subscription with a merchant for a specific service or product, e.g. a subscription for the usage of a mobile app, where the same amount is collected by the merchant on the first day of each month.</p>
+  <br/>
+  <p>The initial transaction always has to be cardholder initiated (CIT) as this is typically the time the cardholder gives the consent for such scheduled recurring agreement.</p>
+  <br/>
+  <p>All subsequent transactions will be merchant initiated (MIT).</p>
+  <br/>
+  <p>Some card schemes (e.g. Visa, Mastercard) return a special identifier in the authorization response of an initial recurring transaction. This identifier has then to be provided with each subsequent transaction initiated by the merchant.</p>
+  <br/>
+  <br/>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>
+            <p>In conjunction with 3DS v2 even a zero amount card-check combined with a 3DS authentication can be used as the initial recurring scheduled transaction, as long as the first subsequent transaction initiated by the mechant is referencing the initial card check.</p>
+            <br/>
+            <p>Note that a 3DS v2 authentication for recurring transactions always requires a strong customer authentication (SCA) and therefore does not support the frictionless flow.</p>
+        </th>
+      </tr>
+    </thead>
+  </table>
+</div>
+<br/>
+<div id="recurringUnscheduled">
+  <br/>
+  <h3>Recurring Unscheduled</h3>
+  <br/>
+  <p>This use case describes recurring payments without any fixed schedule and a fixed amount. The cardholder signs an agreement with the merchant that the merchant is allowed to charge the card whenever any usage of a service or product occurs. The exact amount and the time when the card will be charged is not known at this point.</p>
+  <br/>
+  <p>A typical example would be video-on-demand agreement where the card will be charged whenever a new video will be booked.</p>
+  <br/>
+  <br/>
+  <p>Also for unscheduled payments the initial transaction always has to be cardholder initiated (CIT).</p>
+  <br/>
+  <p>All subsequent transactions will be merchant initiated (MIT).</p>
+  <br/>
+  <br/>
+  <p>Some card schemes (e.g. Visa, Mastercard) return a special identifier in the authorization response of an initial recurring transaction. This identifier has then to be provided with each subsequent transaction initiated by the merchant.</p>
+  <br/>
+  <br/>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>
+            <p>In conjunction with 3DS v2 even a zero amount card-check combined with a 3DS authentication can be used as the initial recurring unscheduled transaction, as long as the first subsequent transaction initiated by the mechant is referencing the initial card check (supported for Visa & Mastercard).</p>
+            <br/>
+            <p>Note that a 3DS v2 authentication for recurring transactions always requires a strong customer authentication (SCA) and therefore does not support the frictionless flow.</p>
+        </th>
+        
+      </tr>
+    </thead>
+  </table>
+</div>
+<br/>
+<div id="installments">
+  <br/>
+  <h3>Installments</h3>
+  <br/>
+  <p>Installment payments are recurring payments following a pre-defined installment plan, where the customer choses to pay a purchase with a number of partial payments over a pre-defined period of time.</p>
+  <br/>
+  <p>Usually a customer has to pay some additional fees for such model.</p>
+  <br/>
+  <br/>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+    <thead>
+      <tr>
+        <th>! Important</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Installments are currently not supported by the Concardis Payengine!</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br/>

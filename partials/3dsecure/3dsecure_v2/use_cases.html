@@ -4,16 +4,10 @@
   <li><a href="#authenticationWithoutPayment">Authentication without Payment</a></li>
   <li><a href="#authenticationViaAgent">Authentication via Agent</a></li>
   <ul>
-    <li><a href="#secure" name="">3D Secure at a Glance</a></li>
-    <li><a href="#benefits" name="">Benefits of 3D Secure usage</a></li>
+    <li><a href="#merchantWithConcardis" name="">Merchant with Concardis</a></li>
+    <li><a href="#agentWithConcardis" name="">Agent with Concardis</a></li>
   </ul>
-  <li><a href="#steps" name="">3D Secure v1 Steps</a></li>
-  <ul>
-    <li><a href="#step_1" name="">Step 1 - Check Enrollment</a></li>
-    <li><a href="#step_2" name="">Step 2 - Cardholder Authentication</a></li>
-    <li><a href="#step_3" name="">Step 3 - Authorizing the transaction by the Acquiring bank</a></li>
-    <li><a href="#step_4" name="">Step 4 - Redirecting Cardholder to the payment result page</a></li>
-  </ul>
+  <li><a href="#authenticationForRecurringPayments">Authentication for Recurring Payments</a></li>
 </ul>
 
 <div id="authenticationWithPayment">
@@ -57,387 +51,160 @@
   <br/>
   <p>In such model the agent (e.g. travel agency) will trigger the authentication for the full purchase and forward the results to the various merchants that will initiate the actual payment transactions referencing the authentication done by the agent.</p>
   <br/>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div id="webhook">
-    
-    <img class="" src="/img/3dsecure/3ds_v1.png" width="60%" />
-    
-  </div>
-  <div id="secure">
-    <br/>
-    <br/>
-    <h3>Benefits of 3D Secure usage</h3>
-    <br/>
-    <p>Main benefits of 3D Secure for the merchants can be found listed below: </p>
-    <ul>
-      <li><strong>Liability shift:</strong> When a chargeback occurs, merchants are typically liable for this transaction. With 3D Secure, the liability is shifted from merchants onto merchants' issuing banks. </li>
-      <li><strong>Chargeback protection: </strong> When merchants use Verified by Visa, merchants are guaranteed to never receive a chargeback. This protection helps secure merchants against friendly fraud or chargeback fraud. </li>
-      <li><strong>Interchange benefits: </strong> Merchants may be able to access lower interchange fees and benefit from longer payment terms with acquirers.</li>
-      <li><strong>Customer confidence: </strong> Customers will feel more confident knowing that there is an extra level of security in place to protect their data.</li>
-    </ul>
-    <br/>
-    <p>A sequence diagram of end-to-end payment process with 3DS payment card can be found below: </p>
-    <br/>
-    <img class="" src="/img/3dsecure/3ds_flow.png" width="100%" />
-    <br/>
-    <p><strong>Note:</strong> '3DS environment' module encompasses MPI, DS and  ACS.</p>
-  </div>
-</div>
-
-<div id="steps">
-  <br/>
-  <br/>
-  <h2>3D Secure v1 Steps</h2>
-  <br/>
-  <table border="1px solid black">
-    <tr>
-      <td>
-        <p><u>Important:</u></p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>A precondition that may trigger launching of 3DS flow is executing of <strong>Authorizing transaction request (either Preauth or Debit)</strong> from merchant to Payengine using either Payment Instrument ID or plain written payment card data.</p>
-      </td>
-    </tr>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+    <thead>
+      <tr>
+        <th>! Important</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>An agent has to inform the customer that the actual payment is not initiated by the agent but the merchant where the products or services are purchased!</td>
+      </tr>
+    </tbody>
   </table>
-  <div id="step_1">
-    <br/>
-    <br/>
-    <h3>Step 1 - Check Enrollment</h3>
-    <br/>
-    <p>Based on Preauth/Debit transaction request from a merchant, Payengine submits a Check Enrollment request on the Cardholder PAN via 3DS environment.
-    </p>
-    <br/>
-    <p>The purpose of Check Enrollment request is to identify whether payment card is enrolled in 3D Secure program. Depending on response of the Check Enrollment request are possible the following two scenarios:
-    </p>
-    <br/>
-    <p>1)  Payment card <strong>is enrolled </strong>in 3DS program, then status of the Authorizing transaction will be set to 'PENDING' and consumer will be redirected to a 3DS URL.
-    </p>
-    <br/>
-    <p>Response of the transaction will contain <strong>the following specific parameters:</strong>
-    </p>
-    <ul>
-      <li><strong>threeDs</strong> field in meta object with value "2"</li>
-      <li><strong>redirectUrl</strong> that will redirect the consumer to 3DS Authentication page</li>
-    </ul>
-    <br/>
-    <p>threeDs field can show one of the following possible values:</p>
-    <br/>
-    <table border="1px solid black">
-      <thead>
+  <br/>
+</div>
+<div id="merchantWithConcardis">
+  <br/>
+  <h2>Merchant with Concardis</h2>
+  <br/>
+  <p>In this case the merchant has a card acquiring agreement with Concardis and the payments will be processed via the Payengine but the authentication triggered by the Agent has been done trough a different acquirer/PSP.</p>
+  <br/>
+  <p>In order to authorize or debit the payment according to the PSDII the Payengine needs the 3DS results as an additional input and pass it to the issuer and schemes.</p>
+  <br/>
+  <br/>
+  <p>When you initiate an authorization or debit the following parameters have to be provided.</p>
+  <br/>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+    <thead>
         <tr>
-          <th style="text-align: center;">Value</th>
-          <th style="text-align: center;">Description</th>
+          <th width="30%">Parameter</th>
+          <th>Description</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>0</td>
-          <td>No 3DS Transaction or failed</td>
+          <td>version</td>
+          <td>
+            <p>The 3DS version that was used for the authentication.</p>
+            <br/>
+            <p>Supported values: 1.0, 2.0</p>
+          </td>
         </tr>
         <tr>
-          <td>1</td>
-          <td>Card is not enrolled or issuer does not support 3DS</td>
+          <td>authenticationValue</td>
+          <td>
+            <p>The authenticationValue returned in the 3DS authentication</p>
+            <br/>
+            <p>CAVV: Visa, AMEX, JCB, Diners/Discover</p>
+            <br/>
+            <p>UCAF: Mastercard</p>
+          </td>
         </tr>
         <tr>
-          <td>2</td>
-          <td>Successful</td>
+          <td>authenticationValue</td>
+          <td>
+            <p>The authenticationValue returned in the 3DS authentication</p>
+            <br/>
+            <p>CAVV: Visa, AMEX, JCB, Diners/Discover</p>
+            <br/>
+            <p>UCAF: Mastercard</p>
+          </td>
+        </tr>
+        <tr>
+          <td>eci</td>
+          <td>
+            <p>The Electronic Commerce Indicator (ECI) provided by the ACS or DS to indicate the results of the attempt to authenticate the cardholder.</p>
+            <br/>
+            <p>The ECI values might differ depending on the card scheme. Please check the separate ECI mapping table for complete values and information about the liability shift.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <br/>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+    <thead>
+      <tr>
+        <th>! Important</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>An authorization or debit might be rejected by the issuer if the transaction was not fully authenticated before.</td>
+      </tr>
+    </tbody>
+  </table>
+  <br/>
+</div>
+<div id="agentWithConcardis">
+  <br/>
+  <h2>Agent with Concardis</h2>
+  <br/>
+  <p>In this case the the agent has an agreement with Concardis for pure 3DS authentication but the actual payment transactions by the merchant will be processed through a different acquirer/PSP, but not the Payengine.</p>
+  <br/>
+  <p>This means the agent just initiates the 3DS authentication and forwards the results to the merchant(s).</p>
+  <br/>
+  <br/>
+  <p>In order to execute a 3DS authentication the agent can use one of the supported Payengine integration types. More details about the 3DS integration types can be found <a href="https://concardis.stagil.de/confluence/display/PAY/%5BPubDoc%5D+3DSv2+-+Integration+Types">here</a>.</p>
+  <br/>
+  <br/>
+  <p>The following parameters for a successful 3DS authentication should be forwarded.</p>
+  <br/>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+    <thead>
+        <tr>
+          <th width="30%">Parameter</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>version</td>
+          <td>
+            <p>The 3DS version that was used for the authentication.</p>
+            <br/>
+            <p>Supported values: 1.0, 2.0</p>
+          </td>
+        </tr>
+        <tr>
+          <td>authenticationValue</td>
+          <td>
+            <p>The authenticationValue returned in the 3DS authentication</p>
+            <br/>
+            <p>CAVV: Visa, AMEX, JCB, Diners/Discover</p>
+            <br/>
+            <p>UCAF: Mastercard</p>
+          </td>
+        </tr>
+        <tr>
+          <td>authenticationValue</td>
+          <td>
+            <p>The authenticationValue returned in the 3DS authentication</p>
+            <br/>
+            <p>CAVV: Visa, AMEX, JCB, Diners/Discover</p>
+            <br/>
+            <p>UCAF: Mastercard</p>
+          </td>
+        </tr>
+        <tr>
+          <td>eci</td>
+          <td>
+            <p>The Electronic Commerce Indicator (ECI) provided by the ACS or DS to indicate the results of the attempt to authenticate the cardholder.</p>
+            <br/>
+            <p>The ECI values might differ depending on the card scheme. Please check the separate ECI mapping table for complete values and information about the liability shift.</p>
+          </td>
         </tr>
       </tbody>
     </table>
     <br/>
-    <p>Example Response of Authorizing transaction (Debit) for payment card enrolled in 3DS program can be found below:</p>
-    <div class="example-box-wrapper">
-      <div class="content-box" ng-init="createCustomerResponseShow=false">
-        <h3 class="content-box-header bg-default">
-            Create Debit response for Credit Card enrolled in 3DS program
-            <div class="header-buttons-separator">
-                <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
-                  <!-- <i class="glyph-icon icon-chevron-up"></i> -->
-                  <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
-                  <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
-                </a>
-            </div>
-        </h3>
-        <!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-        <div class="content-box-wrapper">
-          <code>
-{
-    "createdAt": 1555499517921,
-    "modifiedAt": 1555499517992,
-    "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
-    "terms": 1468590412476,
-    "privacy": 1468590412476,
-    "orderId": "vop3ip6amm",
-    "merchantOrderId": "merchantOrderId81871041",
-    "paymentProviderTransactionId": null,
-    "description": "test transaction",
-    "statementDescription": "statementdescription",
-    "initialAmount": 630,
-    "preauthorizedAmount": 0,
-    "capturedAmount": 0,
-    "refundedAmount": 0,
-    "canceledAmount": 0,
-    "currency": "EUR",
-    "basket": [],
-    "customer": {
-        "merchantCustomerId": null,
-        "organizationRegistrationRegister": null,
-        "organizationRegistrationId": null,
-        "organizationEntityType": null,
-        "organizationVatId": null,
-        "companyName": null,
-        "reference": null,
-        "email": null,
-        "customerId": "customer_9qy1qmro29",
-        "addresses": [],
-        "personas": [],
-        "paymentInstruments": [],
-        "createdAt": 1555499517920,
-        "modifiedAt": 1555499517920,
-        "customerType": null
-    },
-    "persona": null,
-    "billingAddress": null,
-    "shippingAddress": null,
-    "ipAddress": "2.2.2.2",
-    "paymentInstrument": {
-        "createdAt": 1555499517933,
-        "modifiedAt": 1555499517933,
-        "paymentInstrumentId": "paymentinstrument_smxioehzrw",
-        "merchantPaymentInstrumentId": null,
-        "attributes": {
-            "issuerCountry": "RU",
-            "expiryMonth": "12",
-            "cardHolder": "Max Mustermann",
-            "expiryYear": "30",
-            "brand": "VISA",
-            "cardNumber": "************1112"
-        },
-        "encrypted": true,
-        "origin": "creditcard",
-        "type": "creditcard",
-        "recurring": false,
-        "recurringConsent": null
-    },
-    "transactions": [
-        {
-            "createdAt": 1555499517963,
-            "modifiedAt": 1555499517993,
-            "type": "DEBIT",
-            "transactionId": "transaction_utfvjzvump",
-            "description": "test transaction",
-            "initialAmount": 630,
-            "refundedAmount": 0,
-            "currency": "EUR",
-            "status": "PENDING",
-            "order": "vop3ip6amm",
-            "parentTransaction": null,
-            "transactions": null,
-            "basket": [],
-            "providerCode": null,
-            "merchantMessage": null,
-            "customerMessage": null,
-            "descriptor": null,
-            "meta": null,
-            "challenge": null,
-            "asyncNotificationSubscriptionId": null,
-            "tracking": null
-        }
-    ],
-    "status": "OPEN",
-    "channel": "ECOM",
-    "source": "Postman Test 116629886",
-    "settled": false,
-    "settlementDate": null,
-    "allowedProducts": null,
-    "product": "creditcard",
-    "transactionType": "DEBIT",
-    "meta": {
-        "threeDs": 2,
-        "flexibleThreeDS": "ThreeDSecure offered without applying any Flexible ThreeDS Risk Rules"
-    },
-    "async": null,
-    "deviceIdent": null,
-    "clientType": "BRW",
-    "asyncNotificationSubscriptionId": null,
-    "lastOperation": "TRANSACTION_DEBIT_PENDING",
-    "redirectUrl": "https://public-api-app75t.psp.cardtech.de/async/creditcard/1.0/redirect/ce0e7d0ae6fc3450a1cd"
-}
-          </code>
-        </div>
-      </div>
-    </div>
-    <br/>
-    <p>2)  Payment card <strong>is not enrolled</strong> in 3DS program, then the flow will continue as synchronous one which means that:
-    </p>
-    <ul>
-      <li>there will be no redirect URL ("redirectUrl" field in Authorizing transaction response will be with <strong>null</strong> value)</li>
-      <li>status of the Authorizing transaction will be either SUCCESS or FAILURE</li>
-    </ul>
-    <br/>
-    <p>Example Response of Authorizing transaction (Debit) for payment card not enrolled in 3DS program can be found below:</p>
-    <br/>
-    <div class="example-box-wrapper">
-      <div class="content-box" ng-init="createCustomerResponseShow=false">
-        <h3 class="content-box-header bg-default">
-            Create Debit response for Credit Card not enrolled in 3DS program
-            <div class="header-buttons-separator">
-                <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
-                  <!-- <i class="glyph-icon icon-chevron-up"></i> -->
-                  <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
-                  <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
-                </a>
-            </div>
-        </h3>
-        <!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-        <div class="content-box-wrapper">
-          <code>
-{
-    "createdAt": 1552053906342,
-    "modifiedAt": 1552053906403,
-    "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
-    "terms": null,
-    "privacy": null,
-    "orderId": "gmkmhu532v",
-    "merchantOrderId": null,
-    "paymentProviderTransactionId": "975457",
-    "description": "Example Transaction",
-    "statementDescription": null,
-    "initialAmount": 1000,
-    "preauthorizedAmount": 1000,
-    "capturedAmount": 1000,
-    "refundedAmount": 0,
-    "canceledAmount": 0,
-    "currency": "EUR",
-    "basket": [],
-    "customer": {
-        "merchantCustomerId": null,
-        "organizationRegistrationRegister": null,
-        "organizationRegistrationId": null,
-        "organizationEntityType": null,
-        "organizationVatId": null,
-        "companyName": null,
-        "reference": null,
-        "email": null,
-        "customerId": "customer_xthyfgayks",
-        "addresses": [],
-        "personas": [],
-        "paymentInstruments": [],
-        "createdAt": 1552053906341,
-        "modifiedAt": 1552053906341,
-        "customerType": null
-    },
-    "persona": null,
-    "billingAddress": null,
-    "shippingAddress": null,
-    "ipAddress": "172.16.180.152",
-    "paymentInstrument": {
-        "createdAt": 1552053906002,
-        "modifiedAt": 1552053906070,
-        "paymentInstrumentId": "paymentinstrument_o3ixokbdp5",
-        "merchantPaymentInstrumentId": null,
-        "attributes": {
-            "issuerCountry": "US",
-            "expiryMonth": "12",
-            "cardHolder": "Max Muster",
-            "expiryYear": "30",
-            "brand": "VISA",
-            "cardNumber": "************1111"
-        },
-        "encrypted": true,
-        "origin": "creditcard",
-        "type": "creditcard",
-        "recurring": true,
-        "recurringConsent": null
-    },
-    "transactions": [
-        {
-            "createdAt": 1552053906370,
-            "modifiedAt": 1552053906450,
-            "type": "DEBIT",
-            "transactionId": "transaction_0uwn6cjslp",
-            "description": "Example Transaction",
-            "initialAmount": 1000,
-            "refundedAmount": 0,
-            "currency": "EUR",
-            "status": "SUCCESS",
-            "order": "gmkmhu532v",
-            "parentTransaction": null,
-            "transactions": null,
-            "basket": [],
-            "providerCode": "00",
-            "merchantMessage": null,
-            "customerMessage": null,
-            "descriptor": null,
-            "meta": null,
-            "challenge": null,
-            "asyncNotificationSubscriptionId": null,
-            "tracking": null
-        }
-    ],
-    "status": "OPEN",
-    "channel": "MOTO",
-    "source": "MC",
-    "settled": false,
-    "settlementDate": null,
-    "allowedProducts": null,
-    "product": "creditcard",
-    "transactionType": "DEBIT",
-    "meta": {},
-    "async": null,
-    "deviceIdent": null,
-    "asyncNotificationSubscriptionId": null,
-    "redirectUrl": null
-}
-          </code>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="step_2">
-    <br/>
-    <br/>
-    <h3>Step 2 - Cardholder Authentication</h3>
-    <br/>
-    <p>In 3DS Enrolled Card option, once the 3DS page loads, the consumer authenticates in most of the cases via a permanent password.</p>
-    <br/>
-    <p>After authentication process, Payengine receives the Authentication result.</p>
-    <br/>
-    <p>You can find below an example for 3DS page shown on the consumers.</p>
-    <br/>
-    <img class="" src="/img/3dsecure/verified_by_visa.png" width="60%" />
-  </div>
-  <div id="step_3">
-    <br/>
-    <br/>
-    <h3>Step 3 - Authorizing the transaction by the Acquiring bank</h3>
-    <br/>
-    <p>Once Payengine receives Authentication result from 3DS environment, an Authorization request with card details and the Authentication result is submitted to the Acquiring bank (ConCardis GmbH for all payment cards except Amex). The Acquiring bank authorizes the transaction by communicating with the credit card network and Issuing bank.</p>
-    <br/>
-    <p>In response Payengine receives the result of the Authorization request which can be either success or failure.</p>
-    <br/>
-  </div>
-  <div id="step_4">
-    <br/>
-    <br/>
-    <h3>Step 4 - Redirecting Cardholder to the payment result page</h3>
-    <br/>
-    <p>Based on provided response of Authorization request Payengine updates status of the order and redirects consumer to either Success or Failure page for the payment.</p>
-    <br/>
-  </div>
+</div>
+<div id="authenticationForRecurringPayments">
+  <br/>
+  <h2>Authentication for Recurring Payments</h2>
+  <br/>
+  <p>The initial transaction of recurring payments (scheduled or unscheduled) always requires a strong customer authentication. This means that a 3DS authentication has to be initiated where a challenge from the issuer to the cardholder will be mandatory.</p>
+  <br/>
+  <p>No frictionless flow will be supported for the authentication of initial recurring transactions.</p>
+</div>
 </div>

@@ -21,15 +21,15 @@
             <li><a href="/3dsecure/3dsecure_v2_parameters">Parameters</a></li>
             <li><a href="/3dsecure/3dsecure_v2_use_cases">Use Cases</a></li>
             <li><a href="#">Integration Types</a></li>
-            <li><a href="#">Impact</a></li>
-            <li><a href="#">Testing</a></li>
+            <li><a href="/3dsecure/3dsecure_v2_integration_impact">Integration Impact</a></li>
+            <li><a href="/3dsecure/3dsecure_v2_testing">Testing</a></li>
         </ul>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/3dsecure/COF">Credentials on File</a>
-        <!-- <ul>
-            <li><a href="#">Overview</a></li>
-            <li><a href="#">Use Cases</a></li>
-            <li><a href="#">Integration Types</a></li>
-        </ul> -->
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="#">Credentials on File</a>
+        <ul>
+            <li><a href="/3dsecure/credentials_on_file_introduction">Introduction</a></li>
+            <!-- <li><a href="#">Use Cases</a></li>
+            <li><a href="#">Integration Types</a></li> -->
+        </ul>
         <br/>
     </div>
     <div class="col-md-8">
@@ -53,5 +53,17 @@
         <div  ng-include="'/partials/3dsecure/3dsecure_v2/use_cases.html'">
         </div>
     </div>
+    <div ng-show="cur=='3dsecure_v2_testing'">
+        <div  ng-include="'/partials/3dsecure/3dsecure_v2/testing.html'">
+        </div>
+    </div>
+    <div ng-show="cur=='3dsecure_v2_integration_impact'">
+        <div  ng-include="'/partials/3dsecure/3dsecure_v2/integration_impact.html'">
+        </div>
+    </div>
+    <div ng-show="cur=='credentials_on_file_introduction'">
+            <div  ng-include="'/partials/3dsecure/credentials_on_file/introduction.html'">
+            </div>
+        </div>
     </div>
 </div>

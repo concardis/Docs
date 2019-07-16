@@ -1,0 +1,503 @@
+
+<ul>
+  <li><a href="#introduction" name="">Introduction</a></li>
+  <li><a href="#inputParameter">Input Parameter</a></li>
+  <ul>
+    <li><a href="#cardholderData" name="">Cardholder Data</a></li>
+    <li><a href="#transactionData" name="">Transaction Data</a></li>
+    <li><a href="#riskData" name="">Risk Data</a></li>
+    <li><a href="#browserData" name="">Browser Data</a></li>
+  </ul>
+</ul>
+
+<div id="introduction">
+  <br/>
+  <br/>
+  <h2>Introduction</h2>
+  <div id="webhook">
+    <br/>
+    <p>3DS version 2 supports much more input parameters than version 1. Most of those parameters will be used by the card issuing bank to evaluate the risk of the payment transaction.</p>
+    <br/>
+    <p>Most of the fields are optional, however some of the optional fields are still recommended to be provided as this increases the chances of a frictionless flow and to bypass a challenge for the cardholder.</p>
+    <br/>
+    <p>The following sections and tables list all parameters relevant for the 3DS v2 authentication.</p>
+    <br/>
+    <br/>
+    <p>More technical details on an API service level can be found in our <a href="https://docs.payengine.de/buildyourown/staticredoc" target="_blank">API documentation</a>.</p>
+  </div>
+  <br/>
+  <br/>
+</div>
+<div id="#inputParameter">
+  <h2>Input Parameter</h2>  
+  <br/>
+  <div id="cardholderData">
+  <h3>Cardholder Data</h3>
+  <br/>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th style="text-align: center;" width="360px">Parameter</th>
+        <th style="text-align: center;" width="100px">Required</th>
+        <th style="text-align: center;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>cardholderName</td>
+        <td>optional</td>
+        <td>The name of the cardholder.</td>
+      </tr>
+      <tr>
+        <td>email</td>
+        <td>optional</td>
+        <td>The email address of the cardholder.</td>
+      </tr>
+      <tr>
+        <td>billingAddress</td>
+        <td>optional</td>
+        <td>object containing the shipping address details.</td>
+      </tr>
+      <tr>
+        <td>billingAddress.street</td>
+        <td>optional</td>
+        <td>The street address of the cardholder billing address.</td>
+      </tr>
+      <tr>
+        <td>billingAddress.houseNumber</td>
+        <td>optional</td>
+        <td>The street number of the cardholder billing address.</td>
+      </tr>
+      <tr>
+        <td>billingAddress.city</td>
+        <td>optional</td>
+        <td>The city of the cardholder billing address.</td>
+      </tr>
+      <tr>
+        <td>billingAddress.zip</td>
+        <td>optional</td>
+        <td>The postal code of the cardholder billing address.</td>
+      </tr>
+      <tr>
+        <td>billingAddress.state</td>
+        <td>optional</td>
+        <td>The state of the cardholder billing address.</td>
+      </tr>
+      <tr>
+        <td>billingAddress.country</td>
+        <td>optional</td>
+        <td>The country of the cardholder billing address.</td>
+      </tr>
+      <tr>
+        <td>shippingAddress</td>
+        <td>optional</td>
+        <td>Object containing the shipping address details.</td>
+      </tr>
+      <tr>
+        <td>shippingAddress.street</td>
+        <td>optional</td>
+        <td>The street address of the shipping address requested by the cardholder.</td>
+      </tr>
+      <tr>
+        <td style="padding-right: 10px;">shippingAddress.houseNumber</td>
+        <td>optional</td>
+        <td>The street number of the shipping address requested by the cardholder.</td>
+      </tr>
+      <tr>
+        <td>shippingAddress.city</td>
+        <td>optional</td>
+        <td>The city of the shipping address requested by the cardholder.</td>
+      </tr>
+      <tr>
+        <td>shippingAddress.zip</td>
+        <td>optional</td>
+        <td>The postal code of the shipping address requested by the cardholder.</td>
+      </tr>
+      <tr>
+        <td>shippingAddress.state</td>
+        <td>optional</td>
+        <td>The state of the shipping address requested by the cardholder.</td>
+      </tr>
+      <tr>
+        <td>shippingAddress.country</td>
+        <td>optional</td>
+        <td>The country of the shipping address requested by the cardholder.</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <br/>
+  <div id="transactionData">
+  <h3>Transaction Data</h3>
+  <br/>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th style="text-align: center;" width="360px">Parameter</th>
+        <th style="text-align: center;" width="100px">Required</th>
+        <th style="text-align: center;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>amount</td>
+        <td>required</td>
+        <td>
+          <p>The amount of the purchase.</p>
+          <br/>
+          <p>In case of an authentication without payment for recurring future payments this should include the expected total purchase amount.</p></td>
+      </tr>
+      <tr>
+        <td>currency</td>
+        <td>required</td>
+        <td>The currency of the purchase.</td>
+      </tr>
+      <tr>
+        <td>recurringExpiry</td>
+        <td>conditional</td>
+        <td>Date after which no further authorizations shall be performed. This field is only required in case of an authentication for recurring payments.</td>
+      </tr>
+      <tr>
+        <td style="padding-right: 10px;">recurringFrequency</td>
+        <td>conditional</td>
+        <td>
+          <p>Indicates the minimum number of days between authorizations. This field is only required in case of an authentication for recurring payments.</p>
+          <br/>
+          <p>The field is limited to maximum 4 characters.</p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <br/>
+  <div id="riskData">
+  <h3>Risk Data</h3>
+  <br/>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th style="text-align: center;" width="360px">Parameter</th>
+          <th style="text-align: center;" width="100px">Required</th>
+          <th style="text-align: center;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>customerAccount</td>
+          <td>optional</td>
+          <td>An object containing information about the customer account with the merchant.</td>
+        </tr>
+        <tr>
+          <td>customerAccount.accountIdentifier</td>
+          <td>optional</td>
+          <td>The account identifier at the merchant side.</td>
+        </tr>
+        <tr>
+          <td>customerAccount.creationDate</td>
+          <td>optional</td>
+          <td>The date when the customer opened the account with the merchant.</td>
+        </tr>
+        <tr>
+          <td>customerAccount.lastChangeDate</td>
+          <td>optional</td>
+          <td>The date when the customer account with the merchant was last changed, including billing or shipping addres, new payment account or new user(s) added.</td>
+        </tr>
+        <tr>
+          <td>customerAccount.changeIndicator</td>
+          <td>optional</td>
+          <td>
+            <p>Length of the time since the customer account information with the merchant was last changed, including billing or shipping addres, new payment account or new user(s) added.</p>
+            <br/>
+            <p>Supported values:</p>
+            <br/>
+            <p>CHANGED_WITH_THIS_TRANSACTION</p>
+            <p>LESS_THAN_THIRTY_DAYS</p>
+            <p>THIRTY_TO_SIXTY_DAYS</p>
+            <p>MORE_THAN_SIXTY_DAYS</p>
+          </td>
+        </tr>
+        <tr>
+          <td>customerAccount.lastPasswordChangeDate</td>
+          <td>optional</td>
+          <td>The date when the customer account with the merchant had a password change or account reset.</td>
+        </tr>
+        <tr>
+          <td>customerAccount.passwordChangeIndicator</td>
+          <td>optional</td>
+          <td>
+            <p>Length of the time since the customer account information with the merchant had a password change or account reset.</p>
+            <br/>
+            <p>Supported values:</p>
+            <br/>
+            <p>NO_CHANGE</p>
+            <p>CHANGED_WITH_THIS_TRANSACTION</p>
+            <p>LESS_THAN_THIRTY_DAYS</p>
+            <p>THIRTY_TO_SIXTY_DAYS</p>
+            <p>MORE_THAN_SIXTY_DAYS</p>
+          </td>
+        </tr>
+        <tr>
+          <td>customerAccount.authenticationMethod</td>
+          <td>optional</td>
+          <td>
+            <p>Mechanism used by the customer to authenticate to the merchant account.</p>
+            <br/>
+            <p>Supported values:</p>
+            <br/>
+            <p>GUEST</p>
+            <p>OWN_CREDENTIALS</p>
+            <p>FEDERATED_ID</p>
+            <p>ISSUER_CREDENTIALS</p>
+            <p>THIRD_PARTY_AUTH</p>
+            <p>FIDO_AUTHENTICATOR</p>
+          </td>
+        </tr>
+        <tr>
+          <td>customerAccount.authenticationTimestamp</td>
+          <td>optional</td>
+          <td>Date and time in UTC of the customer authentication to the merchant account.</td>
+        </tr>
+        <tr>
+          <td>customerAccount.shippingAddressUsageIndicator</td>
+          <td>optional</td>
+          <td>
+            <p>Indicates when the shipping address used for this transaction was first used with the merchant account.</p>
+            <br/>
+            <p>Supported values:</p>
+            <br/>
+            <p>FIRST_TIME</p>
+            <p>LESS_THAN_THIRTY_DAYS</p>
+            <p>THIRTY_TO_SIXTY_DAYS</p>
+            <p>MORE_THAN_SIXTY_DAYS</p>
+          </td>
+        </tr>
+        <tr>
+          <td>customerAccount.shippingAddressFirstUsage</td>
+          <td>optional</td>
+          <td>Date when the shipping address used for this transaction was first used with the merchant.</td>
+        </tr>
+        <tr>
+          <td>customerAccount.transactionCountLastDay</td>
+          <td>optional</td>
+          <td>Number of transactions (successful and abandoned) for this customer account with the merchant across all payment accounts in the previous 24 hours.</td>
+        </tr>
+        <tr>
+          <td>customerAccount.transactionCountLastYear</td>
+          <td>optional</td>
+          <td>Number of transactions (successful and abandoned) for this customer account with the merchant across all payment accounts in the previous year.</td>
+        </tr>
+        <tr>
+          <td>customerAccount.orderCountLast6Months</td>
+          <td>optional</td>
+          <td>Number of purchases with this cardholder account during the previous six months.</td>
+        </tr>
+        <tr>
+          <td>customerAccount.suspiciousActivity</td>
+          <td>optional</td>
+          <td>Indicates whether the merchant has experienced suspicious activity (including previous fraud) on the customer account.</td>
+        </tr>
+        <tr>
+          <td>customerAccount.accountEqualsShippingName</td>
+          <td>optional</td>
+          <td>Indicates if the customer name on the account is identical to the shipping name used for this transaction. </td>
+        </tr>
+        <tr>
+          <td>customerAccount.paymentAccountAgeIndicator</td>
+          <td>optional</td>
+          <td>
+            <p>Indicates the length of time that the payment account was enrolled in the customer account with the merchant.</p>
+            <br/>
+            <p>Supported values:</p>
+            <br/>
+            <p>NO_ACCOUNT</p>
+            <p>CREATED_WITH_THIS_TRANSACTION</p>
+            <p>LESS_THAN_THIRTY_DAYS</p>
+            <p>THIRTY_TO_SIXTY_DAYS</p>
+            <p>MORE_THAN_SIXTY_DAYS</p>
+          </td>
+        </tr>
+        <tr>
+          <td>customerAccount.paymentAccountEnrollementDate</td>
+          <td>optional</td>
+          <td>
+            <p>Date that the payment account was enrolled in the customer account with the merchant.</p>
+            <br/>
+            <p>Date format must be YYYYMMDD.</p>
+          </td>
+        </tr>
+        <tr>
+          <td>shippingInfo</td>
+          <td>optional</td>
+          <td>object containing information about the shipping details for this transaction.</td>
+        </tr>
+        <tr>
+          <td>shippingInfo.shippingEqualsBillingAddress</td>
+          <td>optional</td>
+          <td>Flag if the shipping address equals the billing address.</td>
+        </tr>
+        <tr>
+          <td>shippingInfo.shippingIndicator</td>
+          <td>optional</td>
+          <td>
+            <p>Indicates the shipping method chosen for the transaction. Merchants must choose the shipping indicator that most accurately describes the customer's specific transaction. If one or more items are included in the sale, use the shipping indicator for the physical goods, or if all digital goods, use the indicator that describes the most expensive item.</p>
+            <br/>
+            <p>Supported values:</p>
+            <br/>
+            <p>SHIP_TO_BILLING_ADDRESS</p>
+            <p>SHIP_TO_VERIFIED_ADDRESS</p>
+            <p>SHIP_TO_DIFFERENT_ADDRESS</p>
+            <p>SHIP_TO_STORE</p>
+            <p>DIGITAL_GOODS</p>
+            <p>TICKETS_NOT_SHIPPED</p>
+            <p>OTHER</p>
+          </td>
+        </tr>
+        <tr>
+          <td>shippingInfo.deliveryTime</td>
+          <td>optional</td>
+          <td>
+            <p>Indicates the merchandise delivery timeframe.</p>
+            <br/>
+            <p>Supported values:</p>
+            <br/>
+            <p>ELECTRONIC</p>
+            <p>SAME_DAY</p>
+            <p>OVERNIGHT</p>
+            <p>TWO_DAY_OR_MORE</p>
+          </td>
+        </tr>
+        <tr>
+          <td>shippingInfo.deliveryEmail</td>
+          <td>optional</td>
+          <td>For electronic delivery, the email address to which the merchandise was delivered.</td>
+        </tr>
+        <tr>
+          <td>orderInfo</td>
+          <td>optional</td>
+          <td>object containing order information relevant for risk evaluation</td>
+        </tr>
+        <tr>
+          <td>orderInfo.isReorder</td>
+          <td>optional</td>
+          <td>Indicates whether the cardholder is reordering previously purchased merchandise.</td>
+        </tr>
+        <tr>
+          <td>orderInfo.preOrderIndicator</td>
+          <td>optional</td>
+          <td>
+            <p>Indicates whether Cardholder is placing an order for merchandise with a future availability or release date.</p>
+            <br/>
+            <p>Supported values:</p>
+            <br/>
+            <p>MERCHANTDISE_AVAILABLE</p>
+            <p>FUTURE_AVAILABILITY</p>
+          </td>
+        </tr>
+        <tr>
+          <td>orderInfo.preOrderDate</td>
+          <td>optional</td>
+          <td>For a pre-ordered purchase, the expected date that the merchandise will be available. </td>
+        </tr>
+        <tr>
+          <td>orderInfo.orderType</td>
+          <td>optional</td>
+          <td>
+            <p>Identifies the type of transaction being authenticated. The values are derived from ISO 8583.</p>
+            <br/>
+            <p>Supported values:</p>
+            <br/>
+            <p>01 -> Goods / Service purchase</p>
+            <p>03 -> Check Acceptance</p>
+            <p>10 -> Account Funding</p>
+            <p>11 -> Quasi-Cash Transaction</p>
+            <p>28 -> Prepaid activation and Loan</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br/>
+  <div id="browserData">
+  <h3>Browser Data</h3>
+  <br/>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th style="text-align: center;" width="360px">Parameter</th>
+          <th style="text-align: center;" width="100px">Required</th>
+          <th style="text-align: center;">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>acceptHeader</td>
+          <td>mandatory</td>
+          <td>Exact content of the HTTP accept headers as sent to the 3DS Requestor from the cardholder's browser.
+              This field is limited to maximum 2048 characters and if the total length exceeds the limit, the 3DS Server truncates the excess portion.
+          </td>
+        </tr>
+        <tr>
+          <td>ip</td>
+          <td>optional</td>
+          <td>
+            <p>IP address of the browser as returned by the HTTP headers to the 3DS Requestor. The field is limited to maximum 45 characters and the accepted values are as following:</p>
+            <ul>
+              <li>IPv4 address is represented in the dotted decimal format of 4 sets of decimal numbers separated by dots. The decimal number in each and every set is in the range 0 - 255.</li>
+              <li>IPv6 adress is represented as eight groups of four hexadecimal digits, each group representing 16 bits (two octets). The groups are separated by colons (:).</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>javaEnabled</td>
+          <td>mandatory</td>
+          <td>Boolean that represents the ability of the cardholder browser to execute Java.</td>
+        </tr>
+        <tr>
+          <td>language</td>
+          <td>mandatory</td>
+          <td>Value representing the browser language as defined in IETF BCP47. The value is limited to 1-8 characters.
+              <br/>Value is returned from navigator.language property.</td>
+        </tr>
+        <tr>
+          <td>colorDepth</td>
+          <td>mandatory</td>
+          <td>Value representing the bit depth of the colour palette for displaying images, in bits per pixel. Obtained from Cardholder browser using the screen.colorDepth property. The field is limited to 1-2 characters.</td>
+        </tr>
+        <tr>
+          <td>screenHeight</td>
+          <td>mandatory</td>
+          <td>Total height of the cardholder's screen in pixels. Value is returned from the screen.height property. The value is limited to 1-6 characters.</td>
+        </tr>
+        <tr>
+          <td>screenWidth</td>
+          <td>mandatory</td>
+          <td>Total width of the cardholder's screen in pixels. Value is returned from the screen.width property. The value is limited to 1-6 characters.</td>
+        </tr>
+        <tr>
+          <td>timezone</td>
+          <td>mandatory</td>
+          <td>Time difference between UTC time and the cardholder browser local time, in minutes. The field is limited to 1-5 characters where the value is returned from the getTimezoneOffset() method.</td>
+        </tr>
+        <tr>
+          <td>userAgent</td>
+          <td>mandatory</td>
+          <td>Exact content of the HTTP user-agent header. The field is limited to maximum 2048 characters. If the total length of the User-Agent sent by the browser exceeds 2048 characters, the 3DS Server truncates the excess portion.</td>
+        </tr>
+        <tr>
+          <td>challengeWindowSize</td>
+          <td>mandatory</td>
+          <td>
+            <p>Dimensions of the challenge iFrame window that should be displayed to the cardholder in case of a challenge. The ACS shall reply with content that is formatted to appropriately render in this window to provide the best possible user experience.</p>
+            <p>Preconfigured sizes are width X height in pixels of the window displayed in the cardholder browser window. This is used only to prepare the CReq request and it is not part of the AReq flow. If not present it will be omitted.</p>
+            <p>However, when sending the challenge request accepted values are:</p>
+            <p>01 -> 250 x 400</p>
+            <p>02 -> 390 x 400</p>
+            <p>03 -> 500 x 600</p>
+            <p>04 -> 600 x 400</p>
+            <p>05 -> Full screen</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,210 @@
+
+<ul>
+  <li><a href="#authenticationWithPayment" name="">Authentication with Payment</a></li>
+  <li><a href="#authenticationWithoutPayment">Authentication without Payment</a></li>
+  <li><a href="#authenticationViaAgent">Authentication via Agent</a></li>
+  <ul>
+    <li><a href="#merchantWithConcardis" name="">Merchant with Concardis</a></li>
+    <li><a href="#agentWithConcardis" name="">Agent with Concardis</a></li>
+  </ul>
+  <li><a href="#authenticationForRecurringPayments">Authentication for Recurring Payments</a></li>
+</ul>
+
+<div id="authenticationWithPayment">
+  <br/>
+  <br/>
+  <h2>Authentication with Payment</h2>
+  <br/>
+  <p>An authentication with payment is the most common scenario of using a 3DS v2 authentication and the corresponding SCA. In this case the customer places an e-commerce order and the authentication will be initiated in the same session as the actual payment transaction.</p>
+  <br/>
+  <p>For such scenarios the payment authorization is always a cardholder initiated transaction (CIT).</p>
+  <br/>
+  <p>Once the card transaction is triggered the customer will first be sent into the authentication (frictionless or challenge flow) and afterwards the results of the authentication will be directly used for the payment transaction which could be an authorization or a debit.</p>
+  <br/>
+  <img class="" src="/img/3dsecure/authentication_with_payment.png" width="40%" />
+  <br/>
+  <p>The payment transaction could be a simple onetime purchase or could be the initial transaction using one of the credential-on-file use cases (oneclick, recurring unscheduled, recurring scheduled).</p>
+  <br/>
+  <p>More details about the credential-on-file feature & uses cases can be found <a href="https://concardis.stagil.de/confluence/pages/viewpage.action?pageId=21476684">here</a>.</p>
+  <br/>
+</div>
+<div id="authenticationWithoutPayment">
+  <br/>
+  <h2>Authentication without Payment</h2>
+  <br/>
+  <p>An authentication without a payment can be used in case a merchant wants to store the card credentials of a customer for future payment transactions, but no payment transaction should be initiated at this time.</p>
+  <br/>
+  <p>A typical use case could be the merchant account creation for a subscription model (recurrring). A merchant can already authenticate the cardholder at the time the card credentials are stored.</p>
+  <br/>
+  <img class="" src="/img/3dsecure/authentication_without_payment.png" width="40%" />
+  <br/>
+  <p>If such authentication is combined with a card-check (a zero amount authorization) the card check can be referenced as the initial transaction of a recurring model.</p>
+  <br/>
+  <p>The first actual payment transaction can then be done as a merchant initiated transaction (MIT) without any further 3DS authentication required. Only the initial authorization form the card check has to be referenced, which could be automatically be done by the Payengine if the merchant integrates the credential-on-file feature.</p>
+  <br/>
+</div>
+<div id="authenticationViaAgent">
+  <br/>
+  <h2>Authentication via Agent</h2>
+  <br/>
+  <p>In an agent model an agent is selling another merchant's products or services. Within a checkout a customer could just purchase products or services from one merchant but also from multiple at once. A typical example would be an online travel agency where the customer orders a travel combined with a rental car, both services from different providers.</p>
+  <br/>
+  <p>In such model the agent (e.g. travel agency) will trigger the authentication for the full purchase and forward the results to the various merchants that will initiate the actual payment transactions referencing the authentication done by the agent.</p>
+  <br/>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+    <thead>
+      <tr>
+        <th>! Important</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>An agent has to inform the customer that the actual payment is not initiated by the agent but the merchant where the products or services are purchased!</td>
+      </tr>
+    </tbody>
+  </table>
+  <br/>
+</div>
+<div id="merchantWithConcardis">
+  <br/>
+  <h2>Merchant with Concardis</h2>
+  <br/>
+  <p>In this case the merchant has a card acquiring agreement with Concardis and the payments will be processed via the Payengine but the authentication triggered by the Agent has been done trough a different acquirer/PSP.</p>
+  <br/>
+  <p>In order to authorize or debit the payment according to the PSDII the Payengine needs the 3DS results as an additional input and pass it to the issuer and schemes.</p>
+  <br/>
+  <br/>
+  <p>When you initiate an authorization or debit the following parameters have to be provided.</p>
+  <br/>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+    <thead>
+        <tr>
+          <th width="30%">Parameter</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>version</td>
+          <td>
+            <p>The 3DS version that was used for the authentication.</p>
+            <br/>
+            <p>Supported values: 1.0, 2.0</p>
+          </td>
+        </tr>
+        <tr>
+          <td>authenticationValue</td>
+          <td>
+            <p>The authenticationValue returned in the 3DS authentication</p>
+            <br/>
+            <p>CAVV: Visa, AMEX, JCB, Diners/Discover</p>
+            <br/>
+            <p>UCAF: Mastercard</p>
+          </td>
+        </tr>
+        <tr>
+          <td>authenticationValue</td>
+          <td>
+            <p>The authenticationValue returned in the 3DS authentication</p>
+            <br/>
+            <p>CAVV: Visa, AMEX, JCB, Diners/Discover</p>
+            <br/>
+            <p>UCAF: Mastercard</p>
+          </td>
+        </tr>
+        <tr>
+          <td>eci</td>
+          <td>
+            <p>The Electronic Commerce Indicator (ECI) provided by the ACS or DS to indicate the results of the attempt to authenticate the cardholder.</p>
+            <br/>
+            <p>The ECI values might differ depending on the card scheme. Please check the separate ECI mapping table for complete values and information about the liability shift.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <br/>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+    <thead>
+      <tr>
+        <th>! Important</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>An authorization or debit might be rejected by the issuer if the transaction was not fully authenticated before.</td>
+      </tr>
+    </tbody>
+  </table>
+  <br/>
+</div>
+<div id="agentWithConcardis">
+  <br/>
+  <h2>Agent with Concardis</h2>
+  <br/>
+  <p>In this case the the agent has an agreement with Concardis for pure 3DS authentication but the actual payment transactions by the merchant will be processed through a different acquirer/PSP, but not the Payengine.</p>
+  <br/>
+  <p>This means the agent just initiates the 3DS authentication and forwards the results to the merchant(s).</p>
+  <br/>
+  <br/>
+  <p>In order to execute a 3DS authentication the agent can use one of the supported Payengine integration types. More details about the 3DS integration types can be found <a href="https://concardis.stagil.de/confluence/display/PAY/%5BPubDoc%5D+3DSv2+-+Integration+Types">here</a>.</p>
+  <br/>
+  <br/>
+  <p>The following parameters for a successful 3DS authentication should be forwarded.</p>
+  <br/>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+    <thead>
+        <tr>
+          <th width="30%">Parameter</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>version</td>
+          <td>
+            <p>The 3DS version that was used for the authentication.</p>
+            <br/>
+            <p>Supported values: 1.0, 2.0</p>
+          </td>
+        </tr>
+        <tr>
+          <td>authenticationValue</td>
+          <td>
+            <p>The authenticationValue returned in the 3DS authentication</p>
+            <br/>
+            <p>CAVV: Visa, AMEX, JCB, Diners/Discover</p>
+            <br/>
+            <p>UCAF: Mastercard</p>
+          </td>
+        </tr>
+        <tr>
+          <td>authenticationValue</td>
+          <td>
+            <p>The authenticationValue returned in the 3DS authentication</p>
+            <br/>
+            <p>CAVV: Visa, AMEX, JCB, Diners/Discover</p>
+            <br/>
+            <p>UCAF: Mastercard</p>
+          </td>
+        </tr>
+        <tr>
+          <td>eci</td>
+          <td>
+            <p>The Electronic Commerce Indicator (ECI) provided by the ACS or DS to indicate the results of the attempt to authenticate the cardholder.</p>
+            <br/>
+            <p>The ECI values might differ depending on the card scheme. Please check the separate ECI mapping table for complete values and information about the liability shift.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+</div>
+<div id="authenticationForRecurringPayments">
+  <br/>
+  <h2>Authentication for Recurring Payments</h2>
+  <br/>
+  <p>The initial transaction of recurring payments (scheduled or unscheduled) always requires a strong customer authentication. This means that a 3DS authentication has to be initiated where a challenge from the issuer to the cardholder will be mandatory.</p>
+  <br/>
+  <p>No frictionless flow will be supported for the authentication of initial recurring transactions.</p>
+</div>
+</div>

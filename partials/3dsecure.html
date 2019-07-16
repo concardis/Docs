@@ -27,8 +27,8 @@
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="#">Credentials on File</a>
         <ul>
             <li><a href="/3dsecure/credentials_on_file_introduction">Introduction</a></li>
-            <!-- <li><a href="#">Use Cases</a></li>
-            <li><a href="#">Integration Types</a></li> -->
+            <!-- <li><a href="#">Use Cases</a></li>-->
+            <li><a href="/3dsecure/credentials_on_file_integration_types">Integration Types</a></li> 
         </ul>
         <br/>
     </div>
@@ -62,8 +62,12 @@
         </div>
     </div>
     <div ng-show="cur=='credentials_on_file_introduction'">
-            <div  ng-include="'/partials/3dsecure/credentials_on_file/introduction.html'">
-            </div>
+        <div  ng-include="'/partials/3dsecure/credentials_on_file/introduction.html'">
         </div>
+    </div>
+    <div ng-show="cur=='credentials_on_file_integration_types'">
+        <div  ng-include="'/partials/3dsecure/credentials_on_file/integration_types.html'">
+        </div>
+    </div>
     </div>
 </div>

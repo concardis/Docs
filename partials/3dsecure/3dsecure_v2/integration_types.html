@@ -1,423 +1,980 @@
 
-<!-- <ul>
-  <li><a href="#overview" name="">3D Secure Overview - V2</a></li>
-  <ul>
-    <li><a href="#secure" name="">3D Secure at a Glance</a></li>
-    <li><a href="#benefits" name="">Benefits of 3D Secure usage</a></li>
-  </ul>
-  <li><a href="#steps" name="">3D Secure v1 Steps</a></li>
-  <ul>
-    <li><a href="#step_1" name="">Step 1 - Check Enrollment</a></li>
-    <li><a href="#step_2" name="">Step 2 - Cardholder Authentication</a></li>
-    <li><a href="#step_3" name="">Step 3 - Authorizing the transaction by the Acquiring bank</a></li>
-    <li><a href="#step_4" name="">Step 4 - Redirecting Cardholder to the payment result page</a></li>
-  </ul>
-</ul> -->
+
 <ul>
-  <li><a href="#overview" name="">Introduction</a></li>
-  <li><a href=""></a></li>
+  <li><a href="3dsecure/3dsecure_v2_integration_types#introduction" name="">Introduction</a></li>
   <ul>
-    <li><a href="#secure" name="">3D Secure at a Glance</a></li>
-    <li><a href="#benefits" name="">Benefits of 3D Secure usage</a></li>
+    <li><a href="3dsecure/3dsecure_v2_integration_types#3DS2.0Flow" name="">3DS 2.0 Flow</a></li>
+    <li><a href="3dsecure/3dsecure_v2_integration_types#fallbackOption" name="">Fallback Option</a></li>
   </ul>
-  <li><a href="#steps" name="">3D Secure v1 Steps</a></li>
+  <li><a href="3dsecure/3dsecure_v2_integration_types#api" name="">API</a></li>
   <ul>
-    <li><a href="#step_1" name="">Step 1 - Check Enrollment</a></li>
-    <li><a href="#step_2" name="">Step 2 - Cardholder Authentication</a></li>
-    <li><a href="#step_3" name="">Step 3 - Authorizing the transaction by the Acquiring bank</a></li>
-    <li><a href="#step_4" name="">Step 4 - Redirecting Cardholder to the payment result page</a></li>
+    <li><a href="3dsecure/3dsecure_v2_integration_types#3DSVersion" name="">3DS Version</a></li>
+    <li><a href="3dsecure/3dsecure_v2_integration_types#browserInfo" name="">Browser Info</a></li>
+    <li><a href="3dsecure/3dsecure_v2_integration_types#initiateAuthentication" name="">Initiate Authentication</a></li>
+    <li><a href="3dsecure/3dsecure_v2_integration_types#getAuthenticationResult" name="">Get Authentication Result</a></li>
+    <li><a href="3dsecure/3dsecure_v2_integration_types#cardCheck" name="">Card Check</a></li>
+    <li><a href="3dsecure/3dsecure_v2_integration_types#orders" name="">Orders</a></li>
+      <ul>
+        <li><a href="/3dsecure/3dsecure_v2_integration_types#referencingStandaloneAuthentication" name="">Referencing a Standalone Authentication</a></li>
+        <li><a href="/3dsecure/3dsecure_v2_integration_types#authenticationWithinOrder" name="">Authentication within Order</a></li>
+          <ul>
+            <li><a href="/3dsecure/3dsecure_v2_integration_types#input" name="">Input</a></li>
+            <li><a href="/3dsecure/3dsecure_v2_integration_types#frictionlessFlow" name="">Frictionless Flow</a></li>
+            <li><a href="/3dsecure/3dsecure_v2_integration_types#challengeFlow" name="">Challenge Flow</a></li>
+          </ul>
+        <li><a href="/3dsecure/3dsecure_v2_integration_types#referencinganAuthenticationviaAgent" name="">Referencing an Authentication via Agent</a></li>
+      </ul>
   </ul>
+  <li><a href="/3dsecure/3dsecure_v2_integration_types#javaScriptSDKJSBridge" name="">JavaScript SDK (JS Bridge)</a></li>
+  <li><a href="/3dsecure/3dsecure_v2_integration_types#widgetasaBridge" name="">Widget as a Bridge</a></li>
+  <li><a href="/3dsecure/3dsecure_v2_integration_types#modalWidget" name="">Modal Widget</a></li>
+  <li><a href="/3dsecure/3dsecure_v2_integration_types#inlineWidget" name="">Inline Widget</a></li>
 </ul>
 
-<div id="overview">
-  <br/>
-  <br/>
-  <h2>3D Secure Overview</h2>
-  <div id="webhook">
-    <br/>
-    <br/>
-    <h3>3D Secure at a Glance</h3>
-    <br/>
-    <p>3D Secure is a security protocol that is designed to provide an additional layer of security for payment cards and online transactions. The name 3D comes from the three-domain model designed to provide an additional layer of secure authentication between the financial authorization process and online authentication process. The three domains used to provide this security are:</p>
-    <ul>
-      <li><strong>Acquirer Domain:</strong> It encompasses systems and functions of the acquiring bank (merchant's bank) and the merchant receiving the transaction payment. The main component of the domain is <strong>Merchant Plug-In (MPI)</strong> that creates and processes payer authentication messages and then returns control to the merchant software for further authorization processing.</li>
-      <li><strong>Issuer Domain:</strong> It encompasses systems and functions of the card issuing financial institutions and its customers. The main component of the domain is <strong>Access Control Server (ACS)</strong> that verifies whether authentication is available for a card number and device type</li>
-      <li><strong>Interoperability Domain: </strong> It encompasses systems, functions and messages that allow the Issuer Domain and Acquirer Domain to interoperate. Its components are globally operated and managed by card schemes. The main component of the domain is <strong>Directory Server (DS)</strong> that authenticates the 3DS Server requests and validates the 3DS requestor as trusted and registered.</li>
-    </ul>
-    <br/>
-    <p>Described three domains and corresponding components are presented below:</p>
-    <br/>
-    <img class="" src="/img/3dsecure/3ds_v1.png" width="60%" />
-    <br/>
-    <p>The following 3 D Security authentication services are supported and integrated on Payengine:</p>
-    <ul>
-      <li>American Express SafeKey</li>
-      <li>Mastercard SecureCode</li>
-      <li>Visa Secure (formerly Verified by Visa)</li>
-    </ul>
-  </div>
-  <div id="secure">
-    <br/>
-    <br/>
-    <h3>Benefits of 3D Secure usage</h3>
-    <br/>
-    <p>Main benefits of 3D Secure for the merchants can be found listed below: </p>
-    <ul>
-      <li><strong>Liability shift:</strong> When a chargeback occurs, merchants are typically liable for this transaction. With 3D Secure, the liability is shifted from merchants onto merchants' issuing banks. </li>
-      <li><strong>Chargeback protection: </strong> When merchants use Verified by Visa, merchants are guaranteed to never receive a chargeback. This protection helps secure merchants against friendly fraud or chargeback fraud. </li>
-      <li><strong>Interchange benefits: </strong> Merchants may be able to access lower interchange fees and benefit from longer payment terms with acquirers.</li>
-      <li><strong>Customer confidence: </strong> Customers will feel more confident knowing that there is an extra level of security in place to protect their data.</li>
-    </ul>
-    <br/>
-    <p>A sequence diagram of end-to-end payment process with 3DS payment card can be found below: </p>
-    <br/>
-    <img class="" src="/img/3dsecure/3ds_flow.png" width="100%" />
-    <br/>
-    <p><strong>Note:</strong> '3DS environment' module encompasses MPI, DS and  ACS.</p>
-  </div>
-</div>
 
-<div id="steps">
+<section>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+      <tbody>
+        <tr>
+          <td style="border-right: none;" ><img class="" src="/img/3dsecure/error-triangle.png" width="16px"></td>
+          <td>
+            <p>The integration types described below are not available on the Payengine test environment yet!</p>
+            <br/>
+            <p>We will notify all integrators once the solution can be enabled and tested.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</section>
+<br/>
+<section id="introduction">
   <br/>
+  <h2>Introduction</h2>
   <br/>
-  <h2>3D Secure v1 Steps</h2>
-  <br/>
-  <table border="1px solid black">
-    <tr>
-      <td>
-        <p><u>Important:</u></p>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <p>A precondition that may trigger launching of 3DS flow is executing of <strong>Authorizing transaction request (either Preauth or Debit)</strong> from merchant to Payengine using either Payment Instrument ID or plain written payment card data.</p>
-      </td>
-    </tr>
-  </table>
-  <div id="step_1">
+  <div id="3DS2.0Flow">
     <br/>
+    <h3>3DS 2.0 Flow</h3>
+    <p>The following diagram describes the 3DS 2.0 flow including a subsequent payment authorization.</p>
     <br/>
-    <h3>Step 1 - Check Enrollment</h3>
+    <img class="" src="/img/3dsecure/3DS2.0Flow.png" width="50%">
     <br/>
-    <p>Based on Preauth/Debit transaction request from a merchant, Payengine submits a Check Enrollment request on the Cardholder PAN via 3DS environment.
-    </p>
+    <p>The 3DS Environment is simplified in the diagram. It usually consists of the 3DS Server, the Directory Server (DS) and the Access Control Server (ACS).</p>
     <br/>
-    <p>The purpose of Check Enrollment request is to identify whether payment card is enrolled in 3D Secure program. Depending on response of the Check Enrollment request are possible the following two scenarios:
-    </p>
-    <br/>
-    <p>1)  Payment card <strong>is enrolled </strong>in 3DS program, then status of the Authorizing transaction will be set to 'PENDING' and consumer will be redirected to a 3DS URL.
-    </p>
-    <br/>
-    <p>Response of the transaction will contain <strong>the following specific parameters:</strong>
-    </p>
     <ul>
-      <li><strong>threeDs</strong> field in meta object with value "2"</li>
-      <li><strong>redirectUrl</strong> that will redirect the consumer to 3DS Authentication page</li>
+      <li>3DS Server: Refers to the 3DS Integrator's server or systems that handle online transactions and facilitates communication between the 3DS Requestor and the Directory Server (DS).</li>
+      <li>Directory Server: A server component operated in the Interoperability Domain. It performs a number of functions that include: authenticating the 3DS Server, routing messages between the 3DS Server and the Access Control Server (ACS), and validating the 3DS Server, the 3DS SDK, and the 3DS Requestor.</li>
+      <li>Access Control Server: A component that operates in the Issuer Domain, that verifies whether authentication is available for a card number and device type, and authenticates specific Cardholders.</li>
     </ul>
     <br/>
-    <p>threeDs field can show one of the following possible values:</p>
     <br/>
-    <table border="1px solid black">
+    <p>On a high level the flow can be split into the following steps.</p>
+    <br/>
+    <ol>
+      <li>(required) Check the enrollment and versioning of the card</li>
+      <li>(optional) Gather some additional information prior to the authentication request in order to facilitate the transaction risk assessment</li>
+      <li>(required) Collect the browser information</li>
+      <li>(required) Request the authentication</li>
+      <li>(optional) Present the challenge to the cardholder if no frictionless flow is supported by the issuer</li>
+      <li>(optional) Initiate payment authorization</li>
+    </ol>
+    <br/>
+    <p>Within the Payengine the steps of the 3DS authentication can either be executed with separate dedicated services, which is the most recommended integration option, or it could be combined with the order request (preauth or debit).</p>
+    <br/>
+    <p>More details about the services and integration options can be found in the subsections below.</p>
+    <br/>
+  </div>
+  <br/>
+  <div id="fallbackOption">
+    <br/>
+    <h3>Fallback Option</h3>
+    <br/>
+    <p>In case the card is not 3DS 2.0 enrolled (see the versioning step) the previous version 3DS 1.0 should be used as a fallback. This means that an integrator has to ensure that the redirect to the issuer's authentication page from version 1.0 is also supported.</p>
+    <br/>
+    <p>The Payengine will always return both - the data required for an 3DS 2.0 iFrame challenge and the redirectURL for an 3DS 1.0 authentication.</p>
+    <br/>
+    <br/>
+    <p>To <strong>simplify the 3DS 2.0 integration for existing integrators</strong> the Payengine will also return a redirectURL in case of a 3DS 2.0 challenge. This will lead to a page hosted by the Payengine where the challenge iFrame is embedded.</p>
+    <br/>
+    <p>Integrators who have already implemented the 3DS 1.0 flow will be able to proceed using the old flow.</p>
+    <br/>
+    <br/>
+    <p>However from a user experience point of view we always recommend to integrate the iFrame challenge instead of the redirect option.</p>
+  </div>
+</section>
+<br/>
+<section id="api">
+  <br/>
+  <h2>API</h2>
+  <br/>
+  <p>This section will describe the relevant API services for a 3DS authentication.</p>
+  <br/>
+  <div id="3DSVersion">
+    <br/>
+    <h3>3DS Version</h3>
+    <br/>
+    <p>POST /payment-instruments/{paymentInstrumentId}/3ds-version</p>
+    <br/>
+    <p>This service can be used to check the 3DS version and return some 3DS related information.</p>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
       <thead>
         <tr>
-          <th style="text-align: center;">Value</th>
-          <th style="text-align: center;">Description</th>
+          <th>Sample 3DS Version Response</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>0</td>
-          <td>No 3DS Transaction or failed</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Card is not enrolled or issuer does not support 3DS</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Successful</td>
+          <td>
+            <code>
+              {
+                "id": "threedsversion_123abc456z",
+                "createdAt": 1562769950956,
+                "modifiedAt": 1562769950956,
+                "version": "2.0",
+                "specificData": {
+                  "methodUrl": "https://www.acs.com/script",
+                  "base64EncodedThreeDsMethodData": "eyJ0aHJlZURTTWV0aG9kTm90aWZpY2F0aW9uVVJMIjoiaHR0cDovL3d3dy4zZHMuY29tL25vdGlmaWNhdGlvbi11cmwiLCJ0aHJlZURTU2VydmVyVHJhbnNJRCI6IjhhODgwZGMwLWQyZDItNDA2Ny1iY2IxLWIwOGQxNjkwYjI2ZSJ9"
+                }
+              }
+            </code>
+          </td>
         </tr>
       </tbody>
     </table>
     <br/>
-    <p>Example Response of Authorizing transaction (Debit) for payment card enrolled in 3DS program can be found below:</p>
-    <div class="example-box-wrapper">
-      <div class="content-box" ng-init="createCustomerResponseShow=false">
-        <h3 class="content-box-header bg-default">
-            Create Debit response for Credit Card enrolled in 3DS program
-            <div class="header-buttons-separator">
-                <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
-                  <!-- <i class="glyph-icon icon-chevron-up"></i> -->
-                  <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
-                  <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
-                </a>
-            </div>
-        </h3>
-        <!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-        <div class="content-box-wrapper">
-          <code>
-{
-    "createdAt": 1555499517921,
-    "modifiedAt": 1555499517992,
-    "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
-    "terms": 1468590412476,
-    "privacy": 1468590412476,
-    "orderId": "vop3ip6amm",
-    "merchantOrderId": "merchantOrderId81871041",
-    "paymentProviderTransactionId": null,
-    "description": "test transaction",
-    "statementDescription": "statementdescription",
-    "initialAmount": 630,
-    "preauthorizedAmount": 0,
-    "capturedAmount": 0,
-    "refundedAmount": 0,
-    "canceledAmount": 0,
-    "currency": "EUR",
-    "basket": [],
-    "customer": {
-        "merchantCustomerId": null,
-        "organizationRegistrationRegister": null,
-        "organizationRegistrationId": null,
-        "organizationEntityType": null,
-        "organizationVatId": null,
-        "companyName": null,
-        "reference": null,
-        "email": null,
-        "customerId": "customer_9qy1qmro29",
-        "addresses": [],
-        "personas": [],
-        "paymentInstruments": [],
-        "createdAt": 1555499517920,
-        "modifiedAt": 1555499517920,
-        "customerType": null
-    },
-    "persona": null,
-    "billingAddress": null,
-    "shippingAddress": null,
-    "ipAddress": "2.2.2.2",
-    "paymentInstrument": {
-        "createdAt": 1555499517933,
-        "modifiedAt": 1555499517933,
-        "paymentInstrumentId": "paymentinstrument_smxioehzrw",
-        "merchantPaymentInstrumentId": null,
-        "attributes": {
-            "issuerCountry": "RU",
-            "expiryMonth": "12",
-            "cardHolder": "Max Mustermann",
-            "expiryYear": "30",
-            "brand": "VISA",
-            "cardNumber": "************1112"
-        },
-        "encrypted": true,
-        "origin": "creditcard",
-        "type": "creditcard",
-        "recurring": false,
-        "recurringConsent": null
-    },
-    "transactions": [
-        {
-            "createdAt": 1555499517963,
-            "modifiedAt": 1555499517993,
-            "type": "DEBIT",
-            "transactionId": "transaction_utfvjzvump",
-            "description": "test transaction",
-            "initialAmount": 630,
-            "refundedAmount": 0,
-            "currency": "EUR",
-            "status": "PENDING",
-            "order": "vop3ip6amm",
-            "parentTransaction": null,
-            "transactions": null,
-            "basket": [],
-            "providerCode": null,
-            "merchantMessage": null,
-            "customerMessage": null,
-            "descriptor": null,
-            "meta": null,
-            "challenge": null,
-            "asyncNotificationSubscriptionId": null,
-            "tracking": null
-        }
-    ],
-    "status": "OPEN",
-    "channel": "ECOM",
-    "source": "Postman Test 116629886",
-    "settled": false,
-    "settlementDate": null,
-    "allowedProducts": null,
-    "product": "creditcard",
-    "transactionType": "DEBIT",
-    "meta": {
-        "threeDs": 2,
-        "flexibleThreeDS": "ThreeDSecure offered without applying any Flexible ThreeDS Risk Rules"
-    },
-    "async": null,
-    "deviceIdent": null,
-    "clientType": "BRW",
-    "asyncNotificationSubscriptionId": null,
-    "lastOperation": "TRANSACTION_DEBIT_PENDING",
-    "redirectUrl": "https://public-api-app75t.psp.cardtech.de/async/creditcard/1.0/redirect/ce0e7d0ae6fc3450a1cd"
-}
-          </code>
-        </div>
-      </div>
-    </div>
+    <table class="table table-bordered table-striped table-condensed">
+      <tbody>
+        <tr>
+          <td style="border-right: none;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px"></td>
+          <td>
+            <p>In case of 3DS V2, it is recommended to invoke the methodUrl(if available) prior to the 3DS authentication. This will increase the chance for a frictionless flow.</p>
+            <br/>
+            <p>To achieve this you should render a hidden HTML iFrame in the Cardholder's browser and send a form with a field named threeDSMethodData containing the base64EncodedThreeDsMethodData(see 3DS version response) via HTTP POST to the methodUrl(see 3DS version response).</p>
+            <br/>
+            <p>For your convenience you can also use the provided helper function in <a href="/buildyourown/bridge" target="_blank">Payengine JavaScript SDK (JS Bridge)</a> - invokeMethodUrl.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
     <br/>
-    <p>2)  Payment card <strong>is not enrolled</strong> in 3DS program, then the flow will continue as synchronous one which means that:
-    </p>
+    <p>The full technical description of the service can be found <a href="/buildyourown/apidocs#operation%2FgetThreeDsVersionForPaymentInstrument" target="_blank">here</a>.</p>
+    <br/>
+  </div>
+  <br/>
+  <div id="browserInfo">
+    <br/>
+    <h3>Browser Info</h3>
+    <br/>
+    <p>POST /browser-info</p>
+    <br/>
+    <p>This service can be used to collect browser session information.</p>
+    <br/>
+    <p>It is <strong>only relevant for 3DS 2.0.</strong> If the 3DS version response indicates version 1.0 it is not necessary to send this information.</p>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>Sample Browser Info Request</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>
+              {
+                "browserAcceptHeader": "brw-accept-header",
+                "ip": "192.168.0.1",
+                "javaEnabled": true,
+                "language": "en-US",
+                "colorDepth": 8,
+                "screenHeight": 100,
+                "screenWidth": 100,
+                "timezone": 60,
+                "userAgent": "Chrome/71.0.3578.98",
+                "windowSize": "05"
+              }
+            </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>Sample Browser Info Response</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>
+              {
+                "browserInfoId": "browserinfo_123xyz456a"
+              }
+            </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <br/>
+    <p>The full technical description of the service can be found <a href="/buildyourown/apidocs#operation%2FcreateBrowserInfo" target="_blank">here</a>.</p>
+    <br/>
+  </div>
+  <br/>
+  <div id="initiateAuthentication">
+    <br/>
+    <h3>Initiate Authentication</h3>
+    <br/>
+    <p>POST /payment-instruments/{{paymentInstrumentId}}/3ds-version/{{threeDsVersionId}}/3ds-authentication</p>
+    <br/>
+    <p>This service can be used to initiate a standalone 3DS authentication.</p>
+    <br/>
+    <p>As a prerequisite the 3DS Version call has to be executed in advance as the <em>threeDsVersionId</em> is a mandatory input parameter.</p>
+    <br/>
+    <p>In case of 3DS 2.0 also the Browser Info call has to be executed in advance as the browserInfoId would then be a mandatory input parameter as well.</p>
+    <br/>
+    <p>A full reference of the mandatory and optional parameters relevant for 3DS 2.0 can be found <a href="/3dsecure/3dsecure_v2_parameters" >here</a>.</p>
+    <br/>
+    <br/>
+    <p>The service will return the full authentication results in case of a 3DS 2.0 frictionless flow.</p>
+    <br/>
+    <p>In case a challenge is required for 3DS 2.0 will return the relevant information to initiate the challenge.</p>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>Sample Authentication Response - 3DS 2.0 Challenge</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>
+              {
+                .. 
+                "authenticationResult": {
+                  "version": 2.0,
+                  "transactionId": "60e15ea6-98df-11e9-a2a3-2a2ae2dbcce4",
+                  "redirectUrl": "https://link-the-hosted-challange.example",
+                  "challengeData": {
+                    "acsUrl": "https://link-to-the-issuer.acs",
+                    "base64EncodedChallengeRequest": "Y2hhbGxhbmdlRGF0YQ==",
+                    "challengeWindowSize": "05"
+                  }
+                  ...
+                }   
+                ...
+              }
+            </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <br/>
+    <p>In order to initialize the challenge iFrame based on the returned challengeData you can use a helper function from Payengine JavaScript SDK (JS Bridge) as per sample code snippet below.</p>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>Sample handling of the challenge data</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>
+              function onChallengeFinishCallback(error, result) {
+                if (error) {
+                    //something went wrong
+                    return;
+                }
+                if (result.finalCustomerRedirectUrl) {
+                    window.location.replace(result.finalCustomerRedirectUrl);
+                }
+            }
+              
+            window.PayEngine.openChallenge(
+                container,
+                authenticationResult.challengeData.acsUrl,
+                authenticationResult.challengeData.base64EncodedChallengeRequest,
+                authenticationResult.transactionId,
+                authenticationResult.challengeData.challengeWindowSize,
+                onChallengeFinishCallback
+              );
+            </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <tbody>
+        <tr>
+          <td style="border-right: none;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px"></td>
+          <td>
+            <p>In case the integrator doesn't want to present the 3DS 2.0 challenge within an iFrame in the checkout the Payengine offers a hosted page including the challenge iFrame. This page can be accessed via the <em>redirectUrl</em> parameter.</p>
+            <br/>
+            <p>The redirectUrl parameter will always be returned for version 2.0.</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <br/>
+    <p>In case the authentication was for 3DS 1.0 this service will return the redirect information instead.</p>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>Sample Authentication Response - 3DS 1.0 Redirect</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>
+              {
+                .. 
+                "authenticationResult": {
+                  "version": 1.0,
+                  "redirectUrl": "https://link-the-hosted-challange.example",
+                  ...
+                }   
+                ...
+              }
+            </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <p>No matter if there is a challenge or a redirect required the integrator can query the corresponding final results via the <em>Authentication Result</em> service (see next section).</p>
+    <br/>
+    <br/>
+    <p>An alternative way of obtaining the result information is via the Payengine's notifications service. A notification including the authentication results could be sent to the URL that was specified in the request's <em>async.notificationUrl</em> parameter.</p>
+    <br/>
+    <p>The full technical description of the service can be found <a href="/buildyourown/apidocs#operation%2FcreateAuthenticationForPaymentInstrument" target="_blank"> here</a>.</p>
+  </div>
+  <br/>
+  <div id="getAuthenticationResult">
+    <br/>
+    <h3>Get Authentication Result</h3>
+    <br/>
+    <p>GET /creditcard/3ds-authentication/{{threeDsAuthenticationId}}</p>
+    <br/>
+    <p>This service can be used to query the results of a 3DS authentication.</p>
+    <br/>
+    <p>Whenever a challenge or redirect is required to let the cardholder authenicate him-/herself those result will be asynchronously synced back to the Payengine. The integrator can pull for the results via this dedicated service.</p>
+    <br/>
+    <br/>
+    <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+      <tbody>
+        <tr>
+          <td style="border-right: none;" ><img class="" src="/img/3dsecure/error-triangle.png" width="16px"></td>
+          <td>It is possible that the asychronous feedback from the issuer can take some time after the challenge was initiated, but in most cases the final results should be available even before this GET service is executed.</td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <p>The full technical description of the service can be found <a href="/buildyourown/apidocs#operation%2FgetThreeDsAuthentication" target="_blank"> here</a>.</p>
+  </div>
+  <br/>
+  <div id="cardCheck">
+    <br/>
+    <h3>Card Check</h3>
+    <br/>
+    <p>POST /payment-instruments/{paymentInstrumentId}/card-check</p>
+    <br/>
+    <p>This service can be used to initiate a card check which will results in a 0,00€ authorization.</p>
+    <br/>
     <ul>
-      <li>there will be no redirect URL ("redirectUrl" field in Authorizing transaction response will be with <strong>null</strong> value)</li>
-      <li>status of the Authorizing transaction will be either SUCCESS or FAILURE</li>
+      <li>If<em> cofContract</em> object is passed - the card check authorization will trigger an initial credential-on-file transaction, which can also be linked to a 3DS authentication. This option can be used in case the merchant only wants to store the payment credentials and at this point no real payment should be initiated.</li>
+      <li>If<em> cofContract</em>object is not passed (POST with empty request body) - a simple cardcheck will be trigger with 0 amount via MOTO channel and will return the status of the card.
+        </li>
     </ul>
     <br/>
-    <p>Example Response of Authorizing transaction (Debit) for payment card not enrolled in 3DS program can be found below:</p>
+    <p>Once a 3DS autentication has been initiated the returned threeDsAuthenticationId should be provided as an input in order to link the authentication to the initial card check authorization.</p>
     <br/>
-    <div class="example-box-wrapper">
-      <div class="content-box" ng-init="createCustomerResponseShow=false">
-        <h3 class="content-box-header bg-default">
-            Create Debit response for Credit Card not enrolled in 3DS program
-            <div class="header-buttons-separator">
-                <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
-                  <!-- <i class="glyph-icon icon-chevron-up"></i> -->
-                  <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
-                  <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
-                </a>
-            </div>
-        </h3>
-        <!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-        <div class="content-box-wrapper">
-          <code>
-{
-    "createdAt": 1552053906342,
-    "modifiedAt": 1552053906403,
-    "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
-    "terms": null,
-    "privacy": null,
-    "orderId": "gmkmhu532v",
-    "merchantOrderId": null,
-    "paymentProviderTransactionId": "975457",
-    "description": "Example Transaction",
-    "statementDescription": null,
-    "initialAmount": 1000,
-    "preauthorizedAmount": 1000,
-    "capturedAmount": 1000,
-    "refundedAmount": 0,
-    "canceledAmount": 0,
-    "currency": "EUR",
-    "basket": [],
-    "customer": {
-        "merchantCustomerId": null,
-        "organizationRegistrationRegister": null,
-        "organizationRegistrationId": null,
-        "organizationEntityType": null,
-        "organizationVatId": null,
-        "companyName": null,
-        "reference": null,
-        "email": null,
-        "customerId": "customer_xthyfgayks",
-        "addresses": [],
-        "personas": [],
-        "paymentInstruments": [],
-        "createdAt": 1552053906341,
-        "modifiedAt": 1552053906341,
-        "customerType": null
-    },
-    "persona": null,
-    "billingAddress": null,
-    "shippingAddress": null,
-    "ipAddress": "172.16.180.152",
-    "paymentInstrument": {
-        "createdAt": 1552053906002,
-        "modifiedAt": 1552053906070,
-        "paymentInstrumentId": "paymentinstrument_o3ixokbdp5",
-        "merchantPaymentInstrumentId": null,
-        "attributes": {
-            "issuerCountry": "US",
-            "expiryMonth": "12",
-            "cardHolder": "Max Muster",
-            "expiryYear": "30",
-            "brand": "VISA",
-            "cardNumber": "************1111"
-        },
-        "encrypted": true,
-        "origin": "creditcard",
-        "type": "creditcard",
-        "recurring": true,
-        "recurringConsent": null
-    },
-    "transactions": [
-        {
-            "createdAt": 1552053906370,
-            "modifiedAt": 1552053906450,
-            "type": "DEBIT",
-            "transactionId": "transaction_0uwn6cjslp",
-            "description": "Example Transaction",
-            "initialAmount": 1000,
-            "refundedAmount": 0,
-            "currency": "EUR",
-            "status": "SUCCESS",
-            "order": "gmkmhu532v",
-            "parentTransaction": null,
-            "transactions": null,
-            "basket": [],
-            "providerCode": "00",
-            "merchantMessage": null,
-            "customerMessage": null,
-            "descriptor": null,
-            "meta": null,
-            "challenge": null,
-            "asyncNotificationSubscriptionId": null,
-            "tracking": null
-        }
-    ],
-    "status": "OPEN",
-    "channel": "MOTO",
-    "source": "MC",
-    "settled": false,
-    "settlementDate": null,
-    "allowedProducts": null,
-    "product": "creditcard",
-    "transactionType": "DEBIT",
-    "meta": {},
-    "async": null,
-    "deviceIdent": null,
-    "asyncNotificationSubscriptionId": null,
-    "redirectUrl": null
-}
-          </code>
+    <p>Supported brands:</p>
+    <ul>
+      <li>Visa</li>
+      <li>Mastercard</li>
+      <li>AMEX</li>
+      <li>JCB</li>
+      <li>Diners/Discover</li>
+    </ul>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>Sample Cardcheck Request</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>
+              {
+                "threeDsAuthenticationId": "threedsauthentication_123",
+                "cofContract": {
+                  "type": "UNSCHEDULED",
+                  "channel": "ECOM"
+                }
+              }
+            </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>Sample Card Check Response</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>
+              {
+                "id": "cardcheck_123",
+                "createdAt": 1561555495930,
+                "modifiedAt": 1561555495977,
+                "status": "SUCCESS",
+                "paymentInstrumentId": "paymentinstrument_111",
+                "threeDsAuthenticationId": "threedsauthentication_123",
+                "cofContract": {
+                  "id": "cofcontract_123",
+                  "type": "UNSCHEDULED",
+                  "channel": "ECOM"
+                },
+                "errorDetails": {
+                    "providerCode": null,
+                    "providerMessage": null
+                }
+              }
+            </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  <br/>
+  <p>The full technical description of the service can be found <a href="/buildyourown/apidocs#operation%2FcreateCardcheckForPaymentInstrument" target="_blank"> here</a>.</p>
+  </div>
+  <br/>
+  <div id="orders">
+    <br/>
+    <h3>Orders</h3>
+    <br/>
+    <p>This section will describe the options how a 3DS authentication can be connected to an order request, e.g. a preauth or a debit</p>
+    <br/>
+    <p>The requirements for preauth and debit request will be the same.</p>
+    <br/>
+    <p>The full technical description of the service can be found <a href="/buildyourown/apidocs#tag%2FManage-orders" target="_blank"> here</a>.</p>
+      <div id="referencingStandaloneAuthentication">
+        <br/>
+        <h4>Referencing a Standalone Authentication</h4>
+        <br/>
+        <p>This option can be used in case an authentication has been initiated in advance with the dedicated authentication API calls (<em>3DS Version, Browser Info, Authentication</em>).</p>
+        <br/>
+        <p>In this case the threeDsAuthenticationId has to be provided as an input as part of the meta object. The Payengine will fetch the required 3DS authentication results internally.</p>
+        <br/>
+        <table class="table table-bordered table-striped table-condensed">
+          <thead>
+            <tr>
+              <th>Sample Preauth Request</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <code>
+                  {
+                    ...
+                    "meta": {
+                      ...
+                      "threeDsData": {
+                        "threeDsAuthenticationId": "authentication_abc123xyz9"
+                      }
+                    }
+                  }
+                </code>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <br/>
+      <div id="authenticationWithinOrder">
+        <br/>
+        <h4>Authentication within Order</h4>
+        <br/>
+        <p>It is still possible to trigger a 3DS 2.0 authentication as part of an order request, e.g. a preauth or a debit.</p>
+        <br/>
+        <div id="input">
+          <br/>
+          <h5>Input</h5>
+          <br/>
+          <p>In order to trigger the 3DS 2.0 authentication the integrator has to provide the relevant 3DS related input parameters. A full reference of the mandatory and optional paramters can be found <a href="/3dsecure/3dsecure_v2_parameters" target="_blank">here</a>.</p>
+          <br/>
+          <table class="table table-bordered table-striped table-condensed">
+              <tbody>
+                <tr>
+                  <td style="border-right: none;" ><img class="" src="/img/3dsecure/error-triangle.png" width="16px"></td>
+                  <td>
+                    <p>In case no <em>Browser Info</em> has been collected in advance and no <em>browserInfoId</em> will be provided the Payengine can still execute the 3DS 2.0 authentication flow, but a potential challenge can only be initiated via the redirectUrl fallback option. No challengeData object will be returned in this case meaning that the iFrame challenge view cannot be supported!</p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br/>
+          <table class="table table-bordered table-striped table-condensed">
+            <thead>
+              <tr>
+                <th>Sample Preauth Request</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <code>
+                    {
+                      "persona": "customer_abc123xyz1",
+                      "billingAddress": "address_abc123xyz1",
+                      "shippingAddress": "address_abc123xyz2",
+                      ...
+                      "payment": {
+                        "paymentInstrumentId": "paymentinstrument_jw7xoqrg2q",
+                        "cofContract": {
+                          "type": "SCHEDULED",
+                          "recurringExpiry": "2020-01-01",
+                          "recurringFrequency": 30
+                        }
+                      },
+                      "risk": {
+                        "customerAccount": {
+                          "accountIdentifier": "customer-abc123",
+                          "creationDate": "2019-07-10",
+                          "lastChangeDate": "2019-07-10",
+                          "changeIndicator": "LESS_THAN_THIRTY_DAYS",
+                          "lastPasswordChangeDate": "2019-07-10",
+                          "passwordChangeIndicator": "LESS_THAN_THIRTY_DAYS",
+                          "authenticationMethod": "OWN_CREDENTIALS",
+                          "authenticationTimestamp": "2019-07-10T15:04:09.722Z",
+                          "shippingAddressUsageIndicator": "FIRST_TIME",
+                          "shippingAddressFirstUsage": "2019-07-10",
+                          "transactionCountLastDay": 1,
+                          "transactionCountLastYear": 10,
+                          "orderCountLast6Months": 5,
+                          "suspiciousActivity": false,
+                          "accountEqualsShippingName": false,
+                          "paymentAccountAgeIndicator": "LESS_THAN_THIRTY_DAYS",
+                          "paymentAccountEnrollementDate": "2019-07-10"
+                        },
+                        "shippingInfo": {
+                          "shippingEqualsBillingAddress": true,
+                          "shippingIndicator": "SHIP_TO_VERIFIED_ADDRESS",
+                          "deliveryTime": "SAME_DAY",
+                          "deliveryEmail": "john@doe.com",
+                        },
+                          "orderInfo": {
+                            "isReorder": false,
+                            "preOrderIndicator": "MERCHANTDISE_AVAILABLE",
+                            "preOrderDate": "2019-07-10",
+                            "orderType": "01"
+                          }
+                        }
+                      },
+                      "meta": {
+                        ...
+                        "threeDsData": {
+                          "browserInfoId": "browserInfo_e1f6b193df"
+                        }
+                      }
+                    }
+                  </code>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
         </div>
+        <br/>
+        <div id="frictionlessFlow">
+          <br/>
+          <h5>Frictionless Flow</h5>
+          <br/>
+          <p>If there is a frictionless flow and the transaction will be authenticated the preauth or debit transaction will trigger the payment transaction as usual and the response will also include the 3DS 2.0 results in the <em>meta.threeDsData</em> object.</p>
+          <br/>
+          <p>The transaction will either have a SUCCESS or FAILURE status.</p>
+          <br/>
+          <table class="table table-bordered table-striped table-condensed">
+            <thead>
+              <tr>
+                <th>Sample Preauth Request</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <code>
+                    {
+                      ...
+                      "meta": {
+                        ...
+                        "threeDsData": {
+                          "authenticationResult": {
+                            "version": 2.0,
+                            "status": "Y",
+                            "transactionId": "8a880dc0-d2d2-4067-bcb1-b08d1690b26e",
+                            "authenticationValue": "MTIzNDU2Nzg5MDA5ODc2NTQzMjE=",
+                            "eci": "05"
+                        }
+                      }
+                    }
+                  </code>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <br/>
+        <div id="challengeFlow">
+          <br/>
+          <h5>Challenge Flow</h5>
+          <br/>
+          <p>In case a of challenge the required information to display the challenge window to the card holder will be returned in the meta.threeDsData object of preauth or debit response.</p>
+          <br/>
+          <p>Integrators can decide if they would like to display the challenge within an iFrame (use details from challengeData object) or if they would like to display the challange within redirect-page hosted by the Payengine (use redirectUrl).</p>
+          <br/>
+          <p>The transaction will have a PENDING status.</p>
+          <br/>
+          <table class="table table-bordered table-striped table-condensed">
+            <thead>
+              <tr>
+                <th>Sample Preauth Request</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <code>
+                    {
+                      ...
+                      "meta": {
+                        "threeDsData": {
+                          "authenticationResult": {
+                            "version": "2.0",
+                            "transactionId": "3b0fb5d7-46c2-4bf1-843b-e28e43354695",
+                            "status": "C",
+                            "redirectUrl": "https://link-the-hosted-challange.example",
+                            "challengeData": {
+                              "acsUrl": "https://link-to-the-issuer.acs",
+                              "base64EncodedChallengeRequest": "eyJtZXNzYWdlVHlwZSI6IkNSZXEiLCJ0aHJlZURTU2VydmVyVHJhbnNJRCI6IjNiMGZiNWQ3LTQ2YzItNGJmMS04NDNiLWUyOGU0MzM1NDY5NSIsImFjc1RyYW5zSUQiOiI0OWRiMzU1My00OTA5LTQ1YTItYTg3Ny02YWJjZjcxZDA1NTAiLCJjaGFsbGVuZ2VXaW5kb3dTaXplIjoiMDEiLCJtZXNzYWdlVmVyc2lvbiI6IjIuMS4wIn0=",
+                              "challengeWindowSize": "05"
+                            }
+                          }
+                        }
+                      },
+                      "redirectUrl": "https://link-the-hosted-challange.example"
+                    }
+                  </code>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br/>
+          <table class="table table-bordered table-striped table-condensed">
+            <tbody>
+              <tr>
+                <td style="border-right: none;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px"></td>
+                <td>
+                  <p>To support a downward compatible solution for integrators that have implemented the 3DS 1.0 flow already the old redirectUrl parameter on the top level of the response will also include the URL of the Payengine redirect page including the challenge.</p>
+                  <br/>
+                  <p>For new integrations the redirectUrl parameter from the meta.threeDsData.authenticationResult object should always be used.</p>
+                  <br/>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br/>
+          <br/>
+          <p>In order to load the iFrame an integrator can call the Payengine <a href="/buildyourown/bridge" target="_blank">JavaScript SDK (JS Bridge)</a> function:</p>
+          <br/>
+          <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+            <thead>
+                <tr>
+                  <th >openChallenge function provided by the Payengine's Bridge API</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>version</td>
+                  <td>
+                    <p>PayEngine.openChallenge(container, acsUrl, base64EncodedChallengeRequest, transactionId, challengeWindowSize, onChallengeFinishCallback);
+                      </p>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <br/>
+            <p>No matter how the challenge is presented to the cardholder the final results will be asynchronously synced back to the Payengine.</p>
+            <br/>
+            <p>The integrator could either pro-actively pull for the results via <em>GET /creditcard/3ds-authentication/{{threeDsAuthenticationId}}</em> or register for an asynchronous notification sent to the <em>async.notificationUrl</em> specified in the preauth or debit request.</p>
+        </div>
+      </div>
+      <div id="referencinganAuthenticationviaAgent">
+        <br/>
+        <h4>Referencing an Authentication via Agent</h4>
+        <br/>
+        <p>This option can be used for agents where an authentication is not intiated through the Payengine but through a different PSP.</p>
+        <br/>
+        <p>In this case the authentication results have to be provided as an input as part of the meta object.</p>
+        <br/>
+        <br/>
+          <table class="table table-bordered table-striped table-condensed">
+            <thead>
+              <tr>
+                <th>Sample Preauth Request</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <code>
+                    {
+                      ...
+                      "meta": {
+                        ...
+                        "threeDsData": {
+                          "version": "2.0",
+                          "transactionId": "8a880dc0-d2d2-4067-bcb1-b08d1690b26e",
+                          "authenticationValue": "MTIzNDU2Nzg5MDA5ODc2NTQzMjE=",
+                          "eci": "05"
+                        }
+                      }
+                    }
+                  </code>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br/>
+
       </div>
     </div>
   </div>
-  <div id="step_2">
-    <br/>
-    <br/>
-    <h3>Step 2 - Cardholder Authentication</h3>
-    <br/>
-    <p>In 3DS Enrolled Card option, once the 3DS page loads, the consumer authenticates in most of the cases via a permanent password.</p>
-    <br/>
-    <p>After authentication process, Payengine receives the Authentication result.</p>
-    <br/>
-    <p>You can find below an example for 3DS page shown on the consumers.</p>
-    <br/>
-    <img class="" src="/img/3dsecure/verified_by_visa.png" width="60%" />
-  </div>
-  <div id="step_3">
-    <br/>
-    <br/>
-    <h3>Step 3 - Authorizing the transaction by the Acquiring bank</h3>
-    <br/>
-    <p>Once Payengine receives Authentication result from 3DS environment, an Authorization request with card details and the Authentication result is submitted to the Acquiring bank (ConCardis GmbH for all payment cards except Amex). The Acquiring bank authorizes the transaction by communicating with the credit card network and Issuing bank.</p>
-    <br/>
-    <p>In response Payengine receives the result of the Authorization request which can be either success or failure.</p>
-    <br/>
-  </div>
-  <div id="step_4">
-    <br/>
-    <br/>
-    <h3>Step 4 - Redirecting Cardholder to the payment result page</h3>
-    <br/>
-    <p>Based on provided response of Authorization request Payengine updates status of the order and redirects consumer to either Success or Failure page for the payment.</p>
-    <br/>
-  </div>
-</div>
+</section>
+<br/>
+<section id="javaScriptSDKJSBridge">
+  <br/>
+  <h2>JavaScript SDK (JS Bridge)</h2>
+  <br/>
+  <p>A new helper function <em>threeDsAuthentication()</em> can be used to trigger the 3ds authentication flow.</p>
+  <br/>
+  <p>threeDsAuthentication(paymentInstrumentId, container, optionalParameters, callback)</p>
+  <br/>
+  <ul>
+    <li>The service will make a 3DS version call to check if 3DS is enrolled and what the corresponding version is
+      <ul>
+        <li>If the version is 1.0, it will directly call the callback function.</li>
+        <li>If the version is 2.0, it will:
+          <ul>
+            <li>Invoke the methodUrl (if present) returned from the 3DS version call</li>
+            <li>Collect the browser information</li>
+            <li>Create the threeDsAuthentication object (using the optionalParameters input)
+              <ul>
+                <li>If a challenge is required it will open an iFrame with the challenge</li>
+                <li>Otherwise it will return the result directly</li>
+              </ul>
+            </li>
+            <li>Return the result of the 3DS authentication (authenticationId) </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Result interface:
+      <ul>
+        <li>threeDsVersion: string, values: "1.0" (indicating that the execution flow will be the same as before) or "2.0"</li>
+        <li>specificData: object
+          <ul>
+            <li>"1.0" - null</li>
+            <li>includes the <em>authenticationId</em></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+  <br/>
+  <p>3DS results with version 1.0 example:</p>
+  <br/>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+    <tbody>
+      <tr>
+        <td>
+          <code>
+            {
+              threeDsVersion: "1.0",
+              specificData: null
+            }
+          </code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br/>
+  <p>3DS results with version 2.0 example:</p>
+  <br/>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+    <tbody>
+      <tr>
+        <td>
+          <code>
+            {
+              threeDsVersion: "2.0",
+              specificData: {
+                  authenticationId: "authentication_123"
+              }
+            }
+          </code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br/>
+  <br/>
+  <p>Example of the threeDsAuthentication usage:</p>
+  <br/>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+    <tbody>
+      <tr>
+        <td>
+          <code>
+            function callback(error, result) {
+              if (error) {
+                  console.log('Error in threeDsAuthentication method', error);
+                  return;
+              }
+              if (result.threeDsVersion === '1.0') {
+                  //create an order with the paymentInstrumentId
+                  //the order request will return a redirectUrl where the end customer should be redirected to
+                  return;
+              }
+              if (result.threeDsVersion === '2.0') {
+                  //create an order with the paymentInstrumentId and result.specificData.authenticationId
+                  //in this case the whole 3dsV2 flow is finished
+              }
+            }
+            window.PayEngine.threeDsAuthentication(paymentInstrumentId, container, optionalParameters, callback);
+          </code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<br/>
+<section id="widgetasaBridge">
+  <br/>
+  <h2>Widget as a Bridge</h2>
+  <br/>
+  <p>The widget as a bridge will only create the payment instrument and return it as a result parameter in the "resultCallback" function.</p>
+  <br/>
+  <p>In case a 3DS 2.0 authentication should be initiated without a payment for a payment instrument that was created with the widget as a bridge you can use our JavaScript SDK (JS Bridge) helper functions.</p>
+  <br/>
+  <br/>
+  <p>Example of a Payment Instrument create callback function:</p>
+  <br/>
+  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+    <tbody>
+      <tr>
+        <td>
+          <code>
+              var paymentInstrumentId;
+              var optionalParameters = {
+                ...,
+                "optionalFields": {
+                  ...,
+                  "creditCard": {
+                    "cofContract": {
+                      "type": "SCHEDULED"
+                    }
+                  }
+                }
+              };
+               
+              function onCardCheckCallback(error, result) {
+                  //the flow is finished
+              }
+               
+              function threeDsAuthenticationCallback(error, result) {
+                  if (error) {
+                      console.log('Error in threeDsAuthentication method', error);
+                      return;
+                  }
+                  if (result.threeDsVersion === '1.0') {
+                      //create an order with the paymentInstrumentId
+                      //the order request will return a redirectUrl where the end customer should be redirected to
+                      return;
+                  }
+                  if (result.threeDsVersion === '2.0') {
+                      //call cardCheck in case of separate session flow
+                      //window.PayEngine.cardCheck(paymentInstrumentId, optionalParameters.optionalFields.creditCard.cofContract.type, null, result.specificData.authenticationId, onCardCheckCallback);
+                      //   or
+                      //create an order with the paymentInstrumentId and result.specificData.authenticationId in case of one session flow
+                  }
+              }
+               
+              function piCreateCallback(error, paymentInstrument) {
+                  paymentInstrumentId = paymentInstrument.paymentInstrumentId;
+                  window.PayEngine.threeDsAuthentication(paymentInstrumentId, container, optionalParameters, threeDsAuthenticationCallback);
+              }
+               
+              window.PayEngineWidget.initAsInlineComponentPi(container, publishableKey, optionalParams, piCreateCallback);
+          </code>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br/>
+  <table class="table table-bordered table-striped table-condensed">
+    <tbody>
+      <tr>
+        <td style="border-right: none;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px"></td>
+        <td>
+          <p>
+              If the <em>piCreateCallback</em> function is not adapted to call the <em>PayEngine.threeDsAuthentication()</em> or the <em>PayEngine.browserInfo()</em> methods and the corresponding result information is not passed into the order request (preauth or debit) a potential 3DS 2.0 challenge can only be executed via the redirectUrl fallback solution. 
+          </p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<br/>
+<section id="modalWidget">
+  <br/>
+  <h2>Modal Widget</h2>
+  <br/>
+  <p>The Modal Widget will take care of all required 3DS 2.0 services and no changes will be required.</p>
+  <br/>
+  <p>In case of a challenge the corresponding iFrame will be loaded directly in the widget. All relevant results will be returned as part of the order result.</p>
+  <br/>
+</section>
+<br/>
+<section id="inlineWidget">
+  <br/>
+  <h2>Inline Widget</h2>
+  <br/>
+  <p>The Inline Widget will take care of all required 3DS 2.0 services and no changes will be required.</p>
+  <br/>
+  <p>In case of a challenge the corresponding iFrame will be loaded directly in the widget. All relevant results will be returned as part of the order result.</p>
+  <br/>
+</section>
+
+
+
+

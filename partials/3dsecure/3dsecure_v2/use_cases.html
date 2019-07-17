@@ -25,7 +25,7 @@
   <br/>
   <p>The payment transaction could be a simple onetime purchase or could be the initial transaction using one of the credential-on-file use cases (oneclick, recurring unscheduled, recurring scheduled).</p>
   <br/>
-  <p>More details about the credential-on-file feature & uses cases can be found <a href="https://concardis.stagil.de/confluence/pages/viewpage.action?pageId=21476684">here</a>.</p>
+  <p>More details about the credential-on-file feature & uses cases can be found <a href="https://concardis.stagil.de/confluence/pages/viewpage.action?pageId=21476684" target="_blank">here</a>.</p>
   <br/>
 </div>
 <div id="authenticationWithoutPayment">
@@ -52,13 +52,9 @@
   <p>In such model the agent (e.g. travel agency) will trigger the authentication for the full purchase and forward the results to the various merchants that will initiate the actual payment transactions referencing the authentication done by the agent.</p>
   <br/>
   <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
-    <thead>
-      <tr>
-        <th>! Important</th>
-      </tr>
-    </thead>
     <tbody>
       <tr>
+        <td style="border-right: none;" ><img class="" src="/img/3dsecure/error-triangle.png" width="16px"></td>
         <td>An agent has to inform the customer that the actual payment is not initiated by the agent but the merchant where the products or services are purchased!</td>
       </tr>
     </tbody>
@@ -67,7 +63,7 @@
 </div>
 <div id="merchantWithConcardis">
   <br/>
-  <h2>Merchant with Concardis</h2>
+  <h3>Merchant with Concardis</h3>
   <br/>
   <p>In this case the merchant has a card acquiring agreement with Concardis and the payments will be processed via the Payengine but the authentication triggered by the Agent has been done trough a different acquirer/PSP.</p>
   <br/>
@@ -124,13 +120,9 @@
     </table>
   <br/>
   <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
-    <thead>
-      <tr>
-        <th>! Important</th>
-      </tr>
-    </thead>
     <tbody>
       <tr>
+        <td style="border-right: none;" ><img class="" src="/img/3dsecure/error-triangle.png" width="16px"></td>
         <td>An authorization or debit might be rejected by the issuer if the transaction was not fully authenticated before.</td>
       </tr>
     </tbody>
@@ -139,14 +131,14 @@
 </div>
 <div id="agentWithConcardis">
   <br/>
-  <h2>Agent with Concardis</h2>
+  <h3>Agent with Concardis</h3>
   <br/>
   <p>In this case the the agent has an agreement with Concardis for pure 3DS authentication but the actual payment transactions by the merchant will be processed through a different acquirer/PSP, but not the Payengine.</p>
   <br/>
   <p>This means the agent just initiates the 3DS authentication and forwards the results to the merchant(s).</p>
   <br/>
   <br/>
-  <p>In order to execute a 3DS authentication the agent can use one of the supported Payengine integration types. More details about the 3DS integration types can be found <a href="https://concardis.stagil.de/confluence/display/PAY/%5BPubDoc%5D+3DSv2+-+Integration+Types">here</a>.</p>
+  <p>In order to execute a 3DS authentication the agent can use one of the supported Payengine integration types. More details about the 3DS integration types can be found <a href="https://concardis.stagil.de/confluence/display/PAY/%5BPubDoc%5D+3DSv2+-+Integration+Types" target="_blank">here</a>.</p>
   <br/>
   <br/>
   <p>The following parameters for a successful 3DS authentication should be forwarded.</p>

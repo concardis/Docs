@@ -210,7 +210,7 @@
 		"content": "Our simulator is the simplest way to test your integration in our test enviroment. (apitest.payengine.de) With the simulator you are able to test positive/negative use cases. To get a postive response use 1,00 as amount. To get a negative response use 1,01 as amount. This works for all our products (paypal, sofort, ratepay, paydirekt). To test your credit card integration, create transactions with these PANs:"
 	},
 	{
-		"url": "/buildyourown/apidocu",
+		"url": "/buildyourown/apidocs",
 		"title": "API Endpoint Structure",
 		"filter": "customintegration",
 		"tags": "API Endpoint Structure Example",

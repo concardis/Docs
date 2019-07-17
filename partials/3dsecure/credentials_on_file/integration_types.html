@@ -66,11 +66,12 @@
     <p>In case a merchant would like to use the same payment instrument for multiple cofContracts the id would always be a required input parameter for each payment transaction!</p>
     <br/>
     <table class="table table-bordered table-striped table-condensed">
-      <thead>
+      <tbody>
         <tr>
-          <th>Once a <em>cofContracts</em> is assigned to a payment instrument it will always be returned together with other attributes of the payment instrument once queried (see sample below). </th>
+          <td style="border-right: none;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px"></td>
+          <td>Once a <em>cofContracts</em> is assigned to a payment instrument it will always be returned together with other attributes of the payment instrument once queried (see sample below). </td>
         </tr>
-      </thead>
+      </tbody>
     </table>
     <br/>
     <table class="table table-bordered table-striped table-condensed">
@@ -310,11 +311,12 @@
         </table>
     <br/>
     <table class="table table-bordered table-striped table-condensed">
-      <thead>
+      <tbody>
         <tr>
-          <th>If there is only one <em>cofContract</em>  assigned to a payment instrument the Payengine can automatically extract the relevant data and on cofContract.id would be required as an input for subsequent transactions.</th>
+          <td style="border-right: none;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px"></td>
+          <td>If there is only one <em>cofContract</em>  assigned to a payment instrument the Payengine can automatically extract the relevant data and on cofContract.id would be required as an input for subsequent transactions.</td>
         </tr>
-      </thead>
+      </tbody>
     </table>
     <br/>
     <p>The technical description of the service can be found <a href="https://docs.payengine.de/buildyourown/apidocs#tag%2FManage-orders" target="_blank">here</a>.</p>
@@ -388,15 +390,16 @@
   <br/>
   <br/>
   <table class="table table-bordered table-striped table-condensed">
-    <thead>
+    <tbody>
       <tr>
-        <th>
+        <td style="border-right: none;" ><img class="" src="/img/3dsecure/error-triangle.png" width="16px"></td>
+        <td>
           <p>The <em>cofContract.type</em> input is only used for the display of the corresponding checkbox in the widget. It is not stored with the payment instrument at this time.</p>
           <br/>
           <p>The <em>cofContract</em> still has to be assigned to the payment instrument either as part of the order request or as part of a card check.</p>
-        </th>
+        </td>
       </tr>
-    </thead>
+    </tbody>
   </table>
   <br/>
   <div id="modalInlineWidgetValidations">

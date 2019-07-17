@@ -263,9 +263,9 @@
 				<h2>With Deutsche Handelsbank bank account</h2><br>
 				<h3>Payment loss</h3><br> In case that the payment does not arrive to your bank account, a new chargeback transaction in the status CHARGEBACK will be created as a child of the initial debit transaction. In this case you should directly contact the end customer to inform
 				him that there is an issue with the payment.
-				<br> The end customer can initiate a bank transfer with the order.paymentProviderTransactionId as reference to complete the transaction.<br> You can find the order.paymentProviderTransactionId in the Merchant Center detail view of your order.<br>				To read the order information via API click <a href="/buildyourown/apidocu">here</a>.<br>
+				<br> The end customer can initiate a bank transfer with the order.paymentProviderTransactionId as reference to complete the transaction.<br> You can find the order.paymentProviderTransactionId in the Merchant Center detail view of your order.<br>				To read the order information via API click <a href="/buildyourown/apidocs">here</a>.<br>
 				<h3>Payment received</h3><br> As soon as the payment amount is available on your bank account, the flag order.settled will be set to true. If there was a chargeback transaction present, the chargeback status will change from CHARGEBACK to BOOKIN. See API spec for reading
-				order information <a href="/buildyourown/apidocu">here</a>.
+				order information <a href="/buildyourown/apidocs">here</a>.
 				<h2>Without Deutsche Handelsbank bank account</h2><br> No further status updates will be available.<br>
 				<h3>Support</h3><br> If you need to contact the Sofort support to solve a transaction specific problem, ensure that you have always provided the order.paymentProviderTransactionId.<br>
 				<h3>Webhooks</h3><br> Not implemented yet.<br>

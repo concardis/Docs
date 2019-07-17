@@ -28,7 +28,7 @@ Move into the directory and run
 ## Folder overview
 #### Content
  - **searchIndex.json** manual created JSON to search the Site. App.js /search
- - **swagger.json** current beautified Swagger file. Used by Swagger UI /buildyourown/apidocu 
+ - **swagger.json** current beautified Swagger file. Used by Swagger UI /buildyourown/apidocs 
 
 #### CSS
  - **monarch** Monarch UI 

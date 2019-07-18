@@ -1,0 +1,374 @@
+
+<ul>
+    <li><a href="/3dsecure/3dsecure_v2_integration_impact#oneSession" name="">Tokenization & Payment: One Session</a></li>
+    <li><a href="/3dsecure/3dsecure_v2_integration_impact#separateSessions" name="">Tokenization & Payment: Separate Sessions</a></li>
+  </ul>
+  <br/>
+  <br/>
+  <p>This page describes the potential impact for 3DS 2.0 for integrators based on the integration type and use case.</p>
+  
+  <div id="oneSession">
+    <br/>
+    <br/>
+    <h2>Tokenization & Payment: One Session</h2>
+    <br/>
+    <br/>
+    <p>This section will describe the impact for integration where the tokenization of credit card credentials and a corresponding payment will be handled within the same session.</p>
+    <br/>
+    <p>All actions will be cardholder initiated in this case.</p>
+    <br/>
+    <p>More details about the use cases related to credentials-on-file can be found <a href="https://concardis.stagil.de/confluence/display/PAY/%5BPubDoc%5D+3DSv2+-+Introduction" target="_blank">here</a>.</p>
+    <br/>
+    <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+      <tbody>
+        <tr>
+          <td style="border-right: none;" ><img class="" src="/img/3dsecure/error-triangle.png" width="16px"></td>
+          <td>For simplicity the recurring scheduled and recurring unscheduled use cases are covered together under just "recurring" as the impact for potential changes will be the same for both.</td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <table border="1px solid black" class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th style="text-align: center;" rowspan="3">Use Case</th>
+          <th style="text-align: center;" colspan="2">Integration Type & Trigger</th>
+          <th style="text-align: center;" colspan="5">New 3DS 2.0 Interaction</th>
+          <th style="text-align: center;" colspan="2">COF Handling</th>
+        </tr>
+        <tr>
+          <th style="text-align: center;" rowspan="2">Tokenization</th>
+          <th style="text-align: center;" rowspan="2">Payment</th>
+          <th style="text-align: center;" rowspan="2">Check 3DS Version</th>
+          <th style="text-align: center;" rowspan="2">Get Browser Info</th>
+          <th style="text-align: center;" rowspan="2">3DS Authentication</th>
+          <th style="text-align: center;" colspan="2">Show 3DS 2.0 Challenge UI</th>
+          <th style="text-align: center;" rowspan="2">COF Contract<br/> Flagging</th>
+          <th style="text-align: center;" rowspan="2">Card Check</th>
+        </tr>
+        <tr>
+          <th style="text-align: center;" width="150px;">Redirect Option</th>
+          <th style="text-align: center;" >iFrame Option</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Onetime</td>
+          <td colspan="2">Inline Widget</td>
+          <td rowspan="2">done by widget</td>
+          <td rowspan="2">done by widget</td>
+          <td rowspan="2">done by widget</td>
+          <td rowspan="2">N/A</td>
+          <td rowspan="2">done by widget</td>
+          <td rowspan="5">N/A</td>
+          <td rowspan="15">N/A</td>
+        </tr>
+        <tr>
+          <td>Onetime</td>
+          <td colspan="2">Modal Widget</td>
+        </tr>
+        <tr>
+          <td>Onetime</td>
+          <td>Widget as a Bridge</td>
+          <td>API</td>
+          <td rowspan="3">
+            <strong>done by merchant</strong>
+            <br/>
+            changes required
+          </td>
+          <td rowspan="3">
+            <strong>done by merchant</strong>
+            <br/>
+            changes required
+          </td>
+          <td rowspan="3">
+            <strong>done by merchant</strong>
+            <br/>
+            changes required
+          </td>
+          <td rowspan="3">
+            <strong>done by merchant</strong>
+            <br/>
+            <u>no change required</u> if 3DS 1.0 is already implemented and redirect should be used instead of iFrame
+          </td>
+          <td rowspan="3">
+            <strong>done by merchant</strong>
+            <br/>
+            changes required
+          </td>
+        </tr>
+        <tr>
+          <td>Onetime</td>
+          <td>JavaScript SDK<br/>(JS Bridge)</td>
+          <td>API</td>
+        </tr>
+        <tr>
+          <td>Onetime</td>
+          <td>API</td>
+          <td>API</td>
+        </tr>
+        <tr>
+          <td>Oneclick initial</td>
+          <td colspan="2">Inline Widget</td>
+          <td rowspan="2">done by widget</td>
+          <td rowspan="2">done by widget</td>
+          <td rowspan="2">done by widget</td>
+          <td rowspan="2">N/A</td>
+          <td rowspan="2">done by widget</td>
+          <td rowspan="5">
+            <strong>done by merchant</strong>
+            <br/>
+            changes required<sub>*</sub>
+          </td>
+        </tr>
+        <tr>
+          <td>Oneclick initial</td>
+          <td colspan="2">Modal Widget</td>
+        </tr>
+        <tr>
+          <td>Oneclick initial</td>
+          <td>Widget as a Bridge</td>
+          <td>API</td>
+          <td rowspan="3">
+            <strong>done by merchant</strong>
+            <br/>
+            changes required
+          </td>
+          <td rowspan="3">
+            <strong>done by merchant</strong>
+            <br/>
+            changes required
+          </td>
+          <td rowspan="3">
+            <strong>done by merchant</strong>
+            <br/>
+            changes required
+          </td>
+          <td rowspan="3">
+            <strong>done by merchant</strong>
+            <br/>
+            <u>no change required</u> if 3DS 1.0 is already implemented and redirect should be used instead of iFrame
+          </td>
+          <td rowspan="3">
+            <strong>done by merchant</strong>
+            <br/>
+            changes required
+          </td>
+        </tr>
+        <tr>
+          <td>Oneclick initial</td>
+          <td>JavaScript SDK<br/>(JS Bridge)</td>
+          <td>API</td>
+        </tr>
+        <tr>
+          <td>Oneclick initial</td>
+          <td>API</td>
+          <td>API</td>
+        </tr>
+        <tr>
+          <td>Recurring initial</td>
+          <td colspan="2">Inline Widget</td>
+          <td rowspan="2">done by widget</td>
+          <td rowspan="2">done by widget</td>
+          <td rowspan="2">done by widget</td>
+          <td rowspan="2">N/A</td>
+          <td rowspan="2">done by widget</td>
+          <td rowspan="5">
+            <strong>done by merchant</strong>
+            <br/>
+            changes required*
+          </td>
+        </tr>
+        <tr>
+          <td>Recurring initial</td>
+          <td colspan="2">Modal Widget</td>
+        </tr>
+        <tr>
+          <td>Recurring initial</td>
+          <td>Widget as a Bridge</td>
+          <td>API</td>
+          <td rowspan="3">
+            <strong>done by merchant</strong>
+            <br/>
+            changes required
+          </td>
+          <td rowspan="3">
+            <strong>done by merchant</strong>
+            <br/>
+            changes required
+          </td>
+          <td rowspan="3">
+            <strong>done by merchant</strong>
+            <br/>
+            changes required
+          </td>
+          <td rowspan="3">
+            <strong>done by merchant</strong>
+            <br/>
+            <u>no change required</u> if 3DS 1.0 is already implemented and redirect should be used instead of iFrame
+          </td>
+          <td rowspan="3">
+            <strong>done by merchant</strong>
+            <br/>
+            changes required
+          </td>
+        </tr>
+        <tr>
+          <td>Recurring initial</td>
+          <td>JavaScript SDK<br/>(JS Bridge)</td>
+          <td>API</td>
+        </tr>
+        <tr>
+          <td>Recurring initial</td>
+          <td>API</td>
+          <td>API</td>
+        </tr> 
+      </tbody>
+    </table>
+    <br/>
+    <p>* There might be an option that a default COF type can be configured in the Payengine merchant account and the cofContract does not have to be provided. Please consult you integration manager in case you are interested.</p>
+    <br/>
+  </div>
+  
+  <div id="separateSessions">
+    <br/>
+    <br/>
+    <h2>Tokenization & Payment: Separate Sessions</h2>
+    <br/>
+    <br/>
+    <p>This section will describe the impact for integration where the tokenization of credit card credentials and a corresponding payment will be handled within the separate sessions.</p>
+    <br/>
+    <p>While all intial transactions will be cardholder initiated the subequent transactions can be cardholder or merchant initiated, depending on the use case.</p>
+    <br/>
+    <p>More details about the use cases related to credentials-on-file can be found <a href="https://concardis.stagil.de/confluence/pages/viewpage.action?spaceKey=PAY&title=%5BPubDoc%5D+3DSv2+-+Introduction" target="_blank">here</a>.</p>
+    <br/>
+    <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+      <tbody>
+        <tr>
+          <td style="border-right: none;" ><img class="" src="/img/3dsecure/error-triangle.png" width="16px"></td>
+          <td>For simplicity the recurring scheduled and recurring unscheduled use cases are covered together under just "recurring" as the impact for potential changes will be the same for both.</td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+
+    <table border="1px solid black" class="table table-bordered table-striped table-condensed">
+        <thead>
+          <tr>
+            <th style="text-align: center;" rowspan="3">Use Case</th>
+            <th style="text-align: center;" colspan="2">Integration Type & Trigger</th>
+            <th style="text-align: center;" colspan="5">New 3DS 2.0 Interaction</th>
+            <th style="text-align: center;" colspan="2">COF Handling</th>
+          </tr>
+          <tr>
+            <th style="text-align: center;" rowspan="2">Tokenization</th>
+            <th style="text-align: center;" rowspan="2">Payment</th>
+            <th style="text-align: center;" rowspan="2">Check 3DS Version</th>
+            <th style="text-align: center;" rowspan="2">Get Browser Info</th>
+            <th style="text-align: center;" rowspan="2">3DS Authentication</th>
+            <th style="text-align: center;" colspan="2">Show 3DS 2.0 Challenge UI</th>
+            <th style="text-align: center;" rowspan="2" width="180px;">COF Contract<br/> Flagging</th>
+            <th style="text-align: center;" rowspan="2" width="180px;">Card Check</th>
+          </tr>
+          <tr>
+            <th style="text-align: center;" width="150px;">Redirect Option</th>
+            <th style="text-align: center;" >iFrame Option</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>One-click initial</td>
+            <td>Widget as a Bridge</td>
+            <td>API</td>
+            <td rowspan="7">
+              <strong>done by merchant</strong>
+              <br/>
+              changes required
+            </td>
+            <td rowspan="7">
+              <strong>done by merchant</strong>
+              <br/>
+              changes required
+            </td>
+            <td rowspan="7">
+              <strong>done by merchant</strong>
+              <br/>
+              changes required
+            </td>
+            <td rowspan="7">
+              <strong>done by merchant</strong>
+              <br/>
+              <u>no change required</u> if 3DS 1.0 is already implemented and redirect should be used instead of iFrame
+            </td>
+            <td rowspan="7">
+              <strong>done by merchant</strong>
+              <br/>
+              changes required
+            </td>
+            <td rowspan="3">
+              <strong>done by merchant</strong>
+              <br/>
+              changes required<sup>*</sup>
+            </td>
+            <td>
+              N/A
+            </td>
+          </tr>
+          <tr>
+            <td>One-click initial</td>
+            <td>JavaScript SDK<br/>(JS Bridge)</td>
+            <td>API</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>One-click initial</td>
+            <td>API</td>
+            <td>API</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>One-click subsequent</td>
+            <td> - </td>
+            <td>API</td>
+            <td>done by Payengine</td>
+            <td>N/A</td>
+          </tr>
+          <tr>
+            <td>Recurring initial</td>
+            <td>Widget as a Bridge </td>
+            <td>API</td>
+            <td rowspan="3">
+              <strong>done by merchant</strong>
+              <br/>
+              changes required<sup>*</sup>
+            </td>
+            <td rowspan="3">
+              <strong>done by merchant</strong>
+              <br/>
+              only required if the initial transaction and corresponding 3DS authentication should be initiated as a card check
+            </td>
+          </tr>
+          <tr>
+            <td>Recurring initial</td>
+            <td>JavaScript SDK<br/>(JS Bridge)</td>
+            <td>API</td>
+          </tr>
+          <tr>
+            <td>Recurring initial</td>
+            <td>API</td>
+            <td>API</td>
+          </tr>
+          <tr>
+            <td>Recurring subsequent</td>
+            <td>  -  </td>
+            <td>API</td>
+            <td colspan="5">no authentication required for subsequent MIT as long as intitial recurring transaction was fully authenticated</td>
+            <td>done by Payengine</td>
+            <td>N/A</td>
+          </tr>
+        </tbody>
+      </table>
+    <br/>
+    <p> <sup>*</sup>There might be an option that a default COF type can be configured in the Payengine merchant account and the cofContract does not have to be provided. Please consult you integration manager in case you are interested.</p>
+  </div>
+  

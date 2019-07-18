@@ -61,15 +61,15 @@
     <br/>
     <p>A card payment instrument in the Payengine could have multiple assigned <em>cofContracts</em>.</p>
     <br/>
-    <p>The most typical use case would be that only one <em>cofContracts</em> is assigned to a payment instrument. In this case the Payengine will automatically trace initial and subsequent transactions. For recurring payments the Payengine will also automatically extract the card scheme transaction identifier for the initial recurring payment and forward it as part of the subsequent transactions.</p>
+    <p>The most typical use case would be that only one <em>cofContract</em> is assigned to a payment instrument. In this case the Payengine will automatically trace initial and subsequent transactions. For recurring payments the Payengine will also automatically extract the card scheme transaction identifier for the initial recurring payment and forward it as part of the subsequent transactions.</p>
     <br/>
-    <p>In case a merchant would like to use the same payment instrument for multiple cofContracts the id would always be a required input parameter for each payment transaction!</p>
+    <p>In case a merchant would like to use the same payment instrument for multiple <em>cofContracts</em> the <em>id</em> would always be a required input parameter for each payment transaction!</p>
     <br/>
     <table class="table table-bordered table-striped table-condensed">
       <tbody>
         <tr>
           <td style="border-right: none;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px"></td>
-          <td>Once a <em>cofContracts</em> is assigned to a payment instrument it will always be returned together with other attributes of the payment instrument once queried (see sample below). </td>
+          <td>Once a <em>cofContract</em> is assigned to a payment instrument it will always be returned together with other attributes of the payment instrument once queried (see sample below). </td>
         </tr>
       </tbody>
     </table>
@@ -125,7 +125,7 @@
       <br/>
       <ul>
         <li>If <em>cofContract</em> object is passed - the card check authorization will trigger an initial credential-on-file transaction, which can also be linked to a 3DS authentication. This option can be used in case the merchant only wants to stores the payment credentials and at this point no real payment should be initiated.</li>
-        <li>If <em>cofContract</em> object is not passed (POST with empty request body) - a simple cardcheck will be trigger with 0 amount via MOTO channel and will return the status of the card.</li>
+        <li>If <em>cofContract</em> object is not passed (POST with empty request body) - a simple card check will be triggered with 0 amount via MOTO channel and will return the status of the card.</li>
       </ul>
       <p>Supported brands:</p>
       <ul>

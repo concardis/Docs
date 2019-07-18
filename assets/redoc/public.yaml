@@ -161,7 +161,7 @@ paths:
           schema:
             $ref: '#/definitions/PaymentInstrumentResponse'
         '404':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/PaymentInstrumentsGetNotFound'
     patch:
@@ -195,7 +195,7 @@ paths:
           schema:
             $ref: '#/definitions/PaymentInstrumentResponse'
         '400':
-          description: Bad request casued by invalid input.
+          description: Bad request caused by invalid input.
           schema:
             $ref: '#/definitions/PaymentInstrumentsPatchBadRequest'
     delete:
@@ -217,7 +217,7 @@ paths:
         '204':
           description: Successful response
         '404':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/PaymentInstrumentsGetNotFound'
   '/payment-instruments/{paymentInstrumentId}/card-check':
@@ -226,7 +226,7 @@ paths:
         - basicAuth: []
       summary: Initiate cardcheck
       description: |
-        Service to initiate a card check which will results in a 0,00� authorization.
+        Service to initiate a card check which will results in a 0,00 EUR authorization.
 
         The card check authorization can be used as an initial authorization containing the 3DS information in case the merchant only stores the payment credentials and at this point no real payment should be initiated.
       tags:
@@ -276,7 +276,7 @@ paths:
           schema:
             $ref: '#/definitions/ThreeDsVersionResponse'
         '400':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/ThreeDsVersionBadRequest'
   /browser-info:
@@ -471,7 +471,7 @@ paths:
           schema:
             $ref: '#/definitions/OrderList'
         '404':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/OrdersGetNotFound'
     patch:
@@ -543,7 +543,7 @@ paths:
           schema:
             $ref: '#/definitions/OrderResponse'
         '400':
-          description: Bad request casued by invalid input.
+          description: Bad request caused by invalid input.
           schema:
             $ref: '#/definitions/OrdersPreauthPostBadRequest'
   /orders/debit:
@@ -596,7 +596,7 @@ paths:
           schema:
             $ref: '#/definitions/OrderResponse'
         '400':
-          description: Bad request casued by invalid input.
+          description: Bad request caused by invalid input.
           schema:
             $ref: '#/definitions/OrdersDebitPostBadRequest'
   /orders/credit:
@@ -630,7 +630,7 @@ paths:
           schema:
             $ref: '#/definitions/OrderResponse'
         '400':
-          description: Bad request casued by invalid input.
+          description: Bad request caused by invalid input.
           schema:
             $ref: '#/definitions/OrdersCreditPostBadRequest'
   '/orders/{orderId}/transactions/{transactionId}/cancel':
@@ -673,7 +673,7 @@ paths:
           schema:
             $ref: '#/definitions/TransactionResponseParent'
         '400':
-          description: Bad request casued by invalid input.
+          description: Bad request caused by invalid input.
           schema:
             $ref: '#/definitions/OrdersTransactionsCancelPostBadRequest'
   '/orders/{orderId}/transactions/{transactionId}/capture':
@@ -716,7 +716,7 @@ paths:
           schema:
             $ref: '#/definitions/CaptureResponse'
         '400':
-          description: Bad request casued by invalid input.
+          description: Bad request caused by invalid input.
           schema:
             $ref: '#/definitions/OrdersTransactionsCapturePostBadRequest'
   '/orders/{orderId}/transactions/{transactionId}/refund':
@@ -771,7 +771,7 @@ paths:
           schema:
             $ref: '#/definitions/TransactionResponseParent'
         '400':
-          description: Bad request casued by invalid input.
+          description: Bad request caused by invalid input.
           schema:
             $ref: '#/definitions/OrdersTransactionsRefundPostBadRequest'
   '/orders/{orderId}/transactions/{transactionId}':
@@ -803,7 +803,7 @@ paths:
           schema:
             $ref: '#/definitions/TransactionResponseParent'
         '404':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/OrdersTransactionsGetNotFound'
     patch:
@@ -846,7 +846,7 @@ paths:
           schema:
             $ref: '#/definitions/TransactionResponseParent'
         '400':
-          description: Bad request casued by invalid input.
+          description: Bad request caused by invalid input.
           schema:
             $ref: '#/definitions/OrdersTransactionsPatchBadRequest'
   '/orders/{orderId}/transactions':
@@ -873,7 +873,7 @@ paths:
           schema:
             $ref: '#/definitions/TransactionList'
         '404':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/OrdersTransactionsGetAllNotFound'
   /customers:
@@ -908,7 +908,7 @@ paths:
           schema:
             $ref: '#/definitions/CustomerResponse'
         '400':
-          description: Bad request casued by invalid input.
+          description: Bad request caused by invalid input.
           schema:
             $ref: '#/definitions/CustomersPostBadRequest'
     get:
@@ -968,7 +968,7 @@ paths:
           schema:
             $ref: '#/definitions/CustomerResponse'
         '404':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/CustomersGetNotFound'
     patch:
@@ -1022,7 +1022,7 @@ paths:
         '204':
           description: Successful response.
         '404':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/CustomersGetNotFound'
   '/customers/{customerId}/personas/{personaId}':
@@ -1054,7 +1054,7 @@ paths:
           schema:
             $ref: '#/definitions/PersonaResponse'
         '404':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/CustomersPersonasGetNotFound'
   '/customers/{customerId}/personas':
@@ -1081,7 +1081,7 @@ paths:
           schema:
             $ref: '#/definitions/PersonaList'
         '400':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/CustomersPersonasGetAllBadRequest'
     post:
@@ -1116,7 +1116,7 @@ paths:
           schema:
             $ref: '#/definitions/PersonaResponse'
         '400':
-          description: Bad request casued by invalid input.
+          description: Bad request caused by invalid input.
           schema:
             $ref: '#/definitions/CustomersPersonasPostBadRequest'
   '/customers/{customerId}/addresses/{addressId}':
@@ -1148,7 +1148,7 @@ paths:
           schema:
             $ref: '#/definitions/AddressResponse'
         '404':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/CustomersAddressesGetNotFound'
   '/customers/{customerId}/addresses':
@@ -1175,7 +1175,7 @@ paths:
           schema:
             $ref: '#/definitions/AddressList'
         '400':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/CustomersAddressesGetAllBadRequest'
     post:
@@ -1211,7 +1211,7 @@ paths:
           schema:
             $ref: '#/definitions/AddressResponse'
         '400':
-          description: Bad request casued by invalid input.
+          description: Bad request caused by invalid input.
           schema:
             $ref: '#/definitions/CustomersAddressesPostBadRequest'
   '/customers/{customerId}/payment-instruments':
@@ -1242,7 +1242,7 @@ paths:
         '204':
           description: Successful response.
         '400':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/CustomersPaymentInstrumentsPostBadRequest'
     get:
@@ -1268,7 +1268,7 @@ paths:
           schema:
             $ref: '#/definitions/PaymentInstrumentList'
         '400':
-          description: Bad request casued by invalid input.
+          description: Bad request caused by invalid input.
           schema:
             $ref: '#/definitions/CustomersPaymentInstrumentsGetBadRequest'
   '/customers/{customerId}/payment-instruments/{paymentInstrumentId}':
@@ -1298,7 +1298,7 @@ paths:
         '204':
           description: Successful response.
         '400':
-          description: Bad request casued by invalid input.
+          description: Bad request caused by invalid input.
           schema:
             $ref: '#/definitions/CustomersPaymentInstrumentsDeleteBadRequest'
 
@@ -1422,7 +1422,7 @@ paths:
           schema:
             $ref: '#/definitions/SettlementsList'
         '404':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/SettlementsNotFound'
   /settlements/download:
@@ -1459,7 +1459,7 @@ paths:
           schema:
             $ref: '#/definitions/SettlementResponse'
         '404':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/SettlementsNotFound'
   /report/transaction:
@@ -1495,7 +1495,7 @@ paths:
           schema:
             $ref: '#/definitions/TxReportList'
         '404':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/TxReportNotFound'
   /report/transaction/download:
@@ -1532,7 +1532,7 @@ paths:
         '200':
           description: Successful response.
         '404':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/TxReportNotFound'
   /batch/upload:
@@ -1620,7 +1620,7 @@ paths:
         '200':
           description: Successful response.
         '404':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/BatchNotFound'
   /batch/{batchId}/response/download:
@@ -1648,7 +1648,7 @@ paths:
         '200':
           description: Successful response.
         '404':
-          description: Not found casued by invalid input.
+          description: Not found caused by invalid input.
           schema:
             $ref: '#/definitions/BatchResponseNotFound'
   /health:
@@ -1968,7 +1968,7 @@ definitions:
       initialAmount:
         description: |
           Amount as smallest currency unit
-          e.g 100� will be result in amount = 10000
+          e.g 100 EUR will be result in amount = 10000
         type: number
         format: int
       currency:
@@ -2109,7 +2109,7 @@ definitions:
       initialAmount:
         description: |
           Amount as smallest currency unit
-          e.g 100� will be result in amount = 10000
+          e.g 100 EUR will be result in amount = 10000
         type: number
         format: int
         minimum: 1
@@ -2183,7 +2183,7 @@ definitions:
       initialAmount:
         description: |
           Amount as smallest currency unit
-          e.g 100� will be result in amount = 10000
+          e.g 100 EUR will be result in amount = 10000
         type: number
         format: int
         minimum: 1
@@ -2291,7 +2291,7 @@ definitions:
       initialAmount:
         description: |
           Amount as smallest currency unit
-          e.g 100� will be result in amount = 10000
+          e.g 100 EUR will be result in amount = 10000
         type: number
         format: int
         minimum: 1
@@ -3630,7 +3630,7 @@ definitions:
       initialAmount:
         description: |
           Amount as smallest currency unit
-          e.g 100� will be result in amount = 10000
+          e.g 100 EUR will be result in amount = 10000
         type: number
         format: int
       currency:
@@ -5089,7 +5089,7 @@ definitions:
   BrowserInfo:
     type: object
     properties:
-      browserAcceptHeader:
+      acceptHeader:
         type:  string
         example: brw-accept-header
         description: >-
@@ -5101,7 +5101,7 @@ definitions:
         description: >-
           IP address of the browser as returned by the HTTP headers to the 3DS Requestor. The field is limited to maximum 45 characters and the accepted values are as following:
           - IPv4 address is represented in the dotted decimal format of 4 sets of decimal numbers separated by dots. The decimal number in each and every set is in the range 0 - 255.
-          - IPv6 adress is represented as eight groups of four hexadecimal digits, each group representing 16 bits (two octets). The groups are separated by colons (:).
+          - IPv6 address is represented as eight groups of four hexadecimal digits, each group representing 16 bits (two octets). The groups are separated by colons (:).
       javaEnabled:
         type: boolean
         description: Boolean that represents the ability of the cardholder browser to execute Java.
@@ -5149,11 +5149,11 @@ definitions:
           Preconfigured sizes are width X height in pixels of the window displayed in the Cardholder browser window. This is used only to prepare the CReq request and it is not part of the AReq flow. If not present it will be omitted.
           However, when sending the Challenge Request.
           Accepted values are:
-          01 -> 250 x 400
-          02 -> 390 x 400
-          03 -> 500 x 600
-          04 -> 600 x 400
-          05 -> Full screen
+          <br>01 -> 250 x 400
+          <br>02 -> 390 x 400
+          <br>03 -> 500 x 600
+          <br>04 -> 600 x 400
+          <br>05 -> Full screen
   CofContractTypeEnum:
     title: CofContractTypeEnum
     type: string
@@ -5247,6 +5247,7 @@ definitions:
         enum: ['SUCCESS', 'FAILURE']
         example: 'SUCCESS'
       threeDsAuthenticationId:
+        type: string
         description: >-
           Identifier of the 3DS authentication in case they should be passed together with the card check authorization to mark an initial COF transaction.
       cofContract:
@@ -5439,11 +5440,11 @@ definitions:
     type: object
     description: An object containing information relevant for risk analysis on the issuere side.
     properties:
-      riskCustomerAccount:
+      customerAccount:
         $ref: '#/definitions/RiskCustomerAccount'
-      riskShippingInfo:
+      shippingInfo:
         $ref: '#/definitions/RiskShippingInfo'
-      riskOrderInfo:
+      orderInfo:
         $ref: '#/definitions/RiskOrderInfo'
   AuthenticationRequestAsync:
     type: object
@@ -5481,7 +5482,7 @@ definitions:
         type: string
         description: The identifier of a payengine address.
         example: address_abc123xyz1
-      transactionInfo:
+      transactionData:
         $ref: '#/definitions/AuthenticationTransactionData'
       risk:
         $ref: '#/definitions/Risk'
@@ -5533,7 +5534,7 @@ definitions:
         type: string
         description: The identifier of a payengine address.
         example: address_abc123xyz1
-      transactionInfo:
+      transactionData:
         $ref: '#/definitions/AuthenticationTransactionData'
       risk:
         $ref: '#/definitions/Risk'

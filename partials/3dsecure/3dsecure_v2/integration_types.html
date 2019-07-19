@@ -234,7 +234,7 @@
     <br/>
     <p>As a prerequisite the 3DS Version call has to be executed in advance as the <em>threeDsVersionId</em> is a mandatory input parameter.</p>
     <br/>
-    <p>In case of 3DS 2.0 also the Browser Info call has to be executed in advance as the browserInfoId would then be a mandatory input parameter as well.</p>
+    <p>In case of 3DS 2.0 also the Browser Info call has to be executed in advance as the <em>browserInfoId</em> would then be a mandatory input parameter as well.</p>
     <br/>
     <p>A full reference of the mandatory and optional parameters relevant for 3DS 2.0 can be found <a href="/3dsecure/3dsecure_v2_parameters" >here</a>.</p>
     <br/>
@@ -275,7 +275,7 @@
     </table>
     <br/>
     <br/>
-    <p>In order to initialize the challenge iFrame based on the returned challengeData you can use a helper function from Payengine JavaScript SDK (JS Bridge) as per sample code snippet below.</p>
+    <p>In order to initialize the challenge iFrame based on the returned challengeData you can use a helper function from Payengine <a href="/buildyourown/bridge">JavaScript SDK (JS Bridge)</a> as per sample code snippet below.</p>
     <br/>
     <table class="table table-bordered table-striped table-condensed">
       <thead>
@@ -357,7 +357,7 @@
     <br/>
     <p>An alternative way of obtaining the result information is via the Payengine's notifications service. A notification including the authentication results could be sent to the URL that was specified in the request's <em>async.notificationUrl</em> parameter.</p>
     <br/>
-    <p>The full technical description of the service can be found <a href="/buildyourown/apidocs#operation%2FcreateAuthenticationForPaymentInstrument" target="_blank"> here</a>.</p>
+    <p>The full technical description of the services can be found <a href="/buildyourown/apidocs#operation%2FcreateAuthenticationForPaymentInstrument" target="_blank"> here</a>.</p>
   </div>
   <br/>
   <div id="getAuthenticationResult">
@@ -527,7 +527,7 @@
                 <tr>
                   <td style="border-right: none;" ><img class="" src="/img/3dsecure/error-triangle.png" width="16px"></td>
                   <td>
-                    <p>In case no <em>Browser Info</em> has been collected in advance and no <em>browserInfoId</em> will be provided the Payengine can still execute the 3DS 2.0 authentication flow, but a potential challenge can only be initiated via the redirectUrl fallback option. No challengeData object will be returned in this case meaning that the iFrame challenge view cannot be supported!</p>
+                    <p>In case no <em>Browser Info</em> has been collected in advance and no <em>browserInfoId</em> will be provided the Payengine can still execute the 3DS 2.0 authentication flow, but a potential challenge can only be initiated via the redirectUrl fallback option. No <em>challengeData</em> object will be returned in this case meaning that the iFrame challenge view cannot be supported!</p>
                   </td>
                 </tr>
               </tbody>
@@ -648,9 +648,9 @@
           <br/>
           <h5>Challenge Flow</h5>
           <br/>
-          <p>In case a of challenge the required information to display the challenge window to the card holder will be returned in the meta.threeDsData object of preauth or debit response.</p>
+          <p>In case a of challenge the required information to display the challenge window to the card holder will be returned in the <em>meta.threeDsData</em> object of preauth or debit response.</p>
           <br/>
-          <p>Integrators can decide if they would like to display the challenge within an iFrame (use details from challengeData object) or if they would like to display the challange within redirect-page hosted by the Payengine (use redirectUrl).</p>
+          <p>Integrators can decide if they would like to display the challenge within an iFrame (use details from <em>challengeData</em> object) or if they would like to display the challange within redirect-page hosted by the Payengine (use <em>redirectUrl</em>).</p>
           <br/>
           <p>The transaction will have a PENDING status.</p>
           <br/>
@@ -716,8 +716,8 @@
                 <tr>
                   <td>version</td>
                   <td>
-                    <p>PayEngine.openChallenge(container, acsUrl, base64EncodedChallengeRequest, transactionId, challengeWindowSize, onChallengeFinishCallback);
-                      </p>
+                    <code>PayEngine.openChallenge(container, acsUrl, base64EncodedChallengeRequest, transactionId, challengeWindowSize, onChallengeFinishCallback);
+                    </code>
                   </td>
                 </tr>
               </tbody>

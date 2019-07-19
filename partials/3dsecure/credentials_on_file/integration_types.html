@@ -22,7 +22,7 @@
     <p>Within the Payengine all credential-on-file related information will be assigned to an existing payment instrument of the corresponding card in the <em>cofContract</em> object.</p>
     <br/>
     <br/>
-    <p>The cofContract object consists of the following parameters.</p>
+    <p>The <em>cofContract</em> object consists of the following parameters.</p>
     <br/>
     <table class="table table-bordered table-striped table-condensed">
       <thead>
@@ -39,7 +39,7 @@
         <tr>
           <td>type</td>
           <td>
-            <p>The type of credential on file</p>
+            <p>The type of credential-on-file</p>
             <br/>
             <p>Supported values are: ONECLICK, UNSCHEDULED, SCHEDULED</p>
           </td>
@@ -84,27 +84,27 @@
         <tr>
           <td>
             <code>
-                {
-                  "paymentInstrumentId": "111",
-                  "type": "creditcard",
-                  ...
-                  "attributes": {
-                    "issuerCountry": "DE",
-                    "expiryMonth": "12",
-                    "cardHolder": "Max Mustermann",
-                    "expiryYear": "30",
-                    "brand": "MASTERCARD",
-                    "cardNumber": "************0001",
-                    "cofContracts": [
-                      {
-                        "id": "cofcontract_111",
-                        "type": "UNSCHEDULED",
-                        "channel": "ECOM"
-                      }
-                    ]
-                  }
-                  ...
-                }
+  {
+    "paymentInstrumentId": "111",
+    "type": "creditcard",
+    ...
+    "attributes": {
+      "issuerCountry": "DE",
+      "expiryMonth": "12",
+      "cardHolder": "Max Mustermann",
+      "expiryYear": "30",
+      "brand": "MASTERCARD",
+      "cardNumber": "************0001",
+      "cofContracts": [
+        {
+          "id": "cofcontract_111",
+          "type": "UNSCHEDULED",
+          "channel": "ECOM"
+        }
+      ]
+    }
+    ...
+  }
             </code>
           </td>
         </tr>
@@ -121,10 +121,10 @@
       <br/>
       <p>POST /payment-instruments/{paymentInstrumentId}/card-check</p>
       <br/>
-      <p>Service to initiate a card check which will results in a 0,00€ authorization.</p>
+      <p>Service to initiate a card check which will result in a 0,00€ authorization.</p>
       <br/>
       <ul>
-        <li>If <em>cofContract</em> object is passed - the card check authorization will trigger an initial credential-on-file transaction, which can also be linked to a 3DS authentication. This option can be used in case the merchant only wants to stores the payment credentials and at this point no real payment should be initiated.</li>
+        <li>If <em>cofContract</em> object is passed - the card check authorization will trigger an initial credential-on-file transaction, which can also be linked to a 3DS authentication. This option can be used in case the merchant only wants to store the payment credentials and at this point no real payment should be initiated.</li>
         <li>If <em>cofContract</em> object is not passed (POST with empty request body) - a simple card check will be triggered with 0 amount via MOTO channel and will return the status of the card.</li>
       </ul>
       <p>Supported brands:</p>
@@ -146,13 +146,13 @@
             <tr>
               <td>
                 <code>
-                  {
-                    "threeDsAuthenticationId": "threedsauthentication_123",
-                    "cofContract": {
-                      "type": "UNSCHEDULED",
-                      "channel": "ECOM"
-                    }
-                  }
+  {
+    "threeDsAuthenticationId": "threedsauthentication_123",
+    "cofContract": {
+      "type": "UNSCHEDULED",
+      "channel": "ECOM"
+    }
+  }
                 </code>
               </td>
             </tr>
@@ -169,23 +169,23 @@
             <tr>
               <td>
                 <code>
-                    {
-                      "id": "cardcheck_123",
-                      "createdAt": 1561555495930,
-                      "modifiedAt": 1561555495977,
-                      "status": "SUCCESS",
-                      "paymentInstrumentId": "paymentinstrument_111",
-                      "threeDsAuthenticationId": "threedsauthentication_123",
-                      "cofContract": {
-                        "id": "cofcontract_123",
-                        "type": "UNSCHEDULED",
-                        "channel": "ECOM"
-                      },
-                      "errorDetails": {
-                          "providerCode": null,
-                          "providerMessage": null
-                      }
-                  }
+  {
+    "id": "cardcheck_123",
+    "createdAt": 1561555495930,
+    "modifiedAt": 1561555495977,
+    "status": "SUCCESS",
+    "paymentInstrumentId": "paymentinstrument_111",
+    "threeDsAuthenticationId": "threedsauthentication_123",
+    "cofContract": {
+      "id": "cofcontract_123",
+      "type": "UNSCHEDULED",
+      "channel": "ECOM"
+    },
+    "errorDetails": {
+        "providerCode": null,
+        "providerMessage": null
+    }
+  }
                 </code>
               </td>
             </tr>
@@ -213,16 +213,16 @@
         <tr>
           <td>
             <code>
-                {
-                  ...
-                  "payment": {
-                    ...
-                    "paymentInstrumentId": "111",
-                    "cofContract": {
-                      "type": "ONECLICK"
-                    }
-                  }
-                }
+  {
+    ...
+    "payment": {
+      ...
+      "paymentInstrumentId": "111",
+      "cofContract": {
+        "type": "ONECLICK"
+      }
+    }
+  }
             </code>
           </td>
         </tr>
@@ -246,36 +246,36 @@
           <tr>
             <td>
               <code>
-                  {
-                    ...
-                    "paymentInstrument": {
-                      "paymentInstrumentId": "111",
-                      ...
-                      "attributes": {
-                        ...
-                        "cofContracts": [
-                          {
-                            "id": "cofcontract_111",
-                            "type": "UNSCHEDULED",
-                            "channel": "ECOM"
-                          },
-                          {
-                            "id": "cofcontract_222"
-                            "type": "ONECLICK",
-                            "channel": "ECOM"
-                          }
-                        ]
-                      }
-                    },
-                    "meta": {
-                      "cofContract": {
-                          "id": "cofcontract_222",
-                          "type": "ONECLICK",
-                          "channel": "ECOM"
-                      }
-                    }
-                    ...
-                  }
+  {
+    ...
+    "paymentInstrument": {
+      "paymentInstrumentId": "111",
+      ...
+      "attributes": {
+        ...
+        "cofContracts": [
+          {
+            "id": "cofcontract_111",
+            "type": "UNSCHEDULED",
+            "channel": "ECOM"
+          },
+          {
+            "id": "cofcontract_222"
+            "type": "ONECLICK",
+            "channel": "ECOM"
+          }
+        ]
+      }
+    },
+    "meta": {
+      "cofContract": {
+          "id": "cofcontract_222",
+          "type": "ONECLICK",
+          "channel": "ECOM"
+      }
+    }
+    ...
+  }
               </code>
             </td>
           </tr>
@@ -283,7 +283,7 @@
       </table>
       <br/>
       <br/>
-      <p>Once a subsequent transaction will be initiated the id of the cofContract should be provided.</p>
+      <p>Once a subsequent transaction will be initiated the id of the cofContract should be provided in the request.</p>
       <table class="table table-bordered table-striped table-condensed">
           <thead>
             <tr>
@@ -294,16 +294,16 @@
             <tr>
               <td>
                 <code>
-                  {
-                    ...
-                    "payment": {
-                      ...
-                      "paymentInstrumentId": "111",
-                      "cofContract": {
-                        "id": "cofcontract_222"
-                      }
-                    }
-                  }
+  {
+    ...
+    "payment": {
+      ...
+      "paymentInstrumentId": "111",
+      "cofContract": {
+        "id": "cofcontract_222"
+      }
+    }
+  }
                 </code>
               </td>
             </tr>
@@ -314,7 +314,7 @@
       <tbody>
         <tr>
           <td style="border-right: none;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px"></td>
-          <td>If there is only one <em>cofContract</em>  assigned to a payment instrument the Payengine can automatically extract the relevant data and on cofContract.id would be required as an input for subsequent transactions.</td>
+          <td>If there is only one <em>cofContract</em>  assigned to a payment instrument the Payengine can automatically extract the relevant data and no cofContract.id would be required as an input for subsequent transactions.</td>
         </tr>
       </tbody>
     </table>
@@ -355,24 +355,24 @@
       <tr>
         <td>
           <code>
-              var optionalParameters = {
-                ...,
-                "optionalFields": {
-                  ...,
-                  "creditCard": {
-                    "cofContract": {
-                      "type": "SCHEDULED"
-                    }
-                  }
-                }
-              };
-               
-              window.PayEngineWidget.initAsInlineComponentPi(
-                'inline-widget-container',
-                'Merchant-000cf2c9-66fe-4730-ac9e-674f7c552d42',
-                optionalParameters,
-                resultCallback
-              );
+  var optionalParameters = {
+    ...,
+    "optionalFields": {
+      ...,
+      "creditCard": {
+        "cofContract": {
+          "type": "SCHEDULED"
+        }
+      }
+    }
+  };
+
+  window.PayEngineWidget.initAsInlineComponentPi(
+    'inline-widget-container',
+    'Merchant-000cf2c9-66fe-4730-ac9e-674f7c552d42',
+    optionalParameters,
+    resultCallback
+  );
           </code>
         </td>
       </tr>
@@ -477,7 +477,7 @@
   <br/>
   <h2>JavaScript SDK (JS Bridge)</h2>
   <br/>
-  <p>A a new function <em>cardCheck(paymentInstrumentId, cofType, channel, authenticationId, callback)</em> that can be used by the integrator to assign the cofContract to a payment instrument and initiate a card check.</p>
+  <p>In order to assign the <em>cofContract</em> to a payment instrument and initiate a card check a new function <em>cardCheck(paymentInstrumentId, cofType, channel, authenticationId, callback)</em> is available in the JavaScript SDK (JS Bridge).</p>
   <br/>
   <p><strong>Input parameters:</strong></p>
   <table class="table table-bordered table-striped table-condensed">
@@ -505,7 +505,7 @@
       <tr>
         <td>channel</td>
         <td>
-          <p>The channel (entry mode) via which the COF initial storage transaction is processed.</p>
+          <p>The channel (entry mode) the payment instrument and corresponding transactions should be used for.</p>
           <br/>
           <p>Supported values: ECOM, MOTO</p>
         </td>
@@ -526,10 +526,10 @@
       <tr>
         <td>
           <code>
-              function callback(error, result) {...};
-              var cofType = 'SCHEDULED';
-              var channel = 'ECOM';
-              window.PayEngine.cardCheck(paymentInstrumentId, cofType, channel, authenticationId, callback);
+  function callback(error, result) {...};
+  var cofType = 'SCHEDULED';
+  var channel = 'ECOM';
+  window.PayEngine.cardCheck(paymentInstrumentId, cofType, channel, authenticationId, callback);
           </code>
         </td>
       </tr>

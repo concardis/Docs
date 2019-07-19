@@ -4145,7 +4145,7 @@ definitions:
 
           3DS v1.0: This will be the XID
 
-          3DS v2.0: This will be the threeDSServerTransID
+          3DS 2.0: This will be the threeDSServerTransID
       authenticationValue:
         type: string
         example: MTIzNDU2Nzg5MDA5ODc2NTQzMjE=
@@ -5581,7 +5581,7 @@ definitions:
 
           3DS v1.0: This will be the XID
 
-          3DS v2.0: This will be the threeDSServerTransID
+          3DS 2.0: This will be the threeDSServerTransID
       authenticationValue:
         type: string
         example: YXV0aGVudGljYXRpb25WYWx1ZQ==

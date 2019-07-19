@@ -3165,7 +3165,7 @@ definitions:
     description: Generic object which will contain 3ds version specific data
     properties:
       methodUrl:
-        description: The ACS URL that will be used by the 3DS Method, retrieved from the card range data repository (3DS v2 only).
+        description: The ACS URL that will be used by the 3DS Method, retrieved from the card range data repository (3DS 2.0 only).
         type: string
         minLength: 1
         maxLength: 255
@@ -3175,7 +3175,7 @@ definitions:
         example: YmFzZTY0RW5jb2RlZFRocmVlRHNNZXRob2REYXRh
         description: >-
           Base64 encoded JSON object containing 3DS Server Transaction ID and 3DS Method Notification URL.
-          This value shall be used when communicating to the ACS 3DS Method URL. (3DS v2 only)
+          This value shall be used when communicating to the ACS 3DS Method URL. (3DS 2.0 only)
   ThreeDsVersionResponse:
     title: ThreeDsVersionResponse
     type: object
@@ -5570,7 +5570,7 @@ definitions:
         type: string
         example: https://link-the-hosted-challange.example
         description: >-
-          Conditional - present in case of 3DS v1 and challenge flow for 3DS v2 redirect URL leading to hosted page by Payengine used for Cardholder authentication (main flow for 3DS v1 and fallback flow in case of challenge for 3DS v2)
+          Conditional - present in case of 3DS 1.0 and challenge flow for 3DS 2.0 redirect URL leading to hosted page by Payengine used for Cardholder authentication (main flow for 3DS 1.0 and fallback flow in case of challenge for 3DS 2.0)
       challengeData:
         $ref: '#/definitions/ChallengeData'
       transactionId:
@@ -5621,13 +5621,13 @@ definitions:
         type: string
         description: >-
           Fully qualified URL of the ACS in case the authentication response message indicates that further cardholder interaction is required to complete the authentication.
-          relevant for 3DS v2 only
+          relevant for 3DS 2.0 only
         example: https://link-to-the-issuer.acs
       base64EncodedChallengeRequest:
         type: string
         example: Y2hhbGxhbmdlRGF0YQ==
         description: >-
-          Base64-encoded Challenge Request object in case the authentication response message indicates that further Cardholder interaction is required to complete the authentication. (3DS V2)
+          Base64-encoded Challenge Request object in case the authentication response message indicates that further Cardholder interaction is required to complete the authentication. (3DS 2.0)
       challengeWindowSize:
         type: string
         enum: ['01', '02', '03', '04', '05']
@@ -5642,7 +5642,7 @@ definitions:
           '04' -> 600px x 400px,
           '05' -> Full screen, or full container content
 
-          relevant for 3DS v2 only
+          relevant for 3DS 2.0 only
   OrdersCreditPostErrors:
     title: Error
     type: array

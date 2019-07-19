@@ -4143,7 +4143,7 @@ definitions:
         description: >-
           The transaction identifier from the 3DS authentication
 
-          3DS v1.0: This will be the XID
+          3DS 1.0: This will be the XID
 
           3DS 2.0: This will be the threeDSServerTransID
       authenticationValue:
@@ -5579,7 +5579,7 @@ definitions:
         description: >-
           The transaction identifier from the 3DS authentication
 
-          3DS v1.0: This will be the XID
+          3DS 1.0: This will be the XID
 
           3DS 2.0: This will be the threeDSServerTransID
       authenticationValue:

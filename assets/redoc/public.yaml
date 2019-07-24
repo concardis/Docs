@@ -27,7 +27,11 @@ info:
     backgroundColor: '#fafafa'
     altText: Concardis Logo
   host: apitest.payengine.de
-basePath: /v1
+servers:
+- url: https://apitest.payengine.de/v1
+  description: Sandbox
+- url: https://api.payengine.de/v1
+  description: Live
 securityDefinitions:
   Basic:
     type: http
@@ -5104,7 +5108,7 @@ definitions:
           - IPv6 address is represented as eight groups of four hexadecimal digits, each group representing 16 bits (two octets). The groups are separated by colons (:).
       javaEnabled:
         type: boolean
-        description: Boolean that represents the ability of the cardholder browser to execute Java.
+        description: Value is returned from the navigator.javaEnabled property.
         example: true
       language:
         type: string

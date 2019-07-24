@@ -26,7 +26,6 @@ info:
     url: 'https://www.concardis.com/fileadmin/redakteur/images/Concardis_Logos/concardis-Logo-RGB_web.png'
     backgroundColor: '#fafafa'
     altText: Concardis Logo
-  host: apitest.payengine.de
 servers:
 - url: https://apitest.payengine.de/v1
   description: Sandbox
@@ -5108,7 +5107,9 @@ definitions:
           - IPv6 address is represented as eight groups of four hexadecimal digits, each group representing 16 bits (two octets). The groups are separated by colons (:).
       javaEnabled:
         type: boolean
-        description: Value is returned from the navigator.javaEnabled property.
+        description: >-
+          Boolean that represents the ability of the cardholder browser to execute Java.
+          <br>Value is returned from the navigator.javaEnabled property.
         example: true
       language:
         type: string

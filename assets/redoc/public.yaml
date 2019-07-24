@@ -5472,8 +5472,13 @@ definitions:
     properties:
       type:
         type: string
-        description: The type of the authentication requested.
-        enum: [PAYMENT_TRANSACTION, RECURRING_TRANSACTION, ADD_CARD]
+        description: >-
+          The type of the authentication requested.
+          <br>PAYMENT_TRANSACTION: authentication with payment; the authentication is used for a normal payment transaction,
+          <br>RECURRING_TRANSACTION: authentication with payment; the authentication is used for an initial recurring payment transaction,
+          <br>RECURRING_CARDCHECK: authentication without payment; the authentication is used for a card check representing the initial recurring payment transaction,
+          <br>ADD_CARD: authentication without payment; the authentication is only used for the verification of stored card credentials, e.g. within a wallet
+        enum: [PAYMENT_TRANSACTION, RECURRING_TRANSACTION, RECURRING_CARDCHECK, ADD_CARD]
         example: PAYMENT_TRANSACTION
       customerId:
         type: string
@@ -5524,8 +5529,13 @@ definitions:
         $ref: '#/definitions/AuthenticationResult'
       type:
         type: string
-        description: The type of the authentication requested.
-        enum: [PAYMENT_TRANSACTION, RECURRING_TRANSACTION, ADD_CARD]
+        description: >-
+          The type of the authentication requested.
+          <br>PAYMENT_TRANSACTION: authentication with payment; the authentication is used for a normal payment transaction,
+          <br>RECURRING_TRANSACTION: authentication with payment; the authentication is used for an initial recurring payment transaction,
+          <br>RECURRING_CARDCHECK: authentication without payment; the authentication is used for a card check representing the initial recurring payment transaction,
+          <br>ADD_CARD: authentication without payment; the authentication is only used for the verification of stored card credentials, e.g. within a wallet
+        enum: [PAYMENT_TRANSACTION, RECURRING_TRANSACTION, RECURRING_CARDCHECK, ADD_CARD]
         example: PAYMENT_TRANSACTION
       customerId:
         type: string

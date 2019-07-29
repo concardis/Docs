@@ -5280,12 +5280,12 @@ definitions:
         type: number
         description: >-
           The amount of the purchase.
-
-          In case of an authentication without payment for recurring future payments this should include the expected total purchase amount.
-
-          The amount can be 0 for an ADD_CARD authentication.
-
-          The amount needs to be in the minor currency unit.
+          <br>
+          <br>In case of an authentication without payment for recurring future payments this should include the expected total purchase amount.
+          <br>
+          <br>The amount can be 0 for a RECURRING_CARDCHECK or ADD_CARD authentication.
+          <br>
+          <br>The amount needs to be in the minor currency unit.
         example: 1000
       currency:
         description: 'The currency of the purchase according to https://en.wikipedia.org/wiki/ISO_4217'

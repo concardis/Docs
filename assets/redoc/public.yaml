@@ -4136,6 +4136,10 @@ definitions:
         type: string
         example: browserInfo_e1f6b193df
         description: Payengine identifier of the browser info object
+      threeDsVersionId:
+        type: string
+        example: threedsversion_123abc456z
+        description: Payengine identifier of the 3ds version object
       version:
         type: string
         example: '2.0'

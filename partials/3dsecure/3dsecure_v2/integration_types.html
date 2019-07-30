@@ -527,12 +527,24 @@
                 <tr>
                   <td style="border-right: none;" ><img class="" src="/img/3dsecure/error-triangle.png" width="16px"></td>
                   <td>
+                    <p>In case the <em>3DS Version</em> check was initiated in advance it is highly recommended to provide the corresponding <em>threeDsVersionId</em> as an input for the preauth or debit request.</p>
+                    <p>Otherwise the Payengine would execute another <em>3DS Version</em> check as part of the order. This automatically means that the connection to any previously initiated invocation of the <em>methodUrl</em> and its benefit to improve the chances of a frictionless flow will be lost.</p>
+                  </td>
+                </tr>
+              </tbody>
+          </table>
+          <br/>
+          <table class="table table-bordered table-striped table-condensed">
+              <tbody>
+                <tr>
+                  <td style="border-right: none;" ><img class="" src="/img/3dsecure/error-triangle.png" width="16px"></td>
+                  <td>
                     <p>In case no <em>Browser Info</em> has been collected in advance and no <em>browserInfoId</em> will be provided the Payengine can still execute the 3DS 2.0 authentication flow, but a potential challenge can only be initiated via the redirectUrl fallback option. No <em>challengeData</em> object will be returned in this case meaning that the iFrame challenge view cannot be supported!</p>
                   </td>
                 </tr>
               </tbody>
-            </table>
-            <br/>
+          </table>
+          <br/>
           <table class="table table-bordered table-striped table-condensed">
             <thead>
               <tr>
@@ -592,7 +604,8 @@
                       },
                       "meta": {
                         ...
-                        "threeDsData": {
+                        "threeDsData":
+                          "threeDsVersionId": "threedsversion_123abc456z",
                           "browserInfoId": "browserInfo_e1f6b193df"
                         }
                       }

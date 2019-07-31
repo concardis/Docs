@@ -5168,12 +5168,10 @@ definitions:
     type: string
     description: >-
       Credential on file type:
-         * `ONETIME` - The payment instrument is persisted, but can be used only for a single authorizing transaction.
          * `ONECLICK` - The payment instrument is persisted, recurring and can be used for oneClick payments.
          * `UNSCHEDULED` - The payment instrument is persisted, recurring and can be used for merchant initiated unscheduled orders.
          * `SCHEDULED` - The payment instrument is persisted, recurring and can be used for merchant initiated scheduled or instalments orders.
     enum:
-      - ONETIME
       - ONECLICK
       - UNSCHEDULED
       - SCHEDULED

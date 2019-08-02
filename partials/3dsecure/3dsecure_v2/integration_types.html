@@ -789,7 +789,7 @@
   <br/>
   <p>A new helper function <em>threeDsAuthentication()</em> can be used to trigger the 3DS authentication flow.</p>
   <br/>
-  <p>threeDsAuthentication(paymentInstrumentId, container, optionalParameters, callback)</p>
+  <p>threeDsAuthentication(paymentInstrumentId, container, parameters, callback)</p>
   <br/>
   <ul>
     <li>The service will make a 3DS version call to check if 3DS is enrolled and what the corresponding version is
@@ -799,7 +799,7 @@
           <ul>
             <li>Invoke the methodUrl (if present) returned from the 3DS version call</li>
             <li>Collect the browser information</li>
-            <li>Create the threeDsAuthentication object (using the optionalParameters input)
+            <li>Create the threeDsAuthentication object (using the parameters input)
               <ul>
                 <li>If a challenge is required it will open an iFrame with the challenge</li>
                 <li>Otherwise it will return the result directly</li>
@@ -882,7 +882,7 @@
                   //in this case the whole 3DS 2.0 flow is finished
               }
             }
-            window.PayEngine.threeDsAuthentication(paymentInstrumentId, container, optionalParameters, callback);
+            window.PayEngine.threeDsAuthentication(paymentInstrumentId, container, parameters, callback);
           </code>
         </td>
       </tr>
@@ -943,7 +943,7 @@
 
               function piCreateCallback(error, paymentInstrument) {
                   paymentInstrumentId = paymentInstrument.paymentInstrumentId;
-                  window.PayEngine.threeDsAuthentication(paymentInstrumentId, container, optionalParameters, threeDsAuthenticationCallback);
+                  window.PayEngine.threeDsAuthentication(paymentInstrumentId, container, parameters, threeDsAuthenticationCallback);
               }
 
               window.PayEngineWidget.initAsInlineComponentPi(container, publishableKey, optionalParams, piCreateCallback);

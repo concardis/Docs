@@ -2056,6 +2056,8 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/ProductsBaseTypeEnum'
+      risk:
+        $ref: '#/definitions/Risk'
     required:
       - initialAmount
       - currency
@@ -2172,6 +2174,8 @@ definitions:
           $ref: '#/definitions/ProductsBaseTypeEnum'
       transactionType:
         $ref: '#/definitions/InitialTransactionTypeBaseTypeEnum'
+      risk:
+        $ref: '#/definitions/Risk'
       executeOrder:
         description: >-
           Paypal specific parameter. If true the order will be processed after the update.

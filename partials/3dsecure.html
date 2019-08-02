@@ -22,6 +22,7 @@
             <li><a href="/3dsecure/3dsecure_v2_use_cases">Use Cases</a></li>
             <li><a href="/3dsecure/3dsecure_v2_integration_types">Integration Types</a></li>
             <li><a href="/3dsecure/3dsecure_v2_integration_impact">Integration Impact</a></li>
+            <li><a href="/3dsecure/3dsecure_v2_notifications">Notifications</a></li>
             <li><a href="/3dsecure/3dsecure_v2_testing">Testing</a></li>
         </ul>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/3dsecure/credentials_on_file_introduction">Credentials-on-file</a>
@@ -51,6 +52,10 @@
       </div>
       <div ng-show="cur=='3dsecure_v2_use_cases'">
         <div  ng-include="'/partials/3dsecure/3dsecure_v2/use_cases.html'">
+        </div>
+    </div>
+    <div ng-show="cur=='3dsecure_v2_notifications'">
+        <div  ng-include="'/partials/3dsecure/3dsecure_v2/notifications.html'">
         </div>
     </div>
     <div ng-show="cur=='3dsecure_v2_testing'">

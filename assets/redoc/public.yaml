@@ -2056,6 +2056,8 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/ProductsBaseTypeEnum'
+      risk:
+        $ref: '#/definitions/Risk'
     required:
       - initialAmount
       - currency

@@ -1,4 +1,4 @@
-<ul>
+<!-- <ul>
   <li><a href="#scope" name="">Scope of Notification Service Subscription</a></li>
   <li><a href="#service_management" name="">Management of Notification Service</a></li>
   <ul>
@@ -18,308 +18,463 @@
       </ul>
     </ul>
   </ul>
-</ul>
+</ul> -->
+<ol>
+  <li><a href="/notifications/notifications_mc#version">Version</a></li>
+  <li><a href="/notifications/notifications_mc#v1NotificationServiceSubscription">V1 Notification Service Subscription</a></li>
+  <li><a href="/notifications/notifications_mc#v2NotificationServiceSubscription">V2 Notification Service Subscription</a></li>
+  <li><a href="/notifications/notifications_mc#notificationServiceManagement">Notification Service Management</a>
+    <ol>
+        <li><a href="/notifications/notifications_mc#accessToTheNotificationsSection">Access to the Notifications Section</a></li>
+        <li><a href="/notifications/notifications_mc#createNewNotification">Create a new Notification</a></li>
+        <li><a href="/notifications/notifications_mc#notificationActions">Notification Actions</a>
+          <ol>
+              <li><a href="/notifications/notifications_mc#reviewingNotificationDetails">Reviewing Notification Details</a></li>
+              <li><a href="/notifications/notifications_mc#еditingNotifications">Editing Notifications</a></li>
+              <li><a href="/notifications/notifications_mc#deletingNotifications">Deleting Notifications</a></li>
+              <li><a href="/notifications/notifications_mc#filtering">Filtering the Notifications List</a></li>
+              <li><a href="/notifications/notifications_mc#filteringNotificationsByUpdateDate">Filtering Notifications by Update Date</a></li>
+              <li><a href="/notifications/notifications_mc#filteringNotificationsByActiveStatus">Filtering Notifications by Active Status</a></li>
+              <li><a href="/notifications/notifications_mc#filteringNotificationsByNotificationType">Filtering Notifications by Notification Type</a></li>
+              <li><a href="/notifications/notifications_mc#filteringNotificationsByVersion">Filtering Notifications by Version</a></li>
+            </ol>
+        </li>
+        
+      </ol>
+  </li>
+  
+</ol>
 
-<div id="scope">
+<div id="version">
+  <br/>
+  <h2>Version</h2>
   <br/>
   <br/>
-  <h2>Scope of Notification Service Subscription</h2>
+  <p>
+    The notification service introduces a version flag. There are two types of notifications - V1 and V2. The existing notification services, created prior to the newly implemented V2 notifications, are flagged as V1, and all newly-created notifcations are now flagged as V2 by default. There is also an option for the merchant to switch between V1 and V2 notifications and create a new notification as V1.
+  </p>
   <br/>
-  <p>When using Merchant Center for setting up notifications,  merchants can subscribe to be notified for all or some events from the following four event categories:</p>
-
+</div>
+<br/>
+<div id="v1NotificationServiceSubscription">
+  <br/>
+  <h2>V1 Notification Service Subscription</h2>
+  <br/>
+  <br/>
+  <p>You can subscribe for V1 event notifications from the following categories:</p>
+  <br/>
   <ul>
     <li>Transaction Events</li>
     <li>Customer Events</li>
     <li>Payment Instrument Events</li>
     <li>Order Events</li>
   </ul>
-
-  <p>More detailed information about events can be found under the following link: <a href="/merchantcenter/notifications_api" name="">- Notifications in API</a> </p>
-
+  <br/>
+  <p>For more information on events, see: <a href="/notifications/notifications_api">Notifications - General Overview and Management via API.</a></p>
 </div>
-
-<div id="service_management">
+<br/>
+<div id="v2NotificationServiceSubscription">
+  <br/>
+  <h2>V2 Notification Service Subscription</h2>
   <br/>
   <br/>
-  <h2>Management of Notification Service</h2>
-
-  <div id="navigation">
-    <br/>
-    <br/>
-    <h3>Accessing 'Notifications' section</h3>
-    <p>Management of notifications can be done when accessing  "Notifications" section on Merchant Center menu</p>
-
-    <img class="alignnone wp-image-7548 " src="/uploads/2018/03/notifications_navigation.png" alt="" width="100%" />
-  </div>
-
-  <div id="notification_create">
-    <br/>
-    <br/>
-    <h3>Creating new notifications</h3>
-    <br/>
-
-    <strong>Step 1 - </strong>Clicking on „Plus“ icon in the top right corner
-    <img class="alignnone wp-image-7553 " src="/uploads/2018/03/notifications_create-1.png" alt="" width="100%"  />
-    <br/>
-
-    <strong>Outcome - </strong>A new window containing all parameters of the notification will be opened
-    <img class="alignnone wp-image-7555 " src="/uploads/2018/03/notifications_new.png" alt="" width="100%" />
-    <br/>
-
-    <strong>Step 2 - </strong>Selecting notification type option (email for the current example)
-    <img class="alignnone wp-image-7557 " src="/uploads/2018/03/notification-type-select.png" alt="" width="100%"  />
-    <br/>
-
-    <strong>Outcome - </strong>A new 'Email' field will be displayed
-    <img class="alignnone wp-image-7558 " src="/uploads/2018/03/notification_type_email.png" alt="" width="100%"  />
-    <br/>
-
-    <strong>Step 3 - </strong>Filling information fields which individualize new notification (mandatory - email address receiver, optional - appropriate name and description)
-    <img class="alignnone wp-image-7563 " src="/uploads/2018/03/notifications_description-1.png" alt="" width="100%" />
-    <br/>
-
-    <strong>Step 4 - </strong>Selecting events for which merchant wants to be notified
-    <ul>
-      <li>Option one - Selecting all available events - by marking 'Select All' checkbox</li>
-      <li>Option two - Selecting one or more events - by marking checkbox/es of the desired event/s </li>
-    </ul>
-    <img class="alignnone wp-image-7566 " src="/uploads/2018/03/notifications_select.png" alt="" width="100%"  />
-    <br/>
-
-    <strong>Important Note:</strong>
-    <p>
-      When creating a notification, by default, the "Activate notification" checkbox is marked . If the merchant wants to create an inactive notification, this checkbox has to be unmarked.
-    </p>
-    <img class="alignnone wp-image-7570 " src="/uploads/2018/03/notification_activate.png" alt="" width="100%"  />
-    <br/>
-
-    <strong>Step 5 - </strong>Saving the new notification - by pressing "Save" button on the bottom of the page
-    <img class="alignnone wp-image-7571 " src="/uploads/2018/03/notification_save.png" alt="" width="100%"  />
-    <br/>
-
-    <strong>Outcome - </strong>Successfully created notification is displayed in the notification list
-    <img class="alignnone wp-image-7572 " src="/uploads/2018/03/notifications_list.png" alt="" width="100%"  />
-    <br/>
-
-  </div>
-
-
-  <div id="notification_actions">
-    <br/>
-    <br/>
-    <h3>Actions with existing notifications</h3>
-
-    <div id="notification_view">
-      <br/>
-      <br/>
-      <h4>Reviewing notification details</h4>
-      <br/>
-
-      All details for any existing notification from the notification list can be reviewed by the merchant by selecting dots in the column 'Actions' for a chosen notification.
-      <img class="alignnone wp-image-7575 " src="/uploads/2018/03/notifications_edit.png" alt="" width="100%" />
-      <br/>
-
-      After selecting the dots a new window will be opened displaying available details for the chosen notification.
-      <img class="alignnone wp-image-7581 " src="/uploads/2018/03/notification_view.png" alt="" width="100%"  />
-      <br/>
-    </div>
-
-    <div id="notification_edit">
-      <br/>
-      <br/>
-      <h4>Editing notifications</h4>
-      <br/>
-
-      An 'Edit' button is present on the window containing details for the selected notification.
-      <img class="alignnone wp-image-7584 " src="/uploads/2018/03/notification_view-edit.png" alt="" width="100%" />
-      <br/>
-
-      After pressing the 'Edit' button a new window will be opened displaying notification details that can be edited.
-      <img class="alignnone wp-image-7585 " src="/uploads/2018/03/notification_edit.png" alt="" width="100%"  />
-      <br/>
-
-      <p>The following edit actions are possible:</p>
-      <ul>
-        <li><strong>Changing notification type - </strong>in the current example from email to URL</li>
-        <img class="alignnone wp-image-7586 " src="/uploads/2018/03/notifications_change_type.png" alt="" width="100%" />
-        <br/>
-
-        <strong>Important Note: </strong>Changing the notification type requires a change in the field below  'Email'/ 'URL' - in the current example a valid URL has to be specified.
-        <img class="alignnone wp-image-7588 " src="/uploads/2018/03/notification_change_url_error.png" alt="" width="100%"/>
-
-        <li><strong>Changing notification information</strong></li>
-        <p>Email/URL field is mandatory - a valid email address/URL is required</p>
-        <p>Name & Description fields are optional</p>
-        <img class="alignnone wp-image-7563 " src="/uploads/2018/03/notifications_description-1.png" alt="" width="100%"  />
-        <br/>
-
-        <li><strong>Changing events for which merchant to be notified </strong></li>
-        <img class="alignnone wp-image-7566 " src="/uploads/2018/03/notifications_select.png" alt="" width="100%"  />
-        <br/>
-
-        <li><strong>Changing active status of the notification - </strong>when marking/unmarking field 'Activate Notification'</li>
-        <img class="alignnone wp-image-7570 " src="/uploads/2018/03/notification_activate.png" alt="" width="100%"  />
-        <br/>
-
-        <strong>Important Note: </strong>In order to be applied all changes have to be saved by clicking on the 'Save' button.
-        <img class="alignnone wp-image-7571 " src="/uploads/2018/03/notification_save.png" alt="" width="100%"  />
-        <br/>
-
-      </ul>
-    </div>
-
-    <div id="notification_delete">
-      <br/>
-      <br/>
-      <h4>Deleting Notifications</h4>
-      <br/>
-
-      Deleting a chosen notification from the notifications list can be done by clicking on the delete icon placed at the end of notification row.
-      <img class="alignnone wp-image-7591 " src="/uploads/2018/03/notification_delete.png" alt="" width="100%"  />
-      <br/>
-
-      After clicking on the delete icon, a modal window with cancel and confirmation options will be displayed.
-      <img class="alignnone wp-image-7593 " src="/uploads/2018/03/notification_delete_confirm.png" alt="" width="100%" />
-      <br/>
-
-      After pressing 'Delete' button on the modal window the selected notification will be deleted from the notifications list.
-      <img class="alignnone wp-image-7594 " src="/uploads/2018/03/notification_deleted.png" alt="" width="100%"  />
-      <br/>
-
-    </div>
-
-    <div id="notification_filters">
-      <br/>
-      <br/>
-      <h4>Filtering Notifications List</h4>
-      <br/>
-
-      <p>A list of notifications can be narrowed down by applying filters based on various criteria including; creation date, update date, active status and type of notification.</p>
-      <p>Clicking in the field 'Filters' above the notifications list will make all filters visible.</p>
-      <img class="alignnone wp-image-7596 " src="/uploads/2018/03/notification_filters.png" alt="" width="100%" />
-      <br/>
-
-      <div id="notification_filters_create">
-        <br/>
-        <br/>
-        <h4>Filtering by "Created at"</h4>
-        <br/>
-
-        <p>There are three options for setting up date/s for the filter 'Created at".</p>
-        <p>For all three options desired date/s has/have to be chosen from the calendar by clicking on the calendar icon in front of the input field/s as shown below.</p>
-        <img class="alignnone wp-image-7599 " src="/uploads/2018/03/notification_filter_create_from.png" alt="" width="100%"  />
-        <br/>
-
-        <strong>Option 1 - </strong>Specifying only the start date of a date range.
-        <p>The end date of the range will not be specified and the second input field will remain empty. </p>
-        <img class="alignnone wp-image-7600 " src="/uploads/2018/03/notification_filter_create_from1.png" alt="" width="100%" ghgh1298" />
-        <br/>
-
-        <strong>Outcome - </strong>SAfter pressing 'Apply' button the list of notifications will be narrowed down to those notifications which are created from the specified start date to current date.
-        <img class="alignnone wp-image-7608 " src="/uploads/2018/03/notification_filtered_create_from1-1.png" alt="" width="100%" ghgh914" />
-        <br/>
-
-        <strong>Option 2 - </strong>Specifying only the end date of a date range.
-        <p>The start date of the range will not be specified and the first input field will remain empty. </p>
-          <img class="alignnone wp-image-7602 " src="/uploads/2018/03/notification_filter_create_to.png" alt="" width="100%" ghgh1290" />
-        <br/>
-
-        <strong>Outcome: </strong>After pressing 'Apply' button the list of notifications will be narrowed down to all existing notifications which are created from the beginning to the specified end date.
-        <img class="alignnone wp-image-7603 " src="/uploads/2018/03/notification_filtered_create_to.png" alt="" width="100%" ghgh852" />
-        <br/>
-
-        <strong>Option 3 - </strong>Specifying both the start date and the end date of a date range.
-        <p>Both input fields of 'Created at' filter will be filled. </p>
-        <img class="alignnone wp-image-7604 " src="/uploads/2018/03/notification_filer_create_both.png" alt="" width="100%" ghgh1384" />
-        <br/>
-
-        <strong>Outcome: </strong>After pressing 'Apply' button the list of notifications will be narrowed down to all existing notifications which are created from the specified start date to the specified end date of the date range
-        <img class="alignnone wp-image-7605 " src="/uploads/2018/03/notification_filered_create_both.png" alt="" width="100%" ghgh798" />
-        <br/>
-
-        <strong>Important Note: </strong>Deleting of already selected date/s is possible by pressing 'X' icon at the end of the second input field for dates.
-        <img class="alignnone wp-image-7606 " src="/uploads/2018/03/notification_filer_create_delete.png" alt="" width="100%" ghgh1158" />
-        <br/>
-
-      </div>
-
-      <div id="notification_filters_update">
-        <br/>
-        <br/>
-        <h4>Filtering by "Updated at"</h4>
-        <br/>
-
-        <p>Filter 'Updated at' works in a similar way to the way of working of filter 'Created at'</p>
-        <p>There are three options for setting up date/s for the filter 'Updated at".</p>
-        <p>For all three options desired date/s has/have to be chosen from the calendar by clicking on the calendar icon in front of the input field/s as shown below.</p>
-        <img class="alignnone wp-image-7610 " src="/uploads/2018/03/notification_filter_update_date.png" alt="" width="100%" ghgh1304" />
-        <br/>
-
-        <strong>Option 1 - </strong>Specifying only the start date of a date range.
-        <p>The end date of the range will not be specified and the second input field will remain empty. </p>
-        <img class="alignnone wp-image-7611 " src="/uploads/2018/03/notification_filter_update_from.png" alt="" width="100%" ghgh1342" />
-        <br/>
-
-        <strong>Outcome - </strong> After pressing 'Apply' button the list of notifications will be narrowed down to those notifications which are updated from the specified start date to current date.
-        <img class="alignnone wp-image-7613 " src="/uploads/2018/03/notification_filter_updated_to.png" alt="" width="100%" ghgh914" />
-        <br/>
-
-        <strong>Option 2 - </strong>Specifying only the end date of a date range.
-        <p>The start date of the range will not be specified and the first input field will remain empty.  </p>
-        <img class="alignnone wp-image-7614 " src="/uploads/2018/03/notification_filter_update_to.png" alt="" width="100%" ghgh1312" />
-        <br/>
-
-        <strong>Outcome: </strong>After pressing 'Apply' button the list of notifications will be narrowed down to all existing notifications which are updated from the beginning to the specified end date.
-        <img class="alignnone wp-image-7616 " src="/uploads/2018/03/notification_filtered_update_to.png" alt="" width="100%" ghgh852" />
-        <br/>
-
-        <strong>Option 3 - </strong>Specifying both the start date and the end date of a date range.
-        <img class="alignnone wp-image-7617 " src="/uploads/2018/03/notification_filer_update_both.png" alt="" width="100%" ghgh1318" />
-        <br/>
-
-        <strong>Outcome: </strong>After pressing 'Apply' button the list of notifications will be narrowed down to all existing notifications which are updated from the specified start date to the specified end date of the date range.
-        <img class="alignnone wp-image-7618 " src="/uploads/2018/03/notification_filered_update_both.png" alt="" width="100%" ghgh798" />
-        <br/>
-
-        <strong>Important Note: </strong>Deleting of already selected date/s is possible by pressing 'X' icon at the end of the second input field for dates.
-        <img class="alignnone wp-image-7619 " src="/uploads/2018/03/notification_filer_update_delete.png" alt="" width="100%"  />
-        <br/>
-
-      </div>
-
-      <div id="notification_filters_active">
-        <br/>
-        <br/>
-        <h4>Filtering by "Active" status</h4>
-        <br/>
-
-        <p>Notifications with 'Active' status can be filtered from the full list of notifications by marking checkbox 'Active' in 'Filters' section and pressing button 'Apply'.</p>
-        <img class="alignnone wp-image-7621 " src="/uploads/2018/03/notification_filered_active.png" alt="" width="100%" />
-        <br/>
-
-        <strong>Outcome - </strong> After pressing 'Apply' button the full list of notifications will be narrowed down only to notifications which are with status 'Active'
-        <img class="alignnone wp-image-7622 " src="/uploads/2018/03/notification_filer_active.png" alt="" width="100%"  />
-        <br/>
-
-      </div>
-
-      <div id="notification_filters_type">
-        <br/>
-        <br/>
-        <h4>Filtering by "Notification type"</h4>
-        <br/>
-
-        <p>Notifications with chosen notification type can be filtered from the full list of notifications by marking corresponding to the notification type checkbox in 'Filters' section and pressing button 'Apply'.</p>
-        <img class="alignnone wp-image-7623 " src="/uploads/2018/03/notification_filer_type.png" alt="" width="100%" />
-        <br/>
-
-        <strong>Outcome - </strong> After pressing 'Apply' button the full list of notifications will be narrowed down only to notifications from selected notification type.
-        <img class="alignnone wp-image-7624 " src="/uploads/2018/03/notification_filered_type.png" alt="" width="100%"  />
-        <br/>
-
-      </div>
-      <br/>
-
-    </div>
-  </div>
+  <p>You can subscribe for V2 event notifications from the following categories:</p>
+  <br/>
+  <p><strong><u>NOTE:</u></strong> All events can be categorized.</p>
+  <br/>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Transaction</td>
+        <td>
+            Payment transaction related events that notify the merchant  about relevant status updates on the corresponding order.<br/>
+            Each specific event is raised for the given combination of transaction type and corresponding status.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <br/>
+  <br/>
+  <p>The following table lists all required events, grouped by category and specifies which events are available through which channel.</p>
+  <br/>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th  >Category</th>
+        <th  >Event</th>
+        <th  >Transaction Type</th>
+        <th>Status</th>
+        <th>Webhook</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.preauth.pending</td>
+        <td>PREAUTH</td>
+        <td>PENDING</td>
+        <td>yes</td>
+        <td>no</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.preauth.success</td>
+        <td>PREAUTH</td>
+        <td>OK</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.preauth.failure</td>
+        <td>PREAUTH</td>
+        <td>FAILURE,<br/> ABORTED,<br/> DECLINED,<br/> EXPIRED</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.cancel.initiated</td>
+        <td>CANCEL</td>
+        <td>OK</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.cancel.success</td>
+        <td>CANCEL</td>
+        <td>SUCCESS</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.cancel.failure</td>
+        <td>CANCEL</td>
+        <td>FAILURE,<br/> DECLINED</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.debit.pending</td>
+        <td>DEBIT</td>
+        <td>PENDING</td>
+        <td>yes</td>
+        <td>no</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.debit.initiated</td>
+        <td>DEBIT</td>
+        <td>OK</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.debit.success</td>
+        <td>DEBIT</td>
+        <td>SUCCESS</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.debit.failure</td>
+        <td>DEBIT</td>
+        <td>FAILURE,<br/> ABORTED,<br/> DECLINED,<br/> EXPIRED</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.capture.initiated</td>
+        <td>CAPTURE</td>
+        <td>OK</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.capture.success</td>
+        <td>CAPTURE</td>
+        <td>SUCCESS</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.capture.failure</td>
+        <td>CAPTURE</td>
+        <td>FAILURE,<br/> DECLINED,<br/> EXPIRED</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.refund.initiated</td>
+        <td>REFUND</td>
+        <td>OK</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.refund.success</td>
+        <td>REFUND</td>
+        <td>SUCCESS</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.refund.failure</td>
+        <td>REFUND</td>
+        <td>FAILURE,<br/> DECLINED</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.credit.initiated</td>
+        <td>CREDIT</td>
+        <td>OK</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.credit.success</td>
+        <td>REFUND</td>
+        <td>CREDIT</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+      <tr>
+        <td>Transaction</td>
+        <td>trx.credit.failure</td>
+        <td>CREDIT</td>
+        <td>FAILURE,<br/> ABORTED, <br/>DECLINED</td>
+        <td>yes</td>
+        <td>yes</td>
+      </tr>
+    </tbody>
+  </table>
+  <br/>
 </div>
+<br/>
+<div id="notificationServiceManagement">
+  <br/>
+  <h2>Notification Service Management</h2>
+  <br/>
+  <br/>
+  <h3 id="accessToTheNotificationsSection">Access to the Notifications Section</h3>
+  <br/>
+  <p>You can manage notifications via the <strong>Notifications</strong> section on the <strong>Merchant Center</strong> homepage.</p>
+  <br/>
+  <h3 id="createNewNotification">Create a new Notification</h3>
+  <br/>
+  <p>1. To create a new notification via Merchant Center, click on the <img src="/img/notififications/create-notification-button.png" width="10%"> icon in the top right corner.</p>
+  <br/>
+  <img src="/img/notififications/create-notification.png" width="70%">
+  <br/>
+  <br/>
+  <p>2. A new window that contains all notification parameters opens.</p>
+  <br/>
+  <img src="/img/notififications/step-2.png" width="70%">
+  <br/>
+  <br/>
+  <p>3. Select a notification type option:</p>
+  <br/>
+  <p> 3.1 <strong>Notification Type: Email</strong> is used for receiving notifications via email.</p>
+  <br/><p>   3.1.1 Select <strong>Email</strong> from the drop-down <strong>Notification Type</strong>, and in the <strong>Email</strong> field, fill in the email address for receiving notifications.</p>
+  <br/>
+  <p>   <strong>Note:</strong> You can provide optional information in the <strong>Name</strong> and <strong>Description</strong> fields. The information described in these fields may serve as reference to the merchant in case the received notifcations must be recognized. </p>
+  <img src="/img/notififications/step-3.png" width="70%">
+  <br/>
+  <p>3.1.2 From the <strong>Events</strong> section, select one or more events by checking the box(es) next to the desired event(s).</p>
+  <br/>
+  <p><strong>Note:</strong> To select all events, check the <strong>Select All</strong> box.</p>
+  <br/>
+  <p><strong>Note:</strong> When creating a notification, the <strong>Activate notification</strong> box is checked by default. Uncheck the <strong>Activate notification</strong> box to create an inactive notification.</p>
+  <br/>
+  <img src="/img/notififications/step-3-2.png" width="70%">
+  <br/>
+  <p>2.1.3 Click <strong>Save</strong> to validate your changes.</p>
+  <br/>
+  <p>2.1.4 The new notification is displayed in the notification list.</p>
+  <br/>
+  <img src="/img/notififications/step-3-4.png" width="70%">
+  <br/>
+  <p>2.2 You can use Notification Type: URL for receiving notifications that deliver event information to your system by calling a script hosted on the server.</p>
+  <br/>
+  <br/>
+  <h3 id="notificationActions">Notification Actions</h3>
+  <br/>
+  <h4 id="reviewingNotificationDetails">Reviewing Notification Details</h4>
+  <br/>
+  <p>1. Click the <img src="/img/notififications/dots-menu.png" width="10%"> ellipsis icon in the Actions column to review the details for a notification.</p>
+  <br/>
+  <img src="/img/notififications/notifications_edit.png" width="70%">
+  <br/>
+  <p>2. A new window opens which shows all details for a selected notification.</p>
+  <br/>
+  <img src="/img/notififications/notifications_edit-2.png" width="70%">
+  <br/>
+  <h3 id="еditingNotifications"><u>Editing Notifications</u></h3>
+  <br/>
+  <p>You can edit notifications using the <strong>Edit</strong> button in the window that contains details for a selected notification.</p>
+  <br/>
+  <p>1. To edit notification details, click the <strong>Edit</strong> button.</p>
+  <br/>
+  <img src="/img/notififications/edit-1.png" width="70%">
+  <br/>
+  <p>2. Click <strong>Save</strong> to apply all changes.</p>
+  <br/>
+  <img src="/img/notififications/edit-2.png" width="70%">
+  <br/>
+  <h5><u>Editing the Notification Information and the Notification Events Subscription</u></h5>
+  <br/>
+  <p>
+      You can change or edit the information of an existing notification, for example an email address, a URL.<br/>
+      You can modify your subscription for an existing events notification from the Events section. <br/>
+      You can change the active status of a notification by checking or unchecking the Activate Notification field.<br/>
+      <strong>Note: Email</strong> or <strong>URL</strong> are mandatory fields, and <strong>Name</strong> and <strong>Description</strong> fields are optional.
+  </p>
+  <br/>
+  <p>To change the notification type to <strong>Email:</strong> </p>
+  <ol>
+    <li>Click <strong>Edit</strong>, and provide a valid email address in the <strong>Email</strong> field.</li>
+    <li>Select all events for which you want to receive notifications.</li>
+    <li>To activate the notification, check the <strong>Activate Notification</strong> box.</li>
+    <li>Click <strong>Save</strong> to apply all changes.</li>
+  </ol>
+  <br/>
+  <p>To change the notification type to <strong>URL:</strong></p>
+  <ol>
+    <li>Click Edit, and provide a valid URL in the <strong>URL</strong> field.</li>
+    <li>Select all events for which you want to receive notifications.</li>
+    <li>To activate the notification, check the <strong>Activate Notification</strong> box.</li>
+    <li>Click <strong>Save</strong> to apply all changes.</li>
+  </ol>
+  <br/>
+  <img src="/img/notififications/edit-3.png" width="70%">
+  <br/>
+  <h5 id="deletingNotifications"><u>Deleting Notifications</u></h5>
+  <br/>
+  <p>1. To delete a notification from the notifications list, click thedelete <img src="/img/notififications/delete-icon.png" > icon in the <strong>Actions</strong> column.</p>
+  <br/>
+  <p>2. Confirm your choice to delete the selected notification from the notifications list.</p>
+  <br/>
+  <img src="/img/notififications/delete-1.png" width="70%">
+  <br/>
+  <h5 id="filtering"><u>Filtering the Notifications List</u></h5>
+  <br/>
+  <p>You can narrow down the list of notifications by applying filters, based on various criteria, including creation date, update date, active status and type of notification.</p>
+  <br/>
+  <p><strong>Filtering Notifications by Creation Date</strong></p>
+  <br/>
+  <ol>
+    <li>To extend the notifications filtering options and make all filters visible, click on the <stron>Filters</stron> drop-down.</li>
+    <li>Click on the <img src="/img/notififications/calendar-icon.png" > calendar icon, choose a date form the <strong>Created at</strong> filter, and click <strong>Apply</strong>.
+        <br/><br/>
+        <strong>Note:</strong> If you specify only the <strong>Created at</strong> date, you will get a list of notifications which will include only the notifications, created from the specified <strong>Created at</strong> date to the current date.
+        <br/><br/>
+        <strong>Note:</strong> If you specify only the <strong>TO</strong> date, you will get a list of notifications which will include only the notifications, created from the beginning to the specified <strong>TO</strong> date.
+        <br/><br/>
+        <strong>Note:</strong> If you specify both, the <strong>Created at</strong>  and the <strong>TO</strong>  date, you will get a list of notifications which will include only the notifications, created from the specified <strong>Created at</strong> to the specified <strong>TO</strong>  date.
+        <br/><br/>
+        <strong>Note:</strong>  To remove a selected <strong>Created at</strong> or <strong>TO</strong>  date, click the <img src="/img/notififications/x-icon.png" > icon in the <strong>TO</strong>  date field.
+    </li>
+  </ol>
+  <br/>
+  <img src="/img/notififications/filter-1.png" width="70%">
+  <img src="/img/notififications/filter-2.png" width="70%">
+  <img src="/img/notififications/filter-3.png" width="70%">
+  <br/>
+  <br/>
+  <h5 id="filteringNotificationsByUpdateDate">Filtering Notifications by Update Date</h5>
+  <br/>
+  <ol>
+    <li>To extend the notifications filtering options and make all filters visible, click on the <stron>Filters</stron> drop-down.</li>
+    <li>Click on the <img src="/img/notififications/calendar-icon.png" > calendar icon, choose a date form the <strong>Updated at</strong> filter, and click <strong>Apply</strong>.
+        <br/><br/>
+        <strong>Note:</strong> If you specify only the <strong>Updated at</strong> date, you will get a list of notifications which will include only the notifications, created from the specified <strong>Updated at</strong> date to the current date.
+        <br/><br/>
+        <strong>Note:</strong> If you specify only the <strong>TO</strong> date, you will get a list of notifications which will include only the notifications, created from the beginning to the specified <strong>TO</strong> date.
+        <br/><br/>
+        <strong>Note:</strong> If you specify both, the <strong>Updated at</strong>  and the <strong>TO</strong>  date, you will get a list of notifications which will include only the notifications, created from the specified <strong>Updated at</strong> to the specified <strong>TO</strong>  date.
+        <br/><br/>
+        <strong>Note:</strong>  To remove a selected <strong>Updated at</strong> or <strong>TO</strong>  date, click the <img src="/img/notififications/x-icon.png" > icon in the <strong>TO</strong>  date field.
+    </li>
+  </ol>
+  <br/>
+  <img src="/img/notififications/update-1.png" width="70%">
+  <img src="/img/notififications/update-2.png" width="70%">
+  <img src="/img/notififications/update-3.png" width="70%">
+  <br/>
+  <br/>
+  <h5 id="filteringNotificationsByActiveStatus">Filtering Notifications by Active Status</h5>
+  <br/>
+  <p>You can filter notifications with an Active status.</p>
+  <br/>
+  <ol>
+    <li>Check the <strong>Active</strong> box in the <strong>Filters</strong> section.</li>
+    <li>Click <strong>Apply</strong> to view all active status notifications.</li>
+  </ol>
+  <br/>
+  <img src="/img/notififications/active-1.png" width="70%">
+  <br/>
+  <br/>
+  <h5 id="filteringNotificationsByNotificationType">Filtering Notifications by Notification Type</h5>
+  <br/>
+  <p>You can filter notifications by <strong>URL</strong> notification type.</p>
+  <br/>
+  <ol>
+    <li>Check the <strong>URL</strong> box in the <strong>Notification type </strong>section.</li>
+    <li>Click <strong>Apply</strong> to view all Notification type: <strong>URL</strong> notifications.</li>
+  </ol>
+  <br/>
+  <p>You can filter notifications by <strong>Email</strong> notification type.</p>
+  <br/>
+  <ol>
+    <li>Check the <strong>Email</strong> box in the <strong>Notification type </strong>section.</li>
+    <li>Click <strong>Apply</strong> to view all Notification type: <strong>Email</strong> notifications.</li>
+  </ol>
+  <br/>
+  <img src="/img/notififications/type-1.png" width="70%">
+  <img src="/img/notififications/type-2.png" width="70%">
+  <br/>
+  <br/>
+  <h5 id="filteringNotificationsByVersion">Filtering Notifications by Version</h5>
+  <br/>
+  <p>You can filter notifications by <strong>Version (V1/V2)</strong>.</p>
+  <br/>
+  <ol>
+    <li>Check the <strong>V1</strong> or <strong>V2</strong> box under <strong>Version</strong>.</li>
+    <li>Click <strong>Apply</strong> to view all <strong>V1</strong> or <strong>V2</strong> notifications.</li>
+  </ol>
+  <br/>
+  <img src="/img/notififications/ver-1.png" width="70%">
+  <br/>
+</div>
+
+
+
+
+
+
+
+
+
+
+

@@ -131,10 +131,10 @@
   <br/>
   <h3 id="email">Email Notifications</h3>
   <br/>
-  <p>Email notifications enable an integrator to be notified for a specific event or multiple events by receiving an email to a specified in advance email address.</p>
+  <p>Email notifications enable an integrator to be notified for a specific event or multiple events by receiving an email to a specified email address.</p>
   <br/>
-  <p>The email notifications will be sent from <a href="mailto:no-reply@payengine.de">no-reply@payengine.de</a> and the content depends on the version that will be used.</p>
-  <p>More details on that can be found in the <a hreh="">Notification Version</a> section below.</p>
+  <p>Email notifications are sent from <a href="mailto:no-reply@payengine.de">no-reply@payengine.de</a> and the content depends on the version that will be used.</p>
+  <p>For more details, see the <a hreh="">Notification Version</a> section below.</p>
   <br/>
   </div>
 <br/>
@@ -142,23 +142,23 @@
   <br/>
   <h2>Subscription</h2>
   <br/>
-  <p>In order to activate the webhook or email notifications the integrator has to subscribe for the notifications on an event level.</p>
+  <p>To activate webhook or email notifications, the integrator must subscribe for notifications on an event level.</p>
   <br/>
-  <p>There are two options how to subscribe, either directly via API within an order related request or via configuration in the Merchant Center.</p>
+  <p>You can subscribe for notifications directly via API within an order - related request, or via configuration in the Merchant Center.</p>
   <br/>
   <h3 id="subscriptionViaMerchantCenter">Subscription via Merchant Center</h3>
   <br/>
-  <p>A detailed instruction how to subscribe for notifications via Merchant Center can be found in the <a href="/notifications/notifications_mc">Merchant Center Notifications</a> section.</p>
+  <p>For more specific instructions on how to subscribe for notifications via Merchant Center, see <a href="/notifications/notifications_mc">Merchant Center Notifications</a>.</p>
   <br/>
   <br/>
   <h3 id="subscriptionViaAPI">Subscription via API</h3>
   <br/>
-  <p>Notifications via API are possible for all payment methods - regardless of technical flow type (synchronous or asynchronous).</p>
+  <p>You can subscribe for notifications via API for all payment methods, regardless of the technical flow type (synchronous or asynchronous).</p>
   <br/>
   <br/>
-  <p>Subscription for notifications via API can be done through the <strong>async.notifications</strong> object within the <em>preauth</em> or <em>debit</em> request.</p>
+  <p>You can subscribe for notifications via API, using the <em>async.notifications</em> object within the <em>preauth</em> or <em>debit</em> request.</p>
   <br/>
-  <p>The required parameters are depending on the version of the notification and can be found in the corresponding subsections below.</p>
+  <p>The required parameters depend on the notification version, referenced in the Notification Version 1.0 or Notification Version 2.0 subsections.</p>
   <br/>
 </div>
 <br/>
@@ -166,9 +166,9 @@
   <br/>
   <h2>Retry Mechanism</h2>
   <br/>
-  <p>Successful receiving of notifications for subscribed events is underpinned by Payengine retry mechanism.</p>
+  <p>To sucessfully receive notifications for subscribed events is underpinned by Payengine retry mechanism.</p>
   <br/>
-  <p>Retry mechanism is applicable for both webhook and email notifications and it covers three tiers of attempts to send a notification which are described in the table below.</p>
+  <p>The retry mechanism is applicable for webhook and email notifications, and covers three tiers of attempts to send a notification:</p>
   <br/>
   <br/>
   <table class="table table-bordered table-striped table-condensed">
@@ -176,7 +176,7 @@
       <tr>
         <th  >Number of Tier</th>
         <th  >Number of Attempts</th>
-        <th  >Delay Between Sent Attempts in ms</th>
+        <th  >Delay Between Sent Attempts in Milliseconds</th>
       </tr>
     </thead>
     <tbody>
@@ -198,22 +198,22 @@
     </tbody>
   </table>
   <br/>
-  <p>When the server which is required to receive the notification is down a retry attempt will be executed. Depending on its number the retry attempt will be executed with a predefined delay which is specific for each tier of retries.</p>
+  <p>When the server responsible for receiving a notification is down, a retry attempt will be executed. Depending on its number, the retry attempt will be executed with a predefined delay, specific for each tier of retries.</p>
   <br/>
-  <p>The total number of retry attempts for a notification is 16 - the sum of all attempts from all tiers and one more additional attempt. </p>
+  <p>The total number of retry attempts for a notification is 16 which is the total of all attempts from all tiers and one additional attempt. </p>
 </div>
 <br/>
 <div id="notificationVersion1">
   <br/>
   <h2>Notification Version 1.0</h2>
   <br/>
-  <p>This is the initial version of notifications implemented within the Payengine. While this version is still supported and used it can be seen as depricated.</p>
+  <p>Notification Version 1.0 is the initial version of notifications implemented within Payengine. While this version is still supported and used, it can be regarded as depricated.</p>
   <br/>
-  <p>We <strong>highly recommend</strong> to implement version 2 which offers a simplified message format for webhooks but especially email notification.</p>
+  <p>We <strong>highly recommend</strong> the implementation of Notification Version 2.0 which offers a simplified message format for webhooks and especially for email notifications.</p>
   <br/>
   <h3 id="events">Events</h3>
   <br/>
-  <p>The following events will be supported with version 1.0 of the notifications.</p>
+  <p>The following events are supported with Notification version 1.0:</p>
   <br/>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -231,7 +231,7 @@
       </tr>
       <tr>
         <td>transaction create failure </td>
-        <td>Creating of a transaction has failed</td>
+        <td>Creating a transaction has failed</td>
       </tr>
       <tr>
         <td>transaction update success </td>
@@ -239,7 +239,7 @@
       </tr>
       <tr>
         <td>transaction update failure</td>
-        <td>Updating of a transaction has failed</td>
+        <td>Updating a transaction has failed</td>
       </tr>
 
       <tr>
@@ -249,7 +249,7 @@
       </tr>
       <tr>
         <td>customer update failure</td>
-        <td>Updating of a customer object has failed</td>
+        <td>Updating a customer object has failed</td>
       </tr>
       <tr>
         <td>customer persona create success</td>
@@ -257,7 +257,7 @@
       </tr>
       <tr>
         <td>customer persona create failure</td>
-        <td>Creating of an object persona for a customer has failed</td>
+        <td>Creating an object persona for a customer has failed</td>
       </tr>
       <tr>
         <td>customer persona duplicate success</td>
@@ -269,7 +269,7 @@
       </tr>
       <tr>
         <td>customer paymentInstrument add failure</td>
-        <td>Adding of an object payment instrument for a customer has failed</td>
+        <td>Adding an object payment instrument for a customer has failed</td>
       </tr>
       <tr>
         <td>customer paymentInstrument delete success</td>
@@ -277,7 +277,7 @@
       </tr>
       <tr>
         <td>customer paymentInstrument delete failure</td>
-        <td>Deleting of an object payment instrument for a customer has failed</td>
+        <td>Deleting an object payment instrument for a customer has failed</td>
       </tr>
       <tr>
         <td>customer address create success</td>
@@ -285,7 +285,7 @@
       </tr>
       <tr>
         <td>customer address create failure</td>
-        <td>Creating of an object address of a customer has failed</td>
+        <td>Creating an object address of a customer has failed</td>
       </tr>
       <tr>
         <td>customer address duplicate success</td>
@@ -297,7 +297,7 @@
       </tr>
       <tr>
         <td>customer create failure</td>
-        <td>Creating of a customer object has failed</td>
+        <td>Creating a customer object has failed</td>
       </tr>
       <tr>
         <td rowspan="3">Payment Instrument Events</td>
@@ -306,7 +306,7 @@
       </tr>
       <tr>
         <td>paymentInstrument create failure</td>
-        <td>Creating of a payment instrument has failed</td>
+        <td>Creating a payment instrument has failed</td>
       </tr>
       <tr>
         <td>paymentInstrument expires</td>
@@ -319,7 +319,7 @@
       </tr>
       <tr>
         <td>order create failure</td>
-        <td>Creating of an order has failed</td>
+        <td>Creating an order has failed</td>
       </tr>
       <tr>
         <td>order update success</td>
@@ -327,7 +327,7 @@
       </tr>
       <tr>
         <td>order update failure	</td>
-        <td>Updating of an order has failed</td>
+        <td>Updating an order has failed</td>
       </tr>
     </tbody>
   </table>
@@ -335,9 +335,9 @@
   <br/>
   <h3 id="format">Format</h3>
   <br/>
-  <p>The content will be presented in JSON objects, which are inline with the formatting and requirements known from the Payengine REST API.</p>
+  <p>The content will be presented are JSON objects, inline with the formatting and requirements, known to the Payengine REST API.</p>
   <br/>
-  <p>There is no difference between webhook or email notifications. Both will use the JSON format.</p>
+  <p>There is no difference between webhook or email notifications, both use the JSON format.</p>
   <br/>
   <div>
       <div class="example-box-wrapper">
@@ -1141,7 +1141,7 @@
   <h3 id="subscriptionViaAPI2">Subscription via API</h3>
   <br/>
   <br/>
-  <p>The following parameters are required in the <strong>async.notification</strong> object in order to subscribe for a version 1.0 notification via API requests.</p>
+  <p>The following parameters are required in the <em>async.notification</em> object to subscribe to a Notification version 1.0 via API requests.</p>
   <br/>
   <br/>
   <table class="table table-bordered table-striped table-condensed">
@@ -1156,12 +1156,12 @@
         <td>notificationUrn</td>
         <td>
           <p>The URN to which the notification should be sent to.</p><br/>
-          <p>Number of notification URNs which can be specified when setting up notifications via API is limited to 8.</p><br/>
-          <p>There are three options regarding type of specified notification URNs as follows:</p><br/>
+          <p>Number of notification URNs, which can be specified when setting up notifications via API, is limited to 8.</p><br/>
+          <p>There are three options for the type of specified notification URNs:</p><br/>
           <ul>
-            <li>Notification URNs to be specified only as URLs with upper limit eight URLs</li>
-            <li>Notification URNs to be specified only as email addresses with upper limit eight emails</li>
-            <li>Notification URNs to be specified as a combination of URLs and email addresses with combined upper limit eight URLs & emails</li>
+            <li>Notification URNs to be specified only as URLs with an upper limit of eight URLs.</li>
+            <li>Notification URNs to be specified only as email addresses with an upper limit of eight emails.</li>
+            <li>Notification URNs to be specified as a combination of URLs and email addresses with a combined upper limit of eight URLs and emails.</li>
           </ul>
         </td>
       </tr>
@@ -1175,7 +1175,7 @@
                 <tr>
                   <td style="border-right: none;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px"></td>
                   <td>
-                    <p>You can subscribe <strong>only for transaction events on order level</strong>. Therefore, once subscribed you will continue to receive notifications for selected transaction events until the order reaches its end state.</p>
+                    <p>You can subscribe <strong>for transaction events on order level only</strong>. Therefore, once subscribed you will continue to receive notifications for selected transaction events until the order reaches its end state.</p>
                   </td>
                 </tr>
               </tbody>
@@ -1241,7 +1241,7 @@
   <br/>
   <h3 id="events2">Events</h3>
   <br/>
-  <p>The following table lists all supported events, grouped by category and specifies which events are available through which channel.</p>
+  <p>The following table lists all supported events, grouped by category, and specifies which events are available through which channel.</p>
   <br/>
   <table class="table table-bordered table-striped table-condensed">
       <thead>
@@ -1422,7 +1422,7 @@
     <br/>
     <h4 id="webhook2">Webhook</h4>
     <br/>
-    <p>All notifications will be in JSON format. The parameter depend on the notification category.</p>
+    <p>All notifications will be in a JSON format. The parameter depends on the notification category.</p>
     <br/>
     <div class="example-box-wrapper">
         <div class="content-box" ng-init="createCustomerResponseShow=false">
@@ -1489,7 +1489,7 @@
     <tbody>
       <tr>
         <td>notificationApiVersion</td>
-        <td>version of the notification service, always set to "2.0"</td>
+        <td>Version of the notification service, always set to "2.0"</td>
       </tr>
       <tr>
         <td>notificationId</td>
@@ -1497,63 +1497,63 @@
       </tr>
       <tr>
         <td>globalTrackId</td>
-        <td>Payengine global tracking id (for debugging)</td>
+        <td>Payengine global tracking ID (for debugging)</td>
       </tr>
       <tr>
         <td>eventType</td>
-        <td>type of the event, e.g. trx.debit.success</td>
+        <td>Type of the event, for example <em>trx.debit.success</em></td>
       </tr>
       <tr>
         <td>createdAt</td>
-        <td>timestamp of the event</td>
+        <td>Timestamp of the event</td>
       </tr>
       <tr>
         <td>merchantId</td>
-        <td>Payengine merchantId</td>
+        <td>Payengine <em>merchantId</em></td>
       </tr>
       <tr>
         <td>transactionId</td>
-        <td>Payengine transactionId</td>
+        <td>Payengine <em>transactionId</em></td>
       </tr>
       <tr>
         <td>transactionAmount</td>
-        <td>amount of transaction event</td>
+        <td>Amount of the transaction event</td>
       </tr>
       <tr>
         <td>currency</td>
-        <td>currency code</td>
+        <td>Currency code</td>
       </tr>
       <tr>
         <td>order</td>
-        <td>object containing details of the corresponding order</td>
+        <td>Object containing details of the corresponding order</td>
       </tr>
       <tr>
         <td>order.orderId</td>
-        <td>Payengine orderId</td>
+        <td>Payengine <em>orderId</em></td>
       </tr>
       <tr>
         <td>order.merchantOrderId</td>
-        <td>merchant order reference</td>
+        <td>Merchant order reference</td>
       </tr>
       <tr>
         <td>order.orderAmount</td>
-        <td>total amount of the order</td>
+        <td>Total amount of the order</td>
       </tr>
       <tr>
         <td>order.canceledAmount</td>
-        <td>amount already canceled</td>
+        <td>Amount already canceled</td>
       </tr>
       <tr>
         <td>order.capturedAmount</td>
-        <td>amount already canceled</td>
+        <td>Amount already canceled</td>
       </tr>
       <tr>
         <td>order.refundedAmount</td>
-        <td>amount already canceled</td>
+        <td>Amount already canceled</td>
       </tr>
       <tr>
         <td>order.product</td>
-        <td>payment product, e.g. creditcards, sepa, paypal, ...</td>
+        <td>Payment product, for example, cardscreditcard, SEPA, Paypal.</td>
       </tr>
       <tr>
         <td>order.statementDescription</td>
@@ -1581,19 +1581,19 @@
       </tr>
       <tr>
         <td>redirectUrl</td>
-        <td>redirect URL in case of asynchronous payment transactions</td>
+        <td>Redirect URL in case of asynchronous payment transactions</td>
       </tr>
       <tr>
         <td>providerCode</td>
-        <td>code from external provider</td>
+        <td>Code from external provider</td>
       </tr>
       <tr>
         <td>merchantMessage</td>
-        <td>message for merchant from external provider</td>
+        <td>Message for merchant from external provider</td>
       </tr>
       <tr>
         <td>customerMessage</td>
-        <td>message for customer from external provider</td>
+        <td>Message for customer from external provider</td>
       </tr>
     </tbody>
   </table>
@@ -1611,7 +1611,7 @@
     <tbody>
       <tr>
         <td>notificationApiVersion</td>
-        <td>version of the notification service, always set to "2.0"</td>
+        <td>Version of the notification service, always set to "2.0"</td>
       </tr>
       <tr>
         <td>notificationId</td>
@@ -1619,11 +1619,11 @@
       </tr>
       <tr>
         <td>globalTrackId</td>
-        <td>Payengine global tracking id (for debugging)</td>
+        <td>Payengine global tracking ID (for debugging)</td>
       </tr>
       <tr>
         <td>eventType</td>
-        <td>type of the event, e.g. trx.debit.success</td>
+        <td>type of the event, for example <em>trx.debit.success</em></td>
       </tr>
       <tr>
         <td>createdAt</td>
@@ -1631,11 +1631,11 @@
       </tr>
       <tr>
         <td>merchantId</td>
-        <td>Payengine merchantId</td>
+        <td>Payengine <em>merchantId</em></td>
       </tr>
       <tr>
         <td>threeAuthenticationId</td>
-        <td>Identifier of the 3DS authentication transaction generated by the Payengine if transaction was triggered through dedicated authentication service</td>
+        <td>Identifier of the 3DS authentication transaction generated by the Payengine if the transaction was triggered through a dedicated authentication service</td>
       </tr>
       <tr>
         <td>orderData</td>
@@ -1643,11 +1643,11 @@
       </tr>
       <tr>
         <td>orderData.transactionId</td>
-        <td>Payengine transactionId</td>
+        <td>Payengine <em>transactionId</em></td>
       </tr>
       <tr>
         <td>orderData.orderId</td>
-        <td>Payengine orderId</td>
+        <td>Payengine <em>orderId</em></td>
       </tr>
       <tr>
         <td>orderData.merchantOrderId</td>
@@ -1693,11 +1693,11 @@
       </tr>
       <tr>
         <td>authenticationResult.errorDetails.providerCode</td>
-        <td>Original error code from the 3ds server or mpi</td>
+        <td>Original error code from the 3DS server or MPI</td>
       </tr>
       <tr>
         <td>authenticationResult.errorDetails.providerMessage</td>
-        <td>Original error message from the 3ds server or mpi</td>
+        <td>Original error message from the 3DS server or MPI</td>
       </tr>
       <tr>
         <td>type</td>
@@ -1722,9 +1722,9 @@
   <br/>
   <h5 id="email2">Email</h5>
   <br/>
-  <p>The email notification should include a pre-defined set of parameters limited to the mostly relevant parameters.</p>
+  <p>The email notification should include a pre-defined set of parameters, limited to the most relevant parameters.</p>
   <br/>
-  <p>For the start only transaction related events will be supported.</p>
+  <p><strong>NOTE</strong> Currenlty only transaction - related events are supported.</p>
   <br/>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -1740,7 +1740,7 @@
       </tr>
       <tr>
         <td>Timestamp</td>
-        <td>timestamp of the transaction update</td>
+        <td>Timestamp of the transaction update</td>
       </tr>
       <tr>
         <td>Merchant ID</td>
@@ -1748,7 +1748,7 @@
       </tr>
       <tr>
         <td>Order ID</td>
-        <td>Payengine orderId</td>
+        <td>Payengine <em>orderId</em></td>
       </tr>
       <tr>
         <td>Transaction ID</td>
@@ -1756,51 +1756,51 @@
       </tr>
       <tr>
         <td>Merchant Order ID</td>
-        <td>merchant order reference</td>
+        <td>Merchant order reference</td>
       </tr>
       <tr>
         <td>Order Amount</td>
-        <td>order amount</td>
+        <td>Order amount</td>
       </tr>
       <tr>
         <td>Currency</td>
-        <td>currency of the order</td>
+        <td>Currency of the order</td>
       </tr>
       <tr>
         <td>Transaction Amount</td>
-        <td>transaction amount for the transaction status,<br/>might fully match the order amount</td>
+        <td>Transaction amount for the transaction status,<br/>might fully match the order amount</td>
       </tr>
       <tr>
         <td>Payment Method</td>
-        <td>the method used for the transaction, e.g. paypal, card, sofort, …</td>
+        <td>The method used for the transaction, for example, Paypal, a card, etc.</td>
       </tr>
       <tr>
         <td>Merchant Customer ID</td>
-        <td>merchant identifier for customer</td>
+        <td>Merchant identifier for customer</td>
       </tr>
       <tr>
         <td>Customer Email</td>
-        <td>customer emai</td>
+        <td>Customer Email</td>
       </tr>
       <tr>
         <td>Customer First Name</td>
-        <td>customer first name</td>
+        <td>Customer First Name</td>
       </tr>
       <tr>
         <td>Customer Last Name</td>
-        <td>customer last name</td>
+        <td>Customer Last Name</td>
       </tr>
       <tr>
         <td>Provider Code</td>
-        <td>code from external provider</td>
+        <td>Code from external provider</td>
       </tr>
       <tr>
         <td>Provider Message</td>
-        <td>message from external provider</td>
+        <td>Message from external provider</td>
       </tr>
       <tr>
         <td>Global Tracking ID</td>
-        <td>PE globalTrackId, can be used for trouble shooting</td>
+        <td>PE globalTrackId, can be used for troubleshooting</td>
       </tr>
     </tbody>
   </table>
@@ -1813,7 +1813,7 @@
   <br/>
   <h3 id="subscriptionViaAPI3">Subscription via API</h3>
   <br/>
-  <p>The following parameters are required in the <strong>async.notification</strong> object in order to subscribe for a v2 notification via API requests.</p>
+  <p>The following parameters are required in the <em>async.notification</em> object to subscribe to a Notification version 2.0 via API requests.</p>
   <br/>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -1827,32 +1827,32 @@
         <td>notificationUrn</td>
         <td>
             The URN to which the notification should be sent to.<br/><br/>
-            Number of notification URNs which can be specified when setting up notifications via API is limited to 8.<br/><br/>
-            There are three options regarding type of specified notification URNs as follows:<br/><br/>
+            Number of notification URNs, which can be specified when setting up notifications via API, is limited to 8.<br/><br/>
+            There are three options for the type of specified notification URNs:<br/><br/>
             <ul>
-              <li>Notification URNs to be specified only as URLs with upper limit eight URLs</li>
-              <li>Notification URNs to be specified only as email addresses with upper limit eight emails</li>
-              <li>Notification URNs to be specified as a combination of URLs and email addresses with combined upper limit eight URLs & emails</li>
+              <li>Notification URNs to be specified only as URLs with an upper limit of eight URLs.</li>
+              <li>Notification URNs to be specified only as email addresses with an upper limit of eight emails.</li>
+              <li>Notification URNs to be specified as a combination of URLs and email addresses with a combined upper limit of eight URLs and emails.</li>
             </ul>
         </td>
       </tr>
       <tr>
         <td>notificationVersion</td>
         <td>1.0 or 2.0<br/><br/>
-            in case the notificationVersion is not provided automatically version 1.0 should be used for the notifications</td>
+            In case the <em>notificationVersion</em> is not provided automatically, version 1.0 should be used for the notifications</td>
       </tr>
       <tr>
         <td>notificationEvent</td>
         <td>
-            supported values: see values from Events above<br/><br/>
+            Supported values: see the values from Events abovesection.<br/><br/>
             Integrators should explicitly specify the events they are interested in rather than wildcard everything.<br/><br/>
-            <strong><u>Note:</u></strong> Only the events that are supported for the corresponding transaction type should be raised as a notification. The other should be ingored.
+            <strong>NOTE:</strong> Only the events that are supported for the corresponding transaction type should be raised as a notification. The others should be ignored.
         </td>
       </tr>
     </tbody>
   </table>
   <br/>
-  <p>The <em>notificationState</em> should not be used anymore for vervion 2.0.</p>
+  <p><strong>NOTE:</strong> The <em>notificationState</em> should not be used anymore for vervion 2.0.</p>
   <br/>
   <br/>
   <div class="example-box-wrapper">

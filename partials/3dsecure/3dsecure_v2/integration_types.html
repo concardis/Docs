@@ -228,7 +228,7 @@
     <br/>
     <h3>Initiate Authentication</h3>
     <br/>
-    <p>POST /payment-instruments/{{paymentInstrumentId}}/3ds-version/{{threeDsVersionId}}/3ds-authentication</p>
+    <p>POST /payment-instruments/{paymentInstrumentId}/3ds-version/{threeDsVersionId}/3ds-authentication</p>
     <br/>
     <p>This service can be used to initiate a standalone 3DS authentication.</p>
     <br/>
@@ -364,7 +364,7 @@
     <br/>
     <h3>Get Authentication Result</h3>
     <br/>
-    <p>GET /creditcard/3ds-authentication/{{threeDsAuthenticationId}}</p>
+    <p>GET /creditcard/3ds-authentication/{threeDsAuthenticationId}</p>
     <br/>
     <p>This service can be used to query the results of a 3DS authentication.</p>
     <br/>
@@ -737,7 +737,7 @@
             <br/>
             <p>No matter how the challenge is presented to the cardholder the final results will be asynchronously synced back to the Payengine.</p>
             <br/>
-            <p>The integrator could either pro-actively pull for the results via <em>GET /creditcard/3ds-authentication/{{threeDsAuthenticationId}}</em> or register for an asynchronous notification sent to the <em>async.notificationUrl</em> specified in the preauth or debit request.</p>
+            <p>The integrator could either pro-actively pull for the results via <em>GET /creditcard/3ds-authentication/{threeDsAuthenticationId}</em> or register for an asynchronous notification sent to the <em>async.notificationUrl</em> specified in the preauth or debit request.</p>
         </div>
       </div>
       <div id="referencinganAuthenticationviaAgent">

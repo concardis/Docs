@@ -306,7 +306,7 @@ paths:
           description: Successful response.
           schema:
             $ref: '#/definitions/BrowserInfoResponse'
-  '/payment-instruments/{paymentInstrumentId}/3ds-version/{threeDsVersionId}/authentication':
+  '/payment-instruments/{paymentInstrumentId}/3ds-version/{threeDsVersionId}/3ds-authentication':
     post:
       security:
         - basicAuth: []

@@ -14,17 +14,17 @@
     <div class="col-md-1"></div>
     <div ng-init="menu=true;" class="col-md-2 btn-group-vertical">
         <button type="button" class="btn btn-light text-left" ng-click="menu=!menu"><h3>Notifications</h3> </button>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/notifications/notifications_api">Notifications in API</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/notifications/notifications_mc">Notifications in MC</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/notifications/introduction">Introduction</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/notifications/subscription_via_mc">Subscription via Merchant Center</a>
         <br/>
     </div>
     <div class="col-md-8">
-      <div ng-show="cur=='notifications_mc'">
-          <div  ng-include="'/partials/notifications/notifications_mc.html'">
+      <div ng-show="cur=='subscription_via_mc'">
+          <div  ng-include="'/partials/notifications/subscription_via_mc.html'">
           </div>
       </div>
-      <div ng-show="cur=='notifications_api'">
-          <div  ng-include="'/partials/notifications/notifications_api.html'">
+      <div ng-show="cur=='introduction'">
+          <div  ng-include="'/partials/notifications/introduction.html'">
           </div>
       </div>
     </div>

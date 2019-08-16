@@ -1,154 +1,800 @@
-<div>
-  <br/>
-  <br/>
-  <p>1. We have introduced a drop-down menu for all checkbox fields in the <strong>Filters</strong> section. You can see the examples below:</p>
-  <br/>
-  <p>
-      - When you expand the Last Status drop-down menu, all order transaction status checkbox options will be displayed, for example, <strong>Authorized, Authorization pending, Authorization failed,</strong> etc. 
-  </p>
-  <br/>
-  <p>Fig. <em>Last Status</em> drop-down menu checkbox options.</p>
-  <br/>
-  <img src="/img/merchant/img-1.png" width="70%">
-  <br/>
-  <p>
-    - When you expand the Channel drop-down menu, all order channel type checkbox options will be displayed. (<strong>ECOM, MOTO, POS</strong>). 
-  </p>
-  <br/>
-  <p>Fig. <em>Channel</em> drop-down menu checkbox options.</p>
-  <br/>
-  <img src="/img/merchant/img-2.png" width="70%">
-  <br/>
-  <p>- When you expand the Product drop-down menu, all payment method checkbox options will be displayed, for example, <strong>Credit card, Paydirekt, Paypal</strong>, etc. </p>
-  <br/>
-  <p>Fig. <em>Products</em> drop-down menu checkbox options.</p>
-  <br/>
-  <img src="/img/merchant/img-3.png" width="70%">
-  <br/>
-</div>
-<div>
-  <br/>
-  <br/>
-  <p>
-    2. The new version of the order list criteria in the <strong>ORDERS</strong> tab introduces a new parameter called <em>Last Status</em>. It replaces the <em>Status</em> parameter from the previous version. The new <em>Last Status</em> is generated based on the order transaction result. It displays the last transaction status of the order.
-  </p>
-  <br/>
-  <p>Тhe following transaction statuses are supported:</p>
-  <br/>
+<h3>Create new order</h3> The Merchant can create different types of order depending of the Payment Method:
+<ul>
+  <li><a href="/merchantcenter/createtransaction#order_create_cc" name="">Create new Credit Card Order (RatePAY Direct Debit Order/RatePAY Invoice Order/SEPA Direct Debit Order)</a></li>
+  <!-- <li><a href="#order_create_ratepay_dd" name="">Create new RatePAY Direct Debit Order</a></li>
+  <li><a href="#order_create_ratepay_inv" name="">Create new RatePAY Invoice Order</a></li>
+  <li><a href="#order_create_sape-dd" name="">Create new SEPA Direct Debit Order</a></li> -->
+  <li><a href="/merchantcenter/createtransaction#orderAndOrderSearchEnhancements">Order and Order Search Enhancements</a></li>
+</ul>
+<div id="order_create_cc"></div>
+&nbsp;
+<h3>Create new Credit Card Order</h3>
+<ul>
+  <li style="list-style-type: none;">
+    <ul>
+      <li> Click  <strong>Create Order</strong>
+      </li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7664 size-large" src="/img/merchant/screen-1.png" alt="" width="100%" />
+<ul>
+  <li style="list-style-type: none;">
+    <ul>
+      <li>A new <strong>Create Order</strong> window opens</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7666 size-full" src="/uploads/2018/04/order_create.png" alt="" width="100%" /> &nbsp;
+<ul>
+  <li style="list-style-type: none;">
+    <ul>
+      <li>From the Payment method dropdown menu, select <strong>Credit card</strong>.</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7670 size-full" src="/uploads/2018/04/oreder_create_cc_pm.png" alt="" width="100%" />
+<ul>
+  <li style="list-style-type: none;">
+    <ul>
+      <li>Fill in all input fields for creating a credit card order.</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7672 size-full" src="/uploads/2018/04/oreder_create_cc_fields.png" alt="" width="100%" />
+<!-- <ul>
+  <li style="list-style-type: none;">
+    <ul>
+      <li>First part are optional information input fields</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7675 size-full" src="/uploads/2018/04/orders_create_cc_optional.png" alt="" width="100%" />
+<ul> -->
+  <!-- <li style="list-style-type: none;">
+    <ul>
+      <li style="list-style-type: none;">
+        <ul>
+          <li><strong>MerchantOrder ID -</strong> Id of the order for merchant</li>
+          <li><b>Description  - </b>Description of the order</li>
+          <li><strong>Statement description -</strong> Statement description</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul> -->
+<!-- <ul>
+  <li>Second part are input fields for credit card</li>
+</ul>
+<img class="alignnone wp-image-7676 size-full" src="/uploads/2018/04/orders_create_cc_ccflds.png" alt="" width="100%" /> -->
+<!-- <ul>
+  <li><strong>Amount (Required) -</strong> Amount of the order</li>
+  <li><b>Currency <strong>(Required)</strong>  - </b>Currency of the order. You can select from list of available currencies.
+    <br/>
+    <b>Important!</b>:
+    </br>
+    <label>
+      Some of the currencies has non-decimal fraction (<a href="/merchantcenter/currencies">Learn more about currencies...</a>)
+    </label>
+  </li>
+</ul>
+<img class="alignnone wp-image-7707 size-full" src="/uploads/2018/04/order_create_currency.png" alt="" width="100%" /> 
+<ul>
+  <li><strong>Card Number<b> (Required)</b> -</strong> Credit card number</li>
+  <li><strong>Expiry Date<b> (Required)</b> - </strong>Expiry Date of the credit card ( mm/yy )</li>
+  <li><strong>Security code<b> (Required)</b> -</strong> Security code of the Credit card ( 3 digit code on back of credit card)</li>
+  <li><strong>Card Holder -</strong> Credit card holder</li>
+</ul> -->
+&nbsp; &nbsp;
+<!-- <ul>
+  <li style="list-style-type: none;">
+    <ul>
+      <li>Third part are for adding additional information.<img class="alignnone wp-image-7708 size-full" src="/uploads/2018/04/orders_create_cc_add_info.png" alt="" width="100%" /></li>
+    </ul>
+  </li>
+</ul> -->
+Click on the Add <strong>Basket</strong> checkbox, to add additional fields.
+
+<img class="alignnone wp-image-7709 size-full" src="/uploads/2018/04/order_create_cc_basket.png" alt="" width="70%" />
+<br/>
+For more information, see <a href="/merchantcenter/managebaskets">How to manage Baskets</a>.<br/>
+Click on the <strong>Add Customer</strong> information checkbox, to add more customer information.
+<img class="alignnone wp-image-7711 size-full" src="/img/merchant/screen-2.png" alt="" width="100%" />
+<img class="alignnone wp-image-7711 size-full" src="/uploads/2018/04/order_create_add_customer.png" alt="" width="70%" />
+<img class="alignnone wp-image-7566 size-full" src="/uploads/2018/03/orders_select.png" alt="" width="100%" />
+<ul>
+  <li>There are tree types of credit card transaction actions: <storng>Preauth, Debit</storng> and <strong>Credit</strong>.</li>
+</ul>
+&nbsp;
+
+<!-- <img class="alignnone wp-image-7713 size-full " src="/uploads/2018/04/orders_create_cc_action.png " width="100%" /> -->
+
+<strong>NOTE</strong> The <strong>Preauth</strong> option is selected by default. 
+To change your preference, click the <strong>Debit</strong> or <strong>Credit checkbox</strong> .
+<ul>
+  <li>Click <strong>Save</strong> to validate your changes.</li>
+</ul>
+<br/>
+<p><storng>NOTE</storng> To create a new RatePAY Direct Debit Order, an RatePAY Invoice Order, or a SEPA Direct Debit Order, follow the same steps as described in the Create a new Credit card process.</p>
+<!-- After you fill all required information you must save your newly created order.
+
+<img class="alignnone wp-image-7714 size-full " src="/uploads/2018/04/orders_create_cc_save.png " width="100% " /> If the order is saved successfully you will see new created order in orders list.
+
+<img class="alignnone wp-image-7715 size-full " src="/uploads/2018/04/order_list-1.png " width="100% " />
+<div id="order_create_ratepay_dd "></div>
+&nbsp;
+<h3>Create new RatePAY Direct Debit Order</h3>
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>Click on „Plus“ icon on top right corner</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7664 size-large " src="/uploads/2018/04/order_add-1024x529.png " alt=" " width="100% " />
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>New window will open to create a order</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7666 size-full " src="/uploads/2018/04/order_create.png " alt=" " width="100% " /> &nbsp;
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>Select order Payment method type. (In this case RatePAY Direct debit)</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7717 size-full " src="/uploads/2018/04/order_create_RP_dd.png " alt=" " width="100% " /> &nbsp;
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>New input fields will appear for creating a RatePAY Direct debit order.</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7718 size-full " src="/uploads/2018/04/order_create_RP_dd_flds.png " alt=" " width="100% " />
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>First part are optional information input fields</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7755 size-full " src="/uploads/2018/05/order_create_ratepay_opt.png " alt=" " width="100% " />
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li style="list-style-type: none; ">
+        <ul>
+          <li><strong>MerchantOrder ID -</strong> Id of the order for merchant</li>
+          <li><b>Description  - </b>Description of the order</li>
+          <li><strong>Statement description -</strong> Statement description</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>Second part are fields with information about the Total amount of the order</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7756 size-full " src="/uploads/2018/05/order_create_rp_amount.png " alt=" " width="100% " />
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li style="list-style-type: none; ">
+        <ul>
+          <li><strong>Amount -</strong> Total amount of the order</li>
+          <li><b>Currency  - </b>Currency of the order
+            <b>Important!</b>:
+            </br>
+            <label>
+        Some of the currencies has non-decimal fraction (<a href="/merchantcenter/currencies">Learn more about currencies...</a>)
+      </label>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li>Third part are input fields for bank account</li>
+</ul>
+<img class="alignnone wp-image-7757 size-full " src="/uploads/2018/05/order_rp_create_iban.png " alt=" " width="100% " />
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li style="list-style-type: none; ">
+        <ul>
+          <li><strong>Owner -</strong> Owner of the bank account</li>
+          <li><b>Bank name  - </b>Name of the bank</li>
+          <li><strong>IBAN (Required)</strong> - IBAN for bank account</li>
+          <li><strong>BIC</strong> - BIC of the bank account</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li>Next part is required Basket</li>
+</ul>
+<img class="alignnone wp-image-7759 size-full " src="/uploads/2018/05/order_rp_create_basket-1.png " alt=" " width="100% " />
+<ul>
+  <li>To add basket Item you must click on "Add Item " button</li>
+</ul>
+<img class="alignnone wp-image-7760 size-full " src="/uploads/2018/05/order_rp_create_basket_add.png " alt=" " width="100% " /> &nbsp;
+<ul>
+  <li>It will open new section with basket additional fields.</li>
+</ul>
+&nbsp;
+
+<img class="alignnone wp-image-7709 size-full " src="/uploads/2018/04/order_create_cc_basket.png " alt=" " width="100% " /> More about basket you can find in <a href="/merchantcenter/managebaskets ">"How to manage Baskets "</a>. &nbsp
+<ul>
+  <li>Next part is "Customer information ", it contains section with customer information fields.</li>
+</ul>
+<img class="alignnone wp-image-7761 size-full " src="/uploads/2018/05/order_create_RP_customer.png " alt=" " width="100% " />
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li style="list-style-type: none; ">
+        <ul>
+          <li style="list-style-type: none; ">
+            <ul>
+              <li>Email (Required)</li>
+              <li>Merchant customer Id</li>
+              <li>Additional Persona information
+                <ul>
+                  <li>Title</li>
+                  <li>First name (Required)</li>
+                  <li>Last name (Required)</li>
+                  <li>Phone</li>
+                  <li>Fax</li>
+                  <li>Mobile</li>
+                  <li>Birthday (Required)</li>
+                  <li>Gender</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<strong><img class="alignnone wp-image-7566 size-full " src="/uploads/2018/03/orders_select.png " alt=" " width="100% "  />Important! - </strong>Be careful with the required fields, because otherwise you can't save the Order.
+<ul>
+  <li>Next part is "Billing Address ".</li>
+</ul>
+<img class="alignnone wp-image-7762 size-full " src="/uploads/2018/05/order_create_RP_billing_addr.png " alt=" " width="100% " /> This part contains information about Billing Address.
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li style="list-style-type: none; ">
+        <ul>
+          <li style="list-style-type: none; ">
+            <ul>
+              <li style="list-style-type: none; ">
+                <ul>
+                  <li>Title</li>
+                  <li>First name (Required)</li>
+                  <li>Last name (Required)</li>
+                  <li>Street (Required)</li>
+                  <li>Street Number (Required)</li>
+                  <li>City (Required)</li>
+                  <li>Zip (Required)</li>
+                  <li>Country (Required)</li>
+                  <li>State</li>
+                  <li>Phone (Required)</li>
+                  <li>Fax</li>
+                  <li>Mobile</li>
+                  <li>Additional details</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<strong>
+  <img class="alignnone wp-image-7566 size-full " src="/uploads/2018/03/orders_select.png " alt=" " width="100% "/>Important! - </strong>Be careful with the required fields, because otherwise you can't save the Order.
+<ul>
+  <li>Next part are type of the transaction action. There are two types of transaction actions for RatePAY Direct Debit: Preauth and Debit.</li>
+</ul>
+<img class="alignnone wp-image-7768 size-full" src="/uploads/2018/05/order_create_rp_dd_action.png" alt="" width="100%" /> &nbsp;
+<ul>
+  <li>Last part for Accepting Terms and Privacy. <strong> Both checkboxes are required.</strong></li>
+</ul>
+<img class="alignnone wp-image-7764 size-full" src="/uploads/2018/05/order_create_rp_dd_terms.png" alt="" width="100%" /> &nbsp; &nbsp;
+<ul>
+  <li>Click on "Save" Button</li>
+</ul>
+After you fill all required information you must save your newly created order.
+
+<img class="alignnone wp-image-7765 size-full" src="/uploads/2018/05/order_create_rp_dd_save.png" alt="" width="100%" /> If the order is saved successfully you will see new created order in orders list.
+
+<img class="alignnone wp-image-7715 size-full" src="/uploads/2018/04/order_list-1.png" alt="" width="100%" /> &nbsp;
+<div id="order_create_ratepay_inv "></div>
+&nbsp;
+<h3>Create new RatePAY Invoice Order</h3>
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>Click on „Plus“ icon on top right corner</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7664 size-large " src="/uploads/2018/04/order_add-1024x529.png " alt=" " width="100% " />
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>New window will open to create a order</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7666 size-full " src="/uploads/2018/04/order_create.png " alt=" " width="100% " /> &nbsp;
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>Select order Payment method type. (In this case RatePAY Invoice)</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7770 size-full " src="/uploads/2018/05/ordere_create_rp_inv.png " alt=" " width="100% " /> &nbsp;
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>New input fields will appear for creating a RatePAY Invoice order.</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7771 size-full " src="/uploads/2018/05/order_create_rp_inv_fields.png " alt=" " width="100% " />
+<ul>
+  <li style="list-style-type: none;">
+    <ul>
+      <li>First part are optional information input fields</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7772 size-full" src="/uploads/2018/05/order_create_rp_inv_opt.png" alt="" width="100%" />
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li style="list-style-type: none; ">
+        <ul>
+          <li><strong>MerchantOrder ID -</strong> Id of the order for merchant</li>
+          <li><b>Description  - </b>Description of the order</li>
+          <li><strong>Statement description -</strong> Statement description</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>Second part are fields with information about the Total amount of the order</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7773 size-full " src="/uploads/2018/05/order_create_rp_inv_tot_amount.png " alt=" " width="100% " />
+<ul>
+  <li style="list-style-type: none;">
+    <ul>
+      <li style="list-style-type: none;">
+        <ul>
+          <li><strong>Amount -</strong> Total amount of the order</li>
+          <li><b>Currency  - </b>Currency of the order
+            <b>Important!</b>:
+            </br>
+            <label>
+              Some of the currencies has non-decimal fraction (<a href="/merchantcenter/currencies">Learn more about currencies...</a>)
+            </label>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li>Third part is required Basket</li>
+</ul>
+<img class="alignnone wp-image-7774 size-full" src="/uploads/2018/05/order_create_rp_inv_basket.png" alt="" width="100%" />
+<ul>
+  <li>To add basket Item you must click on "Add Item " button</li>
+</ul>
+<img class="alignnone wp-image-7775 size-full " src="/uploads/2018/05/order_create_rp_inv_basket_add.png " alt=" " width="100% " /> &nbsp;
+<ul>
+  <li>It will open new section with basket additional fields.</li>
+</ul>
+&nbsp;
+
+<img class="alignnone wp-image-7709 size-full" src="/uploads/2018/04/order_create_cc_basket.png" alt="" width="100%" /> More about basket you can find in <a href="/merchantcenter/managebaskets">"How to manage Baskets"</a>. &nbsp;
+<ul>
+  <li>Next part is "Customer information", it contains section with customer information fields.</li>
+</ul>
+<img class="alignnone wp-image-7761 size-full" src="/uploads/2018/05/order_create_RP_customer.png" alt="" width="100%" />
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li style="list-style-type: none; ">
+        <ul>
+          <li style="list-style-type: none; ">
+            <ul>
+              <li>Email (Required)</li>
+              <li>Merchant customer Id</li>
+              <li>Additional Persona information
+                <ul>
+                  <li>Title</li>
+                  <li>First name (Required)</li>
+                  <li>Last name (Required)</li>
+                  <li>Phone</li>
+                  <li>Fax</li>
+                  <li>Mobile</li>
+                  <li>Birthday (Required)</li>
+                  <li>Gender</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<strong><img class="alignnone wp-image-7566 size-full " src="/uploads/2018/03/orders_select.png " alt=" " width="100% " />Important! - </strong>Be careful with the required fields, because otherwise you can't save the Order.
+<ul>
+  <li>Next part is "Billing Address".</li>
+</ul>
+<img class="alignnone wp-image-7762 size-full" src="/uploads/2018/05/order_create_RP_billing_addr.png" alt="" width="100%" /> This part contains information about Billing Address.
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li style="list-style-type: none; ">
+        <ul>
+          <li style="list-style-type: none; ">
+            <ul>
+              <li style="list-style-type: none; ">
+                <ul>
+                  <li>Title</li>
+                  <li>First name (Required)</li>
+                  <li>Last name (Required)</li>
+                  <li>Street (Required)</li>
+                  <li>Street Number (Required)</li>
+                  <li>City (Required)</li>
+                  <li>Zip (Required)</li>
+                  <li>Country (Required)</li>
+                  <li>State</li>
+                  <li>Phone (Required)</li>
+                  <li>Fax</li>
+                  <li>Mobile</li>
+                  <li>Additional details</li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<strong><img class="alignnone wp-image-7566 size-full " src="/uploads/2018/03/orders_select.png " alt=" " width="100% " />Important! - </strong>Be careful with the required fields, because otherwise you can't save the Order.
+<ul>
+  <li>Next part are type of the transaction action. There are two types of transaction actions for RatePAY Direct Debit: Preauth and Debit.</li>
+</ul>
+<img class="alignnone wp-image-7768 size-full" src="/uploads/2018/05/order_create_rp_dd_action.png" alt="" width="100%" /> &nbsp;
+<ul>
+  <li>Last part for Accepting Terms and Privacy. <strong> Both checkboxes are required.</strong></li>
+</ul>
+<img class="alignnone wp-image-7764 size-full" src="/uploads/2018/05/order_create_rp_dd_terms.png" alt="" width="100%" /> &nbsp; &nbsp;
+<ul>
+  <li>Click on "Save" Button</li>
+</ul>
+After you fill all required information you must save your newly created order.
+
+<img class="alignnone wp-image-7765 size-full" src="/uploads/2018/05/order_create_rp_dd_save.png" alt="" width="100%" /> If the order is saved successfully you will see new created order in orders list.
+
+<img class="alignnone wp-image-7715 size-full" src="/uploads/2018/04/order_list-1.png" alt="" width="100%" /> &nbsp;
+
+<h3>Create new SEPA Direct Debit Order</h3>
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>Click on „Plus“ icon on top right corner</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7664 size-large " src="/uploads/2018/04/order_add-1024x529.png " alt=" " width="100% " />
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>New window will open to create a order</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7666 size-full " src="/uploads/2018/04/order_create.png " alt=" " width="100% " /> &nbsp;
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>Select order Payment method type. (In this case SEPA)</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7770 size-full " src="img/orders/sepa/order_create_sepa_1.png " alt=" " width="100%" /> &nbsp;
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>New input fields will appear for creating a SEPA order.</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7771 size-full " src="img/orders/sepa/order_create_sepa_2.png" alt=" " width="100%" />
+<ul>
+  <li style="list-style-type: none;">
+    <ul>
+      <li>First part are optional information input fields</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7772 size-full" src="img/orders/sepa/order_create_sepa_3.png" alt="" width="100%" />
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li style="list-style-type: none; ">
+        <ul>
+          <li><strong>MerchantOrder ID -</strong> Id of the order for merchant</li>
+          <li><b>Description  - </b>Description of the order</li>
+          <li><strong>Statement description -</strong> Statement description</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>Second part are fields with information about the Amount of the order</li>
+    </ul>
+  </li>
+</ul>
+<img class="alignnone wp-image-7773 size-full " src="img/orders/sepa/order_create_sepa_4.png" width="100% " />
+<ul>
+  <li style="list-style-type: none;">
+    <ul>
+      <li style="list-style-type: none;">
+        <ul>
+          <li><strong>Amount -</strong> Total amount of the order</li>
+          <li><b>Currency  - </b>Currency of the order
+            <br/>
+            <b>Important!</b>:
+            </br>
+            <label>
+              Some of the currencies has non-decimal fraction (<a href="/merchantcenter/currencies">Learn more about currencies...</a>)
+            </label>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li>Third part are input fields for bank account</li>
+
+  <img class="alignnone wp-image-7757 size-full" src="img/orders/sepa/order_create_sepa_5.png" width="100%" />
   <ul>
-    <li>Authorized</li>
-    <li>Authorization pending</li>
-    <li>Authorization failed</li>
-    <li>Canceled</li>
-    <li>Cancel pending</li>
-    <li>Cancel failed</li>
-    <li>Debit initiated</li>
-    <li>Debited</li>
-    <li>Debit pending</li>
-    <li>Debit failed</li>
-    <li>Captured initiated</li>
-    <li>Captured</li>
-    <li>Capture pending</li>
-    <li>Capture failed</li>
-    <li>Refund initiated</li>
-    <li>Refunded</li>
-    <li>Refund pending</li>
-    <li>Refund failed</li>
-    <li>Credit initiated</li>
-    <li>Credited</li>
-    <li>Credit pending</li>
-    <li>Credit failed</li>
-    <li>Chargeback booked</li>
-    <li>Chargeback reversed</li>
+    <li><b>Bank name  - </b>Name of the bank</li>
+    <li><strong>IBAN (Required)</strong> - IBAN for bank account</li>
+    <li><strong>BIC</strong> - BIC of the bank account</li>
+    <li><strong>Account Holder -</strong> Owner of the bank account</li>
   </ul>
-  <br/>
-  <p>The label is displayed in a green, yellow, red or a grey color. </p>
-  <br/>
-  <p>
-    <span style="background-color:#00875a; padding: 0 5px; color: white;">GREEN</span> 
-    indicates that the transaction was processed successfully and the funding has been triggered, for example, debit, capture or credit.
-  </p>
-  <p>
-    <span style="background-color:#ffab00; padding: 0 5px; color: white;">YELLOW</span> 
-    indicates that there is a pending transaction for the order or there is no transaction available at all. 
-  </p>
-  <p>
-    <span style="background-color:#de350b; padding: 0 5px; color: white;">RED</span> 
-    indicates that the transaction has failed internally or it has been rejected by the processor. 
-  </p>
-  <p>
-    <span style="background-color:#dfe1e6; padding: 0 5px; color: white;">GREY</span> 
-    indicates that the transaction was processed successfully but the funding has not been triggered yet, for example, authorization, or a previous successful funding has been reverted (CANCEL, REFUND or CHARGEBACK).
-  </p>
-  <br/>
-  <p><strong>NOTE</strong> You can filter orders based on the <em>Last Status</em> criteria.</p>
-</div>
+</ul>
+
+<ul>
+  <li style="list-style-type: none;">
+    <ul>
+      <li>
+        Next part are for adding additional information.
+        <img class="alignnone wp-image-7708 size-full" src="img/orders/sepa/order_create_sepa_6.png" width="100%"/>
+      </li>
+    </ul>
+  </li>
+</ul>
+If you check on "Add Basket", it will open new section with basket additional fields.
+
+<img class="alignnone wp-image-7709 size-full" src="img/orders/sepa/order_create_sepa_7.png" alt="" width="100%" />
+
+More about basket you can find in <a href="/merchantcenter/managebaskets">"How to manage Baskets"</a>.
+<br/>
+
+<ul>
+  <li>Other option is "Customer information", it contains section with customer information fields. If you check on "Add Customer informattion", it will open new section with customer additional fields.</li>
+</ul>
+<img class="alignnone wp-image-7761 size-full" src="img/orders/sepa/order_create_sepa_8.png" alt="" width="100%" />
+<ul>
+  <li style="list-style-type: none; ">
+    <ul>
+      <li>Email (Required)</li>
+      <li>Merchant customer Id</li>
+      <li>Additional Persona information</li>
+      <li>Additional Billing Address</li>
+      <li>Additional Shipping Address</li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li>Last part are type of the transaction action. There are two types of transaction actions for SEPA Direct Debit: Preauth and Debit.</li>
+</ul>
+<img class="alignnone wp-image-7768 size-full" src="img/orders/sepa/order_create_sepa_9.png" alt="" width="100%" /> &nbsp;
+<ul>
+  <li>Click on "Save" Button</li>
+</ul>
+After you fill all required information you must save your newly created order.
+
+<img class="alignnone wp-image-7765 size-full" src="img/orders/sepa/order_create_sepa_10.png" alt="" width="100%" />
+ If the order is saved successfully you will see new created order in orders list.
+
+<img class="alignnone wp-image-7715 size-full" src="/uploads/2018/04/order_list-1.png" alt="" width="100%" /> &nbsp; -->
+<br/>
 <br/>
 <div>
+  <h2 id="orderAndOrderSearchEnhancements">Order and Order Search Enhancements</h2>
+    <br/>
+    <p>1. We have introduced a drop-down menu for all checkbox fields in the <strong>Filters</strong> section. You can see the examples below:</p>
+    <br/>
+    <p>
+        - When you expand the Last Status drop-down menu, all order transaction status checkbox options will be displayed, for example, <strong>Authorized, Authorization pending, Authorization failed,</strong> etc. 
+    </p>
+    <br/>
+    <p>Fig. <em>Last Status</em> drop-down menu checkbox options.</p>
+    <br/>
+    <img src="/img/merchant/img-1.png" width="70%">
+    <br/>
+    <p>
+      - When you expand the Channel drop-down menu, all order channel type checkbox options will be displayed. (<strong>ECOM, MOTO, POS</strong>). 
+    </p>
+    <br/>
+    <p>Fig. <em>Channel</em> drop-down menu checkbox options.</p>
+    <br/>
+    <img src="/img/merchant/img-2.png" width="70%">
+    <br/>
+    <p>- When you expand the Product drop-down menu, all payment method checkbox options will be displayed, for example, <strong>Credit card, Paydirekt, Paypal</strong>, etc. </p>
+    <br/>
+    <p>Fig. <em>Products</em> drop-down menu checkbox options.</p>
+    <br/>
+    <img src="/img/merchant/img-3.png" width="70%">
+    <br/>
+  </div>
+  <div>
+    <br/>
+    <br/>
+    <p>
+      2. The new version of the order list criteria in the <strong>ORDERS</strong> tab introduces a new parameter called <em>Last Status</em>. It replaces the <em>Status</em> parameter from the previous version. The new <em>Last Status</em> is generated based on the order transaction result. It displays the last transaction status of the order.
+    </p>
+    <br/>
+    <p>Тhe following transaction statuses are supported:</p>
+    <br/>
+    <ul>
+      <li>Authorized</li>
+      <li>Authorization pending</li>
+      <li>Authorization failed</li>
+      <li>Canceled</li>
+      <li>Cancel pending</li>
+      <li>Cancel failed</li>
+      <li>Debit initiated</li>
+      <li>Debited</li>
+      <li>Debit pending</li>
+      <li>Debit failed</li>
+      <li>Captured initiated</li>
+      <li>Captured</li>
+      <li>Capture pending</li>
+      <li>Capture failed</li>
+      <li>Refund initiated</li>
+      <li>Refunded</li>
+      <li>Refund pending</li>
+      <li>Refund failed</li>
+      <li>Credit initiated</li>
+      <li>Credited</li>
+      <li>Credit pending</li>
+      <li>Credit failed</li>
+      <li>Chargeback booked</li>
+      <li>Chargeback reversed</li>
+    </ul>
+    <br/>
+    <p>The label is displayed in a green, yellow, red or a grey color. </p>
+    <br/>
+    <p>
+      <span style="background-color:#00875a; padding: 0 5px; color: white;">GREEN</span> 
+      indicates that the transaction was processed successfully and the funding has been triggered, for example, debit, capture or credit.
+    </p>
+    <p>
+      <span style="background-color:#ffab00; padding: 0 5px; color: white;">YELLOW</span> 
+      indicates that there is a pending transaction for the order or there is no transaction available at all. 
+    </p>
+    <p>
+      <span style="background-color:#de350b; padding: 0 5px; color: white;">RED</span> 
+      indicates that the transaction has failed internally or it has been rejected by the processor. 
+    </p>
+    <p>
+      <span style="background-color:#dfe1e6; padding: 0 5px; color: white;">GREY</span> 
+      indicates that the transaction was processed successfully but the funding has not been triggered yet, for example, authorization, or a previous successful funding has been reverted (CANCEL, REFUND or CHARGEBACK).
+    </p>
+    <br/>
+    <p><strong>NOTE</strong> You can filter orders based on the <em>Last Status</em> criteria.</p>
+  </div>
   <br/>
+  <div>
+    <br/>
+    <br/>
+    <p>3. We have introduced a new <em>Refunded Amount</em> parameter in the order list criteria. It shows the amount refunded to a customer.</p>
+    <br/>
+    <p><strong>NOTE</strong> You can sort all orders by refunded amount in ascending or descending order, using the up and down arrows <img src="/img/merchant/arrows.png"></p>
+  </div>
   <br/>
-  <p>3. We have introduced a new <em>Refunded Amount</em> parameter in the order list criteria. It shows the amount refunded to a customer.</p>
+  <div>
+    <br/>
+    <br/>
+    <p>The new <em>Channel</em> parameter displays the order channel type.</p>
+    <br/>
+    <p>Channel types: </p>
+    <br/>
+    <ol>
+      <li>MOTO (Mail Order/Telephone Order) channel type: a payment transaction where the customer makes an order via a merchant's representative.
+        <br/>
+        <strong>NOTE</strong> RatePAY via the MOTO channel type is also possible.
+      </li>
+      <li>
+        ECOM (E-commerce) channel type: the retail part of e-commerce on the internet (Business-to-consumer (B2C)). It is when businesses sell products, services or information directly to consumers at e-commerce sites.
+      </li>
+      <li>
+        POS (Point Of Sale) channel type: It enables you to pay directly from your card at a retail location. 
+      </li>
+    </ol>
+    <br/>
+    <p>Fig. <em>Last Status, Refunded Amount</em> and <em>Channel</em> paramenters in the Orders list</p>
+    <br/>
+    <img src="/img/orders/sepa/create-order-1.png" width="70%">
+  </div>
   <br/>
-  <p><strong>NOTE</strong> You can sort all orders by refunded amount in ascending or descending order, using the up and down arrows <img src="/img/merchant/arrows.png"></p>
-</div>
-<br/>
-<div>
+  <div>
+    <br/>
+    <br/>
+    <p>5. We have introduced a new <em>Transaction Amount</em> filter in the <strong>Orders</strong> tab. </p>
+    <br/>
+    <p>You can provide a specific positive integer in the <em>Transaction Amount</em> field and a list of all the orders with a transaction amount, regardless of the transaction type, will be displayed.</p>
+    <br/>
+    <p>Fig. <em>Transaction Amount</em> filter result</p>
+    <br/>
+    <img src="/img/orders/sepa/create-order-2.png" width="70%">
+  </div>
   <br/>
+  <div>
+    <br/>
+    <br/>
+    <p>
+      6. We have changed the <em>Status</em> field result in the <strong>Transactions</strong> section of the <strong>Order Details.</strong> It is a combined status, based on order transaction type and transaction status, for example, <strong>Debited, Refunded</strong>, etc.
+    </p>
+    <br/>
+    <p>Fig. <em>Status</em> field in the <strong>Transactions</strong> section of the <strong>Order Details.</strong></p>
+    <br/>
+    <img src="/img/orders/sepa/create-order-3.png" >
+  </div>
   <br/>
-  <p>The new <em>Channel</em> parameter displays the order channel type.</p>
-  <br/>
-  <p>Channel types: </p>
-  <br/>
-  <ol>
-    <li>MOTO (Mail Order/Telephone Order) channel type: a payment transaction where the customer makes an order via a merchant's representative.
-      <br/>
-      <strong>NOTE</strong> RatePAY via the MOTO channel type is also possible.
-    </li>
-    <li>
-      ECOM (E-commerce) channel type: the retail part of e-commerce on the internet (Business-to-consumer (B2C)). It is when businesses sell products, services or information directly to consumers at e-commerce sites.
-    </li>
-    <li>
-      POS (Point Of Sale) channel type: It enables you to pay directly from your card at a retail location. 
-    </li>
-  </ol>
-  <br/>
-  <p>Fig. <em>Last Status, Refunded Amount</em> and <em>Channel</em> paramenters in the Orders list</p>
-  <br/>
-  <img src="/img/orders/sepa/create-order-1.png" width="70%">
-</div>
-<br/>
-<div>
-  <br/>
-  <br/>
-  <p>5. We have introduced a new <em>Transaction Amount</em> filter in the <strong>Orders</strong> tab. </p>
-  <br/>
-  <p>You can provide a specific positive integer in the <em>Transaction Amount</em> field and a list of all the orders with a transaction amount, regardless of the transaction type, will be displayed.</p>
-  <br/>
-  <p>Fig. <em>Transaction Amount</em> filter result</p>
-  <br/>
-  <img src="/img/orders/sepa/create-order-2.png" width="70%">
-</div>
-<br/>
-<div>
-  <br/>
-  <br/>
-  <p>
-    6. We have changed the <em>Status</em> field result in the <strong>Transactions</strong> section of the <strong>Order Details.</strong> It is a combined status, based on order transaction type and transaction status, for example, <strong>Debited, Refunded</strong>, etc.
-  </p>
-  <br/>
-  <p>Fig. <em>Status</em> field in the <strong>Transactions</strong> section of the <strong>Order Details.</strong></p>
-  <br/>
-  <img src="/img/orders/sepa/create-order-3.png" >
-</div>
-<br/>
-<div>
-  <br/>
-  <br/>
-  <p>
-    7. The <em>Channel</em> type is now in the <em>SUMMARY</em> section of the <strong>Order Details.</strong>.
-  </p>
-  <br/>
-  <p>Fig. <em>Channel</em> type in the <em>SUMMARY</em> section of the <strong>Order Details.</strong>.</p>
-  <br/>
-  <img src="/img/orders/sepa/create-order-4.png" >
-</div>
+  <div>
+    <br/>
+    <br/>
+    <p>
+      7. The <em>Channel</em> type is now in the <em>SUMMARY</em> section of the <strong>Order Details.</strong>.
+    </p>
+    <br/>
+    <p>Fig. <em>Channel</em> type in the <em>SUMMARY</em> section of the <strong>Order Details.</strong>.</p>
+    <br/>
+    <img src="/img/orders/sepa/create-order-4.png" >
+  </div>
+  

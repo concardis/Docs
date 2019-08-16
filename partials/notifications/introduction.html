@@ -340,21 +340,21 @@
   <p>There is no difference between webhook or email notifications, both use the JSON format.</p>
   <br/>
   <div>
-      <div class="example-box-wrapper">
-          <div class="content-box" ng-init="createCustomerResponseShow=false">
-            <h3 class="content-box-header bg-default">
-              Sample webhook notification
-              <div class="header-buttons-separator">
-                <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
-                  <!-- <i class="glyph-icon icon-chevron-up"></i> -->
-                  <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
-                  <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
-                </a>
-              </div>
-            </h3>
-            <!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-            <div class="content-box-wrapper">
-              <code>
+    <div class="example-box-wrapper">
+        <div class="content-box" ng-init="createCustomerResponseShow=false">
+          <h3 class="content-box-header bg-default">
+            Sample webhook notification
+            <div class="header-buttons-separator">
+              <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow; console.log(createCustomerResponseShow)">
+                <!-- <i class="glyph-icon icon-chevron-up"></i> -->
+                <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+                <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+              </a>
+            </div>
+          </h3>
+          <div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+          <!-- <div class="content-box-wrapper"> -->
+            <code>
       {
       "notificationApiVersion": "1.0",
       "createdAt": 1534959158570,
@@ -1186,20 +1186,21 @@
   </table>
   <br/>
   <br/>
-  <div class="example-box-wrapper">
-    <div class="content-box" ng-init="createCustomerResponseShow=false">
-      <h3 class="content-box-header bg-default">
-          Sample v1.0 async.notifications object
-          <div class="header-buttons-separator">
-              <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
-                <!-- <i class="glyph-icon icon-chevron-up"></i> -->
-                <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
-                <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
-              </a>
-          </div>
-      </h3>
-      <!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-      <div class="content-box-wrapper">
+    <div class="content-box-wrapper">
+        <div class="example-box-wrapper">
+            <div class="content-box" ng-init="createCustomerResponseShow=false">
+              <h3 class="content-box-header bg-default">
+                  Sample v1.0 async.notifications object
+                <div class="header-buttons-separator">
+                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow; console.log(createCustomerResponseShow)">
+                    <!-- <i class="glyph-icon icon-chevron-up"></i> -->
+                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+                  </a>
+                </div>
+              </h3>
+              <div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+              <!-- <div class="content-box-wrapper"> -->
         <code>
 "async": {
   "successUrl": "https://a.success.url",
@@ -1424,20 +1425,21 @@
     <br/>
     <p>All notifications will be in a JSON format. The parameter depends on the notification category.</p>
     <br/>
-    <div class="example-box-wrapper">
-        <div class="content-box" ng-init="createCustomerResponseShow=false">
-          <h3 class="content-box-header bg-default">
-              Sample v2.0 notification
+    <div class="content-box-wrapper">
+      <div class="example-box-wrapper">
+          <div class="content-box" ng-init="createCustomerResponseShow=false">
+            <h3 class="content-box-header bg-default">
+                Sample v2.0 async.notifications object
               <div class="header-buttons-separator">
-                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
-                    <!-- <i class="glyph-icon icon-chevron-up"></i> -->
-                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
-                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
-                  </a>
+                <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow; console.log(createCustomerResponseShow)">
+                  <!-- <i class="glyph-icon icon-chevron-up"></i> -->
+                  <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+                  <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+                </a>
               </div>
-          </h3>
-          <!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-          <div class="content-box-wrapper">
+            </h3>
+            <div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+            <!-- <div class="content-box-wrapper"> -->
             <code>
                 {
                   "notificationApiVersion": "2.0",
@@ -1855,20 +1857,21 @@
   <p><strong>NOTE:</strong> The <em>notificationState</em> should not be used anymore for vervion 2.0.</p>
   <br/>
   <br/>
-  <div class="example-box-wrapper">
-      <div class="content-box" ng-init="createCustomerResponseShow=false">
-        <h3 class="content-box-header bg-default">
-            Sample v2.0 async.notifications object
-            <div class="header-buttons-separator">
-                <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
-                  <!-- <i class="glyph-icon icon-chevron-up"></i> -->
-                  <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
-                  <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
-                </a>
-            </div>
-        </h3>
-        <!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-        <div class="content-box-wrapper">
+  <div class="content-box-wrapper">
+        <div class="example-box-wrapper">
+            <div class="content-box" ng-init="createCustomerResponseShow=false">
+              <h3 class="content-box-header bg-default">
+                  Sample v2.0 async.notifications object
+                <div class="header-buttons-separator">
+                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow; console.log(createCustomerResponseShow)">
+                    <!-- <i class="glyph-icon icon-chevron-up"></i> -->
+                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+                  </a>
+                </div>
+              </h3>
+              <div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+              <!-- <div class="content-box-wrapper"> -->
           <code>
               "async": {
                 ...

@@ -122,7 +122,7 @@
         </tr>
         <tr>
           <td>authenticationResult.transactionId</td>
-          <td>The transaction identifier from the 3DS authentication 3DS 1.0: This will be the XID 3DS 2.0: This will be the threeDSServerTransID</td>
+          <td>The transaction identifier from the 3DS authentication 3DS 1.0: This will be the XID 3DS 2.0: This will be the dsTransID</td>
         </tr>
         <tr>
           <td>authenticationResult.authenticationValue</td>
@@ -149,7 +149,7 @@
           <td>
             Enum:"PAYMENT_TRANSACTION" "RECURRING_TRANSACTION" "RECURRING_CARDCHECK""ADD_CARD"<br/><br/>
             The type of the authentication requested. <br/><br/>
-            PAYMENT_TRANSACTION: authentication with payment; the authentication is used for a normal payment transaction,<br/> 
+            PAYMENT_TRANSACTION: authentication with payment; the authentication is used for a normal payment transaction,<br/>
             RECURRING_TRANSACTION: authentication with payment; the authentication is used for an initial recurring payment transaction,<br/>
             RECURRING_CARDCHECK: authentication without payment; the authentication is used for a card check representing the initial recurring payment transaction,<br/>
             ADD_CARD: authentication without payment; the authentication is only used for the verification of stored card credentials, e.g. within a wallet
@@ -201,7 +201,7 @@
                     },
                     "type": "PAYMENT_TRANSACTION",
                     "paymentInstrumentId": "paymentinstrument_sit9uglw7r"
-                  }            
+                  }
                 </code>
           </td>
         </tr>
@@ -258,7 +258,7 @@
                     "notificationEvent": ["3ds.result"]
                   }
                 ]
-              }   
+              }
               </code>
             </td>
           </tr>

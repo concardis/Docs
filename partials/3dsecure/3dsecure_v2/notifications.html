@@ -130,7 +130,20 @@
         </tr>
         <tr>
           <td>authenticationResult.eci</td>
-          <td>The Electronic Commerce Indicator (ECI) provided by the ACS or DS to indicate the results of the attempt to authenticate the cardholder. The ECI values might differ depending on the card scheme. Please check the separate ECI mapping table for complete values and information about the liability shift.</td>
+          <td>
+            The Electronic Commerce Indicator (ECI) provided by the ACS or DS to indicate the results of the attempt to authenticate the cardholder. The ECI values might differ depending on the card scheme.<br/>
+            For all fully authenticated or authentication attempted transactions the liability will be shifted to the card issuer.<br/><br/>
+            Mastercard<br/>
+              00 - fully authenticated<br/>
+              01 - authentication attempted<br/>
+              02 - no authentication available<br/>
+              07 - fully authenticated*<sup>1</sup><br/><br/>
+            All other card schemes<br/>
+              05 - fully authenticated<br/>
+              06 - authentication attempted<br/>
+              07 - no authentication available<br/><br/>
+            *<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 00).
+          </td>
         </tr>
         <tr>
           <td>authenticationResult.errorDetails</td>

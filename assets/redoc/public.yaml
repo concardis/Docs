@@ -40,12 +40,12 @@ securityDefinitions:
     description: |
       Authorization: Basic base64(merchantId:apiKey)
 
-      Example:
-        <br>merchantId= merchant_bzo3pt5dix
-        <br>apiKey= YGc7oJsaAIetzdxD
-        <br>base64(merchantId:apiKey)= bWVyY2hhbnRfYnpvM3B0NWRpeDpZR2M3b0pzYUFJZXR6ZHhE
-        <br>This will result in the following basic access authentication header
-        <br>Authorization: Basic bWVyY2hhbnRfYnpvM3B0NWRpeDpZR2M3b0pzYUFJZXR6ZHhE
+      Example:<br/>
+        merchantId= merchant_bzo3pt5dix<br/>
+        apiKey= YGc7oJsaAIetzdxD<br/>
+        base64(merchantId:apiKey)= bWVyY2hhbnRfYnpvM3B0NWRpeDpZR2M3b0pzYUFJZXR6ZHhE<br/>
+        This will result in the following basic access authentication header<br/>
+        Authorization: Basic bWVyY2hhbnRfYnpvM3B0NWRpeDpZR2M3b0pzYUFJZXR6ZHhE
   Bearer:
     type: http
     name: Authorization
@@ -54,8 +54,8 @@ securityDefinitions:
     description: |
       Authorization: Bearer merchantId
 
-      Example:
-      <br>Authorization: Bearer merchant-111-111-111
+      Example:<br/>
+      Authorization: Bearer merchant-111-111-111
 schemes:
   - https
 consumes:
@@ -4176,12 +4176,12 @@ definitions:
             00 - fully authenticated<br/>
             01 - authentication attempted<br/>
             02 - no authentication available<br/>
-            07 - fully authenticated*<sup>1</sup><br/><br/>
+            07 - fully authenticated&#42;<sup>1</sup><br/><br/>
           All other card schemes<br/>
             05 - fully authenticated<br/>
             06 - authentication attempted<br/>
             07 - no authentication available<br/><br/>
-          *<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 00).
+          &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 00).
   Invoicing:
     title: Invoicing
     type: object
@@ -5125,8 +5125,8 @@ definitions:
       javaEnabled:
         type: boolean
         description: >-
-          Boolean that represents the ability of the cardholder browser to execute Java.
-          <br>Value is returned from the navigator.javaEnabled property.
+          Boolean that represents the ability of the cardholder browser to execute Java.<br/>
+          Value is returned from the navigator.javaEnabled property.
         example: true
       language:
         type: string
@@ -5170,12 +5170,12 @@ definitions:
           Dimensions of the challenge window that has been displayed to the Cardholder. The ACS shall reply with content that is formatted to appropriately render in this window to provide the best possible user experience.
           Preconfigured sizes are width X height in pixels of the window displayed in the Cardholder browser window. This is used only to prepare the CReq request and it is not part of the AReq flow. If not present it will be omitted.
           However, when sending the Challenge Request.
-          Accepted values are:
-          <br>01 -> 250 x 400
-          <br>02 -> 390 x 400
-          <br>03 -> 500 x 600
-          <br>04 -> 600 x 400
-          <br>05 -> Full screen
+          Accepted values are:<br/>
+          01 -> 250 x 400<br/>
+          02 -> 390 x 400<br/>
+          03 -> 500 x 600<br/>
+          04 -> 600 x 400<br/>
+          05 -> Full screen
   CofContractTypeEnum:
     title: CofContractTypeEnum
     type: string
@@ -5294,13 +5294,10 @@ definitions:
       amount:
         type: number
         description: >-
-          The amount of the purchase.
-          <br>
-          <br>In case of an authentication without payment for recurring future payments this should include the expected total purchase amount.
-          <br>
-          <br>The amount can be 0 for a RECURRING_CARDCHECK or ADD_CARD authentication.
-          <br>
-          <br>The amount needs to be in the minor currency unit.
+          The amount of the purchase.<br/><br/>
+          In case of an authentication without payment for recurring future payments this should include the expected total purchase amount.<br/><br/>
+          The amount can be 0 for a RECURRING_CARDCHECK or ADD_CARD authentication.<br/><br/>
+          The amount needs to be in the minor currency unit.
         example: 1000
       currency:
         description: 'The currency of the purchase according to https://en.wikipedia.org/wiki/ISO_4217'
@@ -5488,11 +5485,11 @@ definitions:
       type:
         type: string
         description: >-
-          The type of the authentication requested.
-          <br>PAYMENT_TRANSACTION: authentication with payment; the authentication is used for a normal payment transaction,
-          <br>RECURRING_TRANSACTION: authentication with payment; the authentication is used for an initial recurring payment transaction,
-          <br>RECURRING_CARDCHECK: authentication without payment; the authentication is used for a card check representing the initial recurring payment transaction,
-          <br>ADD_CARD: authentication without payment; the authentication is only used for the verification of stored card credentials, e.g. within a wallet
+          The type of the authentication requested.<br/>
+          PAYMENT_TRANSACTION: authentication with payment; the authentication is used for a normal payment transaction,<br/>
+          RECURRING_TRANSACTION: authentication with payment; the authentication is used for an initial recurring payment transaction,<br/>
+          RECURRING_CARDCHECK: authentication without payment; the authentication is used for a card check representing the initial recurring payment transaction,<br/>
+          ADD_CARD: authentication without payment; the authentication is only used for the verification of stored card credentials, e.g. within a wallet
         enum: [PAYMENT_TRANSACTION, RECURRING_TRANSACTION, RECURRING_CARDCHECK, ADD_CARD]
         example: PAYMENT_TRANSACTION
       customerId:
@@ -5545,11 +5542,11 @@ definitions:
       type:
         type: string
         description: >-
-          The type of the authentication requested.
-          <br>PAYMENT_TRANSACTION: authentication with payment; the authentication is used for a normal payment transaction,
-          <br>RECURRING_TRANSACTION: authentication with payment; the authentication is used for an initial recurring payment transaction,
-          <br>RECURRING_CARDCHECK: authentication without payment; the authentication is used for a card check representing the initial recurring payment transaction,
-          <br>ADD_CARD: authentication without payment; the authentication is only used for the verification of stored card credentials, e.g. within a wallet
+          The type of the authentication requested.<br/>
+          PAYMENT_TRANSACTION: authentication with payment; the authentication is used for a normal payment transaction,<br/>
+          RECURRING_TRANSACTION: authentication with payment; the authentication is used for an initial recurring payment transaction,<br/>
+          RECURRING_CARDCHECK: authentication without payment; the authentication is used for a card check representing the initial recurring payment transaction,<br/>
+          ADD_CARD: authentication without payment; the authentication is only used for the verification of stored card credentials, e.g. within a wallet
         enum: [PAYMENT_TRANSACTION, RECURRING_TRANSACTION, RECURRING_CARDCHECK, ADD_CARD]
         example: PAYMENT_TRANSACTION
       customerId:
@@ -5584,18 +5581,16 @@ definitions:
         example: '2.0'
       status:
         type: string
-        enum: ['Y', 'N', 'C', 'A', 'U', 'R']
+        enum: ['Y', 'A', 'U', 'C', 'R', 'N']
         example: 'Y'
         description: >-
-          Indicates whether a transaction qualifies as an authenticated transaction or   account verification.
-
-          Y = authentication successful
+          Indicates whether a transaction qualifies as an authenticated transaction.<br/><br/>
+          Y = authentication verification successful<br/>
+          A = authentication attempted; not authenticated, but a proof of attempted authentication is provided<br/>
+          U = authentication could not be performed; technical or other problem<br/>
+          C = challenge required; additional SCA authentication is required<br/>
+          R = authentication rejected; issuer is rejecting<br/>
           N = not authenticated; transaction denied
-          U = authentication could not be performed; technical or other problem
-          A = attempts processing performed; not attempted
-          C = challenge required; additional authentication is required
-          D = challenge required; decoupled authentication confirmed.
-          R = authentication rejected; issuer is rejecting
       redirectUrl:
         type: string
         example: https://link-the-hosted-challange.example
@@ -5630,12 +5625,12 @@ definitions:
             00 - fully authenticated<br/>
             01 - authentication attempted<br/>
             02 - no authentication available<br/>
-            07 - fully authenticated*<sup>1</sup><br/><br/>
+            07 - fully authenticated&#42;<sup>1</sup><br/><br/>
           All other card schemes<br/>
             05 - fully authenticated<br/>
             06 - authentication attempted<br/>
             07 - no authentication available<br/><br/>
-          *<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 00).
+          &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 00).
         example: '05'
       errorDetails:
         $ref: '#/definitions/AuthenticationResultErrorData'

@@ -5589,14 +5589,14 @@ definitions:
         example: '2.0'
       status:
         type: string
-        enum: ['Y', 'A', 'U', 'C', 'R', 'N']
+        enum: ['Y', 'A', 'C', 'U', 'R', 'N']
         example: 'Y'
         description: >-
           Indicates whether a transaction qualifies as an authenticated transaction.<br/><br/>
           Y = authentication verification successful<br/>
           A = authentication attempted; not authenticated, but a proof of attempted authentication is provided<br/>
-          U = authentication could not be performed; technical or other problem<br/>
           C = challenge required; additional SCA authentication is required<br/>
+          U = authentication could not be performed; technical or other problem<br/>
           R = authentication rejected; issuer is rejecting<br/>
           N = not authenticated; transaction denied
       redirectUrl:

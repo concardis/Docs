@@ -64,7 +64,7 @@ produces:
   - application/json
 tags:
   - name: Manage tokenization
-  - name: Manage 3ds authentication
+  - name: Manage 3DS authentication
   - name: Manage orders
   - name: Manage customers
   - name: Manage installments
@@ -259,11 +259,11 @@ paths:
       security:
         - basicAuth: []
       summary: |
-        Create 3ds version info
+        Create 3DS version info
       description: >
-        Endpoint to check the supported 3ds version and receive additional 3ds related information.
+        Endpoint to check the supported 3DS version and receive additional 3DS related information.
       tags:
-        - Manage 3ds authentication
+        - Manage 3DS authentication
       operationId: getThreeDsVersionForPaymentInstrument
       produces:
         - application/json
@@ -290,7 +290,7 @@ paths:
         Store browser information
       description: Endpoint to store browser session information, the browser session information is usually collected via javascript.
       tags:
-        - Manage 3ds authentication
+        - Manage 3DS authentication
       operationId: createBrowserInfo
       produces:
         - application/json
@@ -311,11 +311,11 @@ paths:
       security:
         - basicAuth: []
       summary: |
-        Create 3ds authentication
+        Create 3DS authentication
       description: >
-        Endpoint to create a standalone 3ds authentication for the given payment-instrument based on the 3ds-version result
+        Endpoint to create a standalone 3DS authentication for the given payment-instrument based on the 3DS version result
       tags:
-        - Manage 3ds authentication
+        - Manage 3DS authentication
       operationId: createAuthenticationForPaymentInstrument
       produces:
         - application/json
@@ -329,7 +329,7 @@ paths:
           in: path
           required: true
           type: string
-          description: ID of the specific 3ds-version result.
+          description: ID of the specific 3DS version result.
         - name: body
           in: body
           required: true
@@ -345,11 +345,11 @@ paths:
     get:
       security:
         - basicAuth: []
-      summary: Get 3ds authentication result
+      summary: Get 3DS authentication result
       description: |
-        Endpoint to fetch the result details of a 3ds authentication.
+        Endpoint to fetch the result details of a 3DS authentication.
       tags:
-        - Manage 3ds authentication
+        - Manage 3DS authentication
       operationId: getThreeDsAuthentication
       produces:
         - application/json
@@ -358,7 +358,7 @@ paths:
           in: path
           required: true
           type: string
-          description: ID of the specific 3ds-authentication.
+          description: ID of the specific 3DS authentication.
       responses:
         '200':
           description: Successful response.
@@ -2056,6 +2056,10 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/ProductsBaseTypeEnum'
+      locale:
+        description: Language tag consisting of a two-letter language code combined with a two-letter country code according to RFC 1766.
+          Examples: en-US, en-GB. Only for PayPal and WeChat Pay.
+        type: string
       risk:
         $ref: '#/definitions/Risk'
     required:
@@ -2182,6 +2186,10 @@ definitions:
           This property is used to finish the processing of order, when the Paypal debit or preauth is created
           with 'addressOverride=false'. Defaut is false.
         type: boolean
+      locale:
+        description: Language tag consisting of a two-letter language code combined with a two-letter country code according to RFC 1766.
+          Examples: en-US, en-GB. Only for PayPal and WeChat Pay.
+        type: string
 
   OrderOpenRequest:
     title: OrderOpenRequest
@@ -2284,6 +2292,10 @@ definitions:
           $ref: '#/definitions/Tracking'
       meta:
         $ref: '#/definitions/MetaRequest'
+      locale:
+        description: Language tag consisting of a two-letter language code combined with a two-letter country code according to RFC 1766.
+          Examples: en-US, en-GB. Only for PayPal and WeChat Pay.
+        type: string
       risk:
         $ref: '#/definitions/Risk'
     required:
@@ -2383,6 +2395,10 @@ definitions:
         $ref: '#/definitions/CreditOrderPaymentRequest'
       deviceIdent:
         $ref: '#/definitions/DeviceIdentRequest'
+      locale:
+        description: Language tag consisting of a two-letter language code combined with a two-letter country code according to RFC 1766.
+          Examples: en-US, en-GB. Only for PayPal and WeChat Pay.
+        type: string
     required:
       - initialAmount
       - currency
@@ -2575,15 +2591,6 @@ definitions:
         type: string
         minLength: 3
         maxLength: 128
-      recurringUsage:
-        description: >-
-          For CreditCard only
-        type: string
-        enum:
-          - ONE_CLICK
-          - SCHEDULED
-          - UNSCHEDULED
-          - 'null'
       deferred:
         description: >-
           Indicates if the order should be deferred. (only available for paypal preauth/execute, optional)
@@ -3169,7 +3176,7 @@ definitions:
   ThreeDsVersionSpecificData:
     title: ThreeDsVersionSpecificData
     type: object
-    description: Generic object which will contain 3ds version specific data
+    description: Generic object which will contain 3DS version specific data
     properties:
       methodUrl:
         description: The ACS URL that will be used by the 3DS Method, retrieved from the card range data repository (3DS 2.0 only).
@@ -3187,7 +3194,7 @@ definitions:
     title: ThreeDsVersionResponse
     type: object
     description: >-
-      The 3ds object which will be used for versioning.
+      The 3DS object which will be used for versioning.
     properties:
       id:
         description: Payeninge identifier for the 3DS version object
@@ -4135,7 +4142,7 @@ definitions:
       threeDsAuthenticationId:
         type: string
         example: authentication_abc123xyz9
-        description: Id of successfull 3ds authentication
+        description: Id of successfull 3DS authentication
       browserInfoId:
         type: string
         example: browserInfo_e1f6b193df
@@ -4143,7 +4150,7 @@ definitions:
       threeDsVersionId:
         type: string
         example: threedsversion_123abc456z
-        description: Payengine identifier of the 3ds version object
+        description: Payengine identifier of the 3DS version object
       version:
         type: string
         example: '2.0'
@@ -4870,7 +4877,7 @@ definitions:
         example: 400
       message:
         type: string
-        example: There is problem with 3ds-v2-session request.
+        example: There is problem with 3DS version request.
       code:
         type: number
         example: 25719
@@ -5270,6 +5277,7 @@ definitions:
         type: string
         description: >-
           Identifier of the 3DS authentication in case they should be passed together with the card check authorization to mark an initial COF transaction.
+        example: authentication_123abc456x
       cofContract:
         $ref: '#/definitions/CofContractResponse'
       errorDetails:
@@ -5642,11 +5650,11 @@ definitions:
       providerCode:
         type: string
         example: 301
-        description: Original error code from the 3ds server or mpi
+        description: Original error code from the 3DS server or mpi
       providerMessage:
         type: string
         example: TRANSACTION_ID_NOT_RECOGNIZED
-        description: Original error message from the 3ds server or mpi
+        description: Original error message from the 3DS server or mpi
   ChallengeData:
     type: object
     description: Conditional - information available in case of CHALLENGE status, needed for building the challenge iFrame.

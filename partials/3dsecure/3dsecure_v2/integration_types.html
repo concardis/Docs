@@ -301,7 +301,7 @@
                 container,
                 authenticationResult.challengeData.acsUrl,
                 authenticationResult.challengeData.base64EncodedChallengeRequest,
-                authenticationResult.transactionId,
+                threeDsAuthenticationId,
                 authenticationResult.challengeData.challengeWindowSize,
                 onChallengeFinishCallback
               );
@@ -728,7 +728,7 @@
               <tbody>
                 <tr>
                   <td>
-                    <code>PayEngine.openChallenge(container, acsUrl, base64EncodedChallengeRequest, transactionId, challengeWindowSize, onChallengeFinishCallback);
+                    <code>PayEngine.openChallenge(container, acsUrl, base64EncodedChallengeRequest, null, challengeWindowSize, onChallengeFinishCallback); // no need to provide threeDsAuthenticationId in case of order flow
                     </code>
                   </td>
                 </tr>

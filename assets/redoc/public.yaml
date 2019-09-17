@@ -4142,7 +4142,7 @@ definitions:
       threeDsAuthenticationId:
         type: string
         example: authentication_abc123xyz9
-        description: Id of successfull 3DS authentication
+        description: Id of successful 3DS authentication
       browserInfoId:
         type: string
         example: browserInfo_e1f6b193df
@@ -4180,9 +4180,9 @@ definitions:
           The Electronic Commerce Indicator (ECI) provided by the ACS or DS to indicate the results of the attempt to authenticate the cardholder. The ECI values might differ depending on the card scheme.<br/>
           For all fully authenticated or authentication attempted transactions the liability will be shifted to the card issuer.<br/><br/>
           Mastercard<br/>
-            00 - fully authenticated<br/>
+            00 - no authentication available<br/>
             01 - authentication attempted<br/>
-            02 - no authentication available<br/>
+            02 - fully authenticated<br/>
             07 - fully authenticated&#42;<sup>1</sup><br/><br/>
           All other card schemes<br/>
             05 - fully authenticated<br/>
@@ -5248,11 +5248,52 @@ definitions:
     properties:
       cofContract:
         $ref: '#/definitions/CofContractRequest'
+      threeDsData:
+        $ref: '#/definitions/CardcheckThreeDsDataRequest'
+  CardcheckThreeDsDataRequest:
+    title: ThreeDsData
+    type: object
+    properties:
       threeDsAuthenticationId:
         type: string
         example: threeDsAuthentication_123abc987y
         description: >-
-          Identifier of the 3DS authentication in case they should be passed together with the card check authorization to mark an initial COF transaction.
+          Identifier of successful 3DS authentication done via Payengine used for the initial SCHEDULED or UNSCHEDULED COF transaction.
+      version:
+        type: string
+        example: '2.0'
+        description: Parameter indicating the version of the 3DS. Used in case of externally done 3DS authentication for the initial SCHEDULED or UNSCHEDULED COF transaction.
+      transactionId:
+        type: string
+        example: 8a880dc0-d2d2-4067-bcb1-b08d1690b26e
+        description: >-
+          The transaction identifier from the 3DS authentication. Used in case of externally done 3DS authentication for the initial SCHEDULED or UNSCHEDULED COF transaction.<br/><br/>
+          3DS 1.0: This will be the XID<br/><br/>
+          3DS 2.0: This will be the dsTransID
+      authenticationValue:
+        type: string
+        example: MTIzNDU2Nzg5MDA5ODc2NTQzMjE=
+        description: >-
+          The authenticationValue returned in the 3DS authentication. Used in case of externally done 3DS authentication for the initial SCHEDULED or UNSCHEDULED COF transaction.<br/><br/>
+          CAVV: Visa, AMEX, JCB, Diners/Discover<br/><br/>
+          UCAF: Mastercard
+      eci:
+        type: string
+        example: '05'
+        description: >-
+          The Electronic Commerce Indicator (ECI) provided by the ACS or DS to indicate the results of the attempt to authenticate the cardholder. Used in case of externally done 3DS authentication for the initial SCHEDULED or UNSCHEDULED COF transaction.<br/><br/>
+          The ECI values might differ depending on the card scheme.<br/>
+          For all fully authenticated or authentication attempted transactions the liability will be shifted to the card issuer.<br/><br/>
+          Mastercard<br/>
+            00 - no authentication available<br/>
+            01 - authentication attempted<br/>
+            02 - fully authenticated<br/>
+            07 - fully authenticated&#42;<sup>1</sup><br/><br/>
+          All other card schemes<br/>
+            05 - fully authenticated<br/>
+            06 - authentication attempted<br/>
+            07 - no authentication available<br/><br/>
+          &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 00).
   CardcheckResponse:
     type: object
     properties:
@@ -5273,15 +5314,56 @@ definitions:
         description: The status of the card check.
         enum: ['SUCCESS', 'FAILURE']
         example: 'SUCCESS'
-      threeDsAuthenticationId:
-        type: string
-        description: >-
-          Identifier of the 3DS authentication in case they should be passed together with the card check authorization to mark an initial COF transaction.
-        example: authentication_123abc456x
+      threeDsData:
+        $ref: '#/definitions/CardcheckThreeDsDataResponse'
       cofContract:
         $ref: '#/definitions/CofContractResponse'
       errorDetails:
         $ref: '#/definitions/CardcheckErrorDetails'
+  CardcheckThreeDsDataResponse:
+    title: ThreeDsData
+    type: object
+    properties:
+      threeDsAuthenticationId:
+        type: string
+        example: threeDsAuthentication_123abc987y
+        description: >-
+          Identifier of successful 3DS authentication done via Payengine used for the initial SCHEDULED or UNSCHEDULED COF transaction.
+      version:
+        type: string
+        example: '2.0'
+        description: Parameter indicating the version of the 3DS. Used in case of externally done 3DS authentication for the initial SCHEDULED or UNSCHEDULED COF transaction.
+      transactionId:
+        type: string
+        example: 8a880dc0-d2d2-4067-bcb1-b08d1690b26e
+        description: >-
+          The transaction identifier from the 3DS authentication. Used in case of externally done 3DS authentication for the initial SCHEDULED or UNSCHEDULED COF transaction.<br/><br/>
+          3DS 1.0: This will be the XID<br/><br/>
+          3DS 2.0: This will be the dsTransID
+      authenticationValue:
+        type: string
+        example: MTIzNDU2Nzg5MDA5ODc2NTQzMjE=
+        description: >-
+          The authenticationValue returned in the 3DS authentication. Used in case of externally done 3DS authentication for the initial SCHEDULED or UNSCHEDULED COF transaction.<br/><br/>
+          CAVV: Visa, AMEX, JCB, Diners/Discover<br/><br/>
+          UCAF: Mastercard
+      eci:
+        type: string
+        example: '05'
+        description: >-
+          The Electronic Commerce Indicator (ECI) provided by the ACS or DS to indicate the results of the attempt to authenticate the cardholder. Used in case of externally done 3DS authentication for the initial SCHEDULED or UNSCHEDULED COF transaction.<br/><br/>
+          The ECI values might differ depending on the card scheme.<br/>
+          For all fully authenticated or authentication attempted transactions the liability will be shifted to the card issuer.<br/><br/>
+          Mastercard<br/>
+            00 - no authentication available<br/>
+            01 - authentication attempted<br/>
+            02 - fully authenticated<br/>
+            07 - fully authenticated&#42;<sup>1</sup><br/><br/>
+          All other card schemes<br/>
+            05 - fully authenticated<br/>
+            06 - authentication attempted<br/>
+            07 - no authentication available<br/><br/>
+          &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 00).
   CardcheckErrorDetails:
     type: object
     description: Object containing error information in case of a FAILURE status.
@@ -5630,9 +5712,9 @@ definitions:
           The Electronic Commerce Indicator (ECI) provided by the ACS or DS to indicate the results of the attempt to authenticate the cardholder. The ECI values might differ depending on the card scheme.<br/>
           For all fully authenticated or authentication attempted transactions the liability will be shifted to the card issuer.<br/><br/>
           Mastercard<br/>
-            00 - fully authenticated<br/>
+            00 - no authentication available<br/>
             01 - authentication attempted<br/>
-            02 - no authentication available<br/>
+            02 - fully authenticated<br/>
             07 - fully authenticated&#42;<sup>1</sup><br/><br/>
           All other card schemes<br/>
             05 - fully authenticated<br/>

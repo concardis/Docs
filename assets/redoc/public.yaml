@@ -4142,37 +4142,43 @@ definitions:
       threeDsAuthenticationId:
         type: string
         example: authentication_abc123xyz9
-        description: Id of successful 3DS authentication
+        description: >-
+          Id of successful 3DS authentication<br/><br/>
+          Use case: Order based on standalone 3DS authentication
       browserInfoId:
         type: string
         example: browserInfo_e1f6b193df
-        description: Payengine identifier of the browser info object
+        description: >-
+          Payengine identifier of the browser info object<br/><br/>
+          Use case: 3DS authentication as part of the order
       threeDsVersionId:
         type: string
         example: threedsversion_123abc456z
-        description: Payengine identifier of the 3DS version object
+        description: >-
+          Payengine identifier of the 3DS version object<br/><br/>
+          Use case: 3DS authentication as part of the order
       version:
         type: string
         example: '2.0'
-        description: Parameter indicating the version of the 3DS
+        description: >-
+          Parameter indicating the version of the 3DS<br/><br/>
+          Use case: Order based on delegated 3DS authentication
       transactionId:
         type: string
         example: 8a880dc0-d2d2-4067-bcb1-b08d1690b26e
         description: >-
-          The transaction identifier from the 3DS authentication
-
-          3DS 1.0: This will be the XID
-
-          3DS 2.0: This will be the dsTransID
+          The transaction identifier from the 3DS authentication<br/><br/>
+          3DS 1.0: This will be the XID<br/><br/>
+          3DS 2.0: This will be the dsTransID<br/><br/>
+          Use case: Order based on delegated 3DS authentication
       authenticationValue:
         type: string
         example: MTIzNDU2Nzg5MDA5ODc2NTQzMjE=
         description: >-
-          The authenticationValue returned in the 3DS authentication
-
-          CAVV: Visa, AMEX, JCB, Diners/Discover
-
-          UCAF: Mastercard
+          The authenticationValue returned in the 3DS authentication<br/><br/>
+          CAVV: Visa, AMEX, JCB, Diners/Discover<br/><br/>
+          UCAF: Mastercard<br/><br/>
+          Use case: Order based on delegated 3DS authentication
       eci:
         type: string
         example: '05'
@@ -4188,7 +4194,8 @@ definitions:
             05 - fully authenticated<br/>
             06 - authentication attempted<br/>
             07 - no authentication available<br/><br/>
-          &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 00).
+          &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 00).<br/><br/>
+          Use case: Order based on delegated 3DS authentication
   Invoicing:
     title: Invoicing
     type: object
@@ -5258,25 +5265,30 @@ definitions:
         type: string
         example: threeDsAuthentication_123abc987y
         description: >-
-          Identifier of successful 3DS authentication done via Payengine used for the initial SCHEDULED or UNSCHEDULED COF transaction.
+          Identifier of successful 3DS authentication done via Payengine used for the initial SCHEDULED or UNSCHEDULED COF transaction.<br/><br/>
+          Use case: COF initial storage based on standalone 3DS authentication
       version:
         type: string
         example: '2.0'
-        description: Parameter indicating the version of the 3DS. Used in case of externally done 3DS authentication for the initial SCHEDULED or UNSCHEDULED COF transaction.
+        description: >-
+          Parameter indicating the version of the 3DS. Used in case of externally done 3DS authentication for the initial SCHEDULED or UNSCHEDULED COF transaction.<br/><br/>
+          Use case: COF initial storage based on delegated 3DS authentication
       transactionId:
         type: string
         example: 8a880dc0-d2d2-4067-bcb1-b08d1690b26e
         description: >-
           The transaction identifier from the 3DS authentication. Used in case of externally done 3DS authentication for the initial SCHEDULED or UNSCHEDULED COF transaction.<br/><br/>
           3DS 1.0: This will be the XID<br/><br/>
-          3DS 2.0: This will be the dsTransID
+          3DS 2.0: This will be the dsTransID<br/><br/>
+          Use case: COF initial storage based on delegated 3DS authentication
       authenticationValue:
         type: string
         example: MTIzNDU2Nzg5MDA5ODc2NTQzMjE=
         description: >-
           The authenticationValue returned in the 3DS authentication. Used in case of externally done 3DS authentication for the initial SCHEDULED or UNSCHEDULED COF transaction.<br/><br/>
           CAVV: Visa, AMEX, JCB, Diners/Discover<br/><br/>
-          UCAF: Mastercard
+          UCAF: Mastercard<br/><br/>
+          Use case: COF initial storage based on delegated 3DS authentication
       eci:
         type: string
         example: '05'
@@ -5293,7 +5305,8 @@ definitions:
             05 - fully authenticated<br/>
             06 - authentication attempted<br/>
             07 - no authentication available<br/><br/>
-          &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 00).
+          &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 00).<br/><br/>
+          Use case: COF initial storage based on delegated 3DS authentication
   CardcheckResponse:
     type: object
     properties:

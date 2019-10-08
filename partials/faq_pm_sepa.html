@@ -1,1017 +1,659 @@
-<div>
-	<h3>Payment Method Overview</h3>
-	</br>
-	<div class="content-box-wrapper">
-		<div class="pricing-box-alt row clearfix">
-			<div class="col-md-3 plans-features">
-				<ul>
-					<li class="header ms-hover"></li>
-					<li class="ms-hover">Name</li>
-					<li class="ms-hover">Type</li>
-					<li class="ms-hover">Flow</li>
-					<li class="ms-hover">Redirect user</li>
-					<li class="header ms-hover"></li>
-					<li class="ms-hover">Channel</li>
-					<li class="ms-hover">Supported Currencies</li>
-					<li class="ms-hover">Supported Countries</li>
-					<li class="header ms-hover"></li>
-					<li class="ms-hover">Debits</li>
-					<li class="ms-hover">Preauthorizations</li>
-					<li class="ms-hover">Cancelation</li>
-					<li class="ms-hover">Partial Cancelation</li>
-					<li class="ms-hover">Captures</li>
-					<li class="ms-hover">Partial Captures</li>
-					<li class="ms-hover">Refunds</li>
-					<li class="ms-hover">Partial refunds</li>
-					<li class="ms-hover">Chargebacks</li>
-					<li class="header ms-hover"></li>
-					<li class="ms-hover">Recurring Transactions</li>
-					<li class="ms-hover">Reusable Payment Instruments</li>
-					<li class="header ms-hover"></li>
-					<li class="ms-hover">Settlements</li>
-					<li class="header ms-hover"></li>
-					<li class="ms-hover">Bridge Integration</li>
-					<li class="ms-hover">Widget Integration</li>
-					<li class="ms-hover">PayLink Integration</li>
-					<li class="ms-hover">Shop Modules Integration</li>
-					<li class="header ms-hover"></li>
-					<li class="ms-hover">Notifications</li>
-				</ul>
-			</div>
-			<div class="individual-plan">
-				<ul>
-					<li class="header ms-hover"></li>
-					<li class="ms-hover">SEPA</li>
-					<li class="ms-hover">Direct Debit</li>
-					<li class="ms-hover">Asynchronous</li>
-					<li class="ms-hover">No</li>
-					<li class="header ms-hover"></li>
-					<li class="ms-hover">ECOM, MOTO</li>
-					<li class="ms-hover">EUR</li>
-					<li class="ms-hover">DE</li>
-					<li class="header ms-hover"></li>
-					<li class="ms-hover">Yes</li>
-					<li class="ms-hover">Yes</li>
-					<li class="ms-hover">Yes</li>
-					<li class="ms-hover">Yes</li>
-					<li class="ms-hover">Yes</li>
-					<li class="ms-hover">Yes</li>
-					<li class="ms-hover">No (on the roadmap)</li>
-					<li class="ms-hover">No (on the roadmap)</li>
-					<li class="ms-hover">Yes</li>
-					<li class="header ms-hover"></li>
-					<li class="ms-hover">Yes</li>
-					<li class="ms-hover">Yes</li>
-					<li class="header ms-hover"></li>
-					<li class="ms-hover">Yes</li>
-					<li class="header ms-hover"></li>
-					<li class="ms-hover">Partial (on the roadmap)</li>
-					<li class="ms-hover">Yes</li>
-					<li class="ms-hover">Yes*(please contact support or account manager for this feature)</li>
-					<li class="ms-hover">Yes*(please contact support or account manager for this feature)</li>
-					<li class="header ms-hover"></li>
-					<li class="ms-hover">email, webhook</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
-<br/>
-<div>
-	<h3>GENERAL</h3>
-	</br>
-	<div>
-		<p>
-			<strong>What is SEPA?</strong>
-		</p>
-		<p>
-			<strong> </strong>
-		</p>
-		<p>Single Euro Payments Area (SEPA) is an initiative of the European Payment Council (EPC) which aims at easing the process of payments within the Europe. Please visit EPC website section About SEPA (<a href="https://www.europeanpaymentscouncil.eu/about-sepa">https://www.europeanpaymentscouncil.eu/about-sepa</a>)
-			for further information.</p>
-		<br/>
-		<p>
-			<strong>What is the payment method flow?</strong>
-		</p>
-		<br/>
-		<p>
-			The SEPA Direct Debit in Payengine follows an <strong>asynchronous</strong> flow in which the confirmation of processing the payment is received only after a delay.
-			<!-- With SEPA this delay is usually …. -->Until the confirmation is received the transaction status is <strong>OK </strong>meaning that the Payengine accepts the request but further processing is still pending. After processing the payment the status of the transaction will change to either
-			<strong>success</strong> or <strong>failure</strong> depending on the result.
-		</p>
-		<br/>
-		<p>
-			With Payengine’s SEPA Deirect Debit your customer <strong>won’t be redirected</strong> out of your shop integration and after providing his payment details no further action is required on his side.
-		</p>
-		<br/>
-		<p>
-			Optionally the Payengine provides a convenient way to setup <strong>email prenotifications</strong> for SEPA Direct Debit. There is a general prenotification template which can be found <strong>below. </strong>For prenotifications you should enable them via the Merchant Center and also provide customer email within the order request.
-		</p>
-		<br/>
-		<p>
-			<div class="example-box-wrapper">
-				<div class="content-box" ng-init="sepaPrenotificationsShow=false">
-					<h3 class="content-box-header bg-default">
-							More about prenotifications...
-							<div class="header-buttons-separator">
-									<a href class="icon-separator toggle-button" ng-click="sepaPrenotificationsShow!=sepaPrenotificationsShow; console.log(sepaPrenotificationsShow)">
-										<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-										<i class="glyph-icon icon-chevron-up" ng-if="sepaPrenotificationsShow"></i>
-										<i class="glyph-icon icon-chevron-down" ng-if="!sepaPrenotificationsShow"></i>
-									</a>
-							</div>
-					</h3>
-					<!-- <div class="content-box-wrapper" ng-if="sepaPrenotificationsShow"> -->
-					<div class="content-box-wrapper">
-						<p>
-							Pre-notification ("Pre-Notification") is any notification (eg invoice, policy, contract) of the direct debit recipient to the payer, which announces a debit via SEPA direct debit. The preliminary information must contain the due date and the exact amount and can also announce several direct debits. It must be sent to the payer in due time (at least 14 calendar days before the due date, unless a different period has been agreed with the payer) before the due date, so that he can adjust to the account balance and provide adequate cover. The manner in which the preliminary information can be given results from the regulations of the respective debt collection agreement between the payee and his payment service provider.
-						</p>
-					</div>
-				</div>
-			</div>
-		</p>
-		<p>
-			<div class="example-box-wrapper">
-				<div class="content-box">
-					<h3 class="content-box-header bg-default">
-		          Template for the SEPA Prenotification
-              <div class="header-buttons-separator">
-                  <a href="#" class="icon-separator toggle-button">
-                      <i class="glyph-icon icon-chevron-up"></i>
-                  </a>
-              </div>
-          </h3>
-					<!-- <div class="content-box">//////!!!!! closed
-						<h3 class="content-box-header bg-default">
-                Template for the SEPA Prenotification
-                <div class="header-buttons-separator">
-                    <a href="#" class="icon-separator toggle-button">
-                        <i class="glyph-icon icon-chevron-down"></i>
-                    </a>
-                </div>
-            </h3>
-						<div class="content-box-wrapper hide">
-							This content boxes has the header with <code>.bg-default</code>.
-						</div>
-					</div> -->
-					<div class="content-box-wrapper">
-						<p>
-							Dies ist eine automatisch generierte E-Mail. Neue SEPA-Lastschriftvorankündigung
-							</br>
-							Sehr geehrte Kundin,
-							</br>
-							sehr geehrter Kunde,
-							</br>
-							Vielen Dank für Ihren Bestellung/Buchung bei {merchant name}
-							</br>
-							Die Forderung von {currency} {amount} ziehen wir mit der SEPA-Lastschrift zum Mandat Nr. {mandate id} zu der Gläubiger-Identifikationsnummer {creditor id} von Ihrem Konto IBAN {iban} bei der Hamburger Sparkasse BIC {bic} zum Fälligkeitstag {due date} ein.
-							</br>
-							Aus rechtlichen Gründen sind wir verpflichtet Sie über jede SEPA-Lastschrift vorab zu informieren.
-							</br>
-							Bei Fragen zu Ihrer Rechnung wenden Sie sich bitte an service@concardis.com
-							</br>
-							Mit freundlichen Grüßen,
-							</br>
-							Concardis GmbH
-							</br>
-							Concardis GmbH
-							</br>
-							Helfmann-Park 7
-							</br>
-							65760 Eschborn
-							</br>
-							Germany
-							</br>
-							Telefon: +49 69 7922-0
-							</br>
-							Telefax: +49 69 7922-4500
-							</br>
-							E-Mail: service@concardis.com
-							</br>
-							Geschäftsführung: Marcus W. Mosen (Vorsitzender), Jens Mahlke. Vorsitzender des Aufsichtsrates: Stuart Gent
-							</br>
-							USt-IdNr : DE 228 965 682.
-							</br>
-							</br>
-							Wenn diese Email nicht für Sie bestimmt ist, bitten wir Sie, uns umgehend über den irrtümlichen Empfang zu informieren und diese Email zu löschen. Wir danken Ihnen für Ihre Unterstützung.
-							</br>
-						</p>
-					</div>
-				</div>
-			</div>
-		</p>
-		<br/>
-		<p>
-			<strong>What the customer needs to provide for SEPA Direct Debit?</strong>
-		</p>
-		<br/>
-		<p>The customer should provide a valid <strong>IBAN</strong><strong>, </strong>
-			<strong>BIC</strong>, <strong>Account Holder, Bank Name </strong>name.</p>
-		<p>He needs as well to agree with a <strong>Mandate</strong> statement which should be displayed to him on the payment form.</p>
-		<p>Based on this information a Payengine Payment Instrument is created securely which can be used for either onetime or recurring payments.</p>
-		<br/>
-		<p>
-			<strong>What is a Mandate?</strong>
-		</p>
-		<br/>
-		<p>
-			The SEPA mandate is usually a paper document, but since it is not possible to implement a paper document in eCommerce, electronic mandates (eMandates) are used. The Mandates are <strong>stored within the Payengine Payment Instrument</strong>. <!--(<em>API link)</em>-->
-		</p>
-		<br/>
-		<p>
-			These mandates have a <strong>unique identifier</strong> and store the <strong>text </strong><em>(see the text below)</em> and <strong>timestamp</strong> the customer agreed to this specific mandate.
-		</p>
-		<br/>
-		<p>
-			<div class="example-box-wrapper">
-				<div class="content-box">
-					<h3 class="content-box-header bg-default">
-		          SEPA Mandatstext
-              <div class="header-buttons-separator">
-                  <a href="#" class="icon-separator toggle-button">
-                      <i class="glyph-icon icon-chevron-up"></i>
-                  </a>
-              </div>
-          </h3>
-					<!-- <div class="content-box">//////!!!!! closed
-						<h3 class="content-box-header bg-default">
-                SEPA Mandatstext
-                <div class="header-buttons-separator">
-                    <a href="#" class="icon-separator toggle-button">
-                        <i class="glyph-icon icon-chevron-down"></i>
-                    </a>
-                </div>
-            </h3>
-						<div class="content-box-wrapper hide">
-							This content boxes has the header with <code>.bg-default</code>.
-						</div>
-					</div> -->
-					<div class="content-box-wrapper">
-						<p>
-							Ich ermächtige die Concardis GmbH, Helfman-Park 7 in 65760 Eschborn, GläubigerID DE82CC000000346626, Zahlungen von meinem Konto mittels SEPA-Lastschrift unter der Mandatsreferenz [mandateId] einzuziehen. Zugleich weise ich mein Kreditinstitut an, die
-							von Concardis GmbH auf mein Konto gezogenen SEPA-Lastschriften einzulösen.
-							</br>
-							Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belasteten Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen.
-							</br>
-							</br>
-							Verkürzung der Ankündigungsfrist:
-							</br>
-							Die Frist für die Vorabinformation der SEPA-Lastschrift wird auf einen Tag verkürzt.
-							</br>
-						</p>
-					</div>
-				</div>
-			</div>
-		</p>
-		<br/>
-		<p>
-			Apart from that within Payengine the mandate object of a payment instrument is used for tracking the usage of a payment instrument through the type property.
-		</p>
-		<br/>
-		<p>There are four types of direct debit mandate:</p>
-		<br/>
-		<div class="hide-columns">
-      <table class="table table-bordered table-striped table-condensed">
-          <thead>
-            <tr>
-              <th>Mandate directDebitType</th>
-              <th>Description</th>
-              <th>Purpose</th>
-            </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>Single</td>
-            <td>One execution</td>
-            <td>Onetime payments</td>
-          </tr>
-          <tr>
-						<td>First</td>
-            <td>The initial usage of the payment instrument</td>
-            <td>Recurring Payments</td>
-          </tr>
-          <tr>
-						<td>Recurring</td>
-            <td>Any further usage of the payment instrument</td>
-            <td>Recurring Payments</td>
-          </tr>
-          <tr>
-						<td>Last</td>
-            <td>The last usage of a payment instrument</td>
-            <td>Recurring Payments</td>
-          </tr>
-          </tbody>
-      </table>
-		</div>
-		<br/>
-	</div>
-</div>
-<br/>
-<div>
-	<h3>ONETIME PAYMENTS</h3>
-	<div>
-		</br>
-		<p>
-			<strong>What are onetime payments?</strong>
-		</p>
-		</br>
-		<p>
-			When a customer authorizes you for a single usage of his bank details for a payment.
-		</p>
-		</br>
-		<p>
-			<strong>How to handle onetime payments?</strong>
-		</p>
+<ul>
+	<li><a href="#overview" name="">Overview</a></li>
+	<li><a href="#advantages" name="">Advantages</a>
 		<ul>
-			<li>
-				Collect payment data and place the order in your shop
-				<!-- <p>[AN APPROPRIATE VISUAL EXAMPLE OF A MOCK PAYMENT FORM SHOULD GO HERE]</p> -->
+			<li><a href="#customerExperience">Customer Experience</a></li>
+			<li><a href="#payengineDetails">Payengine Details</a>
+				<ul>
+					<li><a href="#general">General</a></li>
+					<li><a href="#integrationTypes">Integration Types</a></li>
+				</ul>
 			</li>
-			<li>
-				Perform the backend-to-backend order debit request.
-				<a href="/buildyourown/apidocs#operations-orders-OrdersDebit">(Api documentation)</a>
-				<p>
-					<div class="example-box-wrapper">
-						<div class="content-box">
-							<h3 class="content-box-header bg-default">
-								<span class="header-wrapper">
-                  Request Example
-									</br>
-                  <small>POST /orders/debit</small>
-                </span>
-									<div class="header-buttons-separator">
-										<a href="#" class="icon-separator toggle-button">
-											<i class="glyph-icon icon-chevron-up"></i>
-										</a>
-									</div>
-							</h3>
-							<!-- <div class="content-box">//////!!!!! closed
-							<h3 class="content-box-header bg-default">
-								<span class="header-wrapper">
-                  Example
-									</br>
-                  <small>POST /orders/debit</small>
-                </span>
-									<div class="header-buttons-separator">
-										<a href="#" class="icon-separator toggle-button">
-											<i class="glyph-icon icon-chevron-down"></i>
-										</a>
-									</div>
-							</h3>
-								<div class="content-box-wrapper hide">
-									This content boxes has the header with <code>.bg-default</code>.
-								</div>
-							</div> -->
-							<div>
-								<code>
-{
-  "product" : "sepa",
-  "merchantOrderId": "merchantOrderId1561365701",
-  "description": "description",
-  "statementDescription": "statementDescription",
-  "initialAmount": 33333,
-  "currency": "EUR",
-  "basket": [
-    {
-      "articleNumber": "SW10029",
-      "name": "USB-Stick",
-      "quantity": 1,
-      "tax": 0,
-      "unitPrice": 33333,
-      "unitPriceWithTax": 33333,
-      "totalPrice": 33333,
-      "totalPriceWithTax": 33333
-    }
-  ],
-  "customer": "customer_smhwnawfn7",
-  "async": {
-  	"successUrl": "https://www.google.de/search?newwindow=1&q=success",
-    "failureUrl": "https://www.google.de/search?newwindow=1&q=failure",
-    "cancelUrl": "https://www.google.de/search?newwindow=1&q=cancel",
-    "notifications":
-    [
-        {
-            "notificationUrn":"http://api.webhookinbox.com/i/s1TSDKY1/in/",
-            "notificationState": ["CREATED","UPDATED"]
-        }
-    ]
-  },
-  "payment": {
-    "accountHolder": "Max Mustermann",
-    "iban": "DE15111111111111111199",
-    "bic": "COBADEFFXXX",
-    "mandate": {
-      "mandateId": "mandateId1561365701",
-      "createdDateTime": 0,
-      "mandateText": "mandateTextString 1561365701",
-      "directDebitType": "SINGLE"
-    }
-  }
-}
-								</code>
-							</div>
-						</div>
-					</div>
-				</p>
-				<br/>
-				<p>This request will lead to a response similar to the one below.</p>
-				<br/>
-				<p>
-					<div class="example-box-wrapper">
-						<div class="content-box">
-							<h3 class="content-box-header bg-default">
-								<span class="header-wrapper">
-                  Response Example
-									</br>
-                  <small>POST /orders/debit</small>
-                </span>
-									<div class="header-buttons-separator">
-										<a href="#" class="icon-separator toggle-button">
-											<i class="glyph-icon icon-chevron-up"></i>
-										</a>
-									</div>
-							</h3>
-							<!-- <div class="content-box">//////!!!!! closed
-							<h3 class="content-box-header bg-default">
-								<span class="header-wrapper">
-                  Example
-									</br>
-                  <small>POST /orders/debit</small>
-                </span>
-									<div class="header-buttons-separator">
-										<a href="#" class="icon-separator toggle-button">
-											<i class="glyph-icon icon-chevron-down"></i>
-										</a>
-									</div>
-							</h3>
-								<div class="content-box-wrapper hide">
-									This content boxes has the header with <code>.bg-default</code>.
-								</div>
-							</div> -->
-							<div>
-								<code>
-{
-    "createdAt": 1561365700971,
-    "modifiedAt": 1561365701005,
-    "merchantId": "merchant_ipiasrmsxv",
-    "terms": null,
-    "privacy": null,
-    "orderId": "r4cztqcwce",
-    "merchantOrderId": "merchantOrderId1561365701",
-    "paymentProviderTransactionId": null,
-    "description": "description",
-    "statementDescription": "statementDescription",
-    "initialAmount": 33333,
-    "preauthorizedAmount": 33333,
-    "capturedAmount": 33333,
-    "refundedAmount": 0,
-    "canceledAmount": 0,
-    "currency": "EUR",
-    "basket": [
-        {
-            "id": "Article-950f36bb-f596-4470-aff5-0b774e97f318",
-            "name": "USB-Stick",
-            "articleNumber": "SW10029",
-            "totalPrice": 33333,
-            "totalPriceWithTax": 33333,
-            "unitPrice": 33333,
-            "unitPriceWithTax": 33333,
-            "quantity": 1,
-            "tax": 0,
-            "discount": null,
-            "imageUrl": null,
-            "articleUrl": null,
-            "articleType": null
-        }
-    ],
-    "customer": {
-        "merchantCustomerId": "merchantCustomerId1561364962",
-        "organizationRegistrationRegister": null,
-        "organizationRegistrationId": null,
-        "organizationEntityType": null,
-        "organizationVatId": null,
-        "companyName": null,
-        "reference": null,
-        "email": "frederik.ossadnik@concardis.com",
-        "customerId": "customer_smhwnawfn7",
-        "addresses": [],
-        "personas": [],
-        "paymentInstruments": [],
-        "createdAt": 1561364963610,
-        "modifiedAt": 1561364963610,
-        "customerType": null
-    },
-    "persona": null,
-    "billingAddress": null,
-    "shippingAddress": null,
-    "ipAddress": null,
-    "paymentInstrument": {
-        "createdAt": 1561365700975,
-        "modifiedAt": 1561365700975,
-        "paymentInstrumentId": "paymentinstrument_bmxjmnl8ns",
-        "merchantPaymentInstrumentId": null,
-        "attributes": {
-            "iban": "DE15111111111111111199",
-            "bic": "COBADEFFXXX",
-            "accountHolder": "Max Mustermann",
-            "bankName": null,
-            "mandate": {
-                "mandateReference": "mandateId1561365701",
-                "createdDateTime": 0,
-                "mandateText": "mandateTextString 1561365701",
-                "directDebitType": "SINGLE"
-            }
-        },
-        "encrypted": false,
-        "origin": "sepa",
-        "type": "sepa",
-        "recurring": false,
-        "recurringConsent": null
-    },
-    "transactions": [
-        {
-            "createdAt": 1561365700975,
-            "modifiedAt": 1561365701005,
-            "type": "DEBIT",
-            "transactionId": "transaction_tipzn8xpix",
-            "description": "description",
-            "initialAmount": 33333,
-            "refundedAmount": 0,
-            "currency": "EUR",
-            "status": "OK",
-            "order": "r4cztqcwce",
-            "parentTransaction": null,
-            "transactions": null,
-            "basket": [
-                {
-                    "id": "Article-950f36bb-f596-4470-aff5-0b774e97f318",
-                    "name": "USB-Stick",
-                    "articleNumber": "SW10029",
-                    "totalPrice": 33333,
-                    "totalPriceWithTax": 33333,
-                    "unitPrice": 33333,
-                    "unitPriceWithTax": 33333,
-                    "quantity": 1,
-                    "tax": 0,
-                    "discount": null,
-                    "imageUrl": null,
-                    "articleUrl": null,
-                    "articleType": null
-                }
-            ],
-            "providerCode": null,
-            "merchantMessage": null,
-            "customerMessage": null,
-            "descriptor": null,
-            "meta": null,
-            "challenge": null,
-            "asyncNotificationSubscriptionId": "1df07ce6-cc4d-4724-99da-dd9039370e13",
-            "tracking": null
-        }
-    ],
-    "status": "OPEN",
-    "channel": "ECOM",
-    "source": null,
-    "settled": false,
-    "settlementDate": null,
-    "allowedProducts": null,
-    "product": "sepa",
-    "transactionType": "DEBIT",
-    "meta": {
-        "mandate": {
-            "mandateId": "mandateId1561365701",
-            "createdDateTime": 0,
-            "mandateText": "mandateTextString 1561365701",
-            "directDebitType": "SINGLE"
-        }
-    },
-    "async": null,
-    "deviceIdent": null,
-    "clientType": "BRW",
-    "asyncNotificationSubscriptionId": "1df07ce6-cc4d-4724-99da-dd9039370e13",
-    "lastOperation": "TRANSACTION_DEBIT_OK"
-}
-								</code>
-							</div>
-						</div>
-					</div>
-				</p>
-				<p>
-					Please pay special attention to the mandate object which was attached both to the resulting payment instrument and to the order’s meta object. This is a convenience via which you can easily track the usage of a certain mandate through this relations.
-				</p>
-			</li>
-			<li>
-				Notify user of a successful SEPA payment and the notification he is about to receive via email.
-			<!-- <p>[AN APPROPRIATE VISUAL EXAMPLE OF A MOCK PAYMENT FORM SHOULD GO HERE]</p> -->
+			<li><a href="#technicalFlow">Technical Flow</a>
+				<ul>
+					<li><a href="#singleOrder">Single Order</a></li>
+					<li><a href="#recurringOrder">Recurring Order</a></li>
+					<li><a href="#recurringOrderTypes">Recurring Order Types</a></li>
+					<li><a href="#recurringOrderWithoutInitialPayment">Recurring Order Without initial Payment</a></li>
+					<li><a href="#recuringOrderWithInitialPayment">Recuring Order With Initial Payment</a></li>
+					<li><a href="#paymentDisruptions">Payment Disruptions</a></li>
+					<li><a href="#paymentMethodSpecificParameters">Payment Method Specific Parameters</a></li>
+					<li><a href="#POST​paymentInstrumentsSpecificResponseParameters">POST​/payment-instruments Specific Response Parameters</a></li>
+				</ul>
 			</li>
 		</ul>
-		<br/>
-	</div>
-</div>
-<br/>
+	</li>
+</ul>
 <div>
-	<h3>RECURRING PAYMENTS</h3>
-	<br/>
-	<div>
-		<p>
-			<strong>What are recurring payments?</strong>
-		</p>
+	<div id="overview">
 		<br/>
-		<p>When a customer authorizes you to perform a series of payments with his bank details.</p>
+		<h2>Overview</h2>
 		<br/>
 		<p>
-			<strong>How to handle recurring payments?</strong>
+			SEPA, the Single Euro Payments Area is an European initiative which aims to address making cashless payments across European borders by creating common payment instruments and a more innovative market for retail payments.
 		</p>
 		<br/>
 		<p>
-			Recurring payments are handled with the use of the directDebitType of the mandate object which points to the type of usage for the particular order. You should mark orders as First, Recurring and Last according to the table provided above <!-- !!!!!!(link)-->.
+				The European payments industry has created three basic payment instruments introduced across Europe: <em>SEPA Credit Transfer, SEPA Direct Debit</em> and <em>SEPA for Cards</em>.
 		</p>
 		<br/>
 		<ul>
 			<li>
-				Collect payment data and place the order in your shop
-				<!-- <p>[AN APPROPRIATE VISUAL EXAMPLE OF A MOCK PAYMENT FORM SHOULD GO HERE]</p> -->
+					With <em>SEPA Credit Transfers</em>, people can move funds in a single transaction to an account inside or outside their home country within a single business day.
 			</li>
+			<li>With <em>SEPA Direct Debits</em>, a company in one country can directly charge an account in another country.</li>
 			<li>
-				Perform the backend-to-backend payment-instrument request
-				<a href="/buildyourown/apidocs#operations-payment-PaymentInstruments1">(Api documentation)</a>
-				<p>
-					<div class="example-box-wrapper">
-						<div class="content-box">
-							<h3 class="content-box-header bg-default">
-								<span class="header-wrapper">
-                  Request Example
-									</br>
-                  <small>POST /payment-instruments</small>
-                </span>
-									<div class="header-buttons-separator">
-										<a href="#" class="icon-separator toggle-button">
-											<i class="glyph-icon icon-chevron-up"></i>
-										</a>
-									</div>
-							</h3>
-							<!-- <div class="content-box">//////!!!!! closed
-							<h3 class="content-box-header bg-default">
-								<span class="header-wrapper">
-                  Request Example
-									</br>
-                  <small>POST /payment-instruments</small>
-                </span>
-									<div class="header-buttons-separator">
-										<a href="#" class="icon-separator toggle-button">
-											<i class="glyph-icon icon-chevron-down"></i>
-										</a>
-									</div>
-							</h3>
-								<div class="content-box-wrapper hide">
-									This content boxes has the header with <code>.bg-default</code>.
-								</div>
-							</div> -->
-							<div>
-								<code>
-{
-  "product" : "sepa",
-  "merchantOrderId": "merchantOrderId1561541630",
-  "description": "description",
-  "statementDescription": "statementDescription",
-  "initialAmount": 33333,
-  "currency": "EUR",
-  "basket": [
-    {
-      "articleNumber": "SW10029",
-      "name": "USB-Stick",
-      "quantity": 1,
-      "tax": 0,
-      "unitPrice": 33333,
-      "unitPriceWithTax": 33333,
-      "totalPrice": 33333,
-      "totalPriceWithTax": 33333
-    }
-  ],
-  "customer": "customer_smhwnawfn7",
-  "async": {
-  	"successUrl": "https://www.google.de/search?newwindow=1&q=success",
-    "failureUrl": "https://www.google.de/search?newwindow=1&q=failure",
-    "cancelUrl": "https://www.google.de/search?newwindow=1&q=cancel",
-    "notifications":
-    [
-        {
-            "notificationUrn":"http://api.webhookinbox.com/i/s1TSDKY1/in/",
-            "notificationState": ["CREATED","UPDATED"]
-        }
-    ]
-  },
-  "payment": {
-    "accountHolder": "Max Mustermann",
-    "iban": "DE15111111111111111199",
-    "bic": "COBADEFFXXX",
-    "mandate": {
-      "mandateId": "mandateId1561541630",
-      "createdDateTime": 0,
-      "mandateText": "mandateTextString 1561541630",
-      "directDebitType": "FIRST"
-    }
-  }
-}
-								</code>
-							</div>
-						</div>
-					</div>
-				</p>
-				<br/>
-				<p>This request should result in a recurring payment instrument.(See Example below)</p>
-				<br/>
-				<p>
-					<div class="example-box-wrapper">
-						<div class="content-box">
-							<h3 class="content-box-header bg-default">
-								<span class="header-wrapper">
-                  Response Example
-									</br>
-                  <small>POST /payment-instruments</small>
-                </span>
-									<div class="header-buttons-separator">
-										<a href="#" class="icon-separator toggle-button">
-											<i class="glyph-icon icon-chevron-up"></i>
-										</a>
-									</div>
-							</h3>
-							<!-- <div class="content-box">//////!!!!! closed
-							<h3 class="content-box-header bg-default">
-								<span class="header-wrapper">
-                  Response Example
-									</br>
-                  <small>POST /payment-instruments</small>
-                </span>
-									<div class="header-buttons-separator">
-										<a href="#" class="icon-separator toggle-button">
-											<i class="glyph-icon icon-chevron-down"></i>
-										</a>
-									</div>
-							</h3>
-								<div class="content-box-wrapper hide">
-									This content boxes has the header with <code>.bg-default</code>.
-								</div>
-							</div> -->
-							<div>
-								<code>
-{
-    "createdAt": 1561541630038,
-    "modifiedAt": 1561541630106,
-    "merchantId": "merchant_ipiasrmsxv",
-    "terms": null,
-    "privacy": null,
-    "orderId": "eplmo573qq",
-    "merchantOrderId": "merchantOrderId1561541630",
-    "paymentProviderTransactionId": null,
-    "description": "description",
-    "statementDescription": "statementDescription",
-    "initialAmount": 33333,
-    "preauthorizedAmount": 33333,
-    "capturedAmount": 33333,
-    "refundedAmount": 0,
-    "canceledAmount": 0,
-    "currency": "EUR",
-    "basket": [
-        {
-            "id": "Article-3c334227-0bf8-4a28-9688-af612100bdad",
-            "name": "USB-Stick",
-            "articleNumber": "SW10029",
-            "totalPrice": 33333,
-            "totalPriceWithTax": 33333,
-            "unitPrice": 33333,
-            "unitPriceWithTax": 33333,
-            "quantity": 1,
-            "tax": 0,
-            "discount": null,
-            "imageUrl": null,
-            "articleUrl": null,
-            "articleType": null
-        }
-    ],
-    "customer": {
-        "merchantCustomerId": "merchantCustomerId1561364962",
-        "organizationRegistrationRegister": null,
-        "organizationRegistrationId": null,
-        "organizationEntityType": null,
-        "organizationVatId": null,
-        "companyName": null,
-        "reference": null,
-        "email": "frederik.ossadnik@concardis.com",
-        "customerId": "customer_smhwnawfn7",
-        "addresses": [],
-        "personas": [],
-        "paymentInstruments": [],
-        "createdAt": 1561364963610,
-        "modifiedAt": 1561364963610,
-        "customerType": null
-    },
-    "persona": null,
-    "billingAddress": null,
-    "shippingAddress": null,
-    "ipAddress": null,
-    "paymentInstrument": {
-        "createdAt": 1561541630041,
-        "modifiedAt": 1561541630041,
-        "paymentInstrumentId": "paymentinstrument_d4gsjetrcj",
-        "merchantPaymentInstrumentId": null,
-        "attributes": {
-            "iban": "DE15111111111111111199",
-            "bic": "COBADEFFXXX",
-            "accountHolder": "Max Mustermann",
-            "bankName": null,
-            "mandate": {
-                "mandateReference": "mandateId1561541630",
-                "createdDateTime": 0,
-                "mandateText": "mandateTextString 1561541630",
-                "directDebitType": "FIRST"
-            }
-        },
-        "encrypted": false,
-        "origin": "sepa",
-        "type": "sepa",
-        "recurring": false,
-        "recurringConsent": null
-    },
-    "transactions": [
-        {
-            "createdAt": 1561541630041,
-            "modifiedAt": 1561541630106,
-            "type": "DEBIT",
-            "transactionId": "transaction_qchpkqnzwo",
-            "description": "description",
-            "initialAmount": 33333,
-            "refundedAmount": 0,
-            "currency": "EUR",
-            "status": "OK",
-            "order": "eplmo573qq",
-            "parentTransaction": null,
-            "transactions": null,
-            "basket": [
-                {
-                    "id": "Article-3c334227-0bf8-4a28-9688-af612100bdad",
-                    "name": "USB-Stick",
-                    "articleNumber": "SW10029",
-                    "totalPrice": 33333,
-                    "totalPriceWithTax": 33333,
-                    "unitPrice": 33333,
-                    "unitPriceWithTax": 33333,
-                    "quantity": 1,
-                    "tax": 0,
-                    "discount": null,
-                    "imageUrl": null,
-                    "articleUrl": null,
-                    "articleType": null
-                }
-            ],
-            "providerCode": null,
-            "merchantMessage": null,
-            "customerMessage": null,
-            "descriptor": null,
-            "meta": null,
-            "challenge": null,
-            "asyncNotificationSubscriptionId": "600d29cc-9a85-437c-822d-12f3e65b9ebd",
-            "tracking": null
-        }
-    ],
-    "status": "OPEN",
-    "channel": "ECOM",
-    "source": null,
-    "settled": false,
-    "settlementDate": null,
-    "allowedProducts": null,
-    "product": "sepa",
-    "transactionType": "DEBIT",
-    "meta": {
-        "mandate": {
-            "mandateId": "mandateId1561541630",
-            "createdDateTime": 0,
-            "mandateText": "mandateTextString 1561541630",
-            "directDebitType": "FIRST"
-        }
-    },
-    "async": null,
-    "deviceIdent": null,
-    "clientType": "BRW",
-    "asyncNotificationSubscriptionId": "600d29cc-9a85-437c-822d-12f3e65b9ebd",
-    "lastOperation": "TRANSACTION_DEBIT_OK"
-}
-								</code>
-							</div>
-						</div>
-					</div>
-				</p>
-			</li>
-			<li>
-				Use the already created payment instrument for executing orders providing only the directDebitType that stands for the current usage of the mandate. (FIRST/RECURRING/LAST)
-				<a href="/buildyourown/apidocs#operations-orders-OrdersDebit">(Api documentation)</a>
-				<p>
-					<!--<div class="example-box-wrapper">
-						<div class="content-box">
-							<h3 class="content-box-header bg-default">
-								<span class="header-wrapper">
-									Request Example
-									</br>
-									<small>POST /orders/debit</small>
-								</span>
-									<div class="header-buttons-separator">
-										<a href="#" class="icon-separator toggle-button">
-											<i class="glyph-icon icon-chevron-up"></i>
-										</a>
-									</div>
-							</h3>-->
-							<!-- <div class="content-box">//////!!!!! closed
-							<h3 class="content-box-header bg-default">
-								<span class="header-wrapper">
-									Request Example
-									</br>
-									<small>POST /orders/debit</small>
-								</span>
-									<div class="header-buttons-separator">
-										<a href="#" class="icon-separator toggle-button">
-											<i class="glyph-icon icon-chevron-down"></i>
-										</a>
-									</div>
-							</h3>
-								<div class="content-box-wrapper hide">
-									This content boxes has the header with <code>.bg-default</code>.
-								</div>
-							</div> -->
-							<!--
-							<div>
-								<code>
-{
-  "initialAmount": 1190,
-  "currency": "EUR",
-  "product": "sepa",
-  "payment": {
-    "paymentInstrumentId": "paymentinstrument_x35efhsbzq",
-    "mandate": {
-      "directDebitType": "RECURRING"
-    }
-  },
-  "customer": "customer_vlp5nrhwcz",
-  "persona": "persona_6ahp3hzik3",
-  "address": "address_0cwxchdzrc",
-  "basket": [
-    {
-      "name": "Usb flash drive",
-      "articleNumber": "420",
-      "totalPrice": 1000,
-      "totalPriceWithTax": 1190,
-      "unitPrice": 1000,
-      "unitPriceWithTax": 1190,
-      "tax": 19,
-      "quantity": 1
-    }
-  ]
-}
-								</code>
-							</div>
-						</div>
-					</div>-->
-				</p>
-			<li>
-				Notify user of a successful SEPA payment and the notification he is about to receive via email.
-			<!-- <p>[AN APPROPRIATE VISUAL EXAMPLE OF A MOCK PAYMENT FORM SHOULD GO HERE]</p> -->
+					<em>SEPA for Cards</em> enables consumers to use the payment cards they are using in their own country for purchases elsewhere in Europe and merchants can readily accept payment cards from all over Europe. <em>SEPA for Cards</em> combines convenience with a high level of security. 
 			</li>
 		</ul>
 	</div>
-</div>
-<br/>
-<div>
-	<h3>SEPA NOTIFICATIONS</h3>
 	<br/>
-	<div>
-		<p>
-			We strongly recomment to subscribe the webhooks for transaction success and after that to send the goods to the end customer.
-		</p>
-		<p>
-			You can found how to setup webhooks in <a href="/merchantcenter/notifications_mc">Notifications section</a>.
-		</p>
-		<p>
-			To receive notification on transaction success you will need to activate "transaction create success" option:
-		</p>
-		</br>
-		<img class="" src="/img/faq/sepa_webhook.png" width="100%" />
-	</div>
-</div>
-<br/>
-<div>
-	<h3>SEPA SETTLEMENTS</h3>
 	<br/>
-	<div>
-		You can find more information about settlements in <a target="_blank" href="/merchantcenter/settlement">"Merchant center" "Settlements" section</a>.
+	<div id="advantages">
+		<br/>
+		<h2>Advantages</h2>
+		<br/>
+		<ul>
+			<li>SEPA Payment Instruments are used for all credit transfers and direct debits in euro, both within the euro area countries, and between them. </li>
+			<li>Internet payments based on SEPA foster electronic commerce in Europe. </li>
+			<li>SEPA has paved the way for other innovative services, such as mobile payments. </li>
+			<li>Consumers can easily buy goods and services anywhere in Europe.</li>
+			<li>Payments are fast and reliable, what you see is what you pay.</li>
+			<li>Companies can centralize their European treasuries and make all their payments through just one account.</li>
+			<li>Banks and payment providers can expand their businesses.</li>
+		</ul>
+		<br/>
+		<br/>
+		<div id="customerExperience">
+			<br/>
+			<h3>Customer Experience</h3>
+			<br/>
+			<br/>
+			<table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+				<thead>
+					<tr>
+						<th>Step</th>
+						<th>Description</th>
+						<th>Screenshot</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>Select the <strong>SEPA</strong> payment method.</td>
+						<td><img class="" src="/img/faq/sepa_widget_1.png" width="50%" /></td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Provide your bank account details (<strong>Account Holder, IBAN, BIC, Bank Name</strong>) and accept the mandate.</td>
+						<td><img class="" src="/img/faq/sepa_widget_2.png" width="50%" /></td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>You will be redirected to the <strong>Payment form success</strong> or the <strong>Payment form failure</strong> popup window.</td>
+						<td><img class="" src="/img/faq/sepa_widget_3.png" width="50%" /></td>
+					</tr>
+				</tbody>
+			</table>
+			<br/>
+			<h3><a href="#">Integration via API</a></h3>
+			<br/>
+			<br/>
+			<div id="payengineDetails">
+				<h3>Payengine Details</h3>
+				<br/>
+				<h4>General</h4>
+				<br/>
+				<table border="1px solid black" class="table table-bordered table-striped table-condensed">
+					<tbody>
+						<tr>
+							<th width="50%"><strong>Product</strong></th>
+							<td width="50%">SEPA</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Type</strong></th>
+							<td width="50%">Direct debit</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Channels</strong></th>
+							<td width="50%">ecom, moto</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Currencies</strong></th>
+							<td width="50%">EUR</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Countries</strong></th>
+							<td width="50%">DE, AT</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Technical Flow</strong></th>
+							<td width="50%">synchronous</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Recurring</strong></th>
+							<td width="50%">yes</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Chargebacks</strong></th>
+							<td width="50%">yes</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Reusable Payment Instruments</strong></th>
+							<td width="50%">yes</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<h4>Supported Features and Services</h4>
+				<br/>
+				<table border="1px solid black" class="table table-bordered table-striped table-condensed">
+					<tbody>
+						<tr>
+							<th width="50%"><strong>Debit</strong></th>
+							<td width="50%">yes</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Preauthorization</strong></th>
+							<td width="50%">yes</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Cancelation</strong></th>
+							<td width="50%">yes (full, partial)</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Capture</strong></th>
+							<td width="50%">yes (full, partial)</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Refunds</strong></th>
+							<td width="50%">yes *<br/>
+									<strong>NOTE</strong> Refunds can only be executed if the merchant bank account connection is set up (<a href="">Bank Account Setup</a>)</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Notifications</strong></th>
+							<td width="50%">yes - webhook, email</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>PayLink Integration</strong></th>
+							<td width="50%">yes *<br/>
+								<strong>NOTE</strong> Please contact support or account manager for this feature.</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Settlement Reporting</strong></th>
+							<td width="50%">yes</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<h4>Integration Types</h4>
+				<br/>
+				<table border="1px solid black" class="table table-bordered table-striped table-condensed">
+					<tbody>
+						<tr>
+							<th width="50%"><strong>API</strong></th>
+							<td width="50%">yes</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Widget</strong></th>
+							<td width="50%">yes</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Widget as a Bridge</strong></th>
+							<td width="50%">
+								<ul>
+									<li>Payment Instruments can be created via bridge.</li>
+									<li>Mandate creation within the bridge</li>
+								</ul>
+							</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Shop Plugin</strong></th>
+							<td width="50%">no (on the roadmap)</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br/>
+			<div id="technicalFlow">
+				<br/>
+				<h3>Technical Flow</h3>
+				<br/>
+				<p><strong>Prerequisite:</strong> Collect mandate acceptance</p>
+				<br/>
+				<p>
+						Before creating a SEPA direct debit order, your customer must accept the SEPA Direct Debit mandate. The acceptance authorizes Concardis to collect payments for the specified amount from their bank account, using SEPA Direct Debit.
+				</p>
+				<br/>
+				<p><strong>What is a Mandate?</strong></p>
+				<p>
+					Usually, the SEPA mandate is a paper document, but since it is not possible to implement a paper document in eCommerce, electronic mandates (eMandates) are used. The Mandates are stored within the Payengine payment instrument.
+					<br/><br/>
+					These mandates have a unique <em>mandateId</em> and store the <em>mandateText</em> and <em>createdDateTime</em> (the timestamp the customer agreed to the specific mandate).
+					<br/>	<br/>
+					Within Payengine the mandate object of a payment instrument is used for tracking the usage of a payment instrument through the type property.
+				</p>
+				<br/>
+				<p><strong>SEPA mandate text</strong></p>
+				<p>
+					Ich ermächtige die Concardis GmbH, Helfman-Park 7 in 65760 Eschborn, GläubigerID DE82ZZZ00000346626, Zahlungen von meinem Konto mittels SEPA-Lastschrift unter der Mandatsreferenz <strong>[mandateId]</strong> einzuziehen. Zugleich weise ich mein Kreditinstitut an, die von Concardis GmbH auf mein Konto gezogenen SEPA-Lastschriften einzulösen.
+					<br/><br/>
+					Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belasteten Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen.
+					<br/><br/>
+					Verkürzung der Ankündigungsfrist:
+					<br/><br/>
+					Die Frist für die Vorabinformation der SEPA-Lastschrift wird auf einen Tag verkürzt.
+				</p>
+				<br/>
+				<div id="singleOrder">
+					<br/>
+					<h4>Single Order</h4>
+					<br/>
+					<p>When a customer provides authorization for a single usage of their bank details for a payment. </p>
+					<br/>
+					<p>You can:</p>
+					<ul>
+						<li>Collect payment data and place the order in your shop.</li>
+						<li>Create debit or preauth with the directDebitType set to <strong>SINGLE</strong>></li>
+					</ul>
+					<p>For more information, see <a href="">Single Order</a>.</p>
+				</div>
+				<br/>
+				<div id="recurringOrder">
+					<br/>
+					<h4>Recurring Order</h4>
+					<br/>
+					<p>When a customer provides authorization to perform a series of payments with their bank details. </p>
+					<br/>
+					<p>
+						Recurring payments are handled with the use of the <em>directDebitType</em> of the mandate object which points to the type of usage for the particular order. Mark the orders as <strong>FIRST, RECURRING</strong>, and <strong>FINAL</strong>.
+					</p>
+				</div>
+				<br/>
+				<div id="recurringOrderTypes">
+					<br/>
+					<h4>Recurring Order Types</h4>
+					<br/>
+					<p>There are two types of recurring orders: Recurring Order With initial Payment and Recurring Order Without initial Payment.</p>
+					<br/>
+					<h4>Recurring Order Without initial Payment</h4>
+					<br/>
+					<p>With this option, you can:</p>
+					<ul>
+						<li>Collect payment data and place the order in your shop.</li>
+						<li>
+							Perform the backend-to-backend payment instrument request POST /payment-instruments with the <em>directDebitType</em> set to <strong>FIRST</strong>. This request should result in a recurring payment instrument.
+						</li>
+						<li>
+								Use the already created payment instrument for executing orders, providing only the directDebitType that stands for the current usage of the mandate. <strong>(RECURRING/FINAL)</strong>.
+						</li>
+					</ul>
+					<p>For more information, see <a href="" id="recuringOrderWithoutInitialPayment"> Recurring Order Without Initial Payment</a>.</p>
+					<br/>
+					<br/>
+					<h4>Recuring Order With Initial Payment</h4>
+					<br/>
+					<p>With this option, you can:</p>
+					<ul>
+						<li>Collect payment data and place the order in your shop.</li>
+						<li>
+							Create debit or preauth with the directDebitType set to <strong>FIRST</strong>. This request should result in a recurring payment instrument.
+						</li>
+						<li>
+								Use the already created payment instrument for executing orders, providing only the directDebitType that stands for the current usage of the mandate. <strong>(RECURRING/FINAL)</strong>.
+						</li>
+					</ul>
+					<p>For more information, see <a href="" id="recuringOrderWithInitialPayment"> Recurring Order with Initial Payment</a>.</p>
+				</div>
+				<br/>
+				<div id="paymentDisruptions">
+					<br/>
+					<h4>Payment Disruptions</h4>
+					<br/>
+					<p><strong>Debit not Possible:</strong> The status of the debit or capture will change from <strong>OK</strong> to <strong>CHARGEBACK</strong>.</p>
+					<br/>
+					<p>
+						Тhis situation may occur due to various problems with the client's account, for example, if no funds are available, the account has been blocked, etc. In these cases, the bank cannot debit the account, even though the customer has already provided the funds for successful payment. If this situation occurs, the bank refunds the payment in the form of a dispute.
+					</p>
+					<br/>
+					<p>
+						<strong>Customer Cancels SEPA Direct Debit:</strong> The status of the debit or capture will be changed from OK to <strong>CHARGEBACK</strong>. <br/>
+						Within eight weeks of debiting the account, if the account holder is not satisfied with their purchase, the bank can refund the money, without asking questions.
+						Between eight weeks and thirteen months after the payment has been created, the customer may dispute a payment with their bank only if the customer considers that the debit has not been authorised.<br/>
+						In this case, Payengine automatically provides the customer's bank with a mandate, approved by the customer. This still does not guarantee that the dispute can be cancelled. The customer's bank may decide that the debit is not authorised by the mandate and that their client has the right to refund.
+					</p>
+				</div>
+				<br/>
+				<div id="paymentMethodSpecificParameters">
+					<br/>
+					<h4>Payment Method Specific Parameters</h4>
+					<br/>
+				</div>
+				<br/>
+				<br/>
+				<div id="POST​paymentInstrumentsSpecificRequestParameters">
+					<br/>
+					<h4>POST​/payment-instruments Specific Request Parameters</h4>
+					<br/>
+					<table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+						<thead>
+							<tr>
+								<th>PARAMETER</th>
+								<th>MANDATORY/<br/>OPTIONAL</th>
+								<th>DESCRIPTION</th>
+								<th>EXAMPLE</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>payment.bankName</td>
+								<td>O</td>
+								<td>
+										<strong>string</strong> 
+										The name of the bank of the SEPA account. 
+										minLength: 1
+										maxLength: 255
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>payment.iban</td>
+								<td>M</td>
+								<td>
+										<strong>string</strong> 
+										<br/><br/>
+										maxLength: 34
+										IBAN of the SEPA account.
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>payment.bic</td>
+								<td>O</td>
+								<td>BIC of the SEPA account.</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>payment.accountHolder</td>
+								<td>O</td>
+								<td>
+									<strong>string</strong>
+									minLength: 4
+									maxLength: 128
+									<br/><br/>
+									The account holder's name of the SEPA account. 
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>order.statementDescription</td>
+								<td>O</td>
+								<td>The statement description from your system/shop of this order.</td>
+								<td>
+									The field <strong>order.statementDescription</strong> will be used as purpose text.
+									In case that there is no <strong>order.statementDescription</strong> present we will use the following logic: 
+									When the <strong>order.merchantOrderId</strong> is not empty then <strong>order.merchantOrderId</strong> is used otherwise <strong>order.orderId</strong> is used. 
+									The fields merchant.companyName and merchant.shopUrl are added regardless if <strong>order.merchantOrderId</strong> or <strong>order.orderId</strong> is used.
+									The max length of the purpose text is 108 characters and it will cut of if it's longer then <strong>108</strong> characters.
+								</td>
+							</tr>
+							<tr>
+								<td>mandate.mandateId</td>
+								<td>O</td>
+								<td>
+										The <em>mandateId</em> assigned to the SEPA mandate (Optionally, Payengine will generate the ID (if it not available). The ID must follow the '^[a-zA-Z0-9-]{1,35}' pattern.
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>mandate.createdDateTime</td>
+								<td>M</td>
+								<td>
+									number($date-time)<br/><br/>
+									Timestamp for mandate creation (mandatory).
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>mandate.mandateText</td>
+								<td>M</td>
+								<td>
+									string<br/><br/>
+									Mandate text displayed to the customer (mandatory)
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>mandate.directDebitType</td>
+								<td>M</td>
+								<td>
+									string title: <em>DirectDebitType</em><br/><br/>
+									The current mandate type of the direct debit type.
+									The mandate type can be one of the following.
+									<strong>FIRST</strong>: It is the first execution of the mandate <strong>SINGLE</strong>: It is used only for one execution of the mandate <strong>RECURRING</strong>: It is used for recurring mandate usage <strong>FINAL</strong>: It is the last execution of the recurring mandate.
+								</td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>mandate.directDebitType.SINGLE</td>
+								<td>One execution</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>mandate.directDebitType.FIRST</td>
+								<td>The initial usage of the recurring payment instrument</td>
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+					<br/>
+					<h3>POST​/payment-instruments Specific Response Parameters</h3>
+					<br/>
+					<table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+						<thead>
+							<tr>
+								<th colspan="4">PARAMETER</th>
+								<th colspan="1">MANDATORY/<br/>OPTIONAL</th>
+								<th colspan="4">DESCRIPTION</th>
+								<th colspan="3">EXAMPLE</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="4">mandateId</td>
+								<td colspan="1">M</td>
+								<td colspan="4">If there is no <em>mandateID</em> transmitted in the request,<br/> Payengine will generate one and send it back in the response.</td>
+								<td colspan="3"></td>
+							</tr>
+						</tbody>
+					</table>
+					<br/>
+					<h3>POST/customers Specific Request Parameters</h3>
+					<br/>
+					<table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+						<thead>
+							<tr>
+								<th colspan="4">PARAMETER</th>
+								<th colspan="1">MANDATORY/<br/>OPTIONAL</th>
+								<th>DESCRIPTION</th>
+								<th>EXAMPLE</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td colspan="4">email</td>
+								<td colspan="1">M</td>
+								<td>The customer's e-mail address.</td>
+								<td>user@example.com</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<br/>
+				<h3>POST​/orders​/preauth/</h3>
+				<br/>
+				<h3>POST​/orders​/debit Request Parameters</h3>
+				<br/>
+				<table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+					<thead>
+						<tr>
+							<th>PARAMETER</th>
+							<th>MANDATORY/<br/>OPTIONAL</th>
+							<th>DESCRIPTION</th>
+							<th>EXAMPLE</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>payment.bankName</td>
+							<td>O</td>
+							<td>
+								string<br/><br/>
+								The name of the bank of the SEPA account. <br/> 
+								minLength: 1<br/> 
+								maxLength: 255
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>payment.iban</td>
+							<td>M</td>
+							<td>
+								string<br/><br/>
+								maxLength: 34<br/><br/> 
+								IBAN of the SEPA account
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>payment.bic</td>
+							<td>O</td>
+							<td>BIC of the SEPA account. </td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>payment.accountHolder</td>
+							<td>O</td>
+							<td>
+								string<br/><br/>
+								minLength: 4<br/>
+								maxLength: 128<br/><br/>
+								The account holder's name of the SEPA account. 
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>mandate.mandateId</td>
+							<td>O</td>
+							<td>The <em>mandateId</em> assigned to the SEPA mandate (Optionally, Payengine will generate the ID if it is not available). The ID must follow the '^[a-zA-Z0-9-]{1,35}' pattern.
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>mandate.createdDateTime</td>
+							<td>М</td>
+							<td>
+								number($date-time)<br/><br/>
+								Timestamp for mandate creation (mandatory).<br/><br/>
+								<strong>NOTE</strong> Should only be transmitted for <em>directDebitType</em> <strong>FIRST, SINGLE.</strong>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>mandate.mandateText</td>
+							<td>М</td>
+							<td>
+								string<br/><br/>
+								Mandate text displayed to the customer (mandatory)<br/><br/>
+								<strong>NOTE</strong> Should only be transmitted for <em>directDebitType</em> <strong>FIRST, SINGLE.</strong>
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>mandate.directDebitType</td>
+							<td>М</td>
+							<td>
+								string title: DirectDebitType<br/><br/>
+								The current mandate type of the direct debit type.<br/>
+								The mandate type can be one of the following.<br/>
+								<strong>FIRST:</strong> It is the first execution of the mandate <strong>SINGLE:</strong> It is used only for one execution of the mandate <strong>RECURRING:</strong> It is used for recurring mandate usage <strong>FINAL:</strong> It is the last execution of the recurring mandate.
+							</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>mandate.directDebitType.SINGLE</td>
+							<td>One execution</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>mandate.directDebitType.FIRST</td>
+							<td>The initial usage of the recurring payment instrument</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>mandate.directDebitType.RECURRING</td>
+							<td>Any further usage of the payment instrument.</td>
+							<td></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>mandate.directDebitType.FINAL</td>
+							<td>The last usage of a payment instrument.</td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br/>
+			<div>
+				<br/>
+				<h3>Refunds</h3>
+				<br/>
+				<p>
+					To use the refund service of Payengine, configure your bank account connection at the Concardis Merchant Center. For more information, see <a href="">Bank Account Connection Setup</a>.
+				</p>
+				<br/>
+				<h3>Testing</h3>
+				<br/>
+				<table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+					<thead>
+						<tr>
+							<th>Result</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Success</td>
+							<td>Any amount + any merchant/customer IBAN: The transaction's status changes from "OK" to "SUCCESS"</td>
+						</tr>
+						<tr>
+							<td>Failure</td>
+							<td>
+									Amount below + any merchant/customer IBAN: The charge succeeds but a dispute is immediately created.<br/>
+									The debit's/preauth's status stays in OK. A new CHARGEBACK transaction is created with status "BOOKOUT". This might take some minutes, according to the scheduler settings.<br/><br/>
+									<ul>
+										<li>33333 (333,33 €)</li>
+										<li>11111 (111,11 €)</li>
+										<li>111 (1,11 €)</li>
+									</ul>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<h3>Settlements</h3>
+				<br/>
+				<p>
+					You can see all settlement information in the Unified Settlement Report. For more information on the format and mappings, see <a href="">[PubDoc] Unified Settlement Report</a>.
+				</p>
+			</div>
+			<br/><br/>
+		</div>
 	</div>
-</div>
-<br/>
-<div>
-	<h3>BACKOFFICE OPERATIONS AND MOTO VIA THE MERCHANT CENTER</h3>
-	<br/>
-	<div>
-		You can find more information about Create Order via the Merchant Center in <a target="_blank" href="/merchantcenter/createtransaction">"Merchant center" "Create Order" section</a>.
-	</div>
-	<!-- <div>
-		About cancel/capture operations via the Merchant Center find more information in <a target="_blank" href="/merchantcenter/createtransaction">"Merchant center" "Order Operations" section</a>.
-	</div> -->
 </div>

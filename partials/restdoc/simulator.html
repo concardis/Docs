@@ -1,181 +1,217 @@
 <h1>Test your integration (Simulator)</h1><br/>
 <p>
-	<label>Our simulator is the simplest way to test your integration in our test enviroment. (apitest.payengine.de)</label>
+  <label>Our simulator is the simplest way to test your integration in our test enviroment. (apitest.payengine.de)</label>
 </p>
 <br/>
 <p>
-	<label>The simulator gives you the opportunity to test positive/negative use cases for different payment methods</label>
+  <label>The simulator gives you the opportunity to test positive/negative use cases for different payment methods</label>
 </p>
 <br/>
 <p>
-	<label>For PayPal, Sofort and PayDirekt</label>
-	<br/>
-	<label>To get a <strong>negative response</strong>, use one of the following initial amounts: 1,11 or 111,11</label>
-	<br/>
-	<label>To get a <strong>positive response</strong>, you can use any amount apart from 1,11 and 111,11</label>
+  <label>For PayPal, Sofort and PayDirekt</label>
+  <br/>
+  <label>To get a <strong>negative response</strong>, use one of the following initial amounts: 1,11 or 111,11</label>
+  <br/>
+  <label>To get a <strong>positive response</strong>, you can use any amount apart from 1,11 and 111,11</label>
 </p>
 <br/>
 <p>
-	<label>The following error messages will be returned if the order has been rejected:</label>
+  <label>The following error messages will be returned if the order has been rejected:</label>
 </p>
 <br/>
 <p>
-	<label>For Paydirekt</label>
-	<br/>
-	<label>providerCode : VALIDATION_ERROR merchantMessage: "Error message: ERROR for field: orderAmount"</label>
+  <label>For Paydirekt</label>
+  <br/>
+  <label>providerCode : VALIDATION_ERROR merchantMessage: "Error message: ERROR for field: orderAmount"</label>
 </p>
 <br/>
 <p>
-	<label>For Paypal</label>
-	<br/>
-	<label>providerCode: "ERROR", merchantMessage: "ERROR"</label>
+  <label>For Paypal</label>
+  <br/>
+  <label>providerCode: "ERROR", merchantMessage: "ERROR"</label>
 </p>
 <br/>
 <p>
-	<label>For Ratepay</label>
-	<br/>
-	<label>When using Ratepay as a payment method, you can enter any amount in order to get a positive response.</label>
-	<br/>
-	<label>To test a negative response, please enter the following data: </label>
-	<br/>
-	<label>City: Testhausen</label>
-	<br/>
-	<label>Surname: Ablehnung</label>
-	<br/>
-	<label>For a negative response, you would receive the following error message: </label>
-	<br/>
-	<label>providerCode": "300", "merchantMessage": "Error", "customerMessage": "Error"</label>
+  <label>For Ratepay</label>
+  <br/>
+  <label>When using Ratepay as a payment method, you can enter any amount in order to get a positive response.</label>
+  <br/>
+  <label>To test a negative response, please enter the following data: </label>
+  <br/>
+  <label>City: Testhausen</label>
+  <br/>
+  <label>Surname: Ablehnung</label>
+  <br/>
+  <label>For a negative response, you would receive the following error message: </label>
+  <br/>
+  <label>providerCode": "300", "merchantMessage": "Error", "customerMessage": "Error"</label>
 </p>
 <br/>
 <p>
-	<label>For SEPA</label>
-	<br/>
-	<label>To get a negative response when using SEPA as a payment method, you need to enter 1,11 or 111,11 as initial amount.</label>
-	<br/>
-	<label>Any other amount (except for 1,11 or 111,11) would give you a positive response and the order would be successful.</label>
-	<br/>
-	<label>Use this IBAN to create a test order :</label>
-	<br/>
-	<label>VALID_CUSTOMER_IBAN = “DE15111111111111111199";</label>
-	<br/>
-	<label>Use this IBAN to create a test order for a payout (settlement) :</label>
-	<br/>
-	<label>VALID_MERCHANT_IBAN_RTI_AND_PAYOUT_SUCCESSFUL = "DE12500105170648489890";</label>
+  <label>For SEPA</label>
+  <br/>
+  <label>To get a negative response when using SEPA as a payment method, you need to enter 1,11 or 111,11 as initial amount.</label>
+  <br/>
+  <label>Any other amount (except for 1,11 or 111,11) would give you a positive response and the order would be successful.</label>
+  <br/>
+  <label>Use this IBAN to create a test order :</label>
+  <br/>
+  <label>VALID_CUSTOMER_IBAN = “DE15111111111111111199";</label>
+  <br/>
+  <label>Use this IBAN to create a test order for a payout (settlement) :</label>
+  <br/>
+  <label>VALID_MERCHANT_IBAN_RTI_AND_PAYOUT_SUCCESSFUL = "DE12500105170648489890";</label>
 </p>
 <br/>
 <p>
-	<label>For Credit Card</label>
-	<br/>
-	<label>To test your credit card integration, create transactions with these PANs:</label>
-	<br/>
+  <label>For Credit Card</label>
+  <br/>
+  <label>To test your credit card integration, create transactions with these PANs:</label>
+  <br/>
 
-	<table border="1">
-		<tbody>
-		<tr >
-			<td ><b> 	&nbsp;Card 	&nbsp;</b></td>
-			<td ><b> 	&nbsp;PAN 	&nbsp;</b></td>
-			<td ><b> 	&nbsp;CVC 	&nbsp;</b></td>
-			<td ><b> 	&nbsp;Exp date 	&nbsp;</b></td>
-		</tr>
-		<tr >
-			<td > 	&nbsp;VISA 	&nbsp;</td>
-			<td >	&nbsp;4111111111111111	&nbsp;</td>
-			<td > 	&nbsp;123 	&nbsp;</td>
-			<td > 	&nbsp;11/20 	&nbsp;</td>
-		</tr>
-		<tr >
-			<td > 	&nbsp;VISA 3DS 	&nbsp;</td>
-			<td >	&nbsp;4000000000000002 	&nbsp;</td>
-			<td >	&nbsp;123 	&nbsp;</td>
-			<td > 	&nbsp;11/20 	&nbsp;</td>
-		</tr>
-		<tr >
-			<td > 	&nbsp;Master Card 	&nbsp;</td>
-			<td >	&nbsp;5399999999999999 	&nbsp;</td>
-			<td >	&nbsp;123	&nbsp;</td>
-			<td >	&nbsp;11/20	 &nbsp;</td>
-		</tr>
-		<tr >
-			<td > 	&nbsp;Master Card 3DS 	&nbsp;</td>
-			<td >	&nbsp;5404000000000001 	&nbsp;</td>
-			<td >	&nbsp;123 	&nbsp;</td>
-			<td > 	&nbsp;11/20 	&nbsp;</td>
-		</tr>
-		<tr >
-			<td > 	&nbsp;American Express 	&nbsp;</td>
-			<td > 	&nbsp;374111111111111 	&nbsp;</td>
-			<td > 	&nbsp;1234 	&nbsp;</td>
-			<td > 	&nbsp;11/20 	&nbsp;</td>
-		</tr>
-		<tr >
-			<td > 	&nbsp;American Express Safekey &nbsp;</td>
-			<td >	&nbsp;371449635398431 	&nbsp;</td>
-			<td > 	&nbsp;1234 	&nbsp;</td>
-			<td > 	&nbsp;11/20 	&nbsp;</td>
-		</tr>
-		<tr >
-			<td > 	&nbsp;Maestro 	&nbsp;</td>
-			<td >	&nbsp;6400051234567895 	&nbsp;</td>
-			<td > 	&nbsp;- 	&nbsp;</td>
-			<td > 	&nbsp;- 	&nbsp;</td>
-		</tr>
-		<tr >
-			<td > 	&nbsp;VISA Debit 	&nbsp;</td>
-			<td >	&nbsp;4462030000000000 	&nbsp;</td>
-			<td > 	&nbsp;123 	&nbsp;</td>
-			<td > 	&nbsp;11/20 	&nbsp;</td>
-		</tr>
-		</tbody>
-	</table>
-	<br>
+  <table border="1">
+    <tbody>
+    <tr >
+      <td ><b> 	&nbsp;Card 	&nbsp;</b></td>
+      <td ><b> 	&nbsp;PAN 	&nbsp;</b></td>
+      <td ><b> 	&nbsp;CVC 	&nbsp;</b></td>
+      <td ><b> 	&nbsp;Exp date 	&nbsp;</b></td>
+    </tr>
+    <tr >
+      <td > 	&nbsp;VISA Non-3DS 	&nbsp;</td>
+      <td >	&nbsp;4012001038443335	&nbsp;</td>
+      <td > 	&nbsp;123 	&nbsp;</td>
+      <td > 	&nbsp;12/21 	&nbsp;</td>
+    </tr>
+    <tr >
+      <td > 	&nbsp;VISA 3DS 1.0 	&nbsp;</td>
+      <td >	&nbsp;4149011500000147 	&nbsp;</td>
+      <td >	&nbsp;123 	&nbsp;</td>
+      <td > 	&nbsp;12/21 	&nbsp;</td>
+    </tr>
+    <tr >
+      <td > 	&nbsp;VISA 3DS 2.0 - Frictionless Flow 	&nbsp;</td>
+      <td >	&nbsp;4111111111111111 	&nbsp;</td>
+      <td >	&nbsp;123 	&nbsp;</td>
+      <td > 	&nbsp;12/21 	&nbsp;</td>
+    </tr>
+    <tr >
+      <td > 	&nbsp;VISA 3DS 2.0 - Challenge Flow 	&nbsp;</td>
+      <td >	&nbsp;4000007000000031 	&nbsp;</td>
+      <td >	&nbsp;123 	&nbsp;</td>
+      <td > 	&nbsp;12/21 	&nbsp;</td>
+    </tr>
+    <tr >
+      <td > 	&nbsp;Master Card Non-3DS 	&nbsp;</td>
+      <td >	&nbsp;5399999999999999 	&nbsp;</td>
+      <td >	&nbsp;123	&nbsp;</td>
+      <td >	&nbsp;12/21	 &nbsp;</td>
+    </tr>
+    <tr >
+      <td > 	&nbsp;Master Card 3DS 1.0 	&nbsp;</td>
+      <td >	&nbsp;5232569007637831 	&nbsp;</td>
+      <td >	&nbsp;123 	&nbsp;</td>
+      <td > 	&nbsp;12/21 	&nbsp;</td>
+    </tr>
+    <tr >
+      <td > 	&nbsp;Master Card 3DS 2.0 - Frictionless Flow 	&nbsp;</td>
+      <td >	&nbsp;5556011778787485 	&nbsp;</td>
+      <td >	&nbsp;123 	&nbsp;</td>
+      <td > 	&nbsp;12/21 	&nbsp;</td>
+    </tr>
+    <tr >
+      <td > 	&nbsp;Master Card 3DS 2.0 - Challenge Flow 	&nbsp;</td>
+      <td >	&nbsp;2720992593319364 	&nbsp;</td>
+      <td >	&nbsp;123 	&nbsp;</td>
+      <td > 	&nbsp;12/21 	&nbsp;</td>
+    </tr>
+    <tr >
+      <td > 	&nbsp;American Express Non-SafeKey 	&nbsp;</td>
+      <td > 	&nbsp;374111111111111 	&nbsp;</td>
+      <td > 	&nbsp;123 	&nbsp;</td>
+      <td > 	&nbsp;12/21 	&nbsp;</td>
+    </tr>
+    <tr >
+      <td > 	&nbsp;American Express SafeKey 1.0 &nbsp;</td>
+      <td >	&nbsp;373953192351004 	&nbsp;</td>
+      <td > 	&nbsp;123 	&nbsp;</td>
+      <td > 	&nbsp;12/21 	&nbsp;</td>
+    </tr>
+    <tr >
+      <td > 	&nbsp;American Express SafeKey 2.0 - Frictionless Flow &nbsp;</td>
+      <td >	&nbsp;371449635398431 	&nbsp;</td>
+      <td > 	&nbsp;123 	&nbsp;</td>
+      <td > 	&nbsp;12/21 	&nbsp;</td>
+    </tr>
+    <tr >
+      <td > 	&nbsp;American Express SafeKey 2.0 - Challenge Flow &nbsp;</td>
+      <td >	&nbsp;346018484777573 	&nbsp;</td>
+      <td > 	&nbsp;123 	&nbsp;</td>
+      <td > 	&nbsp;12/21 	&nbsp;</td>
+    </tr>
+    <tr >
+      <td > 	&nbsp;Maestro Non-3DS 	&nbsp;</td>
+      <td >	&nbsp;6400051234567895 	&nbsp;</td>
+      <td > 	&nbsp;- 	&nbsp;</td>
+      <td > 	&nbsp;- 	&nbsp;</td>
+    </tr>
+    <tr >
+      <td > 	&nbsp;VISA Debit Non-3DS 	&nbsp;</td>
+      <td >	&nbsp;4462030000000000 	&nbsp;</td>
+      <td > 	&nbsp;123 	&nbsp;</td>
+      <td > 	&nbsp;12/21 	&nbsp;</td>
+    </tr>
+    </tbody>
+  </table>
+  <br>
 </p>
 
 <p>
-	<h2>Example scenarios:</h2>
+  <h2>Example scenarios:</h2>
 </p>
 <br/>
 <p>
-	<h3>Without 3DS:</h3>
+  <h3>Without 3DS:</h3>
 </p>
 <br/>
 <p>
-	<h4>Scenario: MoTo credit card transaction without 3DS with amount of 1,00€</h4>
-	<label>A new MoTo transaction with amount of 1,00€ will result in success</label>
+  <h4>Scenario: MoTo credit card transaction without 3DS with amount of 1,00€</h4>
+  <label>A new MoTo transaction with amount of 1,00€ will result in success</label>
 </p>
 <br/>
 <p>
-	<h4>Scenario: MoTo credit card transaction without 3DS with amount of 1,11€</h4>
-	<label>A new MoTo transaction with amount of 1,11€ will result in failure</label>
+  <h4>Scenario: MoTo credit card transaction without 3DS with amount of 1,11€</h4>
+  <label>A new MoTo transaction with amount of 1,11€ will result in failure</label>
 </p>
 <br/>
 <p>
-	<h4>Scenario: Ecom credit card transaction without 3DS with amount of 1,00€</h4>
-	<label>Given customer has opened the PP with total amount of 1,00€</label>
-	<label>When customer enters all values for credit card transaction, the transaction will result in success.</label>
+  <h4>Scenario: Ecom credit card transaction without 3DS with amount of 1,00€</h4>
+  <label>Given customer has opened the PP with total amount of 1,00€</label>
+  <label>When customer enters all values for credit card transaction, the transaction will result in success.</label>
 </p>
 <br/>
 <p>
-	<h4>Scenario: Ecom credit card transaction without 3DS with amount of 1,11€</h4>
-	<label>Given customer has opened the PP with total amount of 1,11€</label>
-	<label>When customer enters all values for credit card transaction, that transaction will result in failure.</label>
+  <h4>Scenario: Ecom credit card transaction without 3DS with amount of 1,11€</h4>
+  <label>Given customer has opened the PP with total amount of 1,11€</label>
+  <label>When customer enters all values for credit card transaction, that transaction will result in failure.</label>
 </p>
 <br/>
 <p>
-	<h3>With 3DS:</h3>
+  <h3>With 3DS:</h3>
 </p>
 <br/>
 <p>
-	<h4>Scenario: Check Ecom credit card transaction with 3DS with amount of 1,00€</h4>
-	<label>Given customer has opened the PP with total amount of 1,00€</label>
-	<label>When customer enters all values for credit card transaction, he will be redirected to the input form of the Issuer to enter his 3DS Code.</label>
-	<label>If the entered Code was correct, then that transaction will result in success.</label>
-	<label>If that entered Code was incorrect,  the transaction will result in failure.</label>
+  <h4>Scenario: Check Ecom credit card transaction with 3DS with amount of 1,00€</h4>
+  <label>Given customer has opened the PP with total amount of 1,00€</label>
+  <label>When customer enters all values for credit card transaction, he will be redirected to the input form of the Issuer to enter his 3DS Code.</label>
+  <label>If the entered Code was correct, then that transaction will result in success.</label>
+  <label>If that entered Code was incorrect,  the transaction will result in failure.</label>
 </p>
 <br/>
 <p>
-	<h4>Scenario: Check Ecom credit card transaction with 3DS with amount of 1,11€</h4>
-	<label>Given customer has opened the PP with total amount of 1,11€</label>
-	<label>When customer enters all values for credit card transaction, he will then  be redirected to the input form of the Issuer to enter his 3DS Code.</label>
-	<label>If that entered Code was correct, then that transaction will result in failure.</label>
-	<label>If the entered Code was incorrect, then that transaction will result in failure.</label>
+  <h4>Scenario: Check Ecom credit card transaction with 3DS with amount of 1,11€</h4>
+  <label>Given customer has opened the PP with total amount of 1,11€</label>
+  <label>When customer enters all values for credit card transaction, he will then  be redirected to the input form of the Issuer to enter his 3DS Code.</label>
+  <label>If that entered Code was correct, then that transaction will result in failure.</label>
+  <label>If the entered Code was incorrect, then that transaction will result in failure.</label>
 </p>

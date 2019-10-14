@@ -4194,7 +4194,7 @@ definitions:
             05 - fully authenticated<br/>
             06 - authentication attempted<br/>
             07 - no authentication available<br/><br/>
-          &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 00).<br/><br/>
+          &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 02).<br/><br/>
           Use case: Order based on delegated 3DS authentication
   Invoicing:
     title: Invoicing
@@ -5305,7 +5305,7 @@ definitions:
             05 - fully authenticated<br/>
             06 - authentication attempted<br/>
             07 - no authentication available<br/><br/>
-          &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 00).<br/><br/>
+          &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 02).<br/><br/>
           Use case: COF initial storage based on delegated 3DS authentication
   CardcheckResponse:
     type: object
@@ -5376,7 +5376,7 @@ definitions:
             05 - fully authenticated<br/>
             06 - authentication attempted<br/>
             07 - no authentication available<br/><br/>
-          &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 00).
+          &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 02).
   CardcheckErrorDetails:
     type: object
     description: Object containing error information in case of a FAILURE status.
@@ -5733,7 +5733,7 @@ definitions:
             05 - fully authenticated<br/>
             06 - authentication attempted<br/>
             07 - no authentication available<br/><br/>
-          &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 00).
+          &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 02).
         example: '05'
       errorDetails:
         $ref: '#/definitions/AuthenticationResultErrorData'

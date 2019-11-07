@@ -1,0 +1,25 @@
+<div  class="col-md-12">
+    <ul>
+        <li><a href="/faq_pm_paypal">Checkout from the Payment Page</a></li>
+        <li><a href="/faq_pm_paypal_whithout_initial_payment">PayPal Reference Transaction Without Initial Payment</a></li>
+        <li><a href="faq_pm_paypal_with_initial_payment">PayPal Reference Transaction with Initial Payment</a>
+      </ul>
+
+
+<div class="col-md-8">
+  <div ng-show="cur=='faq_pm_paypal'">
+    <div  ng-include="'/partials/faq_pm_Checkout_from_the_Payment_Page.html'">
+    </div>
+  </div>
+  <div ng-show="cur=='faq_pm_paypal_whithout_initial_payment'">
+    <div  ng-include="'/partials/faq_pm_PayPal_Referenc_Transaction_Without_Initial_Payment.html'">
+    </div>
+  </div>
+  <div ng-show="cur=='faq_pm_paypal_with_initial_payment'">
+    <div  ng-include="'/partials/faq_pm_PayPal_Referenc_Transaction_With_Initial_Payment.html'">
+    </div>
+  </div>
+</div>
+
+</div>
+

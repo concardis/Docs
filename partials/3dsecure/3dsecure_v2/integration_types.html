@@ -26,6 +26,10 @@
       </ul>
   </ul>
   <li><a href="/3dsecure/3dsecure_v2_integration_types#javaScriptSDKJSBridge" name="">JavaScript SDK (JS Bridge)</a></li>
+    <ul>
+      <li><a href="/3dsecure/3dsecure_v2_integration_types#bridgeDefaultIntegration" name="">Default integration</a></li>
+      <li><a href="/3dsecure/3dsecure_v2_integration_types#bridgeCustomIntegration" name="">Custom integration</a></li>
+    </ul>
   <li><a href="/3dsecure/3dsecure_v2_integration_types#widgetasaBridge" name="">Widget as a Bridge</a></li>
   <li><a href="/3dsecure/3dsecure_v2_integration_types#modalWidget" name="">Modal Widget</a></li>
   <li><a href="/3dsecure/3dsecure_v2_integration_types#inlineWidget" name="">Inline Widget</a></li>
@@ -787,107 +791,213 @@
   <br/>
   <h2>JavaScript SDK (JS Bridge)</h2>
   <br/>
-  <p>A new helper function <em>threeDsAuthentication()</em> can be used to trigger the 3DS authentication flow.</p>
-  <br/>
-  <p>threeDsAuthentication(paymentInstrumentId, container, parameters, callback)</p>
-  <br/>
-  <ul>
-    <li>The service will make a 3DS version call to check if 3DS is enrolled and what the corresponding version is
-      <ul>
-        <li>If the version is 1.0, it will directly call the callback function.</li>
-        <li>If the version is 2.0, it will:
-          <ul>
-            <li>Invoke the methodUrl (if present) returned from the 3DS version call</li>
-            <li>Collect the browser information</li>
-            <li>Create the threeDsAuthentication object (using the parameters input)
-              <ul>
-                <li>If a challenge is required it will open an iFrame with the challenge</li>
-                <li>Otherwise it will return the result directly</li>
-              </ul>
-            </li>
-            <li>Return the result of the 3DS authentication (authenticationId) </li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li>Result interface:
-      <ul>
-        <li>threeDsVersion: string, values: "1.0" (indicating that the execution flow will be the same as before) or "2.0"</li>
-        <li>specificData: object
-          <ul>
-            <li>"1.0" - null</li>
-            <li>includes the <em>authenticationId</em></li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-  <br/>
-  <p>3DS results with version 1.0 example:</p>
-  <br/>
-  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
-    <tbody>
-      <tr>
-        <td>
-          <code>
-            {
-              threeDsVersion: "1.0",
-              specificData: null
-            }
-          </code>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <br/>
-  <p>3DS results with version 2.0 example:</p>
-  <br/>
-  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
-    <tbody>
-      <tr>
-        <td>
-          <code>
-            {
-              threeDsVersion: "2.0",
-              specificData: {
-                  authenticationId: "authentication_123"
+  <div id="bridgeDefaultIntegration">
+    <br/>
+    <h4>Default integration</h4>
+    <br/>
+    <p>A new helper function <em>threeDsAuthentication()</em> can be used to trigger the 3DS authentication flow.</p>
+    <br/>
+    <p>threeDsAuthentication(paymentInstrumentId, container, parameters, callback)</p>
+    <br/>
+    <ul>
+      <li>The service will make a 3DS version call to check if the card is 3DS enrolled and what the corresponding version is.
+        <ul>
+          <li>If the version is null - the card is not enrolled for 3DS, the callback function will be called.</li>
+          <li>If the version is 1.0 - the callback function will be called.</li>
+          <li>If the version is 2.0:
+            <ul>
+              <li>Invoke the methodUrl (if present) returned from the 3DS version call.</li>
+              <li>Collect the browser information.</li>
+              <li>Create the threeDsAuthentication object (using the parameters input).
+                <ul>
+                  <li>If a challenge is required it will open an iFrame with the challenge.</li>
+                  <li>Otherwise it will return the result directly.</li>
+                </ul>
+              </li>
+              <li>Return the result of the 3DS authentication (authenticationId).</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Result interface:
+        <ul>
+          <li>threeDsVersion - string, values:</li>
+            <ul>
+              <li>"1.0" - - 3DS 1.0 enrolled card.</li>
+              <li>"2.0" - 3DS 2.0 enrolled card.</li>
+              <li>null - not 3DS enrolled card.</li>
+            </ul>
+          <li>specificData - object, values:
+            <ul>
+              <li>If threeDsVersion is "1.0" - <em>threeDsVersionId</em></li>
+              <li>If threeDsVersion is "2.0" - <em>authenticationId</em></li>
+              <li>If threeDsVersion is null - null</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <br/>
+    <p>3DS results with version 1.0 example:</p>
+    <br/>
+    <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+      <tbody>
+        <tr>
+          <td>
+            <code>
+              {
+                threeDsVersion: "1.0",
+                specificData: {
+                    threeDsVersionId: "threeDsVersionId_123"
+                }
               }
-            }
-          </code>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <br/>
-  <br/>
-  <p>Example of the threeDsAuthentication usage:</p>
-  <br/>
-  <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
-    <tbody>
-      <tr>
-        <td>
-          <code>
-            function callback(error, result) {
-              if (error) {
-                  console.log('Error in threeDsAuthentication method', error);
-                  return;
+            </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <p>3DS results with version 2.0 example:</p>
+    <br/>
+    <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+      <tbody>
+        <tr>
+          <td>
+            <code>
+              {
+                threeDsVersion: "2.0",
+                specificData: {
+                    authenticationId: "authentication_123"
+                }
               }
-              if (result.threeDsVersion === '1.0') {
-                  //create an order with the paymentInstrumentId
-                  //the order request will return a redirectUrl where the end customer should be redirected to
-                  return;
+            </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <br/>
+    <p>Example of the threeDsAuthentication usage in case of order flow:</p>
+    <br/>
+    <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+      <tbody>
+        <tr>
+          <td>
+            <code>
+              function callback(error, result) {
+                if (error) {
+                    console.log('Error in threeDsAuthentication method', error);
+                    return;
+                }
+                if (result.threeDsVersion === '1.0') {
+                    //create an order with the paymentInstrumentId
+                    //the order request will return a redirectUrl where the end customer should be redirected to
+                    return;
+                }
+                if (result.threeDsVersion === '2.0') {
+                    //create an order with the paymentInstrumentId and result.specificData.authenticationId
+                    //in this case the whole 3DS 2.0 flow is finished
+                }
               }
-              if (result.threeDsVersion === '2.0') {
-                  //create an order with the paymentInstrumentId and result.specificData.authenticationId
-                  //in this case the whole 3DS 2.0 flow is finished
-              }
-            }
-            window.PayEngine.threeDsAuthentication(paymentInstrumentId, container, parameters, callback);
-          </code>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+              window.PayEngine.threeDsAuthentication(paymentInstrumentId, container, parameters, callback);
+            </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br/>
+  <div id="bridgeCustomIntegration">
+    <br/>
+    <h4>Custom integration</h4>
+    <br/>
+    <p>PayEngine <a href="/buildyourown/bridge" target="_blank">Payengine JavaScript SDK (JS Bridge)</a> provides the following helper functions for the needs of custom integration:</p>
+    <br/>
+    <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+      <thead>
+        <tr>
+          <th>Function used to determine the 3DS version of the payment instrument</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>
+              PayEngine.threeDsVersion(paymentInstrumentId, callback)
+            </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+      <thead>
+        <tr>
+          <th>Function used to send base64EncodedThreeDsMethodData to the method URL, both parameters obtained from the 3DS version response</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>
+              PayEngine.invokeMethodUrl(url, methodData, container, callback)
+            </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+      <thead>
+        <tr>
+          <th>Function used to collect the browser information</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>
+              PayEngine.getBrowserInfo(callback)
+            </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+      <br/>
+    <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+      <thead>
+        <tr>
+          <th>Function used to create 3DS authentication request</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>
+              PayEngine.threeDsAuthenticationRequest(paymentInstrumentId, threeDsVersionId, parameters, callback)
+            </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+      <thead>
+        <tr>
+          <th>Function used to create and visualise 3DS challenge iFrame</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>
+              PayEngine.openChallenge(container, acsUrl, base64EncodedChallengeRequest, challengeWindowSize, threeDsAuthenticationId, onChallengeFinishCallback)
+            </code>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </section>
 <br/>
 <section id="widgetasaBridge">

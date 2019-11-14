@@ -1,0 +1,976 @@
+<div class="container row col-12">
+    <h1>PayPal Reference Transaction Without Initial Payment</h1>
+    <br/>
+    <br/>
+    <ul>
+      <li><a href="faq_pm_paypal_whithout_initial_payment#step1">About this feature</a></li>
+      <li><a href="faq_pm_paypal_whithout_initial_payment#step2">Prerequisites</a></li>
+      <li><a href="faq_pm_paypal_whithout_initial_payment#step3">Workflow</a></li>
+      <li><a href="faq_pm_paypal_whithout_initial_payment#step4">Technical Flow</a>
+        <ul>
+          <li><a href="faq_pm_paypal_whithout_initial_payment#step5">Step 1 - Create a PayPal Payment Instrument via API</a>
+            <ul>
+              <li><a href="faq_pm_paypal_whithout_initial_payment#step6">POST​/payment-instruments Specific Request Parameters</a></li>
+              <li><a href="faq_pm_paypal_whithout_initial_payment#step7">Update existing payment instrument: </a></li>
+            </ul>
+          </li>
+          <li><a href="faq_pm_paypal_whithout_initial_payment#step8">Step 2 - Create a debit transaction: POST/orders/debit</a></li>
+          <li><a href="faq_pm_paypal_whithout_initial_payment#step9">Refund Specific Request Parameters</a></li>
+          <li><a href="faq_pm_paypal_whithout_initial_payment#step10">Billing Agreement Cancellation</a></li>
+          <li><a href="faq_pm_paypal_whithout_initial_payment#step11">Specific Request BIlling Agreement Cancellation Parameters</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div>
+      <div id="step1">
+        <br/>
+        <br/>
+        <h2>About this feature</h2>
+        <br/>
+        <p>
+          Reference Transaction Without Initial Payment for PayPal enables a merchant to execute recurring payment transactions for a particular customer, based on a Billing Agreement, without immediately charging the customer at the time of checkout.
+        </p>
+      </div>
+      <br/>
+      <br/>
+      <div id="step2">
+        <br/>
+        <br/>
+        <h2>Prerequisites</h2>
+        <br/>
+        <p>То executе a Reference Transaction Without Initial Payment for PayPal:</p>
+        <ul>
+          <li>The PayPal payment method must be set and enabled by the Payengine support team.</li>
+          <li>PayPal Integrated Signup(ISU) must be set by the merchant in the Merchant Center.</li>
+        </ul>
+        <br/>
+      </div>
+      <div id="step3">
+        <br/>
+        <br/>
+        <h2>The following describes the workflow for this feature:</h2>
+        <br/>
+        <ol>
+          <li>The merchant creates a PayPal payment Instrument.
+            <ol>
+              <li>The merchant creates a payment instrument via API. (Payment Instrument creation via Merchant Center is not possible due to an end user interaction requirement.)</li>
+              <li>In the Payment Instrument response, Payengine provides the billing agreement approval URL, to which the customer will be redirected.</li>
+              <li>Once the merchant receives an approval for the billing agreement from the customer, the payment instrument becomes recurring is ready for use for debit translactions.</li>
+              <p><strong>ADVANTAGES</strong> This billing agreement provides PayPal with an authorization to captute future payments. 
+              <br/>
+              The buyer does not have to log in to PayPal to authorize future payments.
+            </p>
+            </ol>
+          </li>
+          <li>The merchant can place orders on behalf of the customer, using the existing PayPal payment instrument. </li>
+        </ol>
+      </div>
+      <br/>
+      <br/>
+      <div id="step4">
+        <h2 id="step5">Technical Flow</h2>
+        <br/>
+        <p>The technical flow of Reference Transaction Without Initial Payment follows the steps below:</p>
+        <br/>
+        <br/>
+        <h3 id="step6">Step 1 - Create a PayPal Payment Instrument via API</h3>
+        <br/>
+        <table class="table table-bordered table-striped table-condensed">
+            <tbody>
+              <tr>
+                <td style="border-right: none;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px"></td>
+                <td>
+                  <p><strong>Important</strong></p>
+                  <br/>
+                  <p>Creating Payment Instrument for Reference Transaction Without Initial Payment is executed via API</p>
+                  <br/>
+                  <p><strong>NOTE</strong> There is an end-user interaction required.</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        <br/>
+        <h3>POST​/payment-instruments Specific Request Parameters</h3>
+        <br/>
+        <p>The parameters <em>returnUrl, cancelUrl, and notifyUrl</em> from the "returnUrl": <a href="https://example.com/return">"https://example.com/return"</a>, cancelUrl": <a href="https://example.com/cancel">"https://example.com/cancel"</a>, "notifyUrl": <a href="https://example.com/notify">"https://example.com/notify"</a> URLs, have the following role:</p>
+        <table class="table table-bordered table-striped table-condensed">
+          <thead>
+            <tr>
+              <tr>
+                <th width="33%">Prerequisite</th>
+                <th width="33%">Mandatory/Optional</th>
+                <th width="33%">Create Prerequisite</th>
+              </tr>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td width="33%">returnUrl</td>
+              <td width="33%">M</td>
+              <td width="33%">
+                  The URL to which to redirect the customer when they have successfully accepted the PayPal billing agreement.
+                  <br/>
+                  <strong>NOTE</strong> Maximum length: 2048.
+              </td>
+            </tr>
+            <tr>
+              <td width="33%">cancelUrl</td>
+              <td width="33%">M</td>
+              <td width="33%">
+                  The URL to which the customer is redirected in cases when the PayPal billing agreement must be cancelled.
+                  <br/>
+                  <strong>NOTE</strong>  Maximum length: 2048.
+              </td>
+            </tr>
+            <tr>
+              <td width="33%">notifyUrl</td>
+              <td width="33%">O</td>
+              <td width="33%">
+                Notification URL provided by the merchant. The URL to which notifications are sent, when the PayPal billing agreement is created or canceled or payments on this billing agreement are processed.
+                <br/>
+                <strong>NOTE</strong> Read only. Maximum length: 2048.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br/>
+        <p>Example:</p>
+        <div>
+          <div class="example-box-wrapper">
+            <div class="content-box" ng-init="createCustomerResponseShoww=false">
+              <h3 class="content-box-header bg-default">
+                Create Payment Instrument request
+                <div class="header-buttons-separator">
+                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShoww=!createCustomerResponseShoww;">
+                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShoww"></i>
+                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShoww"></i>
+                  </a>
+                </div>
+              </h3>
+              <div class="content-box-wrapper" ng-if="createCustomerResponseShoww">
+                <code>
+                    {
+                      "type": "paypal",
+                      "payment": {
+                        "returnUrl": "https://example.com/return",
+                    "cancelUrl": "https://example.com/cancel",
+                    "notifyUrl": "https://example.com/notify"
+                      }
+                    }
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <h4>Response POST/payment-instruments</h4>
+        <br/>
+        <p>In the Payment Instrument response, Payengine provides the billing agreement approval URL:</p>
+        <br/>
+        <p>Example:</p>
+        <div>
+          <div class="example-box-wrapper">
+            <div class="content-box" ng-init="createCustomerResponseShow3=false">
+              <h3 class="content-box-header bg-default">
+                Create Payment Instrument response
+                <div class="header-buttons-separator">
+                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow3=!createCustomerResponseShow3;">
+                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow3"></i>
+                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow3"></i>
+                  </a>
+                </div>
+              </h3>
+              <div class="content-box-wrapper" ng-if="createCustomerResponseShow3">
+                <code>
+                    {
+                      "createdAt": 1563782183602,
+                      "modifiedAt": 1563782183602,
+                      "paymentInstrumentId": "paymentinstrument_rwvobmuagt",
+                      "merchantPaymentInstrumentId": null,
+                      "attributes": {
+                          "email": null,
+                          "currency": null,
+                          "billingAgreementId": null,
+                          "billingAgreementApprovalUrl": "https://www.sandbox.paypal.com/agreements/approve?ba_token=BA-3MK808400X477400M",
+                          "billingAgreementToken": "BA-3MK808400X477400M",
+                          "returnUrl": "https://www.google.de/#newwindow=1&q=return",
+                          "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel",
+                          "notifyUrl": "https://www.google.de/#newwindow=1&q=notify",
+                          "payerId": null
+                      },
+                      "encrypted": false,
+                      "origin": "paypal",
+                      "type": "paypal",
+                      "recurring": false,
+                      "recurringConsent": null
+                  }
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <p>The payment instrument will be ready for use in debit requests once:</p>
+        <br/>
+        <ul>
+          <li>The billing agreement payment instrument is successfully created.</li>
+          <li>The recurring parameter is set to true</li>
+          <li>The <em>billingAgreementId</em> is set in the PayPal object which belongs to the already created PayPal payment instrument.</li>
+        </ul>
+        <br/>
+        <br/>
+        <h4 id="step7">Update existing payment instrument: </h4>
+        <br/>
+        <h3>PATCH​/payment-instruments​/{paymentInstrumentId}</h3>
+        <br/>
+        <table class="table table-bordered table-striped table-condensed">
+          <thead>
+            <tr>
+              <tr>
+                <th width="25%">Parameter</th>
+                <th width="25%">Mandatory/Optional</th>
+                <th width="25%">Description</th>
+                <th width="25%">Example</th>
+              </tr>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td width="25%">PATCH/payment-instruments/{paymentInstrumentId}</td>
+              <td width="25%"></td>
+              <td width="25%">
+                <strong>NOTE</strong><br/>
+                  Update the payment instrument - only the notifyUrl parameter could be updated.
+              </td>
+              <td width="25%"></td>
+            </tr>
+          </tbody>
+        </table>
+        <div>
+          <div class="example-box-wrapper">
+            <div class="content-box" ng-init="createCustomerResponseShow4=false">
+              <h3 class="content-box-header bg-default">
+                  PATCH request
+                <div class="header-buttons-separator">
+                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow4=!createCustomerResponseShow4;">
+                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow4"></i>
+                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow4"></i>
+                  </a>
+                </div>
+              </h3>
+              <div class="content-box-wrapper" ng-if="createCustomerResponseShow4">
+                <code>
+                    {
+                        "notifyUrl": "https://example.com/notify2"
+                    }
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <h3 id="step8">Step 2 - Create a debit transaction: POST/orders/debit</h3>
+        <br/>
+        <p>Place an order, using an existing PayPal billing agreement.</p>
+        <br/>
+        <p><strong>NOTE</strong> Use the created payment instrument with the orderID from the from CreateOrder and the <em>billingagreementid</em> from BillingAgreementApprove</p>
+        <br/>
+        <p>PayPal does not allow partial capture for reference transactions. Hence, the preauth + capture option is not allowed in Payengine.</p>
+        <br/>
+        <div>
+          <div class="example-box-wrapper">
+            <div class="content-box" ng-init="createCustomerResponseShow5=false">
+              <h3 class="content-box-header bg-default">
+                Request for PayPal debit with created Payment Instrument
+                <div class="header-buttons-separator">
+                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow5=!createCustomerResponseShow5;">
+                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow5"></i>
+                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow5"></i>
+                  </a>
+                </div>
+              </h3>
+              <div class="content-box-wrapper" ng-if="createCustomerResponseShow5">
+                <code>
+                    {
+                      "product" : "paypal",
+                      "terms": 1468590412476,
+                      "privacy": 1468590412476,
+                      "merchantOrderId": "{{$timestamp}}",
+                      "description": "test transaction",
+                      "statementDescription": "statement description",
+                      "initialAmount": {{totalAmount}},
+                      "currency": "EUR",
+                      "basket": [
+                        {
+                          "name": "USB-Stick",
+                          "articleNumber": "SW10029",
+                          "totalPrice": {{totalAmount}},
+                          "totalPriceWithTax": {{totalAmount}},
+                          "unitPrice": {{totalAmount}},
+                          "unitPriceWithTax": {{totalAmount}},
+                          "tax": 0,
+                          "quantity": 1
+                        }
+                      ],
+                      "deviceIdent": {
+                        "deviceIdentToken": "5ebdc8bdac7d4a27ab39f8e88bda5868"
+                      },
+                      "customer": "{{customerId}}",
+                      "persona": "{{personaId}}",
+                      "billingAddress": "{{addressId}}",
+                      "shippingAddress": "{{addressId}}",
+                      "ipAddress": "82.120.21.79",
+                      "channel": "ECOM",
+                      "payment": {
+                         "paymentInstrumentId": "paymentinstrument_5eqsnnoeyb"
+                         
+                     },
+                     "meta":{
+                            
+                        "addressOverride": true
+                     },
+                      "source": "Postman Test",
+                      "async": {
+                        "successUrl": "https://www.google.de/#newwindow=1&q=success",
+                        "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+                        "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
+                      }
+                    }
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <br/>
+        <div>
+          <div class="example-box-wrapper">
+            <div class="content-box" ng-init="createCustomerResponseShow4=false">
+              <h3 class="content-box-header bg-default">
+                Success response of Create Debit with the created Payment Instrument
+                <div class="header-buttons-separator">
+                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow2=!createCustomerResponseShow2;">
+                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow2"></i>
+                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow2"></i>
+                  </a>
+                </div>
+              </h3>
+              <div class="content-box-wrapper" ng-if="createCustomerResponseShow2">
+                <code>
+                    {
+                      "createdAt": 1563782891358,
+                      "modifiedAt": 1563782891398,
+                      "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
+                      "terms": 1468590412476,
+                      "privacy": 1468590412476,
+                      "orderId": "ycw1gkq31m",
+                      "merchantOrderId": "1563782891",
+                      "paymentProviderTransactionId": "1V357135V1796140Y",
+                      "description": "test transaction",
+                      "statementDescription": "statement description",
+                      "initialAmount": 1190,
+                      "preauthorizedAmount": 1190,
+                      "capturedAmount": 0,
+                      "refundedAmount": 0,
+                      "canceledAmount": 0,
+                      "currency": "EUR",
+                      "basket": [
+                          {
+                              "id": "Article-97c630ca-dd1f-4a52-99e0-10ef3936f4f4",
+                              "name": "USB-Stick",
+                              "articleNumber": "SW10029",
+                              "totalPrice": 1190,
+                              "totalPriceWithTax": 1190,
+                              "unitPrice": 1190,
+                              "unitPriceWithTax": 1190,
+                              "quantity": 1,
+                              "tax": 0,
+                              "discount": null,
+                              "imageUrl": null,
+                              "articleUrl": null,
+                              "articleType": null
+                          }
+                      ],
+                      "customer": {
+                          "merchantCustomerId": "merchantCustomerId_1563529063",
+                          "organizationRegistrationRegister": null,
+                          "organizationRegistrationId": null,
+                          "organizationEntityType": null,
+                          "organizationVatId": null,
+                          "companyName": null,
+                          "reference": null,
+                          "email": "test@payengine-test.de",
+                          "customerId": "customer_xmyh2gb8vg",
+                          "addresses": [],
+                          "personas": [],
+                          "paymentInstruments": [],
+                          "createdAt": 1563529063237,
+                          "modifiedAt": 1563529063237,
+                          "customerType": null
+                      },
+                      "persona": {
+                          "personaId": "persona_8pjhueptok",
+                          "firstName": "Nadya",
+                          "lastName": "Chervenkova",
+                          "phone": "00493012345",
+                          "mobile": "00493012345",
+                          "fax": "00493012345",
+                          "birthday": 358293600000,
+                          "gender": "MALE",
+                          "title": "Prof. Dr.",
+                          "createdAt": 1563529068834,
+                          "modifiedAt": 1563529068834
+                      },
+                      "billingAddress": {
+                          "firstName": "Nadya",
+                          "lastName": "Chervenkova",
+                          "street": "Musterweg",
+                          "houseNumber": "317249346",
+                          "city": "Musterhausen",
+                          "zip": "55555",
+                          "country": "DE",
+                          "state": "Bayern",
+                          "phone": "00493012345",
+                          "fax": "00493012345",
+                          "mobile": "00493012345",
+                          "title": "Prof. Dr.",
+                          "additionalDetails": "premium buyer",
+                          "addressId": "address_7f8vxsukei",
+                          "createdAt": 1563529065638,
+                          "modifiedAt": 1563529065638
+                      },
+                      "shippingAddress": {
+                          "firstName": "Nadya",
+                          "lastName": "Chervenkova",
+                          "street": "Musterweg",
+                          "houseNumber": "317249346",
+                          "city": "Musterhausen",
+                          "zip": "55555",
+                          "country": "DE",
+                          "state": "Bayern",
+                          "phone": "00493012345",
+                          "fax": "00493012345",
+                          "mobile": "00493012345",
+                          "title": "Prof. Dr.",
+                          "additionalDetails": "premium buyer",
+                          "addressId": "address_7f8vxsukei",
+                          "createdAt": 1563529065638,
+                          "modifiedAt": 1563529065638
+                      },
+                      "ipAddress": "82.120.21.79",
+                      "paymentInstrument": {
+                          "createdAt": 1563782784188,
+                          "modifiedAt": 1563782813202,
+                          "paymentInstrumentId": "paymentinstrument_5eqsnnoeyb",
+                          "merchantPaymentInstrumentId": null,
+                          "attributes": {
+                              "email": "stefan.harenkamp-buyer@payintelligent.de",
+                              "currency": null,
+                              "billingAgreementId": "B-1YN01787AA5074023",
+                              "billingAgreementApprovalUrl": "https://www.sandbox.paypal.com/agreements/approve?ba_token=BA-5AK294631L965924W",
+                              "billingAgreementToken": "BA-5AK294631L965924W",
+                              "returnUrl": "https://www.google.de/#newwindow=1&q=return",
+                              "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel",
+                              "notifyUrl": "https://www.google.de/#newwindow=1&q=notify",
+                              "payerId": "PN27WNUZJFKUL"
+                          },
+                          "encrypted": false,
+                          "origin": "paypal",
+                          "type": "paypal",
+                          "recurring": true,
+                          "recurringConsent": null
+                      },
+                      "transactions": [
+                          {
+                              "createdAt": 1563782891359,
+                              "modifiedAt": 1563782891398,
+                              "type": "DEBIT",
+                              "transactionId": "transaction_nskliu7pg8",
+                              "description": "test transaction",
+                              "initialAmount": 1190,
+                              "refundedAmount": 0,
+                              "currency": "EUR",
+                              "status": "SUCCESS",
+                              "order": "ycw1gkq31m",
+                              "parentTransaction": null,
+                              "transactions": null,
+                              "basket": [
+                                  {
+                                      "id": "Article-97c630ca-dd1f-4a52-99e0-10ef3936f4f4",
+                                      "name": "USB-Stick",
+                                      "articleNumber": "SW10029",
+                                      "totalPrice": 1190,
+                                      "totalPriceWithTax": 1190,
+                                      "unitPrice": 1190,
+                                      "unitPriceWithTax": 1190,
+                                      "quantity": 1,
+                                      "tax": 0,
+                                      "discount": null,
+                                      "imageUrl": null,
+                                      "articleUrl": null,
+                                      "articleType": null
+                                  }
+                              ],
+                              "providerCode": null,
+                              "merchantMessage": null,
+                              "customerMessage": null,
+                              "descriptor": null,
+                              "meta": null,
+                              "challenge": null,
+                              "asyncNotificationSubscriptionId": null,
+                              "tracking": null
+                          }
+                      ],
+                      "status": "OPEN",
+                      "channel": "ECOM",
+                      "source": "Postman Test",
+                      "settled": false,
+                      "settlementDate": null,
+                      "allowedProducts": null,
+                      "product": "paypal",
+                      "transactionType": "DEBIT",
+                      "meta": {
+                          "deferred": false,
+                          "addressOverride": true
+                      },
+                      "async": {
+                          "successUrl": "https://www.google.de/#newwindow=1&q=success",
+                          "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+                          "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
+                      },
+                      "deviceIdent": null,
+                      "clientType": "BRW",
+                      "asyncNotificationSubscriptionId": null,
+                      "lastOperation": "TRANSACTION_DEBIT_SUCCESS",
+                      "redirectUrl": null
+                  }
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <h4 id="step9">Refund Specific Request Parameters</h4>
+        <br/>
+        <p>POST {{publicApiUrl}}/{{apiVersion}}/orders/{{orderId}}/transactions/{{transactionId}}/refund</p>
+        <br/>
+        <div>
+          <div class="example-box-wrapper">
+            <div class="content-box" ng-init="createCustomerResponseShow5=false">
+              <h3 class="content-box-header bg-default">
+                Refund Specific Request
+                <div class="header-buttons-separator">
+                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow6=!createCustomerResponseShow6;">
+                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow6"></i>
+                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow6"></i>
+                  </a>
+                </div>
+              </h3>
+              <div class="content-box-wrapper" ng-if="createCustomerResponseShow6">
+                <code>
+                    {
+                      "description": "description for transaction.",
+                      "initialAmount": 200,
+                      "currency": "EUR",
+                      "basket": [
+                        {
+                          "name": "USB-Stick",
+                          "articleNumber": "SW10029",
+                          "totalPrice": 200,
+                          "totalPriceWithTax": 200,
+                          "unitPrice": 200,
+                          "unitPriceWithTax": 200,
+                          "tax": 0,
+                          "quantity": 1
+                        }
+                      ]
+                    }
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div>
+            <div class="example-box-wrapper">
+              <div class="content-box" ng-init="createCustomerResponseShow5=false">
+                <h3 class="content-box-header bg-default">
+                  Refund Specific Response
+                  <div class="header-buttons-separator">
+                    <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow7=!createCustomerResponseShow7;">
+                      <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow7"></i>
+                      <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow7"></i>
+                    </a>
+                  </div>
+                </h3>
+                <div class="content-box-wrapper" ng-if="createCustomerResponseShow7">
+                  <code>
+                      {
+                        "createdAt": 1565253820098,
+                        "modifiedAt": 1565253823657,
+                        "type": "REFUND",
+                        "transactionId": "transaction_v2y6nssauc",
+                        "description": "description for transaction.",
+                        "initialAmount": 200,
+                        "currency": "EUR",
+                        "status": "SUCCESS",
+                        "order": {
+                            "createdAt": 1565253591521,
+                            "modifiedAt": 1565253823657,
+                            "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
+                            "terms": 1468590412476,
+                            "privacy": 1468590412476,
+                            "orderId": "nv4wkeslz8",
+                            "merchantOrderId": "1565253591",
+                            "paymentProviderTransactionId": "0YB099222U808093G",
+                            "description": "test transaction",
+                            "statementDescription": "statement description",
+                            "initialAmount": 4000,
+                            "preauthorizedAmount": 4000,
+                            "capturedAmount": 4000,
+                            "refundedAmount": 200,
+                            "canceledAmount": 0,
+                            "currency": "EUR",
+                            "basket": [
+                                {
+                                    "id": "Article-a971341a-5598-49ab-89f7-a7c57b81d99f",
+                                    "name": "USB-Stick",
+                                    "articleNumber": "SW10029",
+                                    "totalPrice": 4000,
+                                    "totalPriceWithTax": 4000,
+                                    "unitPrice": 0,
+                                    "unitPriceWithTax": 0,
+                                    "quantity": 2,
+                                    "tax": 0,
+                                    "discount": null,
+                                    "imageUrl": null,
+                                    "articleUrl": null,
+                                    "articleType": null
+                                }
+                            ],
+                            "customer": {
+                                "merchantCustomerId": null,
+                                "organizationRegistrationRegister": null,
+                                "organizationRegistrationId": null,
+                                "organizationEntityType": null,
+                                "organizationVatId": null,
+                                "companyName": null,
+                                "reference": null,
+                                "email": null,
+                                "customerId": "customer_vx1feoglkl",
+                                "addresses": [],
+                                "personas": [],
+                                "paymentInstruments": [],
+                                "createdAt": 1565253591527,
+                                "modifiedAt": 1565253591527,
+                                "customerType": null
+                            },
+                            "persona": null,
+                            "billingAddress": null,
+                            "shippingAddress": null,
+                            "ipAddress": "82.120.21.79",
+                            "paymentInstrument": {
+                                "createdAt": 1565252302242,
+                                "modifiedAt": 1565253323115,
+                                "paymentInstrumentId": "paymentinstrument_5qczk2up7a",
+                                "merchantPaymentInstrumentId": null,
+                                "attributes": {
+                                    "email": "stefan.harenkamp-buyer@payintelligent.de",
+                                    "currency": null,
+                                    "billingAgreementId": "B-4PC07551G46766326",
+                                    "billingAgreementApprovalUrl": "https://www.sandbox.paypal.com/agreements/approve?ba_token=BA-4R3039585D0848410",
+                                    "billingAgreementToken": "BA-4R3039585D0848410",
+                                    "returnUrl": "https://example.com/return",
+                                    "cancelUrl": "https://example.com/cancel",
+                                    "notifyUrl": "https://example.com/notify",
+                                    "payerId": "PN27WNUZJFKUL"
+                                },
+                                "encrypted": false,
+                                "origin": "paypal",
+                                "type": "paypal",
+                                "recurring": true,
+                                "recurringConsent": null
+                            },
+                            "transactions": [
+                                {
+                                    "createdAt": 1565253591523,
+                                    "modifiedAt": 1565253598966,
+                                    "type": "DEBIT",
+                                    "transactionId": "transaction_lajpuyfjx3",
+                                    "description": "test transaction",
+                                    "initialAmount": 4000,
+                                    "refundedAmount": 200,
+                                    "currency": "EUR",
+                                    "status": "SUCCESS",
+                                    "order": "nv4wkeslz8",
+                                    "parentTransaction": null,
+                                    "transactions": [
+                                        "transaction_v2y6nssauc"
+                                    ],
+                                    "basket": [
+                                        {
+                                            "id": "Article-a971341a-5598-49ab-89f7-a7c57b81d99f",
+                                            "name": "USB-Stick",
+                                            "articleNumber": "SW10029",
+                                            "totalPrice": 4000,
+                                            "totalPriceWithTax": 4000,
+                                            "unitPrice": 0,
+                                            "unitPriceWithTax": 0,
+                                            "quantity": 2,
+                                            "tax": 0,
+                                            "discount": null,
+                                            "imageUrl": null,
+                                            "articleUrl": null,
+                                            "articleType": null
+                                        }
+                                    ],
+                                    "providerCode": null,
+                                    "merchantMessage": null,
+                                    "customerMessage": null,
+                                    "descriptor": null,
+                                    "meta": null,
+                                    "challenge": null,
+                                    "asyncNotificationSubscriptionId": null,
+                                    "tracking": []
+                                }
+                            ],
+                            "status": "OPEN",
+                            "channel": "ECOM",
+                            "source": "Postman Test",
+                            "settled": false,
+                            "settlementDate": null,
+                            "allowedProducts": [],
+                            "product": "paypal",
+                            "transactionType": "DEBIT",
+                            "meta": {
+                                "deferred": false,
+                                "addressOverride": true
+                            },
+                            "async": null,
+                            "deviceIdent": null,
+                            "clientType": "BRW",
+                            "asyncNotificationSubscriptionId": null,
+                            "lastOperation": "TRANSACTION_REFUND_SUCCESS",
+                            "locale": null
+                        },
+                        "parentTransaction": {
+                            "createdAt": 1565253591523,
+                            "modifiedAt": 1565253598966,
+                            "type": "DEBIT",
+                            "transactionId": "transaction_lajpuyfjx3",
+                            "description": "test transaction",
+                            "initialAmount": 4000,
+                            "refundedAmount": 200,
+                            "currency": "EUR",
+                            "status": "SUCCESS",
+                            "order": {
+                                "createdAt": 1565253591521,
+                                "modifiedAt": 1565253823657,
+                                "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
+                                "terms": 1468590412476,
+                                "privacy": 1468590412476,
+                                "orderId": "nv4wkeslz8",
+                                "merchantOrderId": "1565253591",
+                                "paymentProviderTransactionId": "0YB099222U808093G",
+                                "description": "test transaction",
+                                "statementDescription": "statement description",
+                                "initialAmount": 4000,
+                                "preauthorizedAmount": 4000,
+                                "capturedAmount": 4000,
+                                "refundedAmount": 200,
+                                "canceledAmount": 0,
+                                "currency": "EUR",
+                                "basket": [
+                                    {
+                                        "id": "Article-a971341a-5598-49ab-89f7-a7c57b81d99f",
+                                        "name": "USB-Stick",
+                                        "articleNumber": "SW10029",
+                                        "totalPrice": 4000,
+                                        "totalPriceWithTax": 4000,
+                                        "unitPrice": 0,
+                                        "unitPriceWithTax": 0,
+                                        "quantity": 2,
+                                        "tax": 0,
+                                        "discount": null,
+                                        "imageUrl": null,
+                                        "articleUrl": null,
+                                        "articleType": null
+                                    }
+                                ],
+                                "customer": {
+                                    "merchantCustomerId": null,
+                                    "organizationRegistrationRegister": null,
+                                    "organizationRegistrationId": null,
+                                    "organizationEntityType": null,
+                                    "organizationVatId": null,
+                                    "companyName": null,
+                                    "reference": null,
+                                    "email": null,
+                                    "customerId": "customer_vx1feoglkl",
+                                    "addresses": [],
+                                    "personas": [],
+                                    "paymentInstruments": [],
+                                    "createdAt": 1565253591527,
+                                    "modifiedAt": 1565253591527,
+                                    "customerType": null
+                                },
+                                "persona": null,
+                                "billingAddress": null,
+                                "shippingAddress": null,
+                                "ipAddress": "82.120.21.79",
+                                "paymentInstrument": {
+                                    "createdAt": 1565252302242,
+                                    "modifiedAt": 1565253323115,
+                                    "paymentInstrumentId": "paymentinstrument_5qczk2up7a",
+                                    "merchantPaymentInstrumentId": null,
+                                    "attributes": {
+                                        "email": "stefan.harenkamp-buyer@payintelligent.de",
+                                        "currency": null,
+                                        "billingAgreementId": "B-4PC07551G46766326",
+                                        "billingAgreementApprovalUrl": "https://www.sandbox.paypal.com/agreements/approve?ba_token=BA-4R3039585D0848410",
+                                        "billingAgreementToken": "BA-4R3039585D0848410",
+                                        "returnUrl": "https://example.com/return",
+                                        "cancelUrl": "https://example.com/cancel",
+                                        "notifyUrl": "https://example.com/notify",
+                                        "payerId": "PN27WNUZJFKUL"
+                                    },
+                                    "encrypted": false,
+                                    "origin": "paypal",
+                                    "type": "paypal",
+                                    "recurring": true,
+                                    "recurringConsent": null
+                                },
+                                "transactions": [
+                                    "transaction_lajpuyfjx3"
+                                ],
+                                "status": "OPEN",
+                                "channel": "ECOM",
+                                "source": "Postman Test",
+                                "settled": false,
+                                "settlementDate": null,
+                                "allowedProducts": [],
+                                "product": "paypal",
+                                "transactionType": "DEBIT",
+                                "meta": {
+                                    "deferred": false,
+                                    "addressOverride": true
+                                },
+                                "async": null,
+                                "deviceIdent": null,
+                                "clientType": "BRW",
+                                "asyncNotificationSubscriptionId": null,
+                                "lastOperation": "TRANSACTION_REFUND_SUCCESS",
+                                "locale": null
+                            },
+                            "parentTransaction": null,
+                            "transactions": [
+                                "transaction_v2y6nssauc"
+                            ],
+                            "basket": [
+                                {
+                                    "id": "Article-a971341a-5598-49ab-89f7-a7c57b81d99f",
+                                    "name": "USB-Stick",
+                                    "articleNumber": "SW10029",
+                                    "totalPrice": 4000,
+                                    "totalPriceWithTax": 4000,
+                                    "unitPrice": 0,
+                                    "unitPriceWithTax": 0,
+                                    "quantity": 2,
+                                    "tax": 0,
+                                    "discount": null,
+                                    "imageUrl": null,
+                                    "articleUrl": null,
+                                    "articleType": null
+                                }
+                            ],
+                            "providerCode": null,
+                            "merchantMessage": null,
+                            "customerMessage": null,
+                            "descriptor": null,
+                            "meta": null,
+                            "challenge": null,
+                            "asyncNotificationSubscriptionId": null,
+                            "tracking": []
+                        },
+                        "transactions": null,
+                        "basket": [
+                            {
+                                "id": "Article-afbc6358-788f-406f-83b1-926963e1c4a2",
+                                "name": "USB-Stick",
+                                "articleNumber": "SW10029",
+                                "totalPrice": 200,
+                                "totalPriceWithTax": 200,
+                                "unitPrice": 200,
+                                "unitPriceWithTax": 200,
+                                "quantity": 1,
+                                "tax": 0,
+                                "discount": null,
+                                "imageUrl": null,
+                                "articleUrl": null,
+                                "articleType": null
+                            }
+                        ],
+                        "providerCode": null,
+                        "merchantMessage": null,
+                        "customerMessage": null,
+                        "descriptor": null,
+                        "meta": null,
+                        "challenge": null,
+                        "asyncNotificationSubscriptionId": null,
+                        "tracking": null
+                    }
+                  </code>
+                </div>
+              </div>
+            </div>
+          </div>
+        <br/>
+        <h4 id="step10">Billing Agreement Cancellation </h4>
+        <br/>
+        <p>When the customer wants to cancel an existing billing agreement, the Payment instrument must be deleted.</p>
+        <br/>
+        <p>The merchant requests the cancellation of the billing agreement via the Payengine.</p>
+        <br/>
+        <div>
+          <div class="example-box-wrapper">
+            <div class="content-box" ng-init="createCustomerResponseShow4=false">
+              <h3 class="content-box-header bg-default">
+                Billing Agreement Cancellation
+                <div class="header-buttons-separator">
+                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow4=!createCustomerResponseShow4;">
+                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow4"></i>
+                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow4"></i>
+                  </a>
+                </div>
+              </h3>
+              <div class="content-box-wrapper" ng-if="createCustomerResponseShow4">
+                <code>
+                  DELETE {{publicApiUrl}}/{{apiVersion}}/payment-instruments/{{paymentInstrumentId}}
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <h3 id="step11">Specific Request BIlling Agreement Cancellation Parameters</h3>
+         <br/>
+         <table class="table table-bordered table-striped table-condensed">
+            <thead>
+              <tr>
+                <tr>
+                  <th width="50%">Parameter</th>
+                  <th width="50%">Description</th>
+                </tr>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td width="50%">DELETE /payment-instruments/{paymentInstrumentId}</td>
+                <td width="50%">Cancels a billing agreement by ID.</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+    
+</div>

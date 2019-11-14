@@ -44,7 +44,10 @@ angular.module('StudyCraneApp',[
   .when('/merchantcenter', {templateUrl: 'partials/merchantcenter.html', controller:'merchantcenterCtrl'})
   .when('/merchantcenter/:id', {templateUrl: 'partials/merchantcenter.html', controller:'merchantcenterCtrl'})
 	.when('/3dsecure', {templateUrl: 'partials/3dsecure.html', controller:'3dsecureCtrl'})
-	.when('/3dsecure/:id', {templateUrl: 'partials/3dsecure.html', controller:'3dsecureCtrl'});
+  .when('/3dsecure/:id', {templateUrl: 'partials/3dsecure.html', controller:'3dsecureCtrl'})
+  .when('/faq_pm_paypal', {templateUrl: '/partials/faq_pm_Checkout_from_the_Payment_Page.html', controller:'faqCtrl'})
+  .when('/faq_pm_paypal_whithout_initial_payment', {templateUrl: '/partials/faq_pm_PayPal_Referenc_Transaction_Without_Initial_Payment.html', controller:'faqCtrl'})
+  .when('/faq_pm_paypal_with_initial_payment', {templateUrl: '/partials/faq_pm_PayPal_Referenc_Transaction_With_Initial_Payment.html', controller:'faqCtrl'})
 
 
 	$httpProvider.defaults.useXDomain = true;
@@ -253,6 +256,18 @@ console.log("trying start REDOCS");
 
 
 }])
+
+.controller('faqCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', '$routeParams', function($rootScope, $scope, $http, backendService, $timeout, $routeParams) {
+	$rootScope.site = "faq_pm_paypal";
+
+  if($routeParams.id)
+    $scope.cur = $routeParams.id;
+  else
+    $scope.cur ="faq_paypal";
+
+
+}])
+
 .controller('restdocCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', '$routeParams', function($rootScope, $scope, $http, backendService, $timeout, $routeParams) {
   $rootScope.site = "rd";
 

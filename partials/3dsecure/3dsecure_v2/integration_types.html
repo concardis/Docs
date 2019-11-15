@@ -732,7 +732,7 @@
               <tbody>
                 <tr>
                   <td>
-                    <code>PayEngine.openChallenge(container, acsUrl, base64EncodedChallengeRequest, null, challengeWindowSize, onChallengeFinishCallback); // no need to provide threeDsAuthenticationId in case of order flow
+                    <code>PayEngine.openChallenge(container, acsUrl, base64EncodedChallengeRequest, challengeWindowSize, null, onChallengeFinishCallback); // no need to provide threeDsAuthenticationId in case of order flow
                     </code>
                   </td>
                 </tr>
@@ -823,7 +823,7 @@
         <ul>
           <li>threeDsVersion - string, values:</li>
             <ul>
-              <li>"1.0" - - 3DS 1.0 enrolled card.</li>
+              <li>"1.0" - 3DS 1.0 enrolled card.</li>
               <li>"2.0" - 3DS 2.0 enrolled card.</li>
               <li>null - not 3DS enrolled card.</li>
             </ul>
@@ -911,7 +911,7 @@
     <br/>
     <h4>Custom integration</h4>
     <br/>
-    <p>PayEngine <a href="/buildyourown/bridge" target="_blank">Payengine JavaScript SDK (JS Bridge)</a> provides the following helper functions for the needs of custom integration:</p>
+    <p>Payengine <a href="/buildyourown/bridge" target="_blank">JavaScript SDK (JS Bridge)</a> provides the following helper functions for the needs of custom integration:</p>
     <br/>
     <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
       <thead>
@@ -922,8 +922,7 @@
       <tbody>
         <tr>
           <td>
-            <code>
-              PayEngine.threeDsVersion(paymentInstrumentId, callback)
+            <code>PayEngine.threeDsVersion(paymentInstrumentId, callback)
             </code>
           </td>
         </tr>
@@ -939,8 +938,7 @@
       <tbody>
         <tr>
           <td>
-            <code>
-              PayEngine.invokeMethodUrl(url, methodData, container, callback)
+            <code>PayEngine.invokeMethodUrl(url, methodData, container, callback)
             </code>
           </td>
         </tr>
@@ -956,8 +954,7 @@
       <tbody>
         <tr>
           <td>
-            <code>
-              PayEngine.getBrowserInfo(callback)
+            <code>PayEngine.getBrowserInfo(callback)
             </code>
           </td>
         </tr>
@@ -973,8 +970,7 @@
       <tbody>
         <tr>
           <td>
-            <code>
-              PayEngine.threeDsAuthenticationRequest(paymentInstrumentId, threeDsVersionId, parameters, callback)
+            <code>PayEngine.threeDsAuthenticationRequest(paymentInstrumentId, threeDsVersionId, parameters, callback)
             </code>
           </td>
         </tr>
@@ -990,8 +986,7 @@
       <tbody>
         <tr>
           <td>
-            <code>
-              PayEngine.openChallenge(container, acsUrl, base64EncodedChallengeRequest, challengeWindowSize, threeDsAuthenticationId, onChallengeFinishCallback)
+            <code>PayEngine.openChallenge(container, acsUrl, base64EncodedChallengeRequest, challengeWindowSize, threeDsAuthenticationId, onChallengeFinishCallback)
             </code>
           </td>
         </tr>

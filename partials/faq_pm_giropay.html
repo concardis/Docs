@@ -1,899 +1,436 @@
-
-<br/>
-<div>
-	<h2>Overview</h2>
-	</br>
-	<p>
-		<b>Giropay</b> is an Internet payment System in Germany, based on online banking. This payment method allows customers to buy securely on the Internet using direct online transfers from their bank account.
-	</p>
-	</br>
-	<p>
-		Giropay offers merchants a real-time payment method (publicized as virtually risk-free) to accept internet payments. For customers, Giropay uses the same environment as their banks' online banking sites. The level of security depends on the participating bank. Some German Banks offer two-factor authentication (2FA), such as a challenge-response access token based on the chip embedded in the debit card or ATM card. Others, however, offer simpler PIN and TAN based online banking services. No sensitive information is being shared with the merchant, such as credit card or Giro account numbers.
-	</p>
-	</br>
-	<p>
-		<b>Customer (buyer)</b>
-	</p>
-	</br>
-	<p>
-		For the payment with Giropay, customers only need an online banking checking account with a bank or savings bank participating in Giropay. The authentication takes place via PIN and TAN. Online payments are 100% guaranteed from the buyer's bank for amounts up to 5000 euros.
-	</p>
-	</br>
-	<p>
-		For customers Giropay works as follows:
-	</p>
-	<p>
-		<ol>
-			<li>Merchant offers Giropay as payment method, often in addition to the regular credit card payment options</li>
-			<li>Consumer selects Giropay and selects their bank</li>
-			<li>Consumer is redirected to their bank's login page</li>
-			<li>Participating bank displays transaction data</li>
-			<li>Customer enters account number, PIN, and either:</li>
-			<ol>
-				<li>A remittance slip is sent to the customer for confirming the transaction, containing a TAN (transaction number). The customer enters this number to confirm the transaction.</li>
-				<li>The customer signs the transaction digitally using a 2FA token (if their bank offers that service)</li>
-			</ol>
-			<li>Bank authorizes transaction in real-time, deducting the amount directly from the consumer's account (if there is not enough balance, the transaction will be refused)</li>
-			<li>Merchant received real-time confirmation of the payment by the bank</li>
-			<li>Consumer is redirected back to the merchant page with a confirmation that the payment has been successful</li>
-		</ol>
-	</p>
-	<p>
-		<b>Merchant</b>
-	</p>
-	</br>
-	<p>
-		Dealer receives a payment guarantee from the buyer's bank immediately after successful Giropay transfer and can thus issue the goods immediately and without risk.
-	</p>
-	</br>
-	<p>
-		Giropays provide you with a payment procedure with merchant protection. Thanks to the payment guarantee from the buyer's bank, payment defaults and refunds are not possible by the buyer. The money will be credited to your bank account one banking day after the transaction.
-	</p>
-	</br>
-	<h2>CUSTOMER EXPERIENCE</h2>
-	</br>
-	<p>
-		When customer select Giropay payment method and pay the amount, he will be redirected to Giropay:
-	</p>
-	</br>
-	<table>
-		<tr>
-			<td width="30%" >
-				<img class="" src="/img/faq/giropay/giropay-widget_1.png" width="100%" />
-			</td>
-			<td width="30%" >
-				<img class="" src="/img/faq/giropay/giropay_widget_2.png" width="100%" />
-			</td>
-			<td width="30%" >
-				<img class="" src="/img/faq/giropay/giropay_wiget_20.png" width="100%" />
-			</td>
-		</tr>
-	</table>
-	</br>
-	<p>
-		There customer must select his Bank, and will be redirected to his online Bank Account:
-	</p>
-	</br>
-	<table>
-		<tr>
-			<td width="50%" >
-				<img class="" src="/img/faq/giropay/giropay_widget_3.png" width="100%" />
-			</td>
-			<td width="50%" >
-				<img class="" src="/img/faq/giropay/giropay_payment_4.png" width="100%" />
-			</td>
-		</tr>
-	</table>
-	</br>
-	<p>
-		In his online Bank Account, following the steps, he can pay for his purchase:
-	</p>
-	</br>
-	<table>
-		<tr>
-			<td width="50%" >
-				<img class="" src="/img/faq/giropay/giropay_payment_5.png" width="100%" />
-			</td>
-			<td width="50%" >
-				<img class="" src="/img/faq/giropay/giropay_payment_50.png" width="100%" />
-			</td>
-		</tr>
-		<tr>
-			<td width="50%" >
-				<img class="" src="/img/faq/giropay/giropay_widget_60.png" width="100%" />
-			</td>
-			<td width="50%" >
-				<img class="" src="/img/faq/giropay/giropay_payment_6.png" width="100%" />
-			</td>
-		</tr>
-	</table>
-	</br>
-	<p>
-		At the end the customer will be redirected back to the merchant's shop.
-	</p>
-	</br>
-	<h3>Test Payment Credentials</h3>
-	</br>
-	<p>
-		To carry out test transactions via the Giropay system, please select Test HBCI PIN / TAN Institute IV (BIC: TESTDETT421, bank code: 94059421) on the bank selection page.
-	</p>
-	</br>
-	<p>
-		Login name for guaranteed transfer order: chiptansepatest1
-	</p>
-	<p>
-		PIN: 12345
-	</p>
-	<p>
-		TAN: 123456
-	</p>
-	</br>
-	<h2>Payengine Details</h2>
-	</br>
-	<div>
-		<div class="content-box-wrapper">
-			<div class="pricing-box-alt row clearfix">
-				<div class="col-md-3 plans-features">
-					<ul>
-						<li class="header ms-hover"><strong>General</strong></li>
-						<li class="ms-hover">Product</li>
-						<li class="ms-hover">Channels</li>
-						<li class="ms-hover">Currencies</li>
-						<li class="ms-hover">Countries</li>
-						<li class="ms-hover">Technical Flow</li>
-						<li class="ms-hover">Recurring</li>
-						<li class="ms-hover">Chargebacks</li>
-						<li class="ms-hover">Reusable Payment Instr.</li>
-					</ul>
-				</div>
-				<div class="individual-plan">
-					<ul>
-						<li class="header ms-hover"></li>
-						<li class="ms-hover">Giropay</li>
-						<li class="ms-hover">ecom</li>
-						<li class="ms-hover">EUR</li>
-						<li class="ms-hover">DE</li>
-						<li class="ms-hover">asynchronous</li>
-						<li class="ms-hover">no</li>
-						<li class="ms-hover">no</li>
-						<li class="ms-hover">yes</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		</br>
-		</br>
-		<div class="content-box-wrapper">
-			<div class="pricing-box-alt row clearfix">
-				<div class="col-md-3 plans-features">
-					<ul>
-						<li class="header ms-hover"><strong>Supported Features</strong></li>
-						<li class="header ms-hover"><strong>& Services</strong></li>
-						<li class="ms-hover">Debit</li>
-						<li class="ms-hover">Preauthorization</li>
-						<li class="ms-hover">Cancelation</li>
-						<li class="ms-hover">Capture</li>
-						<li class="ms-hover">Refunds</li>
-						<li class="ms-hover">Notifications</li>
-						<li class="ms-hover">PayLink Integration</li>
-						<li class="ms-hover">Settlement Reporting</li>
-					</ul>
-				</div>
-				<div class="individual-plan">
-					<ul>
-						<li class="header ms-hover"></li>
-						<li class="header ms-hover"></li>
-						<li class="ms-hover">yes</li>
-						<li class="ms-hover">no</li>
-						<li class="ms-hover">no</li>
-						<li class="ms-hover">no</li>
-						<li class="ms-hover">no (on the road map)</li>
-						<li class="ms-hover">yes - webhook, email</li>
-						<li class="ms-hover">yes *(please contact support or account manager for this feature)</li>
-						<li class="ms-hover">no(on the road map)</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		</br>
-		</br>
-		<div class="content-box-wrapper">
-			<div class="pricing-box-alt row clearfix">
-				<div class="col-md-3 plans-features">
-					<ul>
-						<li class="header ms-hover"><strong>Integration Types</strong></li>
-						<li class="ms-hover">API</li>
-						<li class="ms-hover">Widget</li>
-						<li class="ms-hover">Bridge</li>
-						<li class="ms-hover">Shop Plugin</li>
-					</ul>
-				</div>
-				<div class="individual-plan">
-					<ul>
-						<li class="header ms-hover"><strong></strong></li>
-						<li class="ms-hover">yes</li>
-						<li class="ms-hover">yes</li>
-						<li class="ms-hover">no</li>
-						<li class="ms-hover">no</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	</br>
-	<h2>Technical Flow</h2>
-	</br>
-	<div>
-		<h3>Step 1: Set up Giropay Bank accounts</h3>
-		</br>
-		<p>
-			Before a Giropay transaction can be created, you must setup your Giropay Bank account in Merchant Center.
-		</p>
-		<p>
-			Set up the Giropay bank account:
-		</p>
-		<p>
-			Go to "Payment methods" section in Merchant Center and select "Giropay" Payment method
-		</p>
-		<p>
-			Test merchant bank account:
-		</p>
-		<p>
-			Owner: Max Muster
-		</p>
-		<p>
-			IBAN: DE44100500001654698497
-		</p>
-		<p>
-			BIC: BELADEBEXXX
-		</p>
+<img src="/img/faq/giropay/giropay.png" alt="" width="30%">
+<br>
+<br>
+<ul>
+	<li>Overview</li>
+	<li>Customer Experience</li>
+	<li>Payengine Details
 		<ul>
-			<li>
-				<p>Go to "Payment methods" section in Merchant Center and select "Giropay" Payment method</p>
-				<img class="" src="/img/faq/giropay/giro_pay_1.png" width="100%" />
+			<li>General</li>
+			<li>Supported Features & Services</li>
+			<li>Integration Types</li>
+			<li>Technical Flow
+				<ul>
+					<li>Webhook Notifications</li>
+				</ul>
 			</li>
-			<li>
-				<p>It will open new page to fill bank account data for Giropay. This is the account where the merchant will received the money. Fill the data and save the page.</p>
-				<img class="" src="/img/faq/giropay/giropay_2.png" width="100%" />
+			<li>Specifics
+				<ul>
+					<li>Prerequisites for Debit Transactions</li>
+					<li>Specific Debit Request Parameters</li>
+				</ul>
 			</li>
-			<li>
-				<p>Contact Account administrator to enable Giropay payments.</p>
+			<li>Samples
+				<ul>
+					<li>Debit Transaction</li>
+				</ul>
 			</li>
+			<li>Testing</li>
 		</ul>
-	</div>
-	<div>
-		<h3>Step 2: Create debit</h3>
-		</br>
-		<p>
-			Once the Buyer chooses Giropay payment, he must enter his bank information (BIC) in order to be able to check whether the bank supports Giropay payments. After that he will be transfered to his online banking to proceed with the payment. His Bank will authorise the transaction in real-time, and if there is not enough balance, the transaction will be refused. The debit causes the immediately charging of the full amount.
-		</p>
-		<p>
-			<img class="" src="/img/faq/giropay/giropay_flow.png" width="100%" />
-		</p>
-	</div>
-	</br>
-	<div>
-		<h3>Step 3: Confirm that the charge has succeeded</h3>
-		</br>
-		<p>
-			For Giropay payments the funds are not immediately available. The state of the Giropay payment is almost immediately changed from "PENDING" to "OK", but the funds will appear in the merchant account within a few days (usually the next day)
-		</p>
-		</br>
-		<p>
-			<b><u>Please notify:</u></b>
-		</p>
-		<p>
-			Your integration needs to use notifications to be notified of status changes on debit
-		</p>
-		<p>
-			The Giropay notifications could be subscribed
-			<ul>
-				<li>via the payengine API <a href="https://docs.payengine.de/buildyourown/apidocs">
-					(Link to API documentation)
-				</a></li>
-				<li>via the Payengine merchant center<a href="https://docs.payengine.de/merchantcenter/notifications_mc">
-					(Link to Merchant Center notifications documentation)
-				</a></li>
-			</ul>
-		</p>
-		<p>
-			The following events are sent when the charge’s status is updated:
-		</p>
-		<table border="1">
-			<tr>
-				<td width="50%" >
-					EVENT
-				</td>
-				<td width="50%" >
-					DESCRIPTION
-				</td>
-			</tr>
-			<tr>
-				<td width="50%" >
-					debit.success
-				</td>
-				<td width="50%" >
-					The charge succeeded and the payment is complete.
-				</td>
-			</tr>
-		</table>
-	</div>
-	</br>
-	<div>
-		<h2>Specifics</h2>
-		</br>
-		<p><b>Giropay Bank List request</b></p>
-		</br>
-		<p>When the integrator wants to add Giropay as available payment option, he must first call /bankDetails endpoint to get the current bank list for Giropay.</p>
-		</br>
-		<p>Before every new payment the merchant will call get bankDetails and will use the response for showing the updated list with available banks.</p>
-		</br>
-		<p><b>Giropay Payment specific request parameters</b></p>
-		</br>
-		<table border="1">
-			<tr>
-				<td >
-					PARAMETER
-				</td>
-				<td >
-					MANDATORY/OPTIONAL
-				</td>
-				<td >
-					DESCRIPTION
-				</td>
-				<td >
-					EXAMPLE
-				</td>
-			</tr>
-			<tr>
-				<td>
-					payment.iban
-				</td>
-				<td>
-					M
-				</td>
-				<td>
-					IBAN of the customer
-				</td>
-				<td>
-					DE15111111111111111199
-				</td>
-			</tr>
-			<tr>
-				<td>
-					payment.bankName
-				</td>
-				<td>
-					M
-				</td>
-				<td>
-					name of the customer bank
-				</td>
-				<td>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					payment.bic
-				</td>
-				<td>
-					M
-				</td>
-				<td>
-					BIC of the customer bank account
-				</td>
-				<td>
-					BENEDEPPY
-				</td>
-			</tr>
-			<tr>
-				<td>
-					payment.accountHolder
-				</td>
-				<td>
-					O
-				</td>
-				<td>
-					Name of the bank account holder
-				</td>
-				<td>
-					Max Mustermann
-				</td>
-			</tr>
-			<tr>
-				<td>
-					payment.successUrl
-				</td>
-				<td>
-					M
-				</td>
-				<td>
-					Redirect URL for successful payment
-				</td>
-				<td>
-					http://my.shop.com/success
-				</td>
-			</tr>
-			<tr>
-				<td>
-					payment.failureUrl
-				</td>
-				<td>
-					M
-				</td>
-				<td>
-					Redirect URL for unsuccessful payment
-				</td>
-				<td>
-					http://my.shop.com/fail
-				</td>
-			</tr>
-			<tr>
-				<td>
-					payment.cancelUrl
-				</td>
-				<td>
-					M
-				</td>
-				<td>
-					Redirect URL when payment is canceled
-				</td>
-				<td>
-					http://my.shop.com/cancel
-				</td>
-			</tr>
-		</table>
-
-		</br>
-		<div class="example-box-wrapper">
-			<div class="content-box" ng-init="createCustomerRequestShow=false">
-				<h3 class="content-box-header bg-default">
-						Giropay request example
-						<div class="header-buttons-separator">
-								<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-								</a>
-						</div>
-				</h3>
-				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-				<div class="content-box-wrapper">
-					<code>
-{
-  "product" : "giropay",
-  "terms": 1468590412476,
-  "privacy": 1468590412476,
-  "merchantOrderId": "merchantOrderId1548237878",
-  "description": "test transaction",
-  "statementDescription": "statement description",
-  "initialAmount": 1190,
-  "currency": "EUR",
-  "basket": [
-    {
-      "name": "USB-Stick",
-      "articleNumber": "SW10029",
-      "totalPrice": 1190,
-      "totalPriceWithTax": 1190,
-      "unitPrice": 1190,
-      "unitPriceWithTax": 1190,
-      "tax": 0,
-      "quantity": 1
-    }
-  ],
-  "payment": {
-  "iban": "DE46940594210000012345",
-  "bic": "TESTDETT421",
-  "bankName": "TEST",
-  "accountHolder": "Dr. Hans-Peter Meier"
-  },
-  "customer": "customer_ppmiffpa86",
-  "persona": "persona_v0nq8o1jui",
-  "billingAddress": "address_usrba2kqpe",
-  "shippingAddress": "address_usrba2kqpe",
-  "channel": "ECOM",
-  "source": "Postman Test",
-  "async": {
-    "successUrl": "https://www.google.de/#newwindow=1&q=success",
-    "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
-    "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
-  }
-}
-					</code>
+	</li>
+</ul>
+<br>
+<br>
+<h2>Overview</h2>
+<br>
+<p><strong>Giropay</strong> is an Internet payment system in Germany, based on online banking. This payment method allows customers to buy securely on Internet using direct online transfers from their bank account.</p>
+<p>Main advantages of Giropay as payment method are:</p>
+<p><strong>For merchants:</strong> Giropay offers merchants guaranteed payments at zero risk. Merchants receive a payment guarantee from the customer's bank immediately after successful Giropay transfer and can thus issue the goods immediately and without risk. Online payments are 100% guaranteed from the customer's bank.</p>		
+<p><strong>For customers:</strong>  Giropay uses the same environment as their banks' online banking sites. No sensitive information is being shared with the merchant. For Giropay payments, customers only need an online banking checking account with a bank participating in Giropay. The authentication takes place via PIN and TAN.</p>
+<br>
+<h2>Customer Experience</h2>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th width="10%">Step</th>
+			<th width="20%">Description</th>
+			<th width="70%">Screenshot</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>1</td>
+			<td>Select Giropay</td>
+			<td><img src="/img/faq/giropay/Giropay Selsct.jpeg" alt="" width="40%"></td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>View payment</td>
+			<td><img src="/img/faq/giropay/paymentform giropay.jpeg" alt="" width="40%"></td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>Redirect to Giropay</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>4</td>
+			<td>Select Bank</td>
+			<td><img src="/img/faq/giropay/giropay_widget_3.png" alt="" width="40%"></td>
+		</tr>
+		<tr>
+			<td>5</td>
+			<td>Log in to online banking</td>
+			<td><img src="/img/faq/giropay/giropay_payment_4.png" alt="" width="40%"></td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>Follow the steps and pay the purchase</td>
+			<td><img src="/img/faq/giropay/giropay_payment_5.png" alt="" width="40%" style="display:block;">
+					<img src="/img/faq/giropay/giropay_payment_50.png" alt="" width="40%" style="display:block;">
+					<img src="/img/faq/giropay/giropay_payment_60.png" alt="" width="40%" style="display:block;">
+					<img src="/img/faq/giropay/giropay_payment_6.png" alt="" width="40%" style="display:block;">
+			</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<br>
+<h2>Payengine Details</h2>
+<br>
+<h3>General</h3>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<tbody>
+		<tr>
+			<th width="50%">Product</th>
+			<td width="50%">Giropay</td>
+		</tr>
+		<tr>
+			<th>Channels</th>
+			<td>ecom</td>
+		</tr>
+		<tr>
+			<th>Currencies</th>
+			<td>EUR</td>
+		</tr>
+		<tr>
+			<th>Countries</th>
+			<td>DE</td>
+		</tr>
+		<tr>
+			<th>Technical Flow</th>
+			<td>asynchronous</td>
+		</tr>
+		<tr>
+			<th>Recurring</th>
+			<td>no</td>
+		</tr>
+		<tr>
+			<th>Chargebacks</th>
+			<td>no</td>
+		</tr>
+		<tr>
+			<th>Reusable Payment Instruments</th>
+			<td>yes</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<br>
+<h3>Supported Features & Services</h3>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<tbody>
+		<tr>
+			<th width="50%">Debit</th>
+			<td width="50%">yes</td>
+		</tr>
+		<tr>
+			<th>Preauthorization</th>
+			<td>no</td>
+		</tr>
+		<tr>
+			<th>Cancelation</th>
+			<td>no</td>
+		</tr>
+		<tr>
+			<th>Capture</th>
+			<td>no</td>
+		</tr>
+		<tr>
+			<th>Refunds</th>
+			<td>yes (only TAN based)</td>
+		</tr>
+		<tr>
+			<th>Notifications</th>
+			<td>yes - webhook, email</td>
+		</tr>
+		<tr>
+			<th>PayLink Integration</th>
+			<td>yes *(please contact support or account manager for this feature)</td>
+		</tr>
+		<tr>
+			<th>Settlement Reporting</th>
+			<td>no (on the road map)</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<br>
+<h3>Integration Types</h3>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<tbody>
+		<tr>
+			<th width="50%">API</th>
+			<td width="50%">yes</td>
+		</tr>
+		<tr>
+			<th>Widget</th>
+			<td>yes</td>
+		</tr>
+		<tr>
+			<th>Bridge</th>
+			<td>no</td>
+		</tr>
+		<tr>
+			<th>Shop Plugin</th>
+			<td>no</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<br>
+<h3>Technical Flow</h3>
+<br>
+<img src="/img/faq/giropay/giro-tech-flow.png" alt="" width="100%">
+<br>
+<table class="table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th style="border-right: none;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px" style="vertical-align: supper;"></th>
+			<th>Note
+				<br>
+				<p>Before execution of Giropay transactions, it's necessary merchant to setup a Giropay <em>Bank account</em>.</p>
+			</th>
+		</tr>
+	</thead>
+</table>
+<br>
+<h4>Webhook Notifications</h4>
+<br>
+<p>As it is not ensured at the time of the redirect to the shop that the payment was 100% successful, the Payengine waits for the final asynchronous notification before a status is moved from PENDING into SUCCESS or FAILURE.</p>
+<p>A merchant should register for the Payengine webhook notifications in order to receive this final status update.</p>
+<p>Alternatively a GET request on the order or DEBIT transaction would also work, but it is not ensured that the final status will be available immediately after the redirect and a merchant might have to query the GET multiple times.</p>		
+<p>Therefore it is strongly recommended that the asynchronous notifications from the Payengine are used instead.</p>		
+<p>The Giropay notifications could be subscribed</p>
+<ul>
+	<li>via the payengine API (<a href="https://docs.payengine.de/buildyourown/restapi">link to API documentation</a>)</li>
+	<li>via the Payengine Merchant Center (<a href="https://docs.payengine.de/merchantcenter/managenotification">link to Merchant Center notifications docu</a> )</li>
+</ul>
+<br>
+<br>
+<h3>Specifics</h3>
+<br>
+<h4>Prerequisites for Debit Transactions</h4>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th>Prerequisite</th>
+			<th>Mandatory/Optional</th>
+			<th>Create Prerequisite</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Customer</td>
+			<td>O</td>
+			<td>POST /customers</td>
+		</tr>
+		<tr>
+			<td>Persona</td>
+			<td>O</td>
+			<td>POST /customers/{{customerId}}/personas</td>
+		</tr>
+		<tr>
+			<td>Billing Address</td>
+			<td>O</td>
+			<td>POST /customers/{{customerId}}/addresses</td>
+		</tr>
+		<tr>
+			<td>Shipping Address</td>
+			<td>O</td>
+			<td>POST /customers/{{customerId}}/addresses</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<br>
+<h4>Specific Debit Request Parameters</h4>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th>PARAMETER</th>
+			<th>MANDATORY/OPTIONAL</th>
+			<th>DESCRIPTION</th>
+			<th>EXAMPLE</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>payment.iban</td>
+			<td>O</td>
+			<td>IBAN of the customer</td>
+			<td>DE15111111111111111199</td>
+		</tr>
+		<tr>
+			<td>async.successUrl</td>
+			<td>M</td>
+			<td>Redirect URL for successful payment</td>
+			<td>http://my.shop.com/success</td>
+		</tr>
+		<tr>
+			<td>async.failureUrl</td>
+			<td>M</td>
+			<td>async.failureUrl</td>
+			<td>async.failureUrl</td>
+		</tr>
+		<tr>
+			<td>async.cancelUrl</td>
+			<td>M</td>
+			<td>Redirect URL when payment is canceled</td>
+			<td>http://my.shop.com/cancel</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<br>
+<h3>Samples</h3>
+<br>
+<h4>Debit Transaction</h4>
+<br>
+<div>
+	<div class="example-box-wrapper">
+		<div class="content-box" ng-init="createCustomerResponseShoww=false">
+			<h3 class="content-box-header bg-default">
+				Giropay Debit request
+				<div class="header-buttons-separator">
+					<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShoww=!createCustomerResponseShoww;">
+						<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShoww"></i>
+						<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShoww"></i>
+					</a>
 				</div>
+			</h3>
+			<div class="content-box-wrapper" ng-if="createCustomerResponseShoww">
+				<code>
+					{
+						"product" : "giropay",
+						"terms": 1468590412476,
+						"privacy": 1468590412476,
+						"merchantOrderId": "merchantOrderId{{$timestamp}}",
+						"description": "test transaction",
+						"statementDescription": "statement description",
+						"initialAmount": {{totalAmount}},
+						"currency": "EUR",
+						"basket": [
+							{
+								"name": "USB-Stick",
+								"articleNumber": "SW10029",
+								"totalPrice": {{totalAmount}},
+								"totalPriceWithTax": {{totalAmount}},
+								"unitPrice": {{totalAmount}},
+								"unitPriceWithTax": {{totalAmount}},
+								"tax": 0,
+								"quantity": 1
+							}
+						],
+						"customer": "{{customerId}}",
+						"persona": "{{personaId}}",
+						"billingAddress": "{{addressId}}",
+						"shippingAddress": "{{addressId}}",
+						"channel": "ECOM",
+						"source": "Postman Test",
+						"async": {
+							"successUrl": "https://www.google.de/#newwindow=1&q=success",
+							"failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+							"cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
+						}
+					}
+				</code>
 			</div>
 		</div>
-		</br>
-		<div class="example-box-wrapper">
-			<div class="content-box" ng-init="createCustomerResponseShow=false">
-				<h3 class="content-box-header bg-default">
-						Giropay response example
-						<div class="header-buttons-separator">
-								<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow!=createCustomerResponseShow; console.log(createCustomerResponseShow)">
-									<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-									<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
-									<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
-								</a>
-						</div>
-				</h3>
-				<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-				<div class="content-box-wrapper">
-					<code>
-{
-    "createdAt": 1548237885264,
-    "modifiedAt": 1548237885269,
-    "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
-    "terms": 1468590412476,
-    "privacy": 1468590412476,
-    "orderId": "oi9hp0gea1",
-    "merchantOrderId": "merchantOrderId1548237885",
-    "paymentProviderTransactionId": "SJR90V21P4",
-    "description": "test transaction",
-    "statementDescription": "statement description",
-    "initialAmount": 1190,
-    "preauthorizedAmount": 0,
-    "capturedAmount": 0,
-    "refundedAmount": 0,
-    "canceledAmount": 0,
-    "currency": "EUR",
-    "basket": [
-        {
-            "id": "Article-9c042f83-c117-43cd-a822-f575c6d6348f",
-            "name": "USB-Stick",
-            "articleNumber": "SW10029",
-            "totalPrice": 1190,
-            "totalPriceWithTax": 1190,
-            "unitPrice": 1190,
-            "unitPriceWithTax": 1190,
-            "quantity": 1,
-            "tax": 0,
-            "discount": null,
-            "imageUrl": null,
-            "articleUrl": null,
-            "articleType": null
-        }
-    ],
-    "customer": {
-        "merchantCustomerId": "merchantCustomerId_301843207",
-        "email": "IwXrICrxse@test.com",
-        "organizationRegistrationRegister": "Hamburg",
-        "organizationRegistrationId": "HRB 124156B",
-        "organizationEntityType": "GMBH",
-        "organizationVatId": "DE123456789",
-        "customerId": "customer_ppmiffpa86",
-        "addresses": [
-            {
-                "companyName": "Test GmbH",
-                "reference": null,
-                "firstName": "Max",
-                "lastName": "Musterman",
-                "street": "Musterweg",
-                "houseNumber": "1548081517",
-                "city": "Musterhausen",
-                "zip": "55555",
-                "country": "DE",
-                "state": "Bayern",
-                "phone": "00493012345",
-                "fax": "00493012345",
-                "mobile": "00493012345",
-                "title": "Prof. Dr.",
-                "additionalDetails": "premium buyer",
-                "addressId": "address_usrba2kqpe",
-                "createdAt": 1548081517405,
-                "modifiedAt": 1548081517406
-            }
-        ],
-        "personas": [
-            {
-                "personaId": "persona_v0nq8o1jui",
-                "firstName": "Max",
-                "lastName": "Musterman",
-                "phone": "00493012345",
-                "mobile": "00493012345",
-                "fax": "00493012345",
-                "birthday": 358293600000,
-                "gender": "MALE",
-                "title": "Prof. Dr.",
-                "createdAt": 1548081114676,
-                "modifiedAt": 1548081114676
-            }
-        ],
-        "paymentInstruments": [
-            {
-                "createdAt": 1548085404742,
-                "modifiedAt": 1548085432669,
-                "paymentInstrumentId": "paymentinstrument_ocfc3l43p5",
-                "merchantPaymentInstrumentId": null,
-                "attributes": {
-                    "iban": "XX000",
-                    "bic": "VBOEATWWXXX",
-                    "accountHolder": null,
-                    "bankName": null,
-                    "sepaMandate": null
-                },
-                "encrypted": false,
-                "origin": "eps",
-                "type": "sepa",
-                "recurring": true
-            },
-            {
-                "createdAt": 1548081738726,
-                "modifiedAt": 1548081738726,
-                "paymentInstrumentId": "paymentinstrument_lmsv9bczje",
-                "merchantPaymentInstrumentId": null,
-                "attributes": {
-                    "iban": "DE44100500001654698497",
-                    "bic": "BELADEBEXXX",
-                    "accountHolder": "Max Muster",
-                    "bankName": "Deutsche Bank",
-                    "sepaMandate": null
-                },
-                "encrypted": false,
-                "origin": "ratepay-installment",
-                "type": "sepa",
-                "recurring": false
-            },
-            {
-                "createdAt": 1548150764386,
-                "modifiedAt": 1548150764386,
-                "paymentInstrumentId": "paymentinstrument_wsrybqqsj6",
-                "merchantPaymentInstrumentId": null,
-                "attributes": {
-                    "iban": "DE46940594210000012345",
-                    "bic": "TESTDETT421",
-                    "accountHolder": "Dr. Hans-Peter Meier",
-                    "bankName": "TEST",
-                    "sepaMandate": null
-                },
-                "encrypted": false,
-                "origin": "giropay",
-                "type": "sepa",
-                "recurring": false
-            },
-            {
-                "createdAt": 1548237885259,
-                "modifiedAt": 1548237885259,
-                "paymentInstrumentId": "paymentinstrument_he8pv9l30e",
-                "merchantPaymentInstrumentId": null,
-                "attributes": {
-                    "iban": "DE46940594210000012345",
-                    "bic": "TESTDETT421",
-                    "accountHolder": "Dr. Hans-Peter Meier",
-                    "bankName": "TEST",
-                    "sepaMandate": null
-                },
-                "encrypted": false,
-                "origin": "giropay",
-                "type": "sepa",
-                "recurring": false
-            },
-            {
-                "createdAt": 1548081579005,
-                "modifiedAt": 1548081579005,
-                "paymentInstrumentId": "paymentinstrument_5uqvtdl7ha",
-                "merchantPaymentInstrumentId": null,
-                "attributes": {
-                    "iban": "DE79370605901234567893",
-                    "bic": null,
-                    "accountHolder": "Max Musterman",
-                    "bankName": null,
-                    "sepaMandate": null
-                },
-                "encrypted": false,
-                "origin": "sepa",
-                "type": "sepa",
-                "recurring": true
-            },
-            {
-                "createdAt": 1548085312625,
-                "modifiedAt": 1548085312625,
-                "paymentInstrumentId": "paymentinstrument_4nwe6ceukx",
-                "merchantPaymentInstrumentId": null,
-                "attributes": {
-                    "iban": "DE46940594210000012345",
-                    "bic": "TESTDETT421",
-                    "accountHolder": "Dr. Hans-Peter Meier",
-                    "bankName": "TEST",
-                    "sepaMandate": null
-                },
-                "encrypted": false,
-                "origin": "giropay",
-                "type": "sepa",
-                "recurring": false
-            },
-            {
-                "createdAt": 1548142685425,
-                "modifiedAt": 1548142685425,
-                "paymentInstrumentId": "paymentinstrument_mtxtvuhvv4",
-                "merchantPaymentInstrumentId": null,
-                "attributes": null,
-                "encrypted": false,
-                "origin": "ideal",
-                "type": "sepa",
-                "recurring": false
-            },
-            {
-                "createdAt": 1548081545503,
-                "modifiedAt": 1548081545503,
-                "paymentInstrumentId": "paymentinstrument_rw1haekuet",
-                "merchantPaymentInstrumentId": null,
-                "attributes": {
-                    "persona": {
-                        "firstName": "Max",
-                        "lastName": "Musterman",
-                        "phone": "00493012345",
-                        "fax": "00493012345",
-                        "mobile": "00493012345",
-                        "birthday": 358293600000,
-                        "gender": "MALE",
-                        "title": "Prof. Dr."
-                    }
-                },
-                "encrypted": false,
-                "origin": "ratepay-invoice",
-                "type": "bank-transfer",
-                "recurring": false
-            },
-            {
-                "createdAt": 1548081655937,
-                "modifiedAt": 1548081657496,
-                "paymentInstrumentId": "paymentinstrument_iuh5ufcift",
-                "merchantPaymentInstrumentId": null,
-                "attributes": {
-                    "iban": "DE79370605901234567893",
-                    "bic": "GENODED1SPK",
-                    "accountHolder": "Max Muster",
-                    "bankName": "Deutsche Bank",
-                    "sepaMandate": null
-                },
-                "encrypted": false,
-                "origin": "ratepay-directdebit",
-                "type": "sepa",
-                "recurring": true
-            }
-        ],
-        "createdAt": 1548081514716,
-        "modifiedAt": 1548081514716,
-        "customerType": "organization"
-    },
-    "persona": {
-        "personaId": "persona_v0nq8o1jui",
-        "firstName": "Max",
-        "lastName": "Musterman",
-        "phone": "00493012345",
-        "mobile": "00493012345",
-        "fax": "00493012345",
-        "birthday": 358293600000,
-        "gender": "MALE",
-        "title": "Prof. Dr.",
-        "createdAt": 1548081114676,
-        "modifiedAt": 1548081114676
-    },
-    "billingAddress": {
-        "companyName": "Test GmbH",
-        "reference": null,
-        "firstName": "Max",
-        "lastName": "Musterman",
-        "street": "Musterweg",
-        "houseNumber": "1548081517",
-        "city": "Musterhausen",
-        "zip": "55555",
-        "country": "DE",
-        "state": "Bayern",
-        "phone": "00493012345",
-        "fax": "00493012345",
-        "mobile": "00493012345",
-        "title": "Prof. Dr.",
-        "additionalDetails": "premium buyer",
-        "addressId": "address_usrba2kqpe",
-        "createdAt": 1548081517405,
-        "modifiedAt": 1548081517406
-    },
-    "shippingAddress": {
-        "companyName": "Test GmbH",
-        "reference": null,
-        "firstName": "Max",
-        "lastName": "Musterman",
-        "street": "Musterweg",
-        "houseNumber": "1548081517",
-        "city": "Musterhausen",
-        "zip": "55555",
-        "country": "DE",
-        "state": "Bayern",
-        "phone": "00493012345",
-        "fax": "00493012345",
-        "mobile": "00493012345",
-        "title": "Prof. Dr.",
-        "additionalDetails": "premium buyer",
-        "addressId": "address_usrba2kqpe",
-        "createdAt": 1548081517405,
-        "modifiedAt": 1548081517406
-    },
-    "ipAddress": null,
-    "paymentInstrument": {
-        "createdAt": 1548237885259,
-        "modifiedAt": 1548237885259,
-        "paymentInstrumentId": "paymentinstrument_he8pv9l30e",
-        "merchantPaymentInstrumentId": null,
-        "attributes": {
-            "iban": "DE46940594210000012345",
-            "bic": "TESTDETT421",
-            "accountHolder": "Dr. Hans-Peter Meier",
-            "bankName": "TEST",
-            "sepaMandate": null
-        },
-        "encrypted": false,
-        "origin": "giropay",
-        "type": "sepa",
-        "recurring": false
-    },
-    "transactions": [
-        {
-            "createdAt": 1548237885269,
-            "modifiedAt": 1548237885269,
-            "type": "DEBIT",
-            "transactionId": "transaction_shj5wh2eiz",
-            "description": "test transaction",
-            "initialAmount": 1190,
-            "refundedAmount": 0,
-            "currency": "EUR",
-            "status": "PENDING",
-            "order": "oi9hp0gea1",
-            "parentTransaction": null,
-            "transactions": null,
-            "basket": [
-                {
-                    "id": "Article-9c042f83-c117-43cd-a822-f575c6d6348f",
-                    "name": "USB-Stick",
-                    "articleNumber": "SW10029",
-                    "totalPrice": 1190,
-                    "totalPriceWithTax": 1190,
-                    "unitPrice": 1190,
-                    "unitPriceWithTax": 1190,
-                    "quantity": 1,
-                    "tax": 0,
-                    "discount": null,
-                    "imageUrl": null,
-                    "articleUrl": null,
-                    "articleType": null
-                }
-            ],
-            "providerCode": null,
-            "merchantMessage": null,
-            "customerMessage": null,
-            "descriptor": null,
-            "meta": null,
-            "challenge": null,
-            "asyncNotificationSubscriptionId": null,
-            "tracking": null
-        }
-    ],
-    "status": "OPEN",
-    "channel": "ECOM",
-    "source": "Postman Test",
-    "settled": false,
-    "settlementDate": null,
-    "allowedProducts": null,
-    "product": "giropay",
-    "transactionType": "DEBIT",
-    "meta": null,
-    "async": null,
-    "deviceIdent": null,
-    "asyncNotificationSubscriptionId": null,
-    "redirectUrl": "https://public-api-app77te.psp.cardtech.de/order/giropay/1.0/redirect/transaction_shj5wh2eiz"
-}
-					</code>
-				</div>
-			</div>
-		</div>
-
-
-	</div>
-	<div>
-		</br>
-		<h2>BACKOFFICE OPERATIONS VIA THE MERCHANT CENTER</h2>
-		</br>
-		<p>When the Giropay transaction is created, the Merchant can view it's details in Merchant Center:</p>
-		<img class="" src="/img/faq/giropay/giropay_view.png" width="100%" />
 	</div>
 </div>
+<br>
+<div>
+	<div class="example-box-wrapper">
+		<div class="content-box" ng-init="createCustomerResponseShoww=false">
+			<h3 class="content-box-header bg-default">
+				Giropay Debit response
+				<div class="header-buttons-separator">
+					<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShoww=!createCustomerResponseShoww;">
+						<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShoww"></i>
+						<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShoww"></i>
+					</a>
+				</div>
+			</h3>
+			<div class="content-box-wrapper" ng-if="createCustomerResponseShoww">
+				<code>
+						<div>
+								<div class="example-box-wrapper">
+									<div class="content-box" ng-init="createCustomerResponseShoww=false">
+										<h3 class="content-box-header bg-default">
+											Giropay Debit request
+											<div class="header-buttons-separator">
+												<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShoww=!createCustomerResponseShoww;">
+													<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShoww"></i>
+													<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShoww"></i>
+												</a>
+											</div>
+										</h3>
+										<div class="content-box-wrapper" ng-if="createCustomerResponseShoww">
+											<code>
+												{
+													"product" : "giropay",
+													"terms": 1468590412476,
+													"privacy": 1468590412476,
+													"merchantOrderId": "merchantOrderId{{$timestamp}}",
+													"description": "test transaction",
+													"statementDescription": "statement description",
+													"initialAmount": {{totalAmount}},
+													"currency": "EUR",
+													"basket": [
+														{
+															"name": "USB-Stick",
+															"articleNumber": "SW10029",
+															"totalPrice": {{totalAmount}},
+															"totalPriceWithTax": {{totalAmount}},
+															"unitPrice": {{totalAmount}},
+															"unitPriceWithTax": {{totalAmount}},
+															"tax": 0,
+															"quantity": 1
+														}
+													],
+													"customer": "{{customerId}}",
+													"persona": "{{personaId}}",
+													"billingAddress": "{{addressId}}",
+													"shippingAddress": "{{addressId}}",
+													"channel": "ECOM",
+													"source": "Postman Test",
+													"async": {
+														"successUrl": "https://www.google.de/#newwindow=1&q=success",
+														"failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+														"cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
+													}
+												}
+											</code>
+										</div>
+									</div>
+								</div>
+							</div>
+				</code>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<br>
+<h3>Testing</h3>
+<br>
+<p>Currently testing of Giropay payment transactions on TM environment is possible only via simulator.</p>
+<br>
+<br>

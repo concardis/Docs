@@ -223,7 +223,6 @@ console.log("trying start REDOCS");
   else
     $scope.cur ="registration";
 
-
 }])
 .controller('batchCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', '$routeParams', function($rootScope, $scope, $http, backendService, $timeout, $routeParams) {
 	$rootScope.site = "batch";

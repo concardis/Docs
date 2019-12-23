@@ -1,0 +1,340 @@
+<h3>Settlements</h3>
+</br>
+<p>
+  The Merchant Center provides reconciliation and settlement files for different transactions. When a transaction is settled the corresponding data becomes available in a merchant downloadable csv file.
+</p>
+<ul>
+    <li><a href="#settlements_nav" name="">Navigation</a></li>
+    <!-- <li><a href="#filters" name="">Filters</a></li>
+    <li><a href="#sorting" name="">Sorting</a></li> -->
+    <li><a href="#settlements_files" name="">Settlement Files</a></li>
+</ul>
+
+<div id="settlements_nav"></div>
+&nbsp;
+<h3>Navigation to Settlements</h3>
+&nbsp;
+<p>
+  Settlement files can be found under the "Settlements" section of the Merchant Center.
+</p>
+</br>
+<img src="/img/settlements/settlements_nav.png" alt="" width="100%"  />
+
+<div id="filters"></div>
+&nbsp;
+<!-- <h3>Filter Settlements</h3>
+&nbsp;
+<p>
+  Settlement files can be found under the "Settlements" section of the Merchant Center.
+</p>
+</br>
+<img src="/img/settlements/settlements_nav.png" alt="" width="100%"  />
+
+<div id="sorting"></div>
+&nbsp;
+<h3>Sorting Settlements list</h3>
+&nbsp;
+<p>
+  Settlement files can be found under the "Settlements" section of the Merchant Center.
+</p>
+</br>
+<img src="/img/settlements/settlements_nav.png" alt="" width="100%"  /> -->
+
+<div id="settlements_files"></div>
+<ul>
+    <li><a href="#cc_settlements" name="">Credit Card Settlements</a></li>
+    <!-- <li><a href="#paypal_settlements" name="">Paypal Settlements</a></li> -->
+    <li><a href="#sepa_settlements" name="">SEPA Settlements</a></li>
+</ul>
+
+<div id="cc_settlements">
+  <h3>Credit Card Settlements</h3>
+  Credit Card Settlements files are in .csv format and contain detailed information for each transaction.
+  <br/>
+  <img src="/img/settlements/cc_settlement.png" alt="" width="100%"  />
+
+
+<p>You can find more information about fields in Credit Card settlement file in folowing table:</p>
+
+<table class="table table-condensed">
+  <thead>
+    <tr>
+      <th>Lf. Nr.</th>
+      <th>Filed</th>
+      <th>English translations</th>
+      <th width="50%">Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>GUID der Transaktion</td>
+      <td>GUID of transaction</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>VP-Nummer</td>
+      <td>VP-Number</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Terminal-ID</td>
+      <td>Terminal-ID</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>ARN</td>
+      <td>ARN</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>Trx.-Datum</td>
+      <td>Trx.-date</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>Uhrzeit</td>
+      <td>Time</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>Autor.-Nr.</td>
+      <td>Autor.-Nr.</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>Trace ID</td>
+      <td>Trace ID</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>Merchant Order ID / Order ID</td>
+      <td>Merchant Order ID / Order ID</td>
+      <td>Händlerreferenz/individuelle Nummer (wenn nicht vom Händler angeliefert, wird Order ID verwendet)</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>Kredit- Debitindikator</td>
+      <td>Credit- Debit indicator</td>
+      <td>Zeigt, ob es sich um eine positive oder negative Zahlung handet
+        C = Credit (Gutschriftbetrag); D = Debit (Belastungsbetrag)</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>Umsatz in Transaktionswährung (Brutto)</td>
+      <td>Revenue in transaction currency</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>Transaktionswährung</td>
+      <td>Transaction currency</td>
+      <td>ISO Währungscode der Einreichung</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>Abrechnunsmodell Indikator</td>
+      <td>Settlement model indicator</td>
+      <td>Nach welchem Abrechnungsmodell wird der Kunde abgerechnet</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>Umsatz in Abrechnungswährung (Brutto)</td>
+      <td>Revenue in settlement currency (gross)</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>Abrechnungswährung</td>
+      <td>Settlement currency</td>
+      <td>Alpha ISO Währungscode der Abrechnung</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>Interchange Fee (Auszahlwährung)</td>
+      <td>Interchange Fee</td>
+      <td>Interchange Betrag in Auszahlwährung</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>Card Scheme Fee (Auszahlwährung)</td>
+      <td>Card Scheme Fee</td>
+      <td>Card Scheme Fee in Auszahlwährung</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>Acquirer Service Fee (Auszahlwährung)</td>
+      <td>Acquirer Service Fee</td>
+      <td>Acquirer Servce Fee in Auszahlwährung</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>MSC Entgelt (Auszahlwährung)</td>
+      <td>MSC charges (settlement currency)</td>
+      <td>Disagio</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>Mehrwertsteuer (Auszahlwährung)</td>
+      <td>VAT (settlement currency)</td>
+      <td>Mehrwertsteuer Betrag in Auszahlwährung</td>
+    </tr>
+    <tr>
+      <td>21</td>
+      <td>Umsatz in Abrechnungswährung (Netto)</td>
+      <td>Revenue in settlement currency (net)</td>
+      <td>Netto in Händlerabrechnungsbetrag</td>
+    </tr>
+    <tr>
+      <td>22</td>
+      <td>GUID Settlement</td>
+      <td>GUID Settlement</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>23</td>
+      <td>Payment Methode</td>
+      <td>Payment method</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>24</td>
+      <td>Zahldatum</td>
+      <td>Payment date</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>25</td>
+      <td>Sequence Number des Payments</td>
+      <td>Sequence Number of payment	Yes	6 stellige Nummer FDD</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+<br/>
+<div id="sepa_settlements">
+  <h3>SEPA Settlements</h3>
+  <br/>
+  <h4>General</h4>
+
+  The SEPA settlement files are generated once on 4. of the month and are available :
+  <br/>
+   - via API (GET /settlements/download)
+   <br/>
+   - via Merchant Center
+   <br/>
+   <br/>
+   <h4>File definition</h4>
+  <p><strong>File Format</strong></p>
+  The generated settlement file is in a semi-colon separated values .csv format.
+  The decimal separation is a point.
+  <p><strong>File name</strong></p>
+   [dd.MM.yyyy]_payengine_SST.csv   e.g. 28.09.2018.csv_payengine_SST.csv
+  <br/>
+  <br/>
+  <h4>SEPA settlement file example</h4>
+  <br/>
+  <span class="col-md-6"></span>
+  <span class="col-md-6 label-align-right">
+    <a href="/img/settlements/sepa.csv" download target="_blank" style="align: right">Download example file</a>
+  </span>
+  <br/>
+  <code>merchantID;trx-type;createdAt;settledAt;chargebackDate;initialAmount;currency;transactionId;orderId;merchantOrderId;referenceID
+Merchant-33333333-3333-3333-3333-333333333333;retail;11.09.2018;11.08.2018;;0.2;EUR;transaction_cizo4enzcx;Order-841efcd2-2581-4b20-b0f2-52e67cf16f97;1536672478;055ca058b48243d0aa9ec4d155617dd6
+Merchant-33333333-3333-3333-3333-333333333333;retail;11.08.2018;11.08.2018;;1.0;EUR;transaction_z8ll1wotsn;Order-f72a31b7-e514-4137-a187-d1b64b46f9e6;1536674203;1d254c1d292e466c81a7eb6c548188ee
+
+  </code>
+  <br/>
+  <p>You can find more information about fields in SEPA settlement file in folowing table:</p>
+  <br/>
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Position</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Example</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>merchantId</td>
+        <td>The Payengine merchant id</td>
+        <td>Merchant-000cf2c9-66fe-4730-ac9e-674f7c552d36</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>trxType</td>
+        <td>The type of record included in a report. Allowed values:  {retail, refund, chargeback} </td>
+        <td>chargeback</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>createdAt</td>
+        <td>The timestamp indicating when the capture was received by Concardis. Format: DD.MM.YYYY.</td>
+        <td>28.09.2017</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>settledAt</td>
+        <td>The timestamp indicating when the payout from concardis to the merchant was initializedFormat: DD.MM.YYYY</td>
+        <td>28.09.2017</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>chargebackDate</td>
+        <td>Date on which the chargeback is settled in the Payengine system. Format:  DD.MM.YYYY</td>
+        <td>28.09.2017</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>initialAmount</td>
+        <td>Retail amount</td>
+        <td>20.45</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>currency</td>
+        <td>Retail currency</td>
+        <td>EUR</td>
+      </tr>
+      <tr>
+        <td>8</td>
+        <td>transactionId</td>
+        <td>The Payengine transaction id</td>
+        <td>transaction_pwff2milt7</td>
+      </tr>
+      <tr>
+        <td>9</td>
+        <td>orderIdD</td>
+        <td>The Payengine order id</td>
+        <td>pf3lseokll</td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td>merchantOrderId</td>
+        <td>The merchant order id</td>
+        <td>KB1234</td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td>referenceId</td>
+        <td>EndToEndId of the SEPA transfer to the merchant. One settlement file could contain more than one referenceID depending on the number of the payouts which were carried out in the time period which is covered by the settlement reporty</td>
+        <td>e.g. 20 positions in one file will be with the same referenceID</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

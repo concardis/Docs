@@ -1,0 +1,212 @@
+<ul>
+    <li><a href="#description">Description</a></li>
+    <li><a href="#velocity_add_rule">How to add new Velocity Rule</a></li>
+    <li><a href="#velocity_define_rule">How to define new Velocity Rule</a></li>
+        <li><a href="#velocity_edit_rule">How to edit existing Velocity Rule</a></li>
+        <li><a href="#velocity_delete_rule">How to delete existing Velocity Rule</a></li>
+        <li><a href="#options_description">Description of the options</a></li>
+    
+</ul>
+
+<div id="description"></div>
+</br>
+</br>
+<h4>Description</h4>
+Limits (velocity) Rule defines a logical rule that allows or prohibits the transaction from being executed when the conditions are met.
+<h3><strong>Important:</strong></h3>
+<strong>Be very careful with the rules you define as certain combinations may prohibit the execution of all transactions!</strong>
+<div id="velocity_add_rule"></div>
+</br>
+</br>
+<h3>How to add new Velocity Rule:</h3>
+<ul>
+    <li>Click on „Plus“ icon on top right corner</li>
+</ul>
+<img class="aligncenter wp-image-7247 size-full" src="/uploads/2018/02/riskcard_Add_rule.png" alt="" width="100%" ghgh730" />
+<ul>
+    <li>A modal window will open to add new velocity rule</li>
+</ul>
+<img class="alignnone wp-image-7248 size-large" src="/uploads/2018/02/riskcard_modal-877x1024.png" alt="" width="50%" ghgh1024" />
+<div id="velocity_define_rule"></div>
+</br>
+</br>
+<h3>How to define new Velocity Rule:</h3>
+When you see Modal window for add/edit Velocity risk rule, you can define new rule by choosing the required Time group, time count, attributes, operator, limit and result.
+
+The definition logic is as follows:
+For X parts ("Times" field) of Time ("Time Group") count of the transactions per "Attribute 2" and per "Attribute 3" (optional) must meet the limited("limit" field) condition selected in the "Operator", the "Result" will be executed.
+<img class="alignnone wp-image-7276 size-large" src="/uploads/2018/02/riskcard_modal_options-877x1024.png" alt="" width="50%" ghgh1024" />
+<h3>Example</h3>
+"I want for 12 hours count of the transactions per Customer Id and per Billing Address Country cannot be more than 5."
+<img class="alignnone wp-image-7278 size-large" src="/uploads/2018/02/riskcard_example-864x1024.png" alt="" width="50%" ghgh1024" />
+
+<h4>How to define Example Velocity Rule:</h4>
+<ul>
+    <li>Select "Hour" option in "Time group" dropbox</li>
+</ul>
+<img class="alignnone wp-image-7272 size-large" src="/uploads/2018/02/riskcard_timegroup-865x1024.png" alt="" width="50%" ghgh1024" />
+<ul>
+    <li>Fill "12" in "Times" input field</li>
+</ul>
+<img class="alignnone wp-image-7273 size-large" src="/uploads/2018/02/riskcard_field_times-858x1024.png" alt="" width="50%" ghgh1024" />
+<ul>
+    <li>Select "Count" option in "Count group" dropbox</li>
+</ul>
+<img class="alignnone wp-image-7283 size-large" src="/uploads/2018/02/riskcard_countgroup-1-861x1024.png" alt="" width="50%" ghgh1024" />
+<ul>
+    <li>"transactions.count" option will be selected in "Attribute 1" dropbox</li>
+</ul>
+<img class="alignnone wp-image-7286 size-large" src="/uploads/2018/02/riskcard_attr1_velocity-1-862x1024.png" alt="" width="50%" ghgh1024" />
+<ul>
+    <li>Select "customer.id" option in "Attribute 2" dropbox</li>
+</ul>
+<img class="alignnone wp-image-7281 size-large" src="/uploads/2018/02/riskcard_atrr2-855x1024.png" alt="" width="50%" ghgh1024" />
+After you select the option in "Attribute 2", this option will disappear from "Attribute 3" dropbox.
+<ul>
+    <li>Select "billing.address.country" option in "Attribute 3" dropbox</li>
+</ul>
+<img class="alignnone wp-image-7288 size-large" src="/uploads/2018/02/riskcard_attr3_velocity-788x1024.png" alt="" width="50%" ghgh1024" />
+<ul>
+    <li>Select "&gt;=" option in "Operator" dropbox</li>
+</ul>
+<img class="alignnone wp-image-7290 size-large" src="/uploads/2018/02/Screen-Shot-2018-02-28-at-11.16.02-871x1024.png" alt="" width="50%" ghgh1024" />
+<ul>
+    <li>Fill "5" in "Limit" input field</li>
+</ul>
+<img class="alignnone wp-image-7292 size-large" src="/uploads/2018/02/riskkartd_limit-872x1024.png" alt="" width="50%" ghgh1024" />
+<ul>
+    <li>Select "Red" option in "Result" dropbox</li>
+</ul>
+<img class="alignnone wp-image-7293 size-large" src="/uploads/2018/02/riskcard_Result-858x1024.png" alt="" width="50%" ghgh1024" />
+<ul>
+    <li>Click on "Save" button on the bottom of the modal window</li>
+</ul>
+<img class="alignnone wp-image-7295 size-large" src="/uploads/2018/02/riskcard_save-1-856x1024.png" alt="" width="50%" ghgh1024" />
+
+<strong>Important:</strong>
+After you save the items in modal window, you must click the "Save" button at the bottom of the page. Otherwise, your changes will not be saved.
+<img class="alignnone wp-image-7262 size-full" src="/uploads/2018/02/Screen-Shot-2018-02-28-at-09.27.14.png" alt="" width="100%" ghgh732" />
+<div id="velocity_edit_rule"></div>
+</br>
+</br>
+<h3>How to edit existing Velocity Rule:</h3>
+<ul>
+    <li>Click on „Edit“ icon on the row with selected item</li>
+</ul>
+<img class="alignnone wp-image-7315 size-full" src="/uploads/2018/02/riskcard_v_edit.png" alt="" width="100%" ghgh844" />
+<ul>
+    <li>A modal window will open to edit selected rule</li>
+</ul>
+<img class="alignnone wp-image-7316 size-large" src="/uploads/2018/02/riskcard_v_edit1-864x1024.png" alt="" width="50%" ghgh1024" />
+<ul>
+    <li>At this point "Rule type" dropbox can not be changed</li>
+</ul>
+<img class="alignnone wp-image-7317 size-large" src="/uploads/2018/02/riskcard_v_edit2-864x1024.png" alt="" width="50%" ghgh1024" />
+<ul>
+    <li>Change the options that you want</li>
+</ul>
+<img class="alignnone wp-image-7318 size-large" src="/uploads/2018/02/riskcard_v_edit3-856x1024.png" alt="" width="50%" ghgh1024" />
+<img class="alignnone wp-image-7319 size-large" src="/uploads/2018/02/riskcard_v_edit4-863x1024.png" alt="" width="50%" ghgh1024" />
+<ul>
+    <li>Save the risk rule</li>
+</ul>
+<img class="alignnone wp-image-7320 size-large" src="/uploads/2018/02/riskcard_v_edit5-863x1024.png" alt="" width="50%" ghgh1024" />
+
+<strong>Important:</strong>
+After you save the items in modal window, you must click the "Save" button at the bottom of the page. Otherwise, your changes will not be saved.
+<img class="alignnone wp-image-7311 size-full" src="/uploads/2018/02/riskcard_changed_save2.png" alt="" width="100%" ghgh666" />
+
+<div id="velocity_delete_rule"></div>
+</br>
+</br>
+<h3>How to delete existing Velocity Rule:</h3>
+<ul>
+    <li>Click on „Delete“ icon on the row with selected item</li>
+</ul>
+<img class="alignnone wp-image-7321 size-full" src="/uploads/2018/02/risccard_v_delete.png" alt="" width="100%" ghgh760" />
+<ul>
+    <li>Risk Rule will be deleted from the rules list</li>
+</ul>
+<img class="alignnone wp-image-7322 size-full" src="/uploads/2018/02/risccard_v_deleted.png" alt="" width="100%" ghgh746" />
+
+<strong>Important:</strong>
+After you delete the items from list, you must click the "Save" button at the bottom of the page. Otherwise, your changes will not be saved.
+<img class="alignnone wp-image-7311 size-full" src="/uploads/2018/02/riskcard_changed_save2.png" alt="" width="100%" ghgh666" />
+
+
+<div id="options_description"></div>
+</br>
+</br>
+<h3>Description of the options:</h3>
+
+"Time group"
+"14 days" --&gt; 14 days
+"Hour" --&gt; Hour
+"Week" --&gt; Week
+"Day" --&gt; Day
+If "14 days" option is selected, "Times" field will will not be visible.
+
+"Times" - positive number, used in combination with ""Time group""
+Represents the count of the "Time group" option.
+In the above mentioned example, this means that the 12 hours before the request hit the rule engine and the rule check was initiated.
+<strong>Max allowed period is 14 days.</strong>
+
+Examples:
+Period is 14 days:
+<img class="alignnone wp-image-7298 size-large" src="/uploads/2018/02/time_example_1-900x1024.png" alt="" width="50%" ghgh1024" />
+Period is 3 days:
+Option 1
+<img class="alignnone wp-image-7299 size-large" src="/uploads/2018/02/time_example_2-860x1024.png" alt="" width="50%" ghgh1024" />
+Option 2
+<img class="alignnone wp-image-7300 size-large" src="/uploads/2018/02/time_example_3-855x1024.png" alt="" width="50%" ghgh1024" />
+
+"Count group"
+"Count" --&gt; Count
+
+"Attribute 1"
+"transactions.count" --&gt; Count of the transactions (DEBIT and CAPTURE transactions) in status SUCCESS.
+
+"Attribute 2" and "Attribute 3"
+
+"billing.address.city" --&gt; Billing Address City
+"billing.address.country" --&gt; Billing Address Country
+"billing.address.firstName" --&gt; Billing Address FirstName
+"billing.address.houseNumber" --&gt; Billing Address HouseNumber
+"billing.address.id" --&gt; Billing Address Id
+"billing.address.lastName" --&gt; Billing Address LastName
+"billing.address.state" --&gt; Billing Address State
+"billing.address.street" --&gt; Billing Address Street
+"billing.address.zip" --&gt; Billing Address Zip Code
+"customer.email" --&gt; Customer Email
+"customer.id" --&gt; Customer ID
+"order.ipAddress" --&gt; IP Address of Order
+"persona.id" --&gt; Persona ID
+"persona.phone" --&gt; Persona Phone
+"persona.mobile" --&gt; Persona Mobile
+"paymentInstrument.iban" --&gt; IBAN of Payment Instrument
+"paymentInstrument.id" --&gt; ID of Payment Instrument
+"shipping.address.city" --&gt; Shipping Address City
+"shipping.address.country" --&gt; Shipping Address Country
+"shipping.address.firstName" --&gt; Shipping Address FirstName
+"shipping.address.houseNumber" --&gt; Shipping Address HouseNumber
+"shipping.address.id" --&gt; Shipping Address Id
+"shipping.address.lastName" --&gt; Shipping Address LastName
+"shipping.address.state" --&gt; Shipping Address State
+"shipping.address.street" --&gt; Shipping Address Street
+"shipping.address.zip" --&gt; Shipping Address Zip Code
+
+"Operator":
+
+"&gt;=" - Greater than or equal
+"&lt;=" - Less than or equal
+"&lt;" - Less than
+"==" - Equality
+"!=" - Inequality
+"&gt;" - Greater than
+
+"Limit" - positive number represents limit of the transactions count.
+
+Result:
+
+"Red" - Transaction will be declined
+"Green" - Transaction will pass.

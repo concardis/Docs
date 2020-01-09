@@ -232,17 +232,17 @@
 		<tr>
 			<td>Persona</td>
 			<td>M</td>
-			<td>POST/customers/{{customerId}}/personas</td>
+			<td ng-non-bindable>POST/customers/{{customerId}}/personas</td>
 		</tr>
 		<tr>
 			<td>Billing Address</td>
 			<td>M</td>
-			<td>POST/customers/{{customerId}}/addresses</td>
+			<td ng-non-bindable>POST/customers/{{customerId}}/addresses</td>
 		</tr>
 		<tr>
 			<td>Shipping Address</td>
 			<td>M</td>
-			<td>POST/customers/{{customerId}}/addresses</td>
+			<td ng-non-bindable>POST/customers/{{customerId}}/addresses</td>
 		</tr>
 	</tbody>
 </table>
@@ -571,19 +571,17 @@
 <p><strong>2)  Loading Payengine Bridge and External Libraries of RatePAY Device Ident</strong></p>
 <br>
 <p>Based on the parameters received in the response of POST request in step one, the following has to be executed:</p>
-<p>
-			< script src="https://pp.payengine.de/bridge/1.0/payengine.min.js" type="text/javascript"> </script>
+<pre>
+	"&lt;"script src="https://pp.payengine.de/bridge/1.0/payengine.min.js" type="text/javascript""&gt;"  "&lt;"/script"&gt;" 
+	<br>
+	"&lt;"script type="text/javascript">
+			window.onload = function() {
+			PayEngine.setPublishableKey( "<YOUR_MERCHANT_ID>" );
+			};
+	"&lt;"/script"&gt;"  
 		<br>
-			< script type="text/javascript"> <br/>
-				window.onload = function() {	<br/>
-				PayEngine.setPublishableKey( "<YOUR_MERCHANT_ID>" );<br/>
-				};<br/>
-				</script>  
-			<br>
-
-				Payengine.appendDeviceIdent(deviceIdentToken, deviceIdentSId, 'Checkout')
-
-	</p>
+	Payengine.appendDeviceIdent(deviceIdentToken, deviceIdentSId, 'Checkout')
+</pre>
 <br>
 <br>
 <p><strong>3) Sending Device Ident Token to Create Transaction Endpoint</strong></p>

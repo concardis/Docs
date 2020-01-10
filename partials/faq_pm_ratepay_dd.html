@@ -572,13 +572,13 @@
 <br>
 <p>Based on the parameters received in the response of POST request in step one, the following has to be executed:</p>
 <pre>
-	"&lt;"script src="https://pp.payengine.de/bridge/1.0/payengine.min.js" type="text/javascript""&gt;"  "&lt;"/script"&gt;" 
+	&lt;script src="https://pp.payengine.de/bridge/1.0/payengine.min.js" type="text/javascript"&gt;  &lt;/script&gt; 
 	<br>
-	"&lt;"script type="text/javascript">
-			window.onload = function() {
-			PayEngine.setPublishableKey( "<YOUR_MERCHANT_ID>" );
-			};
-	"&lt;"/script"&gt;"  
+	&lt;script type="text/javascript"&gt;
+		window.onload = function() {
+		PayEngine.setPublishableKey( "&lt;YOUR_MERCHANT_ID&gt;" );
+		};
+	&lt;/script&gt;  
 		<br>
 	Payengine.appendDeviceIdent(deviceIdentToken, deviceIdentSId, 'Checkout')
 </pre>

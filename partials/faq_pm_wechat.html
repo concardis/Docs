@@ -191,21 +191,18 @@
 		<br/>
 		<p>The following input parameters are required for initiating an WeChat payment via direct API integration.</p>
 		<br/>
-		<table border="1">
-			<tr>
-				<td >
-					PARAMETER
-				</td>
-				<td >
-					MANDATORY/OPTIONAL
-				</td>
-				<td >
-					DESCRIPTION
-				</td>
-				<td >
-					EXAMPLE
-				</td>
-			</tr>
+		<table class="table table-bordered table-striped table-condensed">
+            <thead>
+              <tr>
+                <tr>
+                  <th width="25%">Parameter</th>
+                  <th width="5%">Mandatory/Optional</th>
+                  <th width="45%">description</th>
+                  <th width="25%">Example</th>
+                </tr>
+              </tr>
+            </thead>
+            <tbody>
 			<tr>
 				<td>
 					payment.accountHolder
@@ -214,7 +211,7 @@
 					O
 				</td>
 				<td>
-					Name of the bank account holder
+					The name of the bank account holder.
 				</td>
 				<td>
 					John Doe
@@ -228,7 +225,7 @@
 					O
 				</td>
 				<td>
-					code of the country
+					The country code.
 				</td>
 				<td>
 					DE
@@ -242,10 +239,27 @@
 					O
 				</td>
 				<td>
-					preferredLanguage
+					The preferred language.
 				</td>
 				<td>
-					EN
+					en
+				</td>
+            </tr>
+            <tr>
+				<td>
+					locate
+				</td>
+				<td>
+					O
+				</td>
+				<td>
+					A language tag consisting of a two-letter language code combined with a two-letter country code according to <a href="https://en.wikipedia.org/wiki/IETF_language_tag" style="color:blue;">RFC 1766</a>. Default is en-US.
+				</td>
+				<td>
+                    Accepted values: <br> <br>
+                    en-US (English, default) <br>
+                    zh-CN ( Simplified Chinese) <br>
+                    zh-TW (Traditional Chinese)
 				</td>
 			</tr>
 			<tr>
@@ -289,8 +303,9 @@
 				<td>
 					http://my.shop.com/cancel
 				</td>
-			</tr>
-		</table>
+            </tr>
+        </tbody>
+	</table>
 		<br/>
 
 	<div>

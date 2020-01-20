@@ -5592,8 +5592,9 @@ definitions:
           PAYMENT_TRANSACTION: authentication with payment; the authentication is used for a normal payment transaction,<br/>
           RECURRING_TRANSACTION: authentication with payment; the authentication is used for an initial recurring payment transaction,<br/>
           RECURRING_CARDCHECK: authentication without payment; the authentication is used for a card check representing the initial recurring payment transaction,<br/>
-          ADD_CARD: authentication without payment; the authentication is only used for the verification of stored card credentials, e.g. within a wallet
-        enum: [PAYMENT_TRANSACTION, RECURRING_TRANSACTION, RECURRING_CARDCHECK, ADD_CARD]
+          ADD_CARD: authentication without payment; the authentication is only used for the verification of stored card credentials, e.g. within a wallet,<br/>
+          CARDHOLDER_VERIFICATION: authentication without payment; the authentication is used for the digital verification of the cardholder forcing a strong customer authentication
+        enum: [PAYMENT_TRANSACTION, RECURRING_TRANSACTION, RECURRING_CARDCHECK, ADD_CARD, CARDHOLDER_VERIFICATION]
         example: PAYMENT_TRANSACTION
       customerId:
         type: string
@@ -5649,8 +5650,9 @@ definitions:
           PAYMENT_TRANSACTION: authentication with payment; the authentication is used for a normal payment transaction,<br/>
           RECURRING_TRANSACTION: authentication with payment; the authentication is used for an initial recurring payment transaction,<br/>
           RECURRING_CARDCHECK: authentication without payment; the authentication is used for a card check representing the initial recurring payment transaction,<br/>
-          ADD_CARD: authentication without payment; the authentication is only used for the verification of stored card credentials, e.g. within a wallet
-        enum: [PAYMENT_TRANSACTION, RECURRING_TRANSACTION, RECURRING_CARDCHECK, ADD_CARD]
+          ADD_CARD: authentication without payment; the authentication is only used for the verification of stored card credentials, e.g. within a wallet,<br/>
+          CARDHOLDER_VERIFICATION: authentication without payment; the authentication is used for the digital verification of the cardholder forcing a strong customer authentication
+        enum: [PAYMENT_TRANSACTION, RECURRING_TRANSACTION, RECURRING_CARDCHECK, ADD_CARD, CARDHOLDER_VERIFICATION]
         example: PAYMENT_TRANSACTION
       customerId:
         type: string

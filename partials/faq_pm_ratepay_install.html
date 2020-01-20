@@ -1,1208 +1,1032 @@
-<br/>
+<img src="/img/faq/ratepay_install/ratepay_ratenzahlung.jpg" alt="" width="30%">
+<br>
+<br>
+<ul>
+  <li>Overview</li>
+  <li>Customer Experience</li>
+  <li>Payengine Details
+    <ul>
+      <li>General</li>
+      <li>Supported Features & Services</li>
+      <li>Integration Types</li>
+      <li>Technical Flow</li>
+      <li>Specifics
+        <ul>
+          <li>Prerequisites for Authorizing Transactions
+            <ul>
+                <li>Customer</li>
+                <li>Persona</li>
+                <li>Billing/Shipping Address</li>
+                <li>Device Identification for RatePAY Payment Methods</li>
+            </ul>
+        </li>
+        <li>Input Parameters for Authorizing Transactions</li>
+        <li>Configuration Request</li>
+        <li>Installment calculator
+            <ul>
+                <li>Option 1 - Calculator based on the desired amount of a monthly installment</li>
+                <li>Option 2 - Calculator based on the desired number of monthly installments</li>
+                <li>Option 3 - Offer both calculator types</li>
+            </ul>
+        </li>
+        </ul>
+      </li>
+      <li>Samples
+        <ul>
+          <li>Preauth transaction</li>
+          <li>Capture transaction</li>
+          <li>Cancel transaction</li>
+          <li>Debit transaction</li>
+          <li>Refund transaction</li>
+        </ul>
+      </li>
+      </ul>
+  </li>
+  <li>Testing</li>
+</ul>
+<br>
+<br>
+<h2>Overview</h2>
+<br>
+<p>RatePAY - Installments enables customers to pay for purchases in installments and choose a convenient payback plan.</p>
+<p>RatePAY settles the purchase with the merchant and finances the customer in exchange for interest. The financing amount is usually between EUR200 and EUR2,000 but can vary according to the merchant's contract with RatePAY.</p>
+<p>Customers can choose the number of monthly installments, which are usually 3, 6, 9, 12 or 24. In some cases, RatePAY can authorize a merchant to offer payments in 36 or 48 installments. The longer the payback period, the higher the interest.</p>
+<p>Customers have to meet certain requirements to be entitled to pay with RatePAY - Installments.</p>
+<p>RatePAY charges customers with a small service charge for every purchase.</p>
+<p>Customers can use bank transfer or SEPA direct debit to pay their installments.</p>
+<br>
+<p>The main advantages for merchants using RatePAY - Installments are:</p>
+<ul>
+  <li>The merchant receives the whole purchase price from RatePAY, which effectively grants a loan to the customer;</li>
+  <li>The entire user experience takes place on the merchant's website, and there is no need to redirect the customer to a third-party webpage to complete payment.</li>
+  <li>As with all RatePAY payment methods, the risk of customer payment default is transferred from the merchant to RatePAY;</li>
+</ul>
+<br>
+<p>The main advantages for customers using RatePAY - Installments are:</p>
+<ul>
+  <li>RatePAY - Installments provides an easy and quick way for customers to complete their purchases;</li>
+  <li>Flexibility: the customer can choose different finance amounts and different payback periods;</li>
+  <li>There is no need to create a RatePAY user account.</li>
+</ul>
+<h2>Customer Experience</h2>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th width="10%">Step</th>
+      <th width="20%">Description</th>
+      <th width="70%">Screenshot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Choose Ratenzahlung (RatePAY Installments)</td>
+      <td><img src="/img/faq/ratepay_install/RPI_1.png" alt="" width="40%"></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Choose Calculation Type from the drop-down menu (Calculation Rate or Calculation Time)</td>
+      <td><img src="/img/faq/ratepay_install/RPI_2.png" alt="" width="40%"></td>
+    </tr>
+    <tr>
+      <td>2.1.1</td>
+      <td>To use <strong>Calculation Rate</strong> as Calculation Type - Choose Calculation Rate and enter the desired value</td>
+      <td><img src="/img/faq/ratepay_install/RPI_2.1.1.PNG" alt="" width="40%"></td>
+    </tr>
+    <tr>
+      <td>2.1.2</td>
+      <td>Click Calculate. The installment plan will appear.</td>
+      <td><img src="/img/faq/ratepay_install/RPI_2.1.2.PNG" alt="" width="40%"></td>
+    </tr>
+    <tr>
+      <td>2.2.1</td>
+      <td>To use <strong>Calculation Time</strong> as Calculation Type - Choose Calculation Time and choose the desired payback duration</td>
+      <td><img src="/img/faq/ratepay_install/RPI_2.2.1.PNG" alt="" width="40%"></td>
+    </tr>
+    <tr>
+      <td>2.2.2</td>
+      <td>Click <strong>Calculate</strong>. The installment plan will load.</td>
+      <td><img src="/img/faq/ratepay_install/RPI_2.2.2.PNG" alt="" width="40%"></td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>Choose Payment Type - Direct Debit or Bank Transfer</td>
+      <td><img src="/img/faq/ratepay_install/RPI_3.png" alt="" width="40%"></td>
+    </tr>
+    <tr>
+      <td>3.1.1</td>
+      <td>To use <strong>Direct Debit</strong> as Payment Type - Choose Direct Debit, and enter Account Holder and IBAN</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>3.1.2</td>
+      <td>Click <strong>Declaration of SEPA mandate</strong></td>
+      <td><img src="/img/faq/ratepay_install/RPI_3.1.3.PNG" alt="" width="40%"></td>
+    </tr>
+    <tr>
+      <td>3.1.3</td>
+      <td>Click <strong>Pay</strong></td>
+      <td><img src="/img/faq/ratepay_install/RPI_3.1.4.PNG" alt="" width="40%"></td>
+    </tr>
+    <tr>
+      <td>3.2</td>
+      <td>To use <strong>Bank Transfer</strong> as Payment Type - Choose Bank Transfer and click <strong>Pay</strong></td>
+      <td><img src="/img/faq/ratepay_install/RPI_3.2.PNG" alt="" width="40%"></td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>Success or Failure notification</td>
+      <td><img src="/img/faq/ratepay_install/RPI_4.png" alt="" width="40%"></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<h2>Payengine Details</h2>
+<br>
+<h3>General Details</h3>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+  <tbody>
+    <tr>
+      <th width="50%">Product</th>
+      <td width="50%">RatePAY - Installments</td>
+    </tr>
+    <tr>
+      <th>Payment Options (for Customer)</th>
+      <td>
+        <ul>
+          <li>Direct Debit</li>
+          <li>Bank Transfer</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <th>Channels</th>
+      <td>ECOM & MOTO</td>
+    </tr>
+    <tr>
+      <th>Currencies</th>
+      <td>EUR</td>
+    </tr>
+    <tr>
+      <th>Countries</th>
+      <td>DE, AT</td>
+    </tr>
+    <tr>
+      <th>Technical Flow</th>
+      <td>synchronous</td>
+    </tr>
+    <tr>
+      <th>Recurring</th>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>Chargebacks</th>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>Reusable Payment Instruments</th>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>B2B applicable</th>
+      <td>no</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<h3>Supported Features & Services</h3>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+  <tbody>
+    <tr>
+      <th width="50%">Debit</th>
+      <td width="50%">yes</td>
+    </tr>
+    <tr>
+      <th>Preauthorization</th>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>Cancelation</th>
+      <td>yes (full and partial)</td>
+    </tr>
+    <tr>
+      <th>Capture</th>
+      <td>yes (full and partial)</td>
+    </tr>
+    <tr>
+      <th>Refunds</th>
+      <td>yes (full and partial)</td>
+    </tr>
+    <tr>
+      <th>Notifications</th>
+      <td>yes - webhook, email</td>
+    </tr>
+    <tr>
+      <th>PayLink Integration</th>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>Settlement Reporting</th>
+      <td>yes, only original RatePAY settlement reporting</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<h3>Integration Types</h3>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+  <tbody>
+    <tr>
+      <th width="50%">API</th>
+      <td width="50%">yes</td>
+    </tr>
+    <tr>
+      <th>Widget</th>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>Bridge</th>
+      <td>no</td>
+    </tr>
+    <tr>
+      <th>Shop Plugin</th>
+      <td>yes</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<h3>Technical Flow</h3>
+<br>
+<img src="/img/faq/ratepay_install/tech-flow-RP-installments.png" alt="" width="100%">
+<br>
+<br>
+<h3>Specifics</h3>
+<br>
+<h4>Prerequisites for Authorizing Transactions</h4>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>Prerequisite</th>
+      <th>Mandatory/Optional</th>
+      <th>Create Prerequisite</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Customer</td>
+      <td>M</td>
+      <td ng-non-bindable>POST/customers</td>
+    </tr>
+    <tr>
+      <td>Persona</td>
+      <td>M</td>
+      <td ng-non-bindable>POST/customers/{{customerId}}/personas</td>
+    </tr>
+    <tr>
+      <td>Billing Address</td>
+      <td>M</td>
+      <td ng-non-bindable>POST/customers/{{customerId}}/addresses</td>
+    </tr>
+    <tr>
+      <td>Shipping Address</td>
+      <td>M</td>
+      <td ng-non-bindable>POST/customers/{{customerId}}/addresses</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<h5>Customer</h5>
+<br>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th style="border-right: none;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px" style="vertical-align: supper;"></th>
+      <th><strong>Important Note</strong>
+        <br>
+        <p>The only type of transaction for RatePAY Installments is business to customer (B2C). There is no business to business (B2B) option for this service.</p>
+      </th>
+    </tr>
+  </thead>
+</table>
+<br>
+<br>
+<p><strong>Create Customer - Request Parameters</strong></p>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>PARAMETER</th>
+      <th>MANDATORY/OPTIONAL</th>
+      <th>DESCRIPTION</th>
+      <th>EXAMPLE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Email</td>
+      <td>M</td>
+      <td>The email address of the customer</td>
+      <td>john@doe.com</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<h5>Persona</h5>
+<br>
+<p><strong>Create Persona - Request Parameters</strong></p>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>PARAMETER</th>
+      <th>MANDATORY/OPTIONAL</th>
+      <th>DESCRIPTION</th>
+      <th>EXAMPLE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>First Name</td>
+      <td>M</td>
+      <td>The person's first name</td>
+      <td>John</td>
+    </tr>
+    <tr>
+      <td>Last Name</td>
+      <td>M</td>
+      <td>The person's last name</td>
+      <td>Doe</td>
+    </tr>
+    <tr>
+      <td>Birthday</td>
+      <td>M</td>
+      <td>The person's birth date 
+          <br>
+          <strong>Requirement: the person has to be at least 18 years old</strong>
+      </td>
+      <td>
+        <span style="color:green;">358293600000</span>
+      </td>
+    </tr>
+    <tr>
+      <td>Title</td>
+      <td>O</td>
+      <td>The person's title</td>
+      <td>Prof. Dr.</td>
+    </tr>
+    <tr>
+      <td>Phone</td>
+      <td>O</td>
+      <td>The person's home phone</td>
+      <td>00493012345</td>
+    </tr>
+    <tr>
+      <td>Mobile</td>
+      <td>O</td>
+      <td>The person's mobile phone</td>
+      <td>00493012345</td>
+    </tr>
+    <tr>
+      <td>Fax</td>
+      <td>O</td>
+      <td>The person's fax number</td>
+      <td>00493012345</td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td>O</td>
+      <td>The person's gender</td>
+      <td>MALE</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<p><strong>Billing/Shipping Address</strong></p>
+<br>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th style="border-right: none;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px" style="vertical-align: supper;"></th>
+      <th><strong>Important Note</strong>
+        <br>
+        <p><strong>RatePAY - Installments requires the Billing and Shipping Address to be identical.</strong></p>
+        <p>Exceptions for merchants are possible only through additional agreements with RatePAY GmbH.</p>
+      </th>
+    </tr>
+  </thead>
+</table>
+<br>
+<br>
+<p><strong>Create Billing/Shipping Address - Request Parameters</strong></p>
+<br>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th>PARAMETER</th>
+      <th>MANDATORY/OPTIONAL</th>
+      <th>DESCRIPTION</th>
+      <th>EXAMPLE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>First Name</td>
+      <td>M</td>
+      <td>The customer's or recipient's first name</td>
+      <td>John</td>
+    </tr>
+    <tr>
+      <td>Last Name</td>
+      <td>M</td>
+      <td>The customer's or recipient's last name</td>
+      <td>Doe</td>
+    </tr>
+    <tr>
+      <td>Street</td>
+      <td>M</td>
+      <td>The customer's or recipient's street</td>
+      <td>Musterweg</td>
+    </tr>
+    <tr>
+      <td>House Number</td>
+      <td>M</td>
+      <td>TThe customer's or recipient's home number</td>
+      <td>4313</td>
+    </tr>
+    <tr>
+      <td>City</td>
+      <td>M</td>
+      <td>The customer's or recipient's city</td>
+      <td>Musterhausen</td>
+    </tr>
+    <tr>
+      <td>Zip</td>
+      <td>M</td>
+      <td>The customer's or recipient's ZIP code</td>
+      <td>55555</td>
+    </tr>
+    <tr>
+      <td>Country</td>
+      <td>M</td>
+      <td>The  customer's or recipient's country</td>
+      <td>DE</td>
+    </tr>
+    <tr>
+      <td>Phone</td>
+      <td>M</td>
+      <td>The customer's or recipient's home phone number</td>
+      <td>00493012345</td>
+    </tr>
+    <tr>
+      <td>State</td>
+      <td>O</td>
+      <td>The customer's or recipient's state/province</td>
+      <td>Bayern</td>
+    </tr>
+    <tr>
+      <td>Fax</td>
+      <td>O</td>
+      <td>The customer's or recipient's fax number</td>
+      <td>00493012345</td>
+    </tr>
+    <tr>
+      <td>Mobile</td>
+      <td>O</td>
+      <td>The customer's or recipient's mobile phone number</td>
+      <td>00493012345</td>
+    </tr>
+    <tr>
+      <td>Title</td>
+      <td>O</td>
+      <td>The customer's or recipient's title</td>
+      <td>Prof. Dr.</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<p><strong><u>Device Identification for RatePAY Payment Methods</u></strong></p>
+<br>
+<p>In general Device Identification can be defined as a technique used to establish a "fingerprint" of a user's device used to access certain website or application of interest in order to track device activity and determine linkages between other devices.</p>
+<br>
+<p>The main purpose of Device Identification technique is to support prevention of possible fraudulent operations.</p>
+<br>
+<p>Device Identification is a mandatory prerequisite for all RatePAY payment methods. It has to be created prior to execution of any authorizing transactions (Preauth or Debit).</p>
+<br>
+<p>For API integration of RatePAY payment methods it's recommended merchants to follow three steps regarding Device Identification:</p>
+<br>
+<p><strong>1) Creating Device Ident using POST method</strong></p>
+<br>
+<p>A POST request <strong>with empty body</strong> has to be directed to the following endpoints:</p>
+<br>
+<ul>
+  <li>for TM environment - <a href="https://pptest.payengine.de/widget/ratepay/device-ident/create">https://pptest.payengine.de/widget/ratepay/device-ident/create</a></li>
+  <li>for Production environment - <a href="https://pp.payengine.de/widget/ratepay/device-ident/create">https://pp.payengine.de/widget/ratepay/device-ident/create</a></li>
+</ul>
+<br>
+<p>Response of the request will contain the following properties:</p>
+<ul>
+  <li>deviceIdentToken</li>
+  <li>deviceIdentSId</li>
+  <li>sessionToken</li>
+</ul>
+<br>
+<p>Example response to Create Device request can be found below:</p>
 <div>
-	<h2>Overview</h2>
-	<br/>
-	<p>
-		RatePAY instalment payment method enables end-customers to pay off the purchase price of goods in monthly installments. For this method, monthly installments must be paid over a fixed agreed term, with the final installment potentially differing from previous installments. Installment payments can be transferred via bank transfer or SEPA direct debit.
-	</p>
-	<br/>
-	<br/>
-	<h2>CUSTOMER EXPERIENCE</h2>
-	<br/>
-	<p>
-		In the Payengine Modal Widget the selection of the payment method could look as per following screens.
-	</p>
-	<br/>
-	<table border="1" width="60%">
-		<thead>
-			<th>Step</th>
-			<th>Description</th>
-			<th >Screenshot</th>
-		</thead>
-		<tr>
-			<td>
-				1
-			</td>
-			<td>
-				Select Ratenzahlung
-				<br/>
-				(RatePAY Installment)
-			</td>
-			<td>
-				<img class="" src="/img/faq/ratepay_install/ratepay_install_1.png" width="100%" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				2
-			</td>
-			<td>
-				Choose Calculation Type (options: Calculation Rate or Calculation Time)
-			</td>
-			<td>
-				<img class="" src="/img/faq/ratepay_install/ratepay_install_2.png" width="100%" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				3A
-			</td>
-			<td>
-				Fill Calculation Rate and calculate installment parameters
-			</td>
-			<td>
-				<img class="" src="/img/faq/ratepay_install/ratepay_install_3.png" width="100%" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				3B
-			</td>
-			<td>
-				Choose Calculation Time and calculate installment parameters
-			</td>
-			<td>
-				<img class="" src="/img/faq/ratepay_install/ratepay_install_4.png" width="100%" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				4
-			</td>
-			<td>
-				Choose Payment Type
-				<br/>
-				(options: Direct Debit or Bank Transfer)
-			</td>
-			<td>
-				<img class="" src="/img/faq/ratepay_install/ratepay_install_5.png" width="100%" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				5
-			</td>
-			<td>
-				Provide IBAN and click on SEPA mandate declaration
-			</td>
-			<td>
-				<img class="" src="/img/faq/ratepay_install/ratepay_install_6.png" width="100%" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				6
-			</td>
-			<td>
-				Click on Pay button
-			</td>
-			<td>
-				<img class="" src="/img/faq/ratepay_install/ratepay_install_7.png" width="100%" />
-			</td>
-		</tr>
-		<tr>
-			<td>
-				7
-			</td>
-			<td>
-				Notification in Success scenario
-			</td>
-			<td>
-				<img class="" src="/img/faq/ratepay_install/ratepay_install_8.png" width="100%" />
-			</td>
-		</tr>
-	</table>
-	<br/>
-	<br/>
-
-	<h2>Payengine Details</h2>
-	<br/>
-	<div>
-		<div class="content-box-wrapper">
-			<div class="pricing-box-alt row clearfix">
-				<div class="col-md-3 plans-features">
-					<ul>
-						<li class="header ms-hover"><strong>General</strong></li>
-						<li class="ms-hover">Payengine Product</li>
-						<li class="ms-hover">Payment Options (for Customer)</li>
-						<li class="ms-hover">Channels</li>
-						<li class="ms-hover">Currencies</li>
-						<li class="ms-hover">Countries</li>
-						<li class="ms-hover">Technical Flow</li>
-						<li class="ms-hover">Recurring</li>
-						<li class="ms-hover">Chargebacks</li>
-						<li class="ms-hover">Reusable Payment Instrument</li>
-						<li class="ms-hover">B2B applicable</li>
-					</ul>
-				</div>
-				<div class="individual-plan">
-					<ul>
-						<li class="header ms-hover"></li>
-						<li class="ms-hover">ratepay-installment</li>
-						<li class="ms-hover">
-							<ul>
-								<li>
-									Installment Bank Transfer
-								</li>
-								<li>
-									Installment Direct Debit
-								</li>
-							</ul>
-						</li>
-						<li class="ms-hover">ECOM & MOTO</li>
-						<li class="ms-hover">EUR</li>
-						<li class="ms-hover">DE, AT</li>
-						<li class="ms-hover">Synchronous</li>
-						<li class="ms-hover">No</li>
-						<li class="ms-hover">No</li>
-						<li class="ms-hover">No</li>
-						<li class="ms-hover">No</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<br/>
-		<br/>
-		<div class="content-box-wrapper">
-			<div class="pricing-box-alt row clearfix">
-				<div class="col-md-3 plans-features">
-					<ul>
-						<li class="header ms-hover"><strong>Supported Features</strong></li>
-						<li class="header ms-hover"><strong>& Services</strong></li>
-						<li class="ms-hover">Debit</li>
-						<li class="ms-hover">Preauthorization</li>
-						<li class="ms-hover">Cancelation</li>
-						<li class="ms-hover">Capture</li>
-						<li class="ms-hover">Refunds</li>
-						<li class="ms-hover">Notifications</li>
-						<li class="ms-hover">PayLink Integration</li>
-						<li class="ms-hover">Settlement Reporting</li>
-					</ul>
-				</div>
-				<div class="individual-plan">
-					<ul>
-						<li class="header ms-hover"></li>
-						<li class="header ms-hover"></li>
-						<li class="ms-hover">Yes</li>
-						<li class="ms-hover">Yes</li>
-						<li class="ms-hover">Yes (full & partial)</li>
-						<li class="ms-hover">Yes (full & partial)</li>
-						<li class="ms-hover">Yes (full & partial)</li>
-						<li class="ms-hover">Yes - webhook, email</li>
-						<li class="ms-hover">No</li>
-						<li class="ms-hover">Yes, only original RatePAY settlement reporting</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<br/>
-		<br/>
-		<div class="content-box-wrapper">
-			<div class="pricing-box-alt row clearfix">
-				<div class="col-md-3 plans-features">
-					<ul>
-						<li class="header ms-hover"><strong>Integration Types</strong></li>
-						<li class="ms-hover">API</li>
-						<li class="ms-hover">Widget</li>
-						<li class="ms-hover">Bridge</li>
-						<li class="ms-hover">Shop Plugin</li>
-					</ul>
-				</div>
-				<div class="individual-plan">
-					<ul>
-						<li class="header ms-hover"><strong></strong></li>
-						<li class="ms-hover">Yes</li>
-						<li class="ms-hover">Yes</li>
-						<li class="ms-hover">No</li>
-						<li class="ms-hover">Yes</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<h3>Integration via Widget</h3>
-	<br/>
-	<p>
-		Widget integration for RatePAY Installment follows general rules and flow of widget integration for all payment methods and it has no specific differences.
-	</p>
-	<br/>
-	<p>
-		Information about general types of widget integration and their associated flows can be found under the following link: <a href="https://docs.payengine.de/outofthebox/widgetmenu/ourwidget">
-		https://docs.payengine.de/outofthebox/widgetmenu/ourwidget
-		</a>
-	</p>
-	<br/>
-	<h3>Integration via API</h3>
-	<br/>
-	<h4>Step 1: General prerequisites for transactions </h4>
-	<br/>
-	<p>
-		<strong>Prior to</strong> creating of any payment transaction the merchant needs to have in place a <strong>Customer</strong> connected with <strong>Persona</strong> and <strong>Billing/Shipping Address</strong> data.
-	</p>
-	<br/>
-	<p>
-		<strong>Important:</strong> All three objects - Customer, Persona and Billing/Shipping Address <strong>are mandatory</strong> for RatePAY Installment and any transaction cannot be executed if they aren't in place.
-	</p>
-	<br/>
-	<h5><strong><u>Customer</u></strong></h5>
-	<br/>
-	<p>
-		<strong>Important Note:</strong> The only allowed type of customer for RatePAY Installment is individual customer.
-	</p>
-	<br/>
-	<p>
-		A new customer has to be created or existing customer ID has to be provided.
-	</p>
-	<br/>
-	<i>Create Customer</i>
-	<br/>
-	<p>
-		For creating of a new customer, the following specific request parameter has to be available:
-	</p>
-	<br/>
-	<table border="1">
-		<tr>
-			<td align="center">
-				PARAMETER
-			</td>
-			<td align="center">
-				MANDATORY/OPTIONAL
-			</td>
-			<td align="center">
-				DESCRIPTION
-			</td>
-			<td align="center">
-				EXAMPLE
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				Email
-			</td>
-			<td align="center">
-				M
-			</td>
-			<td align="center">
-				email address of the customer
-			</td>
-			<td align="center">
-				john@doe.com
-			</td>
-		</tr>
-	</table>
-	<br/>
-	<p>
-		An example for <i>Create Customer</i> request can be found below:
-	</p>
-	<br/>
-	<p>POST/Customer</p>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Customer request
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
-  "email": "IdmGIoGJLJ@payengine-test.de",
-  "merchantCustomerId": "merchantCustomerId_333124667"
-}
-				</code>
-			</div>
-		</div>
-	</div>
-
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Customer response
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
-    "merchantCustomerId": "merchantCustomerId796918341",
-    "organizationRegistrationRegister": null,
-    "organizationRegistrationId": null,
-    "organizationEntityType": null,
-    "organizationVatId": null,
-    "companyName": null,
-    "reference": null,
-    "email": "KDkFtJUfnD@test.com",
-    "customerId": "customer_pbrxmgbbsv",
-    "addresses": [],
-    "personas": [],
-    "paymentInstruments": [],
-    "createdAt": 1551181220413,
-    "modifiedAt": 1551181220413,
-    "customerType": null
-}
-				</code>
-			</div>
-		</div>
-	</div>
-
-
-	<br/>
-	<h5><strong><u>Persona</u></strong></h5>
-	<br/>
-	<p>
-		<i>Create Persona</i>
-	</p>
-	<p>
-		For creating of a persona, connected to a customer, the following specific request parameters have to be available:
-	</p>
-	<br/>
-	<table border="1">
-		<tr>
-			<td align="center">
-				PARAMETER
-			</td>
-			<td align="center">
-				MANDATORY/OPTIONAL
-			</td>
-			<td align="center">
-				DESCRIPTION
-			</td>
-			<td align="center">
-				EXAMPLE
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				First Name
-			</td>
-			<td align="center">
-				M
-			</td>
-			<td align="center">
-				first name of the customer
-			</td>
-			<td align="center">
-				John
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				Last Name
-			</td>
-			<td align="center">
-				M
-			</td>
-			<td align="center">
-				last name of the customer
-			</td>
-			<td align="center">
-				Doe
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				Birthday
-			</td>
-			<td align="center">
-				M
-			</td>
-			<td align="center">
-				birthday date of the customer
-			</td>
-			<td align="center">
-				358293600000
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				Title
-			</td>
-			<td align="center">
-				O
-			</td>
-			<td align="center">
-				title of the customer
-			</td>
-			<td align="center">
-				Prof. Dr.
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				Phone
-			</td>
-			<td align="center">
-				O
-			</td>
-			<td align="center">
-				home phone of the customer
-			</td>
-			<td align="center">
-				00493012345
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				Mobile
-			</td>
-			<td align="center">
-				O
-			</td>
-			<td align="center">
-				mobile phone of the customer
-			</td>
-			<td align="center">
-				00493012345
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				Fax
-			</td>
-			<td align="center">
-				O
-			</td>
-			<td align="center">
-				fax number of the customer
-			</td>
-			<td align="center">
-				00493012345
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				Gender
-			</td>
-			<td align="center">
-				O
-			</td>
-			<td align="center">
-				gender of the customer
-			</td>
-			<td align="center">
-				MALE
-			</td>
-		</tr>
-	</table>
-	<br/>
-	<p>
-		<strong>Specific requirement for persona:</strong> For RatePAY Installment, the persona has to be <strong>at least</strong> 18 years old.
-	</p>
-	<br/>
-	<p>
-		An example for <i>Create Persona</i> request  can be found below:
-	</p>
-	<br/>
-	<p>POST /customers/{{customerId}}/personas</p>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Persona request
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
- "firstName": "Max",
- "lastName": "Muster",
- "birthday": 358293600000
-}
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Persona response
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
-    "personaId": "persona_dzviopjddy",
-    "firstName": "Max",
-    "lastName": "Muster",
-    "phone": "00493012345",
-    "mobile": "00493012345",
-    "fax": "00493012345",
-    "birthday": 358293600000,
-    "gender": "MALE",
-    "title": "Prof. Dr.",
-    "createdAt": 1551181812856,
-    "modifiedAt": 1551181812856
-}
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<h5><strong><u>Billing/Shipping Address</u></strong></h5>
-	<br/>
-	<p>
-		<strong>Important Note:</strong> As a rule, it's required Billing and Shipping addresses to be identical. Exceptions for merchants are possible only with additional agreement with RatePAY GmbH.
-	</p>
-	<br/>
-	<i>Create Billing/Shipping Address</i>
-	<br/>
-	<p>
-		 For creating of an address, connected to a customer, the following specific request parameters have to be available:
-	</p>
-	<br/>
-	<table border="1">
-		<tr>
-			<td align="center">
-				PARAMETER
-			</td>
-			<td align="center">
-				MANDATORY/OPTIONAL
-			</td>
-			<td align="center">
-				DESCRIPTION
-			</td>
-			<td align="center">
-				EXAMPLE
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				First Name
-			</td>
-			<td align="center">
-				M
-			</td>
-			<td align="center">
-				first name of the customer/recipient
-			</td>
-			<td align="center">
-				John
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				Last Name
-			</td>
-			<td align="center">
-				M
-			</td>
-			<td align="center">
-				last name of the customer/recipient
-			</td>
-			<td align="center">
-				Doe
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				Street
-			</td>
-			<td align="center">
-				M
-			</td>
-			<td align="center">
-				street name of the customer/recipient
-			</td>
-			<td align="center">
-				Musterweg
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				House Number
-			</td>
-			<td align="center">
-				M
-			</td>
-			<td align="center">
-				precise house location of the customer/recipient
-			</td>
-			<td align="center">
-				4313
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				City
-			</td>
-			<td align="center">
-				M
-			</td>
-			<td align="center">
-				city of the customer/recipient
-			</td>
-			<td align="center">
-				Musterhausen
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				Zip
-			</td>
-			<td align="center">
-				M
-			</td>
-			<td align="center">
-				precise zip code of location of the customer/recipient
-			</td>
-			<td align="center">
-				55555
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				Country
-			</td>
-			<td align="center">
-				M
-			</td>
-			<td align="center">
-				country abbreviation of the customer/recipient
-			</td>
-			<td align="center">
-				DE
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				State
-			</td>
-			<td align="center">
-				O
-			</td>
-			<td align="center">
-				state/province of location of the customer/recipient
-			</td>
-			<td align="center">
-				Bayern
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				Phone
-			</td>
-			<td align="center">
-				M
-			</td>
-			<td align="center">
-				home phone number of the customer/recipient
-			</td>
-			<td align="center">
-				00493012345
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				Fax
-			</td>
-			<td align="center">
-				O
-			</td>
-			<td align="center">
-				fax number of the customer/recipient
-			</td>
-			<td align="center">
-				00493012345
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				Mobile
-			</td>
-			<td align="center">
-				O
-			</td>
-			<td align="center">
-				mobile number of the customer/recipient
-			</td>
-			<td align="center">
-				00493012345
-			</td>
-		</tr>
-		<tr>
-			<td align="center">
-				Title
-			</td>
-			<td align="center">
-				O
-			</td>
-			<td align="center">
-				title of the customer
-			</td>
-			<td align="center">
-				Prof. Dr.
-			</td>
-		</tr>
-	</table>
-	<br/>
-	<p>
-		An example for <i>Create Address</i> request and response can be found below:
-	</p>
-	<br/>
-	<p>POST /customers/{{customerId}}/addresses</p>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Address request
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
-  "firstName": "Max",
-  "lastName": "Muster"
-  "street": "Musterweg",
-  "houseNumber": "{{$timestamp}}",
-  "city": "Musterhausen",
-  "zip": "55555",
-  "country": "DE",
-  "state": "Bayern",
-  "phone": "00493012345",
-  "fax": "00493012345",
-  "mobile": "00493012345",
-  "title": "Prof. Dr.",
-  "additionalDetails": "premium buyer"
-}
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Address response
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
-    "firstName": "Max",
-    "lastName": "Muster"
-    "street": "Musterweg",
-    "houseNumber": "1551170963",
-    "city": "Musterhausen",
-    "zip": "55555",
-    "country": "DE",
-    "state": "Bayern",
-    "phone": "00493012345",
-    "fax": "00493012345",
-    "mobile": "00493012345",
-    "title": "Prof. Dr.",
-    "additionalDetails": "premium buyer",
-    "addressId": "address_q7ucdkhfwy",
-    "createdAt": 1551170962780,
-    "modifiedAt": 1551170962780
-}
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<h5><strong><u>Installments Calculator</u></strong></h5>
-	<br/>
-	<br/>
-	<p>Installments calculator has to be in place prior to executing of any RatePAY Installment transaction.</p>
-	<br/>
-	<p>Merchants have to develop UI of Installments Calculator according to their preferences and needs.</p>
-	<br/>
-	<p>In general, there are three options for visualization of Installments Calculator:</p>
-	<ul>
-		<li>Calculator presenting <strong>only</strong> number of monthly installments as calculating criterion</li>
-		<li>Calculator presenting <strong>only</strong> amount of monthly installment as calculating criterion</li>
-		<li>Calculator presenting <strong>both</strong> calculating criteria -  number of monthly installments and amount of monthly installment</li>
-	</ul>
-	<br/>
-	<p>A merchant optionally might initiate a Configuration Request - GET/installments/config. The Configuration Request allows the merchant to read the stored configuration parameters for his merchant profile.</p>
-	<br/>
-	<p>An example for successful response of Configuration request  can be found below:</p>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Configuration response
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
-  "rateMinNormal": 0,
-  "monthNumberMin": 3,
-  "monthNumberMax": 48
-}
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<p><strong>Option 1</strong> - Calculator based on number of monthly installments</p>
-	<br/>
-	<p>An example for calculator based on number of monthly installments can be found below.</p>
-	<br/>
-	<p>The example presents all options for number of monthly installments within set up by the merchant range with lower limit (3) and upper limit (48) of possible number of monthly installments.</p>
-	<br/>
-	<img class="" src="/img/faq/ratepay_install/ratepay_install_9.png" width="60%" />
-	<br/>
-	<p>When end-customer selects desired number of monthly installments, the merchant has to send the following Calculation request to Payengine:</p>
-	<br/>
-	<p><strong>GET/installment/calculation/time</strong> with request parameters:</p>
-	<ul>
-		<li>amount to be financed</li>
-		<li>duration of Installment Plan</li>
-	</ul>
-	<br/>
-	<p>The response to Calculation Request will contain calculated Installment Plan.</p>
-	<br/>
-	<p>The structure of response to Calculation Request can be found below:</p>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Structure of Response to Calculation Request
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
-  "totalAmount": 0,
-  "amount": 0,
-  "interestAmount": 0,
-  "serviceCharge": 0,
-  "interestRate": 0,
-  "annualPercentageRate": 0,
-  "monthlyDebitInterest": 0,
-  "numberOfRates": 0,
-  "rate": 0,
-  "lastRate": 0
-}
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<p>The Installment Plan will be displayed to the end-customer as shown below:</p>
-	<br/>
-	<img class="" src="/img/faq/ratepay_install/ratepay_install_10.png" width="100%" />
-	<br/>
-	<p>Option 2 - Calculator based on amount of monthly installment</p>
-	<br/>
-	<p>An example for calculator based on amount of monthly installment can be found below.</p>
-	<br/>
-	<p>The example presents calculator with a field where end-customer can fill desired amount of monthly installment.</p>
-	<br/>
-	<img class="" src="/img/faq/ratepay_install/ratepay_install_11.png" width="60%" />
-	<br/>
-	<p>When end-customer fills desired amount of monthly installment, the merchant has to send the following Calculation request to Payengine:</p>
-	<br/>
-	<p><strong>GET/installment/calculation/rate</strong> with request parameters:</p>
-	<br/>
-	<ul>
-		<li>amount to be financed</li>
-		<li>desired monthly rate</li>
-	</ul>
-	<br/>
-	<p>The response to Calculation Request will contain calculated Installment Plan.</p>
-	<br/>
-	<p>The structure of response to Calculation Request is the same as in Option 1 case and shown above.</p>
-	<br/>
-	<p>The Installment Plan should be displayed to the end-customer as shown below:</p>
-	<br/>
-	<img class="" src="/img/faq/ratepay_install/ratepay_install_12.png" width="100%" />
-	<br/>
-	<p><strong>Option 3</strong> - Calculator presenting both calculating criteria -  number of monthly installments and amount of monthly installment</p>
-	<br/>
-	<p>This option is combination of previous two options and it enables the end-customer to have more freedom in designing his/her Installment Plan.</p>
-	<br/>
-	<h5><strong><u>Device Identification for RatePAY Payment Methods</u></strong></h5>
-	<br/>
-	<p>
-		In general Device Identification can be defined as a technique used to establish a "fingerprint" of a user's device used to access certain website or application of interest in order to track device activity and determine linkages between other devices.
-	</p>
-	<br/>
-	<p>
-		The main purpose of Device Identification technique is to support prevention of possible fraudulent operations.
-	</p>
-	<br/>
-	<p>
-		Device Identification is a mandatory prerequisite for all RatePAY payment methods. It has to be created prior to execution of any authorizing transactions (Preauth or Debit).
-	</p>
-	<br/>
-	<p>
-		For API integration of RatePAY payment methods it's recommended merchants to follow three steps regarding Device Identification:
-	</p>
-	<br/>
-	<strong>1) Creating Device Ident using POST method</strong>
-	<br/>
-	<p>
-		A POST request <strong>with empty body</strong> has to be directed to the following endpoints:
-	</p>
-	<ul>
-		<li>for TM environment -
-			<a href="https://pptest.payengine.de/widget/ratepay/device-ident/create">
-			https://pptest.payengine.de/widget/ratepay/device-ident/create
-			</a>
-		</li>
-		<li>for Production environment -
-			<a href="https://pp.payengine.de/widget/ratepay/device-ident/create">
-				https://pp.payengine.de/widget/ratepay/device-ident/create
-			</a>
-		</li>
-	</ul>
-	<br/>
-	<p>
-		Response of the request will contain the following properties:
-	</p>
-	<ul>
-		<li>deviceIdentToken</li>
-		<li>deviceIdentSId</li>
-		<li>sessionToken</li>
-	</ul>
-	<br/>
-	<p>
-		Example response to Create Device request can be found below:
-	</p>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Device Ident response
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
-  "deviceIdentToken": "a95314a9d82918657fad2b07436602bb",
-  "deviceIdentSId": "ratepay",
-  "sessionToken": "58c93b94b6f01ab057683125a47390fb"
-}
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<strong>2) Loading Payengine Bridge and External Libraries of RatePAY Device Ident</strong>
-	<br/>
-	<br/>
-	<p>
-		Based on the parameters received in the response of POST request in step one, the following has to be executed:
-	</p>
-	<code>
-&lt;script src="https://pp.payengine.de/bridge/1.0/payengine.min.js" type="text/javascript"&gt;&lt;/script&gt;
-&lt;script type="text/javascript">&gt;
-window.onload = function() {
-PayEngine.setPublishableKey( "&lt;YOUR_MERCHANT_ID&gt;" );
-};
-&lt;/script&gt;
-Payengine.appendDeviceIdent(deviceIdentToken, deviceIdentSId, 'Checkout')
-	</code>
-	<br/>
-	<strong>3) Sending Device Ident Token to Create Transaction Endpoint</strong>
-	<br/>
-	<p>
-		Device Ident Token has to be sent <strong>via POST method</strong> in the body of Create Authorizing Transaction (Preauth or Debit) request.
-	</p>
-	<br/>
-	<p>
-		It will be placed within Payment object in the field <strong>riskIdentId</strong> as shown below:
-	</p>
-	<br/>
-	<code>
-{
-	...
-	payment: {
-		riskIdentId: "DEVICE_IDENT_TOKEN"
-	}
-}
-	</code>
-	<br/>
-	<p>
-		<strong>Important Note: </strong>Authentication for RatePay Payment methods has to be <strong>Bearer merchantId</strong>.
-	</p>
-	<br/>
-	<strong>Step 2 A: Preauth & Capture</strong>
-	<br/>
-	<strong><u>Preauth & Capture</u></strong>
-	<br/>
-	<p>
-		The 'Preauth' transaction isn't directly booking the initial amount of the order, it should be followed by 'Capture' transaction in order to receive the funds.
-	</p>
-	<br/>
-	<p><strong>
-		Mandatory Elements for Transactions
-	</strong></p>
-	<ul>
-		<li>Fields 'terms' and 'privacy' - mandatory for Preauth and Debit transactions</li>
-		<li>Object 'basket' - mandatory for all transaction requests with requirement for accepted value within the range <strong>200 EUR - 1000 EUR</strong></li>
-		<li>Object 'payment' with the following corresponding fields:
-			<ul>
-				<li>accountHolder - required in all cases</li>
-				<li>iban - required in all cases</li>
-				<li>iban - required in all cases</li>
-				<li>riskIdentId - required only when channel is ECOM</li>
-				<li>interestRate - required in all cases</li>
-				<li>lastRate - required in all cases</li>
-				<li>numberOfRates - required in all cases</li>
-				<li>rate - required in all cases</li>
-				<li>totalAmount - required in all cases</li>
-			</ul>
-		</li>
-	</ul>
-	<br/>
-	<p>
-		Examples for <i>Create Preauth</i> request and <i>Create Preauth</i> response can be found below:
-	</p>
-	<br/>
-	<p>
-		<i>Create Preauth:</i> POST /orders/preauth
-	</p>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Preauth request
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
-  "terms": 1468590412476,
-  "privacy": 1468590412476,
-  "product": "ratepay-installment",
-  "merchantOrderId": "merchantOrderId_61002795",
-  "description": "test transaction",
-  "statementDescription": "statement description",
-  "initialAmount": 21759,
-  "currency": "EUR",
- "basket": [
-    {
-      "articleNumber": "SW10029",
-      "name": "USB-Stick",
-      "quantity": 1,
-      "tax": 0,
-      "totalPrice": 21759,
-      "totalPriceWithTax": 21759,
-      "unitPrice": 21759,
-      "unitPriceWithTax": 21759
-    }
-  ],
-  "customer": "customer_mrpcq0rdto",
-  "persona": "persona_bo6aszzubj",
-  "billingAddress": "address_1vs8zybbdf",
-  "shippingAddress": "address_1vs8zybbdf",
-  "ipAddress": "82.120.21.79",
-  "channel": "ECOM",
-  "source": "Postman Test 355731233",
-  "async": {
-    "successUrl": "https://www.google.de/#newwindow=1&q=success",
-    "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
-    "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
-  },
-  "payment": {
-     "accountHolder": "Max Muster",
-     "bankName": "Deutsche Bank",
-     "bic": "BELADEBEXXX",
-     "iban": "DE44100500001654698497",
-     "interestRate": 13.7,
-     "lastRate": 2166,
-     "numberOfRates": 10,
-     "rate": 2177,
-     "totalAmount": 21759,
-    "riskIdentId": "rpRiskIdentId_1551274818"
+  <div class="example-box-wrapper">
+    <div class="content-box" ng-init="createCustomerResponseShow=false">
+      <h3 class="content-box-header bg-default">
+        Create Device Ident response
+        <div class="header-buttons-separator">
+          <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow;">
+            <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+            <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+          </a>
+        </div>
+      </h3>
+      <div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+        <code>
+  {
+    "deviceIdentToken": "a95314a9d82918657fad2b07436602bb",
+    "deviceIdentSId": "ratepay",
+    "sessionToken": "58c93b94b6f01ab057683125a47390fb"
   }
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Preauth response
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
+        </code>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<p><strong>2)  Loading Payengine Bridge and External Libraries of RatePAY Device Ident</strong></p>
+<br>
+<p>Based on the parameters received in the response of POST request in step one, the following has to be executed:</p>
+  <pre>
+      &lt;script src="https://pp.payengine.de/bridge/1.0/payengine.min.js" type="text/javascript"&gt; &lt;/script&gt;
+    <br>
+      &lt;script type="text/javascript"&gt;
+        window.onload = function() {
+        PayEngine.setPublishableKey( "&lt;YOUR_MERCHANT_ID&gt;" );
+        };
+      &lt;/script&gt;  
+      <br>
+
+        Payengine.appendDeviceIdent(deviceIdentToken, deviceIdentSId, 'Checkout')
+
+  </pre>
+<br>
+<br>
+<p><strong>3) Sending Device Ident Token to Create Transaction Endpoint</strong></p>
+<br>
+<p>Device Ident Token has to be sent <strong>via POST method</strong> in the body of Create Authorizing Transaction (Preauth or Debit) request.</p>
+<p>It will be placed within Payment object in the field <strong>riskIdentId</strong> as shown below:</p>
+<code>
+    {
+      ...
+      payment: {
+      riskIdentId: "DEVICE_IDENT_TOKEN"
+      }
+    }
+</code>
+<br>
+<br>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th style="border-right: none;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px" style="vertical-align: supper;"></th>
+      <th><strong>Important Note</strong>
+        <br>
+        <p>Authentication for RatePay Payment methods has to be <strong>Bearer merchantId</strong>.</p>
+      </th>
+    </tr>
+  </thead>
+</table>
+<br>
+<br>
+<h4>Input Parameters for Authorizing Transactions</h4>
+<br>
+<p>The following input parameters are required for initiating a RatePAY - Installments payment via Payengine Widget:</p>
+<br>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th colspan="2" width="150px">PARAMETER</th>
+        <th colspan="1" width="100px">MANDATORY/OPTIONAL</th>
+        <th colspan="4" >DESCRIPTION</th>
+        <th colspan="2">TYPE</th>
+        <th colspan="2">EXAMPLE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="2"><em>terms</em></td>
+        <td colspan="1">М</td>
+        <td colspan="4">The Additional General Terms and Conditions of RatePAY GmbH</td>
+        <td colspan="2">number (timestamp)</td>
+        <td colspan="2">1468590412476</td>
+      </tr>
+      <tr>
+        <td colspan="2"><em>privacy</em></td>
+        <td colspan="1">М</td>
+        <td colspan="4">The Data Protection Notice of RatePAY GmbH</td>
+        <td colspan="2">number (timestamp)</td>
+        <td colspan="2">1468590412476</td>
+      </tr>
+      <tr>
+        <td colspan="2">basket</td>
+        <td colspan="1">М</td>
+        <td colspan="4">The default range for the basket value is from EUR 20 to EUR 2,000 but it can vary according to the merchant's contract. </td>
+        <td colspan="2">basket data object</td>
+        <td colspan="2">see Samples</td>
+      </tr>
+      <tr>
+        <td colspan="2">payment</td>
+        <td colspan="1">М</td>
+        <td colspan="4">Top level</td>
+        <td colspan="2">payment data object</td>
+        <td colspan="2">see Samples</td>
+      </tr>
+      <tr>
+        <td colspan="1"></td>
+        <td colspan="1"><em>accountHolder</em></td>
+        <td colspan="1">М</td>
+        <td colspan="4">The account holder's name</td>
+        <td colspan="2">string</td>
+        <td colspan="2">John Doe</td>
+      </tr>
+      <tr>
+        <td colspan="1"></td>
+        <td colspan="1"><em>bankName</em></td>
+        <td colspan="1">O</td>
+        <td colspan="4">The name of the account holder's bank</td>
+        <td colspan="2">string</td>
+        <td colspan="2">Deutsche Bank</td>
+      </tr>
+      <tr>
+        <td colspan="1"></td>
+        <td colspan="1"><em>bic</em></td>
+        <td colspan="1">O</td>
+        <td colspan="4">The BIC of the account holder's bank</td>
+        <td colspan="2">string</td>
+        <td colspan="2">COKSDE33XXX</td>
+      </tr>
+      <tr>
+        <td colspan="1"></td>
+        <td colspan="1"><em>iban</em></td>
+        <td colspan="1">M</td>
+        <td colspan="4">The account holder's IBAN</td>
+        <td colspan="2">string</td>
+        <td colspan="2">DE82370502991390006124</td>
+      </tr>
+      <tr>
+        <td colspan="1"></td>
+        <td colspan="1"><em>interest rate</em></td>
+        <td colspan="1">M</td>
+        <td colspan="4">The annual interest rate on the loan</td>
+        <td colspan="2">number</td>
+        <td colspan="2">13.7</td>
+      </tr>
+      <tr>
+        <td colspan="1"></td>
+        <td colspan="1"><em>last rate</em></td>
+        <td colspan="1">M</td>
+        <td colspan="4">The amount of the last installment</td>
+        <td colspan="2">number</td>
+        <td colspan="2">2166</td>
+      </tr>
+      <tr>
+        <td colspan="1"></td>
+        <td colspan="1"><em>numberOfRates</em></td>
+        <td colspan="1">M</td>
+        <td colspan="4">The number of installments</td>
+        <td colspan="2">number</td>
+        <td colspan="2">10</td>
+      </tr>
+      <tr>
+        <td colspan="1"></td>
+        <td colspan="1"><em>rate</em></td>
+        <td colspan="1">M</td>
+        <td colspan="4">The amount of a regular installment</td>
+        <td colspan="2">number</td>
+        <td colspan="2">2177</td>
+      </tr>
+      <tr>
+        <td colspan="1"></td>
+        <td colspan="1"><em>totalAmount</em></td>
+        <td colspan="1">M</td>
+        <td colspan="4">The total amount of the purchase</td>
+        <td colspan="2">number</td>
+        <td colspan="2">21759</td>
+      </tr>
+      <tr>
+        <td colspan="1"></td>
+        <td colspan="1"><em>riskIdentId</em></td>
+        <td colspan="1">M/O</td>
+        <td colspan="4">The device ident token. Required for ECOM channel only.</td>
+        <td colspan="2">string</td>
+        <td colspan="2">rpRiskIdentId_1550854753</td>
+      </tr>
+    </tbody>
+  </table>
+<br>
+<br>
+<p><strong>Configuration Request</strong></p>
+<br>
+<p>A merchant can initiate a configuration request at the following endpoint:  <strong>GET/installment/config</strong></p>
+<p>With this request, the merchant can read the stored configuration parameters for his merchant profile: the minimal rate, the minimal and maximal number of monthly installments.</p>
+<p>Here is an example of a successful response to a configuration request:</p>
+<br>
+<div>
+    <div class="example-box-wrapper">
+      <div class="content-box" ng-init="createCustomerResponseShow=false">
+        <h3 class="content-box-header bg-default">
+          Configuration response
+          <div class="header-buttons-separator">
+            <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow;">
+              <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+              <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+            </a>
+          </div>
+        </h3>
+        <div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+          <code>
+  {
+    "rateMinNormal": 0,
+    "monthNumberMin": 3,
+    "monthNumberMax": 48
+  }
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+<table class="table table-bordered table-striped table-condensed">
+  <thead>
+    <tr>
+      <th style="border-right: none;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px" style="vertical-align: supper;"></th>
+      <th><strong>Important Note</strong>
+        <br>
+        <p>This service is not needed in case Payengine Widget is used as it will perform a configuration request automatically.</p>
+      </th>
+    </tr>
+  </thead>
+</table>
+<br>
+<br>
+<p><strong>Installment calculator</strong></p>
+<br>
+<p>RatePAY - Installments requires the implementation of an installment calculator by merchants.</p><br>
+<p>Merchants can either use Payengine's Widget or develop their own calculator. </p><br>
+<p>Merchants have three options to approach the calculator requirement if they choose to design it on their own: </p><br>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+  <tbody>
+    <tr>
+      <th width="20%">Option 1</th>
+      <td width="80%">Calculator based on the desired amount of a monthly installment</td>
+    </tr>
+    <tr>
+      <th>Option 2</th>
+      <td>Calculator based on the desired number of monthly installments</td>
+    </tr>
+    <tr>
+      <th>Option 3</th>
+      <td>Offer both calculator types</td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<p><strong>Option 1 - Calculator based on the desired amount of a monthly installment</strong></p>
+<p>The merchant can implement a user interface with a field for the desired amount of a monthly installment. For example:</p>
+<img src="/img/faq/ratepay_install/Calculator raten.png" alt="" width="80%">
+<br>
+<p>The customer submits the desired installment amount and the merchant sends the following calculation request to Payengine Backend:</p>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+  <tbody>
+    <tr>
+      <th width="20%">Endpoint</th>
+      <td width="80%"><strong>GET/installment/calculation/rate </strong></td>
+    </tr>
+    <tr>
+      <th>Request parameters</th>
+      <td>
+        <ul>
+          <li>amount to be financed</li>
+          <li>desired monthly rate</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<p>The response will contain a calculated installment plan with the following structure:</p>
+<br>
+<div>
+    <div class="example-box-wrapper">
+      <div class="content-box" ng-init="createCustomerResponseShow=false">
+        <h3 class="content-box-header bg-default">
+          Structure of Response to Calculation Request
+          <div class="header-buttons-separator">
+            <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow;">
+              <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+              <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+            </a>
+          </div>
+        </h3>
+        <div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+          <code>
+  {
+    "totalAmount": 0,
+    "amount": 0,
+    "interestAmount": 0,
+    "serviceCharge": 0,
+    "interestRate": 0,
+    "annualPercentageRate": 0,
+    "monthlyDebitInterest": 0,
+    "numberOfRates": 0,
+    "rate": 0,
+    "lastRate": 0
+  }
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+<p>The installment plan can be displayed to the end-customer as shown below:</p>
+<img src="/img/faq/ratepay_install/Calculator raten ready.png" alt="" width="80%">
+<br>
+<p><strong>Option 2 - Calculator based on the desired number of monthly installments</strong></p>
+<br>
+<p>The merchant can implement a calculator interface, in which the user chooses the desired number of monthly installments. For example:</p>
+<br>
+<p>The interface should include all possible options for the number of monthly installments within the set framework by the merchant</p>
+<br>
+<img src="/img/faq/ratepay_install/Calculator-numbers-3.png" alt="" width="80%">
+<br>
+<p>The customer submits the desired installment amount and the merchant sends the following calculation request to Payengine Backend:</p>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+  <tbody>
+    <tr>
+      <th width="20%">Endpoint</th>
+      <td width="80%"><strong>GET/installment/calculation/time</strong></td>
+    </tr>
+    <tr>
+      <th>Request parameters</th>
+      <td>
+        <ul>
+          <li>amount to be financed</li>
+          <li>duration of the installment plan</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<p>The response will contain a calculated installment plan with the following structure:</p>
+<br>
+<div>
+  <div class="example-box-wrapper">
+    <div class="content-box" ng-init="createCustomerResponseShow2=false">
+      <h3 class="content-box-header bg-default">
+        Structure of Response to Calculation Request
+        <div class="header-buttons-separator">
+          <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow2=!createCustomerResponseShow2;">
+            <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow2"></i>
+            <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow2"></i>
+          </a>
+        </div>
+      </h3>
+      <div class="content-box-wrapper" ng-if="createCustomerResponseShow2">
+        <code>
+  {
+    "totalAmount": 0,
+    "amount": 0,
+    "interestAmount": 0,
+    "serviceCharge": 0,
+    "interestRate": 0,
+    "annualPercentageRate": 0,
+    "monthlyDebitInterest": 0,
+    "numberOfRates": 0,
+    "rate": 0,
+    "lastRate": 0
+  }
+        </code>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<p>The installment plan can be displayed to the end-customer as shown below:</p>
+<br>
+<img src="/img/faq/ratepay_install/Number-calculator-result - ready.png" alt="" width="80%">
+<br>
+<p><strong>Option 3 - Offer both calculator types</strong></p>
+<br>
+<p>The merchant can decide to integrate both calculator types to offer a comprehensive customer experience.</p>
+<br>
+<br>
+<h3>Samples</h3>
+<br>
+<h4>Preauth transaction</h4>
+<br>
+<h4>POST/orders/preauth</h4>
+<br>
+<div>
+  <div class="example-box-wrapper">
+    <div class="content-box" ng-init="createCustomerResponseShoww=false">
+      <h3 class="content-box-header bg-default">
+        Create Preauth request
+        <div class="header-buttons-separator">
+          <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShoww=!createCustomerResponseShoww;">
+            <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShoww"></i>
+            <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShoww"></i>
+          </a>
+        </div>
+      </h3>
+      <div class="content-box-wrapper" ng-if="createCustomerResponseShoww">
+        <code>
+  {
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "product": "ratepay-installment",
+    "merchantOrderId": "merchantOrderId_61002795",
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 21759,
+    "currency": "EUR",
+    "basket": [
+      {
+        "articleNumber": "SW10029",
+        "name": "USB-Stick",
+        "quantity": 1,
+        "tax": 0,
+        "totalPrice": 21759,
+        "totalPriceWithTax": 21759,
+        "unitPrice": 21759,
+        "unitPriceWithTax": 21759
+      }
+    ],
+    "customer": "customer_mrpcq0rdto",
+    "persona": "persona_bo6aszzubj",
+    "billingAddress": "address_1vs8zybbdf",
+    "shippingAddress": "address_1vs8zybbdf",
+    "ipAddress": "82.120.21.79",
+    "channel": "ECOM",
+    "source": "Postman Test 355731233",
+    "async": {
+      "successUrl": "https://www.google.de/#newwindow=1&q=success",
+      "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+      "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
+    },
+    "payment": {   
+        "accountHolder": "Max Muster",
+        "bankName": "Deutsche Bank",
+        "bic": "BELADEBEXXX",
+        "iban": "DE44100500001654698497",
+        "interestRate": 13.7,
+        "lastRate": 2166,
+        "numberOfRates": 10,
+        "rate": 2177,
+        "totalAmount": 21759,
+      "riskIdentId": "rpRiskIdentId_1551274818" 
+    }
+        </code>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div>
+  <div class="example-box-wrapper">
+    <div class="content-box" ng-init="createCustomerResponseShow=false">
+      <h3 class="content-box-header bg-default">
+        Create Preauth response
+        <div class="header-buttons-separator">
+          <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow;">
+            <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+            <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+          </a>
+        </div>
+      </h3>
+      <div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+        <code>
+  {
     "createdAt": 1551273366330,
     "modifiedAt": 1551273366344,
     "merchantId": "merchant_nrn3xhgwbx",
@@ -1386,85 +1210,69 @@ Payengine.appendDeviceIdent(deviceIdentToken, deviceIdentSId, 'Checkout')
     "asyncNotificationSubscriptionId": null,
     "redirectUrl": null
 }
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<p><strong><u>Create Capture</u></strong></p>
-	<br/>
-	<p><strong>Specific Prerequisite for Capture Transaction: </strong>Existing and not expired 'Preauth' transaction in 'Success' status has to be in place when creating a 'Capture' transaction.</p>
-	<br/>
-	<p>
-		A 'Capture' transaction can be created for amount not bigger than initial amount of 'Preauth' transaction.
-	</p>
-	<br/>
-	<p>
-		RatePAY Installments enables full and partial capture of the initial amount of the order.
-	</p>
-	<br/>
-	<p>
-		Examples for <i>Create Capture</i> request and <i>Create Capture</i> response can be found below:
-	</p>
-	<br/>
-	<p>
-		POST/orders/{orderId}/transactions/{transactionId}/capture
-	</p>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Capture request
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
-  "description": "description for operation.",
-  "currency": "EUR",
-  "initialAmount": 21759,
-  "basket": [
-    {
-      "name": "USB-Stick",
-      "articleNumber": "SW10029",
-      "totalPrice": 21759,
-      "totalPriceWithTax": 21759,
-      "unitPrice": 21759,
-      "unitPriceWithTax": 21759,
-      "quantity": 1,
-      "tax": 0
-    }
-  ]
-}
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Capture response
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
+        </code>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<h4>Capture transaction</h4>
+<br>
+<h4>POST/orders/{orderId}/transactions/{transactionId}/capture</h4>
+<br>
+<div>
+  <div class="example-box-wrapper">
+    <div class="content-box" ng-init="createCustomerResponseShow3=false">
+      <h3 class="content-box-header bg-default">
+        Create Capture request
+        <div class="header-buttons-separator">
+          <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow3=!createCustomerResponseShow3;">
+            <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow3"></i>
+            <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow3"></i>
+          </a>
+        </div>
+      </h3>
+      <div class="content-box-wrapper" ng-if="createCustomerResponseShow3">
+        <code>
+  {
+    "description": "description for operation.",
+    "currency": "EUR",
+    "initialAmount": 21759,
+    "basket": [
+      {
+        "name": "USB-Stick",
+        "articleNumber": "SW10029",
+        "totalPrice": 21759,
+        "totalPriceWithTax": 21759,
+        "unitPrice": 21759,
+        "unitPriceWithTax": 21759,
+        "quantity": 1,
+        "tax": 0
+      }
+    ]
+  }
+        </code>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div>
+  <div class="example-box-wrapper">
+    <div class="content-box" ng-init="createCustomerResponseShow4=false">
+      <h3 class="content-box-header bg-default">
+        Create Capture response
+        <div class="header-buttons-separator">
+          <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow4=!createCustomerResponseShow4;">
+            <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow4"></i>
+            <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow4"></i>
+          </a>
+        </div>
+      </h3>
+      <div class="content-box-wrapper" ng-if="createCustomerResponseShow4">
+        <code>
+  {
     "createdAt": 1551277844305,
     "modifiedAt": 1551277845596,
     "type": "CAPTURE",
@@ -1871,89 +1679,70 @@ Payengine.appendDeviceIdent(deviceIdentToken, deviceIdentSId, 'Checkout')
     "asyncNotificationSubscriptionId": null,
     "tracking": null
 }
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<p><strong>Cancel</strong></p>
-	<br/>
-	<p>
-		Any pre-authorized order can still be cancelled as long as the order <strong>has not been</strong> captured.
-	</p>
-	<br/>
-	<p>
-		A 'Cancel' transaction can be created for amount not bigger than initial amount of 'Preauth' transaction.
-	</p>
-	<br/>
-	<p>
-		RatePAY Installment payment method enables full and partial cancellation of the initial amount of the order.
-	</p>
-	<br/>
-	<p><strong><u>Create Cancel</u></strong></p>
-	<br/>
-	<p>
-		Examples for <i>Create Cancel</i> request and <i>Create Cancel</i> response can be found below:
-	</p>
-	<br/>
-	<p>
-		POST/orders/{orderId}/transactions/{transactionId}/cancel
-	</p>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Cancel request
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
-  "initialAmount": 21759,
-  "currency": "EUR",
-  "description": "string",
-  "basket": [
-    {
-      "name": "USB-Stick",
-      "articleNumber": "SW10029",
-      "totalPrice": 21759,
-      "totalPriceWithTax": 21759,
-      "unitPrice": 21759,
-      "unitPriceWithTax": 21759,
-      "quantity": 1,
-      "tax": 0
-    }
-  ]
-}
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Cancel response
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
+        </code>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+
+<h4>Cancel transaction</h4>
+<br>
+<h4>POST/orders/{orderId}/transactions/{transactionId}/cancel</h4>
+<br>
+<div>
+  <div class="example-box-wrapper">
+    <div class="content-box" ng-init="createCustomerResponseShow6=false">
+      <h3 class="content-box-header bg-default">
+        Create Cancel request
+        <div class="header-buttons-separator">
+          <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow6=!createCustomerResponseShow6;">
+            <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow6"></i>
+            <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow6"></i>
+          </a>
+        </div>
+      </h3>
+      <div class="content-box-wrapper" ng-if="createCustomerResponseShow6">
+        <code>
+  {
+    "initialAmount": 21759,
+    "currency": "EUR",
+    "description": "string",
+    "basket": [
+      {
+        "name": "USB-Stick",
+        "articleNumber": "SW10029",
+        "totalPrice": 21759,
+        "totalPriceWithTax": 21759,
+        "unitPrice": 21759,
+        "unitPriceWithTax": 21759,
+        "quantity": 1,
+        "tax": 0
+      }
+    ]
+  }
+        </code>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div>
+  <div class="example-box-wrapper">
+    <div class="content-box" ng-init="createCustomerResponseShow2=false">
+      <h3 class="content-box-header bg-default">
+        Create Cancel response
+        <div class="header-buttons-separator">
+          <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow2=!createCustomerResponseShow2;">
+            <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow2"></i>
+            <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow2"></i>
+          </a>
+        </div>
+      </h3>
+      <div class="content-box-wrapper" ng-if="createCustomerResponseShow2">
+        <code>
+  {
     "createdAt": 1551279553385,
     "modifiedAt": 1551279553401,
     "type": "CANCEL",
@@ -2359,54 +2148,31 @@ Payengine.appendDeviceIdent(deviceIdentToken, deviceIdentSId, 'Checkout')
     "asyncNotificationSubscriptionId": null,
     "tracking": null
 }
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<h4>Step 2 B: Debit</h4>
-	<br/>
-	<p>
-		Both 'Debit' and 'Preauth' are <strong>alternative variants</strong> of the initial transaction to create an order.
-	</p>
-	<br/>
-	<p>
-		The 'Debit' transaction is directly booking the full amount of the order.
-	</p>
-	<br/>
-	<p>
-		If  'Debit' transaction is preferred instead of 'Preauth', the goods from the order will be considered as shipped to the end-customer and the payment term of the installment will begin to run from that moment.
-	</p>
-	<br/>
-	<p>
-		This option might be not very appropriate in cases of delivering of physical goods, especially when delays in delivery are expected.
-	</p>
-	<br/>
-	<p><strong><u>Create Debit</u></strong></p>
-	<br/>
-	<p>
-		Examples for <i>Create Debit</i> request and <i>Create Debit</i> response can be found below:
-	</p>
-	<br/>
-	<p>
-		POST/orders/debit
-	</p>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Debit request
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
+        </code>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<h4>Debit transaction</h4>
+<br>
+<h4>POST/orders/debit</h4>
+<br>
+<div>
+  <div class="example-box-wrapper">
+    <div class="content-box" ng-init="createCustomerResponseShow5=false">
+      <h3 class="content-box-header bg-default">
+        Create Debit request
+        <div class="header-buttons-separator">
+          <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow5=!createCustomerResponseShow5;">
+            <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow5"></i>
+            <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow5"></i>
+          </a>
+        </div>
+      </h3>
+      <div class="content-box-wrapper" ng-if="createCustomerResponseShow5">
+        <code>
 {
   "terms": 1468590412476,
   "privacy": 1468590412476,
@@ -2416,7 +2182,7 @@ Payengine.appendDeviceIdent(deviceIdentToken, deviceIdentSId, 'Checkout')
   "statementDescription": "statement description",
   "initialAmount": 20000,
   "currency": "EUR",
- "basket": [
+  "basket": [
     {
       "articleNumber": "SW10029",
       "name": "USB-Stick",
@@ -2440,40 +2206,39 @@ Payengine.appendDeviceIdent(deviceIdentToken, deviceIdentSId, 'Checkout')
     "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
     "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
   },
-  "payment": {
-     "accountHolder": "Max Muster",
-     "bankName": "Deutsche Bank",
-     "bic": "BELADEBEXXX",
-     "iban": "DE44100500001654698497",
-     "interestRate": 13.7,
-     "lastRate": 2166,
-     "numberOfRates": 10,
-     "rate": 2177,
-     "totalAmount": 21759,
-    "riskIdentId": "rpRiskIdentId_1551278955"
+  "payment": {   
+      "accountHolder": "Max Muster",
+      "bankName": "Deutsche Bank",
+      "bic": "BELADEBEXXX",
+      "iban": "DE44100500001654698497",
+      "interestRate": 13.7,
+      "lastRate": 2166,
+      "numberOfRates": 10,
+      "rate": 2177,
+      "totalAmount": 21759,
+    "riskIdentId": "rpRiskIdentId_1551278955" 
   }
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Debit response
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
+        </code>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div>
+  <div class="example-box-wrapper">
+    <div class="content-box" ng-init="createCustomerResponseShow7=false">
+      <h3 class="content-box-header bg-default">
+        Create Debit response
+        <div class="header-buttons-separator">
+          <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow7=!createCustomerResponseShow7;">
+            <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow7"></i>
+            <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow7"></i>
+          </a>
+        </div>
+      </h3>
+      <div class="content-box-wrapper" ng-if="createCustomerResponseShow7">
+        <code>
+  {
     "createdAt": 1551278951059,
     "modifiedAt": 1551278951063,
     "merchantId": "merchant_nrn3xhgwbx",
@@ -2656,85 +2421,69 @@ Payengine.appendDeviceIdent(deviceIdentToken, deviceIdentSId, 'Checkout')
     "asyncNotificationSubscriptionId": null,
     "redirectUrl": null
 }
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<h4>Step 3: Refund for RatePAY Installment orders</h4>
-	<br/>
-	<p>
-		A 'Refund' transaction can be created on a request of the end-customer when there is existing successful 'Debit' or 'Capture' transaction for the order.
-	</p>
-	<br/>
-	<p>
-		RatePAY Installment payment method enables full and partial refund of the initial amount of the order.
-	</p>
-	<br/>
-	<p><strong><u>Create Refund</u></strong></p>
-	<br/>
-	<p>
-		Examples for <i>Create Refund</i> request and <i>Create Refund</i> response can be found below:
-	</p>
-	<br/>
-	<p>
-		POST/orders/{orderId}/transactions/{transactionId}/refund
-	</p>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Refund request
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
-  "description": "description for operation.",
-  "currency": "EUR",
-  "initialAmount": 21759,
-  "basket": [
-    {
-      "name": "USB-Stick",
-      "articleNumber": "SW10029",
-      "totalPrice": 21759,
-      "totalPriceWithTax": 21759,
-      "unitPrice": 21759,
-      "unitPriceWithTax": 21759,
-      "quantity": 1,
-      "tax": 0
-    }
-  ]
-}
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Create Refund response
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
+        </code>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<h4>Refund transaction</h4>
+<br>
+<h4>POST/orders/{orderId}/transactions/{transactionId}/refund</h4>
+<br>
+<div>
+  <div class="example-box-wrapper">
+    <div class="content-box" ng-init="createCustomerResponseShow8=false">
+      <h3 class="content-box-header bg-default">
+          Create Refund request
+        <div class="header-buttons-separator">
+          <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow8=!createCustomerResponseShow8;">
+            <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow8"></i>
+            <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow8"></i>
+          </a>
+        </div>
+      </h3>
+      <div class="content-box-wrapper" ng-if="createCustomerResponseShow8">
+        <code>
+  {
+    "description": "description for operation.",
+    "currency": "EUR",
+    "initialAmount": 21759,
+    "basket": [
+      {
+        "name": "USB-Stick",
+        "articleNumber": "SW10029",
+        "totalPrice": 21759,
+        "totalPriceWithTax": 21759,
+        "unitPrice": 21759,
+        "unitPriceWithTax": 21759,
+        "quantity": 1,
+        "tax": 0
+      }
+    ]
+  }
+        </code>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div>
+  <div class="example-box-wrapper">
+    <div class="content-box" ng-init="createCustomerResponseShow9=false">
+      <h3 class="content-box-header bg-default">
+        Create Refund response
+        <div class="header-buttons-separator">
+          <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow9=!createCustomerResponseShow9;">
+            <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow9"></i>
+            <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow9"></i>
+          </a>
+        </div>
+      </h3>
+      <div class="content-box-wrapper" ng-if="createCustomerResponseShow9">
+        <code>
+  {
     "createdAt": 1551283016525,
     "modifiedAt": 1551283016546,
     "type": "REFUND",
@@ -3403,138 +3152,20 @@ Payengine.appendDeviceIdent(deviceIdentToken, deviceIdentSId, 'Checkout')
     "challenge": null,
     "asyncNotificationSubscriptionId": null,
     "tracking": null
-}
-				</code>
-			</div>
-		</div>
-	</div>
-
-	<h2>Discounts Handling</h2>
-	<br/>
-	<p>
-		There are two major categories of discounts which have to be reflected in API requests as follows:
-	</p>
-	<br/>
-	<ul>
-		<li><strong><u>Discounts not related to a particular product basket item</u></strong></li>
-	</ul>
-	<br/>
-	<p>
-		This type of discount is presented in API calls as a separate basket item with structure identical to structure of product basket item which is shown below.
-	</p>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Structure of Separate Basket Item Discount
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
-   "name":"discount",
-   "articleNumber":"0000"
-   "articleType "discount"
-   "totalPrice":-84,
-   "totalPriceWithTax":-100,
-   "unitPrice":-84,
-   "unitPriceWithTax":-100,
-   "tax":19,
-   "quantity":1
-   "discount":0
-}
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<p>
-		The total value of discount can be found in the field <strong>totalPriceWithTax</strong> and represents unitPriceWithTax multiplied by quantity.
-	</p>
-	<br/>
-	<p>
-		Separate basket item discount can be used by the merchants for reflecting of value discounts in the form of gift vouchers, coupons or similar items measurable in money and not tied to a particular product basket item.
-	</p>
-	<br/>
-	<ul>
-		<li><strong><u>Discounts related to a particular product basket item</u></strong></li>
-	</ul>
-	<br/>
-	<p>
-		This type of discount is presented in API calls as a property within product basket item. The value of discount property represents discount amount with taxes <strong>for one item</strong>.
-	</p>
-	<br/>
-	<p>
-		An example for discount property can be found below.
-	</p>
-	<br/>
-	<div class="example-box-wrapper">
-		<div class="content-box" ng-init="createCustomerRequestShow=false">
-			<h3 class="content-box-header bg-default">
-					Discount Property
-					<div class="header-buttons-separator">
-							<a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-								<!-- <i class="glyph-icon icon-chevron-up"></i> -->
-								<i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-								<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-							</a>
-					</div>
-			</h3>
-			<!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-			<div class="content-box-wrapper">
-				<code>
-{
-   "name":"socks",
-   "articleNumber":"1234"
-   "articleType "physical"
-   "totalPrice":1000,
-   "totalPriceWithTax":1190,
-   "unitPrice":500,
-   "unitPriceWithTax":595,
-   "tax":19,
-   "quantity":2,
-   "discount":-100
-}
-				</code>
-			</div>
-		</div>
-	</div>
-	<br/>
-	<p>
-		The total value of discount tied to a particular product basket item is equal to shown discount amount in the property field multiplied by quantity of product basket item.
-	</p>
-	<br/>
-	<p>
-		For example above the total value of discount presented as property will be -100 * 2 = -200
-	</p>
-	<br/>
-	<p>
-		Applying of discounts directly affects initial amount in requests for Authorizing transactions. Correct Initial amount of the transaction has to be calculated as a difference between the following three elements:
-	<ul>
-		<li>total price with tax of product basket item/s</li>
-		<li>property discount for the particular product basket item multiplied by quantity of the item</li>
-		<li>separate basket item discount </li>
-	</ul>
-	</p>
-	<br/>
-	<br/>
-	<h2>Testing</h2>
-	<br/>
-	<p>
-		Testing of RatePAY Installment payment method can be executed directly via RatePAY Sandbox.
-	</p>
-	<br/>
-	<p>
-		The RatePAY Sandbox is a self-contained virtual testing environment that mimics the live RatePAY production environment.
-	</p>
-	<br/>
-	<p>
-		Test credentials for RatePAY Sandbox can be received from RatePAY GmbH.
-	</p>
+}  
+        </code>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<h3>Testing</h3>
+<br>
+<p>The RatePAY - Installments API testing can be performed via the RatePAY Sandbox.</p>
+<br>
+<p>The RatePAY Sandbox is a self-contained virtual testing environment that mimics the live RatePAY production environment.</p>
+<br>
+<p>Test credentials for RatePAY Sandbox can be received from RatePAY GmbH.</p>
+<br>
+<br>

@@ -16,7 +16,7 @@
         <h2>About this feature</h2>
         <br/>
         <p>
-          <em>PayPal Reference Transaction With Initial Payment </em> is a recurring payment transaction that enables a merchant to charge a PayPal account of a particular customer for future purchases without the necessity of further customer actions.
+          <em>PayPal Reference Transaction With Initial Payment </em>  is a recurring payment transaction that enables a merchant to charge a customer's PayPal account for all future purchases without the necessity of further customer actions.
         </p><br>
         <p>The <em>customer</em> authorizes PayPal to collect payments via a Billing Agreement.</p><br>
         <p>The customer's PayPal account is charged at the time of the acceptance of the Billing Agreement.</p>
@@ -30,8 +30,8 @@
         <p>To activate <em>PayPal Reference Transaction with Initial Payment</em>, follow these steps:</p>
         <br/>
         <ol>
-          <li>Request activation of the PayPal payment method from the Concardis Payengine support team.</li>
-          <li>Request activation of <em>PayPal Reference Transaction</em> from the PayPal account manager.</li>
+          <li>Request activation of the <em>PayPal</em> payment method from the Concardis Payengine support team.</li>
+          <li>Request activation <em>PayPal Reference Transaction with Initial Payment </em> from your PayPal account manager.</li>
           <li>If no account manager is assigned, contact <a href="https://www.paypal.com/de/smarthelp/contact-us">the PayPal support team</a>.</li>
         </ol>
       </div>
@@ -40,23 +40,21 @@
         <br/>
         <h2>Workflow</h2>
         <br/>
-        <p>The following describes the workflow for this feature:</p>
         <br/>
         <ol>
-          <li>
-            <ol>
-              <li>The merchant executes authorizing transaction request for PayPal with included field <strong>createRecurringBillingAgreement</strong> set to true within payment object. </li>
-              <li>In the authorizing transaction response, Payengine provides:
-                <ul>
-                  <li>Inline payment instrument with field <strong>recurring</strong> set to false </li>
-                  <li>A redirect URL, on which customer can confirm the payment and accept the billing agreement</li>
-                </ul>
-              </li>
-              <li> Once the merchant receives a notification that payment and billing agreement are approved by the customer, the inline payment instrument becomes recurring.</li>
-              <li>Since that moment, the merchant can charge PayPal account of the customer for all future purchases without necessity customer to log in to his/her PayPal account and confirm payments. </li>
-            </ol>
+          <li>The merchant sends an authorizing transaction request with a parameter <strong>payment.createRecurringBillingAgreement</strong> set to true. </li>
+          <li>Concardis Payengine sends an authorizing transaction response including:
+            <ul>
+              <li>an inline paymentInstrument with a parameter <strong>recurring</strong> set to false </li>
+              <li>a redirect URL, on which the customer can confirm the payment and accept the billing agreement </li>
+            </ul>
           </li>
-          <li>The merchant can place orders on behalf of the customer, using the existing PayPal payment instrument. </li>
+          <li>The customer confirms the payment and accepts the billing agreement on the PayPal checkout page:
+            <br>
+            <img src="/img/faq/paypal/Sandbox-BA-1.jpeg" alt="" width="40%">
+          </li>
+          <li>The merchant receives a notification that the payment and the billing agreement have been approved by the customer.</li>
+          <li>The payment instrument is now recurring and the merchant can charge the customer's PayPal account for future purchases without additional confirmation.</li>
         </ol>
       </div>
       <br/>
@@ -64,10 +62,8 @@
       <div id="samples">
         <h2 id="samples">Samples</h2>
         <br/>
-        <ul>
-          <li>Create Debit transaction with included field  set to true:</li><strong>createRecurringBillingAgreement</strong>
-        </ul>
         <br/>
+        <p><strong>Debit transaction</strong></p>
         <br/>
         <h3 id="pozt">POST/orders/debit</h3>
         <br/>
@@ -86,51 +82,51 @@
               </h3>
               <div class="content-box-wrapper" ng-if="createCustomerResponseShoww">
                 <code>
-                    {
-                      "product" : "paypal",
-                      "terms": 1468590412476,
-                      "privacy": 1468590412476,
-                      "merchantOrderId": "merchantOrderId_23740745",
-                      "description": "test transaction",
-                      "statementDescription": "statement description",
-                      "initialAmount": 4000,
-                      "currency": "EUR",
-                     "payment": {
-                         "createRecurringBillingAgreement": true
-                         
-                     },
-                     "deviceIdent": {
-                        "deviceIdentToken": "5ebdc8bdac7d4a27ab39f8e88bda5868"
-                      },
-                      "basket": [
-                        {
-                          "name": "USB-Stick",
-                          "articleNumber": "SW10029",
-                          "totalPrice": 4000,
-                          "totalPriceWithTax": 4000,
-                          "unitPrice": 4000,
-                          "unitPriceWithTax": 4000,
-                          "tax": 0,
-                          "quantity": 1
-                        }
-                      ],
-                       "meta":{
-                         
-                        "addressOverride": false
-                     },
-                      "customer": "customer_mxybnoow4i",
-                      "persona": "persona_fplatzxxjg",
-                      "billingAddress": "address_1mudpcot9f",
-                      "shippingAddress": "address_1mudpcot9f",
-                      "ipAddress": "82.120.21.79",
-                      "channel": "ECOM",
-                      "source": "Postman Test",
-                      "async": {
-                        "successUrl": "https://www.google.de/#newwindow=1&q=success",
-                        "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
-                        "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
-                      }
-                    }
+  {
+    "product" : "paypal",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "merchantOrderId": "merchantOrderId_23740745",
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 4000,
+    "currency": "EUR",
+    "payment": {
+        "createRecurringBillingAgreement": true
+        
+    },
+    "deviceIdent": {
+      "deviceIdentToken": "5ebdc8bdac7d4a27ab39f8e88bda5868"
+    },
+    "basket": [
+      {
+        "name": "USB-Stick",
+        "articleNumber": "SW10029",
+        "totalPrice": 4000,
+        "totalPriceWithTax": 4000,
+        "unitPrice": 4000,
+        "unitPriceWithTax": 4000,
+        "tax": 0,
+        "quantity": 1
+      }
+    ],
+      "meta":{
+        
+      "addressOverride": false
+    },
+    "customer": "customer_mxybnoow4i",
+    "persona": "persona_fplatzxxjg",
+    "billingAddress": "address_1mudpcot9f",
+    "shippingAddress": "address_1mudpcot9f",
+    "ipAddress": "82.120.21.79",
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "async": {
+      "successUrl": "https://www.google.de/#newwindow=1&q=success",
+      "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+      "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
+    }
+  }
                 </code>
               </div>
             </div>
@@ -152,199 +148,189 @@
               </h3>
               <div class="content-box-wrapper" ng-if="createCustomerResponseShow3">
                 <code>
-                    {
-                      "createdAt": 1554710475108,
-                      "modifiedAt": 1554710475259,
-                      "merchantId": "merchant_6rpfjfvaxq",
-                      "terms": 1468590412476,
-                      "privacy": 1468590412476,
-                      "orderId": "lt5c7eujlu",
-                      "merchantOrderId": "merchantOrderId_23740745",
-                      "paymentProviderTransactionId": null,
-                      "description": "test transaction",
-                      "statementDescription": "statement description",
-                      "initialAmount": 4000,
-                      "preauthorizedAmount": 0,
-                      "capturedAmount": 0,
-                      "refundedAmount": 0,
-                      "canceledAmount": 0,
-                      "currency": "EUR",
-                      "basket": [
-                          {
-                              "id": "Article-55010ca5-cf92-4af9-a442-cfee84444a8e",
-                              "name": "USB-Stick",
-                              "articleNumber": "SW10029",
-                              "totalPrice": 4000,
-                              "totalPriceWithTax": 4000,
-                              "unitPrice": 4000,
-                              "unitPriceWithTax": 4000,
-                              "quantity": 1,
-                              "tax": 0,
-                              "discount": null,
-                              "imageUrl": null,
-                              "articleUrl": null,
-                              "articleType": null
-                          }
-                      ],
-                      "customer": {
-                          "merchantCustomerId": "merchantCustomerId_1554387532",
-                          "organizationRegistrationRegister": null,
-                          "organizationRegistrationId": null,
-                          "organizationEntityType": null,
-                          "organizationVatId": null,
-                          "companyName": null,
-                          "reference": null,
-                          "email": "1554387532@payengine-test.de",
-                          "customerId": "customer_mxybnoow4i",
-                          "addresses": [],
-                          "personas": [],
-                          "paymentInstruments": [],
-                          "createdAt": 1554387532645,
-                          "modifiedAt": 1554387532645,
-                          "customerType": null
-                      },
-                      "persona": {
-                          "personaId": "persona_fplatzxxjg",
-                          "firstName": "John",
-                          "lastName": "Doe",
-                          "phone": "00493012345",
-                          "mobile": "00493012345",
-                          "fax": "00493012345",
-                          "birthday": 358293600000,
-                          "gender": "MALE",
-                          "title": "Prof. Dr.",
-                          "createdAt": 1553609384626,
-                          "modifiedAt": 1553609384626
-                      },
-                      "billingAddress": {
-                          "firstName": "John",
-                          "lastName": "Doe",
-                          "street": "Musterweg",
-                          "houseNumber": "16568",
-                          "city": "Musterhausen",
-                          "zip": "55555",
-                          "country": "DE",
-                          "state": "Bayern",
-                          "phone": "00493012345",
-                          "fax": "00493012345",
-                          "mobile": "00493012345",
-                          "title": "Prof. Dr.",
-                          "additionalDetails": "premium buyer",
-                          "addressId": "address_1mudpcot9f",
-                          "createdAt": 1554387537888,
-                          "modifiedAt": 1554387537888
-                      },
-                      "shippingAddress": {
-                          "firstName": "John",
-                          "lastName": "Doe",
-                          "street": "Musterweg",
-                          "houseNumber": "16568",
-                          "city": "Musterhausen",
-                          "zip": "55555",
-                          "country": "DE",
-                          "state": "Bayern",
-                          "phone": "00493012345",
-                          "fax": "00493012345",
-                          "mobile": "00493012345",
-                          "title": "Prof. Dr.",
-                          "additionalDetails": "premium buyer",
-                          "addressId": "address_1mudpcot9f",
-                          "createdAt": 1554387537888,
-                          "modifiedAt": 1554387537888
-                      },
-                      "ipAddress": "82.120.21.79",
-                      "paymentInstrument": {
-                          "createdAt": 1554710475049,
-                          "modifiedAt": 1554710475049,
-                          "paymentInstrumentId": "paymentinstrument_jblvs7smoq",
-                          "merchantPaymentInstrumentId": null,
-                          "attributes": null,
-                          "encrypted": false,
-                          "origin": "paypal",
-                          "type": "paypal",
-                          "recurring": false,
-                          "recurringConsent": null
-                      },
-                      "transactions": [
-                          {
-                              "createdAt": 1554710475170,
-                              "modifiedAt": 1554710475261,
-                              "type": "DEBIT",
-                              "transactionId": "transaction_ca9hoauyg9",
-                              "description": "test transaction",
-                              "initialAmount": 4000,
-                              "refundedAmount": 0,
-                              "currency": "EUR",
-                              "status": "PENDING",
-                              "order": "lt5c7eujlu",
-                              "parentTransaction": null,
-                              "transactions": null,
-                              "basket": [
-                                  {
-                                      "id": "Article-55010ca5-cf92-4af9-a442-cfee84444a8e",
-                                      "name": "USB-Stick",
-                                      "articleNumber": "SW10029",
-                                      "totalPrice": 4000,
-                                      "totalPriceWithTax": 4000,
-                                      "unitPrice": 4000,
-                                      "unitPriceWithTax": 4000,
-                                      "quantity": 1,
-                                      "tax": 0,
-                                      "discount": null,
-                                      "imageUrl": null,
-                                      "articleUrl": null,
-                                      "articleType": null
-                                  }
-                              ],
-                              "providerCode": null,
-                              "merchantMessage": null,
-                              "customerMessage": null,
-                              "descriptor": null,
-                              "meta": null,
-                              "challenge": null,
-                              "asyncNotificationSubscriptionId": null,
-                              "tracking": null
-                          }
-                      ],
-                      "status": "OPEN",
-                      "channel": "ECOM",
-                      "source": "Postman Test",
-                      "settled": false,
-                      "settlementDate": null,
-                      "allowedProducts": null,
-                      "product": "paypal",
-                      "transactionType": "DEBIT",
-                      "meta": {
-                          "deferred": false,
-                          "addressOverride": false
-                      },
-                      "async": {
-                          "successUrl": "https://www.google.de/#newwindow=1&q=success",
-                          "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
-                          "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
-                      },
-                      "deviceIdent": null,
-                      "clientType": "BRW",
-                      "asyncNotificationSubscriptionId": null,
-                      "lastOperation": "TRANSACTION_DEBIT_PENDING",
-                      "redirectUrl": "https://public-api-app76t.psp.cardtech.de/order/paypal/1.0/redirect/Order-8888a8a7-010a-4688-8934-de0a98d48cc3"
-                  }
+  {
+    "createdAt": 1554710475108,
+    "modifiedAt": 1554710475259,
+    "merchantId": "merchant_6rpfjfvaxq",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "orderId": "lt5c7eujlu",
+    "merchantOrderId": "merchantOrderId_23740745",
+    "paymentProviderTransactionId": null,
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 4000,
+    "preauthorizedAmount": 0,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "EUR",
+    "basket": [
+        {
+            "id": "Article-55010ca5-cf92-4af9-a442-cfee84444a8e",
+            "name": "USB-Stick",
+            "articleNumber": "SW10029",
+            "totalPrice": 4000,
+            "totalPriceWithTax": 4000,
+            "unitPrice": 4000,
+            "unitPriceWithTax": 4000,
+            "quantity": 1,
+            "tax": 0,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+        }
+    ],
+    "customer": {
+        "merchantCustomerId": "merchantCustomerId_1554387532",
+        "organizationRegistrationRegister": null,
+        "organizationRegistrationId": null,
+        "organizationEntityType": null,
+        "organizationVatId": null,
+        "companyName": null,
+        "reference": null,
+        "email": "1554387532@payengine-test.de",
+        "customerId": "customer_mxybnoow4i",
+        "addresses": [],
+        "personas": [],
+        "paymentInstruments": [],
+        "createdAt": 1554387532645,
+        "modifiedAt": 1554387532645,
+        "customerType": null
+    },
+    "persona": {
+        "personaId": "persona_fplatzxxjg",
+        "firstName": "John",
+        "lastName": "Doe",
+        "phone": "00493012345",
+        "mobile": "00493012345",
+        "fax": "00493012345",
+        "birthday": 358293600000,
+        "gender": "MALE",
+        "title": "Prof. Dr.",
+        "createdAt": 1553609384626,
+        "modifiedAt": 1553609384626
+    },
+    "billingAddress": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "street": "Musterweg",
+        "houseNumber": "16568",
+        "city": "Musterhausen",
+        "zip": "55555",
+        "country": "DE",
+        "state": "Bayern",
+        "phone": "00493012345",
+        "fax": "00493012345",
+        "mobile": "00493012345",
+        "title": "Prof. Dr.",
+        "additionalDetails": "premium buyer",
+        "addressId": "address_1mudpcot9f",
+        "createdAt": 1554387537888,
+        "modifiedAt": 1554387537888
+    },
+    "shippingAddress": {
+        "firstName": "John",
+        "lastName": "Doe",
+        "street": "Musterweg",
+        "houseNumber": "16568",
+        "city": "Musterhausen",
+        "zip": "55555",
+        "country": "DE",
+        "state": "Bayern",
+        "phone": "00493012345",
+        "fax": "00493012345",
+        "mobile": "00493012345",
+        "title": "Prof. Dr.",
+        "additionalDetails": "premium buyer",
+        "addressId": "address_1mudpcot9f",
+        "createdAt": 1554387537888,
+        "modifiedAt": 1554387537888
+    },
+    "ipAddress": "82.120.21.79",
+    "paymentInstrument": {
+        "createdAt": 1554710475049,
+        "modifiedAt": 1554710475049,
+        "paymentInstrumentId": "paymentinstrument_jblvs7smoq",
+        "merchantPaymentInstrumentId": null,
+        "attributes": null,
+        "encrypted": false,
+        "origin": "paypal",
+        "type": "paypal",
+        "recurring": false,
+        "recurringConsent": null
+    },
+    "transactions": [
+        {
+            "createdAt": 1554710475170,
+            "modifiedAt": 1554710475261,
+            "type": "DEBIT",
+            "transactionId": "transaction_ca9hoauyg9",
+            "description": "test transaction",
+            "initialAmount": 4000,
+            "refundedAmount": 0,
+            "currency": "EUR",
+            "status": "PENDING",
+            "order": "lt5c7eujlu",
+            "parentTransaction": null,
+            "transactions": null,
+            "basket": [
+                {
+                    "id": "Article-55010ca5-cf92-4af9-a442-cfee84444a8e",
+                    "name": "USB-Stick",
+                    "articleNumber": "SW10029",
+                    "totalPrice": 4000,
+                    "totalPriceWithTax": 4000,
+                    "unitPrice": 4000,
+                    "unitPriceWithTax": 4000,
+                    "quantity": 1,
+                    "tax": 0,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": null
+                }
+            ],
+            "providerCode": null,
+            "merchantMessage": null,
+            "customerMessage": null,
+            "descriptor": null,
+            "meta": null,
+            "challenge": null,
+            "asyncNotificationSubscriptionId": null,
+            "tracking": null
+        }
+    ],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": null,
+    "product": "paypal",
+    "transactionType": "DEBIT",
+    "meta": {
+        "deferred": false,
+        "addressOverride": false
+    },
+    "async": {
+        "successUrl": "https://www.google.de/#newwindow=1&q=success",
+        "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+        "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
+    },
+    "deviceIdent": null,
+    "clientType": "BRW",
+    "asyncNotificationSubscriptionId": null,
+    "lastOperation": "TRANSACTION_DEBIT_PENDING",
+    "redirectUrl": "https://public-api-app76t.psp.cardtech.de/order/paypal/1.0/redirect/Order-8888a8a7-010a-4688-8934-de0a98d48cc3"
+}
                 </code>
               </div>
             </div>
           </div>
         </div>
-        <br/>
-        <br/>
-        <ul>
-          <li>Confirming payment and accepting Billing Agreement on PayPal Checkout page by the customer</li>
-        </ul>
-        <br/>
-        <img src="/img/faq/paypal/Sandbox-BA-1.jpeg" alt="" width="80%">
-        <br/>
-        </div>
       </div>
     </div>
-    
-    
+  </div>
 </div>

@@ -28,7 +28,7 @@
         <h2>About this feature</h2>
         <br/>
         <p>
-          Reference Transaction Without Initial Payment for PayPal enables a merchant to execute recurring payment transactions for a particular customer, based on a Billing Agreement, without immediately charging the customer at the time of checkout.
+            Reference Transaction Without Initial Payment for PayPal enables a merchant to execute recurring payment transactions for a particular customer, based on a Billing Agreement, without immediately charging the customer at the time of checkout. 
         </p>
       </div>
       <br/>
@@ -40,13 +40,43 @@
         <br/>
         <p>To activate <em>PayPal Reference Transaction withоut Initial Payment</em>, follow these steps:</p>
         <ol>
-          <li>Request activation of the <em>PayPal</em> payment method from the Concardis Payengine support team.</li>
+          <li>Request activation of the PayPal payment method from the Concardis Payengine support team.</li>
           <li>Set the PayPal Integrated Signup(ISU) in the Merchant Center.</li>
-          <li>Request activation of <em>PayPal Reference Transaction</em> with from the PayPal account manager.</li>
-          <li>If no account manager is assigned, contact the <a href="https://www.paypal.com/de/smarthelp/contact-us">PayPal support team</a>.</li>
+          <li>Request activation of <em>PayPal Reference Transaction withоut Initial Payment</em> from your PayPal account manager.</li>
+          <li>If no account manager is assigned, contact <a href="https://www.paypal.com/de/smarthelp/contact-us">the PayPal support team</a>.</li>
         </ol>
         <br/>
       </div>
+      <br>
+      <div id="workflow">
+        <br/>
+        <br/>
+        <h2>Workflow</h2>
+        <br/>
+        <br/>
+        <p>The following describes the workflow for this feature:</p>
+        <br>
+        <ol>
+          <li>The merchant creates a PayPal payment Instrument.
+            <ol>
+              <li>The merchant creates a payment instrument via API. (Payment Instrument creation via Merchant Center is not possible due to an end user interaction requirement.)</li>
+              <li>In the Payment Instrument response, Payengine provides the billing agreement approval URL, to which the customer will be redirected.</li>
+              <li>Once the merchant receives an approval for the billing agreement from the customer, the payment instrument becomes recurring is ready for use for debit translactions.</li>
+            </ol>
+          </li>
+          <p> <strong>ADVANTAGES </strong> This billing agreement provides PayPal with an authorization to captute future payments. <br>
+              The buyer does not have to log in to PayPal to authorize future payments.
+          </p>
+          <li>The merchant can place orders on behalf of the customer, using the existing PayPal payment instrument.</li>
+          <!-- <li>The customer confirms the payment and accepts the billing agreement on the PayPal checkout page:
+            <br>
+            <img src="/img/faq/paypal/Sandbox-BA-1.jpeg" alt="" width="40%">
+          </li>
+          <li>The merchant receives a notification that the payment and the billing agreement have been approved by the customer.</li>
+          <li>The payment instrument is now recurring and the merchant can charge the customer's PayPal account for future purchases without additional confirmation.</li> -->
+        </ol>
+      </div>
+      <br>
       <div id="step3">
         <br/>
         <br/>
@@ -242,12 +272,14 @@
               <td width="25%"></td>
               <td width="25%">
                 <strong>NOTE</strong><br/>
-                  Update the payment instrument - only the notifyUrl parameter could be updated.
+                Update the payment instrument - only the notifyUrl parameter could be updated.
               </td>
               <td width="25%"></td>
             </tr>
           </tbody>
         </table>
+        <br>
+        <br>
         <div>
           <div class="example-box-wrapper">
             <div class="content-box" ng-init="createCustomerResponseShow4=false">
@@ -275,7 +307,7 @@
         <br/>
         <p>Place an order, using an existing PayPal billing agreement.</p>
         <br/>
-        <p><strong>NOTE</strong> Use the created payment instrument with the orderID from the from CreateOrder and the <em>billingagreementid</em> from BillingAgreementApprove</p>
+        <p><strong>NOTE</strong> Use the created payment instrument with the orderID from the from CreateOrder and the <em>billingagreementid</em> from BillingAgreementApprove.</p>
         <br/>
         <p>PayPal does not allow partial capture for reference transactions. Hence, the preauth + capture option is not allowed in Payengine.</p>
         <br/>
@@ -554,7 +586,7 @@
         <br/>
         <h4 id="step9">Refund Specific Request Parameters</h4>
         <br/>
-        <p>POST {{publicApiUrl}}/{{apiVersion}}/orders/{{orderId}}/transactions/{{transactionId}}/refund</p>
+        <p ng-non-bindable>POST {{publicApiUrl}}/{{apiVersion}}/orders/{{orderId}}/transactions/{{transactionId}}/refund</p>
         <br/>
         <div>
           <div class="example-box-wrapper">
@@ -946,7 +978,7 @@
                 </div>
               </h3>
               <div class="content-box-wrapper" ng-if="createCustomerResponseShow4">
-                <code>
+                <code ng-non-bindable>
                   DELETE {{publicApiUrl}}/{{apiVersion}}/payment-instruments/{{paymentInstrumentId}}
                 </code>
               </div>
@@ -976,3 +1008,5 @@
     </div>
     
 </div>
+<br>
+<br>

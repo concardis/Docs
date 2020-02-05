@@ -26,6 +26,7 @@
             </ul>
         </li>
         <li>Input Parameters for Authorizing Transactions</li>
+        <li>Specific Response Parameters for Authorising Transactions</li>
         </ul>
       </li>
       <li>Samples
@@ -125,10 +126,6 @@
     </tr>
     <tr>
       <th>Chargebacks</th>
-      <td>no</td>
-    </tr>
-    <tr>
-      <th>Reusable Payment Instruments</th>
       <td>no</td>
     </tr>
     <tr>
@@ -650,6 +647,33 @@
       </tr>
     </tbody>
   </table>
+<br>
+<br>
+<h4>Specific Response Parameters for Authorising Transactions</h4>
+<br>
+<p>Payengine sends the following response parameter, which is used by the merchant to trail customer money transfers:</p>
+<br>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th colspan="2" width="150px">PARAMETER</th>
+			<th colspan="1" width="100px">MANDATORY/OPTIONAL</th>
+			<th colspan="3">DESCRIPTION</th>
+			<th colspan="1">TYPE</th>
+			<th colspan="1">EXAMPLE</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="2"><em>meta.descriptor</em></td>
+			<td colspan="1">M</td>
+			<td colspan="3">Payengine generates a <em>descriptor</em> element to each response for RatePAY authorizing transactions. The merchant can use this identifier in customer invoices to track payments.</td>
+			<td colspan="1">UUID</td>
+			<td colspan="1">85f13a2c-b579-4e7a-b747-4e5b7c5ab4c6</td>
+		</tr>
+	</tbody>
+</table>
 <br>
 <br>
 <h3>Samples</h3>

@@ -30,6 +30,7 @@
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/paymentmethods">Payment Methods</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/flexible3ds">Flexible 3DS Rules</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/managebaskets">Manage baskets</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/cutoffmanualbookingsreport">Cut-Off Manual Bookings Report</a>
         <hr>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/usermanagement"><h3><b>User Management</b></h3></a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/inviteuser">User Management - Invite User</a>
@@ -93,6 +94,10 @@
         </div>
         <div ng-show="cur=='managebaskets'">
            <div  ng-include="'/partials/merchant/manage_baskets.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='cutoffmanualbookingsreport'">
+        <div  ng-include="'/partials/merchant/cut-off_manual_bookings_report.html'">
             </div>
         </div>
         <div ng-show="cur=='paymentinstrument'">

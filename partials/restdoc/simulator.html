@@ -50,9 +50,15 @@
 <p>
   <label>For SEPA</label>
   <br/>
-  <label>To get a negative response when using SEPA as a payment method, you need to enter 1,11 or 111,11 as initial amount.</label>
+  <label>Negative response for SEPA payment method cannot be replicated via Simulator.</label>
   <br/>
-  <label>Any other amount (except for 1,11 or 111,11) would give you a positive response and the order would be successful.</label>
+  <label>For getting chargeback transaction status, you need to use one of the following values as initial amount:
+    <ul>
+      <li>33333 (333,33 €)</li>
+      <li>11111 (111,11 €)</li>
+      <li>111 (1,11 €)</li>
+    </ul>
+  </label>
   <br/>
   <label>Use this IBAN to create a test order :</label>
   <br/>

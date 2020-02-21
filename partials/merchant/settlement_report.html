@@ -100,13 +100,19 @@
         <td>10.05.2019</td>
         <td>Add new PPRO methods (bancontact, alipay, wechat-pay)</td>
         <td>cmeissner</td>
-      <!-- </tr>
+      </tr>
       <tr>
         <td>1.04</td>
         <td>16.05.2019</td>
         <td>AMEX mappings added</td>
         <td>cmeissner</td>
-      </tr> -->
+      </tr>
+      <tr>
+        <td>1.05</td>
+        <td>20.02.2020</td>
+        <td>SEPA documentation enhanced</td>
+        <td>cmeissner</td>
+      </tr>
     </tbody>
   </table>
 </div>
@@ -556,6 +562,7 @@
       <tr>
         <th>Field No</th>
         <th>Parameter types</th>
+        <!-- <th>AMEX</th> -->
         <th>Concardis</th>
         <th>PayPal</th>
         <th>PPRO</th>
@@ -567,6 +574,7 @@
       <tr>
         <td>1</td>
         <td>Record Type</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes</td>
@@ -576,6 +584,7 @@
       <tr>
         <td>2</td>
         <td>Merchant Id</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes</td>
@@ -585,6 +594,7 @@
       <tr>
         <td>3</td>
         <td>Source File Id</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes</td>
@@ -594,6 +604,7 @@
       <tr>
         <td>4</td>
         <td>Payment Method</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes <sup>*1</sup></td>
@@ -603,6 +614,7 @@
       <tr>
         <td>5</td>
         <td>Payment Brand</td>
+        <!-- <td>yes</td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes</td>
         <td>yes <sup>*1</sup></td>
@@ -612,6 +624,7 @@
       <tr>
         <td>6</td>
         <td>Order Id</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
@@ -621,6 +634,7 @@
       <tr>
         <td>7</td>
         <td>Transaction Id</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
@@ -630,6 +644,7 @@
       <tr>
         <td>8</td>
         <td>Merchant Reference</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
@@ -639,6 +654,7 @@
       <tr>
         <td>9</td>
         <td>Type</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes</td>
@@ -648,6 +664,7 @@
       <tr>
         <td>10</td>
         <td>Transaction Date</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
@@ -657,6 +674,7 @@
       <tr>
         <td>11</td>
         <td>Transaction Currency</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
@@ -666,6 +684,7 @@
       <tr>
         <td>12</td>
         <td>Transaction Amount</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
@@ -675,6 +694,7 @@
       <tr>
         <td>13</td>
         <td>Settlement Date</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes</td>
@@ -684,6 +704,7 @@
       <tr>
         <td>14</td>
         <td>Settlement Currency</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes</td>
@@ -693,6 +714,7 @@
       <tr>
         <td>15</td>
         <td>Settlement Gross Amount	</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes</td>
@@ -702,6 +724,7 @@
       <tr>
         <td>16</td>
         <td>Settlement Net Amount</td>
+        <!-- <td>yes <sup>*7</sup></td> -->
         <td>yes <sup>*1,2</sup></td>
         <td>yes</td>
         <td>no</td>
@@ -711,6 +734,7 @@
       <tr>
         <td>17</td>
         <td>Settlement Fx Rate</td>
+        <!-- <td>yes</td> -->
         <td>yes <sup>*1,2</sup></td>
         <td>no</td>
         <td>no</td>
@@ -720,6 +744,7 @@
       <tr>
         <td>18</td>
         <td>Commission</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
@@ -729,6 +754,7 @@
       <tr>
         <td>19</td>
         <td>Aqcuirer Service Fee</td>
+        <!-- <td>no</td> -->
         <td>yes <sup>*1,2</sup></td>
         <td>no</td>
         <td>no</td>
@@ -738,6 +764,7 @@
       <tr>
         <td>20</td>
         <td>Scheme Fee</td>
+        <!-- <td>no</td> -->
         <td>yes <sup>*1,2</sup></td>
         <td>no</td>
         <td>no</td>
@@ -747,6 +774,7 @@
       <tr>
         <td>21</td>
         <td>Record Type</td>
+        <!-- <td>no</td> -->
         <td>yes <sup>*1,2</sup></td>
         <td>no</td>
         <td>no</td>
@@ -756,6 +784,7 @@
       <tr>
         <td>22</td>
         <td>VAT</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes <sup>*1,2</sup></td>
         <td>no</td>
         <td>no</td>
@@ -765,6 +794,7 @@
       <tr>
         <td>23</td>
         <td>Payment Provider Merchant Id</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes</td>
@@ -774,6 +804,7 @@
       <tr>
         <td>24</td>
         <td>Payment Provider Reference</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes <sup>*1</sup></td>
@@ -783,6 +814,7 @@
       <tr>
         <td>25</td>
         <td>Payment Provider Additional Reference 1</td>
+        <!-- <td>yes <sup>*8</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes</td>
         <td>yes <sup>*1</sup></td>
@@ -792,6 +824,7 @@
       <tr>
         <td>26</td>
         <td>Payment Provider Additional Reference 2</td>
+        <!-- <td>no</td> -->
         <td>no</td>
         <td>no</td>
         <td>yes <sup>*3</sup></td>
@@ -801,6 +834,7 @@
       <tr>
         <td>27</td>
         <td>Payment Provider Settlement Batch Id</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes</td>
         <td>no</td>
         <td>no</td>
@@ -810,6 +844,7 @@
       <tr>
         <td>28</td>
         <td>Payment Provider Reason Code</td>
+        <!-- <td>yes</td> -->
         <td>no</td>
         <td>yes</td>
         <td>no</td>
@@ -819,6 +854,7 @@
       <tr>
         <td>29</td>
         <td>Payment Provider Reason Description</td>
+        <!-- <td>yes</td> -->
         <td>no</td>
         <td>no</td>
         <td>yes <sup>*4</sup></td>
@@ -828,6 +864,7 @@
       <tr>
         <td>30</td>
         <td>Terminal Id</td>
+        <!-- <td>yes <sup>*8</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>no</td>
         <td>no</td>
@@ -837,6 +874,7 @@
       <tr>
         <td>31</td>
         <td>Payment Date</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>no</td>
         <td>yes <sup>*5</sup></td>
@@ -864,6 +902,12 @@
   <p>
     <sup>*6</sup>  SEPA: only for type=settlement & reject
   </p>
+  <!-- <p>
+    <sup>*7</sup>  AMEX: only for type=chargeback & adjustment
+  </p>
+  <p>
+    <sup>*8</sup>  AMEX: only for type=settlement, refund & reject
+  </p> -->
 
   <div>
     <div id="concardis"></div>
@@ -1444,15 +1488,15 @@ sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,paypal,paypal,,,,clearing
     <br>
     <p><sup>*</sup> "T+0" means transaction day + 0 days</p>
     <br>
-    <p>Any chargebacks that the Payengine receives after the corresponding collected funds have been paid out to the merchant already will be charged in a bulk at the end of the month including the fees.</p>
+    <p>Any chargebacks that the Payengine receives after the corresponding collected funds have been paid out to the merchant already will be charged in a bulk at the end of the month including the bank fees.</p>
     <br>
-    <p>Additionally all fees related to rejects will also be charged at the end of the month together with the chargebacks. The fees won't be deducted from the payout amount!</p>
+    <p>Additionally all bank fees related to rejects will also be charged at the end of the month together with the chargebacks. The bank fees won't be deducted from the payout amount!</p>
     <div>
       <div id="sepa_supported_types"></div>
       &nbsp;
       <h4>Supported Types</h4>
       &nbsp;
-      <p>As we have two different money flows (1: direct debit collection & payout, 2: chargebacks & fees) these signals will be presented in separate files.</p>
+      <p>As we have two different money flows (1: direct debit collection & payout, 2: chargebacks & bank fees) these signals will be presented in separate files.</p>
       <br>
       <ul>
         <li>unified-sepa-dd-[merchantId]-[date].csv</li>
@@ -1584,9 +1628,9 @@ sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,paypal,paypal,,,,clearing
       &nbsp;
       <p><u>Further Notes:</u></p>
       <ul>
-        <li>The transaction types settlement & reject won't include any fee information in the unified settlement.</li>
-        <li>For chargeback transactions the Settlement Gross Amount will contain the actual amount charged back and the Commission field all contain the corresponding fees</li>
-        <li>All fee transactions will include the Payengine details pointing to the corresponding reject transaction and the Settlement Gross Amount will contain the actual fee amount.</li>
+        <li>The transaction types settlement & reject won't include any bank fee information in the unified settlement.</li>
+        <li>For chargeback transactions the Settlement Gross Amount will contain the actual amount charged back and the <em>Commission</em> field will contain all the corresponding bank fees</li>
+        <li>All fee transactions will include the Payengine details pointing to the corresponding reject transaction and the <em>Settlement Gross Amount</em> will contain the actual bank fee amount.</li>
       </ul>
     </div>
     <div>
@@ -1740,7 +1784,7 @@ sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,paypal,paypal,,,,clearing
     <div>
       <div id="sepa_special_mapping"></div>
       &nbsp;
-      <h4 style="color:red;">Special Mapping</h4>
+      <h4>Special Mapping</h4>
       &nbsp;
       <table class="row clearfix  table table-bordered table-striped table-condensed">
         <thead>
@@ -1813,17 +1857,16 @@ sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,paypal,paypal,,,,clearing
             <div class="content-box-wrapper" ng-if="createCustomerResponseShow6">
             <code>
   prefunding:
-  sett_dtl,merchant_qxx92nloob,settlementdata_ygrzgk3mcx,sepa_refund,sepa,,,,prefunding,,,,12122019,EUR,250.99,,,,,,,,5364852,d2b0d7203bbb4c3aadf6165,PEB2BMREF15452243,,d2b0d7203bbb4c3aadf6165,,,,
-    
+  sett_dtl,merchant_qxx92nloob,settlementdata_lv7oo4ewiu,sepa,sepa_refund,vb4tujc3sw,transaction_85nlpond3c,merchantOrderId1545224318,prefunding,12122019,EUR,-15.6,14122019,EUR,-15.6,,,,,,,,5364852,,PEB2BMREF12345678,,4587865d7c7425786248vb,,,,
     
   prefunding_failure:
-  sett_dtl,merchant_qxx92nloob,settlementdata_ygrzgk3mcx,sepa_refund,sepa,,,,prefunding_failure,,,,12122019,EUR,-340.99,,,,,,,,5364852,xcb0d7203bbb4c3aadf6166,PEB2BMREF15452243,,xcb0d7203bbb4c3aadf6166,AM04,Insufficient Funds,,
+  sett_dtl,merchant_qxx92nloob,settlementdata_lv7oo4ewiu,sepa,sepa_refund,u9rtujxksa,transaction_8fgkpodxsw,merchantOrderId1545224319,prefunding_failure,12122019,EUR,12.99,14122019,EUR,,,,-3.50,,,,,5364852,,PEB2BMREF12345678,,4587865d7c7425786248vb,AM04,Insufficient funds,,
     
   refund:
-    
+  sett_dtl,merchant_qxx92nloob,settlementdata_lv7oo4ewiu,sepa,sepa_refund,vb4tujc3sw,transaction_85nlpond3c,merchantOrderId1545224318,refund,12122019,EUR,-15.6,16122019,EUR,-15.6,,,,,,,,5364852,766b7865d7c742578624bc4,,,,,,,
     
   reject:
-  sett_dtl,merchant_qxx92nloob,settlementdata_lv7oo4ewiu,sepa,sepa,nmxtukcsbf,transaction_7iclpoaafc,merchantOrderId1545224328,reject,19112019,EUR,-15.6,,,,,,,,,,,5364852,766b7865d7c742578624bc4,,,,MS03,Reason not specified,,                
+  sett_dtl,merchant_qxx92nloob,settlementdata_lv7oo4ewiu,sepa,sepa_refund,nmxtukcsbf,transaction_7iclpoaafc,merchantOrderId1545224328,reject,12122019,EUR,12.99,16122019,EUR,,,,-3.50,,,,,5364852,766b7865d7c742578624bc4,,,,MS03,Reason not specified,,                
             </code>
           </div>
         </div>

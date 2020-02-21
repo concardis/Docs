@@ -81,17 +81,17 @@
 					<tr>
 						<td>1</td>
 						<td>Select the <strong>SEPA</strong> payment method.</td>
-						<td><img class="" src="/img/faq/sepa_widget_1.png" width="50%" /></td>
+						<td><img class="" src="/img/faq/sepa/Payment Methods Overview 1.png" width="50%" /></td>
 					</tr>
 					<tr>
 						<td>2</td>
 						<td>Provide your bank account details (<strong>Account Holder, IBAN, BIC, Bank Name</strong>) and accept the mandate.</td>
-						<td><img class="" src="/img/faq/sepa_widget_2.png" width="50%" /></td>
+						<td><img class="" src="/img/faq/sepa/Payment Form 2.png" width="50%" /></td>
 					</tr>
 					<tr>
 						<td>3</td>
 						<td>You will be redirected to the <strong>Payment form success</strong> or the <strong>Payment form failure</strong> popup window.</td>
-						<td><img class="" src="/img/faq/sepa_widget_3.png" width="50%" /></td>
+						<td><img class="" src="/img/faq/sepa/Payment Form 3.png" width="50%" /></td>
 					</tr>
 				</tbody>
 			</table>
@@ -168,7 +168,7 @@
 						<tr>
 							<th width="50%"><strong>Refunds</strong></th>
 							<td width="50%">yes *<br/>
-									<strong>NOTE</strong> Refunds can only be executed if the merchant bank account connection is set up (<a href="">Bank Account Setup</a>)</td>
+									<strong>NOTE</strong> Refunds can only be executed if the merchant bank account connection is set up (<a href="#">Bank Account Setup</a>)</td>
 						</tr>
 						<tr>
 							<th width="50%"><strong>Notifications</strong></th>
@@ -341,7 +341,6 @@
 								<th>PARAMETER</th>
 								<th>MANDATORY/<br/>OPTIONAL</th>
 								<th>DESCRIPTION</th>
-								<th>EXAMPLE</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -349,9 +348,9 @@
 								<td>payment.bankName</td>
 								<td>O</td>
 								<td>
-										<strong>string</strong> 
-										The name of the bank of the SEPA account. 
-										minLength: 1
+										<strong>string</strong> <br>
+										The name of the bank of the SEPA account. <br>
+										minLength: 1 <br>
 										maxLength: 255
 								</td>
 								<td></td>
@@ -360,9 +359,9 @@
 								<td>payment.iban</td>
 								<td>M</td>
 								<td>
-										<strong>string</strong> 
+										<strong>string</strong> <br>
 										<br/><br/>
-										maxLength: 34
+										maxLength: 34 <br>
 										IBAN of the SEPA account.
 								</td>
 								<td></td>
@@ -377,9 +376,9 @@
 								<td>payment.accountHolder</td>
 								<td>M</td>
 								<td>
-									<strong>string</strong>
-									minLength: 4
-									maxLength: 128
+									<strong>string</strong> <br>
+									minLength: 4 <br>
+									maxLength: 128 
 									<br/><br/>
 									The account holder's name of the SEPA account. 
 								</td>
@@ -388,13 +387,21 @@
 							<tr>
 								<td>order.statementDescription</td>
 								<td>O</td>
-								<td>The statement description from your system/shop of this order.</td>
 								<td>
-									The field <strong>order.statementDescription</strong> will be used as purpose text.
-									In case that there is no <strong>order.statementDescription</strong> present we will use the following logic: 
-									When the <strong>order.merchantOrderId</strong> is not empty then <strong>order.merchantOrderId</strong> is used otherwise <strong>order.orderId</strong> is used. 
-									The fields merchant.companyName and merchant.shopUrl are added regardless if <strong>order.merchantOrderId</strong> or <strong>order.orderId</strong> is used.
-									The max length of the purpose text is 108 characters and it will cut of if it's longer then <strong>108</strong> characters.
+									The statement description from your system/shop of this order.
+									<br>
+									The field <span><strong>order.statementDescription</strong></span> will be used as purpose text.
+									When no <span><strong>order.statementDescription</strong></span> is present the following logic will be applied: 
+									1) <strong>order.merchantOrderId</strong> is used when it's present
+									<br>
+									2) <strong>order.orderId </strong> is used when <strong>order.merchantOrderId</strong> is not present
+									<br>
+									For both cases <br>
+									fields <strong>merchant.companyName</strong> and <strong>merchant.shopUrl</strong> will be added after either <strong>order.merchantOrderId</strong> or <strong>order.orderId</strong> separated with space.
+									<br>
+									The max length of the purpose text is <strong>108</strong> characters and it will cut of if it's longer then 108 characters.
+									<br>
+									Please see the sample below the table.
 								</td>
 							</tr>
 							<tr>
@@ -403,7 +410,6 @@
 								<td>
 										The <em>mandateId</em> assigned to the SEPA mandate (Optionally, Payengine will generate the ID (if it not available). The ID must follow the '^[a-zA-Z0-9-]{1,35}' pattern.
 								</td>
-								<td></td>
 							</tr>
 							<tr>
 								<td>mandate.createdDateTime</td>
@@ -412,7 +418,6 @@
 									number($date-time)<br/><br/>
 									Timestamp for mandate creation (mandatory).
 								</td>
-								<td></td>
 							</tr>
 							<tr>
 								<td>mandate.mandateText</td>
@@ -421,7 +426,6 @@
 									string<br/><br/>
 									Mandate text displayed to the customer (mandatory)
 								</td>
-								<td></td>
 							</tr>
 							<tr>
 								<td>mandate.directDebitType</td>
@@ -432,22 +436,47 @@
 									The mandate type can be one of the following.
 									<strong>FIRST</strong>: It is the first execution of the mandate <strong>SINGLE</strong>: It is used only for one execution of the mandate <strong>RECURRING</strong>: It is used for recurring mandate usage <strong>FINAL</strong>: It is the last execution of the recurring mandate.
 								</td>
-								<td></td>
 							</tr>
 							<tr>
 								<td>mandate.directDebitType.SINGLE</td>
 								<td>One execution</td>
-								<td></td>
 								<td></td>
 							</tr>
 							<tr>
 								<td>mandate.directDebitType.FIRST</td>
 								<td>The initial usage of the recurring payment instrument</td>
 								<td></td>
-								<td></td>
 							</tr>
 						</tbody>
 					</table>
+					<br>
+					<br>
+					<div>
+							<div class="example-box-wrapper">
+								<div class="content-box" ng-init="createCustomerResponseShowwa=false">
+									<h3 class="content-box-header bg-default">
+										Sample of order.statementDescription Logic
+										<div class="header-buttons-separator">
+											<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShowwa=!createCustomerResponseShowwa;">
+												<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShowwa"></i>
+												<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShowwa"></i>
+											</a>
+										</div>
+									</h3>
+									<div class="content-box-wrapper" ng-if="createCustomerResponseShowwa">
+										<code>
+	String statementDescription = order.getStatementDescription();
+
+	if ( StringUtils.isEmpty( statementDescription ) ) {
+		statementDescription = order.getMerchantOrderId() != null ? order.getMerchantOrderId() : order.getBusinessKey() + " " + merchant.getCompanyName() + " " + merchant.getShopUrl();
+	}
+		
+	return statementDescription.length() > MAX_LENGTH_OF_STATEMENT_DESCRIPTION ? statementDescription.substring( 0, MAX_LENGTH_OF_STATEMENT_DESCRIPTION ) : statementDescription;												
+										</code>
+									</div>
+								</div>
+							</div>
+						</div>
 					<br/>
 					<h3>POST​/payment-instruments Specific Response Parameters</h3>
 					<br/>
@@ -457,7 +486,6 @@
 								<th colspan="4">PARAMETER</th>
 								<th colspan="1">MANDATORY/<br/>OPTIONAL</th>
 								<th colspan="4">DESCRIPTION</th>
-								<th colspan="3">EXAMPLE</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -465,7 +493,7 @@
 								<td colspan="4">mandateId</td>
 								<td colspan="1">M</td>
 								<td colspan="4">If there is no <em>mandateID</em> transmitted in the request,<br/> Payengine will generate one and send it back in the response.</td>
-								<td colspan="3"></td>
+								
 							</tr>
 						</tbody>
 					</table>
@@ -502,7 +530,6 @@
 							<th>PARAMETER</th>
 							<th>MANDATORY/<br/>OPTIONAL</th>
 							<th>DESCRIPTION</th>
-							<th>EXAMPLE</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -515,7 +542,6 @@
 								minLength: 1<br/> 
 								maxLength: 255
 							</td>
-							<td></td>
 						</tr>
 						<tr>
 							<td>payment.iban</td>
@@ -525,24 +551,21 @@
 								maxLength: 34<br/><br/> 
 								IBAN of the SEPA account
 							</td>
-							<td></td>
 						</tr>
 						<tr>
 							<td>payment.bic</td>
 							<td>O</td>
 							<td>BIC of the SEPA account. </td>
-							<td></td>
 						</tr>
 						<tr>
 							<td>payment.accountHolder</td>
-							<td>O</td>
+							<td>M</td>
 							<td>
 								string<br/><br/>
 								minLength: 4<br/>
 								maxLength: 128<br/><br/>
 								The account holder's name of the SEPA account. 
 							</td>
-							<td></td>
 						</tr>
 						<tr>
 							<td>mandate.mandateId</td>
@@ -633,10 +656,10 @@
 							<td>Any amount + any merchant/customer IBAN: The transaction's status changes from "OK" to "SUCCESS"</td>
 						</tr>
 						<tr>
-							<td>Failure</td>
+							<td>Chargeback</td>
 							<td>
-									Amount below + any merchant/customer IBAN: The charge succeeds but a dispute is immediately created.<br/>
-									The debit's/preauth's status stays in OK. A new CHARGEBACK transaction is created with status "BOOKOUT". This might take some minutes, according to the scheduler settings.<br/><br/>
+									Each of the amounts listed below + any merchant/customer IBAN: The transaction succeeds but a dispute is immediately created.<br/>
+									The debit's/preauth's status stays in OK and a new CHARGEBACK transaction is created with status "booked". This might take some time, according to the scheduler settings.<br/><br/>
 									<ul>
 										<li>33333 (333,33 €)</li>
 										<li>11111 (111,11 €)</li>

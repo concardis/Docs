@@ -2,6 +2,7 @@
 </br>
 
 <ul>
+    <li><a href="#revisionHistory">Revision History</a></li>
     <li><a href="#introduction" name="">Introduction</a></li>
     <ul>
         <li><a href="#general_formatting_instructions" name="">General Formatting Instructions</a></li>
@@ -37,43 +38,111 @@
             <li><a href="#prepayment_special_mapping" name="">Special Mapping</a></li>
             <li><a href="#prepayment_samples" name="">Samples</a></li>
         </ul>
-        <li><a href="#sepa" name="">SEPA</a></li>
+       <li><a href="#sepa" name="">SEPA Direct Debit</a></li>
         <ul>
             <li><a href="#sepa_supported_types" name="">Supported Types</a></li>
             <li><a href="#sepa_payment_method" name="">Payment Method & Brand</a></li>
             <li><a href="#sepa_special_mapping" name="">Special Mapping</a></li>
             <li><a href="#sepa_samples" name="">Samples</a></li>
         </ul>
+        <li><a href="#sepa" name="">SEPA Refunds (Pre-funded)</a></li>
+        <ul>
+            <li><a href="#sepa_r_supported_types" name="">Supported Types</a></li>
+            <li><a href="#sepa_r_payment_method" name="">Payment Method & Brand</a></li>
+            <li><a href="#sepa_r_special_mapping" name="">Special Mapping</a></li>
+            <li><a href="#sepa_r_samples" name="">Samples</a></li>
+        </ul>
+    </ul>
+    <li><a href="#documents">Documents</a></li>
+    <ul>
+        <li><a href="#wordTemplate">Word Template</a></li>
+        <li><a href="#pdfVersions">PDF Versions</a></li>
     </ul>
 </ul>
-
+<br>
+<hr>
+<br>
+<div>
+  <div id="revisionHistory"></div>
+  <br>
+  <h2>Revision History</h2>
+  <br>
+  <table class="row clearfix  table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Version</th>
+        <th>Date</th>
+        <th>Description of Changes</th>
+        <th>Author</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1.00</td>
+        <td>16.01.2019</td>
+        <td>Initial version</td>
+        <td>cmeissner</td>
+      </tr>
+      <tr>
+        <td>1.01</td>
+        <td>25.01.2019</td>
+        <td>PPRO mappings added</td>
+        <td>cmeissner</td>
+      </tr>
+      <tr>
+        <td>1.02</td>
+        <td>08.02.2019</td>
+        <td>Prepayment mappings added</td>
+        <td>cmeissner</td>
+      </tr>
+      <tr>
+        <td>1.03</td>
+        <td>10.05.2019</td>
+        <td>Add new PPRO methods (bancontact, alipay, wechat-pay)</td>
+        <td>cmeissner</td>
+      </tr>
+      <tr>
+        <td>1.04</td>
+        <td>16.05.2019</td>
+        <td>AMEX mappings added</td>
+        <td>cmeissner</td>
+      </tr>
+      <tr>
+        <td>1.05</td>
+        <td>20.02.2020</td>
+        <td>SEPA documentation enhanced</td>
+        <td>cmeissner</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 <div>
   <div id="introduction"></div>
   &nbsp;
-  <h3>Introduction</h3>
+  <h2>Introduction</h2>
   &nbsp;
   <p>
-    The Unified Settlement Report is a comma separated file format (CSV). that maps multiple settlement reports from external processors (e.g. PayPal, Concardis, SEPA, ...) into one unified format for all payment methods and processors. This simplifies the reconciliation processes for merchants as they only have to handle one file format.
+    The <em>Unified Settlement Report</em> is a comma separated file format (CSV). that maps multiple settlement reports from external processors (e.g. PayPal, Concardis, SEPA, ...) into one unified format for all payment methods and processors. This simplifies the reconciliation processes for merchants as they only have to handle one file format.
   </p>
   &nbsp;
   <p>
-    There will be separate Unified Settlement Report files on a processor level to ensure that merchants can directly start the reconciliation process, rather than waiting a full day until all settlement files from the various processors are collected and can be reported within one file.
+    There will be separate <em>Unified Settlement Report</em> files on a processor level to ensure that merchants can directly start the reconciliation process, rather than waiting a full day until all settlement files from the various processors are collected and can be reported within one file.
   </p>
   &nbsp;
   <p>
-    The files will be generated on a daily base in case the processor offers a daily settlement reporting.eporting.
+    The files will be generated on a daily base in case the processor offers a daily settlement reporting.
   </p>
   &nbsp;
   <div>
     <div id="general_formatting_instructions"></div>
     &nbsp;
-    <h4>General Formatting Instructions</h4>
+    <h3>General Formatting Instructions</h3>
     &nbsp;
     <p>
-      We distinguish between alphanumeric (AN) and numeric (N) parameters within the Unified Settlement Report.
+      We distinguish between alphanumeric (AN) and numeric (N) parameters within the <em>Unified Settlement Report</em>.
     </p>
     &nbsp;
-    <table class="table table-condensed">
+    <table class="row clearfix  table table-bordered table-striped table-condensed">
       <thead>
         <tr>
           <th>Parameter Types</th>
@@ -90,16 +159,16 @@
         <tr>
           <td>AN - Rest</td>
           <td>Alphanumeric values comming from the Payengine will follow the format restrictions defined by the Payengine API.
-          <br/>
-          Alphanumeric values received from the processors will just be forwarded as they are.
+              <br>
+              Alphanumeric values received from the processors will just be forwarded as they are.
           </td>
           <td></td>
         </tr>
         <tr>
           <td>N - Amounts</td>
           <td>Amount parameters will use the "." as a decimal separator and can include as much decimal places as supported by the currency and provided by the processor.
-          <br/>
-          There is no separate credit/debit sign, negative settlement amounts will include a "-"
+              <br>
+              There is no separate credit/debit sign, negative settlement amounts will include a "-"
           </td>
           <td>-10.25</td>
         </tr>
@@ -128,9 +197,9 @@
   <div>
     <div id="settlement_details_record"></div>
     &nbsp;
-    <h4>Settlement Details Record</h4>
+    <h3>Settlement Details Record</h3>
     &nbsp;
-    <table class="table table-condensed">
+    <table class="row clearfix  table table-bordered table-striped table-condensed">
       <thead>
         <tr>
           <th>Field No</th>
@@ -165,14 +234,14 @@
         <tr>
           <td>4</td>
           <td>Payment Method</td>
-          <td>The payment method, e.g. card, paypal, sepa</td>
+          <td>The payment method, e.g. <em>card, paypal, sepa</em></td>
           <td>AN</td>
           <td>paypal</td>
         </tr>
         <tr>
           <td>5</td>
           <td>Payment Brand</td>
-          <td>The payment brand, e.g. visa, mastercard, amex</td>
+          <td>The payment brand, e.g. <em>visa, mastercard<!--  , amex --></em></td>
           <td>AN</td>
           <td>paypal</td>
         </tr>
@@ -202,7 +271,7 @@
           <td>Type</td>
           <td>
             The type of the transaction
-            <table class="table table-condensed">
+            <table class="row clearfix  table table-bordered table-striped table-condensed">
               <thead>
                 <tr>
                   <th>Type</th>
@@ -267,6 +336,14 @@
                   <td>clearing our payout instruction in case settled funds are not directly paid out</td>
                 </tr>
                 <tr>
+                  <td>fx_purchase</td>
+                  <td>purchase of exchange rates for currency conversion within settlement / payout</td>
+                </tr>
+                <tr>
+                  <td>debit_for_refunds</td>
+                  <td>debit from merchant bank account for funding of end customer refunds, applicable for SEPA automated refunds only</td>
+                </tr>
+                <tr>
                   <td>unknown</td>
                   <td>
                     settlement information that cannot be matched to any of the above types but still
@@ -277,7 +354,7 @@
               </tbody>
             </table>
             <br/>
-            Note: Not all transaction types are available for all payment methods, e.g. clearing is only available for PayPal. Please have a look at the payment method specific description which types will be supported.
+            <strong>Note:</strong> Not all transaction types are available for all payment methods, e.g. clearing is only available for PayPal. Please have a look at the payment method specific description which types will be supported.
           </td>
           <td>AN</td>
           <td>settlement</td>
@@ -474,17 +551,18 @@
 
 <div>
   <div id="processor_specific_instructions"></div>
-  <h3>Processor Specific Instructions</h3>
+  <h2>Processor Specific Instructions</h2>
   &nbsp;
   <p>
-    As the Unified Settlement Report is based on a generic format covering multiple payment methods not all of the parameters are applicable for each method and processor. The table below will give an overview which parameters can be expected for which processor. Additionally the following subsections will explain specific mappings on a processor level.
+      As the Unified Settlement Report is based on a generic format covering multiple payment methods not all of the parameters are applicable for each method and processor. The table below will give an overview which parameters can be expected for which processor. Additionally the following subsections will explain specific mappings on a processor level.
   </p>
   &nbsp;
-  <table class="table table-condensed">
+  <table class="row clearfix  table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Field No</th>
         <th>Parameter types</th>
+        <!-- <th>AMEX</th> -->
         <th>Concardis</th>
         <th>PayPal</th>
         <th>PPRO</th>
@@ -496,6 +574,7 @@
       <tr>
         <td>1</td>
         <td>Record Type</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes</td>
@@ -505,6 +584,7 @@
       <tr>
         <td>2</td>
         <td>Merchant Id</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes</td>
@@ -514,6 +594,7 @@
       <tr>
         <td>3</td>
         <td>Source File Id</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes</td>
@@ -523,6 +604,7 @@
       <tr>
         <td>4</td>
         <td>Payment Method</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes <sup>*1</sup></td>
@@ -532,6 +614,7 @@
       <tr>
         <td>5</td>
         <td>Payment Brand</td>
+        <!-- <td>yes</td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes</td>
         <td>yes <sup>*1</sup></td>
@@ -541,6 +624,7 @@
       <tr>
         <td>6</td>
         <td>Order Id</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
@@ -550,6 +634,7 @@
       <tr>
         <td>7</td>
         <td>Transaction Id</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
@@ -559,6 +644,7 @@
       <tr>
         <td>8</td>
         <td>Merchant Reference</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
@@ -568,6 +654,7 @@
       <tr>
         <td>9</td>
         <td>Type</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes</td>
@@ -577,6 +664,7 @@
       <tr>
         <td>10</td>
         <td>Transaction Date</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
@@ -586,6 +674,7 @@
       <tr>
         <td>11</td>
         <td>Transaction Currency</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
@@ -595,6 +684,7 @@
       <tr>
         <td>12</td>
         <td>Transaction Amount</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
@@ -604,6 +694,7 @@
       <tr>
         <td>13</td>
         <td>Settlement Date</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes</td>
@@ -613,6 +704,7 @@
       <tr>
         <td>14</td>
         <td>Settlement Currency</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes</td>
@@ -622,6 +714,7 @@
       <tr>
         <td>15</td>
         <td>Settlement Gross Amount	</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes</td>
@@ -631,6 +724,7 @@
       <tr>
         <td>16</td>
         <td>Settlement Net Amount</td>
+        <!-- <td>yes <sup>*7</sup></td> -->
         <td>yes <sup>*1,2</sup></td>
         <td>yes</td>
         <td>no</td>
@@ -640,6 +734,7 @@
       <tr>
         <td>17</td>
         <td>Settlement Fx Rate</td>
+        <!-- <td>yes</td> -->
         <td>yes <sup>*1,2</sup></td>
         <td>no</td>
         <td>no</td>
@@ -649,6 +744,7 @@
       <tr>
         <td>18</td>
         <td>Commission</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
         <td>yes <sup>*1</sup></td>
@@ -658,6 +754,7 @@
       <tr>
         <td>19</td>
         <td>Aqcuirer Service Fee</td>
+        <!-- <td>no</td> -->
         <td>yes <sup>*1,2</sup></td>
         <td>no</td>
         <td>no</td>
@@ -667,6 +764,7 @@
       <tr>
         <td>20</td>
         <td>Scheme Fee</td>
+        <!-- <td>no</td> -->
         <td>yes <sup>*1,2</sup></td>
         <td>no</td>
         <td>no</td>
@@ -676,6 +774,7 @@
       <tr>
         <td>21</td>
         <td>Record Type</td>
+        <!-- <td>no</td> -->
         <td>yes <sup>*1,2</sup></td>
         <td>no</td>
         <td>no</td>
@@ -685,6 +784,7 @@
       <tr>
         <td>22</td>
         <td>VAT</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes <sup>*1,2</sup></td>
         <td>no</td>
         <td>no</td>
@@ -694,6 +794,7 @@
       <tr>
         <td>23</td>
         <td>Payment Provider Merchant Id</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes</td>
@@ -703,6 +804,7 @@
       <tr>
         <td>24</td>
         <td>Payment Provider Reference</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>yes</td>
         <td>yes <sup>*1</sup></td>
@@ -712,6 +814,7 @@
       <tr>
         <td>25</td>
         <td>Payment Provider Additional Reference 1</td>
+        <!-- <td>yes <sup>*8</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>yes</td>
         <td>yes <sup>*1</sup></td>
@@ -721,6 +824,7 @@
       <tr>
         <td>26</td>
         <td>Payment Provider Additional Reference 2</td>
+        <!-- <td>no</td> -->
         <td>no</td>
         <td>no</td>
         <td>yes <sup>*3</sup></td>
@@ -730,6 +834,7 @@
       <tr>
         <td>27</td>
         <td>Payment Provider Settlement Batch Id</td>
+        <!-- <td>yes <sup>*1</sup></td> -->
         <td>yes</td>
         <td>no</td>
         <td>no</td>
@@ -739,6 +844,7 @@
       <tr>
         <td>28</td>
         <td>Payment Provider Reason Code</td>
+        <!-- <td>yes</td> -->
         <td>no</td>
         <td>yes</td>
         <td>no</td>
@@ -748,6 +854,7 @@
       <tr>
         <td>29</td>
         <td>Payment Provider Reason Description</td>
+        <!-- <td>yes</td> -->
         <td>no</td>
         <td>no</td>
         <td>yes <sup>*4</sup></td>
@@ -757,6 +864,7 @@
       <tr>
         <td>30</td>
         <td>Terminal Id</td>
+        <!-- <td>yes <sup>*8</sup></td> -->
         <td>yes <sup>*1</sup></td>
         <td>no</td>
         <td>no</td>
@@ -766,6 +874,7 @@
       <tr>
         <td>31</td>
         <td>Payment Date</td>
+        <!-- <td>yes</td> -->
         <td>yes</td>
         <td>no</td>
         <td>yes <sup>*5</sup></td>
@@ -793,17 +902,23 @@
   <p>
     <sup>*6</sup>  SEPA: only for type=settlement & reject
   </p>
+  <!-- <p>
+    <sup>*7</sup>  AMEX: only for type=chargeback & adjustment
+  </p>
+  <p>
+    <sup>*8</sup>  AMEX: only for type=settlement, refund & reject
+  </p> -->
 
   <div>
     <div id="concardis"></div>
     &nbsp;
-    <h4>Concardis</h4>
+    <h3>Concardis</h3>
     &nbsp;
 
     <div>
       <div id="concardis_supported_types"></div>
       &nbsp;
-      <h5>Supported Types</h5>
+      <h4>Supported Types</h4>
       &nbsp;
       <p>
         The following transaction types will be supported:
@@ -821,13 +936,13 @@
     <div>
       <div id="concardis_payment_method"></div>
       &nbsp;
-      <h5>Payment Method & Brand</h5>
+      <h4>Payment Method & Brand</h4>
       &nbsp;
       <p>
         The following payment method and brand values will be supported:
       </p>
       &nbsp;
-      <table class="table table-condensed">
+      <table class="row clearfix  table table-bordered table-striped table-condensed">
         <thead>
           <tr>
             <th>Parameter method</th>
@@ -863,11 +978,6 @@
           </tr>
           <tr>
             <td>card</td>
-            <td>unionpay</td>
-            <td>China UnionPay card settlement information</td>
-          </tr>
-          <tr>
-            <td>card</td>
             <td>visa</td>
             <td>Visa settlement information</td>
           </tr>
@@ -888,10 +998,10 @@
     <div>
       <div id="concardis_special_mapping"></div>
       &nbsp;
-      <h5>Special Mapping</h5>
+      <h4>Special Mapping</h4>
       &nbsp;
       <p>
-        <table class="table table-condensed">
+          <table class="row clearfix  table table-bordered table-striped table-condensed">
           <thead>
             <tr>
               <th>Parameter</th>
@@ -922,38 +1032,37 @@
     <div>
       <div id="concardis_Samples"></div>
       &nbsp;
-      <h5>Samples</h5>
+      <h4>Samples</h4>
       &nbsp;
       <div class="example-box-wrapper">
-        <div class="content-box" ng-init="createCustomerRequestShow=false">
+        <div class="content-box" ng-init="createCustomerResponseShow=false">
           <h3 class="content-box-header bg-default">
               Samples
-              <div class="header-buttons-separator">
-                  <a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-                    <!-- <i class="glyph-icon icon-chevron-up"></i> -->
-                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-                  </a>
-              </div>
+            <div class="header-buttons-separator">
+              <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow;">
+                <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+                <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+              </a>
+            </div>
           </h3>
-          <!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-          <div class="content-box-wrapper">
+          <div class="content-box-wrapper" ng-if="createCustomerResponseShow">
             <code>
-settlement:
-sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,visa,auap9iftmn,transaction_jgrwsntrjt,merchantOrderId1547451,settlement,02012019,EUR,170.00,04012019,EUR,170.00,169.14,,-0.72,-0.06,-0.15,-0.51,-0.14,141952334,005056927B1F1EE985AFD3037900FE05,15423999011000515990924,,0050568645AC1EE8B4D3EBA5BD63EFBA,,,52K25161,05012019
-sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,mastercard,qmwutfgnt2,transaction_sdhgklilt,merchantOrderId1547452,settlement,02012019,EUR,41.13,04012019,EUR,41.13,40.92,,-0.18,-0.02,-0.04,-0.12,-0.03,144171709,005056927B1F1EE985AFC410253CDDD4,74627649011000515980372,,0050568645AC1EE8B4D3EBA5BD63EFBA,,,52K25165,05012019
-
-refund:
-sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,maestro,gubvoazpdi,transaction_e6qas9ovqz,merchantOrderId1547453,refund,02012019,EUR,-76.8,04012019,EUR,-76.8,-75.03,,,,,,,144171709,005056927B1F1EE985AFD3037900AC34,23427649011000515995420,,0050568645AC1EE8B4D3EBA5BD63EFBA,,,52K25165,05012019
-
-chargeback:
-sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,visa,shdliewb2m,transaction_7jlan7gzp2,merchantOrderId1547449,chargeback,10122018,EUR,47.0,04012019,EUR,-47.0,,,,,,,,141952334,005056927B1F1EE985AFC410253CAE12,,,0050568645AC1EE8B4D3EBA5BD63EFBA,,,52K24D50,05012019
-
-adjustment:
-sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,,,,,adjustment,,,,04012019,EUR,15.0,,,,,,,,144171709,005056927B1F1EE985AFC410253B678,,,0050568645AC1EE8B4D3EBA5BD63EFBA,,,,05012019
-
-fee:
-sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,,,,,fee,,,,04012019,EUR,-50.0,,,,,,,,144171709,005056927B1F1EE985AFC410253B678,,,0050568645AC1EE8B4D3EBA5BD63EFBA,,,,05012019
+  settlement:
+  sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,visa,auap9iftmn,transaction_jgrwsntrjt,merchantOrderId1547451,settlement,02012019,EUR,170.00,04012019,EUR,170.00,169.14,,-0.72,-0.06,-0.15,-0.51,-0.14,141952334,005056927B1F1EE985AFD3037900FE05,15423999011000515990924,,0050568645AC1EE8B4D3EBA5BD63EFBA,,,52K25161,05012019
+  sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,mastercard,qmwutfgnt2,transaction_sdhgklilt,merchantOrderId1547452,settlement,02012019,EUR,41.13,04012019,EUR,41.13,40.92,,-0.18,-0.02,-0.04,-0.12,-0.03,144171709,005056927B1F1EE985AFC410253CDDD4,74627649011000515980372,,0050568645AC1EE8B4D3EBA5BD63EFBA,,,52K25165,05012019
+    
+  refund:
+  sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,maestro,gubvoazpdi,transaction_e6qas9ovqz,merchantOrderId1547453,refund,02012019,EUR,-76.8,04012019,EUR,-76.8,-75.03,,,,,,,144171709,005056927B1F1EE985AFD3037900AC34,23427649011000515995420,,0050568645AC1EE8B4D3EBA5BD63EFBA,,,52K25165,05012019
+    
+  chargeback:
+  sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,visa,shdliewb2m,transaction_7jlan7gzp2,merchantOrderId1547449,chargeback,10122018,EUR,47.0,04012019,EUR,-47.0,,,,,,,,141952334,005056927B1F1EE985AFC410253CAE12,,,0050568645AC1EE8B4D3EBA5BD63EFBA,,,52K24D50,05012019
+    
+  adjustment:
+  sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,,,,,adjustment,,,,04012019,EUR,15.0,,,,,,,,144171709,005056927B1F1EE985AFC410253B678,,,0050568645AC1EE8B4D3EBA5BD63EFBA,,,,05012019
+    
+  fee:
+  sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,,,,,fee,,,,04012019,EUR,-50.0,,,,,,,,144171709,005056927B1F1EE985AFC410253B678,,,0050568645AC1EE8B4D3EBA5BD63EFBA,,,,05012019
+                
             </code>
           </div>
         </div>
@@ -961,16 +1070,15 @@ sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,,,,,fee,,,,04012019,
       &nbsp;
     </div>
   </div>
-
   <div>
     <div id="paypal"></div>
     &nbsp;
-    <h4>PayPal</h4>
+    <h3>PayPal</h3>
     &nbsp;
     <div>
       <div id="paypal_supported_types"></div>
       &nbsp;
-      <h5>Supported Types</h5>
+      <h4>Supported Types</h4>
       &nbsp;
       <p>
         The following transaction types will be supported:
@@ -990,9 +1098,9 @@ sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,,,,,fee,,,,04012019,
     <div>
       <div id="paypal_payment_method"></div>
       &nbsp;
-      <h5>Payment Method & Brand</h5>
+      <h4>Payment Method & Brand</h4>
       &nbsp;
-      <table class="table table-condensed">
+      <table class="row clearfix  table table-bordered table-striped table-condensed">
         <thead>
           <tr>
             <th>Parameter method</th>
@@ -1013,9 +1121,9 @@ sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,,,,,fee,,,,04012019,
     <div>
       <div id="paypal_special_mapping"></div>
       &nbsp;
-      <h5>Special Mapping</h5>
+      <h4>Special Mapping</h4>
       &nbsp;
-      <table class="table table-condensed">
+      <table class="row clearfix  table table-bordered table-striped table-condensed">
         <thead>
           <tr>
             <th>Parameter</th>
@@ -1036,7 +1144,7 @@ sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,,,,,fee,,,,04012019,
             <td>PayPal: Reference ID</td>
           </tr>
           <tr>
-            <td>Payment Provider Settlement Batch Id</td>
+            <td>Payment Provider Reason Code</td>
             <td>PayPal: Transaction Event Code</td>
           </tr>
         </tbody>
@@ -1046,44 +1154,42 @@ sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,card,,,,,fee,,,,04012019,
     <div>
       <div id="paypal_samples"></div>
       &nbsp;
-      <h5>Samples</h5>
+      <h4>Samples</h4>
       &nbsp;
-      <div class="example-box-wrapper">
-        <div class="content-box" ng-init="createCustomerRequestShow=false">
-          <h3 class="content-box-header bg-default">
-              Samples
+      <div>
+        <div class="example-box-wrapper">
+          <div class="content-box" ng-init="createCustomerResponseShoww=false">
+            <h3 class="content-box-header bg-default">
+                Samples
               <div class="header-buttons-separator">
-                  <a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-                    <!-- <i class="glyph-icon icon-chevron-up"></i> -->
-                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-                  </a>
+                <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShoww=!createCustomerResponseShoww;">
+                  <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShoww"></i>
+                  <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShoww"></i>
+                </a>
               </div>
-          </h3>
-          <!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-          <div class="content-box-wrapper">
-            <code>
+            </h3>
+            <div class="content-box-wrapper" ng-if="createCustomerResponseShoww">
+          <code>
 settlement:
 sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,paypal,paypal,auap9iftmn,transaction_jgrwsntrjt,merchantOrderId1547451,settlement,02012019,EUR,125.75,04012019,EUR,125.75,123.01,,-2.74,,,,,22ZQQNM56DGRN,4K247452TP309993Y,6SJ033313V4621641,,,T0003,,,
-
+  
 refund:
 sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,paypal,paypal,gubvoazpdi,transaction_e6qas9ovqz,merchantOrderId1547453,refund,02012019,EUR,-5.0,04012019,EUR,-5.0,-3.91,,1.09,,,,,22ZQQNM56DGRN,08648909N7183782A,FGX7S3XWBHUN8XCVB,,,T1107,,,
-
+  
 dispute:
 sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,paypal,paypal,shdliewb2m,transaction_r2tznntjbe,merchantOrderId1547452,dispute,01012019,EUR,50.0,04012019,EUR,-50.0,-50.0,,,,,,,22ZQQNM56DGRN,0J941436JA101474G,92R4NR653JDECCXAQ,,,T1111,,,
-
+  
 chargeback:
 sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,paypal,paypal,4sorwbgmw9,transaction_7jlan7gzp2,merchantOrderId1547449,chargeback,10122018,EUR,47.0,04012019,EUR,-47.0,-47.0,,,,,,,22ZQQNM56DGRN,0J941436JA101474G,92R4NR653JDECCXAQ,,,T1106,,,
-
+  
 adjustment:
 sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,paypal,paypal,,,,adjustment,,,,04012019,EUR,15.0,15.0,,,,,,,22ZQQNM56DGRN,1FN68178AV653545A,3MC328258Y360823R,,,T1200,,,
-
+  
 fee:
 sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,paypal,paypal,,,,fee,,,,04012019,EUR,-50.0,-50.0,,,,,,,22ZQQNM56DGRN,6DN013167C307683M,3K257452TP309993Y,,,T0104,,,
-
+  
 clearing:
 sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,paypal,paypal,,,,clearing,,,,04012019,EUR,-5000.0,-5000.0,,,,,,,22ZQQNM56DGRN,78N013167C30768V4,5F657452TP3099B78,,,T0400,,,
-
             </code>
           </div>
         </div>
@@ -1095,12 +1201,12 @@ sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,paypal,paypal,,,,clearing
   <div>
     <div id="ppro"></div>
     &nbsp;
-    <h4>PPRO</h4>
+    <h3>PPRO</h3>
     &nbsp;
     <div>
       <div id="ppro_supported_types"></div>
       &nbsp;
-      <h5>Supported Types</h5>
+      <h4>Supported Types</h4>
       &nbsp;
       <p>
         The following transaction types will be supported:
@@ -1119,13 +1225,13 @@ sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,paypal,paypal,,,,clearing
     <div>
       <div id="ppro_payment_method"></div>
       &nbsp;
-      <h5>Payment Method & Brand</h5>
+      <h4>Payment Method & Brand</h4>
       &nbsp;
       <p>
         The following payment method and brand values will be supported:
       </p>
       &nbsp;
-      <table class="table table-condensed">
+      <table class="row clearfix  table table-bordered table-striped table-condensed">
         <thead>
           <tr>
             <th>Parameter method</th>
@@ -1135,9 +1241,24 @@ sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,paypal,paypal,,,,clearing
         </thead>
         <tbody>
           <tr>
+            <td>alipay</td>
+            <td>alipay</td>
+            <td>Alipay settlement information</td>
+          </tr>
+          <tr>
+            <td>bancontact</td>
+            <td>bancontact</td>
+            <td>Bancontact settlement information</td>
+          </tr>
+          <tr>
             <td>ideal</td>
             <td>ideal</td>
             <td>iDEAL settlement information</td>
+          </tr>
+          <tr>
+            <td>wechat-pay</td>
+            <td>wechat-pay</td>
+            <td>WeChat Pay settlement information</td>
           </tr>
           <tr>
             <td>unknown</td>
@@ -1156,9 +1277,9 @@ sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,paypal,paypal,,,,clearing
     <div>
       <div id="ppro_special_mapping"></div>
       &nbsp;
-      <h5>Special Mapping</h5>
+      <h4>Special Mapping</h4>
       &nbsp;
-      <table class="table table-condensed">
+      <table class="row clearfix  table table-bordered table-striped table-condensed">
         <thead>
           <tr>
             <th>Parameter Types</th>
@@ -1208,42 +1329,40 @@ sett_dtl,merchant_qxx92nloob,settlementdata_afkliemmcv,paypal,paypal,,,,clearing
       <h5>Samples</h5>
       &nbsp;
       <div class="example-box-wrapper">
-        <div class="content-box" ng-init="createCustomerRequestShow=false">
+        <div class="content-box" ng-init="createCustomerResponseShow2=false">
           <h3 class="content-box-header bg-default">
               Samples
-              <div class="header-buttons-separator">
-                  <a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-                    <!-- <i class="glyph-icon icon-chevron-up"></i> -->
-                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-                  </a>
-              </div>
+            <div class="header-buttons-separator">
+              <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow2=!createCustomerResponseShow2;">
+                <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow2"></i>
+                <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow2"></i>
+              </a>
+            </div>
           </h3>
-          <!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-          <div class="content-box-wrapper">
+          <div class="content-box-wrapper" ng-if="createCustomerResponseShow2">
             <code>
-settlement:
-sett_dtl,merchant_oju0ku4pjx,settlementdata_b9lq8ux7lr,ideal,ideal,olwlalnhvo,transaction_93z5qkaqtg,merchantOrderId1547569496,settlement,15012019,EUR,11.9,15012019,EUR,11.9,,,-0.45,,,,,MERCHANTTESTCONTRACT,103736117,,,,,,,
-
-
-refund:
-sett_dtl,merchant_oju0ku4pjx,settlementdata_b9lq8ux7lr,ideal,ideal,olwlalnhvo,transaction_88z5qkaqtr,merchantOrderId1547569496,refund,15012019,EUR,10.0,15012019,EUR,10.0,,,-0.05,,,,,MERCHANTTESTCONTRACT,103736118,,,,,,,
-
-
-chargeback:
-sett_dtl,merchant_oju0ku4pjx,settlementdata_b9lq8ux7lr,sepa,sepa,6tzrwbggb5,transaction_7jlan7gzp2,merchantOrderId1547569496,chargeback,10122018,EUR,47.0,04012019,EUR,-47.0,,,-0.50,,,,,MERCHANTTESTCONTRACT,103736119,,,,,MD06 Refund Request By Customer,,
-
-
-fee:
-sett_dtl,merchant_oju0ku4pjx,settlementdata_jxbp8selqb,,,,,,fee,,,,16012019,EUR,-10.0,,,,,,,,MERCHANTTESTCONTRACT,,INQUIRY_FEE,,,,,,
-
-
-clearing:
-sett_dtl,merchant_oju0ku4pjx,settlementdata_jxbp8selqb,,,,,,clearing,,,,16012019,EUR,-2000.0,,,,,,,,MERCHANTTESTCONTRACT,,CLEARED_TO_MERCHANT,,,,,,16012019
-
-
-holdback:
-sett_dtl,merchant_oju0ku4pjx,settlementdata_jxbp8selqb,,,,,,holdback,,,,16012019,EUR,-500.0,,,,,,,,MERCHANTTESTCONTRACT,,RESERVED_HOLDBACK,,,,,,
+  settlement:
+  sett_dtl,merchant_oju0ku4pjx,settlementdata_b9lq8ux7lr,ideal,ideal,olwlalnhvo,transaction_93z5qkaqtg,merchantOrderId1547569496,settlement,15012019,EUR,11.9,15012019,EUR,11.9,,,-0.45,,,,,MERCHANTTESTCONTRACT,103736117,,,,,,,
+    
+    
+  refund:
+  sett_dtl,merchant_oju0ku4pjx,settlementdata_b9lq8ux7lr,ideal,ideal,olwlalnhvo,transaction_88z5qkaqtr,merchantOrderId1547569496,refund,15012019,EUR,10.0,15012019,EUR,10.0,,,-0.05,,,,,MERCHANTTESTCONTRACT,103736118,,,,,,,
+    
+    
+  chargeback:
+  sett_dtl,merchant_oju0ku4pjx,settlementdata_b9lq8ux7lr,sepa,sepa,6tzrwbggb5,transaction_7jlan7gzp2,merchantOrderId1547569496,chargeback,10122018,EUR,47.0,04012019,EUR,-47.0,,,-0.50,,,,,MERCHANTTESTCONTRACT,103736119,,,,,MD06 Refund Request By Customer,,
+    
+    
+  fee:
+  sett_dtl,merchant_oju0ku4pjx,settlementdata_jxbp8selqb,,,,,,fee,,,,16012019,EUR,-10.0,,,,,,,,MERCHANTTESTCONTRACT,,INQUIRY_FEE,,,,,,
+    
+    
+  clearing:
+  sett_dtl,merchant_oju0ku4pjx,settlementdata_jxbp8selqb,,,,,,clearing,,,,16012019,EUR,-2000.0,,,,,,,,MERCHANTTESTCONTRACT,,CLEARED_TO_MERCHANT,,,,,,16012019
+    
+    
+  holdback:
+  sett_dtl,merchant_oju0ku4pjx,settlementdata_jxbp8selqb,,,,,,holdback,,,,16012019,EUR,-500.0,,,,,,,,MERCHANTTESTCONTRACT,,RESERVED_HOLDBACK,,,,,,
             </code>
           </div>
         </div>
@@ -1255,12 +1374,12 @@ sett_dtl,merchant_oju0ku4pjx,settlementdata_jxbp8selqb,,,,,,holdback,,,,16012019
   <div>
     <div id="prepayment"></div>
     &nbsp;
-    <h4>Prepayment</h4>
+    <h3>Prepayment</h3>
     &nbsp;
     <div>
       <div id="prepayment_supported_types"></div>
       &nbsp;
-      <h5>Supported Types</h5>
+      <h4>Supported Types</h4>
       &nbsp;
       <p>
         The following transaction types will be supported:
@@ -1273,13 +1392,13 @@ sett_dtl,merchant_oju0ku4pjx,settlementdata_jxbp8selqb,,,,,,holdback,,,,16012019
     <div>
       <div id="prepayment_payment_method"></div>
       &nbsp;
-      <h5>Payment Method & Brand</h5>
+      <h4>Payment Method & Brand</h4>
       &nbsp;
       <p>
         The following payment method and brand values will be supported:
       </p>
       &nbsp;
-      <table class="table table-condensed">
+      <table class="row clearfix  table table-bordered table-striped table-condensed">
         <thead>
           <tr>
             <th>Parameter method</th>
@@ -1300,9 +1419,9 @@ sett_dtl,merchant_oju0ku4pjx,settlementdata_jxbp8selqb,,,,,,holdback,,,,16012019
     <div>
       <div id="prepayment_special_mapping"></div>
       &nbsp;
-      <h5>Special Mapping</h5>
+      <h4>Special Mapping</h4>
       &nbsp;
-      <table class="table table-condensed">
+      <table class="row clearfix  table table-bordered table-striped table-condensed">
         <thead>
           <tr>
             <th>Parameter Types</th>
@@ -1328,22 +1447,20 @@ sett_dtl,merchant_oju0ku4pjx,settlementdata_jxbp8selqb,,,,,,holdback,,,,16012019
       <h5>Samples</h5>
       &nbsp;
       <div class="example-box-wrapper">
-        <div class="content-box" ng-init="createCustomerRequestShow=false">
-          <h3 class="content-box-header bg-default">
-              Samples
+          <div class="content-box" ng-init="createCustomerResponseShow3=false">
+            <h3 class="content-box-header bg-default">
+                Samples
               <div class="header-buttons-separator">
-                  <a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-                    <!-- <i class="glyph-icon icon-chevron-up"></i> -->
-                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-                  </a>
+                <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow3=!createCustomerResponseShow3;">
+                  <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow3"></i>
+                  <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow3"></i>
+                </a>
               </div>
-          </h3>
-          <!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-          <div class="content-box-wrapper">
+            </h3>
+            <div class="content-box-wrapper" ng-if="createCustomerResponseShow3">
             <code>
-settlement:
-sett_dtl,merchant_qprmbcywcv,settlementdata_fs4ydgzbt5,prepayment,prepayment,3hgopm0fzu,transaction_lendbutrsj,1549351925,settlement,03022019,EUR,10.0,05022019,EUR,10.0,,,,,,,,,Svwz+3hgopm0fzu,,,,,,,06022019
+  settlement:
+  sett_dtl,merchant_qprmbcywcv,settlementdata_fs4ydgzbt5,prepayment,prepayment,3hgopm0fzu,transaction_lendbutrsj,1549351925,settlement,03022019,EUR,10.0,05022019,EUR,10.0,,,,,,,,,Svwz+3hgopm0fzu,,,,,,,06022019
             </code>
           </div>
         </div>
@@ -1355,41 +1472,82 @@ sett_dtl,merchant_qprmbcywcv,settlementdata_fs4ydgzbt5,prepayment,prepayment,3hg
   <div>
     <div id="sepa"></div>
     &nbsp;
-    <h4>SEPA</h4>
+    <h3>SEPA Direct Debit</h3>
     &nbsp;
+    <p>SEPA direct debits will be collected through an Concardis owned bank account and from there paid out to the merchant. The collection and the payouts will be done on a daily base (bank working days), however all payouts will be done based on a merchant specific configured delay.</p>
+    <br>
+    <p>Any incoming rejects will be subtracted from the payout amount.</p>
+    <br>
+    <p>Sample:</p>
+    <ul>
+      <li>T+0<sup>*</sup> SEPA direct debits transactions are sent to the Payengine</li>
+      <li>T+1: SEPA direct debit funds will be collected via a daily batch</li>
+      <li>T+2: bank statement received including successfully processed and rejected SEPA direct debit payments</li>
+      <li>T+10: the funds received on T+2 will be paid out as a bulk payment to the merchant</li>
+    </ul>
+    <br>
+    <p><sup>*</sup> "T+0" means transaction day + 0 days</p>
+    <br>
+    <p>Any chargebacks that the Payengine receives after the corresponding collected funds have been paid out to the merchant already will be charged in a bulk at the end of the month including the bank fees.</p>
+    <br>
+    <p>Additionally all bank fees related to rejects will also be charged at the end of the month together with the chargebacks. The bank fees won't be deducted from the payout amount!</p>
     <div>
       <div id="sepa_supported_types"></div>
       &nbsp;
-      <h5>Supported Types</h5>
+      <h4>Supported Types</h4>
       &nbsp;
-      <p>
-        The following transaction types will be supported:
-        <ul>
-          <li>settlement</li>
-          <li>reject</li>
-          <li>chargeback</li>
-        </ul>
-      </p>
-      &nbsp;
-      <p>
-        <strong>Important Note</strong>
-        <br/>
-        Chargebacks will be reported in a separate file as they are handled via a separate process.
-        <br/>
-        So there would be one SEPA unified settlement report containing settlement & reject transactions and one for chargeback transactions.
-      </p>
+      <p>As we have two different money flows (1: direct debit collection & payout, 2: chargebacks & bank fees) these signals will be presented in separate files.</p>
+      <br>
+      <ul>
+        <li>unified-sepa-dd-[merchantId]-[date].csv</li>
+        <li>unified-sepa-chargeback-[merchantId]-[date].csv</li>
+      </ul>
+     <br>
+     <table class="row clearfix  table table-bordered table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>Settlement File Type</th>
+            <th>Transaction Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="3">unified-sepa-dd-[merchantId]-[date].csv</td>
+            <td rowspan="1">settlement</td>
+            <td>successfully funded SEPA direct debit transaction to Concardis</td>
+          </tr>
+          <tr>
+            <td rowspan="1">reject</td>
+            <td>rejected SEPA direct debit transaction </td>
+          </tr>
+          <tr>
+            <td rowspan="1">clearing</td>
+            <td>instruction about the bulk payout to the merchant</td>
+          </tr>
+          <tr>
+            <td rowspan="2">unified-sepa-chargeback-[merchantId]-[date].csv</td>
+            <td rowspan="1">chargeback</td>
+            <td>SEPA chargeback transaction</td>
+          </tr>
+          <tr>
+            <td rowspan="1">fee</td>
+            <td>fee transaction associated to a rejected SEPA direct debit transaction</td>
+          </tr>
+        </tbody>
+      </table>
       &nbsp;
     </div>
     <div>
       <div id="sepa_payment_method"></div>
       &nbsp;
-      <h5>Payment Method & Brand</h5>
+      <h4>Payment Method & Brand</h4>
       &nbsp;
       <p>
         The following payment method and brand values will be supported:
       </p>
       &nbsp;
-      <table class="table table-condensed">
+      <table class="row clearfix  table table-bordered table-striped table-condensed">
         <thead>
           <tr>
             <th>Parameter method</th>
@@ -1410,9 +1568,9 @@ sett_dtl,merchant_qprmbcywcv,settlementdata_fs4ydgzbt5,prepayment,prepayment,3hg
     <div>
       <div id="sepa_special_mapping"></div>
       &nbsp;
-      <h5>Special Mapping</h5>
+      <h4>Special Mapping</h4>
       &nbsp;
-      <table class="table table-condensed">
+      <table class="row clearfix  table table-bordered table-striped table-condensed">
         <thead>
           <tr>
             <th>Parameter</th>
@@ -1421,72 +1579,375 @@ sett_dtl,merchant_qprmbcywcv,settlementdata_fs4ydgzbt5,prepayment,prepayment,3hg
         </thead>
         <tbody>
           <tr>
+            <td>Commission</td>
+            <td>Bank fees for rejected direct debit transactions
+              <br>
+              <strong>only applicable for type=chargeback</strong>
+            </td>
+          </tr>
+          <tr>
             <td>Payment Provider Merchant Id</td>
             <td>Merchant Number</td>
           </tr>
           <tr>
             <td>Payment Provider Reference</td>
-            <td>EndToEndId for transaction</td>
+            <td>EndToEndId for the direct debit transaction
+              <br>
+              <strong>not applicable for type=clearing</strong>
+            </td>
           </tr>
           <tr>
             <td>Payment Provider Additional Reference 1</td>
-            <td>Mandate ID</td>
+            <td>Mandate ID
+              <br>
+              <strong>not applicable for type=clearing</strong>
+            </td>
           </tr>
           <tr>
             <td>Payment Provider Settlement Batch Id</td>
             <td>EndToEndId for merchant payout
               <br/>
-              only applicable for settlement</td>
+              <strong>only applicable for type=settlement & clearing </strong></td>
           </tr>
           <tr>
             <td>Payment Provider Reason Code</td>
-            <td>SEPA Return Reason Code
-                <br/>
-                only applicable for chargeback</td>
+            <td>SEPA Return Reason Code</td>
           </tr>
           <tr>
             <td>Payment Provider Reason Description</td>
-            <td>SEPA Return Additional Info
-                <br/>
-                only applicable for chargeback</td>
+            <td>SEPA Return Additional Info</td>
+          </tr>
+          <tr>
+            <td>Payment Date</td>
+            <td>the calculated date of the payout (based on configured delay)
+              <br/>
+              <strong>only applicable for type=settlement</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      &nbsp;
+      <p><u>Further Notes:</u></p>
+      <ul>
+        <li>The transaction types settlement & reject won't include any bank fee information in the unified settlement.</li>
+        <li>For chargeback transactions the Settlement Gross Amount will contain the actual amount charged back and the <em>Commission</em> field will contain all the corresponding bank fees</li>
+        <li>All fee transactions will include the Payengine details pointing to the corresponding reject transaction and the <em>Settlement Gross Amount</em> will contain the actual bank fee amount.</li>
+      </ul>
+    </div>
+    <div>
+      <div id="sepa_samples"></div>
+      &nbsp;
+      <h4>Samples</h4>
+      &nbsp;
+      <p>unified-sepa-dd-[merchantId]-[date].csv:</p>
+      <div class="example-box-wrapper">
+          <div class="content-box" ng-init="createCustomerResponseShow4=false">
+            <h3 class="content-box-header bg-default">
+                Samples
+              <div class="header-buttons-separator">
+                <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow4=!createCustomerResponseShow4;">
+                  <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow4"></i>
+                  <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow4"></i>
+                </a>
+              </div>
+            </h3>
+            <div class="content-box-wrapper" ng-if="createCustomerResponseShow4">
+            <code>
+  settlement:
+  sett_dtl,merchant_qxx92nloob,settlementdata_ygrzgk3mcx,sepa,sepa,4sorwbgmw9,transaction_khgyesahe3,merchantOrderId1545224327,settlement,10122019,EUR,66.0,12122019,EUR,66.0,,,,,,,,5364852,d2b0d7203bbb4c3aadf6165,mandateId1545224327,,abb0d7203bbb4c3aadf71b2,,,,20122018
+    
+  reject:
+  sett_dtl,merchant_qxx92nloob,settlementdata_lv7oo4ewiu,sepa,sepa,nmxtukcsbf,transaction_7iclpoaafc,merchantOrderId1545224328,reject,19112019,EUR,15.6,,,,,,,,,,,5364852,766b7865d7c742578624bc4,mandateId1545224328,,,MS03,Reason not specified,,
+    
+  clearing:
+  sett_dtl,merchant_qxx92nloob,settlementdata_ygrzgk3mcx,sepa,sepa,,,,clearing,,,,12122019,EUR,2512.99,,,,,,,,5364852,,,,cdb0d720jf5s4c3aadf754n,,,,                
+            </code>
+          </div>
+        </div>
+      </div>
+      &nbsp;
+      <br>
+      <p>unified-sepa-chargeback-[merchantId]-[date].csv:</p>
+      <div class="example-box-wrapper">
+          <div class="content-box" ng-init="createCustomerResponseShow5=false">
+            <h3 class="content-box-header bg-default">
+                Samples
+              <div class="header-buttons-separator">
+                <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow5=!createCustomerResponseShow5;">
+                  <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow5"></i>
+                  <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow5"></i>
+                </a>
+              </div>
+            </h3>
+            <div class="content-box-wrapper" ng-if="createCustomerResponseShow5">
+            <code>
+  chargeback:
+  sett_dtl,merchant_qxx92nloob,settlementdata_s0rt37hdv0,sepa,sepa,24eopplgis,transaction_8dxypvlqnd,merchantOrderId1545142410,chargeback,24102019,EUR,19.5,22112019,EUR,-19.5,,,,,,,,5833904,7b15e2c064414d46ba55829,mandateId1645224329,,,MD06,Disputed authorized transaction,,
+    
+  fee:
+  sett_dtl,merchant_qxx92nloob,settlementdata_ygrzgk3mcx,sepa,sepa,shdliewb2m,transaction_7jlan7gzp2,merchantOrderId1545224328,fee,10122019,EUR,25.0,12122019,EUR,-3.5,,,,,,,,5364852,acb0d7203bbb4c3aadfmt55,mandateId1545224328,,,AC01,Incorrect Account Number,,                
+            </code>
+          </div>
+        </div>
+      </div>
+      <br>
+      <h3>SEPA Refunds (Pre-funded)</h3>
+      <br>
+      <p>
+        There is an optional feature to support automated refund processing via the Payengine. In order to use the feature a merchant needs provide a SEPA B2B mandate to Concardis that the Payengine can collect the funds from a merchant account once a refund request comes in.
+        Once the funds from the merchant are available on the Concardis bank account, the Payengine will trigger the payout/refund to the merchant's end customer.
+        <br>
+        As this is a different money flow compared to the standard SEPA processing the Payengine will provide a separate unified settlement report for the pre-funded refund functionality.
+      </p>
+      <br>
+      <ul>
+        <li>unified-sepa-refund-[merchantId]-[date].csv</li>
+      </ul>
+      <br>
+      <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+        <tbody>
+          <tr>
+            <td style="border-right: none;" ><img class="" src="/img/3dsecure/error-triangle.png" width="16px"></td>
+            <td>The unified settlement file for the pre-funded refund feature only includes the signals that affect the money flow between the merchant's bank account and the Concardis bank account.</td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
+      <h4>Supported Types</h4>
+      &nbsp;
+      <p>The following transaction types will be supported:</p>
+      <br>
+     <br>
+     <table class="row clearfix  table table-bordered table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>Settlement File Type</th>
+            <th>Transaction Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td rowspan="4">unified-sepa-refund-[merchantId]-[date].csv</td>
+            <td rowspan="1">prefunding</td>
+            <td>successful pre-funding for outgoing refunds on transaction level
+              <br>
+              (collected via SEPA B2B bulk direct debit)
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="1">prefunding_failure</td>
+            <td>failed pre-funding for outgoing refunds on transaction level
+              <br>
+              (collected via SEPA B2B bulk direct debit)
+            </td>
+          </tr>
+          <tr>
+            <td rowspan="1">refund</td>
+            <td>successful payout/refund transaction to end customer</td>
+          </tr>
+          <tr>
+            <td rowspan="1">reject</td>
+            <td>rejected payout/refund transaction to end customer</td>
+          </tr>
+        </tbody>
+      </table>
+      &nbsp;
+      <br>
+      <br>
+      <img src="/img/merchant/sepa-tf.png" alt="" width="70%">
+      <br>
+      <br>
+      <h4>Payment Method & Brand</h4>
+      &nbsp;
+      <p>
+        The following payment method and brand values will be supported:
+      </p>
+      &nbsp;
+      <table class="row clearfix  table table-bordered table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>Parameter method</th>
+            <th>Payment brand</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>sepa_refund</td>
+            <td>sepa</td>
+            <td>SEPA settlement information</td>
           </tr>
         </tbody>
       </table>
       &nbsp;
     </div>
     <div>
-      <div id="sepa_samples"></div>
+      <div id="sepa_special_mapping"></div>
       &nbsp;
-      <h5>Samples</h5>
+      <h4>Special Mapping</h4>
       &nbsp;
+      <table class="row clearfix  table table-bordered table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Content</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Commission</td>
+            <td>	
+                Bank fees for rejected direct debit and refund transactions
+              <br>
+              <strong>only applicable for type=prefunding_failure & reject</strong>
+            </td>
+          </tr>
+          <tr>
+            <td>Payment Provider Merchant Id</td>
+            <td>Merchant Number</td>
+          </tr>
+          <tr>
+            <td>Payment Provider Reference</td>
+            <td>EndToEndId for refund transaction
+              <br>
+              <strong>only applicable for type=refund & reject</strong>
+            </td>
+          </tr>
+          <tr>
+            <td>Payment Provider Additional Reference 1</td>
+            <td>B2B Mandate ID
+              <br>
+              <strong>only applicable for type=prefunding & prefunding_failure</strong>
+            </td>
+          </tr>
+          <tr>
+            <td>Payment Provider Settlement Batch Id</td>
+            <td>EndToEndId for B2B direct debit;
+              <br/>
+              <strong>only applicable for type=prefunding & prefunding_failure</strong></td>
+          </tr>
+          <tr>
+            <td>Payment Provider Reason Code</td>
+            <td>SEPA Return Reason Code</td>
+          </tr>
+          <tr>
+            <td>Payment Provider Reason Description</td>
+            <td>SEPA Return Additional Info</td>
+          </tr>
+          <tr>
+            <td>Payment Date</td>
+            <td>the calculated date of the payout (based on configured delay)
+              <br/>
+              <strong>only applicable for type=settlement</strong></td>
+          </tr>
+        </tbody>
+      </table>
+      <br>
       <div class="example-box-wrapper">
-        <div class="content-box" ng-init="createCustomerRequestShow=false">
-          <h3 class="content-box-header bg-default">
-              Samples
+          <div class="content-box" ng-init="createCustomerResponseShow6=false">
+            <h3 class="content-box-header bg-default">
+                Samples
               <div class="header-buttons-separator">
-                  <a href class="icon-separator toggle-button" ng-click="createCustomerRequestShow!=createCustomerRequestShow; console.log(createCustomerRequestShow)">
-                    <!-- <i class="glyph-icon icon-chevron-up"></i> -->
-                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerRequestShow"></i>
-                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerRequestShow"></i>
-                  </a>
+                <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow6=!createCustomerResponseShow6;">
+                  <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow6"></i>
+                  <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow6"></i>
+                </a>
               </div>
-          </h3>
-          <!-- <div class="content-box-wrapper" ng-if="createCustomerRequestShow"> -->
-          <div class="content-box-wrapper">
+            </h3>
+            <div class="content-box-wrapper" ng-if="createCustomerResponseShow6">
             <code>
-settlement:
-sett_dtl,merchant_qxx92nloob,settlementdata_ygrzgk3mcx,sepa,sepa,4sorwbgmw9,transaction_khgyesahe3,merchantOrderId1545224327,settlement,11122018,EUR,66.0,12122018,EUR,66.0,,,,,,,,5364852,d2b0d7203bbb4c3aadf6165,mandateId1545224327,,abb0d7203bbb4c3aadf71b2,,,,22122018
-
-reject:
-sett_dtl,merchant_qxx92nloob,settlementdata_ygrzgk3mcx,sepa,sepa,shdliewb2m,transaction_7jlan7gzp2,merchantOrderId1545224328,reject,11122018,EUR,25.0,12122018,EUR,25.0,,,,,,,,5364852,acb0d7203bbb4c3aadfmt55,mandateId1545224328,,,AC01,Incorrect Account Number,,
-
-chargeback:
-sett_dtl,merchant_qxx92nloob,settlementdata_monj2ji4gh,sepa,sepa,6gws39iqkn,transaction_r2tznntjbe,merchantOrderId1545142410,chargeback,18112018,EUR,4.44,12122018,EUR,-4.44,,,,,,,,5364852,6f244715cb6147e6a6e2e5,mandateId1545142410,,,MD06,"Refund Request By Customer,,
+  prefunding:
+  sett_dtl,merchant_qxx92nloob,settlementdata_lv7oo4ewiu,sepa,sepa_refund,vb4tujc3sw,transaction_85nlpond3c,merchantOrderId1545224318,prefunding,12122019,EUR,-15.6,14122019,EUR,-15.6,,,,,,,,5364852,,PEB2BMREF12345678,,4587865d7c7425786248vb,,,,
+    
+  prefunding_failure:
+  sett_dtl,merchant_qxx92nloob,settlementdata_lv7oo4ewiu,sepa,sepa_refund,u9rtujxksa,transaction_8fgkpodxsw,merchantOrderId1545224319,prefunding_failure,12122019,EUR,12.99,14122019,EUR,,,,-3.50,,,,,5364852,,PEB2BMREF12345678,,4587865d7c7425786248vb,AM04,Insufficient funds,,
+    
+  refund:
+  sett_dtl,merchant_qxx92nloob,settlementdata_lv7oo4ewiu,sepa,sepa_refund,vb4tujc3sw,transaction_85nlpond3c,merchantOrderId1545224318,refund,12122019,EUR,-15.6,16122019,EUR,-15.6,,,,,,,,5364852,766b7865d7c742578624bc4,,,,,,,
+    
+  reject:
+  sett_dtl,merchant_qxx92nloob,settlementdata_lv7oo4ewiu,sepa,sepa_refund,nmxtukcsbf,transaction_7iclpoaafc,merchantOrderId1545224328,reject,12122019,EUR,12.99,16122019,EUR,,,,-3.50,,,,,5364852,766b7865d7c742578624bc4,,,,MS03,Reason not specified,,                
             </code>
           </div>
         </div>
       </div>
-      &nbsp;
+      <br>
+      <br>
+    </div>
+    <div id="documents">
+      <h2>Documents</h2>
+      <br>
+      <br>
+      <h3 id="wordTemplate">Word Template</h3>
+      <br>
+        <p>
+          <a ng-href="/img/merchant/pdf/Concardis_Payengine_Unified_Settlement_Report_v1.04.docx" target="page" ng-click="download()">
+            <img src="/img/merchant/pdf/download-ico.png" alt="" width="50px">
+            Concardis_Payengine_Unified_Settlement_Report_v1.04.docx
+          </a>
+        </p>
+        <br>
+        <br>
+      <h3 id="pdfVersions">PDF Versions</h3>
+      <br>
+      <table class="row clearfix  table table-bordered table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>Version</th>
+            <th>File</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1.0</td>
+            <td>
+              <a ng-href="/img/merchant/pdf/Concardis_Payengine_Unified_Settlement_Report_v1.00.pdf" target="page" ng-click="download()">
+                <img src="/img/merchant/pdf/download-ico.png" alt="" width="50px">
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>1.1</td>
+            <td>
+              <a ng-href="/img/merchant/pdf/Concardis_Payengine_Unified_Settlement_Report_v1.01.pdf" target="page" ng-click="download()">
+                <img src="/img/merchant/pdf/download-ico.png" alt="" width="50px">
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>1.2</td>
+            <td>
+              <a ng-href="/img/merchant/pdf/Concardis_Payengine_Unified_Settlement_Report_v1.02.pdf" target="page" ng-click="download()">
+                <img src="/img/merchant/pdf/download-ico.png" alt="" width="50px">
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>1.3</td>
+            <td>
+              <a ng-href="/img/merchant/pdf/Concardis_Payengine_Unified_Settlement_Report_v1.03.pdf" target="page" ng-click="download()">
+                <img src="/img/merchant/pdf/download-ico.png" alt="" width="50px">
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>1.4</td>
+            <td>
+              <a ng-href="/img/merchant/pdf/Concardis_Payengine_Unified_Settlement_Report_v1.04.pdf" target="page" ng-click="download()">
+                <img src="/img/merchant/pdf/download-ico.png" alt="" width="50px">
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>1.4.1</td>
+            <td>
+              <a ng-href="/img/merchant/pdf/Concardis_Payengine_Unified_Settlement_Report_v1.04.1.pdf" target="page" ng-click="download()">
+                <img src="/img/merchant/pdf/download-ico.png" alt="" width="50px">
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

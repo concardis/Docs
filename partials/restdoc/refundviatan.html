@@ -1,0 +1,228 @@
+<h1>Refund via TAN</h1>
+<br>
+<br>
+<ul>
+	<li><a href="buildyourown/restdoc/refundviatan#generalInformation">1. Refunds via TAN - General Information</a></li>
+	<ul>
+		<li><a href="buildyourown/restdoc/refundviatan#prerequisitesForTanRefunds">1.1 Prerequisites for TAN Refunds</a></li>
+		<li><a href="buildyourown/restdoc/refundviatan#overviewOfRefundsViaTan">1.2 Overview of Refunds via TAN</a></li>
+		<ul>
+			<li><a href="buildyourown/restdoc/refundviatan#definition">1.2.1 Definition</a></li>
+			<li><a href="buildyourown/restdoc/refundviatan#waysOfExecution">1.2.2 Ways of Execution</a></li>
+			<li><a href="buildyourown/restdoc/refundviatan#paymentMethodsRequiringTanRefunds">1.2.3 Payment Methods requiring TAN Refunds</a></li>
+		</ul>
+	</ul>
+	<li><a href="buildyourown/restdoc/refundviatan#tanRefundsExecutionViaApi">2. TAN Refunds Execution via API</a></li>
+</ul>
+<br>
+<br>
+<div id="generalInformation">
+	<h2>Refunds via TAN - General Information</h2>
+	<br>
+	<p>
+		A ‘Refund‘ transaction has to be requested by a merchant when an end-customer has executed successfully a full/partial return of goods from an existing order.
+		<br>
+		Two prerequisites, listed below, have to be in place for a refund request.
+	</p>
+	<br>
+	<br>
+	<div id="prerequisitesForTanRefunds">
+		<h3>Prerequisites for TAN Refunds</h3>
+		<br>
+		<br>
+		<ul>
+			<li><strong>Configured bank account with defined TAN scheme</strong></li>
+		</ul>
+		<br>
+		<p>A merchant’s bank account has to be successfully set up by the merchant in the Merchant Center and subsequently activated prior to requesting any refunds.</p>
+		<br>
+		<p>The TAN scheme for the activated bank account has to be specified.</p>
+		<br>
+		<ul>
+			<li><strong>Successful Debit or Capture transaction</strong></li>
+		</ul>
+		<br>
+		<p>An existing Debit or Capture transaction in 'Success' status has to be in place for the order for which a merchant wants to request a refund. </p>
+		<br>
+		<br>
+	</div>
+	<div id="overviewOfRefundsViaTan">
+		<h3>Overview of Refunds via TAN</h3>
+		<br>
+		<br>
+		<p id="definition"><strong><u>Definition</u></strong></p>
+		<br>
+		<p>A Refund transaction via TAN can be defined as a special case of a general Refund transaction for which is required entering of TAN every time such type of transaction is executed by a merchant.</p>
+		<br>
+		<p id="waysOfExecution"><strong><u>Ways of Execution</u></strong></p>
+		<br>
+		<p>TAN refunds can be executed in two ways: via API and via Merchant Center. A major difference between the two ways of execution is that via API are possible refunds with all TAN schemes excluding photo TAN; via Merchant Center are possible refunds only with iTAN and mTAN (SMS TAN).</p>
+		<br>
+		<p id="paymentMethodsRequiringTanRefunds"><strong><u>Payment Methods requiring TAN Refunds</u></strong></p>
+		<br>
+		<p>For the following payment methods refund transactions are possible only via using TAN:</p>
+		<ul>
+			<li>SEPA</li>
+			<li>SOFORT</li>
+			<li>Prepayment</li>
+			<li>Giropay</li>
+		</ul>
+		<br>
+		<p><strong>Note:</strong> For the payment method Giropay refunds via TAN are not yet implemented but they are on the road-map for implementation.</p>
+		<br>
+		<p>For different payment methods requiring TAN refunds, process flows of TAN refunds are identical when executed via API. This is the reason process flow described below to be valid for all affected payment methods. The only difference between two TAN refunds within the same way of execution is related to using different TAN schemes depending on supported TAN scheme of the merchant's bank account.</p>
+	</div>
+</div>
+<br>
+<br>
+<div id="tanRefundsExecutionViaApi">
+	<h2>TAN Refunds Execution via API</h2>
+	<br>
+	<br>
+	<p>A Refund transaction requiring a TAN,executed via API, can be presented as a process that consists of the following steps:</p>
+	<br>
+	<p><strong>Step 1</strong> - Create <em>Refund</em> request</p>
+	<br>
+	<p ng-non-bindable>When an end-customer requests a refund for successfully returned goods from an existing merchant's order, the corresponding merchant has to initiate Create <em>Refund</em> request with the following format:  POST/v1/orders/{orderId}/transactions/{transactionId}/refund</p>
+	<br>
+	<p><em>Sample</em></p>
+	<div>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+					Create Refund request
+					<div class="header-buttons-separator">
+						<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow;">
+							<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+							<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+						</a>
+					</div>
+				</h3>
+				<div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+					<code>
+	{
+		"description": "description for transaction.",
+		"initialAmount": 2500,
+		"currency": "EUR",
+		"basket": [
+			{
+				"name": "USB-Stick",
+				"articleNumber": "SW10029",
+				"totalPrice": 2500,
+				"totalPriceWithTax": 2500,
+				"unitPrice": 2500,
+				"unitPriceWithTax": 2500,
+				"tax": 0,
+				"quantity": 1
+			}
+		]
+	}
+					</code>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<p><strong>Step 2</strong> - <em>Refund</em> response</p>
+	<br>
+	<p ng-non-bindable>Result from Refund request for the payment methods requiring TAN will be changing the status of Refund transaction to 'PENDING'. Create Refund response will contain an element 'Challenge' with the TAN instructions.</p>
+	<br>
+	<p><em>Sample</em></p>
+	<div>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow2=false">
+				<h3 class="content-box-header bg-default">
+					Create Refund response
+					<div class="header-buttons-separator">
+						<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow2=!createCustomerResponseShow2;">
+							<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow2"></i>
+							<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow2"></i>
+						</a>
+					</div>
+				</h3>
+				<div class="content-box-wrapper" ng-if="createCustomerResponseShow2">
+					<code>
+	{
+		"createdAt": 1549300655090,
+		"modifiedAt": 1549300655090,
+		"type": "REFUND",
+		"transactionId": "transaction_ckh2eopez9",
+		"description": "description for transaction.",
+		"initialAmount": 2500,
+		"currency": "EUR",
+		"status": "PENDING",
+		"order": { ... },
+		"parentTransaction": { ... },
+		"transactions": null,
+		"basket": [ ... ],
+		"providerCode": null,
+		"merchantMessage": null,
+		"customerMessage": null,
+		"descriptor": null,
+		"meta": {
+				"tanSent": false,
+				"tanSchema": "iTan"
+		},
+		"challenge": {
+				"title": "Please provide the TAN",
+				"label": "iTan",
+				"format": "iTan",
+				"data": "51"
+		},
+		"asyncNotificationSubscriptionId": null,
+		"tracking": null
+	}
+					</code>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<p><strong>Note:</strong> Content of the 'Challenge' element will be specific for different TAN schemes. </p>
+	<br>
+	<p><strong>Step 3</strong> - Request for transmitting the TAN</p>
+	<br>
+	<p ng-non-bindable>The merchant will transmit required TAN in a subsequent request for updating the Refund transaction with the following format - PATCH/v1/orders/{orderId}/transactions/{transactionId}.</p>
+	<br>
+	<p><em>Sample</em></p>
+	<div>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow3=false">
+				<h3 class="content-box-header bg-default">
+					Refund Transaction Update
+					<div class="header-buttons-separator">
+						<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow3=!createCustomerResponseShow3;">
+							<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow3"></i>
+							<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow3"></i>
+						</a>
+					</div>
+				</h3>
+				<div class="content-box-wrapper" ng-if="createCustomerResponseShow3">
+					<code>
+	{
+		"meta": {
+				"tan": "32154"
+		}
+	}
+					</code>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<p><strong>Step 4</strong> - Response after transmitting the TAN</p>
+	<br>
+	<p ng-non-bindable>After transmitting the TAN are possible two alternative results:</p>
+	<ul>
+		<li>status of Refund transaction is 'SUCCESS'</li>
+		<li>status of Refund transaction is  'FAILURE' </li>
+	</ul>
+	<br>
+	<p>In both cases, the merchant will be informed accordingly by Payengine.</p>
+	<br>
+	<p>The whole flow of Refund via TAN is presented in the diagram below:</p>
+	<br>
+	<img src="/img/restapi/tan-img.png" alt="TAN" width="90%">
+	<br>
+</div>
+

@@ -11,6 +11,7 @@
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restdoc/createcustomer">How to create a customer</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restdoc/preformpayment">How to preform a payment</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restdoc/refundpayment">How to refund a payment</a>
+        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restdoc/refundviatan">Refunds via TAN</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restdoc/providercodes">Provider Codes</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restdoc/phpsdk">PHP SDK</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/buildyourown/restdoc/simulator">Test Your integration (Simulator)</a>
@@ -39,6 +40,10 @@
         </div>
         <div ng-show="cur=='refundpayment'">
         	<div  ng-include="'/partials/restdoc/refundpayment.html'">
+            </div>
+        </div>
+        <div ng-show="cur=='refundviatan'">
+        	<div  ng-include="'/partials/restdoc/refundviatan.html'">
             </div>
         </div>
         <div ng-show="cur=='providercodes'">

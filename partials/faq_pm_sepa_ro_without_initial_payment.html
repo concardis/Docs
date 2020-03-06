@@ -1,0 +1,559 @@
+<div class="container row col-12">
+		  <br>
+		  <h1>Recurring Order Without Initial Payment</h1>
+		  <br>
+		<ul>
+		  <li><a href="/faq_pm_sepa_ro_without_initial_payment#sectionone" name="">Recurring Order Without Initial Payment</a></li>
+			<li><a href="/faq_pm_sepa_ro_without_initial_payment#stepone" name="">Step 1: Create Payment Instrument via Widget as a Bridge/Create Payment Instrument via API</a></li>
+			<li><a href="/faq_pm_sepa_ro_without_initial_payment#steptwo" name="">Step 2: Create debit with directDebitType to RECURRING/FINALCreate preauth + captrue: RECURRING/FINAL</a></li>
+			<li><a href="/faq_pm_sepa_ro_without_initial_payment#stepthree" name="">Step 3: Prenotification</a></li>
+			<li><a href="/faq_pm_sepa_ro_without_initial_payment#stepfour" name="">Step 4: Reconciliation</a></li>
+			<li><a href="/faq_pm_sepa_ro_without_initial_payment#stepfive" name="">Step 5 (Оptional): REFUND</a></li>
+		</ul>
+		<div>
+<div id="sectionone">
+	<br/>
+	<p><strong>Recurring Order Without Initial Payment</strong></p>
+	<br/>
+	<p>When a customer provides authorization to perform a series of payments with their bank details.</p>
+	<br>
+	<p>Recurring payments are handled with the use of the <em>directDebitType</em> of the mandate object which points to the type of usage for the particular order. Mark the orders as <strong>FIRST, RECURRING,</strong> and <strong>FINAL</strong>.</p>
+	<br>
+	<ul>
+		<li>Collect payment data and place the order in your shop</li>
+		<li>Perform the backend-to-backend payment instrument request POST /payment-instruments with the <em>directDebitType</em> set to <strong>FIRST</strong>. This request should result in a recurring payment instrument.</li>
+		<li>Use the already created payment instrument for executing orders, providing only the <em>directDebitType</em> that stands for the current usage of the mandate. <strong>(RECURRING/FINAL)</strong></li>
+	</ul>
+</div>
+<br>
+<br>
+<div id="stepone">
+	<br>
+	<p><strong>Step 1: Create Payment Instrument via Widget as a Bridge/Create Payment Instrument via API</strong></p>
+	<br>
+	<p><strong>Create Payment Instrument via Widget as a Bridge</strong></p>
+	<br>
+	<p><strong>MandateId Management:</strong></p>
+	<br>
+	<p>
+		"requestMandate": true : The Payengine generates and displays automatically the mandateId in the Widget
+		<br>
+		"requestMandate": false (default):
+		<br>
+		The integrator generates the mandateId following the &lt;VPNummer&gt;+&lt;increment&gt; pattern, for example, Example: 1234567+1, and the rules below:
+		<br>
+		- <a href="#">MandateId Management:</a>
+		<br>
+		- mandateId must be unique for single payments.
+		<br>
+		- Recurring payments use the same unique mandateId
+		<br>
+		- The mandateId must be a string of length in the range from 1 to 35, containing only alphanumerics.
+		<br>
+		- The generated mandateId must be displayed in the mandate text where the customer should agree to.
+	</p>
+	<br>
+	<p><strong>Create Payment Instrument via API</strong></p>
+	<br>
+	<p><strong>MandateId Management:</strong></p>
+	<br>
+	<p>
+		The integrator generates the mandateId following the &lt;VPNummer&gt;+&lt;increment&gt; pattern, for example, Example: 1234567+1, and the rules below:
+		<br>
+		- mandateId must be unique for single payments.
+		<br>
+		- Recurring payments use the same unique mandateId
+		<br>
+		- The mandateId must be a string of length in the range from 1 to 35, containing only alphanumerics.
+		<br>
+		- The generated mandateId must be displayed in the mandate text where the customer should agree to.
+	</p>
+	<br>
+	<p>Examples:</p>
+		
+	<div>
+	<div class="example-box-wrapper">
+		<div class="content-box" ng-init="createCustomerResponseShowwa=false">
+			<h3 class="content-box-header bg-default">
+				Create Payment Instrument Recurring Request
+				<div class="header-buttons-separator">
+					<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShowwa=!createCustomerResponseShowwa;">
+						<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShowwa"></i>
+						<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShowwa"></i>
+					</a>
+				</div>
+			</h3>
+			<div class="content-box-wrapper" ng-if="createCustomerResponseShowwa">
+				<code>
+	{
+		"type": "sepa",
+		"merchantPaymentInstrumentId": "1562850642",
+		"payment": {
+				"iban": "DE15111111111111111199",
+				"bic": "COLSDE33XXX",
+				"bankName": "DKB",
+				"accountHolder": "Max Mustermann",
+				"mandate": {
+						"mandateId": "mandateId1562850642",
+						"createdDateTime": 0,
+						"mandateText": "mandateTextString 1562850642",
+						"directDebitType": "FIRST"
+				}
+		}
+	}
+				</code>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<div>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+					Create Payment Instrument Recurring Response
+					<div class="header-buttons-separator">
+						<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow;">
+							<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+							<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+						</a>
+					</div>
+				</h3>
+				<div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+					<code>
+	{
+		"createdAt": 1562851103400,
+		"modifiedAt": 1562851103400,
+		"paymentInstrumentId": "paymentinstrument_2bil6peicb",
+		"merchantPaymentInstrumentId": "1562851103",
+		"attributes": {
+				"iban": "DE15111111111111111199",
+				"bic": "COLSDE33XXX",
+				"accountHolder": "Max Mustermann",
+				"bankName": "DKB",
+				"mandate": {
+						"mandateReference": "mandateId1562851103",
+						"createdDateTime": 0,
+						"mandateText": "mandateTextString 1562851103",
+						"directDebitType": "FIRST"
+				}
+		},
+		"encrypted": false,
+		"origin": "sepa",
+		"type": "sepa",
+		"recurring": true,
+		"recurringConsent": null
+	}
+					</code>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<br>
+	<br>
+<div id="steptwo">
+	<p><strong>Step 2: </strong></p>
+	<br>
+	<p><strong>Create debit with <em>directDebitType to RECURRING/FINAL</em></strong></p>
+	<br>
+	<p><strong>Create preauth + captrue:  <em>RECURRING/FINAL</em></strong></p>
+	<br>
+	<p>Examples:</p>
+		
+	<div>
+	<div class="example-box-wrapper">
+		<div class="content-box" ng-init="createCustomerResponseShoww3=false">
+			<h3 class="content-box-header bg-default">
+				Reusage of Payment Instrument Recurring Request
+				<div class="header-buttons-separator">
+					<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShowwa=!createCustomerResponseShoww3;">
+						<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShoww3"></i>
+						<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShoww3"></i>
+					</a>
+				</div>
+			</h3>
+			<div class="content-box-wrapper" ng-if="createCustomerResponseShoww3">
+				<code>
+	{
+		"product": "sepa",
+		"terms": 1468590412476,
+		"privacy": 1468590412476,
+		"merchantOrderId": "merchantOrderId1562837330",
+		"description": "test transaction",
+		"statementDescription": "statement description",
+		"currency": "EUR",
+		"initialAmount": 350,
+		"basket": [
+			{
+					"name": "USB-Stick",
+					"articleNumber": "SW10029",
+					"totalPrice": 350,
+					"totalPriceWithTax": 350,
+					"unitPrice": 350,
+					"unitPriceWithTax": 350,
+					"tax": 0,
+					"quantity": 1
+			}
+		],
+		"customer": "customer_fkijpjzqqg",
+		"persona": "persona_8z2tsltpze",
+		"billingAddress": "address_2tp6z8qrlr",
+		"shippingAddress": "address_2tp6z8qrlr",
+		"ipAddress": "192.168.0.1",
+		"channel": "ECOM",
+		"source": "Postman Test",
+		"payment": {
+				"paymentInstrumentId": "paymentinstrument_2bil6peicb",
+				"mandate": {
+						"mandateId": "mandateId1562851319",
+						"createdDateTime": 0,
+						"mandateText": "mandateTextString 1562851319",
+						"directDebitType": "FIRST"
+				}
+		}
+	}
+				</code>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<div>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow4=false">
+				<h3 class="content-box-header bg-default">
+					Reusage of Payment Instrument Recurring Response
+					<div class="header-buttons-separator">
+						<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow4;">
+							<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow4"></i>
+							<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow4"></i>
+						</a>
+					</div>
+				</h3>
+				<div class="content-box-wrapper" ng-if="createCustomerResponseShow4">
+					<code>
+	{
+		"createdAt": 1562851301809,
+		"modifiedAt": 1562851301825,
+		"merchantId": "Merchant-22222222-2222-2222-2222-222222222222",
+		"terms": 1468590412476,
+		"privacy": 1468590412476,
+		"orderId": "9kc1qztyc6",
+		"merchantOrderId": "93450199",
+		"paymentProviderTransactionId": null,
+		"description": "test transaction",
+		"statementDescription": "statement description",
+		"initialAmount": 2500,
+		"preauthorizedAmount": 2500,
+		"capturedAmount": 2500,
+		"refundedAmount": 0,
+		"canceledAmount": 0,
+		"currency": "EUR",
+		"basket": [
+				{
+						"id": "Article-430dc785-43aa-4c86-8967-20dea66c82f0",
+						"name": "USB-Stick",
+						"articleNumber": "SW10029",
+						"totalPrice": 2500,
+						"totalPriceWithTax": 2500,
+						"unitPrice": 2500,
+						"unitPriceWithTax": 2500,
+						"quantity": 1,
+						"tax": 0,
+						"discount": null,
+						"imageUrl": null,
+						"articleUrl": null,
+						"articleType": null
+				}
+		],
+		"customer": {
+				"merchantCustomerId": "merchantCustomerId496717437",
+				"organizationRegistrationRegister": null,
+				"organizationRegistrationId": null,
+				"organizationEntityType": null,
+				"organizationVatId": null,
+				"companyName": null,
+				"reference": null,
+				"email": "BbyCGjgSfL@test.com",
+				"customerId": "customer_fkijpjzqqg",
+				"addresses": [],
+				"personas": [],
+				"paymentInstruments": [],
+				"createdAt": 1562577853977,
+				"modifiedAt": 1562577853977,
+				"customerType": null
+		},
+		"persona": {
+				"personaId": "persona_8z2tsltpze",
+				"firstName": "Max",
+				"lastName": "lrpldwJtsQ",
+				"phone": "00493012345",
+				"mobile": "00493012345",
+				"fax": "00493012345",
+				"birthday": 358293600000,
+				"gender": "MALE",
+				"title": "Prof. Dr.",
+				"createdAt": 1562577859854,
+				"modifiedAt": 1562577859854
+		},
+		"billingAddress": {
+				"firstName": "Max",
+				"lastName": "lrpldwJtsQ",
+				"street": "Musterweg",
+				"houseNumber": "1562577856",
+				"city": "Musterhausen",
+				"zip": "55555",
+				"country": "DE",
+				"state": "Bayern",
+				"phone": "00493012345",
+				"fax": "00493012345",
+				"mobile": "00493012345",
+				"title": "Prof. Dr.",
+				"additionalDetails": "premium buyer",
+				"addressId": "address_2tp6z8qrlr",
+				"createdAt": 1562577856280,
+				"modifiedAt": 1562577856280
+		},
+		"shippingAddress": {
+				"firstName": "Max",
+				"lastName": "lrpldwJtsQ",
+				"street": "Musterweg",
+				"houseNumber": "1562577856",
+				"city": "Musterhausen",
+				"zip": "55555",
+				"country": "DE",
+				"state": "Bayern",
+				"phone": "00493012345",
+				"fax": "00493012345",
+				"mobile": "00493012345",
+				"title": "Prof. Dr.",
+				"additionalDetails": "premium buyer",
+				"addressId": "address_2tp6z8qrlr",
+				"createdAt": 1562577856280,
+				"modifiedAt": 1562577856280
+		},
+		"ipAddress": "192.168.0.1",
+		"paymentInstrument": {
+				"createdAt": 1562851103400,
+				"modifiedAt": 1562851103400,
+				"paymentInstrumentId": "paymentinstrument_2bil6peicb",
+				"merchantPaymentInstrumentId": "1562851103",
+				"attributes": {
+						"iban": "DE15111111111111111199",
+						"bic": "COLSDE33XXX",
+						"accountHolder": "Max Mustermann",
+						"bankName": "DKB",
+						"mandate": {
+								"mandateReference": "mandateId1562851302",
+								"createdDateTime": 0,
+								"mandateText": "mandateTextString 1562851302",
+								"directDebitType": "FIRST"
+						}
+				},
+				"encrypted": false,
+				"origin": "sepa",
+				"type": "sepa",
+				"recurring": true,
+				"recurringConsent": null
+		},
+		"transactions": [
+				{
+						"createdAt": 1562851301809,
+						"modifiedAt": 1562851301825,
+						"type": "DEBIT",
+						"transactionId": "transaction_u6gddqzqxj",
+						"description": "test transaction",
+						"initialAmount": 2500,
+						"refundedAmount": 0,
+						"currency": "EUR",
+						"status": "OK",
+						"order": "9kc1qztyc6",
+						"parentTransaction": null,
+						"transactions": null,
+						"basket": [
+								{
+										"id": "Article-430dc785-43aa-4c86-8967-20dea66c82f0",
+										"name": "USB-Stick",
+										"articleNumber": "SW10029",
+										"totalPrice": 2500,
+										"totalPriceWithTax": 2500,
+										"unitPrice": 2500,
+										"unitPriceWithTax": 2500,
+										"quantity": 1,
+										"tax": 0,
+										"discount": null,
+										"imageUrl": null,
+										"articleUrl": null,
+										"articleType": null
+								}
+						],
+						"providerCode": null,
+						"merchantMessage": null,
+						"customerMessage": null,
+						"descriptor": null,
+						"meta": null,
+						"challenge": null,
+						"asyncNotificationSubscriptionId": null,
+						"tracking": null
+				}
+		],
+		"status": "OPEN",
+		"channel": "ECOM",
+		"source": "Postman Test",
+		"settled": false,
+		"settlementDate": null,
+		"allowedProducts": null,
+		"product": "sepa",
+		"transactionType": "DEBIT",
+		"meta": {
+				"mandate": {
+						"mandateId": "mandateId1562851302",
+						"createdDateTime": 0,
+						"mandateText": "mandateTextString 1562851302",
+						"directDebitType": "FIRST"
+				}
+		},
+		"async": null,
+		"deviceIdent": null,
+		"clientType": "BRW",
+		"asyncNotificationSubscriptionId": null,
+		"lastOperation": "TRANSACTION_DEBIT_OK"
+	}
+					</code>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> 
+<br>
+<br>
+<div id="stepthree">
+	<br>
+	<p><strong>Step 3: Prenotification</strong></p>
+	<br>
+	<p>
+		Prenotification ("Pre-Notification") is any notification, (for example, an invoice, policy, a contract) of the direct debit recipient to the payer, which announces a debit via SEPA direct debit. The preliminary information must contain the due date and the exact amount and can announce several direct debits. It must be sent to the payer within due time (at least 14 calendar days before the due date, unless a different period has been agreed with the payer) before the due date, so that the payer can adjust to the account balance and provide adequate cover. The manner in which the preliminary information can be given results from the regulations of the respective debt collection agreement between the payer and the payment service provider. 
+	</p>
+	<br>
+	<p><strong>NOTE</strong> Payengine is sending out the prenotifictaion email to the customer. </p>
+	<br>
+	<p><strong>SEPA Pre-notification Template</strong></p>
+	<br>
+	<p ng-non-bindable>"Dies ist eine automatisch generierte E-Mail. Neue SEPA-Lastschriftvorankündigung <br>
+		Sehr geehrte Kundin, <br>
+		sehr geehrter Kunde, <br>
+		vielen Dank für Ihren Bestellung/Buchung bei {merchant name} <br>
+		Die Forderung von {currency} {amount} ziehen wir mit der SEPA-Lastschrift zum Mandat Nr. {mandate id} zu der Gläubiger-Identifikationsnummer {creditor id} von Ihrem Konto IBAN {iban} bei der Hamburger Sparkasse BIC {bic} zum Fälligkeitstag {due date} ein. <br>
+		Aus rechtlichen Gründen sind wir verpflichtet, Sie über jede SEPA-Lastschrift vorab zu informieren. <br>
+		Bei Fragen zu Ihrer Rechnung wenden Sie sich bitte an <a href="mailto:service@concardis.com ">service@concardis.com </a>
+		<br>
+		<br>
+		Mit freundlichen Grüßen, <br>
+		Concardis GmbH 
+		<br>
+		<br>
+		Concardis GmbH <br>
+		Helfmann-Park 7 <br>
+		65760 Eschborn <br>
+		Germany <br>
+		Telefon: +49 69 7922-0 <br>
+		Telefax: +49 69 7922-4500 <br>
+		E-Mail: <a href="mailto:service@concardis.com ">service@concardis.com </a> <br>
+		Geschäftsführung: Jana Brendel, Carsten Höltkemeyer, Luca Zanotti<br>
+		USt-IdNr : DE 228 965 682.
+		<br>
+		<br>
+		Wenn diese Email nicht für Sie bestimmt ist, bitten wir Sie, uns umgehend über den irrtümlichen Empfang zu informieren und diese Email zu löschen. Wir danken Ihnen für Ihre Unterstützung."
+	</p>
+</div>
+	<br>
+<div id="stepfour">
+	<br>
+	<p><strong>Step 4: Reconciliation</strong></p>
+	<br>
+	<p>For SEPA Direct Debit payments, the funds are not immediately available. A charge, created from a SEPA direct debit source, may remain in a pending state for several days from the time of its creation. Once the charge is confirmed, the status of the debit or capture is updated to success</p>
+	<br>
+	<ul>
+		<li>When does the merchant get a SEPA direct debit fund?</li>
+		<ul>
+			<li>Approximately 9 days after the SEPA Direct debit is triggered.</li>
+		</ul>
+		<li>How to reconcile a payment?</li>
+		<ul>
+			<li>
+				Use Payengine SEPA Direct Debit settlement file. <br>
+				There is one record in the settlement file per transaction. <br>
+				Every record references to the collective bank transfer, for example, the merchant had 10 transactions on a specific day, and all have the same reference.
+			</li>
+		</ul>
+		<li>Use Payengine notifications.</li>
+		<li>Subscribtion via the Payengine API (<a href="https://docs.payengine.de/buildyourown/restapi">Link to API documentation</a>).</li>
+		<li>Subscribtion via the Payengine Merchant Center ( <a href="https://docs.payengine.de/merchantcenter/managenotification">Link to Merchant Center notifications documentation</a> ).</li>
+	<br>
+	<p>The following events are sent when the charge status is changed:</p>
+	<br>
+	<table class="row clearfix  table table-bordered table-striped table-condensed">
+		<thead>
+			<tr>
+				<th width="10%">EVENT</th>
+				<th width="20%">DESCRIPTION</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>debit.success</td>
+				<td>The charge succeeded and the payment is complete.</td>
+			</tr>
+			<tr>
+				<td>capture.success</td>
+				<td>The charge succeeded and the payment is complete.</td>
+			</tr>
+			<tr>
+				<td>debit.chargeback</td>
+				<td>The charge has failed</td>
+			</tr>
+			<tr>
+				<td>capture.chargeback</td>
+				<td>The charge has failed</td>
+			</tr>
+		</tbody>
+	</table>
+	<li>What is the bank transfer purpose text on the merchant bank statement?</li>
+	<br>
+	<p>The money will be transfered to the merchant's bank account in a collective transfer and the follow purpose text will be displayed in the bank statement:  &lt;merchantId&gt; - dd.MM.yyyy (from date) - dd.MM.yyyy (until date)</p>
+	<li>What is the bank transfer purpose text on the customer bank statement?</li>
+	</ul>
+	<p>
+		The field <em>order.statementDescription</em> will be used as purpose text. <br>
+		In case that there is no <em>order.statementDescription</em>, we will use the following logic: <br>
+		- When the <em>order.merchantOrderId</em>  is not empty, we use <em>order.merchantOrderId</em> is used. Otherwise, we use <em>order.orderId</em>. <br>
+		The fields <em>merchant.companyName</em> and <em>merchant.shopUrl</em> are added, regardless if <em>order.merchantOrderId</em>  or <em>order.orderId</em> is used. <br>
+		The maximum length of the purpose text is 108 characters, and it will be cut off if it is longer than 108 characters.
+		</p>
+		<br>
+		<p><strong>Payment Disruptions</strong></p>
+		<br>
+		<p><strong>Debit not Possible:</strong> The status of the debit or capture will change from OK to CHARGEBACK.</p>
+		<br>
+		<p>Тhis situation may occur due to various problems with the client's account (for example, if no funds are available, the account has been blocked, etc.). In these cases, the bank cannot debit the account, even though the customer has already provided the funds for a successful payment. If this situation occurs, the bank refunds the payment in the form of a dispute.</p>
+		<br>
+		<p>
+			<strong>Customer Cancels SEPA Direct Debit:</strong> The status of the debit or capture will be change from SUCCESS to CHARGEBACK. <br>
+			Within eight weeks of debiting the account, if the account holder is not satisfied with his purchase, the bank can refund the money, without asking questions.
+			Between eight weeks and thirteen months after the payment has been created, the customer may dispute a payment with their bank only if the customer considers that the debit has not been authorised.
+		</p>
+		<br>
+		<p>In this case, Payengine automatically provides the customer's bank with a mandate, approved by the customer. This still does not guarantee that the dispute can be cancelled. The customer's bank may decide that the debit is not authorised by the mandate and that their client has the right to refund.</p>
+</div>
+	<br>
+	<br>
+	<div id="stepfive">
+		<br>
+		<p><strong>Step 5 (Оptional): REFUND</strong></p>
+		<br>
+		<p>To use the refund service of Payengine, configure your bank account connection at the Concardis Merchant Center. For more information, see <a href="https://concardis.stagil.de/confluence/display/PAY/Bank+Account+Connection+Setup">Bank Account Connection Setup</a>.</p>
+	</div>
+	</div>
+</div>
+		

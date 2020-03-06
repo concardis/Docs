@@ -1,0 +1,422 @@
+<div class="container row col-12">
+		  <br>
+		  <h1>Single order</h1>
+		  <br>
+		<ul>
+			<li><a href="/faq_pm_sepa_single_order#sectionone" name="">Integration via Widget (modal/inline)</a></li>
+			<li><a href="/faq_pm_sepa_single_order#sectiontwo" name="">Integration via API</a></li>
+			<li><a href="/faq_pm_sepa_single_order#stepone" name="">Step 1: Create debit/Create preauth + captrue:</a></li>
+			<li><a href="/faq_pm_sepa_single_order#steptwo" name="">Step 2: Prenotification</a></li>
+			<li><a href="/faq_pm_sepa_single_order#stepthree" name="">Step 3: Reconciliation</a></li>
+			<li><a href="/faq_pm_sepa_single_order#stepfour" name="">Step 4 (Оptional): REFUND</a></li>
+		</ul>
+		<div>
+		  <div id="sectionone">
+		    <br/>
+		    <p><strong>Integration via Widget (modal/inline)</strong></p>
+		    <br/>
+		    <p style="padding-left:20px;">
+		      <strong>MandateId Management:</strong> The Payengine generates and displays the <em>mandateId</em> in the Widget automatically.
+		    </p>
+		  </div>
+		  <br/>
+		  <br>
+		  <div id="sectiontwo">
+		    <p><strong>Integration via API</strong></p>
+		 		<p style="padding-left:20px;" ng-non-bindable>
+		      <strong>MandateId Management:</strong> The integrator generates the mandateId following the &lt;VPNummer&gt;+&lt;increment&gt; pattern, for example, 1234567+1, and the rules below:
+		    </p>
+		    <br/>
+				<ul>
+					<li>mandateId must be unique for single payments.</li>
+					<li>Recurring payments use the same unique <em>mandateId</em></li>
+					<li>The <em>mandateId</em> must be a string of length in the range from 1 to 35, containing only alphanumerics.</li>
+					<li>The generated <em>mandateId</em> must be displayed in the mandate text where the customer should agree to.</li>
+				</ul>
+		 </div>
+		<br>
+		<br>
+		<div id="stepone">
+			<p><strong>Step 1: Create debit/Create preauth + captrue:</strong></p>
+			<br>
+			<p><strong>Create debit</strong></p>
+			<br>
+			<p><strong>Important</strong> <em>directDebitType should be set to</em> <strong>SINGLE</strong>.</p>
+			<br>
+			<p>In a <em>Debit</em> transaction, the full amount is charged immediately, and the funds are transferred from your customer's bank account to your bank account.</p>
+			<br>
+			<p>When the debit is processed successfully, the customer receives a SEPA prenotification email from Payengine.</p>
+			<br>
+			<img src="/img/faq/sepa/single-order-wf.png" alt="" width="60%">
+			<br>
+			<p>Examples:</p>
+		
+<div>
+	<div class="example-box-wrapper">
+		<div class="content-box" ng-init="createCustomerResponseShowwa=false">
+			<h3 class="content-box-header bg-default">
+					Single Debit Request
+				<div class="header-buttons-separator">
+					<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShowwa=!createCustomerResponseShowwa;">
+						<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShowwa"></i>
+						<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShowwa"></i>
+					</a>
+				</div>
+			</h3>
+			<div class="content-box-wrapper" ng-if="createCustomerResponseShowwa">
+				<code>
+	{
+		"product": "sepa",
+		"merchantOrderId": "merchantOrderId1562586687",
+		"description": "description 1562586687",
+		"statementDescription": "statementDescription 1562586687",
+		"currency": "EUR",
+		"customer": "customer_3xrtwceb7b", 
+		"initialAmount": 5950,
+		"basket": [
+			{
+			"articleNumber": "SW10029",
+			"name": "USB-Stick",
+			"quantity": 5,
+			"tax": 19,
+			"unitPrice": 1000,
+			"unitPriceWithTax": 1190,
+			"totalPrice": 5000,
+			"totalPriceWithTax": 5950
+			}
+		],
+		"async": {
+				"successUrl": "https://www.google.de/search?newwindow=1&q=success",
+				"failureUrl": "https://www.google.de/search?newwindow=1&q=failure",
+				"cancelUrl": "https://www.google.de/search?newwindow=1&q=cancel",
+				"notifications": [
+						{
+								"notificationUrn": "http://api.webhookinbox.com/i/s1TSDKY1/in/",
+								"notificationState": [
+										"CREATED",
+										"UPDATED"
+								]
+						}
+				]
+		},
+		"payment": {
+				"accountHolder": "Max Mustermann",
+				"iban": "DE15111111111111111199",
+				"bic": "COBADEFFXXX",
+				"mandate": {
+						"mandateId": "mandateId1562586687",
+						"createdDateTime": 0,
+						"mandateText": "mandateTextString 1562586687",
+						"directDebitType": "SINGLE"
+				}
+		}
+}
+				</code>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<div>
+		<div class="example-box-wrapper">
+			<div class="content-box" ng-init="createCustomerResponseShow=false">
+				<h3 class="content-box-header bg-default">
+					Single Debit Response
+					<div class="header-buttons-separator">
+						<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow;">
+							<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+							<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+						</a>
+					</div>
+				</h3>
+				<div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+					<code>
+	{
+		"createdAt": 1562586771685,
+		"modifiedAt": 1562586771702,
+		"merchantId": "merchant_6tip2uyttl",
+		"terms": null,
+		"privacy": null,
+		"orderId": "efss67toj3",
+		"merchantOrderId": "merchantOrderId1562586771",
+		"paymentProviderTransactionId": null,
+		"description": "description 1562586771",
+		"statementDescription": "statementDescription 1562586771",
+		"initialAmount": 5950,
+		"preauthorizedAmount": 5950,
+		"capturedAmount": 5950,
+		"refundedAmount": 0,
+		"canceledAmount": 0,
+		"currency": "EUR",
+		"basket": [
+				{
+						"id": "Article-d2911965-d1ee-4697-b2f4-4ba0c93f165f",
+						"name": "USB-Stick",
+						"articleNumber": "SW10029",
+						"totalPrice": 5000,
+						"totalPriceWithTax": 5950,
+						"unitPrice": 1000,
+						"unitPriceWithTax": 1190,
+						"quantity": 5,
+						"tax": 19,
+						"discount": null,
+						"imageUrl": null,
+						"articleUrl": null,
+						"articleType": null
+				}
+		],
+		"customer": {
+				"merchantCustomerId": "merchantCustomerId1562330294",
+				"organizationRegistrationRegister": null,
+				"organizationRegistrationId": null,
+				"organizationEntityType": null,
+				"organizationVatId": null,
+				"companyName": null,
+				"reference": null,
+				"email": "1562330294@test.com",
+				"customerId": "customer_3xrtwceb7b",
+				"addresses": [],
+				"personas": [],
+				"paymentInstruments": [],
+				"createdAt": 1562330294057,
+				"modifiedAt": 1562330294057,
+				"customerType": null
+		},
+		"persona": null,
+		"billingAddress": null,
+		"shippingAddress": null,
+		"ipAddress": null,
+		"paymentInstrument": {
+				"createdAt": 1562586771686,
+				"modifiedAt": 1562586771686,
+				"paymentInstrumentId": "paymentinstrument_2jgyctxbwi",
+				"merchantPaymentInstrumentId": null,
+				"attributes": {
+						"iban": "DE15111111111111111199",
+						"bic": "COBADEFFXXX",
+						"accountHolder": "Max Mustermann",
+						"bankName": null,
+						"mandate": {
+								"mandateReference": "mandateId1562586771",
+								"createdDateTime": 0,
+								"mandateText": "mandateTextString 1562586771",
+								"directDebitType": "SINGLE"
+						}
+				},
+				"encrypted": false,
+				"origin": "sepa",
+				"type": "sepa",
+				"recurring": false,
+				"recurringConsent": null
+		},
+		"transactions": [
+				{
+						"createdAt": 1562586771686,
+						"modifiedAt": 1562586771702,
+						"type": "DEBIT",
+						"transactionId": "transaction_pkmej5tbs7",
+						"description": "description 1562586771",
+						"initialAmount": 5950,
+						"refundedAmount": 0,
+						"currency": "EUR",
+						"status": "OK",
+						"order": "efss67toj3",
+						"parentTransaction": null,
+						"transactions": null,
+						"basket": [
+								{
+										"id": "Article-d2911965-d1ee-4697-b2f4-4ba0c93f165f",
+										"name": "USB-Stick",
+										"articleNumber": "SW10029",
+										"totalPrice": 5000,
+										"totalPriceWithTax": 5950,
+										"unitPrice": 1000,
+										"unitPriceWithTax": 1190,
+										"quantity": 5,
+										"tax": 19,
+										"discount": null,
+										"imageUrl": null,
+										"articleUrl": null,
+										"articleType": null
+								}
+						],
+						"providerCode": null,
+						"merchantMessage": null,
+						"customerMessage": null,
+						"descriptor": null,
+						"meta": null,
+						"challenge": null,
+						"asyncNotificationSubscriptionId": "a94e8f92-f317-4fe7-99c2-57308e7c0e0a",
+						"tracking": null
+				}
+		],
+		"status": "OPEN",
+		"channel": "ECOM",
+		"source": null,
+		"settled": false,
+		"settlementDate": null,
+		"allowedProducts": null,
+		"product": "sepa",
+		"transactionType": "DEBIT",
+		"meta": {
+				"mandate": {
+						"mandateId": "mandateId1562586771",
+						"createdDateTime": 0,
+						"mandateText": "mandateTextString 1562586771",
+						"directDebitType": "SINGLE"
+				}
+		},
+		"async": null,
+		"deviceIdent": null,
+		"clientType": "BRW",
+		"asyncNotificationSubscriptionId": "a94e8f92-f317-4fe7-99c2-57308e7c0e0a",
+		"lastOperation": "TRANSACTION_DEBIT_OK"
+}
+					</code>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<p><strong>Create preauth + captrue:</strong></p>
+	<br>
+	<p><strong>Important</strong> <em>directDebitType</em> to <strong>SINGLE</strong></p>
+	<br>
+	<p><em>Preauth</em> does not charge the full amount immediately, but is usually followed by a partial or full capture to trigger the charge of the full or the partial amount.</p>
+	<br>
+	<p>After a successfully processed capture, the customer receives a SEPA prenotification email from Payengine.</p>
+	<br>
+	<img src="/img/faq/sepa/single-order-wf2.png" alt="" width="60%">
+	<br>
+</div> <!-- step one -->
+<br>
+<div id="steptwo">
+	<br>
+	<p><strong>Step 2: Prenotification</strong></p>
+	<br>
+	<p>Prenotification ("Pre-Notification") is any notification, (for example, an invoice, policy, a contract) of the direct debit recipient to the payer, which announces a debit via SEPA direct debit. The preliminary information must contain the due date and the exact amount and can announce several direct debits. It must be sent to the payer within due time (at least 14 calendar days before the due date, unless a different period has been agreed with the payer) before the due date, so that the payer can adjust to the account balance and provide adequate cover. The manner in which the preliminary information can be given results from the regulations of the respective debt collection agreement between the payer and the payment service provider. </p>
+	<br>
+	<p><strong>NOTE</strong> Payengine is sending out the prenotifictaion email to the customer. </p>
+	<br>
+	<p><strong>SEPA Pre-notification Template</strong></p>
+	<br>
+	<p ng-non-bindable>"Dies ist eine automatisch generierte E-Mail. Neue SEPA-Lastschriftvorankündigung <br>
+		Sehr geehrte Kundin, <br>
+		sehr geehrter Kunde, <br>
+		vielen Dank für Ihren Bestellung/Buchung bei {merchant name} <br>
+		Die Forderung von {currency} {amount} ziehen wir mit der SEPA-Lastschrift zum Mandat Nr. {mandate id} zu der Gläubiger-Identifikationsnummer {creditor id} von Ihrem Konto IBAN {iban} bei der Hamburger Sparkasse BIC {bic} zum Fälligkeitstag {due date} ein. <br>
+		Aus rechtlichen Gründen sind wir verpflichtet, Sie über jede SEPA-Lastschrift vorab zu informieren. <br>
+		Bei Fragen zu Ihrer Rechnung wenden Sie sich bitte an <a href="mailto:service@concardis.com ">service@concardis.com </a>
+		<br>
+		<br>
+		Mit freundlichen Grüßen, <br>
+		Concardis GmbH 
+		<br>
+		<br>
+		Concardis GmbH <br>
+		Helfmann-Park 7 <br>
+		65760 Eschborn <br>
+		Germany <br>
+		Telefon: +49 69 7922-0 <br>
+		Telefax: +49 69 7922-4500 <br>
+		E-Mail: <a href="mailto:service@concardis.com ">service@concardis.com </a> <br>
+		Geschäftsführung: Jana Brendel, Carsten Höltkemeyer, Luca Zanotti<br>
+		USt-IdNr : DE 228 965 682.
+		<br>
+		<br>
+		Wenn diese Email nicht für Sie bestimmt ist, bitten wir Sie, uns umgehend über den irrtümlichen Empfang zu informieren und diese Email zu löschen. Wir danken Ihnen für Ihre Unterstützung."
+</p>
+</div>
+<br>
+<br>
+<div id="stepthree">
+	<br>
+	<p><strong>Step 3: Reconciliation</strong></p>
+	<br>
+	<p>For SEPA Direct Debit payments, the funds are not immediately available. A charge, created from a SEPA direct debit source, may remain in a pending state for several days from the time of its creation. Once the charge is confirmed, the status of the debit or capture is updated to success.</p>
+	<br>
+	<ul>
+		<li>When does the merchant get a SEPA direct debit fund?</li>
+		<ul>
+			<li>Approximately 9 days after the SEPA Direct debit is triggered.</li>
+		</ul>
+		<li>How to reconcile a payment?</li>
+		<ul>
+			<li>
+				Use Payengine SEPA Direct Debit settlement file. <br>
+				There is one record in the settlement file per transaction. <br>
+				Every record references to the collective bank transfer, for example, the merchant had 10 transactions on a specific day, and all have the same reference.
+			</li>
+		</ul>
+		<li>Use Payengine notifications.</li>
+		<li>Subscribtion via the Payengine API (<a href="https://docs.payengine.de/buildyourown/restapi">Link to API documentation</a>).</li>
+		<li>Subscribtion via the Payengine Merchant Center ( <a href="https://docs.payengine.de/merchantcenter/managenotification">Link to Merchant Center notifications documentation</a> ).</li>
+	<br>
+	<p>The following events are sent when the charge status is changed:</p>
+	<br>
+	<table class="row clearfix  table table-bordered table-striped table-condensed">
+		<thead>
+			<tr>
+				<th width="10%">EVENT</th>
+				<th width="20%">DESCRIPTION</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>debit.success</td>
+				<td>The charge succeeded and the payment is complete.</td>
+			</tr>
+			<tr>
+				<td>capture.success</td>
+				<td>The charge succeeded and the payment is complete.</td>
+			</tr>
+			<tr>
+				<td>debit.chargeback</td>
+				<td>The charge has failed</td>
+			</tr>
+			<tr>
+				<td>capture.chargeback</td>
+				<td>The charge has failed</td>
+			</tr>
+		</tbody>
+	</table>
+	<li>What is the bank transfer purpose text on the merchant bank statement?</li>
+	<br>
+	<p>The money will be transfered to the merchant's bank account in a collective transfer and the follow purpose text will be displayed in the bank statement:  &lt;merchantId&gt; - dd.MM.yyyy (from date) - dd.MM.yyyy (until date)</p>
+	<li>What is the bank transfer purpose text on the customer bank statement?</li>
+	</ul>
+	<p>
+		The field <em>order.statementDescription</em> will be used as purpose text. <br>
+		In case that there is no <em>order.statementDescription</em>, we will use the following logic: <br>
+		- When the <em>order.merchantOrderId</em>  is not empty, we use <em>order.merchantOrderId</em> is used. Otherwise, we use <em>order.orderId</em>. <br>
+		The fields <em>merchant.companyName</em> and <em>merchant.shopUrl</em> are added, regardless if <em>order.merchantOrderId</em>  or <em>order.orderId</em> is used. <br>
+		The maximum length of the purpose text is 108 characters, and it will be cut off if it is longer than 108 characters.
+		</p>
+		<br>
+		<p><strong>Payment Disruptions</strong></p>
+		<br>
+		<p><strong>Debit not Possible:</strong> The status of the debit or capture will change from OK to CHARGEBACK.</p>
+		<br>
+		<p>Тhis situation may occur due to various problems with the client's account (for example, if no funds are available, the account has been blocked, etc.).</p>
+		<br>
+		<p>In these cases, the bank cannot debit the account, even though the customer has already provided the funds for a successful payment. If this situation occurs, the bank refunds the payment in the form of a dispute.</p>
+		<br>
+		<p>
+			<strong>Customer Cancels SEPA Direct Debit:</strong> The status of the debit or capture will be changed from SUCCESS to CHARGEBACK. 
+			Within eight weeks of debiting the account, if the account holder is not satisfied with his purchase, the bank can refund the money, without asking questions.
+			Between eight weeks and thirteen months after the payment has been created, the customer may dispute a payment with their bank only if the customer considers that the debit has not been authorised.
+		</p>
+		<br>
+		<p>In this case, Payengine automatically provides the customer's bank with a mandate, approved by the customer. This still does not guarantee that the dispute can be cancelled. The customer's bank may decide that the debit is not authorised by the mandate and that their client has the right to refund.</p>
+</div>
+	<br>
+	<br>
+	<div id="stepfour">
+		<br>
+		<p><strong>Step 4 (Оptional): REFUND</strong></p>
+		<br>
+		<p>To use the refund service of Payengine, configure your bank account connection at the Concardis Merchant Center. For more information, see <a href="https://concardis.stagil.de/confluence/display/PAY/Bank+Account+Connection+Setup">Bank Account Connection Setup</a>.</p>
+	</div>
+	</div>
+</div>
+		

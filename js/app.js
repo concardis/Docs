@@ -48,7 +48,12 @@ angular.module('StudyCraneApp',[
   .when('/faq_pm_paypal', {templateUrl: '/partials/faq_pm_Checkout_from_the_Payment_Page.html', controller:'faqCtrl'})
   .when('/faq_pm_paypal_whithout_initial_payment', {templateUrl: '/partials/faq_pm_PayPal_Referenc_Transaction_Without_Initial_Payment.html', controller:'faqCtrl'})
   .when('/faq_pm_paypal_with_initial_payment', {templateUrl: '/partials/faq_pm_PayPal_Referenc_Transaction_With_Initial_Payment.html', controller:'faqCtrl'})
+  .when('/faq_pm_sepa_direct_debit', {templateUrl: '/partials/faq_pm_sepa_direct_debit.html', controller:'faqCtrl'})
+  .when('/faq_pm_sepa_single_order', {templateUrl: '/partials/faq_pm_sepa_single_order.html', controller:'faqCtrl'})
+  .when('/faq_pm_sepa_ro_with_Initial_payment', {templateUrl: '/partials/faq_pm_sepa_ro_with_Initial_payment.html', controller:'faqCtrl'})
+  .when('/faq_pm_sepa_ro_without_initial_payment', {templateUrl: '/partials/faq_pm_sepa_ro_without_initial_payment.html', controller:'faqCtrl'})
 
+  
 
 	$httpProvider.defaults.useXDomain = true;
 	delete $httpProvider.defaults.headers.common['X-Requested-With'];
@@ -263,6 +268,17 @@ console.log("trying start REDOCS");
     $scope.cur = $routeParams.id;
   else
     $scope.cur ="faq_paypal";
+
+
+}])
+
+.controller('faqCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', '$routeParams', function($rootScope, $scope, $http, backendService, $timeout, $routeParams) {
+	$rootScope.site = "pm_sepa_direct_debit";
+
+  if($routeParams.id)
+    $scope.cur = $routeParams.id;
+  else
+    $scope.cur ="pm_sepa_direct_debit";
 
 
 }])

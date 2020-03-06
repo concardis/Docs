@@ -1,0 +1,887 @@
+
+
+<div>
+  <ul>
+    <li>Overview</li>
+    <li>Customer Experience</li>
+      <ul>
+        <li>Customer Flow</li>
+        <li>Customer Flow in the Payenegine Widget</li>
+      </ul>
+    <li>Payengine Details</li>
+      <ul>
+        <li>General</li>
+        <li>Supported Features & Services</li>
+        <li>Integration Types</li>
+      </ul>
+      <li>Integration via Widget</li>
+      <li>Integration via API</li>
+        <ul>
+          <li>Technical Flow</li>
+          <ul>
+            <li>Webhook notifications</li>
+          </ul>
+        </ul>
+      <li>Specifics</li>
+      <ul>
+        <li>SOFORT Payment specific request parameters</li>
+        <ul>
+          <li>Debit transaction </li>
+          <li>SEPA Refund transaction </li>
+        </ul>
+      </ul>
+  </ul>
+  <br>
+  <br>
+  <div>
+    <br/>
+    <br/>
+    <h2>Overview</h2>
+    <br/>
+    <p>
+      SOFORT instant bank transfer is a payment method based on the principle of a bank transfer. It is highly popular in Germany and also available in Austria (EUR), Denmark (DKK), Finland (EUR), France (EUR), Italy (EUR), Netherlands (EUR), Belgium (EUR), Norway (NOK), Poland (PLN),  Spain (EUR), Sweden (SEK), Switzerland (CHF), United Kingdom (GBP). 
+    </p>
+    <br>
+    <p>
+      n the case of SOFORT instant bank transfer, the authentication does not take place directly between the payer and the bank. Sofort Ltd. acts as the payer towards the bank after it has received the authentication data from it. Sofort instant bank transfer is open to customers regardless of which bank they have their current account in because the customers log into their online banking via the Sofort Ltd. system. Therefore there is no need for an agreement between the bank and Sofort Ltd.
+    </p>
+  </div>
+  <br/>
+  <br/>
+  <div>
+    <h2>Customer Experience</h2>
+    <br/>
+    <img src="/img/faq/sofort/sofort_customer_flow.png" alt="" width="90%">
+    <br>
+    <h3>Customer Flow</h3>
+    <br>
+    <p><strong>To use SOFORT instant bank transfer as a direct transfer method:</strong></p>
+    <br>
+    <ol>
+      <li>Select your country and determine the bank that will complete the transfer.</li>
+      <li>Fill in the BIC, BLZ or the name of your bank.</li>
+      <li>Log in and confirm your purchase.</li>
+      <li>From the login area of ​​the secure payment page, log in with your online banking data.</li>
+      <li>The information is encrypted and sent to your bank.</li>
+      <li>Enter your TAN for confirmation. </li>
+      <li>For security reasons, each TAN can only be used once. The retailer receives a real-time transaction confirmation after the transfer is complete. So they can send stock goods and digital goods immediately - you get your purchases faster.</li>
+      <li>You will receive a summary of your transfer or an order confirmation from the online shop. So you have all the information about your purchase together.</li>
+    </ol>
+    <br>
+    <h3>Customer Flow in the Payenegine Widget</h3>
+    <br>
+    <p>In the Payengine Widget, the following screens represent the selection of the payment method and the bank:</p>
+    <br>
+    <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th width="5%">Step</th>
+          <th width="25%">Description</th>
+          <th width="70%">Screenshot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1a</td>
+          <td>Select <strong>Sofort</strong>.</td>
+          <td>
+            <img src="/img/faq/sofort/sofort_widget_1.png" alt="" width="60%">
+          </td>
+        </tr>
+        <tr>
+          <td>1b</td>
+          <td>Redirect to <strong>Sofort</strong>.</td>
+          <td><img src="/img/faq/sofort/sofort_widget_2.png" alt="" width="60%"></td>
+        </tr>
+        <tr>
+          <td>2a</td>
+          <td>Enter bank details.</td>
+          <td><img src="/img/faq/sofort/sofort_api_1.png" alt="" width="60%"></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Enter Account Number and PIN.</td>
+            <td><img src="/img/faq/sofort/sofort_api_2.png" alt="" width="60%">
+            </td>
+          </tr>
+          <tr>
+            <td>4a</td>
+            <td>Select <strong>Account</strong>.</td>
+            <td>
+              <img src="/img/faq/sofort/sofort_api_3.png" alt="" width="60%">
+            </td>
+          </tr>
+          <tr>
+            <td>4b</td>
+            <td>Enter <strong>TAN</strong>.</td>
+            <td>
+              <img src="/img/faq/sofort/sofort_api_4.png" alt="" width="60%">
+            </td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>The confirmation page is displayed.</td>
+            <td>
+              <img src="/img/faq/sofort/sofort_api_5.png" alt="" width="80%">
+            </td>
+          </tr>
+      </tbody>
+    </table>
+    <br/>
+    <br>
+  </div>
+  <div>
+    <h2>Payengine Details</h2>
+    <br/>
+    <h3>General</h3>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <tbody>
+        <tr>
+          <th width="50%">Product</th>
+          <td width="50%">SOFORT</td>
+        </tr>
+        <tr>
+          <th width="50%">Channels</th>
+          <td width="50%">ecom</td>
+        </tr>
+        <tr>
+          <th width="50%">Currencies</th>
+          <td width="50%">EUR, CHF, DKK, GBP, PLN, NOK, SEK</td>
+        </tr>
+        <tr>
+          <th width="50%">Countries</th>
+          <td width="50%">DE, AT, IT, CH, NL, NO, FI, DK, ES, PL, FR, SE, UK, BE</td>
+        </tr>
+        <tr>
+          <th width="50%">Technical Flow</th>
+          <td width="50%">asynchronous</td>
+        </tr>
+        <tr>
+          <th width="50%">Recurring</th>
+          <td width="50%">yes (only via SEPA direct debit payments)</td>
+        </tr>
+        <tr>
+          <th width="50%">Chargebacks</th>
+          <td width="50%">yes</td>
+        </tr>
+        <tr>
+          <th width="50%">Reusable Payment Instruments</th>
+          <td width="50%">yes (only for SEPA direct debit payments)</td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <br/>
+    <h3>Supported Features and Services</h3>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <tbody>
+        <tr>
+          <th width="50%">Debit</th>
+          <td width="50%">yes</td>
+        </tr>
+        <tr>
+          <th width="50%">Preauthorization</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Cancellation</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Capture</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Refunds</th>
+          <td width="50%">Yes (full & partial) 
+            <br>
+            <strong>Note</strong> For more information, contact Payengine support team.</td>
+        </tr>
+        <tr>
+          <th width="50%">Notifications</th>
+          <td width="50%">yes - webhook, email</td>
+        </tr>
+        <tr>
+          <th width="50%">PayLink Integration</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Settlement Reporting</th>
+          <td width="50%">no</td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <br/>
+    <h3>Integration Types</h3>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <tbody>
+        <tr>
+          <th width="50%">API</th>
+          <td width="50%">yes</td>
+        </tr>
+        <tr>
+          <th width="50%">Widget</th>
+          <td width="50%">yes</td>
+        </tr>
+        <tr>
+          <th width="50%">Bridge</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Shop Plugin</th>
+          <td width="50%">yes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <br>
+  <div>
+    <h2>Integration via Widget</h2>
+    <br>
+    <p>Widget integration for SOFORT Payment Methods follows general rules of widget integration for all payment methods.</p>
+    <br>
+    <p>For more information, see <a href="https://docs.payengine.de/outofthebox/widgetmenu/ourwidget">How to integrate the Payment method via widget</a>.</p>
+  </div>
+  <br>
+  <br>
+  <div>
+    <h2>Integration via API</h2>
+    <br>
+    <h3>Technical Flow</h3>
+    <br/>
+    <p><strong>Note</strong> Please contact the Payengine integration team to create SOFORT payment configuration and then you can create a SOFORT transaction.</p>
+    <br>
+    <img src="/img/faq/sofort/sofort-tf.png" width="80%">
+    <br>
+    <p><strong>Webhook notifications</strong></p>
+    <br>
+    <p>As it is not ensured at the time of the redirect to the shop that the payment was 100% successful, the Payengine waits for the final asynchronous notification from the bank before a status is moved from PENDING into SUCCESS or FAILURE.</p>
+    <br>
+    <p>A merchant should register for the Payengine webhook notifications in order to receive this final status update. A GET on the order or DEBIT transaction would also work, but it is not ensured that the final status will be available immediately after the redirect and a merchant might have to query the GET multiple times. Therefore it is strongly recommended that the asynchronous notifications from the Payengine are used insted.</p>
+    <br>
+    <p>You can subscribe to the SOFORT notifications:</p>
+    <br>
+    <ul>
+      <li>via the Payengine API (<a href="https://docs.payengine.de/buildyourown/apidocs">Link to API documentation</a>)</li>
+      <li>via the Payengine Merchant Center (<a href="https://docs.payengine.de/merchantcenter/managenotification">Link to Merchant Center notifications documentation</a>)</li>
+    </ul>
+    <br>
+    <p>The following events are sent when the status of charge is updated:</p>
+    <br>
+    <table class="table table-bordered table-striped table-condensed">
+        <thead>
+          <tr>
+            <th>EVENT</th>
+            <th>DESCRIPTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>debit.success</td>
+            <td>The charge succeeded and the payment is complete.</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+<br>
+<br>
+<div>
+  <h2>Specifics</h2>
+  <br>
+  <h3>SOFORT Payment specific request parameters</h3>
+  <br>
+  <br>
+  <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Mandatory/Optional</th>
+          <th>Description</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>async.successUrl</td>
+          <td>M</td>
+          <td>Redirect URL for successful payment</td>
+          <td><a href="https://my.shop.com/success" target="_blank">https://my.shop.com/success</a></td>
+        </tr>
+        <tr>
+          <td>async.failureUrl</td>
+          <td>M</td>
+          <td>Redirect URL for unsuccessful payment</td>
+          <td><a href="https://my.shop.com/search/fail" target="_blank">http://my.shop.com/fail</a></td>
+        </tr>
+        <tr>
+          <td>async.cancelUrl</td>
+          <td>M</td>
+          <td>Redirect URL when payment is canceled</td>
+          <td><a href="http://my.shop.com/cancel" target="_blank">http://my.shop.com/cancel</a></td>
+        </tr>
+        <tr>
+          <td>basket</td>
+          <td>O</td>
+          <td>Object with basket details</td>
+          <td>
+            <code>
+  "basket": [
+  {
+    "name": "USB-Stick",
+    "articleNumber": "SW10029",
+    "totalPrice": 1190,
+    "totalPriceWithTax": 1190,
+    "unitPrice": 1190,
+    "unitPriceWithTax": 1190,
+    "tax": 0,
+    "quantity": 1
+  }
+],
+            </code>
+          </td>
+        </tr>
+        <tr>
+          <td>customer</td>
+          <td>O</td>
+          <td>customer ID</td>
+          <td>customer_ydh6xnyzon</td>
+        </tr>
+        <tr>
+          <td>persona</td>
+          <td>O</td>
+          <td>persona ID</td>
+          <td>persona_16dbwkgcyw</td>
+        </tr>
+        <tr>
+          <td>billingAddress</td>
+          <td>O</td>
+          <td>billing address ID</td>
+          <td>address_gqbly4mw9l</td>
+        </tr>
+        <tr>
+          <td>shippingAddress</td>
+          <td>O</td>
+          <td>shipping address ID</td>
+          <td>address_gqbly4mw9l</td>
+        </tr>
+        <tr>
+          <td>payment</td>
+          <td>O</td>
+          <td>Object with payment details
+            <br>
+              (account holder, bankname, iban, bic)</td>
+          <td ng-non-bindable>"payment":
+            <br>
+              { "accountHolder": "max max" },</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<br>
+<p><strong>Debit transaction </strong></p>
+  <br>
+  <p>POST /orders/debit</p>
+  <br>
+  <div>
+    <div class="example-box-wrapper">
+      <div class="content-box" ng-init="createCustomerResponseShoww=false">
+        <h3 class="content-box-header bg-default">
+          Sofort Debit request
+          <div class="header-buttons-separator">
+            <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShoww=!createCustomerResponseShoww;">
+              <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShoww"></i>
+              <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShoww"></i>
+            </a>
+          </div>
+        </h3>
+        <div class="content-box-wrapper" ng-if="createCustomerResponseShoww">
+          <code>
+  {
+    "product": "sofort",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "merchantOrderId": "1556087694",
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 1190,
+    "currency": "EUR",
+    "basket": [
+      {
+        "name": "USB-Stick",
+        "articleNumber": "SW10029",
+        "totalPrice": 1190,
+        "totalPriceWithTax": 1190,
+        "unitPrice": 1190,
+        "unitPriceWithTax": 1190,
+        "tax": 0,
+        "quantity": 1
+      }
+    ],
+    "ipAddress": "192.168.0.1",
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "async": {
+      "successUrl": "https://www.google.de/#newwindow=1&q=success",
+      "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+      "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel",
+      "notifications":
+      [
+          {
+              "notificationUrn":"http://api.webhookinbox.com/i/C1LgHMsr/in/",
+              "notificationState": ["CREATED","UPDATED"]
+          }
+      ]
+    }
+  }
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+  <div>
+    <div class="example-box-wrapper">
+      <div class="content-box" ng-init="createCustomerResponseShow=false">
+        <h3 class="content-box-header bg-default">
+          Sofort Debit response
+          <div class="header-buttons-separator">
+            <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow;">
+              <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+              <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+            </a>
+          </div>
+        </h3>
+        <div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+          <code>
+  {
+    "createdAt": 1556087694198,
+    "modifiedAt": 1556087694568,
+    "merchantId": "merchant_bsigefhjze",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "orderId": "gxwhxy06aj",
+    "merchantOrderId": "1556087694",
+    "paymentProviderTransactionId": "74766-425627-5CC0038E-0CC8",
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 1190,
+    "preauthorizedAmount": 0,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "EUR",
+    "basket": [
+        {
+            "id": "Article-8b6209fe-af38-40d9-ae7f-38f8b612e064",
+            "name": "USB-Stick",
+            "articleNumber": "SW10029",
+            "totalPrice": 1190,
+            "totalPriceWithTax": 1190,
+            "unitPrice": 1190,
+            "unitPriceWithTax": 1190,
+            "quantity": 1,
+            "tax": 0,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+        }
+    ],
+    "customer": {
+        "merchantCustomerId": null,
+        "organizationRegistrationRegister": null,
+        "organizationRegistrationId": null,
+        "organizationEntityType": null,
+        "organizationVatId": null,
+        "companyName": null,
+        "reference": null,
+        "email": null,
+        "customerId": "customer_t0bzb53iii",
+        "addresses": [],
+        "personas": [],
+        "paymentInstruments": [],
+        "createdAt": 1556087694197,
+        "modifiedAt": 1556087694197,
+        "customerType": null
+    },
+    "persona": null,
+    "billingAddress": null,
+    "shippingAddress": null,
+    "ipAddress": "192.168.0.1",
+    "paymentInstrument": {
+        "createdAt": 1556087694179,
+        "modifiedAt": 1556087694179,
+        "paymentInstrumentId": "paymentinstrument_zunhjs4vcd",
+        "merchantPaymentInstrumentId": null,
+        "attributes": null,
+        "encrypted": false,
+        "origin": "sofort",
+        "type": "sepa",
+        "recurring": false,
+        "recurringConsent": null
+    },
+    "transactions": [
+        {
+            "createdAt": 1556087694225,
+            "modifiedAt": 1556087694569,
+            "type": "DEBIT",
+            "transactionId": "transaction_uibvchuqui",
+            "description": "test transaction",
+            "initialAmount": 1190,
+            "refundedAmount": 0,
+            "currency": "EUR",
+            "status": "PENDING",
+            "order": "gxwhxy06aj",
+            "parentTransaction": null,
+            "transactions": null,
+            "basket": [
+                {
+                    "id": "Article-8b6209fe-af38-40d9-ae7f-38f8b612e064",
+                    "name": "USB-Stick",
+                    "articleNumber": "SW10029",
+                    "totalPrice": 1190,
+                    "totalPriceWithTax": 1190,
+                    "unitPrice": 1190,
+                    "unitPriceWithTax": 1190,
+                    "quantity": 1,
+                    "tax": 0,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": null
+                }
+            ],
+            "providerCode": null,
+            "merchantMessage": null,
+            "customerMessage": null,
+            "descriptor": null,
+            "meta": null,
+            "challenge": null,
+            "asyncNotificationSubscriptionId": "d46a6027-894b-4759-8d3b-3eb63633a9bf",
+            "tracking": null
+        }
+    ],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": "Test",
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": null,
+    "product": "sofort",
+    "transactionType": "DEBIT",
+    "meta": null,
+    "async": null,
+    "deviceIdent": null,
+    "clientType": "BRW",
+    "asyncNotificationSubscriptionId": "d46a6027-894b-4759-8d3b-3eb63633a9bf",
+    "lastOperation": "TRANSACTION_DEBIT_PENDING",
+    "redirectUrl": "https://public-api-app76te.psp.cardtech.de/order/sofort/1.0/redirect/transaction_uibvchuqui"
+  }
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+<br>
+<br>
+  <p><strong>SEPA Refund transaction </strong></p>
+  <br>
+  <p><strong>Note:</strong> To refund a Sofort transaction, the SEPA Payment method must be enabled.</p>
+  <br>
+  <p ng-non-bindable>POST /orders/{{orderId}}/transactions/{{transactionId}}/refund</p>
+  <br>
+  <div>
+    <div class="example-box-wrapper">
+      <div class="content-box" ng-init="createCustomerResponseShow3=false">
+        <h3 class="content-box-header bg-default">
+          Sofort Debit request
+          <div class="header-buttons-separator">
+            <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow3=!createCustomerResponseShow3;">
+              <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow3"></i>
+              <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow3"></i>
+            </a>
+          </div>
+        </h3>
+        <div class="content-box-wrapper" ng-if="createCustomerResponseShow3">
+          <code>
+  {
+    "description": "description for transaction.",
+    "initialAmount": 500,
+    "currency": "EUR",
+    "basket": [
+      {
+        "name": "USB-Stick",
+        "articleNumber": "SW10029",
+        "totalPrice": 500,
+        "totalPriceWithTax": 500,
+        "unitPrice": 500,
+        "unitPriceWithTax": 500,
+        "tax": 0,
+        "quantity": 1
+      }
+    ]
+  }
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+  <div>
+    <div class="example-box-wrapper">
+      <div class="content-box" ng-init="createCustomerResponseShow4=false">
+        <h3 class="content-box-header bg-default">
+          Sofort Refund response
+          <div class="header-buttons-separator">
+            <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow4=!createCustomerResponseShow4;">
+              <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow4"></i>
+              <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow4"></i>
+            </a>
+          </div>
+        </h3>
+        <div class="content-box-wrapper" ng-if="createCustomerResponseShow4">
+          <code>
+  {
+    "createdAt": 1556089638531,
+    "modifiedAt": 1556089638531,
+    "type": "REFUND",
+    "transactionId": "transaction_w449abx70b",
+    "description": "description for transaction.",
+    "initialAmount": 500,
+    "currency": "EUR",
+    "status": "FAILURE",
+    "order": {
+        "createdAt": 1556085363216,
+        "modifiedAt": 1556089639485,
+        "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
+        "terms": 1556085363045,
+        "privacy": 1556085363045,
+        "orderId": "dmwbprnoq0",
+        "merchantOrderId": null,
+        "paymentProviderTransactionId": "74766-159895-5CBFFA79-B003",
+        "description": null,
+        "statementDescription": null,
+        "initialAmount": 2000,
+        "preauthorizedAmount": 2000,
+        "capturedAmount": 2000,
+        "refundedAmount": 0,
+        "canceledAmount": 0,
+        "currency": "EUR",
+        "basket": [],
+        "customer": {
+            "merchantCustomerId": null,
+            "organizationRegistrationRegister": null,
+            "organizationRegistrationId": null,
+            "organizationEntityType": null,
+            "organizationVatId": null,
+            "companyName": null,
+            "reference": null,
+            "email": null,
+            "customerId": "customer_prgomcpcpz",
+            "addresses": [],
+            "personas": [],
+            "paymentInstruments": [],
+            "createdAt": 1556085369728,
+            "modifiedAt": 1556085369728,
+            "customerType": null
+        },
+        "persona": null,
+        "billingAddress": null,
+        "shippingAddress": null,
+        "ipAddress": null,
+        "paymentInstrument": null,
+        "transactions": [
+            {
+                "createdAt": 1556085369730,
+                "modifiedAt": 1556085414511,
+                "type": "DEBIT",
+                "transactionId": "transaction_sx6mftev4e",
+                "description": null,
+                "initialAmount": 2000,
+                "refundedAmount": 0,
+                "currency": "EUR",
+                "status": "SUCCESS",
+                "order": "dmwbprnoq0",
+                "parentTransaction": null,
+                "transactions": [
+                    "transaction_w449abx70b"
+                ],
+                "basket": [],
+                "providerCode": null,
+                "merchantMessage": null,
+                "customerMessage": null,
+                "descriptor": null,
+                "meta": null,
+                "challenge": null,
+                "asyncNotificationSubscriptionId": null,
+                "tracking": []
+            }
+        ],
+        "status": "OPEN",
+        "channel": "ECOM",
+        "source": null,
+        "settled": false,
+        "settlementDate": null,
+        "allowedProducts": [
+            "creditcard",
+            "paypal",
+            "alipay",
+            "paydirekt",
+            "giropay",
+            "ideal",
+            "sofort",
+            "wechat-pay",
+            "prepayment",
+            "eps",
+            "bancontact",
+            "sepa"
+        ],
+        "product": "sofort",
+        "transactionType": "DEBIT",
+        "meta": null,
+        "async": null,
+        "deviceIdent": null,
+        "clientType": "BRW",
+        "asyncNotificationSubscriptionId": null,
+        "lastOperation": "TRANSACTION_REFUND_FAILURE",
+        "redirectUrl": "https://public-api-app76te.psp.cardtech.de/order/sofort/1.0/redirect/transaction_sx6mftev4e"
+    },
+    "parentTransaction": {
+        "createdAt": 1556085369730,
+        "modifiedAt": 1556085414511,
+        "type": "DEBIT",
+        "transactionId": "transaction_sx6mftev4e",
+        "description": null,
+        "initialAmount": 2000,
+        "refundedAmount": 0,
+        "currency": "EUR",
+        "status": "SUCCESS",
+        "order": {
+            "createdAt": 1556085363216,
+            "modifiedAt": 1556085414521,
+            "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
+            "terms": 1556085363045,
+            "privacy": 1556085363045,
+            "orderId": "dmwbprnoq0",
+            "merchantOrderId": null,
+            "paymentProviderTransactionId": "74766-159895-5CBFFA79-B003",
+            "description": null,
+            "statementDescription": null,
+            "initialAmount": 2000,
+            "preauthorizedAmount": 2000,
+            "capturedAmount": 2000,
+            "refundedAmount": 0,
+            "canceledAmount": 0,
+            "currency": "EUR",
+            "basket": [],
+            "customer": {
+                "merchantCustomerId": null,
+                "organizationRegistrationRegister": null,
+                "organizationRegistrationId": null,
+                "organizationEntityType": null,
+                "organizationVatId": null,
+                "companyName": null,
+                "reference": null,
+                "email": null,
+                "customerId": "customer_prgomcpcpz",
+                "addresses": [],
+                "personas": [],
+                "paymentInstruments": [],
+                "createdAt": 1556085369728,
+                "modifiedAt": 1556085369728,
+                "customerType": null
+            },
+            "persona": null,
+            "billingAddress": null,
+            "shippingAddress": null,
+            "ipAddress": null,
+            "paymentInstrument": null,
+            "transactions": [
+                "transaction_sx6mftev4e"
+            ],
+            "status": "OPEN",
+            "channel": "ECOM",
+            "source": null,
+            "settled": false,
+            "settlementDate": null,
+            "allowedProducts": [
+                "creditcard",
+                "paypal",
+                "alipay",
+                "paydirekt",
+                "giropay",
+                "ideal",
+                "sofort",
+                "wechat-pay",
+                "prepayment",
+                "eps",
+                "bancontact",
+                "sepa"
+            ],
+            "product": "sofort",
+            "transactionType": "DEBIT",
+            "meta": null,
+            "async": null,
+            "deviceIdent": null,
+            "clientType": "BRW",
+            "asyncNotificationSubscriptionId": null,
+            "lastOperation": "TRANSACTION_REFUND_FAILURE",
+            "redirectUrl": "https://public-api-app76te.psp.cardtech.de/order/sofort/1.0/redirect/transaction_sx6mftev4e"
+        },
+        "parentTransaction": null,
+        "transactions": [
+            "transaction_w449abx70b"
+        ],
+        "basket": [],
+        "providerCode": null,
+        "merchantMessage": null,
+        "customerMessage": null,
+        "descriptor": null,
+        "meta": null,
+        "challenge": null,
+        "asyncNotificationSubscriptionId": null,
+        "tracking": []
+    },
+    "transactions": null,
+    "basket": [
+        {
+            "id": "Article-dc2eefb1-f9e8-4670-8da9-41e0b5f4f44a",
+            "name": "USB-Stick",
+            "articleNumber": "SW10029",
+            "totalPrice": 500,
+            "totalPriceWithTax": 500,
+            "unitPrice": 500,
+            "unitPriceWithTax": 500,
+            "quantity": 1,
+            "tax": 0,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+        }
+    ],
+    "providerCode": null,
+    "merchantMessage": "Invalid payment type",
+    "customerMessage": "1006",
+    "descriptor": null,
+    "meta": null,
+    "challenge": null,
+    "asyncNotificationSubscriptionId": null,
+    "tracking": null
+  }
+          </code>
+        </div>
+      </div>
+    </div>
+</div>
+

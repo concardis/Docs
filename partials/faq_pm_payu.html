@@ -1,0 +1,1051 @@
+
+
+<div>
+  <img src="/img/faq/payU/PAYULogo-1-1024x614.jpg" alt="" width="320px">
+  <ul>
+    <li>1. Overview</li>
+    <li>2. Customer Experience</li>
+    <li>3. Payengine Details</li>
+      <ul>
+        <li>3.1 General Details</li>
+        <li>3.2 Supported Features & Services</li>
+        <li>3.3 Integration Types</li>
+        <li>3.4 Technical Flow</li>
+        <li>3.5 Notifications</li>
+        <li>3.6 Specifics</li>
+          <ul>
+            <li>3.6.1 Input Parameters for Authorizing Transactions</li>
+          </ul>
+        <li>3.7 Samples</li>
+          <ul>
+            <li>3.7.1 Debit transaction</li>
+            <li>3.7.2 Refund transaction</li>
+          </ul>
+      </ul>
+    <li>4 Testing</li>
+  </ul>
+  <br>
+  <br>
+  <div>
+    <br/>
+    <br/>
+    <h2>Overview</h2>
+    <br/>
+    <p>
+      Тhe PostFinance Card is a local debit card in Switzerland issued by PostFinance. It is a popular payment method in eCommerce and more than 3 million PostFinance Card holders can reached.
+    </p>
+  </div>
+  <br/>
+  <br/>
+  <div>
+    <h2>Preconditions</h2>
+    <br/>
+    <p>
+      PayU is an innovative payment system that is very popular in Poland and the Czech Republic. 
+      <br>
+      PayU allows customers to pay via bank transfer, credit card, BLIK, digital wallet (Google Pay, Visa Checkout, Masterpass, etc.).
+      <br>
+      In addition, customers could pay in installments or pay later by invoice. 
+    </p>
+  </div>
+  <br>
+  <br>
+  <div>
+    <h2>Customer Experience</h2>
+    <br/>
+    <p>The following list will describe a simplified payment flow using PostFinance Card.</p>
+    <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th width="5%">Step</th>
+          <th width="25%">Description</th>
+          <th width="70%">Screenshot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Choose PayU</td>
+          <td>
+            <img src="/img/faq/payU/Payu.1.PNG" alt="" width="50%">
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Click <strong>Pay</strong></td>
+          <td><img src="/img/faq/payU/Payu.2.PNG" alt="" width="50%"></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Redirect to PayU</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Proceed with the PayU page</td>
+          <td><img src="/img/faq/payU/Payu.3.PNG" alt="" width="50%">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <p>Note: This customer experience can be seen in a live environment. In a test environment, the customer experience may look different.</p>
+    <br>
+  </div>
+  <div>
+    <h2>Payengine Details</h2>
+    <br/>
+    <h3>General Details</h3>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <tbody>
+        <tr>
+          <th width="50%">Product</th>
+          <td width="50%">PayU</td>
+        </tr>
+        <tr>
+          <th width="50%">Payment Options (for Customer)</th>
+          <td width="50%">
+            <ul>
+              <li>bank transfer</li>
+              <li>credit card</li>
+              <li>BLIK</li>
+              <li>digital wallets</li>
+              <li>installments</li>
+              <li>invoice</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <th width="50%">Channels</th>
+          <td width="50%">ECOM</td>
+        </tr>
+        <tr>
+          <th width="50%">Currencies</th>
+          <td width="50%">PLN, CZK</td>
+        </tr>
+        <tr>
+          <th width="50%">Countries</th>
+          <td width="50%">PL, CZ</td>
+        </tr>
+        <tr>
+          <th width="50%">Type</th>
+          <td width="50%">Direct debit/Preauth</td>
+        </tr>
+        <tr>
+          <th width="50%">Technical Flow</th>
+          <td width="50%">asynchronous</td>
+        </tr>
+        <tr>
+          <th width="50%">Recurring</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Chargebacks</th>
+          <td width="50%" color="red">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Reusable Payment Instruments</th>
+          <td width="50%">no</td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <br/>
+    <h3>Supported Features and Services</h3>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <tbody>
+        <tr>
+          <th width="50%">Debit</th>
+          <td width="50%">yes</td>
+        </tr>
+        <tr>
+          <th width="50%">Preauthorization</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Cancellation</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Capture</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Refunds</th>
+          <td width="50%">yes</td>
+        </tr>
+        <tr>
+          <th width="50%">Notifications</th>
+          <td width="50%">yes - webhook, email</td>
+        </tr>
+        <tr>
+          <th width="50%">Settlement Reporting</th>
+          <td width="50%">yes - Unified Settlement Reporting</td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <br/>
+    <h3>Integration Types</h3>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <tbody>
+        <tr>
+          <th width="50%">API</th>
+          <td width="50%">yes</td>
+        </tr>
+        <tr>
+          <th width="50%">Widget</th>
+          <td width="50%">yes</td>
+        </tr>
+        <tr>
+          <th width="50%">Widget as a Bridge</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Shop Plugin</th>
+          <td width="50%">no</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <br>
+  <div>
+    <h3>Technical Flow</h3>
+    <br/>
+    <p>via direct API integration</p>
+    <br>
+    <img src="/img/faq/payU/PayU-tf.png" width="80%">
+  </div>
+<br>
+<br>
+<div>
+  <h3>Notifications</h3>
+  <br>
+  <p><strong>Webhook and email notifications</strong></p>
+  <br>
+  <p>
+    At the time of the redirect, it is still uncertain whether a transaction will be completed successfully or not. Therefore, Payengine awaits for the final asynchronous notification before the status of a DEBIT transaction is changed from PENDING to SUCCESS or FAILURE.
+    <br><br>
+    A merchant should register for Payengine's notifications to receive this final status update.
+    <br><br>
+    Alternatively, a GET request on the order or DEBIT transaction would also work, but it is not ensured that the final status will be available immediately after the redirect and a merchant might have to query the GET multiple times.
+    <br><br>
+    Therefore, it is strongly recommended that Payengine's asynchronous notifications are used instead.
+    <br><br>
+    Merchants could receive notifications via URL (webhook) or email.
+    <br><br>
+    The PayU notifications could be subscribed:
+  </p>
+  <br>
+  <ul>
+    <li>via the payengine API (<a href="https://docs.payengine.de/notifications/introduction">link to public website Notifications docu</a>)</li>
+    <li>via the Payengine Merchant Center (<a href="https://docs.payengine.de/notifications/subscription_via_mc">link to MC Notifications docu</a> )</li>
+  </ul>
+</div>
+<br>
+<br>
+<div>
+  <h3>Specifics</h3>
+  <br>
+  <p><strong>Input Parameters for Authorizing Transactions</strong></p>
+  <br>
+  <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Mandatory/Optional</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>async.cancelUrl</td>
+          <td>M</td>
+          <td>Redirect URL when payment is canceled</td>
+          <td>string</td>
+          <td><a href="http://my.shop.com/cancel" target="_blank">http://my.shop.com/cancel</a></td>
+        </tr>
+        <tr>
+          <td>async.failureUrl</td>
+          <td>M</td>
+          <td>Redirect URL for unsuccessful payment</td>
+          <td>string</td>
+          <td><a href="http://my.shop.com/fail" target="_blank">http://my.shop.com/fail</a></td>
+        </tr>
+        <tr>
+          <td>async.successUrl</td>
+          <td>M</td>
+          <td>Redirect URL for successful payment</td>
+          <td>string</td>
+          <td><a href="http://my.shop.com/success" target="_blank">http://my.shop.com/success</a></td>
+        </tr>
+        <tr>
+          <td>currency</td>
+          <td>M</td>
+          <td>OThe currency of the transaction <br>
+            Accepted values: PLN, CZK</td>
+          <td>string</td>
+          <td>PLN</td>
+        </tr>
+        <tr>
+          <td>payment.accountHolder</td>
+          <td>O</td>
+          <td>The PayU accountholder name</td>
+          <td>string</td>
+          <td>Dr. Hans-Peter Meier</td>
+        </tr>
+        <tr>
+          <td>payment.compliantEmail</td>
+          <td>O</td>
+          <td>The accountholder's email</td>
+          <td>string</td>
+          <td><a href="mailto:test@test.com" target="_blank">test@test.com</a></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<br>
+<br>
+<div>
+  <h3>Samples</h3>
+  <br>
+  <p><strong>Debit transaction</strong></p>
+  <br>
+  <p ng-non-bindable>POST/{{publicApiUrl}}/v1/orders/debit</p>
+  <br>
+  <div>
+    <div class="example-box-wrapper">
+      <div class="content-box" ng-init="createCustomerResponseShoww=false">
+        <h3 class="content-box-header bg-default">
+          Create Debit request
+          <div class="header-buttons-separator">
+            <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShoww=!createCustomerResponseShoww;">
+              <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShoww"></i>
+              <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShoww"></i>
+            </a>
+          </div>
+        </h3>
+        <div class="content-box-wrapper" ng-if="createCustomerResponseShoww">
+          <code>
+  {
+    "product": "payu",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "merchantOrderId": "merchantOrderId{{$timestamp}}",
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 6060,
+    "currency": "PLN",
+    "basket": [
+        {
+            "name": "USB-Stick",
+            "articleNumber": "SW10029",
+            "totalPrice": 2000,
+            "totalPriceWithTax": 2020,
+            "unitPrice": 2000,
+            "unitPriceWithTax": 2020,
+            "tax": 20,
+            "quantity": 1
+        },
+        {
+            "name": "USB-Stick-new",
+            "articleNumber": "SW10030",
+            "totalPrice": 4000,
+            "totalPriceWithTax": 4040,
+            "unitPrice": 2000,
+            "unitPriceWithTax": 2020,
+            "tax": 20,
+            "quantity": 2
+        }
+    ],
+    "payment": {
+        "accountHolder": "Dr. Hans-Peter Meier",
+        "compliantEmail": "test@test.com"
+    },
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "async": {
+        "successUrl": "https://www.google.de/#newwindow=1&q=success",
+        "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+        "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
+    }
+  }
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+  <div>
+    <div class="example-box-wrapper">
+      <div class="content-box" ng-init="createCustomerResponseShow=false">
+        <h3 class="content-box-header bg-default">
+          Create Debit response
+          <div class="header-buttons-separator">
+            <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow;">
+              <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+              <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+            </a>
+          </div>
+        </h3>
+        <div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+          <code>
+  {
+    "createdAt": 1583335400722,
+    "modifiedAt": 1583335400781,
+    "merchantId": "merchant_bwwo5xstjr",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "orderId": "kzkg24gfoh",
+    "merchantOrderId": "merchantOrderId1583335404",
+    "paymentProviderTransactionId": "612036621",
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 6060,
+    "preauthorizedAmount": 0,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "PLN",
+    "basket": [
+        {
+            "id": "Article-4a9163c4-af65-4e4c-9ee9-e31e6216da9b",
+            "name": "USB-Stick-new",
+            "articleNumber": "SW10030",
+            "totalPrice": 4000,
+            "totalPriceWithTax": 4040,
+            "unitPrice": 2000,
+            "unitPriceWithTax": 2020,
+            "quantity": 2,
+            "tax": 20,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+        },
+        {
+            "id": "Article-0fe4dcf6-a75c-4668-9b30-38b5aac36de4",
+            "name": "USB-Stick",
+            "articleNumber": "SW10029",
+            "totalPrice": 2000,
+            "totalPriceWithTax": 2020,
+            "unitPrice": 2000,
+            "unitPriceWithTax": 2020,
+            "quantity": 1,
+            "tax": 20,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+        }
+    ],
+    "customer": {
+        "merchantCustomerId": null,
+        "organizationRegistrationRegister": null,
+        "organizationRegistrationId": null,
+        "organizationEntityType": null,
+        "organizationVatId": null,
+        "companyName": null,
+        "reference": null,
+        "email": null,
+        "customerId": "customer_pob2q6bu4j",
+        "addresses": [],
+        "personas": [],
+        "paymentInstruments": [],
+        "createdAt": 1583335400746,
+        "modifiedAt": 1583335400746,
+        "customerType": null
+    },
+    "persona": null,
+    "billingAddress": null,
+    "shippingAddress": null,
+    "ipAddress": null,
+    "paymentInstrument": {
+        "createdAt": 1583335400725,
+        "modifiedAt": 1583335400725,
+        "paymentInstrumentId": "paymentinstrument_5wzijhl1ub",
+        "merchantPaymentInstrumentId": null,
+        "attributes": {
+            "accountHolder": "Dr. Hans-Peter Meier"
+        },
+        "encrypted": false,
+        "origin": "payu",
+        "type": "payu",
+        "recurring": false
+    },
+    "transactions": [
+        {
+            "createdAt": 1583335400724,
+            "modifiedAt": 1583335400781,
+            "type": "DEBIT",
+            "transactionId": "transaction_t0jqv55lw5",
+            "description": "test transaction",
+            "initialAmount": 6060,
+            "refundedAmount": 0,
+            "currency": "PLN",
+            "status": "PENDING",
+            "order": "kzkg24gfoh",
+            "parentTransaction": null,
+            "transactions": null,
+            "basket": [
+                {
+                    "id": "Article-4a9163c4-af65-4e4c-9ee9-e31e6216da9b",
+                    "name": "USB-Stick-new",
+                    "articleNumber": "SW10030",
+                    "totalPrice": 4000,
+                    "totalPriceWithTax": 4040,
+                    "unitPrice": 2000,
+                    "unitPriceWithTax": 2020,
+                    "quantity": 2,
+                    "tax": 20,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": null
+                },
+                {
+                    "id": "Article-0fe4dcf6-a75c-4668-9b30-38b5aac36de4",
+                    "name": "USB-Stick",
+                    "articleNumber": "SW10029",
+                    "totalPrice": 2000,
+                    "totalPriceWithTax": 2020,
+                    "unitPrice": 2000,
+                    "unitPriceWithTax": 2020,
+                    "quantity": 1,
+                    "tax": 20,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": null
+                }
+            ],
+            "providerCode": null,
+            "merchantMessage": null,
+            "customerMessage": null,
+            "descriptor": null,
+            "meta": null,
+            "challenge": null,
+            "asyncNotificationSubscriptionId": null,
+            "tracking": null
+        }
+    ],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": null,
+    "product": "payu",
+    "transactionType": "DEBIT",
+    "meta": null,
+    "async": {
+        "successUrl": "https://www.google.de/#newwindow=1&q=success",
+        "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+        "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel",
+        "confirmUrl": null
+    },
+    "deviceIdent": null,
+    "clientType": "BRW",
+    "asyncNotificationSubscriptionId": null,
+    "lastOperation": "TRANSACTION_DEBIT_PENDING",
+    "locale": null,
+    "redirectUrl": "https://public-api-app51t.psp.cardtech.de/order/payu/1.0/redirect/Order-62b55641-5c91-451c-9fba-730afeb99fb5"
+  }
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+<br>
+<br>
+  <p><strong>Refund transaction</strong></p>
+  <br>
+  <p ng-non-bindable>POST/{{publicApiUrl}}/{{apiVersion}}/orders/{{orderId}}/transactions/{{transactionId}}/refund</p>
+  <br>
+  <div>
+    <div class="example-box-wrapper">
+      <div class="content-box" ng-init="createCustomerResponseShow3=false">
+        <h3 class="content-box-header bg-default">
+          Create Refund request
+          <div class="header-buttons-separator">
+            <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow3=!createCustomerResponseShow3;">
+              <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow3"></i>
+              <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow3"></i>
+            </a>
+          </div>
+        </h3>
+        <div class="content-box-wrapper" ng-if="createCustomerResponseShow3">
+          <code>
+  {
+    "description": "description for transaction.",
+    "initialAmount": 6060,
+    "currency": "PLN",
+    "basket": [
+        {
+            "name": "USB-Stick",
+            "articleNumber": "SW10029",
+            "totalPrice": 2000,
+            "totalPriceWithTax": 2020,
+            "unitPrice": 2000,
+            "unitPriceWithTax": 2020,
+            "tax": 20,
+            "quantity": 1
+        },
+        {
+            "name": "USB-Stick-new",
+            "articleNumber": "SW10030",
+            "totalPrice": 4000,
+            "totalPriceWithTax": 4040,
+            "unitPrice": 2000,
+            "unitPriceWithTax": 2020,
+            "tax": 20,
+            "quantity": 2
+        }
+      ]
+    }
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+  <div>
+    <div class="example-box-wrapper">
+      <div class="content-box" ng-init="createCustomerResponseShow4=false">
+        <h3 class="content-box-header bg-default">
+          Create Refund response
+          <div class="header-buttons-separator">
+            <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow4=!createCustomerResponseShow4;">
+              <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow4"></i>
+              <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow4"></i>
+            </a>
+          </div>
+        </h3>
+        <div class="content-box-wrapper" ng-if="createCustomerResponseShow4">
+          <code>
+  {
+    "createdAt": 1583327063079,
+    "modifiedAt": 1583327063130,
+    "type": "REFUND",
+    "transactionId": "transaction_emc9spqfaf",
+    "description": "description for transaction.",
+    "initialAmount": 6060,
+    "currency": "PLN",
+    "status": "SUCCESS",
+    "order": {
+        "createdAt": 1583325259519,
+        "modifiedAt": 1583327063130,
+        "merchantId": "merchant_tz9nlg7o09",
+        "terms": 1468590412476,
+        "privacy": 1468590412476,
+        "orderId": "6t0ag88czi",
+        "merchantOrderId": null,
+        "paymentProviderTransactionId": "c8c8ff1b-9eff-4d8a-b",
+        "description": "test transaction",
+        "statementDescription": "statement description",
+        "initialAmount": 6060,
+        "preauthorizedAmount": 6060,
+        "capturedAmount": 6060,
+        "refundedAmount": 6060,
+        "canceledAmount": 0,
+        "currency": "PLN",
+        "basket": [
+            {
+                "id": "Article-1b576eef-9023-4af2-8aa4-e70315bb4e67",
+                "name": "USB-Stick",
+                "articleNumber": "SW10029",
+                "totalPrice": 2000,
+                "totalPriceWithTax": 2020,
+                "unitPrice": 2000,
+                "unitPriceWithTax": 2020,
+                "quantity": 1,
+                "tax": 20,
+                "discount": null,
+                "imageUrl": null,
+                "articleUrl": null,
+                "articleType": null
+            },
+            {
+                "id": "Article-0770ed46-dc04-4100-9b07-ab66c3ba12a6",
+                "name": "USB-Stick-new",
+                "articleNumber": "SW10030",
+                "totalPrice": 4000,
+                "totalPriceWithTax": 4040,
+                "unitPrice": 2000,
+                "unitPriceWithTax": 2020,
+                "quantity": 2,
+                "tax": 20,
+                "discount": null,
+                "imageUrl": null,
+                "articleUrl": null,
+                "articleType": null
+            }
+        ],
+        "customer": {
+            "merchantCustomerId": null,
+            "organizationRegistrationRegister": null,
+            "organizationRegistrationId": null,
+            "organizationEntityType": null,
+            "organizationVatId": null,
+            "companyName": null,
+            "reference": null,
+            "email": null,
+            "customerId": "customer_t5mujmofkw",
+            "addresses": [],
+            "personas": [],
+            "paymentInstruments": [],
+            "createdAt": 1583325259557,
+            "modifiedAt": 1583325259557,
+            "customerType": null
+        },
+        "persona": null,
+        "billingAddress": null,
+        "shippingAddress": null,
+        "ipAddress": null,
+        "paymentInstrument": {
+            "createdAt": 1583325259521,
+            "modifiedAt": 1583325259521,
+            "paymentInstrumentId": "paymentinstrument_1jkai1hg2b",
+            "merchantPaymentInstrumentId": null,
+            "attributes": {
+                "accountHolder": "Dr. Hans-Peter Meier"
+            },
+            "encrypted": false,
+            "origin": "payu",
+            "type": "payu",
+            "recurring": false
+        },
+        "transactions": [
+            {
+                "createdAt": 1583325259520,
+                "modifiedAt": 1583327033382,
+                "type": "DEBIT",
+                "transactionId": "transaction_pjq8yzptzh",
+                "description": "test transaction",
+                "initialAmount": 6060,
+                "refundedAmount": 6060,
+                "currency": "PLN",
+                "status": "SUCCESS",
+                "order": "6t0ag88czi",
+                "parentTransaction": null,
+                "transactions": [
+                    "transaction_emc9spqfaf"
+                ],
+                "basket": [
+                    {
+                        "id": "Article-1b576eef-9023-4af2-8aa4-e70315bb4e67",
+                        "name": "USB-Stick",
+                        "articleNumber": "SW10029",
+                        "totalPrice": 2000,
+                        "totalPriceWithTax": 2020,
+                        "unitPrice": 2000,
+                        "unitPriceWithTax": 2020,
+                        "quantity": 1,
+                        "tax": 20,
+                        "discount": null,
+                        "imageUrl": null,
+                        "articleUrl": null,
+                        "articleType": null
+                    },
+                    {
+                        "id": "Article-0770ed46-dc04-4100-9b07-ab66c3ba12a6",
+                        "name": "USB-Stick-new",
+                        "articleNumber": "SW10030",
+                        "totalPrice": 4000,
+                        "totalPriceWithTax": 4040,
+                        "unitPrice": 2000,
+                        "unitPriceWithTax": 2020,
+                        "quantity": 2,
+                        "tax": 20,
+                        "discount": null,
+                        "imageUrl": null,
+                        "articleUrl": null,
+                        "articleType": null
+                    }
+                ],
+                "providerCode": null,
+                "merchantMessage": null,
+                "customerMessage": null,
+                "descriptor": null,
+                "meta": null,
+                "challenge": null,
+                "asyncNotificationSubscriptionId": null,
+                "tracking": []
+            }
+        ],
+        "status": "CLOSED",
+        "channel": "ECOM",
+        "source": "Postman Test",
+        "settled": false,
+        "settlementDate": null,
+        "allowedProducts": [],
+        "product": "payu",
+        "transactionType": "DEBIT",
+        "meta": null,
+        "async": null,
+        "deviceIdent": null,
+        "clientType": "BRW",
+        "asyncNotificationSubscriptionId": null,
+        "lastOperation": "TRANSACTION_REFUND_SUCCESS",
+        "locale": null,
+        "risk": null,
+        "redirectUrl": "https://public-api-app54te.psp.cardtech.de/order/payu/1.0/redirect/Order-0232a8a2-5a5d-4d4b-991c-6591f01d1701"
+    },
+    "parentTransaction": {
+        "createdAt": 1583325259520,
+        "modifiedAt": 1583327033382,
+        "type": "DEBIT",
+        "transactionId": "transaction_pjq8yzptzh",
+        "description": "test transaction",
+        "initialAmount": 6060,
+        "refundedAmount": 6060,
+        "currency": "PLN",
+        "status": "SUCCESS",
+        "order": {
+            "createdAt": 1583325259519,
+            "modifiedAt": 1583327063130,
+            "merchantId": "merchant_tz9nlg7o09",
+            "terms": 1468590412476,
+            "privacy": 1468590412476,
+            "orderId": "6t0ag88czi",
+            "merchantOrderId": null,
+            "paymentProviderTransactionId": "c8c8ff1b-9eff-4d8a-b",
+            "description": "test transaction",
+            "statementDescription": "statement description",
+            "initialAmount": 6060,
+            "preauthorizedAmount": 6060,
+            "capturedAmount": 6060,
+            "refundedAmount": 6060,
+            "canceledAmount": 0,
+            "currency": "PLN",
+            "basket": [
+                {
+                    "id": "Article-1b576eef-9023-4af2-8aa4-e70315bb4e67",
+                    "name": "USB-Stick",
+                    "articleNumber": "SW10029",
+                    "totalPrice": 2000,
+                    "totalPriceWithTax": 2020,
+                    "unitPrice": 2000,
+                    "unitPriceWithTax": 2020,
+                    "quantity": 1,
+                    "tax": 20,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": null
+                },
+                {
+                    "id": "Article-0770ed46-dc04-4100-9b07-ab66c3ba12a6",
+                    "name": "USB-Stick-new",
+                    "articleNumber": "SW10030",
+                    "totalPrice": 4000,
+                    "totalPriceWithTax": 4040,
+                    "unitPrice": 2000,
+                    "unitPriceWithTax": 2020,
+                    "quantity": 2,
+                    "tax": 20,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": null
+                }
+            ],
+            "customer": {
+                "merchantCustomerId": null,
+                "organizationRegistrationRegister": null,
+                "organizationRegistrationId": null,
+                "organizationEntityType": null,
+                "organizationVatId": null,
+                "companyName": null,
+                "reference": null,
+                "email": null,
+                "customerId": "customer_t5mujmofkw",
+                "addresses": [],
+                "personas": [],
+                "paymentInstruments": [],
+                "createdAt": 1583325259557,
+                "modifiedAt": 1583325259557,
+                "customerType": null
+            },
+            "persona": null,
+            "billingAddress": null,
+            "shippingAddress": null,
+            "ipAddress": null,
+            "paymentInstrument": {
+                "createdAt": 1583325259521,
+                "modifiedAt": 1583325259521,
+                "paymentInstrumentId": "paymentinstrument_1jkai1hg2b",
+                "merchantPaymentInstrumentId": null,
+                "attributes": {
+                    "accountHolder": "Dr. Hans-Peter Meier"
+                },
+                "encrypted": false,
+                "origin": "payu",
+                "type": "payu",
+                "recurring": false
+            },
+            "transactions": [
+                "transaction_pjq8yzptzh"
+            ],
+            "status": "CLOSED",
+            "channel": "ECOM",
+            "source": "Postman Test",
+            "settled": false,
+            "settlementDate": null,
+            "allowedProducts": [],
+            "product": "payu",
+            "transactionType": "DEBIT",
+            "meta": null,
+            "async": null,
+            "deviceIdent": null,
+            "clientType": "BRW",
+            "asyncNotificationSubscriptionId": null,
+            "lastOperation": "TRANSACTION_REFUND_SUCCESS",
+            "locale": null,
+            "risk": null,
+            "redirectUrl": "https://public-api-app54te.psp.cardtech.de/order/payu/1.0/redirect/Order-0232a8a2-5a5d-4d4b-991c-6591f01d1701"
+        },
+        "parentTransaction": null,
+        "transactions": [
+            "transaction_emc9spqfaf"
+        ],
+        "basket": [
+            {
+                "id": "Article-1b576eef-9023-4af2-8aa4-e70315bb4e67",
+                "name": "USB-Stick",
+                "articleNumber": "SW10029",
+                "totalPrice": 2000,
+                "totalPriceWithTax": 2020,
+                "unitPrice": 2000,
+                "unitPriceWithTax": 2020,
+                "quantity": 1,
+                "tax": 20,
+                "discount": null,
+                "imageUrl": null,
+                "articleUrl": null,
+                "articleType": null
+            },
+            {
+                "id": "Article-0770ed46-dc04-4100-9b07-ab66c3ba12a6",
+                "name": "USB-Stick-new",
+                "articleNumber": "SW10030",
+                "totalPrice": 4000,
+                "totalPriceWithTax": 4040,
+                "unitPrice": 2000,
+                "unitPriceWithTax": 2020,
+                "quantity": 2,
+                "tax": 20,
+                "discount": null,
+                "imageUrl": null,
+                "articleUrl": null,
+                "articleType": null
+            }
+        ],
+        "providerCode": null,
+        "merchantMessage": null,
+        "customerMessage": null,
+        "descriptor": null,
+        "meta": null,
+        "challenge": null,
+        "asyncNotificationSubscriptionId": null,
+        "tracking": []
+    },
+    "transactions": null,
+    "basket": [
+        {
+            "id": "Article-0041f673-0c00-4a8f-be41-8f97804c8985",
+            "name": "USB-Stick-new",
+            "articleNumber": "SW10030",
+            "totalPrice": 4000,
+            "totalPriceWithTax": 4040,
+            "unitPrice": 2000,
+            "unitPriceWithTax": 2020,
+            "quantity": 2,
+            "tax": 20,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+        },
+        {
+            "id": "Article-4f553f69-ca7d-448e-aeb3-9b13f2218694",
+            "name": "USB-Stick",
+            "articleNumber": "SW10029",
+            "totalPrice": 2000,
+            "totalPriceWithTax": 2020,
+            "unitPrice": 2000,
+            "unitPriceWithTax": 2020,
+            "quantity": 1,
+            "tax": 20,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+        }
+    ],
+    "providerCode": null,
+    "merchantMessage": null,
+    "customerMessage": null,
+    "descriptor": null,
+    "meta": null,
+    "challenge": null,
+    "asyncNotificationSubscriptionId": null,
+    "tracking": null
+  }
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div>
+    <h2>Testing</h2>
+    <br>
+    <p>
+      PayU can be tested via the Payengine Simulator.
+      <br><br>
+      The testing amounts for the two scenarios can be found below:
+    </p>
+    <br>
+    <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th width="50%">Result</th>
+          <th width="50%">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Success</td>
+          <td>Any applicable amount. The transaction's status changes from "OK" to "SUCCESS"</td>
+        </tr>
+        <tr>
+          <td>Failure</td>
+          <td>
+              Each of the amounts listed below: <br>
+              11111 (€111,11) <br>
+              111 (€1,11) <br> <br>
+              The transaction's status changes from "OK" to "FAILURE"
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <p>Credentials for the Payengine Simulator can be received from the Payengine support team.</p>
+    <br>
+  </div>
+ 
+</div>
+

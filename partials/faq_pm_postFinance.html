@@ -42,7 +42,7 @@
     <h2>Preconditions</h2>
     <br/>
     <p>
-      Merchants will need a CHF business account and an acquiring contract with PostFinance in order to offer PostFinance Card.
+      Merchants need a CHF business account and an acquiring contract with PostFinance to offer PostFinance Card.
     </p>
   </div>
   <br>
@@ -50,7 +50,7 @@
   <div>
     <h2>Customer Experience</h2>
     <br/>
-    <p>The following list will describe a simplified payment flow using PostFinance Card.</p>
+    <p>The following list describes a simplified payment flow using PostFinance Card.</p>
     <table class="table table-bordered table-striped table-condensed">
       <thead>
         <tr>
@@ -99,7 +99,7 @@
       <thead>
         <tr>
           <th><img src="/img/3dsecure/error-triangle.png" alt="warrning error-triangle" width="80%"></th>
-          <th>All payments are processed by PostFinance at the end of the day and the purchase amount is debited from the cardholder account the following day. Funds are usually transfered to the seller's account the following day.</th>
+          <th>All payments are processed by PostFinance at the end of the day and the purchase amount is debited from the cardholder account the following day. Funds are usually transferred to the seller's account the following day.</th>
         </tr>
       </thead>
     </table>
@@ -114,7 +114,7 @@
       <tbody>
         <tr>
           <th width="50%">Product</th>
-          <td width="50%">PostFinance card</td>
+          <td width="50%">postfinance-card</td>
         </tr>
         <tr>
           <th width="50%">Channels</th>
@@ -158,19 +158,22 @@
       <tbody>
         <tr>
           <th width="50%">Debit</th>
-          <td width="50%"><strong>yes</strong></td>
+          <td width="50%">yes</td>
         </tr>
         <tr>
           <th width="50%">Preauthorization</th>
-          <td width="50%"><strong>yes</strong></td>
+          <td width="50%">yes</td>
         </tr>
         <tr>
           <th width="50%">Cancellation</th>
-          <td width="50%"><strong>yes</strong> (only full)</td>
+          <td width="50%">yes (only full)</td>
         </tr>
         <tr>
           <th width="50%">Capture</th>
-          <td width="50%"><strong>yes</strong> (only full)</td>
+          <td width="50%">
+            yes (only full) <br>
+            <strong>Note</strong> See further notes under [PubDoc] PostFinance Card#PostFinance processing delay
+          </td>
         </tr>
         <tr>
           <th width="50%">Refunds</th>
@@ -220,17 +223,20 @@
   <div>
     <h3>Technical Flow</h3>
     <br/>
-    <img src="/img/faq/postFinance/PostFinance-technical-flow.png" width="80%">
+    <img src="/img/faq/postFinance/PostFinance-tf.png" width="80%">
   </div>
 <br>
 <br>
 <div>
   <h3>Specifics</h3>
   <br>
+  <h4><strong>PostFinance processing delay</strong></h4>
+  <br>
+  <p>The transactions for PostFinance (capture, cancel, refund) are handled offline via batch file processing and and it can take up to 48 hours before Postfinance sends a notification about the successful transaction.</p>
+  <br>
   <p><strong>PostFinance input parameters</strong></p>
   <br>
   <p>The following input parameters are required for initiating a PostFinance payment via direct API integration.</p>
-  <br>
   <br>
   <table class="table table-bordered table-striped table-condensed">
       <thead>
@@ -296,22 +302,22 @@
         </h3>
         <div class="content-box-wrapper" ng-if="createCustomerResponseShoww">
           <code>
-          {
-            "product" : "postfinance-card",
-            "merchantOrderId": "ORDER12345",
-            "initialAmount": 1000,
-            "currency": "CHF",
-            "channel": "ECOM",
-            "payment": {
-              "displayLanguage" : "en",
-              "displayMobileScreen" : false
-            },
-            "async": {
-              "successUrl": "https://my.shop.com/success",
-              "failureUrl": "https://my.shop.com/fail",
-              "cancelUrl": "https://my.shop.com/cancel"
-            }
-          }
+  {
+    "product" : "postfinance-card",
+    "merchantOrderId": "ORDER12345",
+    "initialAmount": 1000,
+    "currency": "CHF",
+    "channel": "ECOM",
+    "payment": {
+      "displayLanguage" : "en",
+      "displayMobileScreen" : false
+    },
+    "async": {
+      "successUrl": "https://my.shop.com/success",
+      "failureUrl": "https://my.shop.com/fail",
+      "cancelUrl": "https://my.shop.com/cancel"
+    }
+  }
           </code>
         </div>
       </div>
@@ -334,73 +340,73 @@
         </h3>
         <div class="content-box-wrapper" ng-if="createCustomerResponseShow">
           <code>
-            {
-                "createdAt": 1576849099719,
-                "modifiedAt": 1576849099719,
-                "merchantId": "merchant_6nqj1bh7ap",
-                "terms": null,
-                "privacy": null,
-                "orderId": "blgung8xx4",
-                "merchantOrderId": "ORDER12345",
-                "paymentProviderTransactionId": null,
-                "description": null,
-                "statementDescription": null,
-                "initialAmount": 1000,
-                "preauthorizedAmount": 0,
-                "capturedAmount": 0,
-                "refundedAmount": 0,
-                "canceledAmount": 0,
-                "currency": "CHF",
-                "basket": [],
-                "customer": {
-                    "merchantCustomerId": null,
-                    "organizationRegistrationRegister": null,
-                    "organizationRegistrationId": null,
-                    "organizationEntityType": null,
-                    "organizationVatId": null,
-                    "companyName": null,
-                    "reference": null,
-                    "email": "test_customer@gmail.com",
-                    "customerId": "customer_rwdvi4gvat",
-                    "addresses": [],
-                    "personas": [],
-                    "paymentInstruments": [],
-                    "createdAt": 1576849099720,
-                    "modifiedAt": 1576849099720,
-                    "customerType": null
-                },
-                "persona": null,
-                "billingAddress": null,
-                "shippingAddress": null,
-                "ipAddress": null,
-                "paymentInstrument": null,
-                "transactions": [],
-                "status": "OPEN",
-                "channel": "ECOM",
-                "source": "Postfinance PreAuth Test",
-                "settled": false,
-                "settlementDate": null,
-                "allowedProducts": null,
-                "product": "postfinance-card",
-                "transactionType": "PREAUTH",
-                "meta": {
-                    "displayLanguage": "en",
-                    "displayMobileScreen": false,
-                    "authenticationRequestId": "ZmhXSv97T8vxdjCarBOU",
-                    "paymentId": "1LJbWEt8GjAJL7kLiQBq"
-                },
-                "async": {
-                    "successUrl": "https://my.shop.com/success",
-                    "failureUrl": "https://my.shop.com/fail",
-                    "cancelUrl": "https://my.shop.com/cancel"
-                },
-                "deviceIdent": null,
-                "clientType": "BRW",
-                "asyncNotificationSubscriptionId": null,
-                "lastOperation": null,
-                "locale": null,
-                "redirectUrl": "https://public-api-app50te.psp.cardtech.de/postfinance/auth/1LJbWEt8GjAJL7kLiQBq"
-            }
+  {
+    "createdAt": 1576849099719,
+    "modifiedAt": 1576849099719,
+    "merchantId": "merchant_6nqj1bh7ap",
+    "terms": null,
+    "privacy": null,
+    "orderId": "fxszcrqxe9",
+    "merchantOrderId": "ORDER12345",
+    "paymentProviderTransactionId": null,
+    "description": null,
+    "statementDescription": null,
+    "initialAmount": 1000,
+    "preauthorizedAmount": 0,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "CHF",
+    "basket": [],
+    "customer": {
+        "merchantCustomerId": null,
+        "organizationRegistrationRegister": null,
+        "organizationRegistrationId": null,
+        "organizationEntityType": null,
+        "organizationVatId": null,
+        "companyName": null,
+        "reference": null,
+        "email": "test_customer@gmail.com",
+        "customerId": "customer_rwdvi4gvat",
+        "addresses": [],
+        "personas": [],
+        "paymentInstruments": [],
+        "createdAt": 1576849099720,
+        "modifiedAt": 1576849099720,
+        "customerType": null
+    },
+    "persona": null,
+    "billingAddress": null,
+    "shippingAddress": null,
+    "ipAddress": null,
+    "paymentInstrument": null,
+    "transactions": [],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": "Postfinance PreAuth Test",
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": null,
+    "product": "postfinance-card",
+    "transactionType": "PREAUTH",
+    "meta": {
+        "displayLanguage": "en",
+        "displayMobileScreen": false,
+        "authenticationRequestId": "ZmhXSv97T8vxdjCarBOU",
+        "paymentId": "1LJbWEt8GjAJL7kLiQBq"
+    },
+    "async": {
+        "successUrl": "https://my.shop.com/success",
+        "failureUrl": "https://my.shop.com/fail",
+        "cancelUrl": "https://my.shop.com/cancel"
+    },
+    "deviceIdent": null,
+    "clientType": "BRW",
+    "asyncNotificationSubscriptionId": null,
+    "lastOperation": null,
+    "locale": null,
+    "redirectUrl": "https://public-api-app50te.psp.cardtech.de/postfinance/auth/1LJbWEt8GjAJL7kLiQBq"
+  }
           </code>
         </div>
       </div>
@@ -409,13 +415,13 @@
 <br>
 <br>
 <br>
-  <p><strong>Debit Transaction</strong></p>
+  <p><strong>Capture transaction</strong></p>
   <br>
   <div>
     <div class="example-box-wrapper">
       <div class="content-box" ng-init="createCustomerResponseShow3=false">
         <h3 class="content-box-header bg-default">
-          PostFinance Debit Request
+          PostFinance Capture Request
           <div class="header-buttons-separator">
             <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow3=!createCustomerResponseShow3;">
               <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow3"></i>
@@ -425,22 +431,23 @@
         </h3>
         <div class="content-box-wrapper" ng-if="createCustomerResponseShow3">
           <code>
-            {
-              "product" : "postfinance-card",
-              "merchantOrderId": "ORDER67890",
-              "initialAmount": 2000,
-              "currency": "CHF",
-              "channel": "ECOM",
-              "payment": {
-                "displayLanguage" : "en",
-                "displayMobileScreen" : false
-              },
-              "async": {
-                "successUrl": "https://my.shop.com/success",
-                "failureUrl": "https://my.shop.com/fail",
-                "cancelUrl": "https://my.shop.com/cancel"
-              }
-            }
+  {
+    "description": "Description for operation.",
+    "initialAmount": 1000,
+    "currency": "CHF",
+    "basket": [
+      {
+        "name": "USB-Stick",
+        "articleNumber": "SW10029",
+        "totalPrice": 1000,
+        "totalPriceWithTax": 1000,
+        "unitPrice": 1000,
+        "unitPriceWithTax": 1000,
+        "tax": 0,
+        "quantity": 1
+      }
+    ]
+  }
           </code>
         </div>
       </div>
@@ -453,7 +460,7 @@
     <div class="example-box-wrapper">
       <div class="content-box" ng-init="createCustomerResponseShow4=false">
         <h3 class="content-box-header bg-default">
-          PostFinance Debit Response
+          PostFinance Capture Response
           <div class="header-buttons-separator">
             <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow4=!createCustomerResponseShow4;">
               <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow4"></i>
@@ -463,73 +470,241 @@
         </h3>
         <div class="content-box-wrapper" ng-if="createCustomerResponseShow4">
           <code>
+  {
+    "createdAt": 1582298926718,
+    "modifiedAt": 1582298926718,
+    "type": "CAPTURE",
+    "transactionId": "transaction_10abfpyihj",
+    "description": "description for operation.",
+    "initialAmount": 1000,
+    "refundedAmount": 0,
+    "currency": "CHF",
+    "status": "OK",
+    "order": {
+        "createdAt": 1582298662593,
+        "modifiedAt": 1582298784440,
+        "merchantId": "merchant_6nqj1bh7ap",
+        "terms": null,
+        "privacy": null,
+        "orderId": "fxszcrqxe9",
+        "merchantOrderId": "ORDER12345",
+        "paymentProviderTransactionId": null,
+        "description": null,
+        "statementDescription": null,
+        "initialAmount": 1000,
+        "preauthorizedAmount": 1000,
+        "capturedAmount": 0,
+        "refundedAmount": 0,
+        "canceledAmount": 0,
+        "currency": "CHF",
+        "basket": [],
+        "customer": {
+            "merchantCustomerId": null,
+            "organizationRegistrationRegister": null,
+            "organizationRegistrationId": null,
+            "organizationEntityType": null,
+            "organizationVatId": null,
+            "companyName": null,
+            "reference": null,
+            "email": null,
+            "customerId": "customer_ghflfedgkn",
+            "addresses": [],
+            "personas": [],
+            "paymentInstruments": [],
+            "createdAt": 1582298662594,
+            "modifiedAt": 1582298662594,
+            "customerType": null
+        },
+        "persona": null,
+        "billingAddress": null,
+        "shippingAddress": null,
+        "ipAddress": null,
+        "paymentInstrument": {
+            "createdAt": 1582298662596,
+            "modifiedAt": 1582298662596,
+            "paymentInstrumentId": "paymentinstrument_qx1widjtw4",
+            "merchantPaymentInstrumentId": null,
+            "attributes": {},
+            "encrypted": false,
+            "origin": "postfinance-card",
+            "type": "postfinance-card",
+            "recurring": false
+        },
+        "transactions": [
             {
-              "createdAt": 1576849437518,
-              "modifiedAt": 1576849437518,
-              "merchantId": "merchant_6nqj1bh7ap",
-              "terms": null,
-              "privacy": null,
-              "orderId": "raguugydj2",
-              "merchantOrderId": "ORDER67890",
-              "paymentProviderTransactionId": null,
-              "description": null,
-              "statementDescription": null,
-              "initialAmount": 2000,
-              "preauthorizedAmount": 0,
-              "capturedAmount": 0,
-              "refundedAmount": 0,
-              "canceledAmount": 0,
-              "currency": "CHF",
-              "basket": [],
-              "customer": {
-                  "merchantCustomerId": null,
-                  "organizationRegistrationRegister": null,
-                  "organizationRegistrationId": null,
-                  "organizationEntityType": null,
-                  "organizationVatId": null,
-                  "companyName": null,
-                  "reference": null,
-                  "email": null,
-                  "customerId": "customer_3umiexmjxk",
-                  "addresses": [],
-                  "personas": [],
-                  "paymentInstruments": [],
-                  "createdAt": 1576849437518,
-                  "modifiedAt": 1576849437519,
-                  "customerType": null
-              },
-              "persona": null,
-              "billingAddress": null,
-              "shippingAddress": null,
-              "ipAddress": null,
-              "paymentInstrument": null,
-              "transactions": [],
-              "status": "OPEN",
-              "channel": "ECOM",
-              "source": null,
-              "settled": false,
-              "settlementDate": null,
-              "allowedProducts": null,
-              "product": "postfinance-card",
-              "transactionType": "DEBIT",
-              "meta": {
-                  "displayLanguage": "en",
-                  "displayMobileScreen": false,
-                  "authenticationRequestId": "rFK6LcDLfGl4Ku6u5oj8",
-                  "paymentId": "cPf2TgKjCJclNK4XrTfa"
-              },
-              "async": {
-                  "successUrl": "https://my.shop.com/success",
-                  "failureUrl": "https://my.shop.com/fail",
-                  "cancelUrl": "https://my.shop.com/cancel"
-              },
-              "deviceIdent": null,
-              "clientType": "BRW",
-              "asyncNotificationSubscriptionId": null,
-              "lastOperation": null,
-              "locale": null,
-              "redirectUrl": "https://public-api-app50te.psp.cardtech.de/postfinance/auth/cPf2TgKjCJclNK4XrTfa"
-          }
+                "createdAt": 1582298662596,
+                "modifiedAt": 1582298784440,
+                "type": "PREAUTH",
+                "transactionId": "transaction_g3m1xmlsuh",
+                "description": null,
+                "initialAmount": 1000,
+                "capturedAmount": 0,
+                "canceledAmount": 0,
+                "currency": "CHF",
+                "status": "OK",
+                "order": "fxszcrqxe9",
+                "parentTransaction": null,
+                "transactions": [
+                    "transaction_10abfpyihj"
+                ],
+                "basket": [],
+                "providerCode": null,
+                "merchantMessage": null,
+                "customerMessage": null,
+                "descriptor": null,
+                "meta": null,
+                "challenge": null,
+                "asyncNotificationSubscriptionId": null,
+                "tracking": []
+            }
+        ],
+        "status": "OPEN",
+        "channel": "ECOM",
+        "source": null,
+        "settled": false,
+        "settlementDate": null,
+        "allowedProducts": [],
+        "product": "postfinance-card",
+        "transactionType": "PREAUTH",
+        "meta": {
+            "displayLanguage": "en",
+            "displayMobileScreen": false,
+            "authenticationRequestId": "E1blEuV7PTr8OHkQJKJY",
+            "paymentId": "dLQ7nXkHucPbdtEOpb8O"
+        },
+        "async": null,
+        "deviceIdent": null,
+        "clientType": "BRW",
+        "asyncNotificationSubscriptionId": null,
+        "lastOperation": "TRANSACTION_CAPTURE_PENDING",
+        "locale": null
+    },
+    "parentTransaction": {
+        "createdAt": 1582298662596,
+        "modifiedAt": 1582298784440,
+        "type": "PREAUTH",
+        "transactionId": "transaction_g3m1xmlsuh",
+        "description": null,
+        "initialAmount": 1000,
+        "capturedAmount": 0,
+        "canceledAmount": 0,
+        "currency": "CHF",
+        "status": "OK",
+        "order": {
+            "createdAt": 1582298662593,
+            "modifiedAt": 1582298784440,
+            "merchantId": "ORDER12345",
+            "terms": null,
+            "privacy": null,
+            "orderId": "fxszcrqxe9",
+            "merchantOrderId": "ORDER12345",
+            "paymentProviderTransactionId": null,
+            "description": null,
+            "statementDescription": null,
+            "initialAmount": 1000,
+            "preauthorizedAmount": 1000,
+            "capturedAmount": 0,
+            "refundedAmount": 0,
+            "canceledAmount": 0,
+            "currency": "CHF",
+            "basket": [],
+            "customer": {
+                "merchantCustomerId": null,
+                "organizationRegistrationRegister": null,
+                "organizationRegistrationId": null,
+                "organizationEntityType": null,
+                "organizationVatId": null,
+                "companyName": null,
+                "reference": null,
+                "email": null,
+                "customerId": "customer_ghflfedgkn",
+                "addresses": [],
+                "personas": [],
+                "paymentInstruments": [],
+                "createdAt": 1582298662594,
+                "modifiedAt": 1582298662594,
+                "customerType": null
+            },
+            "persona": null,
+            "billingAddress": null,
+            "shippingAddress": null,
+            "ipAddress": null,
+            "paymentInstrument": {
+                "createdAt": 1582298662596,
+                "modifiedAt": 1582298662596,
+                "paymentInstrumentId": "paymentinstrument_qx1widjtw4",
+                "merchantPaymentInstrumentId": null,
+                "attributes": {},
+                "encrypted": false,
+                "origin": "postfinance-card",
+                "type": "postfinance-card",
+                "recurring": false
+            },
+            "transactions": [
+                "transaction_g3m1xmlsuh"
+            ],
+            "status": "OPEN",
+            "channel": "ECOM",
+            "source": null,
+            "settled": false,
+            "settlementDate": null,
+            "allowedProducts": [],
+            "product": "postfinance-card",
+            "transactionType": "PREAUTH",
+            "meta": {
+                "displayLanguage": "en",
+                "displayMobileScreen": false,
+                "authenticationRequestId": "E1blEuV7PTr8OHkQJKJY",
+                "paymentId": "dLQ7nXkHucPbdtEOpb8O"
+            },
+            "async": null,
+            "deviceIdent": null,
+            "clientType": "BRW",
+            "asyncNotificationSubscriptionId": null,
+            "lastOperation": "TRANSACTION_CAPTURE_PENDING",
+            "locale": null
+        },
+        "parentTransaction": null,
+        "transactions": [
+            "transaction_10abfpyihj"
+        ],
+        "basket": [],
+        "providerCode": null,
+        "merchantMessage": null,
+        "customerMessage": null,
+        "descriptor": null,
+        "meta": null,
+        "challenge": null,
+        "asyncNotificationSubscriptionId": null,
+        "tracking": []
+    },
+    "transactions": null,
+    "basket": [
+        {
+            "id": "Article-8982f440-4d2c-4f49-907a-eca043d79b33",
+            "name": "Item description",
+            "articleNumber": "SW10029",
+            "totalPrice": 1000,
+            "totalPriceWithTax": 1000,
+            "unitPrice": 1000,
+            "unitPriceWithTax": 1000,
+            "quantity": 1,
+            "tax": 0,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+        }
+    ],
+    "providerCode": null,
+    "merchantMessage": null,
+    "customerMessage": null,
+    "descriptor": null,
+    "meta": null,
+    "challenge": null,
+    "asyncNotificationSubscriptionId": null,
+    "tracking": null
+  }
           </code>
         </div>
       </div>

@@ -4,8 +4,10 @@
 		  <br>
 		<ul>
 		  <li><a href="/faq_pm_sepa_ro_with_Initial_payment#sectionone" name="">Integration via Widget (modal/inline)</a></li>
-			<li><a href="/faq_pm_sepa_ro_with_Initial_payment#stepone" name="">Step 1: Create debit  with directDebitType to FIRST Create the  first of recurring ordersCreate preauth + captrue with directDebitType to FIRST Create the  first of recurring orders</a></li>
-			<li><a href="/faq_pm_sepa_ro_with_Initial_payment#steptwo" name="">Step 2: Create debit  with directDebitType to RECURRING/FINAL Create recurring/final of series of order Create preauth + captrue with directDebitType to RECURRING / FINAL Create recurring/final of series of order</a></li>
+			<li><a href="/faq_pm_sepa_ro_with_Initial_payment#stepone" name="">Step 1A: Create debit with directDebitType FIRST. Create the first of recurring orders.</a></li>
+			<li><a href="/faq_pm_sepa_ro_with_Initial_payment#steponeb" name="">Step 1B: Create preauth + capture with directDebitType FIRST.</a></li>
+			<li><a href="/faq_pm_sepa_ro_with_Initial_payment#steptwo" name="">Step 2A: Create multiple debits with directDebitType RECURRING. Create a FINAL order.</a></li>
+			<li><a href="/faq_pm_sepa_ro_with_Initial_payment#steptwob" name="">Step 2B: Create multiple preauths + captures with directDebitType RECURRING. Create a FINAL order.</a></li>
 			<li><a href="/faq_pm_sepa_ro_with_Initial_payment#stepthree" name="">Step 3: Prenotification</a></li>
 			<li><a href="/faq_pm_sepa_ro_with_Initial_payment#stepfour" name="">Step 4: Reconciliation</a></li>
 			<li><a href="/faq_pm_sepa_ro_with_Initial_payment#stepfive" name="">Step 5 (Оptional): REFUND</a></li>
@@ -89,7 +91,7 @@
 						"directDebitType": "FIRST"
 				}
 		}
-}
+	}
 				</code>
 			</div>
 		</div>
@@ -250,7 +252,7 @@
 		"clientType": "BRW",
 		"asyncNotificationSubscriptionId": "d29e4da0-0463-4ec5-81f5-f32d04dffb3c",
 		"lastOperation": "TRANSACTION_DEBIT_OK"
-}
+	}
 					</code>
 				</div>
 			</div>
@@ -260,84 +262,112 @@
 		<br>
 		<br>
 <div id="stepone">
-	<p><strong>Step 1: Create debit  with directDebitType to FIRST Create the  first of recurring orders</strong></p>
-	<br>
-	<p><strong>Create preauth + captrue with directDebitType to FIRST Create the  first of recurring orders</strong></p>
+	<p><strong>Step 1A: Create debit with directDebitType FIRST. Create the first of recurring orders.</strong></p>
 	<br>
 </div> <!-- step one -->
 <br>
-<div id="steptwo">
+<div id="steponeb">
+	<p><strong>Step 1B: Create preauth + capture with <em>directDebitType</em> FIRST.</strong></p>
 	<br>
-	<p><strong>Step 2: Create debit  with directDebitType to RECURRING/FINAL Create recurring/final of series of order </strong></p>
+	<p><em>Create first transaction from series of transactions with recurring orders.</em></p>
 	<br>
-	<p><strong>Create preauth + captrue with <em>directDebitType to RECURRING / FINAL Create recurring/final of series of order</em></strong></p>
-	<br>
-	
 </div>
 <br>
+<div id="steptwo">
+	<br>
+	<p><strong>Step 2A: Create multiple debits with <em>directDebitType RECURRING</em>. Create a FINAL order.</strong></p>
+	<br>
+</div>
+<br>
+<div id="steptwob">
+	<br>
+	<p><strong>Step 2B: Create multiple preauths + captures with <em>directDebitType RECURRING</em>. Create a FINAL order.</strong></p>
+	<br>
+</div>
 <br>
 <div id="stepthree">
 	<br>
 	<p><strong>Step 3: Prenotification</strong></p>
 	<br>
 	<p>
-		Prenotification ("Pre-Notification") is any notification, (for example, an invoice, policy, a contract) of the direct debit recipient to the payer, which announces a debit via SEPA direct debit. The preliminary information must contain the due date and the exact amount and can announce several direct debits. It must be sent to the payer within due time (at least 14 calendar days before the due date, unless a different period has been agreed with the payer) before the due date, so that the payer can adjust to the account balance and provide adequate cover. The manner in which the preliminary information can be given results from the regulations of the respective debt collection agreement between the payer and the payment service provider.
+			Prenotification ("Pre-Notification") is any notification, (for example, an invoice, policy, a contract) of the direct debit recipient to the payer, which announces a debit via SEPA direct debit. The preliminary information must contain the due date and the exact amount and can announce several direct debits. It must be sent to the payer within due time (at least 14 calendar days before the due date, unless a different period has been agreed with the payer) before the due date, so that the payer can adjust to the account balance and provide adequate cover. The manner in which the preliminary information can be given results from the regulations of the respective debt collection agreement between the payer and the payment service provider. 
 	</p>
 	<br>
 	<p><strong>NOTE</strong> Payengine is sending out the prenotifictaion email to the customer. </p>
 	<br>
-	<p><strong>SEPA Pre-notification Template</strong></p>
-	<br>
-	<p ng-non-bindable>"Dies ist eine automatisch generierte E-Mail. Neue SEPA-Lastschriftvorankündigung <br>
-		Sehr geehrte Kundin, <br>
-		sehr geehrter Kunde, <br>
-		vielen Dank für Ihren Bestellung/Buchung bei {merchant name} <br>
-		Die Forderung von {currency} {amount} ziehen wir mit der SEPA-Lastschrift zum Mandat Nr. {mandate id} zu der Gläubiger-Identifikationsnummer {creditor id} von Ihrem Konto IBAN {iban} bei der Hamburger Sparkasse BIC {bic} zum Fälligkeitstag {due date} ein. <br>
-		Aus rechtlichen Gründen sind wir verpflichtet, Sie über jede SEPA-Lastschrift vorab zu informieren. <br>
-		Bei Fragen zu Ihrer Rechnung wenden Sie sich bitte an <a href="mailto:service@concardis.com ">service@concardis.com </a>
-		<br>
-		<br>
-		Mit freundlichen Grüßen, <br>
-		Concardis GmbH 
-		<br>
-		<br>
-		Concardis GmbH <br>
-		Helfmann-Park 7 <br>
-		65760 Eschborn <br>
-		Germany <br>
-		Telefon: +49 69 7922-0 <br>
-		Telefax: +49 69 7922-4500 <br>
-		E-Mail: <a href="mailto:service@concardis.com ">service@concardis.com </a> <br>
-		Geschäftsführung: Jana Brendel, Carsten Höltkemeyer, Luca Zanotti<br>
-		USt-IdNr : DE 228 965 682.
-		<br>
-		<br>
-		Wenn diese Email nicht für Sie bestimmt ist, bitten wir Sie, uns umgehend über den irrtümlichen Empfang zu informieren und diese Email zu löschen. Wir danken Ihnen für Ihre Unterstützung."
-	</p>
+	<div class="example-box-wrapper">
+      <div class="content-box" ng-init="createCustomerResponseShoww=false">
+        <h3 class="content-box-header bg-default">
+					SEPA Prenotification Template
+          <div class="header-buttons-separator">
+            <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShoww=!createCustomerResponseShoww;">
+              <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShoww"></i>
+              <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShoww"></i>
+            </a>
+          </div>
+        </h3>
+        <div class="content-box-wrapper" ng-if="createCustomerResponseShoww">
+          <code>
+	"Dies ist eine automatisch generierte E-Mail. Neue SEPA-Lastschriftvorankündigung 
+
+	Sehr geehrte Kundin, 
+	sehr geehrter Kunde,
+		
+	vielen Dank für Ihren Bestellung/Buchung bei {merchant name} 
+	Die Forderung von {currency} {amount} ziehen wir mit der SEPA-Lastschrift zum Mandat Nr.{mandate id} zu der Gläubiger-Identifikationsnummer {creditor id} von Ihrem Konto IBAN {iban} bei der Hamburger Sparkasse BIC {bic} zum Fälligkeitstag {due date} ein. 
+	Aus rechtlichen Gründen sind wir verpflichtet, Sie über jede SEPA-Lastschrift vorab zu informieren. 
+	Bei Fragen zu Ihrer Rechnung wenden Sie sich bitte an service@concardis.com 
+		
+		
+	Mit freundlichen Grüßen, 
+	Concardis GmbH 
+		
+		
+	Concardis GmbH 
+	Helfmann-Park 7 
+	65760 Eschborn 
+	Germany 
+	Telefon: +49 69 7922-0 
+	Telefax: +49 69 7922-4500 
+	E-Mail: service@concardis.com 
+	Geschäftsführung: Jana Brendel, Carsten Höltkemeyer, Luca Zanotti
+	USt-IdNr : DE 228 965 682. 
+		
+	Wenn diese Email nicht für Sie bestimmt ist, bitten wir Sie, uns umgehend über den irrtümlichen Empfang zu informieren und diese Email zu löschen. Wir danken Ihnen für Ihre Unterstützung."
+					</code>
+        </div>
+      </div>
+		</div>
 </div>
 	<br>
 <div id="stepfour">
 	<br>
 	<p><strong>Step 4: Reconciliation</strong></p>
 	<br>
-	<p>For SEPA Direct Debit payments, the funds are not immediately available. A charge, created from a SEPA direct debit source, may remain in a pending state for several days from the time of its creation. Once the charge is confirmed, the status of the debit or capture is updated to success.</p>
+	<p>For SEPA Direct Debit payments, the funds are not immediately available. A charge, created from a SEPA direct debit source, may remain in an intermediate state for several days from the time of its creation. Once the charge is confirmed, the status of the debit or capture is updated to success.</p>
 	<br>
 	<ul>
 		<li>When does the merchant get a SEPA direct debit fund?</li>
 		<ul>
-			<li>Approximately 9 days after the SEPA Direct debit is triggered.</li>
+			<li>Default ca. 9 days(depending on the contract may vary) after the SEPA Direct debit is triggered</li>
 		</ul>
 		<li>How to reconcile a payment?</li>
 		<ul>
 			<li>
 				Use Payengine SEPA Direct Debit settlement file. <br>
-				There is one record in the settlement file per transaction. <br>
-				Every record references to the collective bank transfer, for example, the merchant had 10 transactions on a specific day, and all have the same reference.
+				There is one record per transaction in the settlement file. <br>
+				Every record reference to the collective bank transfer (e.g the merchant had 10 transactions on a specific day and all have the same reference).
+				<br><br>
+				There is one collective record per day, which covers the whole payout amount
 			</li>
+			<li>Use Payengine notifications.</li>
+				<ul>
+					<li>Subscription via the Payengine API (<a href="https://docs.payengine.de/notifications/introduction">API Notifications Documentation</a>).</li>
+					<li>Subscription via the Payengine Merchant Center ( <a href="https://docs.payengine.de/notifications/subscription_via_mc">Merchant Center Notifications Documentation</a> ).</li>
+				</ul>
 		</ul>
-		<li>Use Payengine notifications.</li>
-		<li>Subscribtion via the Payengine API (<a href="https://docs.payengine.de/buildyourown/restapi">Link to API documentation</a>).</li>
-		<li>Subscribtion via the Payengine Merchant Center ( <a href="https://docs.payengine.de/merchantcenter/managenotification">Link to Merchant Center notifications documentation</a> ).</li>
+		
+		
 	<br>
 	<p>The following events are sent when the charge status is changed:</p>
 	<br>
@@ -354,45 +384,52 @@
 				<td>The charge succeeded and the payment is complete.</td>
 			</tr>
 			<tr>
+				<td>preauth.success</td>
+				<td>The payment is requested. A capture triggers the debit from the customer account</td>
+			</tr>
+			<tr>
 				<td>capture.success</td>
 				<td>The charge succeeded and the payment is complete.</td>
 			</tr>
 			<tr>
-				<td>debit.chargeback</td>
-				<td>The charge has failed</td>
-			</tr>
-			<tr>
-				<td>capture.chargeback</td>
-				<td>The charge has failed</td>
+				<td>chargeback.booked</td>
+				<td>The charge has failed or the customer canceled the SEPA Direct Debit</td>
 			</tr>
 		</tbody>
 	</table>
 	<li>What is the bank transfer purpose text on the merchant bank statement?</li>
-	<br>
-	<p>The money will be transfered to the merchant's bank account in a collective transfer and the follow purpose text will be displayed in the bank statement:  &lt;merchantId&gt; - dd.MM.yyyy (from date) - dd.MM.yyyy (until date)</p>
+		<ul>
+			<li>The money will be transferred to the merchant bank account in a collective transfer and the follow purpose text will appear at the bank statement: &lt;merchantId&gt; - dd.MM.yyyy (from date) - dd.MM.yyyy (until date)</li>
+		</ul>
 	<li>What is the bank transfer purpose text on the customer bank statement?</li>
+	<ul>
+			<li>The field <em>order.statementDescription</em> will be used as purpose text. </li>
+		</ul>
+	<li>
+		When no <em>order.statementDescription</em> is present the following logic will be applied:
+		<br>
+		1) <em>order.merchantOrderId</em> is used when it's present
+		<br>
+		2) <em>order.orderId</em> is used when order.merchantOrderId is not present
+		<br>
+		<br>
+		For both cases fields <em>merchant.companyName</em> and <em>merchant.shopUrl</em> will be added after either <em>order.merchantOrderId</em> or order.orderId separated with space. <br>
+		The max length of the purpose text is <strong>108</strong> characters and it will be cut off if it's longer.
+	</li>
 	</ul>
-	<p>
-		The field <em>order.statementDescription</em> will be used as purpose text. <br>
-		In case that there is no <em>order.statementDescription</em>, we will use the following logic: <br>
-		- When the <em>order.merchantOrderId</em>  is not empty, we use <em>order.merchantOrderId</em> is used. Otherwise, we use <em>order.orderId</em>. <br>
-		The fields <em>merchant.companyName</em> and <em>merchant.shopUrl</em> are added, regardless if <em>order.merchantOrderId</em>  or <em>order.orderId</em> is used. <br>
-		The maximum length of the purpose text is 108 characters, and it will be cut off if it is longer than 108 characters.
-		</p>
 		<br>
 		<p><strong>Payment Disruptions</strong></p>
 		<br>
-		<p><strong>Debit not Possible:</strong> The status of the debit or capture will change from OK to CHARGEBACK.</p>
+		<p><strong>Debit not Possible:</strong> The status of the order will change debit.success/capture.success to chargeback.booked.</p>
 		<br>
-		<p>Тhis situation may occur due to various problems with the client's account (for example, if no funds are available, the account has been blocked, etc.). In these cases, the bank cannot debit the account, even though the customer has already provided the funds for a successful payment. If this situation occurs, the bank refunds the payment in the form of a dispute.</p>
+		<p>Тhis situation may occur due to various problems with the client's account (for example, if no funds are available, the account has been blocked, etc.). If this situation occurs, the bank refunds the payment in the form of a dispute.</p>
 		<br>
 		<p>
-			<strong>Customer Cancels SEPA Direct Debit:</strong> The status of the debit or capture will be change from SUCCESS to CHARGEBACK. <br>
-			Within eight weeks of debiting the account, if the account holder is not satisfied with his purchase, the bank can refund the money, without asking questions.
-			Between eight weeks and thirteen months after the payment has been created, the customer may dispute a payment with their bank only if the customer considers that the debit has not been authorised.
+			<strong>Customer Cancels SEPA Direct Debit:</strong> The status of the order will be changed from debit.success/capture.success to chargeback.booked. <br>
+			Within eight weeks of debiting the account, if the account holder is not satisfied with his purchase, the bank can refund the money, without asking questions. <br>
+			Between eight weeks and thirteen months after the payment has been created, the customer may dispute a payment with their bank only if the customer considers that the debit has not been authorized.
 		</p>
 		<br>
-		<p>In this case, Payengine automatically provides the customer's bank with a mandate, approved by the customer. This still does not guarantee that the dispute can be cancelled. The customer's bank may decide that the debit is not authorised by the mandate and that their client has the right to refund.</p>
 </div>
 	<br>
 	<br>
@@ -400,7 +437,7 @@
 		<br>
 		<p><strong>Step 5 (Оptional): REFUND</strong></p>
 		<br>
-		<p>To use the refund service of Payengine, configure your bank account connection at the Concardis Merchant Center. For more information, see <a href="https://concardis.stagil.de/confluence/display/PAY/Bank+Account+Connection+Setup">Bank Account Connection Setup</a>.</p>
+		<p>To use the refund service of Payengine, configure your bank account connection at the Concardis Merchant Center. </p>
 	</div>
 	</div>
 </div>

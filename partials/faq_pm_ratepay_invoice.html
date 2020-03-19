@@ -2,45 +2,47 @@
 <br>
 <br>
 <ul>
-  <li>Overview</li>
-  <li>Customer Experience</li>
-  <li>Payengine Details
+  <li>1. Overview</li>
+  <li>2. Customer Experience</li>
+  <li>3. Payengine Details
     <ul>
-      <li>General</li>
-      <li>Supported Features & Services</li>
-      <li>Integration Types</li>
-      <li>Technical Flow</li>
-      <li>Specifics
+      <li>3.1 General</li>
+      <li>3.2 Supported Features & Services</li>
+      <li>3.3 Integration Types</li>
+      <li>3.4 Technical Flow</li>
+      <li>3.5 Specifics
         <ul>
-          <li>Prerequisites for Authorizing Transactions
+          <li>3.5.1 Prerequisites for Authorizing Transactions
             <ul>
-                <li>Customer
+                <li>3.5.1.1Customer
                     <ul>
-                        <li>Customer in B2C cases</li>
-                        <li>Customer in B2B cases</li>
+                        <li>3.5.1.1.1 Customer in B2C cases</li>
+                        <li>3.5.1.1.2 Customer in B2B cases</li>
                     </ul>
                 </li>
-                <li>Persona</li>
-                <li>Billing/Shipping Address</li>
-                <li>Device Identification for RatePAY Payment Methods</li>
+                <li>3.5.1.2 Persona</li>
+                <li>3.5.1.3 Billing/Shipping Address</li>
+                <li>3.5.1.4 Device Identification for RatePAY Payment Methods</li>
             </ul>
         </li>
-        <li>Input Parameters for Authorizing Transactions</li>
-        <li>Specific Response Parameters for Authorising Transactions</li>
+        <li>3.5.2 Input Parameters for Authorizing Transactions</li>
+        <li>3.5.3 Specific Response Parameters for Authorising Transactions</li>
+        <li>3.5.4 Input Parameters for Update Order Transaction</li>
         </ul>
       </li>
-      <li>Samples
+      <li>3.6 Samples
         <ul>
-          <li>Preauth transaction</li>
-          <li>Capture transaction</li>
-          <li>Cancel transaction</li>
-          <li>Debit transaction</li>
-          <li>Refund transaction</li>
+          <li>3.6.1 Preauth transaction</li>
+          <li>3.6.2 Update order transaction</li>
+          <li>3.6.3 Capture transaction</li>
+          <li>3.6.4 Cancel transaction</li>
+          <li>3.6.5 Debit transaction</li>
+          <li>3.6.6 Refund transaction</li>
         </ul>
       </li>
       </ul>
   </li>
-  <li>Testing</li>
+  <li>4. Testing</li>
 </ul>
 <br>
 <br>
@@ -48,6 +50,7 @@
 <br>
 <p>With RatePAY - Invoice, customers can make online purchases and pay with an open invoice after delivery. Each merchant specifies a payment term, in which the money is collectible.</p>
 <p>If no payment is initiated seven days after the expiration of the payment term, RatePAY sends a reminder to the customer. If no payment is initiated in another seven days, RatePAY sends a warning (Mahnung). </p>
+<br>
 <p>The main advantages for merchants using RatePAY - Invoice are:</p>
 <ul>
   <li>RatePAY overtakes the creditor's role and provides a payment guarantee to the merchant;</li>
@@ -130,13 +133,13 @@
     </tr>
     <tr>
       <th>B2B applicable</th>
-      <td>yes - only for DE and AT</td>
+      <td>yes - for DE, AT, CH</td>
     </tr>
   </tbody>
 </table>
 <br>
 <br>
-<h3>Supported Features & Services</h3>
+<h3>Supported Features and Services</h3>
 <br>
 <table class="row clearfix  table table-bordered table-striped table-condensed">
   <tbody>
@@ -165,10 +168,6 @@
       <td>yes - webhook, email</td>
     </tr>
     <tr>
-      <th>PayLink Integration</th>
-      <td>no</td>
-    </tr>
-    <tr>
       <th>Settlement Reporting</th>
       <td>yes, only original RatePAY settlement reporting</td>
     </tr>
@@ -194,6 +193,10 @@
     </tr>
     <tr>
       <th>Shop Plugin</th>
+      <td>yes</td>
+    </tr>
+    <tr>
+      <th>Paylink</th>
       <td>yes</td>
     </tr>
   </tbody>
@@ -263,7 +266,7 @@
     <tr>
       <td>Email</td>
       <td>M</td>
-      <td>The email address of the customer</td>
+      <td>Customer's email address</td>
       <td>john@doe.com</td>
     </tr>
   </tbody>
@@ -311,8 +314,15 @@
     <tr>
       <td>Organization Entity Type</td>
       <td>O</td>
-      <td>The organization's legal form</td>
-      <td>LIMITED_COMPANY</td>
+      <td>
+        The organization's legal form. Valid values:
+        <ul>
+          <li><strong>for DE</strong> - AG, AOR, EG, EINZELUNTERNEHMER, EK ,EV, GBR, GGMBH, GMBH, GMBH-CO-KG, GMBH-I-GR, KG, KOR, OHG, PARTNERSCHAFT, STIFTUNG, UG, UG-I-GR</li>
+          <li><strong>for AT</strong> - AG, EINZELUNTERNEHMER, GBR, GMBH, GMBH-CO-KG, KEG, KG, OEG, OG, OHG</li>
+          <li><strong>for CH</strong> - AG, EINFACHE-GESELLSCHAFT, CH_EINZELUNTERNEHMER, GMBH, KG, KOLLEKTIVGESELLSCHAFT</li>
+        </ul>
+      </td>
+      <td>GMBH</td>
     </tr>
     <tr>
       <td>Organization VAT ID</td>
@@ -603,53 +613,74 @@
 <br>
 <h4>Input Parameters for Authorizing Transactions</h4>
 <br>
-<p>The following input parameters are required for initiating a RatePAY - Invoice payment via Payengine Widget:</p>
-<br>
 <br>
 <table class="row clearfix  table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th width="150px">PARAMETER</th>
-        <th width="100px">MANDATORY/OPTIONAL</th>
-        <th >DESCRIPTION</th>
-        <th >TYPE</th>
-        <th>EXAMPLE</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><em>riskIdentId</em></td>
-        <td>М</td>
-        <td>Тhe device ident token</td>
-        <td>string</td>
-        <td>rpRiskIdentId_1541762648</td>
-      </tr>
-      <tr>
-        <td><em>basket</em></td>
-        <td>М</td>
-        <td>The default range for the basket value is from EUR 20 to EUR 2,000 but it can vary according to the merchant's contract. </td>
-        <td>basket data object</td>
-        <td>see Samples</td>
-      </tr>
-      <tr>
-        <td><em>terms</em></td>
-        <td>М</td>
-        <td>The Additional General Terms and Conditions of RatePAY GmbH</td>
-        <td>number (timestamp)</td>
-        <td>1468590412476</td>
-      </tr>
-      <tr>
-        <td><em>privacy</em></td>
-        <td>М</td>
-        <td>The Data Protection Notice of RatePAY GmbH</td>
-        <td>number (timestamp)</td>
-        <td>1468590412476</td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th colspan="2" width="150px">PARAMETER</th>
+      <th colspan="1" width="100px">MANDATORY/OPTIONAL</th>
+      <th colspan="3">DESCRIPTION</th>
+      <th colspan="1">TYPE</th>
+      <th colspan="1">EXAMPLE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2"><em>basket</em></td>
+      <td colspan="1">M</td>
+      <td colspan="3">The default range for the basket value is from EUR 20 to EUR 2,000 but it can vary according to the merchant's contract. </td>
+      <td colspan="1">data object</td>
+      <td colspan="1">see Samples</td>
+    </tr>
+    <tr>
+      <td colspan="2"><em>terms</em></td>
+      <td colspan="1">M</td>
+      <td colspan="3">The Additional General Terms and Conditions of RatePAY GmbH</td>
+      <td colspan="1">number (timestamp)</td>
+      <td colspan="1">1468590412476</td>
+    </tr>
+    <tr>
+      <td colspan="2"><em>privacy</em></td>
+      <td colspan="1">M</td>
+      <td colspan="3">The Data Protection Notice of RatePAY GmbH</td>
+      <td colspan="1">number (timestamp)</td>
+      <td colspan="1">1468590412476</td>
+    </tr>
+    <tr>
+      <td colspan="2"><em>channel</em></td>
+      <td colspan="1">M</td>
+      <td colspan="3">The channel of origin for the order. Possible values: ECOM, MOTO</td>
+      <td colspan="1">string</td>
+      <td colspan="1">ECOM</td>
+    </tr>
+    
+    <tr>
+      <td colspan="2"><em>ipAddress</em></td>
+      <td colspan="1">M</td>
+      <td colspan="3">The IP address used to submit the order.</td>
+      <td colspan="1">string</td>
+      <td colspan="1">82.120.21.79</td>
+    </tr>
+    <tr>
+      <td colspan="2"><em>payment</em></td>
+      <td colspan="1">M</td>
+      <td colspan="3">Top level</td>
+      <td colspan="1">data object</td>
+      <td colspan="1">see Samples</td>
+    </tr>
+    <tr>
+      <td colspan="1" width="50px"></td>
+      <td colspan="1"><em>riskIdentId</em></td>
+      <td colspan="1">M</td>
+      <td colspan="3">The device ident token</td>
+      <td colspan="1">string</td>
+      <td colspan="1">rpRiskIdentId_1550854753</td>
+    </tr>
+  </tbody>
+</table>
 <br>
 <br>
-<h4>Specific Response Parameters for Authorising Transactions</h4>
+<h4>Specific Response Parameters for Authorizing Transactions</h4>
 <br>
 <p>Payengine sends the following response parameter, which is used by the merchant to trail customer money transfers:</p>
 <br>
@@ -669,11 +700,54 @@
 			<td colspan="2"><em>meta.descriptor</em></td>
 			<td colspan="1">M</td>
 			<td colspan="3">Payengine generates a <em>descriptor</em> element to each response for RatePAY authorizing transactions. The merchant can use this identifier in customer invoices to track payments.</td>
-			<td colspan="1">UUID</td>
+			<td colspan="1">string (UUID)</td>
 			<td colspan="1">85f13a2c-b579-4e7a-b747-4e5b7c5ab4c6</td>
 		</tr>
 	</tbody>
 </table>
+<br>
+<h4>Input Parameters for Update Order Transaction</h4>
+<br>
+<p>The update order transaction is used to update a preauth transaction that has not been captured yet.</p>
+<br>
+<p>Preauth transactions can be updated through the PATCH/orders/{orderId}/transactions/{transactionId} endpoint.</p>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th colspan="2" width="150px">PARAMETER</th>
+			<th colspan="1" width="100px">MANDATORY/OPTIONAL</th>
+			<th colspan="3">DESCRIPTION</th>
+			<th colspan="1">TYPE</th>
+			<th colspan="1">EXAMPLE</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="2"><em>initialAmount</em></td>
+			<td colspan="1">M</td>
+			<td colspan="3">Amount as the smallest currency unit. E.g. 10000 = EUR 100</td>
+			<td colspan="1">number</td>
+			<td colspan="1">23000</td>
+		</tr>
+		<tr>
+			<td colspan="2"><em>currency</em></td>
+			<td colspan="1">M</td>
+			<td colspan="3">The currency code</td>
+			<td colspan="1">string</td>
+			<td colspan="1">EUR</td>
+		</tr>
+		<tr>
+			<td colspan="2"><em>basket</em></td>
+			<td colspan="1">M</td>
+			<td colspan="3">Basket data object with attributes.</td>
+			<td colspan="1">data object</td>
+			<td colspan="1">See Samples</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<p>Request and response samples for update order transaction can be found below.</p>
 <br>
 <br>
 <h3>Samples</h3>
@@ -2627,10 +2701,44 @@
 <br>
 <h3>Testing</h3>
 <br>
-<p>The RatePAY - Invoice API testing can be performed via the RatePAY Sandbox..</p>
+<p>RatePAY - Invoice can be tested via the RatePAY Sandbox.</p>
 <br>
 <p>The RatePAY Sandbox is a self-contained virtual testing environment that mimics the live RatePAY production environment.</p>
 <br>
-<p>Test credentials for RatePAY Sandbox can be received from RatePAY GmbH.</p>
+<p>Test data for RatePAY Sandbox can be found below:</p>
+<br>
+<p><strong>Accept:</strong></p>
+<br>
+<p>
+	City: Testhausen
+	<br>
+	Streetname contains: Nicht Versenden
+	<br>
+	DE : the postal code should be 5 digits
+	<br>
+	CH & AT : the postal code should be 4 digits
+	<br>
+	NL : A postal code in the Netherlands consists of four numbers followed by two capital letters (e.g 1011AB)
+	<br>
+	DE IBAN : DE15111111111111111199
+	<br>
+	NL IBAN : NL18ABNA0484869868 
+	<br>
+	AT IBAN: AT022050302101023600
+</p>
+<br>
+<p><strong>Decline:</strong></p>
+<br>
+<p>
+	City: Testhausen
+	<br>
+	Surname: Ablehnung
+	<br>
+	DE : the postal code should be 5 digits
+	<br>
+	CH & AT : the postal code should be 4 digits
+	<br>
+	NL : A postal code in the Netherlands consists of four numbers followed by two capital letters (e.g 1011AB)
+</p>
 <br>
 <br>

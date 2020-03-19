@@ -2,48 +2,50 @@
 <br>
 <br>
 <ul>
-  <li>Overview</li>
-  <li>Customer Experience</li>
-  <li>Payengine Details
+  <li>1. Overview</li>
+  <li>2. Customer Experience</li>
+  <li>3. Payengine Details
     <ul>
-      <li>General</li>
-      <li>Supported Features & Services</li>
-      <li>Integration Types</li>
-      <li>Technical Flow</li>
-      <li>Specifics
+      <li>3.1 General</li>
+      <li>3.2 Supported Features and Services</li>
+      <li>3.3 Integration Types</li>
+      <li>3.4 Technical Flow</li>
+      <li>3.5 Specifics
         <ul>
-          <li>Prerequisites for Authorizing Transactions
+          <li>3.5.1 Prerequisites for Authorizing Transactions
             <ul>
-                <li>Customer</li>
-                <li>Persona</li>
-                <li>Billing/Shipping Address</li>
-                <li>Device Identification for RatePAY Payment Methods</li>
+                <li>3.5.1.1 Customer</li>
+                <li>3.5.1.2 Persona</li>
+                <li>3.5.1.3 Billing/Shipping Address</li>
+                <li>3.5.1.4 Device Identification for RatePAY Payment Methods</li>
             </ul>
         </li>
-        <li>Input Parameters for Authorizing Transactions</li>
-        <li>Specific Response Parameters for Authorising Transactions</li>
-        <li>Configuration Request</li>
-        <li>Installment calculator
+        <li>3.5.2 Input Parameters for Authorizing Transactions</li>
+        <li>3.5.3 Specific Response Parameters for Authorising Transactions</li>
+        <li>3.5.4 Input Parameters for Update Order Transaction</li>
+        <li>3.5.5 Configuration Request</li>
+        <li>3.5.6 Installment calculator
             <ul>
-                <li>Option 1 - Calculator based on the desired amount of a monthly installment</li>
-                <li>Option 2 - Calculator based on the desired number of monthly installments</li>
-                <li>Option 3 - Offer both calculator types</li>
+                <li>3.5.6.1 Option 1 - Calculator based on the desired amount of a monthly installment</li>
+                <li>3.5.6.2 Option 2 - Calculator based on the desired number of monthly installments</li>
+                <li>3.5.6.3 Option 3 - Offer both calculator types</li>
             </ul>
         </li>
         </ul>
       </li>
-      <li>Samples
+      <li>3.6 Samples
         <ul>
-          <li>Preauth transaction</li>
-          <li>Capture transaction</li>
-          <li>Cancel transaction</li>
-          <li>Debit transaction</li>
-          <li>Refund transaction</li>
+          <li>3.6.1 Preauth transaction</li>
+          <li>3.6.2 Update order transaction</li>
+          <li>3.6.3 Capture transaction</li>
+          <li>3.6.4 Cancel transaction</li>
+          <li>3.6.5 Debit transaction</li>
+          <li>3.6.6 Refund transaction</li>
         </ul>
       </li>
       </ul>
   </li>
-  <li>Testing</li>
+  <li>4. Testing</li>
 </ul>
 <br>
 <br>
@@ -118,7 +120,7 @@
     <tr>
       <td>3.1.1</td>
       <td>To use <strong>Direct Debit</strong> as Payment Type - Choose Direct Debit, and enter Account Holder and IBAN</td>
-      <td></td>
+      <td><img src="/img/faq/ratepay_install/RPI_3.1.1.PNG" alt="" width="40%"></td>
     </tr>
     <tr>
       <td>3.1.2</td>
@@ -224,10 +226,6 @@
       <td>yes - webhook, email</td>
     </tr>
     <tr>
-      <th>PayLink Integration</th>
-      <td>no</td>
-    </tr>
-    <tr>
       <th>Settlement Reporting</th>
       <td>yes, only original RatePAY settlement reporting</td>
     </tr>
@@ -254,6 +252,10 @@
     <tr>
       <th>Shop Plugin</th>
       <td>yes</td>
+    </tr>
+    <tr>
+      <th>Paylink</th>
+      <td>no</td>
     </tr>
   </tbody>
 </table>
@@ -331,7 +333,7 @@
     <tr>
       <td>Email</td>
       <td>M</td>
-      <td>The email address of the customer</td>
+      <td>Customer's email address</td>
       <td>john@doe.com</td>
     </tr>
   </tbody>
@@ -650,10 +652,24 @@
         <td colspan="2">see Samples</td>
       </tr>
       <tr>
-        <td colspan="2">payment</td>
-        <td colspan="1">М</td>
+        <td colspan="2"><em>channel</em></td>
+        <td colspan="1">M</td>
+        <td colspan="4">The channel of origin for the order. Possible values: ECOM, MOTO</td>
+        <td colspan="2">string</td>
+        <td colspan="2">ECOM</td>
+      </tr>
+      <tr>
+        <td colspan="2"><em>ipAddress</em></td>
+        <td colspan="1">M</td>
+        <td colspan="4">The IP address used to submit the order.</td>
+        <td colspan="2">string</td>
+        <td colspan="2">82.120.21.79</td>
+      </tr>
+      <tr>
+        <td colspan="2"><em>payment</em></td>
+        <td colspan="1">M</td>
         <td colspan="4">Top level</td>
-        <td colspan="2">payment data object</td>
+        <td colspan="2">data object</td>
         <td colspan="2">see Samples</td>
       </tr>
       <tr>
@@ -740,6 +756,73 @@
   </table>
 <br>
 <br>
+<h4>Specific Response Parameters for Authorising Transactions</h4>
+<br>
+<p>Payengine sends the following response parameter, which is used by the merchant to trail customer money transfers:</p>
+<br>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th colspan="2" width="150px">PARAMETER</th>
+			<th colspan="1" width="100px">MANDATORY/OPTIONAL</th>
+			<th colspan="3">DESCRIPTION</th>
+			<th colspan="1">TYPE</th>
+			<th colspan="1">EXAMPLE</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="2"><em>meta.descriptor</em></td>
+			<td colspan="1">M</td>
+			<td colspan="3">Payengine generates a <em>descriptor</em> element to each response for RatePAY authorizing transactions. The merchant can use this identifier in customer invoices to track payments.</td>
+			<td colspan="1">string (UUID)</td>
+			<td colspan="1">85f13a2c-b579-4e7a-b747-4e5b7c5ab4c6</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<h4>Input Parameters for Update Order Transaction</h4>
+<br>
+<p>The update order transaction is used to update a preauth transaction that has not been captured yet.</p>
+<br>
+<p>Preauth transactions can be updated through the PATCH/orders/{orderId}/transactions/{transactionId} endpoint. </p>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th colspan="2" width="150px">PARAMETER</th>
+			<th colspan="1" width="100px">MANDATORY/OPTIONAL</th>
+			<th colspan="3">DESCRIPTION</th>
+			<th colspan="1">TYPE</th>
+			<th colspan="1">EXAMPLE</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="2"><em>initialAmount</em></td>
+			<td colspan="1">M</td>
+			<td colspan="3">Amount as the smallest currency unit. E.g. 10000 = EUR 100</td>
+			<td colspan="1">number</td>
+			<td colspan="1">23000</td>
+		</tr>
+		<tr>
+			<td colspan="2"><em>currency</em></td>
+			<td colspan="1">M</td>
+			<td colspan="3">The currency code</td>
+			<td colspan="1">string</td>
+			<td colspan="1">EUR</td>
+		</tr>
+		<tr>
+			<td colspan="2"><em>basket</em></td>
+			<td colspan="1">M</td>
+			<td colspan="3">Basket data object with attributes.</td>
+			<td colspan="1">data object</td>
+			<td colspan="1">See Samples</td>
+		</tr>
+	</tbody>
+</table>
+<br>
 <p><strong>Configuration Request</strong></p>
 <br>
 <p>A merchant can initiate a configuration request at the following endpoint:  <strong>GET/installment/config</strong></p>
@@ -809,7 +892,7 @@
 <br>
 <p><strong>Option 1 - Calculator based on the desired amount of a monthly installment</strong></p>
 <p>The merchant can implement a user interface with a field for the desired amount of a monthly installment. For example:</p>
-<img src="/img/faq/ratepay_install/Calculator raten.png" alt="" width="80%">
+<img src="/img/faq/ratepay_install/Calculator raten.png" alt="" width="60%">
 <br>
 <p>The customer submits the desired installment amount and the merchant sends the following calculation request to Payengine Backend:</p>
 <table class="row clearfix  table table-bordered table-striped table-condensed">
@@ -873,7 +956,7 @@
 <br>
 <p>The interface should include all possible options for the number of monthly installments within the set framework by the merchant</p>
 <br>
-<img src="/img/faq/ratepay_install/Calculator-numbers-3.png" alt="" width="80%">
+<img src="/img/faq/ratepay_install/Calculator-numbers-3.png" alt="" width="60%">
 <br>
 <p>The customer submits the desired installment amount and the merchant sends the following calculation request to Payengine Backend:</p>
 <br>
@@ -931,33 +1014,11 @@
 <br>
 <p>The installment plan can be displayed to the end-customer as shown below:</p>
 <br>
-<img src="/img/faq/ratepay_install/Number-calculator-result - ready.png" alt="" width="80%">
+<img src="/img/faq/ratepay_install/Number-calculator-result - ready.png" alt="" width="60%">
 <br>
 <p><strong>Option 3 - Offer both calculator types</strong></p>
 <br>
 <p>The merchant can decide to integrate both calculator types to offer a comprehensive customer experience.</p>
-<br>
-<br>
-<table class="row clearfix  table table-bordered table-striped table-condensed">
-  <thead>
-    <tr>
-      <th colspan="2" width="150px">PARAMETER</th>
-      <th colspan="1" width="100px">MANDATORY/OPTIONAL</th>
-      <th colspan="3">DESCRIPTION</th>
-      <th colspan="1">TYPE</th>
-      <th colspan="1">EXAMPLE</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td colspan="2"><em>meta.descriptor</em></td>
-      <td colspan="1">M</td>
-      <td colspan="3">Payengine generates a <em>descriptor</em> element to each response for RatePAY authorizing transactions. The merchant can use this identifier in customer invoices to track payments.</td>
-      <td colspan="1">UUID</td>
-      <td colspan="1">85f13a2c-b579-4e7a-b747-4e5b7c5ab4c6</td>
-    </tr>
-  </tbody>
-</table>
 <br>
 <br>
 <h3>Samples</h3>
@@ -3181,10 +3242,44 @@
 <br>
 <h3>Testing</h3>
 <br>
-<p>The RatePAY - Installments API testing can be performed via the RatePAY Sandbox.</p>
+<p>RatePAY - Installments can be tested via the RatePAY Sandbox.</p>
 <br>
 <p>The RatePAY Sandbox is a self-contained virtual testing environment that mimics the live RatePAY production environment.</p>
 <br>
-<p>Test credentials for RatePAY Sandbox can be received from RatePAY GmbH.</p>
+<p>Test data for RatePAY Sandbox can be found below:</p>
+<br>
+<p><strong>Accept:</strong></p>
+<br>
+<p>
+	City: Testhausen
+	<br>
+	Streetname contains: Nicht Versenden
+	<br>
+	DE : the postal code should be 5 digits
+	<br>
+	CH & AT : the postal code should be 4 digits
+	<br>
+	NL : A postal code in the Netherlands consists of four numbers followed by two capital letters (e.g 1011AB)
+	<br>
+	DE IBAN : DE15111111111111111199
+	<br>
+	NL IBAN : NL18ABNA0484869868 
+	<br>
+	AT IBAN: AT022050302101023600
+</p>
+<br>
+<p><strong>Decline:</strong></p>
+<br>
+<p>
+	City: Testhausen
+	<br>
+	Surname: Ablehnung
+	<br>
+	DE : the postal code should be 5 digits
+	<br>
+	CH & AT : the postal code should be 4 digits
+	<br>
+	NL : A postal code in the Netherlands consists of four numbers followed by two capital letters (e.g 1011AB)
+</p>
 <br>
 <br>

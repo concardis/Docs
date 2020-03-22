@@ -1,29 +1,28 @@
 <div class="container row col-12">
 <ul>
 	<li><a href="#overview" name="">Overview</a></li>
-	<li><a href="#advantages" name="">Advantages</a>
+	<li><a href="#advantages" name="">Advantages</a></li>
 		<ul>
 			<li><a href="#customerExperience">Customer Experience</a></li>
-			<li><a href="#payengineDetails">Payengine Details</a>
-				<ul>
-					<li><a href="#general">General</a></li>
-					<li><a href="#integrationTypes">Integration Types</a></li>
-				</ul>
-			</li>
-			<li><a href="#technicalFlow">Technical Flow</a>
+		</ul>
+		<li><a href="#payengineDetails">Payengine Details</a></li>
+			<ul>
+				<li><a href="#general">General</a></li>
+				<li><a href="#sfas">Supported Features and Services</a></li>
+				<li><a href="#integrationTypes">Integration Types</a></li>
+				<li><a href="#technicalFlow">Technical Flow</a></li>
 				<ul>
 					<li><a href="#singleOrder">Single Order</a></li>
 					<li><a href="#recurringOrder">Recurring Order</a></li>
 					<li><a href="#recurringOrderTypes">Recurring Order Types</a></li>
 					<li><a href="#recurringOrderWithoutInitialPayment">Recurring Order Without initial Payment</a></li>
 					<li><a href="#recuringOrderWithInitialPayment">Recuring Order With Initial Payment</a></li>
-					<li><a href="#paymentDisruptions">Payment Disruptions</a></li>
 					<li><a href="#paymentMethodSpecificParameters">Payment Method Specific Parameters</a></li>
-					<li><a href="#POST​paymentInstrumentsSpecificResponseParameters">POST​/payment-instruments Specific Response Parameters</a></li>
+					<li><a href="#refunds">Refunds</a></li>
 				</ul>
-			</li>
-		</ul>
-	</li>
+			</ul>
+	<li><a href="#testing">Testing</a></li>
+	<li><a href="#settlements">Settlements</a></li>
 </ul>
 <div>
 	<div id="overview">
@@ -82,17 +81,28 @@
 					<tr>
 						<td>1</td>
 						<td>Select the <strong>SEPA</strong> payment method.</td>
-						<td><img class="" src="/img/faq/sepa/Payment Methods Overview 1.png" width="50%" /></td>
+						<td><img class="" src="/img/faq/sepa/SEPA-widget-marked.png" width="50%" /></td>
 					</tr>
 					<tr>
 						<td>2</td>
-						<td>Provide your bank account details (<strong>Account Holder, IBAN, BIC, Bank Name</strong>) and accept the mandate.</td>
-						<td><img class="" src="/img/faq/sepa/Payment Form 2.png" width="50%" /></td>
+						<td>
+								Provide your bank account details:
+							<ul>
+								<li><strong>mandatory:</strong> Account Holder and IBAN </li>
+								<li><strong>optional:</strong> BIC and Bank Name </li>
+							</ul>
+						</td>
+						<td><img class="" src="/img/faq/sepa/AC IBAN mandatory-marked.png" width="50%" /></td>
 					</tr>
 					<tr>
 						<td>3</td>
+						<td>Accept <strong>SEPA mandate</strong> by marking a check box</td>
+						<td><img class="" src="/img/faq/sepa/Mandate required-marked.png" width="50%" /></td>
+					</tr>
+					<tr>
+						<td>4</td>
 						<td>You will be redirected to the <strong>Payment form success</strong> or the <strong>Payment form failure</strong> popup window.</td>
-						<td><img class="" src="/img/faq/sepa/Payment Form 3.png" width="50%" /></td>
+						<td><img class="" src="/img/faq/sepa/Success.png" width="50%" /></td>
 					</tr>
 				</tbody>
 			</table>
@@ -125,7 +135,11 @@
 						</tr>
 						<tr>
 							<th width="50%"><strong>Countries</strong></th>
-							<td width="50%">DE, AT</td>
+							<td width="50%">
+								AT, BE, CY, EE, FI, FR, DE, GR, IE, IT, 
+								<br>
+								LV, LT, LU, MT, NL, PT, SK, SI, ES, CH
+							</td>
 						</tr>
 						<tr>
 							<th width="50%"><strong>Technical Flow</strong></th>
@@ -169,16 +183,12 @@
 						<tr>
 							<th width="50%"><strong>Refunds</strong></th>
 							<td width="50%">yes *<br/>
-									<strong>NOTE</strong> Refunds can only be executed if the merchant bank account connection is set up (<a href="#">Bank Account Setup</a>)</td>
+								<strong>NOTE</strong> Refunds can only be executed if the merchant bank account connection is set up 
+							</td>
 						</tr>
 						<tr>
 							<th width="50%"><strong>Notifications</strong></th>
 							<td width="50%">yes - webhook, email</td>
-						</tr>
-						<tr>
-							<th width="50%"><strong>PayLink Integration</strong></th>
-							<td width="50%">yes *<br/>
-								<strong>NOTE</strong> Please contact support or account manager for this feature.</td>
 						</tr>
 						<tr>
 							<th width="50%"><strong>Settlement Reporting</strong></th>
@@ -200,7 +210,7 @@
 							<td width="50%">yes</td>
 						</tr>
 						<tr>
-							<th width="50%"><strong>Widget as a Bridge</strong></th>
+							<th width="50%"><strong>Bridge</strong></th>
 							<td width="50%">
 								<ul>
 									<li>Payment Instruments can be created via bridge.</li>
@@ -211,6 +221,10 @@
 						<tr>
 							<th width="50%"><strong>Shop Plugin</strong></th>
 							<td width="50%">no (on the roadmap)</td>
+						</tr>
+						<tr>
+							<th width="50%"><strong>Paylink</strong></th>
+							<td width="50%">yes</td>
 						</tr>
 					</tbody>
 				</table>
@@ -230,100 +244,95 @@
 				<p>
 					Usually, the SEPA mandate is a paper document, but since it is not possible to implement a paper document in eCommerce, electronic mandates (eMandates) are used. The Mandates are stored within the Payengine payment instrument.
 					<br/><br/>
-					These mandates have a unique <em>mandateId</em> and store the <em>mandateText</em> and <em>createdDateTime</em> (the timestamp the customer agreed to the specific mandate).
+					These mandates have a unique <em>mandateId</em>, and store the mandateText as well as the createdDateTime (the timestamp the customer agreed to the specific mandate).
 					<br/>	<br/>
-					Within Payengine the mandate object of a payment instrument is used for tracking the usage of a payment instrument through the type property.
+					Within Payengine, the mandate object of a payment instrument is used for tracking the usage of a payment instrument through the type property.
 				</p>
 				<br/>
-				<p><strong>SEPA mandate text</strong></p>
-				<p>
-					Ich ermächtige die Concardis GmbH, Helfman-Park 7 in 65760 Eschborn, GläubigerID DE82ZZZ00000346626, Zahlungen von meinem Konto mittels SEPA-Lastschrift unter der Mandatsreferenz <strong>[mandateId]</strong> einzuziehen. Zugleich weise ich mein Kreditinstitut an, die von Concardis GmbH auf mein Konto gezogenen SEPA-Lastschriften einzulösen.
-					<br/><br/>
-					Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belasteten Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen.
-					<br/><br/>
-					Verkürzung der Ankündigungsfrist:
-					<br/><br/>
-					Die Frist für die Vorabinformation der SEPA-Lastschrift wird auf einen Tag verkürzt.
-				</p>
+				<div class="example-box-wrapper">
+						<div class="content-box" ng-init="createCustomerResponseShows=false">
+							<h3 class="content-box-header bg-default">
+								SEPA Mandate Text
+								<div class="header-buttons-separator">
+									<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShows=!createCustomerResponseShows;">
+										<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShows"></i>
+										<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShows"></i>
+									</a>
+								</div>
+							</h3>
+							<div class="content-box-wrapper" ng-if="createCustomerResponseShows">
+								<code>
+	"Ich ermächtige die Concardis GmbH, Helfman-Park 7 in 65760 Eschborn, GläubigerID DE82ZZZ00000346626, Zahlungen von meinem Konto mittels SEPA-Lastschrift unter der Mandatsreferenz [mandateId] einzuziehen. Zugleich weise ich mein Kreditinstitut an, die von Concardis GmbH auf mein Konto gezogenen SEPA-Lastschriften einzulösen.
+
+	Hinweis: Ich kann innerhalb von acht Wochen, beginnend mit dem Belastungsdatum, die Erstattung des belasteten Betrages verlangen. Es gelten dabei die mit meinem Kreditinstitut vereinbarten Bedingungen.
+		
+	Verkürzung der Ankündigungsfrist:
+		
+	Die Frist für die Vorabinformation der SEPA-Lastschrift wird auf einen Tag verkürzt."
+								</code>
+							</div>
+						</div>
+					</div>
 				<br/>
 				<div id="singleOrder">
 					<br/>
 					<h4>Single Order</h4>
 					<br/>
-					<p>When a customer provides authorization for a single usage of their bank details for a payment. </p>
+					<p>When a customer provides authorization for a single usage of his bank details for a payment.</p>
 					<br/>
 					<p>You can:</p>
 					<ul>
 						<li>Collect payment data and place the order in your shop.</li>
-						<li>Create debit or preauth with the directDebitType set to <strong>SINGLE</strong>></li>
+						<li>Create debit or preauth with the <em>directDebitType</em> set to <strong>SINGLE</strong></li>
 					</ul>
-					<p>For more information, see <a href="">Single Order</a>.</p>
+					<p>For more information, see <a href="https://docs.payengine.de/faq_pm_sepa_single_order">Single Order</a>.</p>
 				</div>
 				<br/>
 				<div id="recurringOrder">
 					<br/>
 					<h4>Recurring Order</h4>
 					<br/>
-					<p>When a customer provides authorization to perform a series of payments with their bank details. </p>
+					<p>When a customer provides authorization to perform a series of payments with his bank details.</p>
 					<br/>
 					<p>
-						Recurring payments are handled with the use of the <em>directDebitType</em> of the mandate object which points to the type of usage for the particular order. Mark the orders as <strong>FIRST, RECURRING</strong>, and <strong>FINAL</strong>.
+						Recurring payments are handled with use of the <em>directDebitType</em> of mandate object which points to the type of usage for the particular order. Mark the orders as <strong>FIRST, RECURRING</strong> or <strong>FINAL</strong>.
 					</p>
 				</div>
 				<br/>
 				<div id="recurringOrderTypes">
 					<br/>
-					<h4>Recurring Order Types</h4>
+					<h4 style="padding-left:2em;">Recurring Order Types</h4>
 					<br/>
 					<p>There are two types of recurring orders: Recurring Order With initial Payment and Recurring Order Without initial Payment.</p>
 					<br/>
 					<h4>Recurring Order Without initial Payment</h4>
 					<br/>
-					<p>With this option, you can:</p>
+					<p>This option provides:</p>
 					<ul>
 						<li>Collect payment data and place the order in your shop.</li>
 						<li>
 							Perform the backend-to-backend payment instrument request POST /payment-instruments with the <em>directDebitType</em> set to <strong>FIRST</strong>. This request should result in a recurring payment instrument.
 						</li>
-						<li>
-								Use the already created payment instrument for executing orders, providing only the directDebitType that stands for the current usage of the mandate. <strong>(RECURRING/FINAL)</strong>.
-						</li>
+						<li>For recurring usage, see next paragraph.</li>
 					</ul>
-					<p>For more information, see <a href="" id="recuringOrderWithoutInitialPayment"> Recurring Order Without Initial Payment</a>.</p>
+					<p>For more information, see <a href="https://docs.payengine.de/faq_pm_sepa_ro_without_initial_payment" id="recuringOrderWithoutInitialPayment"> Recurring Order Without Initial Payment</a>.</p>
 					<br/>
 					<br/>
-					<h4>Recuring Order With Initial Payment</h4>
+					<h4 style="padding-left:2em;">Recuring Order With Initial Payment</h4>
 					<br/>
-					<p>With this option, you can:</p>
+					<p>This option provides:</p>
 					<ul>
 						<li>Collect payment data and place the order in your shop.</li>
 						<li>
 							Create debit or preauth with the directDebitType set to <strong>FIRST</strong>. This request should result in a recurring payment instrument.
 						</li>
 						<li>
-								Use the already created payment instrument for executing orders, providing only the directDebitType that stands for the current usage of the mandate. <strong>(RECURRING/FINAL)</strong>.
+								Use the already created payment instrument for executing orders providing only the directDebitType that stands for the current usage of the mandate. <strong>(RECURRING/FINAL)</strong>.
 						</li>
 					</ul>
-					<p>For more information, see <a href="" id="recuringOrderWithInitialPayment"> Recurring Order with Initial Payment</a>.</p>
+					<p>For more information, see <a href="https://docs.payengine.de/faq_pm_sepa_ro_with_Initial_payment" id="recuringOrderWithInitialPayment"> Recurring Order with Initial Payment</a>.</p>
 				</div>
 				<br/>
-				<div id="paymentDisruptions">
-					<br/>
-					<h4>Payment Disruptions</h4>
-					<br/>
-					<p><strong>Debit not Possible:</strong> The status of the debit or capture will change from <strong>OK</strong> to <strong>CHARGEBACK</strong>.</p>
-					<br/>
-					<p>
-						Тhis situation may occur due to various problems with the client's account, for example, if no funds are available, the account has been blocked, etc. In these cases, the bank cannot debit the account, even though the customer has already provided the funds for successful payment. If this situation occurs, the bank refunds the payment in the form of a dispute.
-					</p>
-					<br/>
-					<p>
-						<strong>Customer Cancels SEPA Direct Debit:</strong> The status of the debit or capture will be changed from OK to <strong>CHARGEBACK</strong>. <br/>
-						Within eight weeks of debiting the account, if the account holder is not satisfied with their purchase, the bank can refund the money, without asking questions.
-						Between eight weeks and thirteen months after the payment has been created, the customer may dispute a payment with their bank only if the customer considers that the debit has not been authorised.<br/>
-						In this case, Payengine automatically provides the customer's bank with a mandate, approved by the customer. This still does not guarantee that the dispute can be cancelled. The customer's bank may decide that the debit is not authorised by the mandate and that their client has the right to refund.
-					</p>
-				</div>
 				<br/>
 				<div id="paymentMethodSpecificParameters">
 					<br/>
@@ -390,9 +399,9 @@
 								<td>O</td>
 								<td>
 									The statement description from your system/shop of this order.
-									<br>
-									The field <span><strong>order.statementDescription</strong></span> will be used as purpose text.
-									When no <span><strong>order.statementDescription</strong></span> is present the following logic will be applied: 
+									<br><br>
+									The field <span><strong>order.statementDescription</strong></span> will be used as purpose text. <br>
+									When no <span><strong>order.statementDescription</strong></span> is present the following logic will be applied: <br>
 									1) <strong>order.merchantOrderId</strong> is used when it's present
 									<br>
 									2) <strong>order.orderId </strong> is used when <strong>order.merchantOrderId</strong> is not present
@@ -400,7 +409,7 @@
 									For both cases <br>
 									fields <strong>merchant.companyName</strong> and <strong>merchant.shopUrl</strong> will be added after either <strong>order.merchantOrderId</strong> or <strong>order.orderId</strong> separated with space.
 									<br>
-									The max length of the purpose text is <strong>108</strong> characters and it will cut of if it's longer then 108 characters.
+									The max length of the purpose text is <strong>108</strong> characters and it will be cut off if it's longer.
 									<br>
 									Please see the sample below the table.
 								</td>
@@ -433,8 +442,8 @@
 								<td>M</td>
 								<td>
 									string title: <em>DirectDebitType</em><br/><br/>
-									The current mandate type of the direct debit type.
-									The mandate type can be one of the following.
+									The current mandate type of the direct debit type. <br>
+									The mandate type can be one of the following. <br>
 									<strong>FIRST</strong>: It is the first execution of the mandate <strong>SINGLE</strong>: It is used only for one execution of the mandate <strong>RECURRING</strong>: It is used for recurring mandate usage <strong>FINAL</strong>: It is the last execution of the recurring mandate.
 								</td>
 							</tr>
@@ -466,13 +475,13 @@
 									</h3>
 									<div class="content-box-wrapper" ng-if="createCustomerResponseShowwa">
 										<code>
-	String statementDescription = order.getStatementDescription();
+String statementDescription = order.getStatementDescription();
 
-	if ( StringUtils.isEmpty( statementDescription ) ) {
-		statementDescription = order.getMerchantOrderId() != null ? order.getMerchantOrderId() : order.getBusinessKey() + " " + merchant.getCompanyName() + " " + merchant.getShopUrl();
-	}
-		
-	return statementDescription.length() > MAX_LENGTH_OF_STATEMENT_DESCRIPTION ? statementDescription.substring( 0, MAX_LENGTH_OF_STATEMENT_DESCRIPTION ) : statementDescription;												
+if ( StringUtils.isEmpty( statementDescription ) ) {
+	statementDescription = order.getMerchantOrderId() != null ? order.getMerchantOrderId() : order.getBusinessKey() + " " + merchant.getCompanyName() + " " + merchant.getShopUrl();
+}
+	
+return statementDescription.length() > MAX_LENGTH_OF_STATEMENT_DESCRIPTION ? statementDescription.substring( 0, MAX_LENGTH_OF_STATEMENT_DESCRIPTION ) : statementDescription;												
 										</code>
 									</div>
 								</div>
@@ -493,8 +502,7 @@
 							<tr>
 								<td colspan="4">mandateId</td>
 								<td colspan="1">M</td>
-								<td colspan="4">If there is no <em>mandateID</em> transmitted in the request,<br/> Payengine will generate one and send it back in the response.</td>
-								
+								<td colspan="4">If there is no <em>mandateID</em> transmitted in the request, Payengine will generate one and send it back in the response.</td>
 							</tr>
 						</tbody>
 					</table>
@@ -636,13 +644,13 @@
 			<br/>
 			<div>
 				<br/>
-				<h3>Refunds</h3>
+				<h4>Refunds</h4>
 				<br/>
 				<p>
-					To use the refund service of Payengine, configure your bank account connection at the Concardis Merchant Center. For more information, see <a href="">Bank Account Connection Setup</a>.
+					To use the refund service of Payengine, configure your bank account connection at the Concardis Merchant Center.
 				</p>
 				<br/>
-				<h3>Testing</h3>
+				<h2>Testing</h2>
 				<br/>
 				<table border="1px solid black" class="table table-bordered table-striped table-condensed" >
 					<thead>
@@ -660,7 +668,8 @@
 							<td>Chargeback</td>
 							<td>
 									Each of the amounts listed below + any merchant/customer IBAN: The transaction succeeds but a dispute is immediately created.<br/>
-									The debit's/preauth's status stays in OK and a new CHARGEBACK transaction is created with status "booked". This might take some time, according to the scheduler settings.<br/><br/>
+									The debit's/preauth's status stays in success and a new chargeback transaction is created with status "booked". This might take some time, according to the scheduler settings.
+									<br/><br/>
 									<ul>
 										<li>33333 (333,33 €)</li>
 										<li>11111 (111,11 €)</li>
@@ -671,10 +680,10 @@
 					</tbody>
 				</table>
 				<br/>
-				<h3>Settlements</h3>
+				<h2>Settlements</h2>
 				<br/>
 				<p>
-					You can see all settlement information in the Unified Settlement Report. For more information on the format and mappings, see <a href="">[PubDoc] Unified Settlement Report</a>.
+					You can see all settlement information in the Unified Settlement Report. For more information on the format and mappings, see <a href="https://docs.payengine.de/merchantcenter/settlement_report">Unified Settlement Report</a>.
 				</p>
 			</div>
 			<br/><br/>

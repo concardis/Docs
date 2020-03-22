@@ -2,47 +2,41 @@
 <br>
 <br>
 <ul>
-	<li>Overview</li>
-	<li>Customer Experience</li>
-	<li>Payengine Details
+	<li>1 Overview</li>
+	<li>2 Customer Experience</li>
+	<li>3 Payengine Details</li>
 		<ul>
-			<li>General Details</li>
-			<li>Supported Features & Services</li>
-			<li>Integration Types</li>
-			<li>Technical Flow</li>
-			<li>Notifications</li>
-			<li>Specifics
+			<li>3.1 General Details</li>
+			<li>3.2 Supported Features & Services</li>
+			<li>3.3 Integration Types</li>
+			<li>3.4 Technical Flow</li>
+			<li>3.5 Notifications</li>
+			<li>3.6 Specifics</li>
 				<ul>
-					<li>Prerequisites for Authorizing Transactions
+					<li>3.6.1 Prerequisites for Authorizing Transactions</li>
 						<ul>
-							<li>Customer
+							<li>3.6.1.1 Customer</li>
 								<ul>
-									<li>Customer in B2C cases</li>
-									<li>Customer in B2B cases</li>
+									<li>3.6.1.1.1 Customer in B2C cases</li>
+									<li>3.6.1.1.2 Customer in B2B cases</li>
 								</ul>
-							</li>
-							<li>Billing/Shipping Address</li>
-							<li>Payment Instrument</li>
+							<li>3.6.1.2 Billing/Shipping Address</li>
+							<li>3.6.1.3 Payment Instrument</li>
 						</ul>
-					</li>
-					<li>Input Parameters for Authorizing Transactions</li>
+					<li>3.6.2 Input Parameters for Authorizing Transactions</li>
 				</ul>
-			</li>
-			<li>Samples
+			<li>3.7 Samples</li>
 				<ul>
-					<li>Create Payment Instrument</li>
-					<li>Patch Payment Instrument</li>
-					<li>Preauth transaction</li>
-					<li>Capture transaction</li>
-					<li>Cancel transaction </li>
-					<li>Debit transaction</li>
-					<li>Refund transaction</li>
+					<li>3.7.1 Create Payment Instrument</li>
+					<li>3.7.2 Patch Payment Instrument</li>
+					<li>3.7.3 Preauth transaction</li>
+					<li>3.7.4 Capture transaction</li>
+					<li>3.7.5 Cancel transaction </li>
+					<li>3.7.6 Debit transaction</li>
+					<li>3.7.7 Refund transaction</li>
 				</ul>
-			</li>
-			
 		</ul>
-	</li>
-	<li>Testing</li>
+	<li>4 Testing</li>
 </ul>
 <br>
 <br>
@@ -222,10 +216,6 @@
 			<td>yes - webhook, email</td>
 		</tr>
 		<tr>
-			<th>PayLink Integration</th>
-			<td>no</td>
-		</tr>
-		<tr>
 			<th>Settlement Reporting</th>
 			<td>yes</td>
 		</tr>
@@ -253,6 +243,10 @@
 		</tr>
 		<tr>
 			<th>Shop Plugin</th>
+			<td>no</td>
+		</tr>
+		<tr>
+			<th>Paylink</th>
 			<td>no</td>
 		</tr>
 	</tbody>
@@ -396,7 +390,22 @@
 		<tr>
 			<td>organizationEntityType</td>
 			<td>О</td>
-			<td>The organization's legal form</td>
+			<td>
+				Valid values: <br>
+				<ul>
+					<li>LIMITED_COMPANY</li>
+					<li>PUBLIC_LIMITED_COMPANY</li>
+					<li>ENTREPRENEURIAL_COMPANY</li>
+					<li>LIMITED_PARTNERSHIP_LIMITED_COMPANY</li>
+					<li>LIMITED_PARTNERSHIP</li>
+					<li>GENERAL_PARTNERSHIP</li>
+					<li>REGISTERED_SOLE_TRADER</li>
+					<li>SOLE_TRADER</li>
+					<li>CIVIL_LAW_PARTNERSHIP</li>
+					<li>PUBLIC_INSTITUTION</li>
+					<li>OTHER</li>
+				</ul>
+			</td>
 			<td>LIMITED_COMPANY</td>
 		</tr>
 		<tr>
@@ -3447,9 +3456,9 @@
 <br>
 <h3>Testing</h3>
 <br>
-<p>The testing of the three Klarna payment types can be executed via the Klarna Sandbox.</p>
+<p>The testing of the three Klarna payment options can be executed via the Klarna Sandbox.</p>
 <br>
 <p>The Klarna Sandbox is a self-contained virtual testing environment that mimics the live Klarna production environment.</p>
 <br>
-<p>Test credentials for Klarna Sandbox can be received from Klarna.</p>
+<p>Instructions on how to access the Klarna testing environment can be found <a href="https://developers.klarna.com/documentation/testing-environment/">here</a>.</p>
 <br>

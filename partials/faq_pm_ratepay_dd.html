@@ -2,45 +2,47 @@
 <br>
 <br>
 <ul>
-	<li>Overview</li>
-	<li>Customer Experience</li>
-	<li>Payengine Details
+	<li>1. Overview</li>
+	<li>2. Customer Experience</li>
+	<li>3. Payengine Details
 		<ul>
-			<li>General</li>
-			<li>Supported Features & Services</li>
-			<li>Integration Types</li>
-			<li>Technical Flow</li>
-			<li>Specifics
+			<li>3.1 General</li>
+			<li>3.2 Supported Features & Services</li>
+			<li>3.3 Integration Types</li>
+			<li>3.4 Technical Flow</li>
+			<li>3.5 Specifics
 				<ul>
-					<li>Prerequisites for Authorizing Transactions
+					<li>3.5.1 Prerequisites for Authorizing Transactions
 						<ul>
-								<li>Customer
+								<li>3.5.1.1 Customer
 										<ul>
-												<li>Customer in B2C cases</li>
-												<li>Customer in B2B cases</li>
+												<li>3.5.1.1.1Customer in B2C cases</li>
+												<li>3.5.1.1.2 Customer in B2B cases</li>
 										</ul>
 								</li>
-								<li>Persona</li>
-								<li>Billing/Shipping Address</li>
-								<li>Device Identification for RatePAY Payment Methods</li>
+								<li>3.5.1.2 Persona</li>
+								<li>3.5.1.3 Billing/Shipping Address</li>
+								<li>3.5.1.4 Device Identification for RatePAY Payment Methods</li>
 						</ul>
 				</li>
-				<li>Input Parameters for Authorizing Transactions</li>
-				<li>Specific Response Parameters for Authorising Transactions</li>
+				<li>3.5.2 Input Parameters for Authorizing Transactions</li>
+				<li>3.5.3 Specific Response Parameters for Authorizing Transactions</li>
+				<li>3.5.4 Input Parameters for Update Order Transaction</li>
 				</ul>
 			</li>
-			<li>Samples
+			<li>3.6 Samples
 				<ul>
-					<li>Preauth transaction</li>
-					<li>Capture transaction</li>
-					<li>Cancel transaction</li>
-					<li>Debit transaction</li>
-					<li>Refund transaction</li>
+					<li>3.6.1 Preauth transaction</li>
+					<li>3.6.2 Update order transaction</li>
+					<li>3.6.3 Capture transaction</li>
+					<li>3.6.4 Cancel transaction</li>
+					<li>3.6.5 Debit transaction</li>
+					<li>3.6.6 Refund transaction</li>
 				</ul>
 			</li>
 			</ul>
 	</li>
-	<li>Testing</li>
+	<li>4 Testing</li>
 </ul>
 <br>
 <br>
@@ -168,10 +170,6 @@
 			<td>yes - webhook, email</td>
 		</tr>
 		<tr>
-			<th>PayLink Integration</th>
-			<td>no</td>
-		</tr>
-		<tr>
 			<th>Settlement Reporting</th>
 			<td>yes, only original RatePAY settlement reporting</td>
 		</tr>
@@ -197,6 +195,10 @@
 		</tr>
 		<tr>
 			<th>Shop Plugin</th>
+			<td>yes</td>
+		</tr>
+		<tr>
+			<th>Paylink</th>
 			<td>yes</td>
 		</tr>
 	</tbody>
@@ -294,10 +296,10 @@
 			<td>John.Doe@organization.com</td>
 		</tr>
 		<tr>
-			<td>Organization Entity Type</td>
-			<td>O</td>
-			<td>The organization's legal form</td>
-			<td>LIMITED_COMPANY</td>
+			<td>Customer Type</td>
+			<td>M</td>
+			<td>This parameter has only one possible value - organization</td>
+			<td>organization</td>
 		</tr>
 		<tr>
 			<td>Company Name</td>
@@ -309,7 +311,19 @@
 			<td>Organization Registration ID</td>
 			<td>O</td>
 			<td>The organization's unique registration ID number</td>
-			<td>JDE1234</td>
+			<td>DE1234</td>
+		</tr>
+		<tr>
+			<td>Organization Entity Type</td>
+			<td>O</td>
+			<td>
+				The organization's legal form. Valid values:
+				<ul>
+					<li><strong>for DE</strong> - AG, AOR, EG, EINZELUNTERNEHMER, EK ,EV, GBR, GGMBH, GMBH, GMBH-CO-KG, GMBH-I-GR, KG, KOR, OHG, PARTNERSCHAFT, STIFTUNG, UG, UG-I-GR</li>
+					<li><strong>for AT</strong> - AG, EINZELUNTERNEHMER, GBR, GMBH, GMBH-CO-KG, KEG, KG, OEG, OG, OHG</li>
+				</ul>
+			</td>
+			<td>GMBH</td>
 		</tr>
 		<tr>
 			<td>Organization VAT ID</td>
@@ -317,12 +331,7 @@
 			<td>The organization's unique VAT ID number</td>
 			<td>DE123456789</td>
 		</tr>
-		<tr>
-			<td>Customer Type</td>
-			<td>M</td>
-			<td>This parameter has only one possible value - organization</td>
-			<td>organization</td>
-		</tr>
+		
 	</tbody>
 </table>
 <br>
@@ -352,12 +361,6 @@
 			<td>M</td>
 			<td>The person's last name</td>
 			<td>Doe</td>
-		</tr>
-		<tr>
-			<td>First Name</td>
-			<td>M</td>
-			<td>The person's first name</td>
-			<td>John</td>
 		</tr>
 		<tr>
 			<td>Birthday</td>
@@ -553,11 +556,11 @@
 			</h3>
 			<div class="content-box-wrapper" ng-if="createCustomerResponseShow">
 				<code>
-					{
-						"deviceIdentToken": "a95314a9d82918657fad2b07436602bb",
-						"deviceIdentSId": "ratepay",
-						"sessionToken": "58c93b94b6f01ab057683125a47390fb"
-				}
+	{
+		"deviceIdentToken": "a95314a9d82918657fad2b07436602bb",
+		"deviceIdentSId": "ratepay",
+		"sessionToken": "58c93b94b6f01ab057683125a47390fb"
+	}
 				</code>
 			</div>
 		</div>
@@ -586,12 +589,12 @@
 <p>Device Ident Token has to be sent <strong>via POST method</strong> in the body of Create Authorizing Transaction (Preauth or Debit) request.</p>
 <p>It will be placed within Payment object in the field <strong>riskIdentId</strong> as shown below:</p>
 <code>
-		{
-			...
-			payment: {
-			riskIdentId: "DEVICE_IDENT_TOKEN"
-			}
-		}
+{
+	...
+	payment: {
+	riskIdentId: "DEVICE_IDENT_TOKEN"
+	}
+}
 </code>
 <br>
 <br>
@@ -639,18 +642,32 @@
 				<td colspan="1">1468590412476</td>
 			</tr>
 			<tr>
+				<td colspan="2"><em>channel</em></td>
+				<td colspan="1">M</td>
+				<td colspan="3">The channel of origin for the order. Possible values: ECOM, MOTO</td>
+				<td colspan="1">string</td>
+				<td colspan="1">ECOM</td>
+			</tr>
+			<tr>
 				<td colspan="2"><em>basket</em></td>
 				<td colspan="1">M</td>
 				<td colspan="3">The default range for the basket value is from EUR 20 to EUR 2,000 but it can vary according to the merchant's contract. </td>
-				<td colspan="1">basket data object</td>
+				<td colspan="1">data object</td>
 				<td colspan="1">see Samples</td>
+			</tr>
+			<tr>
+				<td colspan="2"><em>ipAddress</em></td>
+				<td colspan="1">M</td>
+				<td colspan="3">The IP address used to submit the order.</td>
+				<td colspan="1">string</td>
+				<td colspan="1">82.120.21.79</td>
 			</tr>
 			<tr>
 				<td colspan="2"><em>payment</em></td>
 				<td colspan="1">M</td>
 				<td colspan="3">Top level</td>
-				<td colspan="1">payment data object</td>
-				<td colspan="1"></td>
+				<td colspan="1">data object</td>
+				<td colspan="1">see Samples</td>
 			</tr>
 			<tr>
 				<td colspan="1" width="50px"></td>
@@ -693,7 +710,7 @@
 				<td colspan="1">rpRiskIdentId_1550854753</td>
 			</tr>
 		</tbody>
-	</table>
+</table>
 <br>
 <br>
 
@@ -723,6 +740,48 @@
 	</tbody>
 </table>
 <br>
+<h4>Input Parameters for Update Order Transaction</h4>
+<br>
+<p>The update order transaction is used to update a preauth transaction that has not been captured yet.</p>
+<br>
+<p>Preauth transactions can be updated through the PATCH/orders/{orderId}/transactions/{transactionId} endpoint.</p>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th colspan="2" width="150px">PARAMETER</th>
+			<th colspan="1" width="100px">MANDATORY/OPTIONAL</th>
+			<th colspan="3">DESCRIPTION</th>
+			<th colspan="1">TYPE</th>
+			<th colspan="1">EXAMPLE</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="2"><em>initialAmount</em></td>
+			<td colspan="1">M</td>
+			<td colspan="3">Amount as the smallest currency unit. E.g. 10000 = EUR 100</td>
+			<td colspan="1">number</td>
+			<td colspan="1">23000</td>
+		</tr>
+		<tr>
+			<td colspan="2"><em>currency</em></td>
+			<td colspan="1">M</td>
+			<td colspan="3">The currency code</td>
+			<td colspan="1">string</td>
+			<td colspan="1">EUR</td>
+		</tr>
+		<tr>
+			<td colspan="2"><em>basket</em></td>
+			<td colspan="1">M</td>
+			<td colspan="3">Basket data object with attributes.</td>
+			<td colspan="1">data object</td>
+			<td colspan="1">See Samples</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<p>Request and response samples for update order transaction can be found below.</p>
 <br>
 <h3>Samples</h3>
 <br>
@@ -2680,10 +2739,44 @@
 <br>
 <h3>Testing</h3>
 <br>
-<p>The RatePAY - Direct Debit testing can be performed via the RatePAY Sandbox.</p>
+<p>RatePAY - Direct Debit testing can be performed via the RatePAY Sandbox.</p>
 <br>
 <p>The RatePAY Sandbox is a self-contained virtual testing environment that mimics the live RatePAY production environment.</p>
 <br>
-<p>Test credentials for RatePAY Sandbox can be received from RatePAY GmbH.</p>
+<p>Test data for RatePAY Sandbox can be found below:</p>
+<br>
+<p><strong>Accept:</strong></p>
+<br>
+<p>
+	City: Testhausen
+	<br>
+	Streetname contains: Nicht Versenden
+	<br>
+	DE : the postal code should be 5 digits
+	<br>
+	CH & AT : the postal code should be 4 digits
+	<br>
+	NL : A postal code in the Netherlands consists of four numbers followed by two capital letters (e.g 1011AB)
+	<br>
+	DE IBAN : DE15111111111111111199
+	<br>
+	NL IBAN : NL18ABNA0484869868 
+	<br>
+	AT IBAN: AT022050302101023600
+</p>
+<br>
+<p><strong>Decline:</strong></p>
+<br>
+<p>
+	City: Testhausen
+	<br>
+	Surname: Ablehnung
+	<br>
+	DE : the postal code should be 5 digits
+	<br>
+	CH & AT : the postal code should be 4 digits
+	<br>
+	NL : A postal code in the Netherlands consists of four numbers followed by two capital letters (e.g 1011AB)
+</p>
 <br>
 <br>

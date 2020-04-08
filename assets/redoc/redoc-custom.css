@@ -33,12 +33,18 @@ h3{
   font-family: Roboto,sans-serif !important;
 }
 
-/* Additional CSS for the side-bar menu */
+
+/*
+  Sidebar menu and API documentation contents
+  fix for Chrome issue in redoc
+  https://github.com/Redocly/redoc/issues/1167
+*/
 div.menu-content {
   position: fixed;
 }
 
-/* Additional CSS for the API documentation contents */
-div.api-content {
-  margin-left: 300px;
+@media screen and (min-width: 800px) {
+  div.api-content {
+    margin-left: 300px;
+  }
 }

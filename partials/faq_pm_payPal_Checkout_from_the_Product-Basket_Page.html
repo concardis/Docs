@@ -1,0 +1,1915 @@
+<div class="container row col-12">
+    <h1>Checkout from the Product/Basket Page</h1>
+    <br/>
+    <br/>
+    <ul>
+      <li><a href="faq_pm_paypal#step1">1. Overview</a></li>
+      <li><a href="faq_pm_paypal#prerequisites">2. Prerequisites</a></li>
+      <li><a href="faq_pm_paypal#step2">3. Customer Experience</a></li>
+      <li><a href="faq_pm_paypal#step3">4. Payengine Details</a></li>
+        <ul>
+          <li><a href="faq_pm_paypal#step4">4.1 General Details</a></li>
+          <li><a href="faq_pm_paypal#step5">4.2 Supported Features and Services</a></li>
+          <li><a href="faq_pm_paypal#step6">4.3 Types of Integration</a></li>
+          <li><a href="faq_pm_paypal#step7">4.4 Technical Flow</a></li>
+          <li><a href="faq_pm_paypal#step7">4.5 Specifics</a></li>
+        
+          <ul>
+            <li><a href="faq_pm_paypal#step8">4.5.1 Integrate the PayPal Checkout Button within the Product/Basket Page</a></li>
+            <li><a href="faq_pm_paypal#step82">4.5.2 Prerequisites for Create Order Intent</a></li>
+            <li><a href="faq_pm_paypal#step83">4.5.3 Create Order Intent</a></li>
+            <li><a href="faq_pm_paypal#step84">4.5.4 Retrieve Order</a></li>
+            <li><a href="faq_pm_paypal#step85">4.5.5 Update Order (optional)</a></li>
+            <li><a href="faq_pm_paypal#step86">4.5.6 Execute Order</a></li>
+            <li><a href="faq_pm_paypal#step87">4.5.7 Capture Order</a></li>
+          </ul>
+        </ul>
+      <li><a href="faq_pm_paypal#step3">5. Samples</a></li>
+        <ul>
+          <li><a href="faq_pm_paypal#step3">5.1 Create Order Transaction</a></li>
+          <li><a href="faq_pm_paypal#step3">5.2 Update order transaction</a></li>
+          <li><a href="faq_pm_paypal#step3">5.3 Execute order transaction</a></li>
+          <li><a href="faq_pm_paypal#step3">5.4 Capture order transaction</a></li>
+        </ul>
+    </ul>
+    <div>
+      <div id="step1">
+        <br/>
+        <br/>
+        <h2>Overview</h2>
+        <br/>
+        <p>
+          Payengine enables merchants to integrate a PayPal widget button for express checkout directly from the product/basket page.
+          <br>
+          This service empowers customers to complete a purchase without ﬁlling in additional data, such as name, email, billing, and shipping address.
+          <br>
+          All the necessary data is extracted from the customer's PayPal account.
+        </p>
+      </div>
+      <br/>
+      <br/>
+      <div id="prerequisites">
+        <br/>
+        <br/>
+        <h2>Prerequisites</h2>
+        <br/>
+        <p>For customers:</p>
+        <ul>
+          <li>valid PayPal account</li>
+        </ul>
+        <br>
+        <p>For merchants:</p>
+        <ul>
+          <li>the feature must be activated by the Payengine support team</li>
+          <li>after activation, <strong>Integrated Sign-up</strong> must be enabled in the Merchant Center from:
+            <br>
+            Settings> Payment Methods > PayPal > Actions> Integrated Sign-up > Sign Up
+          </li>
+        </ul>
+      </div>
+      <br>
+      <br>
+      <div id="step2">
+        <br/>
+        <br/>
+        <h2>Customer Experience</h2>
+        <br/>
+        <br/>
+        <p>On clicking the PayPal Checkout button, a PayPal popup window appears.
+          <br>
+          After the input of the details on the PayPal page, the customer is returned to the merchant Review & Submit Order page with information ﬁelds pre-populated for ﬁnal conﬁrmation of the purchase.
+        </p>
+        <br>
+        <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th width="30%">Description</th>
+              <th>Screenshot</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="vertical-align: top;">1</td>
+              <td style="vertical-align: top;">From the basket page, click the PayPal Checkout button</td>
+              <td><img class="" src="/img/faq/paypal/product-basket/PayPal1.png" width="50%" /></td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top;">2</td>
+              <td style="vertical-align: top;">Log in with your PayPal credentials</td>
+              <td><img class="" src="/img/faq/paypal/product-basket/PayPal1.2.PNG" width="50%" /></td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top;">2</td>
+              <td style="vertical-align: top;">Choose a payment instrument and click <strong>Continue</strong></td>
+              <td><img class="" src="/img/faq/paypal/product-basket/PayPal2.png" width="50%" /></td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top;">3</td>
+              <td style="vertical-align: top;">Choose a shipping address and click <strong>Continue</strong></td>
+              <td><img class="" src="/img/faq/paypal/product-basket/PayPal3.png" width="50%" /></td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top;">4</td>
+              <td style="vertical-align: top;">Review and place order</td>
+              <td><img class="" src="/img/faq/paypal/product-basket/PayPal4.png" width="50%" /></td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top;">5</td>
+              <td style="vertical-align: top;">The order is confirmed</td>
+              <td><img class="" src="/img/faq/paypal/product-basket/PayPal5.png" width="50%" /></td>
+            </tr>
+          </tbody>
+        </table>
+        <br/>
+      </div>
+      <br/>
+      <br/>
+      <div id="step3">
+        <br/>
+        <br/>
+        <h2>Payengine Details</h2>
+        <br/>
+        <br/>
+        <h3 id="step4">General Details</h3>
+        <br/>
+        <table class="table table-bordered table-striped table-condensed">
+          <tbody>
+            <tr>
+              <th width="50%">Product</th>
+              <td width="50%">PayPal Checkout Button</td>
+            </tr>
+            <tr>
+              <th width="50%">Payment Options (for Customer)</th>
+              <td width="50%">Express Checkout</td>
+            </tr>
+            <tr>
+              <th width="50%">Channels</th>
+              <td width="50%">ECOM</td>
+            </tr>
+            <tr>
+              <th width="50%">Currencies</th>
+              <td width="50%">AUD, BRL, CAD, CZK, DKK, EUR, HKD, HUF, INR, ILS, JPY, MYR, MXN, TWD, NZD, NOK, PHP, PLN, GBP, RUB, SGD, SEK, CHF, THB, USD</td>
+            </tr>
+            <tr>
+              <th width="50%">Countries</th>
+              <td width="50%">Countries full list available on:<br/><a href="https://www.paypal.com/us/webapps/mpp/country-worldwide" target="_blank">https://www.paypal.com/us/webapps/mpp/country-worldwide</a></td>
+            </tr>
+            <tr>
+              <th width="50%">Technical Flow</th>
+              <td width="50%">asynchronous</td>
+            </tr>
+            <tr>
+              <th width="50%">Recurring</th>
+              <td width="50%">yes</td>
+            </tr>
+            <tr>
+              <th width="50%">Chargebacks</th>
+              <td width="50%">yes</td>
+            </tr>
+            <tr>
+              <th width="50%">B2B applicable</th>
+              <td width="50%">yes</td>
+            </tr>
+          </tbody>
+        </table>
+        <br/>
+        <br/>
+        <h3 id="step5">Supported Features and Services</h3>
+        <br/>
+        <table class="table table-bordered table-striped table-condensed">
+          <tbody>
+            <tr>
+              <th width="50%">Debit</th>
+              <td width="50%">yes</td>
+            </tr>
+            <tr>
+              <th width="50%">Preauthorization</th>
+              <td width="50%">yes</td>
+            </tr>
+            <tr>
+              <th width="50%">Capture</th>
+              <td width="50%">Yes (full & partial)</td>
+            </tr>
+            <tr>
+              <th width="50%">Cancelation</th>
+              <td width="50%">Yes (full & partial)</td>
+            </tr>
+            <tr>
+              <th width="50%">Refunds</th>
+              <td width="50%">Yes (full & partial)</td>
+            </tr>
+            <tr>
+              <th width="50%">Notifications</th>
+              <td width="50%">Yes - webhook, email</td>
+            </tr>
+            <tr>
+              <th width="50%">Settlement Reporting</th>
+              <td width="50%">Yes, both original and unified settlement</td>
+            </tr>
+          </tbody>
+        </table>
+        <br/>
+        <br/>
+        <h3 id="step6">Types of Integration</h3>
+        <br/>
+        <table class="table table-bordered table-striped table-condensed">
+          <tbody>
+            
+            <tr>
+              <th width="50%">API</th>
+              <td width="50%">no</td>
+            </tr>
+            <tr>
+              <th width="50%">Widget</th>
+              <td width="50%">yes</td>
+            </tr>
+            <tr>
+              <th width="50%">Bridge</th>
+              <td width="50%">no</td>
+            </tr>
+            <tr>
+              <th width="50%">Shop Plugin</th>
+              <td width="50%">no</td>
+            </tr>
+            <tr>
+              <th width="50%">Paylink</th>
+              <td width="50%">no</td>
+            </tr>
+          </tbody>
+        </table>
+        <br/>
+        <br/>
+        <h3 id="step7">Technical Flow</h3>
+        <br/>
+        <p>via button widget integration</p>
+        <br>
+        <img src="/img/faq/paypal/product-basket/tflow.png" alt=" flow" width="80%">
+        <br/>
+        <br/>
+        <h3 id="step9">Specifics</h3>
+        <br/>
+        <p><strong>Integrate the PayPal Checkout Button within the Product/Basket Page</strong></p>
+        <br/>
+        <p>The merchant needs to integrate the PayPal Checkout Button within the Product/Basket page to enable faster checkout with PayPal.</p>
+        <br>
+        <p><strong>Sample JavaScript code to integrate the PayPal Checkout Button</strong></p>
+        <br>
+        <div class="example-box-wrapper">
+          <div class="content-box" ng-init="createCustomerResponseShow=false">
+            <h3 class="content-box-header bg-default">
+              Button Widget Init Example
+              <div class="header-buttons-separator">
+                <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow;">
+                  <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+                  <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+                </a>
+              </div>
+            </h3>
+            <div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+              <code>
+&lt;script src = "https://pp.payengine.de/widgetjs/payengine.widget.min.js"&gt &lt;/script&gt
+ 
+----------------------------------------------
+ 
+function resultCallback(error, results) {
+  console.log('Error/Result:', error, results);
+}
+ 
+function paypalErrorCallback(error) {
+  console.log('On paypal error: ', error);
+}
+ 
+function paypalCancelCallback() {
+  console.log('On paypal cancel');
+}
+ 
+function paypalConfirmCallback(orderId) {
+  console.log('On paypal confirm: ', orderId);
+}
+ 
+function paypalSucccessCallback(orderId) {
+  console.log('On paypal success: ', orderId);
+}
+-------------------------------------------
+ 
+var optionalParameters = {
+ "language": "en",
+ "deviceIdent": false,
+ "product": "paypal",
+ "paypal": {
+  "paypalRecurringBillingAgreement": false,
+  "styles": {
+   "label": "paypal",
+   "size": "responsive",
+   "color": "gold",
+   "shape": "pill"
+  }
+ }
+};
+optionalParameters.paypal.errorCallback = paypalErrorCallback;
+optionalParameters.paypal.cancelCallback = paypalCancelCallback;
+optionalParameters.paypal.confirmCallback = paypalConfirmCallback;
+optionalParameters.paypal.successCallback = paypalSucccessCallback;
+ 
+--------------------------------------------
+PayEngineWidget.initAsButton(
+ 'button-widget-container',
+ 'Merchant-11111111-1111-1111-1111-111111111111',
+ '{"initialAmount":2000,
+ "currency": "EUR",
+ "transactionType": "DEBIT",
+ "ipAddress": null,
+ "async": {
+  "successUrl": "https://www.google.de/#newwindow=1&q=success",
+  "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+  "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel",
+  "confirmUrl": "https://www.google.de/?newwindow=1&q=confirm"
+ },
+ "basket": [{
+  "name": "usbstick",
+  "articleNumber": "sasdfas",
+  "totalPrice": 2000,
+  "totalPriceWithTax": 2000,
+  "unitPrice": 2000,
+  "unitPriceWithTax": 2000,
+  "tax": 0,
+  "quantity": 1
+ }],
+ "terms": 1583248966458,
+ "privacy": 1583248966458
+}
+'
+optionalParameters,
+resultCallback
+              </code>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <table class="table table-bordered table-striped table-condensed">
+          <thead>
+            <tr>
+              <th style="border-right: none; vertical-align: top;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px"></th>
+              <th><strong>Important Note</strong>
+                <br>
+                Merchants have two options for events integration:
+                <br>
+                <ul>
+                  <li>1. RatePAY - Direct Debit requires the Billing and Shipping Address to be identical.</li>
+                  <li>2. Exceptions for merchants are possible only through additional agreements with RatePAY GmbH.</li>
+                </ul>
+              </th>
+            </tr>
+          </thead>
+        </table>
+        <br>
+        <p><strong>Special Parameters to Initialize the PayPal Checkout Button</strong></p>
+        
+        <br/>
+        <h4 id="step11">PayPal input parameters</h4>
+        <br/>
+        <p>The following input parameters are required for initiating a PayPal payment via direct API integration.</p>
+        <br/>
+        <table class="table table-bordered table-striped table-condensed">
+          <thead>
+            <tr>
+              <tr>
+                <th colspan="2">Parameter</th>
+                <th colspan="1">Mandatory/Optional</th>
+                <th colspan="3">Description</th>
+                <th colspan="1">Type</th>
+                <th colspan="1">Example</th>
+              </tr>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="2"></td>transactionType</td>
+              <td colspan="1">M</td>
+              <td colspan="3">The type of the transaction. Possible values: DEBIT and PREAUTH</td>
+              <td colspan="1">string</td>
+              <td colspan="1">DEBIT</td>
+            </tr>
+            <tr>
+              <td colspan="2">async.successUrl / paypalSucccessCallback</td>
+              <td colspan="1">M</td>
+              <td colspan="3">The merchant can choose between two integration options:
+                <ol>
+                  <li>via API - provide redirect URL for successful payment </li>
+                  <li>via JS callbacks - use the paypalSucccessCallback</li>
+                </ol>
+              </td>
+              <td colspan="1">string</td>
+              <td colspan="1">For option 1: <br> <a href="http://my.shop.com/success" target="_blank">http://my.shop.com/success</a></td>
+            </tr>
+            <tr>
+              <td colspan="2">async.failureUrl / paypalErrorCallback</td>
+              <td colspan="1">M</td>
+              <td colspan="3">The merchant can choose between two integration options:
+                <ol>
+                  <li>via API - provide redirect URL for unsuccessful payment </li>
+                  <li>via JS callbacks - use the paypalErrorCallback</li>
+                </ol>
+              </td>
+              <td colspan="1">string</td>
+              <td colspan="1">For option 1: <br> <a href="http://my.shop.com/fail" target="_blank">http://my.shop.com/fail</a></td>
+            </tr>
+            <tr>
+              <td colspan="2">async.cancelUrl / paypalCancelCallback</td>
+              <td colspan="1">M</td>
+              <td colspan="3">The merchant can choose between two integration options:
+                <ol>
+                  <li>via API - provide redirect URL when payment is canceled</li>
+                  <li>via JS callbacks - use the paypalCancelCallback</li>
+                </ol>
+              </td>
+              <td colspan="1">string</td>
+              <td colspan="1">For option 1: <br> <a href="http://my.shop.com/cancel" target="_blank">http://my.shop.com/cancel</a></td>
+            </tr>
+            <tr>
+              <td colspan="2">async.confirmUrl / paypalConfirmCallback</td>
+              <td colspan="1">M</td>
+              <td colspan="3">After choosing the payment details on PayPal, the customer is redirected to the merchant's Review & Submit Order page with information ﬁelds pre-populated for ﬁnal conﬁrmation of the purchase.
+                <br>
+                  The merchant can choose between two integration options:
+                <ol>
+                  <li>via API - provide redirect URL when payment is canceled</li>
+                  <li>via JS callbacks - use the paypalConfirmCallback</li>
+                </ol>
+              </td>
+              <td colspan="1">string</td>
+              <td colspan="1">For option 1: <br> <a href="http://my.shop.com/confirm" target="_blank">http://my.shop.com/confirm</a></td>
+            </tr>
+            <tr>
+              <td colspan="2">basket</td>
+              <td colspan="1">O</td>
+              <td colspan="3">Data object with attributes. For more information, see <a href="https://concardis.stagil.de/confluence/display/PAY/%5BPubDoc%5D+Basket+Structure" style="color:blue;">Basket Structure.</a></td>
+              <td colspan="1">object</td>
+              <td colspan="1"></td>
+            </tr>
+            <tr>
+              <td colspan="2">optionalParameters</td>
+              <td colspan="1">O</td>
+              <td colspan="3">Data object with attributes</td>
+              <td colspan="1">object</td>
+              <td colspan="1"></td>
+            </tr>
+            <tr>
+              <td colspan="1"></td>
+              <td colspan="1">language</td>
+              <td colspan="1"></td>
+              <td colspan="3">The language of the widget. The only possible value is en.</td>
+              <td colspan="1">string</td>
+              <td colspan="1">en</td>
+            </tr>
+            <tr>
+              <td colspan="1"></td>
+              <td colspan="1">deviceIdent</td>
+              <td colspan="1"></td>
+              <td colspan="3">Whether to activate the <a href="https://docs.payengine.de/outofthebox/widgetmenu/deviceident">device ident</a> risk setting. The default is false.</td>
+              <td colspan="1">boolean</td>
+              <td colspan="1">false</td>
+            </tr>
+            <tr>
+              <td colspan="1"></td>
+              <td colspan="1">product</td>
+              <td colspan="1"></td>
+              <td colspan="3">The only possible value for this element is paypal.</td>
+              <td colspan="1">string</td>
+              <td colspan="1">paypal</td>
+            </tr>
+            <tr>
+              <td colspan="1"></td>
+              <td colspan="1">paypal.paypalRecurringBillingAgreement</td>
+              <td colspan="1"></td>
+              <td colspan="3">Whether to create a PayPal billing agreement for recurring payments.
+                <br>
+                  Note: <strong>This feature is not supported yet.</strong></td>
+              <td colspan="1">boolean</td>
+              <td colspan="1">false</td>
+            </tr>
+            <tr>
+              <td colspan="1"></td>
+              <td colspan="1">paypal.styles.label</td>
+              <td colspan="1"></td>
+              <td colspan="3">The text label on the button. Possible values are paypal, checkout, buynow, pay.
+                <br>
+                  The default is paypal. </td>
+              <td colspan="1">string</td>
+              <td colspan="1">paypal</td>
+            </tr>
+            <tr>
+              <td colspan="1"></td>
+              <td colspan="1">paypal.styles.size</td>
+              <td colspan="1"></td>
+              <td colspan="3">The size of the button. The default is responsive (the button adapts to the size of the container element).</td>
+              <td colspan="1">string</td>
+              <td colspan="1">responsive</td>
+            </tr>
+            <tr>
+              <td colspan="1"></td>
+              <td colspan="1">paypal.styles.color</td>
+              <td colspan="1"></td>
+              <td colspan="3">Button color. Possible values are gold, blue, silver, white, black. The default is gold.</td>
+              <td colspan="1">string</td>
+              <td colspan="1">gold</td>
+            </tr>
+            <tr>
+              <td colspan="1"></td>
+              <td colspan="1">paypal.styles.shape</td>
+              <td colspan="1"></td>
+              <td colspan="3">The shape of the button. Possible values are rect and pill. The default is rect.</td>
+              <td colspan="1">string</td>
+              <td colspan="1">pill</td>
+            </tr>
+            <tr>
+              <td colspan="2">resultCallback</td>
+              <td colspan="1">M</td>
+              <td colspan="3">Function to trigger when a callback result comes from PayPal (confirm/success/failure/cancel). </td>
+              <td colspan="1">function</td>
+              <td colspan="1"></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Note: Additional info on how to style the PayPal button can be found on <a href="https://developer.paypal.com/docs/checkout/integration-features/customize-button/">PayPal</a></p>
+        <br/>
+        <p><strong>Prerequisites for Create Order Intent</strong></p>
+        <br>
+        <table class="table table-bordered table-striped table-condensed">
+          <thead>
+            <tr>
+              <tr>
+                <th width="33%">Prerequisite</th>
+                <th width="33%">Mandatory/Optional</th>
+                <th width="33%">Create Prerequisite</th>
+              </tr>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td width="33%">Customer</td>
+              <td width="33%">O</td>
+              <td width="33%">POST /customers</td>
+            </tr>
+            <tr>
+              <td width="33%">Persona</td>
+              <td width="33%">O</td>
+              <td width="33%">POST /customers/{{customerId}}/personas</td>
+            </tr>
+            <tr>
+              <td width="33%">Billing Address</td>
+              <td width="33%">O</td>
+              <td width="33%">POST /customers/{{customerId}}/addresses</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <table class="table table-bordered table-striped table-condensed">
+          <thead>
+            <tr>
+              <th style="border-right: none; vertical-align: top;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px"></th>
+              <th><strong>Important Note</strong>
+                <br>
+                Shipping Address should not be provided as it is retrieved from PayPal at a later stage.
+              </th>
+            </tr>
+          </thead>
+        </table>
+        <br/>
+        <p><strong>Create Order Intent</strong></p>
+        <br>
+        <p ng-non-bindable>
+          By clicking on the Checkout Button, the button widget automatically sends an order request to the following endpoint:
+          <br>
+          POST/{{publicApiUrl}}/v1/orders
+          <br>
+          The transaction is assigned an Order Created status by Payengine. For an example of Create Order transaction see Samples.
+        </p>
+        <br/>
+        <p><strong>Retrieve Order</strong></p>
+        <br>
+        <p ng-non-bindable>
+          GET/{{publicApiUrl}}/v1/orders/{orderId}
+          <br>
+          After redirecting from PayPal (or getting a paypalConfirmCallback), the merchant needs to call the endpoint GET​/{{publicApiUrl}}/v1/orders/{orderId} to retrieve the completed customer data( shipping address, payment instrument, name, etc.)
+        </p>
+        <br>
+        <p><strong>Update Order (optional)</strong></p>
+        <br>
+        <p ng-non-bindable>
+          PATCH​/{{publicApiUrl}}/v1/orders​/{orderId}
+          <br>
+          After the order information is retrieved from PayPal, the merchant can optionally update the order.
+          <br>
+          Reasons to update the basket:
+          <ol>
+            <li>add new shipping fee/ update existing one</li>
+            <li>add a new discount article</li>
+          </ol>
+          <br>
+          The following specific input parameters for Update Order transaction should be provided:
+        </p>
+        <br/>
+        <table class="table table-bordered table-striped table-condensed">
+          <thead>
+            <tr>
+              <tr>
+                <th colspan="2">Parameter</th>
+                <th colspan="1">Mandatory/Optional</th>
+                <th colspan="3">Description</th>
+                <th colspan="1">Type</th>
+                <th colspan="1">Example</th>
+              </tr>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="2"></td>basket.articletype</td>
+              <td colspan="1">M</td>
+              <td colspan="3">The article type of the basket item. Possible values are
+                <ul>
+                  <li>shipping_fee</li>
+                  <li>discount</li>
+                </ul>
+              </td>
+              <td colspan="1">string</td>
+              <td colspan="1">See Samples</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <p>For more information on the basket, see our <a href="https://concardis.stagil.de/confluence/display/PAY/%5BPubDoc%5D+Basket+Structure">Basket Structure</a> documentation.</p>
+        <br>
+        <p><strong>Execute Order</strong></p>
+        <br>
+        <p ng-non-bindable>
+          After the information is retrieved and updated, the customer confirms the order and an Execute Order transaction is triggered.
+          <br>
+          The button widget automatically sends an order request to the following endpoint:
+          <br>
+          POST/{{publicApiUrl}}/v1/orders/{orderId}/execute
+          <br>
+          In case of success, the transaction is assigned an Authorized or Debited status by Payengine. For an example of an Execute Order transaction see Samples.
+        </p>
+        <br>
+        <p><strong>Capture Order</strong></p>
+        <br>
+        <p ng-non-bindable>
+          For transactions in an Authorized status, the merchant could capture the payment partially or fully.
+          <br>
+          This can be done via the Merchant Center or via API through the following endpoint:
+          <br>
+          POST​/orders​/{orderId}​/transactions​/{transactionId}​/capture
+        </p>
+        <br>
+        <h3 id="step12">Samples</h3>
+        <br/>
+        <p><strong>Create Order Transaction</strong></p>
+        <br/>
+        <p ng-non-bindable>POST/{{publicApiUrl}}/v1/orders</p>
+        <br/>
+        <table class="table table-bordered table-striped table-condensed">
+          <thead>
+            <tr>
+              <th style="border-right: none; vertical-align: top;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px"></th>
+              <th><strong>Important Note</strong>
+                <br>
+                This transaction is executed automatically by the Payengine widget.
+              </th>
+            </tr>
+          </thead>
+        </table>
+        <br>
+        <div>
+          <div class="example-box-wrapper">
+            <div class="content-box" ng-init="createCustomerResponseShow1a=false">
+              <h3 class="content-box-header bg-default">
+                  Create Order Request
+                <div class="header-buttons-separator">
+                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow1a=!createCustomerResponseShow1a;">
+                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow1a"></i>
+                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow1a"></i>
+                  </a>
+                </div>
+              </h3>
+              <div class="content-box-wrapper" ng-if="createCustomerResponseShow1a">
+                <code>
+  {
+    "initialAmount": 2000,
+    "currency": "EUR",
+    "transactionType": "DEBIT",
+    "ipAddress": null,
+    "async": {
+      "successUrl": "https://www.google.de/#newwindow=1&q=success",
+      "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+      "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel",
+      "confirmUrl": "https://www.google.de/?newwindow=1&q=confirm"
+    },
+    "basket": [
+      {
+        "name": "usbstick",
+        "articleNumber": "sasdfas",
+        "totalPrice": 2000,
+        "totalPriceWithTax": 2000,
+        "unitPrice": 2000,
+        "unitPriceWithTax": 2000,
+        "tax": 0,
+        "quantity": 1
+      }
+    ],
+    "customer": "Customer-21a8e31a-c477-4ce7-91b6-b2787c8fd0de",
+    "persona": "Persona-9fd53f45-9ee5-4b76-9d03-d0fc8be7c7d0",
+    "billingAddress": "PostalAddress-364b4077-e29d-4cc3-86f3-bc1dfa8747d7",
+    "terms": 1585223677139,
+    "privacy": 1585223677139
+  }
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="example-box-wrapper">
+            <div class="content-box" ng-init="createCustomerResponseShow3=false">
+              <h3 class="content-box-header bg-default">
+                  Create Order Response
+                <div class="header-buttons-separator">
+                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow3=!createCustomerResponseShow3;">
+                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow3"></i>
+                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow3"></i>
+                  </a>
+                </div>
+              </h3>
+              <div class="content-box-wrapper" ng-if="createCustomerResponseShow3">
+                <code>
+  {
+    "createdAt": 1585223502177,
+    "modifiedAt": 1585223502177,
+    "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
+    "terms": 1585223515126,
+    "privacy": 1585223515126,
+    "orderId": "pmiih0slus",
+    "merchantOrderId": null,
+    "paymentProviderTransactionId": null,
+    "description": null,
+    "statementDescription": null,
+    "initialAmount": 2000,
+    "preauthorizedAmount": 0,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "EUR",
+    "basket": [
+      {
+        "id": "Article-96748de7-957b-4edd-ac63-725bbd0c9b14",
+        "name": "usbstick",
+        "articleNumber": "sasdfas",
+        "totalPrice": 2000,
+        "totalPriceWithTax": 2000,
+        "unitPrice": 2000,
+        "unitPriceWithTax": 2000,
+        "quantity": 1,
+        "tax": 0,
+        "discount": null,
+        "imageUrl": null,
+        "articleUrl": null,
+        "articleType": null
+      }
+    ],
+    "customer": {
+      "merchantCustomerId": "my_customer_123",
+      "organizationRegistrationRegister": null,
+      "organizationRegistrationId": null,
+      "organizationEntityType": null,
+      "organizationVatId": null,
+      "companyName": null,
+      "reference": null,
+      "email": "psp.merchant.1@cardtech.de",
+      "customerId": "Customer-21a8e31a-c477-4ce7-91b6-b2787c8fd0de",
+      "addresses": [],
+      "personas": [],
+      "paymentInstruments": [],
+      "createdAt": 1495460773000,
+      "modifiedAt": 1495460773000,
+      "customerType": null
+    },
+    "persona": {
+      "personaId": "Persona-9fd53f45-9ee5-4b76-9d03-d0fc8be7c7d0",
+      "firstName": "Max",
+      "lastName": "1495460775",
+      "phone": "00493012346",
+      "mobile": "00493012345",
+      "fax": "00493012345",
+      "birthday": 358293600000,
+      "gender": "MALE",
+      "title": "Prof. Dr.",
+      "createdAt": 1495460775000,
+      "modifiedAt": 1495460775000
+    },
+    "billingAddress": {
+      "firstName": "Max",
+      "lastName": "Muster",
+      "street": "Musterweg",
+      "houseNumber": "1495460778",
+      "city": "Musterhausen",
+      "zip": "12345",
+      "country": "DE",
+      "state": "Bayern",
+      "phone": "00493012345",
+      "fax": "00493012345",
+      "mobile": "00493012345",
+      "title": null,
+      "additionalDetails": "premium buyer",
+      "addressId": "PostalAddress-364b4077-e29d-4cc3-86f3-bc1dfa8747d7",
+      "createdAt": 1495460777000,
+      "modifiedAt": 1495460777000
+    },
+    "shippingAddress": null,
+    "ipAddress": null,
+    "paymentInstrument": null,
+    "transactions": [],
+    "status": "CREATED",
+    "channel": "ECOM",
+    "source": null,
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": [
+      "wechat-pay",
+      "sofort",
+      "giropay",
+      "paypal",
+      "alipay",
+      "bancontact",
+      "eps",
+      "prepayment",
+      "payu",
+      "sepa",
+      "paydirekt",
+      "postfinance-card",
+      "creditcard",
+      "ideal"
+    ],
+    "product": null,
+    "transactionType": "DEBIT",
+    "meta": null,
+    "async": {
+      "successUrl": "https://www.google.de/#newwindow=1&q=success",
+      "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+      "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel",
+      "confirmUrl": "https://www.google.de/?newwindow=1&q=confirm"
+    },
+    "deviceIdent": null,
+    "clientType": "BRW",
+    "asyncNotificationSubscriptionId": null,
+    "lastOperation": "ORDER_CREATED",
+    "locale": null,
+    "risk": null
+  }
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        
+        <p><strong>Update order transaction</strong></p>
+        <br/>
+        <h3 ng-non-bindable>PATCH​/{{publicApiUrl}}/v1/orders​/{orderId}</h3>
+        <br/>
+        <div>
+          <div class="example-box-wrapper">
+            <div class="content-box" ng-init="createCustomerResponseShow4a=false">
+              <h3 class="content-box-header bg-default">
+                  Update Order Request
+                <div class="header-buttons-separator">
+                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow4a=!createCustomerResponseShow4a;">
+                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow4a"></i>
+                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow4a"></i>
+                  </a>
+                </div>
+              </h3>
+              <div class="content-box-wrapper" ng-if="createCustomerResponseShow4a">
+                <code>
+  {
+    "initialAmount": 2200,
+    "basket": [
+        {
+            "articleType": "shipping_fee",
+            "articleNumber": "shipping",
+            "name": "Sale",
+            "quantity": 1,
+            "unitPrice": 300,
+            "unitPriceWithTax": 300,
+            "tax": 0,
+            "totalPrice": 300,
+            "totalPriceWithTax": 300
+        },
+        {
+            "articleType": "discount",
+            "articleNumber": "SOCKS_NUMBER",
+            "name": "Sale",
+            "quantity": 1,
+            "unitPrice": -100,
+            "unitPriceWithTax": -100,
+            "tax": 1,
+            "totalPrice": -100,
+            "totalPriceWithTax": -100
+        }
+    ]
+  }
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div>
+          <div class="example-box-wrapper">
+            <div class="content-box" ng-init="createCustomerResponseShow5a=false">
+              <h3 class="content-box-header bg-default">
+                  Update Order Response
+                <div class="header-buttons-separator">
+                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow5a=!createCustomerResponseShow5a;">
+                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow5a"></i>
+                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow5a"></i>
+                  </a>
+                </div>
+              </h3>
+              <div class="content-box-wrapper" ng-if="createCustomerResponseShow5a">
+                <code>
+  {
+    "createdAt": 1585828829398,
+    "modifiedAt": 1585829006579,
+    "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
+    "terms": 1585828816010,
+    "privacy": 1585828816010,
+    "orderId": "actyvfbdrw",
+    "merchantOrderId": null,
+    "paymentProviderTransactionId": null,
+    "description": null,
+    "statementDescription": null,
+    "initialAmount": 2200,
+    "preauthorizedAmount": 0,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "EUR",
+    "basket": [
+        {
+            "id": "Article-353d846a-2a15-4f14-8fd8-4322d1c969d7",
+            "name": "Sale",
+            "articleNumber": "SOCKS_NUMBER",
+            "totalPrice": -100,
+            "totalPriceWithTax": -100,
+            "unitPrice": -100,
+            "unitPriceWithTax": -100,
+            "quantity": 1,
+            "tax": 1,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": "discount"
+        },
+        {
+            "id": "Article-3ef552cf-3ba3-4318-b05a-11b248e05d7e",
+            "name": "Sale",
+            "articleNumber": "shipping",
+            "totalPrice": 300,
+            "totalPriceWithTax": 300,
+            "unitPrice": 300,
+            "unitPriceWithTax": 300,
+            "quantity": 1,
+            "tax": 0,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": "shipping_fee"
+        },
+        {
+            "id": "Article-b31f6e1f-dfb4-4a56-b49f-cdad2f848a9f",
+            "name": "usbstick",
+            "articleNumber": "sasdfas",
+            "totalPrice": 2000,
+            "totalPriceWithTax": 2000,
+            "unitPrice": 2000,
+            "unitPriceWithTax": 2000,
+            "quantity": 1,
+            "tax": 0,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+        }
+    ],
+    "customer": {
+        "merchantCustomerId": "my_customer_123",
+        "organizationRegistrationRegister": null,
+        "organizationRegistrationId": null,
+        "organizationEntityType": null,
+        "organizationVatId": null,
+        "companyName": null,
+        "reference": null,
+        "email": "psp.merchant.1@cardtech.de",
+        "customerId": "Customer-21a8e31a-c477-4ce7-91b6-b2787c8fd0de",
+        "addresses": [],
+        "personas": [],
+        "paymentInstruments": [],
+        "createdAt": 1495460773000,
+        "modifiedAt": 1495460773000,
+        "customerType": null
+    },
+    "persona": {
+        "personaId": "Persona-9fd53f45-9ee5-4b76-9d03-d0fc8be7c7d0",
+        "firstName": "Max",
+        "lastName": "1495460775",
+        "phone": "00493012346",
+        "mobile": "00493012345",
+        "fax": "00493012345",
+        "birthday": 358293600000,
+        "gender": "MALE",
+        "title": "Prof. Dr.",
+        "createdAt": 1495460775000,
+        "modifiedAt": 1495460775000
+    },
+    "billingAddress": {
+        "firstName": "Max",
+        "lastName": "Muster",
+        "street": "Musterweg",
+        "houseNumber": "1495460778",
+        "city": "Musterhausen",
+        "zip": "12345",
+        "country": "DE",
+        "state": "Bayern",
+        "phone": "00493012345",
+        "fax": "00493012345",
+        "mobile": "00493012345",
+        "title": null,
+        "additionalDetails": "premium buyer",
+        "addressId": "PostalAddress-364b4077-e29d-4cc3-86f3-bc1dfa8747d7",
+        "createdAt": 1495460777000,
+        "modifiedAt": 1495460777000
+    },
+    "shippingAddress": {
+        "firstName": "n/a",
+        "lastName": "Max Muster",
+        "street": "Musterweg",
+        "houseNumber": "n/a",
+        "city": "Musterhausen",
+        "zip": "12345",
+        "country": "DE",
+        "state": "BAYERN",
+        "phone": null,
+        "fax": null,
+        "mobile": null,
+        "title": null,
+        "additionalDetails": null,
+        "addressId": "address_eeegrgse4p",
+        "createdAt": 1585812488194,
+        "modifiedAt": 1585812488194
+    },
+    "ipAddress": null,
+    "paymentInstrument": null,
+    "transactions": [],
+    "status": "CREATED",
+    "channel": "ECOM",
+    "source": null,
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": [
+        "creditcard",
+        "paydirekt",
+        "wechat-pay",
+        "ideal",
+        "bancontact",
+        "prepayment",
+        "giropay",
+        "sofort",
+        "payu",
+        "eps",
+        "paypal",
+        "alipay",
+        "paysafecard",
+        "postfinance-card",
+        "sepa"
+    ],
+    "product": "paypal",
+    "transactionType": "DEBIT",
+    "meta": {
+        "deferred": false,
+        "addressOverride": true,
+        "paypalOrderId": "8TT58071M0434090T"
+    },
+    "async": null,
+    "deviceIdent": null,
+    "clientType": "BRW",
+    "asyncNotificationSubscriptionId": null,
+    "lastOperation": "ORDER_CREATED",
+    "locale": null,
+    "risk": null
+  }
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <br/>
+        <p><strong>Execute order transaction</strong></p>
+        <br/>
+        <h3 ng-non-bindable>POST/{{publicApiUrl}}/v1/orders/{orderId}/execute</h3>
+        <br/>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+              <tr>
+                <th style="border-right: none; vertical-align: top;" ><img class="" src="/img/3dsecure/exclamation.png" width="16px"></th>
+                <th><strong>Important Note</strong>
+                  <br>
+                  This transaction is executed automatically by the Payengine widget.
+                </th>
+              </tr>
+            </thead>
+          </table>
+          <br>
+        <div>
+          <div class="example-box-wrapper">
+            <div class="content-box" ng-init="createCustomerResponseShow4=false">
+              <h3 class="content-box-header bg-default">
+                  Execute Order Response
+                <div class="header-buttons-separator">
+                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow4=!createCustomerResponseShow4;">
+                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow4"></i>
+                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow4"></i>
+                  </a>
+                </div>
+              </h3>
+              <div class="content-box-wrapper" ng-if="createCustomerResponseShow4">
+                <code>
+  {
+    "orderId": "bsmrvwiwsq",
+    "merchantOrderId": null,
+    "paymentProviderTransactionId": "27T478753E028525V",
+    "createdAt": 1585640352321,
+    "modifiedAt": 1585640392529,
+    "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
+    "terms": 1585640357623,
+    "privacy": 1585640357623,
+    "description": null,
+    "statementDescription": null,
+    "initialAmount": 2000,
+    "preauthorizedAmount": 2000,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "EUR",
+    "basket": [
+      {
+        "id": "Article-fad140c0-0030-4d79-81a4-e8e77e238a15",
+        "name": "usbstick",
+        "articleNumber": "sasdfas",
+        "totalPrice": 2000,
+        "totalPriceWithTax": 2000,
+        "unitPrice": 2000,
+        "unitPriceWithTax": 2000,
+        "quantity": 1,
+        "tax": 0,
+        "discount": null,
+        "imageUrl": null,
+        "articleUrl": null,
+        "articleType": null
+      }
+    ],
+    "customer": {
+      "merchantCustomerId": "my_customer_123",
+      "organizationRegistrationRegister": null,
+      "organizationRegistrationId": null,
+      "organizationEntityType": null,
+      "organizationVatId": null,
+      "companyName": null,
+      "reference": null,
+      "email": "psp.merchant.1@cardtech.de",
+      "customerId": "Customer-21a8e31a-c477-4ce7-91b6-b2787c8fd0de",
+      "addresses": [],
+      "personas": [],
+      "paymentInstruments": [],
+      "createdAt": 1495460773000,
+      "modifiedAt": 1495460773000,
+      "customerType": null
+    },
+    "persona": {
+      "personaId": "Persona-9fd53f45-9ee5-4b76-9d03-d0fc8be7c7d0",
+      "firstName": "Max",
+      "lastName": "1495460775",
+      "phone": "00493012346",
+      "mobile": "00493012345",
+      "fax": "00493012345",
+      "birthday": 358293600000,
+      "gender": "MALE",
+      "title": "Prof. Dr.",
+      "createdAt": 1495460775000,
+      "modifiedAt": 1495460775000
+    },
+    "billingAddress": {
+      "firstName": "Max",
+      "lastName": "Muster",
+      "street": "Musterweg",
+      "houseNumber": "1495460778",
+      "city": "Musterhausen",
+      "zip": "12345",
+      "country": "DE",
+      "state": "Bayern",
+      "phone": "00493012345",
+      "fax": "00493012345",
+      "mobile": "00493012345",
+      "title": null,
+      "additionalDetails": "premium buyer",
+      "addressId": "PostalAddress-364b4077-e29d-4cc3-86f3-bc1dfa8747d7",
+      "createdAt": 1495460777000,
+      "modifiedAt": 1495460777000
+    },
+    "shippingAddress": {
+      "firstName": "n/a",
+      "lastName": "Max Muster",
+      "street": "Musterweg",
+      "houseNumber": "n/a",
+      "city": "Musterhausen",
+      "zip": "12345",
+      "country": "DE",
+      "state": "BAYERN",
+      "phone": null,
+      "fax": null,
+      "mobile": null,
+      "title": null,
+      "additionalDetails": null,
+      "addressId": "address_nhn8rpsd0w",
+      "createdAt": 1585640100650,
+      "modifiedAt": 1585640100650
+    },
+    "ipAddress": null,
+    "paymentInstrument": {
+      "createdAt": 1585640387881,
+      "modifiedAt": 1585640387881,
+      "paymentInstrumentId": "paymentinstrument_xlioqgeqz5",
+      "merchantPaymentInstrumentId": null,
+      "attributes": null,
+      "encrypted": false,
+      "origin": "paypal",
+      "type": "paypal",
+      "recurring": false
+    },
+    "transactions": [
+      {
+        "createdAt": 1585640387880,
+        "modifiedAt": 1585640392529,
+        "type": "PREAUTH",
+        "transactionId": "transaction_uqeqj2ju7m",
+        "description": null,
+        "initialAmount": 2000,
+        "capturedAmount": 0,
+        "canceledAmount": 0,
+        "currency": "EUR",
+        "status": "OK",
+        "order": "bsmrvwiwsq",
+        "parentTransaction": null,
+        "transactions": null,
+        "basket": [
+          {
+            "id": "Article-c24fc854-0cf0-4a19-9164-7daa4c6a083b",
+            "name": "usbstick",
+            "articleNumber": "sasdfas",
+            "totalPrice": 2000,
+            "totalPriceWithTax": 2000,
+            "unitPrice": 2000,
+            "unitPriceWithTax": 2000,
+            "quantity": 1,
+            "tax": 0,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+          }
+        ],
+        "providerCode": null,
+        "merchantMessage": null,
+        "customerMessage": null,
+        "descriptor": null,
+        "meta": null,
+        "challenge": null,
+        "asyncNotificationSubscriptionId": null,
+        "tracking": []
+      }
+    ],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": null,
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": [
+      "paysafecard",
+      "prepayment",
+      "alipay",
+      "paypal",
+      "eps",
+      "ideal",
+      "postfinance-card",
+      "bancontact",
+      "paydirekt",
+      "wechat-pay",
+      "payu",
+      "sofort",
+      "sepa",
+      "creditcard",
+      "giropay"
+    ],
+    "product": "paypal",
+    "transactionType": "PREAUTH",
+    "meta": {
+      "deferred": false,
+      "addressOverride": true,
+      "paypalOrderId": "7YG489069U479173D"
+    },
+    "async": {
+      "successUrl": "https://www.google.de/#newwindow=1&q=success",
+      "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+      "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel",
+      "confirmUrl": "https://www.google.de/?newwindow=1&q=confirm"
+    },
+    "deviceIdent": null,
+    "clientType": "BRW",
+    "asyncNotificationSubscriptionId": null,
+    "lastOperation": "TRANSACTION_PREAUTH_OK",
+    "locale": null,
+    "risk": null
+  }
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <br>
+        <p><strong>Capture order transaction</strong></p>
+        <br>
+        <h3 ng-non-bindable>POST/{{publicApiUrl}}/v1/orders/{orderId}/transactions/{{transactionId}}/capture</h3>
+        <br>
+        <div>
+          <div class="example-box-wrapper">
+            <div class="content-box" ng-init="createCustomerResponseShow5b=false">
+              <h3 class="content-box-header bg-default">
+                  Capture Order Request
+                <div class="header-buttons-separator">
+                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow5b=!createCustomerResponseShow5b;">
+                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow5b"></i>
+                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow5b"></i>
+                  </a>
+                </div>
+              </h3>
+              <div class="content-box-wrapper" ng-if="createCustomerResponseShow5b">
+                <code>
+  {
+    "description": "description for operation.",
+    "initialAmount": 1190,
+    "currency": "EUR",
+      "basket": [
+          {
+              "id": "Article-c694bac7-8e86-4aa4-9803-ea4876eede40",
+              "name": "USB-Stick",
+              "articleNumber": "SW10029",
+              "totalPrice": 5000,
+              "totalPriceWithTax": 5950,
+              "unitPrice": 1000,
+              "unitPriceWithTax": 1190,
+              "quantity": 5,
+              "tax": 19,
+              "discount": null,
+              "imageUrl": null,
+              "articleUrl": null,
+              "articleType": null
+          }
+      ]
+  }
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+        <div>
+          <div class="example-box-wrapper">
+            <div class="content-box" ng-init="createCustomerResponseShow4b=false">
+              <h3 class="content-box-header bg-default">
+                  Capture Order Response
+                <div class="header-buttons-separator">
+                  <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow4b=!createCustomerResponseShow4b;">
+                    <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow4b"></i>
+                    <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow4b"></i>
+                  </a>
+                </div>
+              </h3>
+              <div class="content-box-wrapper" ng-if="createCustomerResponseShow4b">
+                <code>
+  {
+    "createdAt": 1586164358232,
+    "modifiedAt": 1586164358270,
+    "type": "CAPTURE",
+    "transactionId": "transaction_7wvgzk5uj5",
+    "description": "description for operation.",
+    "initialAmount": 1190,
+    "refundedAmount": 0,
+    "currency": "EUR",
+    "status": "SUCCESS",
+    "order": {
+        "createdAt": 1586164179808,
+        "modifiedAt": 1586164358270,
+        "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
+        "terms": 1468590412476,
+        "privacy": 1468590412476,
+        "orderId": "kdik8srank",
+        "merchantOrderId": "1586164179",
+        "paymentProviderTransactionId": "cba63795-ee6f-41e0-a",
+        "description": "test transaction",
+        "statementDescription": "statement description",
+        "initialAmount": 5950,
+        "preauthorizedAmount": 5950,
+        "capturedAmount": 1390,
+        "refundedAmount": 0,
+        "canceledAmount": 0,
+        "currency": "EUR",
+        "basket": [
+            {
+                "id": "Article-c694bac7-8e86-4aa4-9803-ea4876eede40",
+                "name": "USB-Stick",
+                "articleNumber": "SW10029",
+                "totalPrice": 5000,
+                "totalPriceWithTax": 5950,
+                "unitPrice": 1000,
+                "unitPriceWithTax": 1190,
+                "quantity": 5,
+                "tax": 19,
+                "discount": null,
+                "imageUrl": null,
+                "articleUrl": null,
+                "articleType": null
+            }
+        ],
+        "customer": {
+            "merchantCustomerId": null,
+            "organizationRegistrationRegister": null,
+            "organizationRegistrationId": null,
+            "organizationEntityType": null,
+            "organizationVatId": null,
+            "companyName": null,
+            "reference": null,
+            "email": null,
+            "customerId": "customer_1wuksmimhg",
+            "addresses": [],
+            "personas": [],
+            "paymentInstruments": [],
+            "createdAt": 1586164179812,
+            "modifiedAt": 1586164179812,
+            "customerType": null
+        },
+        "persona": null,
+        "billingAddress": null,
+        "shippingAddress": null,
+        "ipAddress": "192.168.0.1",
+        "paymentInstrument": {
+            "createdAt": 1586164179809,
+            "modifiedAt": 1586164207377,
+            "paymentInstrumentId": "paymentinstrument_rbv5cg9b4k",
+            "merchantPaymentInstrumentId": null,
+            "attributes": {
+                "email": "cba63795-ee6f-41e0-a@concardis.com",
+                "currency": "EUR",
+                "billingAgreementId": "SIMULATOR-BA-Z2TZFXWCZA",
+                "billingAgreementApprovalUrl": null,
+                "billingAgreementToken": null,
+                "returnUrl": null,
+                "cancelUrl": null,
+                "notifyUrl": null,
+                "payerId": "cba63795-ee6f-41e0-a"
+            },
+            "encrypted": false,
+            "origin": "paypal",
+            "type": "paypal",
+            "recurring": true
+        },
+        "transactions": [
+            {
+                "createdAt": 1586164179809,
+                "modifiedAt": 1586164358269,
+                "type": "PREAUTH",
+                "transactionId": "transaction_sdz80ddcmv",
+                "description": "test transaction",
+                "initialAmount": 5950,
+                "capturedAmount": 1390,
+                "canceledAmount": 0,
+                "currency": "EUR",
+                "status": "OK",
+                "order": "kdik8srank",
+                "parentTransaction": null,
+                "transactions": [
+                    {
+                        "createdAt": 1586164341321,
+                        "modifiedAt": 1586164350506,
+                        "type": "CAPTURE",
+                        "transactionId": "transaction_e0rlackvei",
+                        "description": "description for operation.",
+                        "initialAmount": 200,
+                        "refundedAmount": 0,
+                        "currency": "EUR",
+                        "status": "SUCCESS",
+                        "order": "kdik8srank",
+                        "parentTransaction": "transaction_sdz80ddcmv",
+                        "transactions": null,
+                        "basket": [
+                            {
+                                "id": "Article-c694bac7-8e86-4aa4-9803-ea4876eede40",
+                                "name": "USB-Stick",
+                                "articleNumber": "SW10029",
+                                "totalPrice": 5000,
+                                "totalPriceWithTax": 5950,
+                                "unitPrice": 1000,
+                                "unitPriceWithTax": 1190,
+                                "quantity": 5,
+                                "tax": 19,
+                                "discount": null,
+                                "imageUrl": null,
+                                "articleUrl": null,
+                                "articleType": null
+                            }
+                        ],
+                        "providerCode": null,
+                        "merchantMessage": null,
+                        "customerMessage": null,
+                        "descriptor": null,
+                        "meta": null,
+                        "challenge": null,
+                        "asyncNotificationSubscriptionId": null,
+                        "tracking": []
+                    },
+                    "transaction_7wvgzk5uj5"
+                ],
+                "basket": [
+                    {
+                        "id": "Article-c694bac7-8e86-4aa4-9803-ea4876eede40",
+                        "name": "USB-Stick",
+                        "articleNumber": "SW10029",
+                        "totalPrice": 5000,
+                        "totalPriceWithTax": 5950,
+                        "unitPrice": 1000,
+                        "unitPriceWithTax": 1190,
+                        "quantity": 5,
+                        "tax": 19,
+                        "discount": null,
+                        "imageUrl": null,
+                        "articleUrl": null,
+                        "articleType": null
+                    }
+                ],
+                "providerCode": null,
+                "merchantMessage": null,
+                "customerMessage": null,
+                "descriptor": null,
+                "meta": null,
+                "challenge": null,
+                "asyncNotificationSubscriptionId": null,
+                "tracking": []
+            }
+        ],
+        "status": "OPEN",
+        "channel": "ECOM",
+        "source": "Postman Test",
+        "settled": false,
+        "settlementDate": null,
+        "allowedProducts": [],
+        "product": "paypal",
+        "transactionType": "PREAUTH",
+        "meta": {
+            "deferred": false,
+            "addressOverride": true
+        },
+        "async": null,
+        "deviceIdent": null,
+        "clientType": "BRW",
+        "asyncNotificationSubscriptionId": null,
+        "lastOperation": "TRANSACTION_CAPTURE_SUCCESS",
+        "locale": null,
+        "risk": null,
+        "redirectUrl": "https://public-api-app53te.psp.cardtech.de/order/paypal/1.0/redirect/Order-4caf812a-5358-4c9c-8a66-1634d41005de"
+    },
+    "parentTransaction": {
+        "createdAt": 1586164179809,
+        "modifiedAt": 1586164358269,
+        "type": "PREAUTH",
+        "transactionId": "transaction_sdz80ddcmv",
+        "description": "test transaction",
+        "initialAmount": 5950,
+        "capturedAmount": 1390,
+        "canceledAmount": 0,
+        "currency": "EUR",
+        "status": "OK",
+        "order": {
+            "createdAt": 1586164179808,
+            "modifiedAt": 1586164358270,
+            "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
+            "terms": 1468590412476,
+            "privacy": 1468590412476,
+            "orderId": "kdik8srank",
+            "merchantOrderId": "1586164179",
+            "paymentProviderTransactionId": "cba63795-ee6f-41e0-a",
+            "description": "test transaction",
+            "statementDescription": "statement description",
+            "initialAmount": 5950,
+            "preauthorizedAmount": 5950,
+            "capturedAmount": 1390,
+            "refundedAmount": 0,
+            "canceledAmount": 0,
+            "currency": "EUR",
+            "basket": [
+                {
+                    "id": "Article-c694bac7-8e86-4aa4-9803-ea4876eede40",
+                    "name": "USB-Stick",
+                    "articleNumber": "SW10029",
+                    "totalPrice": 5000,
+                    "totalPriceWithTax": 5950,
+                    "unitPrice": 1000,
+                    "unitPriceWithTax": 1190,
+                    "quantity": 5,
+                    "tax": 19,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": null
+                }
+            ],
+            "customer": {
+                "merchantCustomerId": null,
+                "organizationRegistrationRegister": null,
+                "organizationRegistrationId": null,
+                "organizationEntityType": null,
+                "organizationVatId": null,
+                "companyName": null,
+                "reference": null,
+                "email": null,
+                "customerId": "customer_1wuksmimhg",
+                "addresses": [],
+                "personas": [],
+                "paymentInstruments": [],
+                "createdAt": 1586164179812,
+                "modifiedAt": 1586164179812,
+                "customerType": null
+            },
+            "persona": null,
+            "billingAddress": null,
+            "shippingAddress": null,
+            "ipAddress": "192.168.0.1",
+            "paymentInstrument": {
+                "createdAt": 1586164179809,
+                "modifiedAt": 1586164207377,
+                "paymentInstrumentId": "paymentinstrument_rbv5cg9b4k",
+                "merchantPaymentInstrumentId": null,
+                "attributes": {
+                    "email": "cba63795-ee6f-41e0-a@concardis.com",
+                    "currency": "EUR",
+                    "billingAgreementId": "SIMULATOR-BA-Z2TZFXWCZA",
+                    "billingAgreementApprovalUrl": null,
+                    "billingAgreementToken": null,
+                    "returnUrl": null,
+                    "cancelUrl": null,
+                    "notifyUrl": null,
+                    "payerId": "cba63795-ee6f-41e0-a"
+                },
+                "encrypted": false,
+                "origin": "paypal",
+                "type": "paypal",
+                "recurring": true
+            },
+            "transactions": [
+                "transaction_sdz80ddcmv"
+            ],
+            "status": "OPEN",
+            "channel": "ECOM",
+            "source": "Postman Test",
+            "settled": false,
+            "settlementDate": null,
+            "allowedProducts": [],
+            "product": "paypal",
+            "transactionType": "PREAUTH",
+            "meta": {
+                "deferred": false,
+                "addressOverride": true
+            },
+            "async": null,
+            "deviceIdent": null,
+            "clientType": "BRW",
+            "asyncNotificationSubscriptionId": null,
+            "lastOperation": "TRANSACTION_CAPTURE_SUCCESS",
+            "locale": null,
+            "risk": null,
+            "redirectUrl": "https://public-api-app53te.psp.cardtech.de/order/paypal/1.0/redirect/Order-4caf812a-5358-4c9c-8a66-1634d41005de"
+        },
+        "parentTransaction": null,
+        "transactions": [
+            {
+                "createdAt": 1586164341321,
+                "modifiedAt": 1586164350506,
+                "type": "CAPTURE",
+                "transactionId": "transaction_e0rlackvei",
+                "description": "description for operation.",
+                "initialAmount": 200,
+                "refundedAmount": 0,
+                "currency": "EUR",
+                "status": "SUCCESS",
+                "order": {
+                    "createdAt": 1586164179808,
+                    "modifiedAt": 1586164358270,
+                    "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
+                    "terms": 1468590412476,
+                    "privacy": 1468590412476,
+                    "orderId": "kdik8srank",
+                    "merchantOrderId": "1586164179",
+                    "paymentProviderTransactionId": "cba63795-ee6f-41e0-a",
+                    "description": "test transaction",
+                    "statementDescription": "statement description",
+                    "initialAmount": 5950,
+                    "preauthorizedAmount": 5950,
+                    "capturedAmount": 1390,
+                    "refundedAmount": 0,
+                    "canceledAmount": 0,
+                    "currency": "EUR",
+                    "basket": [
+                        {
+                            "id": "Article-c694bac7-8e86-4aa4-9803-ea4876eede40",
+                            "name": "USB-Stick",
+                            "articleNumber": "SW10029",
+                            "totalPrice": 5000,
+                            "totalPriceWithTax": 5950,
+                            "unitPrice": 1000,
+                            "unitPriceWithTax": 1190,
+                            "quantity": 5,
+                            "tax": 19,
+                            "discount": null,
+                            "imageUrl": null,
+                            "articleUrl": null,
+                            "articleType": null
+                        }
+                    ],
+                    "customer": {
+                        "merchantCustomerId": null,
+                        "organizationRegistrationRegister": null,
+                        "organizationRegistrationId": null,
+                        "organizationEntityType": null,
+                        "organizationVatId": null,
+                        "companyName": null,
+                        "reference": null,
+                        "email": null,
+                        "customerId": "customer_1wuksmimhg",
+                        "addresses": [],
+                        "personas": [],
+                        "paymentInstruments": [],
+                        "createdAt": 1586164179812,
+                        "modifiedAt": 1586164179812,
+                        "customerType": null
+                    },
+                    "persona": null,
+                    "billingAddress": null,
+                    "shippingAddress": null,
+                    "ipAddress": "192.168.0.1",
+                    "paymentInstrument": {
+                        "createdAt": 1586164179809,
+                        "modifiedAt": 1586164207377,
+                        "paymentInstrumentId": "paymentinstrument_rbv5cg9b4k",
+                        "merchantPaymentInstrumentId": null,
+                        "attributes": {
+                            "email": "cba63795-ee6f-41e0-a@concardis.com",
+                            "currency": "EUR",
+                            "billingAgreementId": "SIMULATOR-BA-Z2TZFXWCZA",
+                            "billingAgreementApprovalUrl": null,
+                            "billingAgreementToken": null,
+                            "returnUrl": null,
+                            "cancelUrl": null,
+                            "notifyUrl": null,
+                            "payerId": "cba63795-ee6f-41e0-a"
+                        },
+                        "encrypted": false,
+                        "origin": "paypal",
+                        "type": "paypal",
+                        "recurring": true
+                    },
+                    "transactions": [
+                        "transaction_sdz80ddcmv"
+                    ],
+                    "status": "OPEN",
+                    "channel": "ECOM",
+                    "source": "Postman Test",
+                    "settled": false,
+                    "settlementDate": null,
+                    "allowedProducts": [],
+                    "product": "paypal",
+                    "transactionType": "PREAUTH",
+                    "meta": {
+                        "deferred": false,
+                        "addressOverride": true
+                    },
+                    "async": null,
+                    "deviceIdent": null,
+                    "clientType": "BRW",
+                    "asyncNotificationSubscriptionId": null,
+                    "lastOperation": "TRANSACTION_CAPTURE_SUCCESS",
+                    "locale": null,
+                    "risk": null,
+                    "redirectUrl": "https://public-api-app53te.psp.cardtech.de/order/paypal/1.0/redirect/Order-4caf812a-5358-4c9c-8a66-1634d41005de"
+                },
+                "parentTransaction": "transaction_sdz80ddcmv",
+                "transactions": null,
+                "basket": [
+                    {
+                        "id": "Article-c694bac7-8e86-4aa4-9803-ea4876eede40",
+                        "name": "USB-Stick",
+                        "articleNumber": "SW10029",
+                        "totalPrice": 5000,
+                        "totalPriceWithTax": 5950,
+                        "unitPrice": 1000,
+                        "unitPriceWithTax": 1190,
+                        "quantity": 5,
+                        "tax": 19,
+                        "discount": null,
+                        "imageUrl": null,
+                        "articleUrl": null,
+                        "articleType": null
+                    }
+                ],
+                "providerCode": null,
+                "merchantMessage": null,
+                "customerMessage": null,
+                "descriptor": null,
+                "meta": null,
+                "challenge": null,
+                "asyncNotificationSubscriptionId": null,
+                "tracking": []
+            },
+            "transaction_7wvgzk5uj5"
+        ],
+        "basket": [
+            {
+                "id": "Article-c694bac7-8e86-4aa4-9803-ea4876eede40",
+                "name": "USB-Stick",
+                "articleNumber": "SW10029",
+                "totalPrice": 5000,
+                "totalPriceWithTax": 5950,
+                "unitPrice": 1000,
+                "unitPriceWithTax": 1190,
+                "quantity": 5,
+                "tax": 19,
+                "discount": null,
+                "imageUrl": null,
+                "articleUrl": null,
+                "articleType": null
+            }
+        ],
+        "providerCode": null,
+        "merchantMessage": null,
+        "customerMessage": null,
+        "descriptor": null,
+        "meta": null,
+        "challenge": null,
+        "asyncNotificationSubscriptionId": null,
+        "tracking": []
+    },
+    "transactions": null,
+    "basket": [
+        {
+            "id": "Article-c694bac7-8e86-4aa4-9803-ea4876eede40",
+            "name": "USB-Stick",
+            "articleNumber": "SW10029",
+            "totalPrice": 5000,
+            "totalPriceWithTax": 5950,
+            "unitPrice": 1000,
+            "unitPriceWithTax": 1190,
+            "quantity": 5,
+            "tax": 19,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+        }
+    ],
+    "providerCode": null,
+    "merchantMessage": null,
+    "customerMessage": null,
+    "descriptor": null,
+    "meta": null,
+    "challenge": null,
+    "asyncNotificationSubscriptionId": null,
+    "tracking": null
+}
+                </code>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+  
+</div>

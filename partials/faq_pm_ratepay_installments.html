@@ -31,6 +31,7 @@
                 <li>3.5.6.3 Option 3 - Offer both calculator types</li>
             </ul>
         </li>
+        <li>3.5.7 Widget Customization</li>
         </ul>
       </li>
       <li>3.6 Samples
@@ -145,6 +146,7 @@
   </tbody>
 </table>
 <br>
+<p>Note: Calculation Type and Payment Type are customizable. For more information, check Widget Customization.</p>
 <br>
 <h2>Payengine Details</h2>
 <br>
@@ -1021,6 +1023,64 @@
 <p>The merchant can decide to integrate both calculator types to offer a comprehensive customer experience.</p>
 <br>
 <br>
+<p><strong>Widget Customization</strong></p>
+<br>
+<p>Merchants can customize certain parameters in the Payengine Widget. The following options are available:</p>
+<br>
+<ul>
+  <li>1. BIC input field (optional)</li>
+  <ul>
+    <li>a. on</li>
+    <li>b. off</li>
+  </ul>
+  <li>2. Calculation Types</li>
+    <ul>
+      <li>a. Calculation Rate and Calculation Time</li>
+      <li>b. Calculation Rate</li>
+      <li>c. Calculation Time</li>
+    </ul>
+    <li>3. Payment Types</li>
+    <ul>
+      <li>a. Direct Debit and Bank Transfer</li>
+      <li>b. Direct Debit</li>
+      <li>c. Bank Transfer</li>
+    </ul>
+</ul>
+<br>
+<p>Customization takes place via the optionalParameters.paymentDetails.ratepayInstallment data object in the JavaScript widget initialization code:</p>
+<br>
+<div class="example-box-wrapper">
+    <div class="content-box" ng-init="createCustomerResponseShoww0=false">
+      <h3 class="content-box-header bg-default">
+          RatePay-Installments widget customization sample
+        <div class="header-buttons-separator">
+          <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShoww0=!createCustomerResponseShoww0;">
+            <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShoww0"></i>
+            <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShoww0"></i>
+          </a>
+        </div>
+      </h3>
+      <div class="content-box-wrapper" ng-if="createCustomerResponseShoww0">
+        <code>
+  var optionalParameters = {
+    "paymentDetails": {
+      "ratepayInstallment": {
+      "bic": true,
+      "calculationTypes": [
+        "calculation-rate",
+        "calculation-time"
+      ],
+      "paymentTypes": [
+        "direct-debit",
+        "bank-transfer"
+      ]
+      }
+        </code>
+      </div>
+    </div>
+  </div>
+  <br>
+  <p><strong>Note:</strong> Information on how to integrate the different Payengine widgets is available <a href="https://docs.payengine.de/outofthebox/widgetmenu/ourwidget">here</a>.</p>
 <h3>Samples</h3>
 <br>
 <h4>Preauth transaction</h4>

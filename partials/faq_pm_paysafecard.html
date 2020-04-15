@@ -1,0 +1,644 @@
+
+
+<div>
+  <img src="/img/faq/paysafe/paysafecard-logo.png" alt="" width="320px">
+  <ul>
+    <li>1. Overview</li>
+    <li>2. Customer Experience</li>
+    <li>3. Payengine Details</li>
+      <ul>
+        <li>3.1 General Details</li>
+        <li>3.2 Supported Features and Services</li>
+        <li>3.3 Integration Types</li>
+        <li>3.4 Technical Flow</li>
+        <li>3.5 Notifications</li>
+        <li>3.6 Specifics</li>
+          <ul>
+            <li>3.6.1 Input Parameters for Authorizing Transactions</li>
+          </ul>
+        <li>3.7 Samples</li>
+          <ul>
+            <li>3.7.1 Debit transaction</li>
+          </ul>
+      </ul>
+    <li>4 Testing</li>
+  </ul>
+  <br>
+  <br>
+  <div>
+    <br/>
+    <br/>
+  <div>
+    <h2>Overview</h2>
+    <br/>
+    <p>
+      paysafecard, part of the Paysafe Group, is one of the global market leaders in online prepaid payment solutions. It provides its customers with a way to pay online, as safe as using cash.
+      <br><br>
+      Available in 49 countries at more than +650,000 points of sale it can be used at thousands of online shops.
+      <br><br>
+      The paysafecard is a prepaid card with 16-digit PIN and is the perfect online payment solution for customers who don't have a bank account or credit cards or just wish to limit their spending.
+    </p>
+  </div>
+  <br>
+  <br>
+  <div>
+    <h2>Customer Experience</h2>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th width="5%">Step</th>
+          <th width="25%">Description</th>
+          <th width="70%">Screenshot</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="vertical-align:top;">1</td>
+          <td style="vertical-align:top;">Choose paysafecard</td>
+          <td>
+            <img src="/img/faq/paysafe/image2020-3-31_15-24-47.png" alt="" width="50%">
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align:top;">2</td>
+          <td style="vertical-align:top;">Click <strong>Pay</strong></td>
+          <td><img src="/img/faq/paysafe/image2020-3-31_15-25-45.png" alt="" width="50%"></td>
+        </tr>
+        <tr>
+          <td style="vertical-align:top;">3</td>
+          <td style="vertical-align:top;">Redirect to my paysafecard</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td style="vertical-align:top;">4</td>
+          <td style="vertical-align:top;">Proceed on the paysafecard page and enter the 16-digit code</td>
+          <td><img src="/img/faq/paysafe/image2020-3-31_15-53-21.png" alt="" width="50%">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <br>
+  </div>
+  <div>
+    <h2>Payengine Details</h2>
+    <br/>
+    <h3>General Details</h3>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <tbody>
+        <tr>
+          <th width="50%">Product</th>
+          <td width="50%">paysafecard</td>
+        </tr>
+        <tr>
+          <th width="50%">Channels</th>
+          <td width="50%">ECOM</td>
+        </tr>
+        <tr>
+          <th width="50%">Currencies</th>
+          <td width="50%">AUD, CAD, CHF, EUR, GBP, NOK, PLN, RON, SEK, USD</td>
+        </tr>
+        <tr>
+          <th width="50%">Countries</th>
+          <td width="50%">AT, AU, BE, BG, CA, CH, CY, CZ, DE, DK, ES, FI, FR, GB, GE, GI, HR, HU, IE, IT, LI, LT, LU, MT, MX, NL, NO, NZ, PE, PL, PT, RO, SE, SI, SK, UY</td>
+        </tr>
+        <tr>
+          <th width="50%">Technical Flow</th>
+          <td width="50%">asynchronous</td>
+        </tr>
+        <tr>
+          <th width="50%">Recurring</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Chargebacks</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">B2B applicable</th>
+          <td width="50%">no</td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <br/>
+    <h3>Supported Features and Services</h3>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <tbody>
+        <tr>
+          <th width="50%">Debit</th>
+          <td width="50%">yes</td>
+        </tr>
+        <tr>
+          <th width="50%">Preauthorization</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Cancellation</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Capture</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Refunds</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Notifications</th>
+          <td width="50%">yes - webhook, email</td>
+        </tr>
+        <tr>
+          <th width="50%">Settlement Reporting</th>
+          <td width="50%">yes - Unified Settlement Reporting</td>
+        </tr>
+      </tbody>
+    </table>
+    <br/>
+    <br/>
+    <h3>Integration Types</h3>
+    <br/>
+    <table class="table table-bordered table-striped table-condensed">
+      <tbody>
+        <tr>
+          <th width="50%">API</th>
+          <td width="50%">yes</td>
+        </tr>
+        <tr>
+          <th width="50%">Widget</th>
+          <td width="50%">yes</td>
+        </tr>
+        <tr>
+          <th width="50%">Bridge</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Shop Plugin</th>
+          <td width="50%">no</td>
+        </tr>
+        <tr>
+          <th width="50%">Paylink</th>
+          <td width="50%">no</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+  <br>
+  <div>
+    <h3>Technical Flow</h3>
+    <br/>
+    <p>via direct API integration</p>
+    <br>
+    <img src="/img/faq/paysafe/paysafe-tf.png" width="80%">
+  </div>
+<br>
+<br>
+<div>
+  <h3>Notifications</h3>
+  <br>
+  <p><strong>Webhook and email notifications</strong></p>
+  <br>
+  <p>
+    At the time of the redirect, it is still uncertain whether a transaction will be completed successfully or not. Therefore, Payengine awaits for the final asynchronous notification before the status of a DEBIT transaction is changed from PENDING to SUCCESS or FAILURE.
+    <br><br>
+    A merchant should register for Payengine's notifications to receive this final status update.
+    <br><br>
+    Alternatively, a GET request on the order or DEBIT transaction would also work, but it is not ensured that the final status will be available immediately after the redirect and a merchant might have to query the GET multiple times.
+    <br><br>
+    Therefore, it is strongly recommended that Payengine's asynchronous notifications are used instead.
+    <br><br>
+    Merchants could receive notifications via URL (webhook) or email.
+    <br><br>
+    The paysafecard notifications could be subscribed:
+  </p>
+  <br>
+  <ul>
+    <li>via the Payengine API (<a href="https://docs.payengine.de/notifications/introduction">link to public website Notifications docu</a>)</li>
+    <li>via the Payengine Merchant Center (<a href="https://docs.payengine.de/notifications/subscription_via_mc">link to MC Notifications docu</a> )</li>
+  </ul>
+</div>
+<br>
+<br>
+<div>
+  <h3>Specifics</h3>
+  <br>
+  <p><strong>Input Parameters for Authorizing Transactions</strong></p>
+  <br>
+  <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Mandatory/Optional</th>
+          <th>Description</th>
+          <th>Type</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>async.cancelUrl</td>
+          <td>M</td>
+          <td>Redirect URL when payment is canceled</td>
+          <td>string</td>
+          <td><a href="http://my.shop.com/cancel" target="_blank">http://my.shop.com/cancel</a></td>
+        </tr>
+        <tr>
+          <td>async.failureUrl</td>
+          <td>M</td>
+          <td>Redirect URL for unsuccessful payment</td>
+          <td>string</td>
+          <td><a href="http://my.shop.com/fail" target="_blank">http://my.shop.com/fail</a></td>
+        </tr>
+        <tr>
+          <td>async.successUrl</td>
+          <td>M</td>
+          <td>Redirect URL for successful payment</td>
+          <td>string</td>
+          <td><a href="http://my.shop.com/success" target="_blank">http://my.shop.com/success</a></td>
+        </tr>
+        <tr>
+          <td>payment.countryCode</td>
+          <td>M</td>
+          <td>Country code</td>
+          <td>string</td>
+          <td>DE</td>
+        </tr>
+        <tr>
+          <td>customer</td>
+          <td>M</td>
+          <td>Customer ID</td>
+          <td>string</td>
+          <td>Customer-21a8e31a-c477-4ce7-91b6-b2787c8fd0de</td>
+        </tr>
+        <tr>
+          <td>currency</td>
+          <td>M</td>
+          <td>The currency of the transaction <br>
+            Accepted values: AUD, CAD, CHF, EUR, GBP, NOK, PLN, RON, SEK, USD</td>
+          <td>string</td>
+          <td>EUR</td>
+        </tr>
+        <tr>
+          <td>payment.accountHolder</td>
+          <td>O</td>
+          <td>The paysafecard accountholder name</td>
+          <td>string</td>
+          <td>Dr. Hans-Peter Meier</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<br>
+<br>
+<div>
+  <h3>Samples</h3>
+  <br>
+  <p><strong>Debit transaction</strong></p>
+  <br>
+  <p ng-non-bindable>POST/{{publicApiUrl}}/v1/orders/debit</p>
+  <br>
+  <div>
+    <div class="example-box-wrapper">
+      <div class="content-box" ng-init="createCustomerResponseShoww=false">
+        <h3 class="content-box-header bg-default">
+          Create Debit request
+          <div class="header-buttons-separator">
+            <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShoww=!createCustomerResponseShoww;">
+              <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShoww"></i>
+              <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShoww"></i>
+            </a>
+          </div>
+        </h3>
+        <div class="content-box-wrapper" ng-if="createCustomerResponseShoww">
+          <code>
+  {
+    "product": "paysafecard",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "merchantOrderId": "merchantOrderId{{$timestamp}}",
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 2000,
+    "currency": "EUR",
+    "basket": [
+        {
+            "name": "USB-Stick",
+            "articleNumber": "SW10029",
+            "totalPrice": 2000,
+            "totalPriceWithTax": 2020,
+            "unitPrice": 2000,
+            "unitPriceWithTax": 2020,
+            "tax": 20,
+            "quantity": 1
+        },
+        {
+            "name": "USB-Stick-new",
+            "articleNumber": "SW10030",
+            "totalPrice": 4000,
+            "totalPriceWithTax": 4040,
+            "unitPrice": 2000,
+            "unitPriceWithTax": 2020,
+            "tax": 20,
+            "quantity": 2
+        }
+    ],
+    "payment": {
+        "accountHolder": "Dr. Hans-Peter Meier",
+        "countryCode": "BG"
+          
+    },
+      "customer": "Customer-21a8e31a-c477-4ce7-91b6-b2787c8fd0de",
+      "persona": "Persona-9fd53f45-9ee5-4b76-9d03-d0fc8be7c7d0",
+      "billingAddress": "PostalAddress-364b4077-e29d-4cc3-86f3-bc1dfa8747d7",
+      "shippingAddress": "PostalAddress-364b4077-e29d-4cc3-86f3-bc1dfa8747d7",
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "async": {
+        "successUrl": "https://www.google.de/#newwindow=1&q=success",
+        "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+        "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
+    }
+  }
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+  <div>
+    <div class="example-box-wrapper">
+      <div class="content-box" ng-init="createCustomerResponseShow=false">
+        <h3 class="content-box-header bg-default">
+          Create Debit response
+          <div class="header-buttons-separator">
+            <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow;">
+              <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+              <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+            </a>
+          </div>
+        </h3>
+        <div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+          <code>
+  {
+    "createdAt": 1585834500589,
+    "modifiedAt": 1585834500669,
+    "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
+    "terms": 1468590412476,
+    "privacy": 1468590412476,
+    "orderId": "khflebajo1",
+    "merchantOrderId": "merchantOrderId1585834517",
+    "paymentProviderTransactionId": "629197221",
+    "description": "test transaction",
+    "statementDescription": "statement description",
+    "initialAmount": 2000,
+    "preauthorizedAmount": 0,
+    "capturedAmount": 0,
+    "refundedAmount": 0,
+    "canceledAmount": 0,
+    "currency": "EUR",
+    "basket": [
+        {
+            "id": "Article-3671f96b-6563-467a-ae58-5cbe442d5ff1",
+            "name": "USB-Stick-new",
+            "articleNumber": "SW10030",
+            "totalPrice": 4000,
+            "totalPriceWithTax": 4040,
+            "unitPrice": 2000,
+            "unitPriceWithTax": 2020,
+            "quantity": 2,
+            "tax": 20,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+        },
+        {
+            "id": "Article-6fd60a95-3164-4bc2-bac0-ab26296068dd",
+            "name": "USB-Stick",
+            "articleNumber": "SW10029",
+            "totalPrice": 2000,
+            "totalPriceWithTax": 2020,
+            "unitPrice": 2000,
+            "unitPriceWithTax": 2020,
+            "quantity": 1,
+            "tax": 20,
+            "discount": null,
+            "imageUrl": null,
+            "articleUrl": null,
+            "articleType": null
+        }
+    ],
+    "customer": {
+        "merchantCustomerId": "my_customer_123",
+        "organizationRegistrationRegister": null,
+        "organizationRegistrationId": null,
+        "organizationEntityType": null,
+        "organizationVatId": null,
+        "companyName": null,
+        "reference": null,
+        "email": "psp.merchant.1@cardtech.de",
+        "customerId": "Customer-21a8e31a-c477-4ce7-91b6-b2787c8fd0de",
+        "addresses": [],
+        "personas": [],
+        "paymentInstruments": [],
+        "createdAt": 1495460773000,
+        "modifiedAt": 1495460773000,
+        "customerType": null
+    },
+    "persona": {
+        "personaId": "Persona-9fd53f45-9ee5-4b76-9d03-d0fc8be7c7d0",
+        "firstName": "Max",
+        "lastName": "1495460775",
+        "phone": "00493012346",
+        "mobile": "00493012345",
+        "fax": "00493012345",
+        "birthday": 358293600000,
+        "gender": "MALE",
+        "title": "Prof. Dr.",
+        "createdAt": 1495460775000,
+        "modifiedAt": 1495460775000
+    },
+    "billingAddress": {
+        "firstName": "Max",
+        "lastName": "Muster",
+        "street": "Musterweg",
+        "houseNumber": "1495460778",
+        "city": "Musterhausen",
+        "zip": "12345",
+        "country": "DE",
+        "state": "Bayern",
+        "phone": "00493012345",
+        "fax": "00493012345",
+        "mobile": "00493012345",
+        "title": null,
+        "additionalDetails": "premium buyer",
+        "addressId": "PostalAddress-364b4077-e29d-4cc3-86f3-bc1dfa8747d7",
+        "createdAt": 1495460777000,
+        "modifiedAt": 1495460777000
+    },
+    "shippingAddress": {
+        "firstName": "Max",
+        "lastName": "Muster",
+        "street": "Musterweg",
+        "houseNumber": "1495460778",
+        "city": "Musterhausen",
+        "zip": "12345",
+        "country": "DE",
+        "state": "Bayern",
+        "phone": "00493012345",
+        "fax": "00493012345",
+        "mobile": "00493012345",
+        "title": null,
+        "additionalDetails": "premium buyer",
+        "addressId": "PostalAddress-364b4077-e29d-4cc3-86f3-bc1dfa8747d7",
+        "createdAt": 1495460777000,
+        "modifiedAt": 1495460777000
+    },
+    "ipAddress": null,
+    "paymentInstrument": {
+        "createdAt": 1585834500591,
+        "modifiedAt": 1585834500591,
+        "paymentInstrumentId": "paymentinstrument_zhdu9xqsmd",
+        "merchantPaymentInstrumentId": null,
+        "attributes": {
+            "accountHolder": "Dr. Hans-Peter Meier"
+        },
+        "encrypted": false,
+        "origin": "paysafecard",
+        "type": "paysafecard",
+        "recurring": false
+    },
+    "transactions": [
+        {
+            "createdAt": 1585834500590,
+            "modifiedAt": 1585834500669,
+            "type": "DEBIT",
+            "transactionId": "transaction_nx7rvay436",
+            "description": "test transaction",
+            "initialAmount": 2000,
+            "refundedAmount": 0,
+            "currency": "EUR",
+            "status": "PENDING",
+            "order": "khflebajo1",
+            "parentTransaction": null,
+            "transactions": null,
+            "basket": [
+                {
+                    "id": "Article-3671f96b-6563-467a-ae58-5cbe442d5ff1",
+                    "name": "USB-Stick-new",
+                    "articleNumber": "SW10030",
+                    "totalPrice": 4000,
+                    "totalPriceWithTax": 4040,
+                    "unitPrice": 2000,
+                    "unitPriceWithTax": 2020,
+                    "quantity": 2,
+                    "tax": 20,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": null
+                },
+                {
+                    "id": "Article-6fd60a95-3164-4bc2-bac0-ab26296068dd",
+                    "name": "USB-Stick",
+                    "articleNumber": "SW10029",
+                    "totalPrice": 2000,
+                    "totalPriceWithTax": 2020,
+                    "unitPrice": 2000,
+                    "unitPriceWithTax": 2020,
+                    "quantity": 1,
+                    "tax": 20,
+                    "discount": null,
+                    "imageUrl": null,
+                    "articleUrl": null,
+                    "articleType": null
+                }
+            ],
+            "providerCode": null,
+            "merchantMessage": null,
+            "customerMessage": null,
+            "descriptor": null,
+            "meta": null,
+            "challenge": null,
+            "asyncNotificationSubscriptionId": null,
+            "tracking": null
+        }
+    ],
+    "status": "OPEN",
+    "channel": "ECOM",
+    "source": "Postman Test",
+    "settled": false,
+    "settlementDate": null,
+    "allowedProducts": null,
+    "product": "paysafecard",
+    "transactionType": "DEBIT",
+    "meta": null,
+    "async": {
+        "successUrl": "https://www.google.de/#newwindow=1&q=success",
+        "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+        "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel",
+        "confirmUrl": null
+    },
+    "deviceIdent": null,
+    "clientType": "BRW",
+    "asyncNotificationSubscriptionId": null,
+    "lastOperation": "TRANSACTION_DEBIT_PENDING",
+    "locale": null,
+    "risk": null,
+    "redirectUrl": "https://public-api-app52te.psp.cardtech.de/order/paysafecard/1.0/redirect/Order-6ac701c3-3bf7-4e1e-a1f4-b51b1e5d7f25"
+  }            
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+<br>
+<br>
+  <div>
+    <h2>Testing</h2>
+    <br>
+    <p>
+      paysafecard can be tested via the Payengine Simulator.
+      <br><br>
+      The testing amounts for the two scenarios can be found below:
+    </p>
+    <br>
+    <table class="table table-bordered table-striped table-condensed">
+      <thead>
+        <tr>
+          <th width="50%">Result</th>
+          <th width="50%">Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Success</td>
+          <td>Any applicable amount (excluding failure amounts listed below). The transaction's status changes from "OK" to "SUCCESS"</td>
+        </tr>
+        <tr>
+          <td>Failure</td>
+          <td>
+              Each of the amounts listed below:
+              <ul>
+                <li>11111 (€111,11)</li>
+                <li>111 (€1,11)</li>
+              </ul>
+              <br> <br>
+              The transaction's status changes from "OK" to "FAILURE"
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <br>
+  </div>
+ 
+</div>
+

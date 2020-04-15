@@ -48,7 +48,7 @@ angular.module('StudyCraneApp',[
   .when('/faq_pm_paypal', {templateUrl: '/partials/faq_pm_Checkout_from_the_Payment_Page.html', controller:'faqCtrl'})
   .when('/faq_pm_paypal_whithout_initial_payment', {templateUrl: '/partials/faq_pm_PayPal_Referenc_Transaction_Without_Initial_Payment.html', controller:'faqCtrl'})
   .when('/faq_pm_paypal_with_initial_payment', {templateUrl: '/partials/faq_pm_PayPal_Referenc_Transaction_With_Initial_Payment.html', controller:'faqCtrl'})
-  .when('/faq_pm_paypal_checkout_from_the_Product-Basket_Page', {templateUrl: '/partials/faq_pm_paypal_checkout_from_the_Product-Basket_Page.html', controller:'faqCtrl'})
+  .when('/faq_pm_paypal_checkout_from_the_product_pasket_page', {templateUrl: '/partials/faq_pm_paypal_checkout_from_the_product_basket_page.html', controller:'faqCtrl'})
   .when('/faq_pm_sepa_direct_debit', {templateUrl: '/partials/faq_pm_sepa_direct_debit.html', controller:'faqCtrl'})
   .when('/faq_pm_sepa_single_order', {templateUrl: '/partials/faq_pm_sepa_single_order.html', controller:'faqCtrl'})
   .when('/faq_pm_sepa_ro_with_Initial_payment', {templateUrl: '/partials/faq_pm_sepa_ro_with_Initial_payment.html', controller:'faqCtrl'})

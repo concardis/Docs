@@ -355,20 +355,16 @@ resultCallback
                 <br>
                 Merchants have two options for events integration:
                 <br>
-                <ul>
-                  <li>1. RatePAY - Direct Debit requires the Billing and Shipping Address to be identical.</li>
-                  <li>2. Exceptions for merchants are possible only through additional agreements with RatePAY GmbH.</li>
-                </ul>
+                <ol>
+                  <li>Use the Payengine API with redirect URLs.</li>
+                  <li>Use the JavaScript confirmation callbacks </li>
+                </ol>
               </th>
             </tr>
           </thead>
         </table>
         <br>
         <p><strong>Special Parameters to Initialize the PayPal Checkout Button</strong></p>
-        <br/>
-        <h4 id="step11">PayPal input parameters</h4>
-        <br/>
-        <p>The following input parameters are required for initiating a PayPal payment via direct API integration.</p>
         <br/>
         <table class="table table-bordered table-striped table-condensed">
           <thead>
@@ -384,7 +380,7 @@ resultCallback
           </thead>
           <tbody>
             <tr>
-              <td colspan="2"></td>transactionType</td>
+              <td colspan="2">transactionType</td>
               <td colspan="1">M</td>
               <td colspan="3">The type of the transaction. Possible values: DEBIT and PREAUTH</td>
               <td colspan="1">string</td>
@@ -443,7 +439,7 @@ resultCallback
             <tr>
               <td colspan="2">basket</td>
               <td colspan="1">O</td>
-              <td colspan="3">Data object with attributes. For more information, see <a href="https://concardis.stagil.de/confluence/display/PAY/%5BPubDoc%5D+Basket+Structure" style="color:blue;">Basket Structure.</a></td>
+              <td colspan="3">Data object with attributes. For more information, see Basket Structure.</td>
               <td colspan="1">object</td>
               <td colspan="1"></td>
             </tr>
@@ -466,7 +462,7 @@ resultCallback
               <td colspan="1"></td>
               <td colspan="1">deviceIdent</td>
               <td colspan="1"></td>
-              <td colspan="3">Whether to activate the <a href="https://docs.payengine.de/outofthebox/widgetmenu/deviceident">device ident</a> risk setting. The default is false.</td>
+              <td colspan="3">Whether to activate the <a href="https://docs.payengine.de/outofthebox/widgetmenu/deviceident" style="color:blue;">device ident</a> risk setting. The default is false.</td>
               <td colspan="1">boolean</td>
               <td colspan="1">false</td>
             </tr>
@@ -549,17 +545,17 @@ resultCallback
             <tr>
               <td width="33%">Customer</td>
               <td width="33%">O</td>
-              <td width="33%">POST /customers</td>
+              <td width="33%" ng-non-bindable>POST /customers</td>
             </tr>
             <tr>
               <td width="33%">Persona</td>
               <td width="33%">O</td>
-              <td width="33%">POST /customers/{{customerId}}/personas</td>
+              <td width="33%" ng-non-bindable>POST /customers/{{customerId}}/personas</td>
             </tr>
             <tr>
               <td width="33%">Billing Address</td>
               <td width="33%">O</td>
-              <td width="33%">POST /customers/{{customerId}}/addresses</td>
+              <td width="33%" ng-non-bindable>POST /customers/{{customerId}}/addresses</td>
             </tr>
           </tbody>
         </table>
@@ -624,7 +620,7 @@ resultCallback
           </thead>
           <tbody>
             <tr>
-              <td colspan="2"></td>basket.articletype</td>
+              <td colspan="2">basket.articletype</td>
               <td colspan="1">M</td>
               <td colspan="3">The article type of the basket item. Possible values are
                 <ul>
@@ -638,7 +634,7 @@ resultCallback
           </tbody>
         </table>
         <br>
-        <p>For more information on the basket, see our <a href="https://concardis.stagil.de/confluence/display/PAY/%5BPubDoc%5D+Basket+Structure">Basket Structure</a> documentation.</p>
+        <p>For more information on the basket, see our Basket Structure documentation.</p>
         <br>
         <p><strong>Execute Order</strong></p>
         <br>
@@ -874,7 +870,7 @@ resultCallback
         
         <p><strong>Update order transaction</strong></p>
         <br/>
-        <h3 ng-non-bindable>PATCH​/{{publicApiUrl}}/v1/orders​/{orderId}</h3>
+        <p ng-non-bindable>PATCH​/{{publicApiUrl}}/v1/orders​/{orderId}</p>
         <br/>
         <div>
           <div class="example-box-wrapper">
@@ -1116,7 +1112,7 @@ resultCallback
         <br/>
         <p><strong>Execute order transaction</strong></p>
         <br/>
-        <h3 ng-non-bindable>POST/{{publicApiUrl}}/v1/orders/{orderId}/execute</h3>
+        <p ng-non-bindable>POST/{{publicApiUrl}}/v1/orders/{orderId}/execute</p>
         <br/>
         <table class="table table-bordered table-striped table-condensed">
             <thead>
@@ -1349,7 +1345,7 @@ resultCallback
         <br>
         <p><strong>Capture order transaction</strong></p>
         <br>
-        <h3 ng-non-bindable>POST/{{publicApiUrl}}/v1/orders/{orderId}/transactions/{{transactionId}}/capture</h3>
+        <p ng-non-bindable>POST/{{publicApiUrl}}/v1/orders/{orderId}/transactions/{{transactionId}}/capture</p>
         <br>
         <div>
           <div class="example-box-wrapper">

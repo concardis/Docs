@@ -1,221 +1,220 @@
 <div class="container row col-12">
-    <h1>Checkout from the Product/Basket Page</h1>
+  <h1>Checkout from the Product/Basket Page</h1>
+  <br/>
+  <br/>
+  <ul>
+    <li><a href="faq_pm_paypal#step1">1. Overview</a></li>
+    <li><a href="faq_pm_paypal#prerequisites">2. Prerequisites</a></li>
+    <li><a href="faq_pm_paypal#step2">3. Customer Experience</a></li>
+    <li><a href="faq_pm_paypal#step3">4. Payengine Details</a></li>
+      <ul>
+        <li><a href="faq_pm_paypal#step4">4.1 General Details</a></li>
+        <li><a href="faq_pm_paypal#step5">4.2 Supported Features and Services</a></li>
+        <li><a href="faq_pm_paypal#step6">4.3 Types of Integration</a></li>
+        <li><a href="faq_pm_paypal#step7">4.4 Technical Flow</a></li>
+        <li><a href="faq_pm_paypal#step7">4.5 Specifics</a></li>
+      
+        <ul>
+          <li><a href="faq_pm_paypal#step8">4.5.1 Integrate the PayPal Checkout Button within the Product/Basket Page</a></li>
+          <li><a href="faq_pm_paypal#step82">4.5.2 Prerequisites for Create Order Intent</a></li>
+          <li><a href="faq_pm_paypal#step83">4.5.3 Create Order Intent</a></li>
+          <li><a href="faq_pm_paypal#step84">4.5.4 Retrieve Order</a></li>
+          <li><a href="faq_pm_paypal#step85">4.5.5 Update Order (optional)</a></li>
+          <li><a href="faq_pm_paypal#step86">4.5.6 Execute Order</a></li>
+          <li><a href="faq_pm_paypal#step87">4.5.7 Capture Order</a></li>
+        </ul>
+      </ul>
+    <li><a href="faq_pm_paypal#step3">5. Samples</a></li>
+      <ul>
+        <li><a href="faq_pm_paypal#step3">5.1 Create Order Transaction</a></li>
+        <li><a href="faq_pm_paypal#step3">5.2 Update order transaction</a></li>
+        <li><a href="faq_pm_paypal#step3">5.3 Execute order transaction</a></li>
+        <li><a href="faq_pm_paypal#step3">5.4 Capture order transaction</a></li>
+      </ul>
+  </ul>
+  <div>
+    <div id="step1">
+      <br/>
+      <br/>
+      <h2>Overview</h2>
+      <br/>
+      <p>
+        Payengine enables merchants to integrate a PayPal widget button for express checkout directly from the product/basket page.
+        <br>
+        This service empowers customers to complete a purchase without ﬁlling in additional data, such as name, email, billing, and shipping address.
+        <br>
+        All the necessary data is extracted from the customer's PayPal account.
+      </p>
+    </div>
     <br/>
     <br/>
-    <ul>
-      <li><a href="faq_pm_paypal#step1">1. Overview</a></li>
-      <li><a href="faq_pm_paypal#prerequisites">2. Prerequisites</a></li>
-      <li><a href="faq_pm_paypal#step2">3. Customer Experience</a></li>
-      <li><a href="faq_pm_paypal#step3">4. Payengine Details</a></li>
-        <ul>
-          <li><a href="faq_pm_paypal#step4">4.1 General Details</a></li>
-          <li><a href="faq_pm_paypal#step5">4.2 Supported Features and Services</a></li>
-          <li><a href="faq_pm_paypal#step6">4.3 Types of Integration</a></li>
-          <li><a href="faq_pm_paypal#step7">4.4 Technical Flow</a></li>
-          <li><a href="faq_pm_paypal#step7">4.5 Specifics</a></li>
-        
-          <ul>
-            <li><a href="faq_pm_paypal#step8">4.5.1 Integrate the PayPal Checkout Button within the Product/Basket Page</a></li>
-            <li><a href="faq_pm_paypal#step82">4.5.2 Prerequisites for Create Order Intent</a></li>
-            <li><a href="faq_pm_paypal#step83">4.5.3 Create Order Intent</a></li>
-            <li><a href="faq_pm_paypal#step84">4.5.4 Retrieve Order</a></li>
-            <li><a href="faq_pm_paypal#step85">4.5.5 Update Order (optional)</a></li>
-            <li><a href="faq_pm_paypal#step86">4.5.6 Execute Order</a></li>
-            <li><a href="faq_pm_paypal#step87">4.5.7 Capture Order</a></li>
-          </ul>
-        </ul>
-      <li><a href="faq_pm_paypal#step3">5. Samples</a></li>
-        <ul>
-          <li><a href="faq_pm_paypal#step3">5.1 Create Order Transaction</a></li>
-          <li><a href="faq_pm_paypal#step3">5.2 Update order transaction</a></li>
-          <li><a href="faq_pm_paypal#step3">5.3 Execute order transaction</a></li>
-          <li><a href="faq_pm_paypal#step3">5.4 Capture order transaction</a></li>
-        </ul>
-    </ul>
-    <div>
-      <div id="step1">
-        <br/>
-        <br/>
-        <h2>Overview</h2>
-        <br/>
-        <p>
-          Payengine enables merchants to integrate a PayPal widget button for express checkout directly from the product/basket page.
-          <br>
-          This service empowers customers to complete a purchase without ﬁlling in additional data, such as name, email, billing, and shipping address.
-          <br>
-          All the necessary data is extracted from the customer's PayPal account.
-        </p>
-      </div>
+    <div id="prerequisites">
       <br/>
       <br/>
-      <div id="prerequisites">
-        <br/>
-        <br/>
-        <h2>Prerequisites</h2>
-        <br/>
-        <p>For customers:</p>
-        <ul>
-          <li>valid PayPal account</li>
-        </ul>
-        <br>
-        <p>For merchants:</p>
-        <ul>
-          <li>the feature must be activated by the Payengine support team</li>
-          <li>after activation, <strong>Integrated Sign-up</strong> must be enabled in the Merchant Center from:
-            <br>
-            Settings> Payment Methods > PayPal > Actions> Integrated Sign-up > Sign Up
-          </li>
-        </ul>
-      </div>
+      <h2>Prerequisites</h2>
+      <br/>
+      <p>For customers:</p>
+      <ul>
+        <li>valid PayPal account</li>
+      </ul>
       <br>
-      <br>
-      <div id="step2">
-        <br/>
-        <br/>
-        <h2>Customer Experience</h2>
-        <br/>
-        <br/>
-        <p>On clicking the PayPal Checkout button, a PayPal popup window appears.
+      <p>For merchants:</p>
+      <ul>
+        <li>the feature must be activated by the Payengine support team</li>
+        <li>after activation, <strong>Integrated Sign-up</strong> must be enabled in the Merchant Center from:
           <br>
-          After the input of the details on the PayPal page, the customer is returned to the merchant Review & Submit Order page with information ﬁelds pre-populated for ﬁnal conﬁrmation of the purchase.
-        </p>
+          Settings> Payment Methods > PayPal > Actions> Integrated Sign-up > Sign Up
+        </li>
+      </ul>
+    </div>
+    <br>
+    <br>
+    <div id="step2">
+      <br/>
+      <br/>
+      <h2>Customer Experience</h2>
+      <br/>
+      <br/>
+      <p>On clicking the PayPal Checkout button, a PayPal popup window appears.
         <br>
-        <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
-          <thead>
-            <tr>
-              <th>Step</th>
-              <th width="30%">Description</th>
-              <th>Screenshot</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style="vertical-align: top;">1</td>
-              <td style="vertical-align: top;">From the basket page, click the PayPal Checkout button</td>
-              <td><img class="" src="/img/faq/paypal/product-basket/PayPal1.png" width="50%" /></td>
-            </tr>
-            <tr>
-              <td style="vertical-align: top;">2</td>
-              <td style="vertical-align: top;">Log in with your PayPal credentials</td>
-              <td><img class="" src="/img/faq/paypal/product-basket/PayPal1.2.PNG" width="50%" /></td>
-            </tr>
-            <tr>
-              <td style="vertical-align: top;">2</td>
-              <td style="vertical-align: top;">Choose a payment instrument and click <strong>Continue</strong></td>
-              <td><img class="" src="/img/faq/paypal/product-basket/PayPal2.png" width="50%" /></td>
-            </tr>
-            <tr>
-              <td style="vertical-align: top;">3</td>
-              <td style="vertical-align: top;">Choose a shipping address and click <strong>Continue</strong></td>
-              <td><img class="" src="/img/faq/paypal/product-basket/PayPal3.png" width="50%" /></td>
-            </tr>
-            <tr>
-              <td style="vertical-align: top;">4</td>
-              <td style="vertical-align: top;">Review and place order</td>
-              <td><img class="" src="/img/faq/paypal/product-basket/PayPal4.png" width="50%" /></td>
-            </tr>
-            <tr>
-              <td style="vertical-align: top;">5</td>
-              <td style="vertical-align: top;">The order is confirmed</td>
-              <td><img class="" src="/img/faq/paypal/product-basket/PayPal5.png" width="50%" /></td>
-            </tr>
-          </tbody>
-        </table>
-        <br/>
-      </div>
+        After the input of the details on the PayPal page, the customer is returned to the merchant Review & Submit Order page with information ﬁelds pre-populated for ﬁnal conﬁrmation of the purchase.
+      </p>
+      <br>
+      <table border="1px solid black" class="table table-bordered table-striped table-condensed" >
+        <thead>
+          <tr>
+            <th>Step</th>
+            <th width="30%">Description</th>
+            <th>Screenshot</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="vertical-align: top;">1</td>
+            <td style="vertical-align: top;">From the basket page, click the PayPal Checkout button</td>
+            <td><img class="" src="/img/faq/paypal/product-basket/PayPal1.png" width="50%" /></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">2</td>
+            <td style="vertical-align: top;">Log in with your PayPal credentials</td>
+            <td><img class="" src="/img/faq/paypal/product-basket/PayPal1.2.PNG" width="50%" /></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">2</td>
+            <td style="vertical-align: top;">Choose a payment instrument and click <strong>Continue</strong></td>
+            <td><img class="" src="/img/faq/paypal/product-basket/PayPal2.png" width="50%" /></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">3</td>
+            <td style="vertical-align: top;">Choose a shipping address and click <strong>Continue</strong></td>
+            <td><img class="" src="/img/faq/paypal/product-basket/PayPal3.png" width="50%" /></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">4</td>
+            <td style="vertical-align: top;">Review and place order</td>
+            <td><img class="" src="/img/faq/paypal/product-basket/PayPal4.png" width="50%" /></td>
+          </tr>
+          <tr>
+            <td style="vertical-align: top;">5</td>
+            <td style="vertical-align: top;">The order is confirmed</td>
+            <td><img class="" src="/img/faq/paypal/product-basket/PayPal5.png" width="50%" /></td>
+          </tr>
+        </tbody>
+      </table>
+      <br/>
+    </div>
+    <br/>
+    <br/>
+    <div id="step3">
       <br/>
       <br/>
-      <div id="step3">
-        <br/>
-        <br/>
-        <h2>Payengine Details</h2>
-        <br/>
-        <br/>
-        <h3 id="step4">General Details</h3>
-        <br/>
+      <h2>Payengine Details</h2>
+      <br/>
+      <br/>
+      <h3 id="step4">General Details</h3>
+      <br/>
+      <table class="table table-bordered table-striped table-condensed">
+        <tbody>
+          <tr>
+            <th width="50%">Product</th>
+            <td width="50%">PayPal Checkout Button</td>
+          </tr>
+          <tr>
+            <th width="50%">Payment Options (for Customer)</th>
+            <td width="50%">Express Checkout</td>
+          </tr>
+          <tr>
+            <th width="50%">Channels</th>
+            <td width="50%">ECOM</td>
+          </tr>
+          <tr>
+            <th width="50%">Currencies</th>
+            <td width="50%">AUD, BRL, CAD, CZK, DKK, EUR, HKD, HUF, INR, ILS, JPY, MYR, MXN, TWD, NZD, NOK, PHP, PLN, GBP, RUB, SGD, SEK, CHF, THB, USD</td>
+          </tr>
+          <tr>
+            <th width="50%">Countries</th>
+            <td width="50%">Countries full list available on:<br/><a href="https://www.paypal.com/us/webapps/mpp/country-worldwide" target="_blank">https://www.paypal.com/us/webapps/mpp/country-worldwide</a></td>
+          </tr>
+          <tr>
+            <th width="50%">Technical Flow</th>
+            <td width="50%">asynchronous</td>
+          </tr>
+          <tr>
+            <th width="50%">Recurring</th>
+            <td width="50%">yes</td>
+          </tr>
+          <tr>
+            <th width="50%">Chargebacks</th>
+            <td width="50%">yes</td>
+          </tr>
+          <tr>
+            <th width="50%">B2B applicable</th>
+            <td width="50%">yes</td>
+          </tr>
+        </tbody>
+      </table>
+      <br/>
+      <br/>
+      <h3 id="step5">Supported Features and Services</h3>
+      <br/>
+      <table class="table table-bordered table-striped table-condensed">
+        <tbody>
+          <tr>
+            <th width="50%">Debit</th>
+            <td width="50%">yes</td>
+          </tr>
+          <tr>
+            <th width="50%">Preauthorization</th>
+            <td width="50%">yes</td>
+          </tr>
+          <tr>
+            <th width="50%">Capture</th>
+            <td width="50%">Yes (full & partial)</td>
+          </tr>
+          <tr>
+            <th width="50%">Cancelation</th>
+            <td width="50%">Yes (full & partial)</td>
+          </tr>
+          <tr>
+            <th width="50%">Refunds</th>
+            <td width="50%">Yes (full & partial)</td>
+          </tr>
+          <tr>
+            <th width="50%">Notifications</th>
+            <td width="50%">Yes - webhook, email</td>
+          </tr>
+          <tr>
+            <th width="50%">Settlement Reporting</th>
+            <td width="50%">Yes, both original and unified settlement</td>
+          </tr>
+        </tbody>
+      </table>
+      <br/>
+      <br/>
+      <h3 id="step6">Types of Integration</h3>
+      <br/>
         <table class="table table-bordered table-striped table-condensed">
           <tbody>
-            <tr>
-              <th width="50%">Product</th>
-              <td width="50%">PayPal Checkout Button</td>
-            </tr>
-            <tr>
-              <th width="50%">Payment Options (for Customer)</th>
-              <td width="50%">Express Checkout</td>
-            </tr>
-            <tr>
-              <th width="50%">Channels</th>
-              <td width="50%">ECOM</td>
-            </tr>
-            <tr>
-              <th width="50%">Currencies</th>
-              <td width="50%">AUD, BRL, CAD, CZK, DKK, EUR, HKD, HUF, INR, ILS, JPY, MYR, MXN, TWD, NZD, NOK, PHP, PLN, GBP, RUB, SGD, SEK, CHF, THB, USD</td>
-            </tr>
-            <tr>
-              <th width="50%">Countries</th>
-              <td width="50%">Countries full list available on:<br/><a href="https://www.paypal.com/us/webapps/mpp/country-worldwide" target="_blank">https://www.paypal.com/us/webapps/mpp/country-worldwide</a></td>
-            </tr>
-            <tr>
-              <th width="50%">Technical Flow</th>
-              <td width="50%">asynchronous</td>
-            </tr>
-            <tr>
-              <th width="50%">Recurring</th>
-              <td width="50%">yes</td>
-            </tr>
-            <tr>
-              <th width="50%">Chargebacks</th>
-              <td width="50%">yes</td>
-            </tr>
-            <tr>
-              <th width="50%">B2B applicable</th>
-              <td width="50%">yes</td>
-            </tr>
-          </tbody>
-        </table>
-        <br/>
-        <br/>
-        <h3 id="step5">Supported Features and Services</h3>
-        <br/>
-        <table class="table table-bordered table-striped table-condensed">
-          <tbody>
-            <tr>
-              <th width="50%">Debit</th>
-              <td width="50%">yes</td>
-            </tr>
-            <tr>
-              <th width="50%">Preauthorization</th>
-              <td width="50%">yes</td>
-            </tr>
-            <tr>
-              <th width="50%">Capture</th>
-              <td width="50%">Yes (full & partial)</td>
-            </tr>
-            <tr>
-              <th width="50%">Cancelation</th>
-              <td width="50%">Yes (full & partial)</td>
-            </tr>
-            <tr>
-              <th width="50%">Refunds</th>
-              <td width="50%">Yes (full & partial)</td>
-            </tr>
-            <tr>
-              <th width="50%">Notifications</th>
-              <td width="50%">Yes - webhook, email</td>
-            </tr>
-            <tr>
-              <th width="50%">Settlement Reporting</th>
-              <td width="50%">Yes, both original and unified settlement</td>
-            </tr>
-          </tbody>
-        </table>
-        <br/>
-        <br/>
-        <h3 id="step6">Types of Integration</h3>
-        <br/>
-        <table class="table table-bordered table-striped table-condensed">
-          <tbody>
-            
             <tr>
               <th width="50%">API</th>
               <td width="50%">no</td>
@@ -366,7 +365,6 @@ resultCallback
         </table>
         <br>
         <p><strong>Special Parameters to Initialize the PayPal Checkout Button</strong></p>
-        
         <br/>
         <h4 id="step11">PayPal input parameters</h4>
         <br/>

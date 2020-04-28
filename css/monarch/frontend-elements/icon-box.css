@@ -60,7 +60,6 @@
 .icon-box .icon-title {
     font-size: 17px;
     margin: 0;
-    color: rgba(0, 0, 0, .9);
 }
 .icon-box.inverse .icon-title {
     color: rgba(255, 255, 255, .9);
@@ -69,7 +68,6 @@
     line-height: 1.6em;
     margin: 0;
     padding: 10px;
-    color: rgba(0, 0, 0, .45);
     overflow: hidden;
     font-size: 15px;
 }

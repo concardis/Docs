@@ -36,3 +36,19 @@
   border-bottom: #f0f0f0 solid 1px;
   border-right: #c6c6c6 solid 1px;
 }
+
+.header-img{
+  overflow: hidden;
+  max-height: 360px;
+  min-height: 200px;
+  margin-bottom: 20px;
+}
+
+a{
+  color: #ed8a00;
+  cursor: pointer;
+}
+
+a:hover{
+  color:#ed8a00;
+}

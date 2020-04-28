@@ -1,17 +1,38 @@
 /* Default color schemes */
 
-@import url(https://fonts.googleapis.com/css?family=Raleway:300);
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+/* @import url(https://fonts.googleapis.com/css?family=Raleway:300);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans); */
+
+@font-face {
+    font-family: 'Calibri';
+    src: url('../../../../../assets/fonts/Calibri 400.ttf') format('truetype');
+    src: url('../../../../../assets/fonts/Calibri Light.ttf') format('truetype');
+    src: url('../../../../../assets/fonts/Calibri Bold.TTF') format('truetype');
+    }
 
 /* General */
 
 body {
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    color: #3e4855;
+    font-family: "Calibri", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #005776;
     background-color: #fff;
     line-height: 1.42857143;
     overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: Calibri;
+    font-weight: bold;
+    color: #005776;
+}
+
+p{
+    color: #005776;
+    font-family: "Calibri", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
 }
 
 #page-wrapper {
@@ -27,8 +48,7 @@ h1, h2, h3, h4, h5, h6,
 .main-header .header-nav > li > a,
 .hero-heading,
 .hero-text {
-    font-family: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 300;
+    font-family: "Calibri", Helvetica, Arial, sans-serif;
 }
 
 /* Top bar menu */

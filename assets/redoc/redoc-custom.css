@@ -1,4 +1,12 @@
+.redoc-element {
+  font-family: "Calibri", sans-serif !important;
+}
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Calibri", sans-serif !important;
+  font-weight: bold !important;
+  color: #005776 !important;
+}
 
 div[data-section-id]:nth-of-type(2),
 div[data-section-id]:nth-of-type(3),
@@ -9,6 +17,7 @@ div[data-section-id]:nth-of-type(2) > div[data-section-id] {
 a[target] {
   display: none !important;
 }
+
 .main-header{
   visibility: hidden !important;
   position: absolute;
@@ -33,15 +42,28 @@ h3{
   /* font-family: Roboto,sans-serif !important; */
 }
 
-
-
 /*
   Sidebar menu and API documentation contents
   fix for Chrome issue in redoc
   https://github.com/Redocly/redoc/issues/1167
 */
-div.menu-content {
+.menu-content {
+  font-family: "Calibri", sans-serif !important;
   position: fixed;
+  background: rgb(235, 235, 235);
+}
+
+.menu-content p, .menu-content span {
+  font-family: "Calibri", sans-serif !important;
+  color: #005776 !important;
+}
+
+.menu-content > div {
+  padding: 10px;
+}
+
+.menu-content > div > img{
+  background: none !important;
 }
 
 @media screen and (min-width: 800px) {

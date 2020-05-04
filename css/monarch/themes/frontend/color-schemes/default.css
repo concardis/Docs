@@ -4,17 +4,28 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans); */
 
 @font-face {
-    font-family: 'Calibri';
-    src: url('../../../../../assets/fonts/Calibri 400.ttf') format('truetype');
-    src: url('../../../../../assets/fonts/Calibri Light.ttf') format('truetype');
-    src: url('../../../../../assets/fonts/Calibri Bold.TTF') format('truetype');
+    font-family: 'Fontfabric';
+    src: url('../../../../../assets/fonts/Fontfabric - UniNeueThin.otf');
+    src: url('../../../../../assets/fonts/Fontfabric - UniNeueThin-Italic.otf');
+    src: url('../../../../../assets/fonts/Fontfabric - UniNeueRegular.otf');
+    src: url('../../../../../assets/fonts/Fontfabric - UniNeueRegular-Italic.otf');
+    src: url('../../../../../assets/fonts/Fontfabric - UniNeueLight.otf');
+    src: url('../../../../../assets/fonts/Fontfabric - UniNeueLight-Italic.otf');
+    src: url('../../../../../assets/fonts/Fontfabric - UniNeueHeavy.otf');
+    src: url('../../../../../assets/fonts/Fontfabric - UniNeueHeavy-Italic.otf');
+    src: url('../../../../../assets/fonts/Fontfabric - UniNeueBook.otf');
+    src: url('../../../../../assets/fonts/Fontfabric - UniNeueBook-Italic.otf');
+    src: url('../../../../../assets/fonts/Fontfabric - UniNeueBold.otf');
+    src: url('../../../../../assets/fonts/Fontfabric - UniNeueBold-Italic.otf');
+    src: url('../../../../../assets/fonts/Fontfabric - UniNeueBlack.otf');
+    src: url('../../../../../assets/fonts/Fontfabric - UniNeueBlack-Italic.otf');
     }
 
 /* General */
 
 body {
-    font-family: "Calibri", sans-serif;
-    font-weight: 400;
+    font-family: "Fontfabric - UniNeueRegular";
+    /* font-weight: 400; */
     font-size: 16px;
     color: #005776;
     background-color: #fff;
@@ -23,17 +34,15 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6{
-    font-family: Calibri;
-    font-weight: bold;
+    font-family: "Fontfabric - UniNeueBold";
     color: #005776;
 }
 
 p{
+    font-family: "Fontfabric - UniNeueRegular";
     color: #005776;
-    font-family: "Calibri", sans-serif;
-    font-weight: 400;
     font-size: 16px;
-}
+} 
 
 #page-wrapper {
     background: #fff;
@@ -48,7 +57,7 @@ h1, h2, h3, h4, h5, h6,
 .main-header .header-nav > li > a,
 .hero-heading,
 .hero-text {
-    font-family: "Calibri", Helvetica, Arial, sans-serif;
+    font-family: "Fontfabric - UniNeueBold";
 }
 
 /* Top bar menu */

@@ -1,9 +1,9 @@
 .redoc-element {
-  font-family: "Calibri", sans-serif !important;
+  font-family: "Fontfabric", sans-serif !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Calibri", sans-serif !important;
+  font-family: "Fontfabric", sans-serif !important;
   font-weight: bold !important;
   color: #005776 !important;
 }
@@ -48,13 +48,13 @@ h3{
   https://github.com/Redocly/redoc/issues/1167
 */
 .menu-content {
-  font-family: "Calibri", sans-serif !important;
+  font-family: "Fontfabric", sans-serif !important;
   position: fixed;
   background: rgb(235, 235, 235);
 }
 
 .menu-content p, .menu-content span {
-  font-family: "Calibri", sans-serif !important;
+  font-family: "Fontfabric", sans-serif !important;
   color: #005776 !important;
 }
 

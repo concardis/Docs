@@ -24,23 +24,25 @@
 /* General */
 
 body {
-    font-family: "Fontfabric - UniNeueRegular";
-    /* font-weight: 400; */
+    font-family: "Uni Neue", sans-serif;
+    font-weight: 400;
     font-size: 16px;
-    color: #005776;
+    color: rgb(0,87,118);
     background-color: #fff;
     line-height: 1.42857143;
     overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6{
-    font-family: "Fontfabric - UniNeueBold";
-    color: #005776;
+    font-family: "Uni Neue", sans-serif;
+    font-weight: 800;
+    color: rgb(0,87,118);
 }
 
 p{
-    font-family: "Fontfabric - UniNeueRegular";
-    color: #005776;
+    font-family: "Uni Neue", sans-serif;
+    font-weight: 400;
+    color: rgb(0,87,118);
     font-size: 16px;
 } 
 
@@ -57,7 +59,7 @@ h1, h2, h3, h4, h5, h6,
 .main-header .header-nav > li > a,
 .hero-heading,
 .hero-text {
-    font-family: "Fontfabric - UniNeueBold";
+    font-family: "Uni Neue", sans-serif;
 }
 
 /* Top bar menu */

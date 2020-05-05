@@ -22,7 +22,7 @@
   border-right: #c6c6c6 solid 1px;
 }
 .pm-cell-color{
-  color: #0093d9;
+  color: rgb(0,87,118);
   text-align: center;
 }
 .pm-table-header-cell{
@@ -45,10 +45,10 @@
 }
 
 a{
-  color: #ed8a00;
+  color: rgb(237, 139, 0);
   cursor: pointer;
 }
 
 a:hover{
-  color:#ed8a00;
+  color:rgb(237, 139, 0);
 }

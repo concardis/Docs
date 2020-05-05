@@ -1,11 +1,11 @@
 .redoc-element {
-  font-family: "Fontfabric", sans-serif !important;
+  font-family: "Uni Neue", sans-serif !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Fontfabric", sans-serif !important;
-  font-weight: bold !important;
-  color: #005776 !important;
+  font-family: "Uni Neue", sans-serif !important;
+  font-weight: 800 !important;
+  color: rgb(0,87,118)!important;
 }
 
 div[data-section-id]:nth-of-type(2),
@@ -48,14 +48,15 @@ h3{
   https://github.com/Redocly/redoc/issues/1167
 */
 .menu-content {
-  font-family: "Fontfabric", sans-serif !important;
+  font-family: "Uni Neue", sans-serif !important;
   position: fixed;
   background: rgb(235, 235, 235);
 }
 
 .menu-content p, .menu-content span {
-  font-family: "Fontfabric", sans-serif !important;
-  color: #005776 !important;
+  font-family: "Uni Neue", sans-serif !important;
+  color: rgb(0,87,118) !important;
+  font-weight: 800;
 }
 
 .menu-content > div {

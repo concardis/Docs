@@ -1,5 +1,5 @@
 .btn-light {
-    color: #75787b !important;
+    color: #005776 !important;
     background-color : white !important;
 }
 .btn-light-search {
@@ -9,24 +9,15 @@
 
 .btn-block {
     color: white !important;
-    background-color : #DA4405 !important;
+    background-color : #005776 !important;
 }
 
-.btn-block:hover {
-}
 .btn-light:hover, .btn-primary:active, .btn-primary:visited{
-    color: #DA4405 !important;
+    color: #005776 !important;
 }
 code {
   display: block;
   white-space: pre-wrap   
-}
-
-.opblock-summary-description {
-   
-}
-
-.authorization__btn {
 }
 
 .try-out__btn {

@@ -130,7 +130,7 @@
 
 .pricing-box-alt .plan-header h4 {
     margin: 0;
-    color: #f26b33;
+    color: rgb(237, 139,0);
     text-transform: uppercase;
     font-size: 17px;
     font-weight: bold;
@@ -158,7 +158,7 @@
 }
 
 .pricing-box-alt .unlimited-plan .plan-header h4 {
-    color: #3792f2;
+    color: rgb(0,87,118);
 }
 
 .pricing-box-alt ul li {
@@ -166,7 +166,7 @@
     line-height: 32px;
     padding: 0 10px;
     border-bottom: #f0f0f0 solid 1px;
-    color: #0093d9;
+    color: rgb(0,87,118);
     font-size: 14px;
     font-weight: bold;
 }

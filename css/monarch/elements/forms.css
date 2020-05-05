@@ -440,6 +440,7 @@
   }
   .input-group-btn:last-child > .btn {
       margin-left: -1px;
+      color: rgb(0,87,118);
   }
   .input-group-btn > .btn {
       position: relative;

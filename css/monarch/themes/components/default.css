@@ -2,7 +2,7 @@
 /* Framework CSS */
 /* Secondary font color */
 
-.table,
+/* .table,
 .chosen-disabled .chosen-single,
 div.selector,
 .content-box-header.bg-default > .ui-tabs-nav li > a,
@@ -15,7 +15,7 @@ body .content-box-header > .ui-tabs-nav li.ui-tabs-active > a:hover,
 .btn-link,
 a {
     color: #8da0aa;
-}
+} */
 /* Primary font color */
 
 .tabs-nav li a:hover,
@@ -230,7 +230,6 @@ div[id^='uniform-'] span,
 .jvectormap-zoomin,
 .jvectormap-zoomout,
 .jvectormap-label {
-    color: #555a60;
     background-color: #FEFEFF;
 }
 .irs-diapason,
@@ -243,7 +242,6 @@ div[id^='uniform-'] span,
 .table > thead > tr > th,
 .table > tbody > tr > th,
 .table > tfoot > tr > th {
-    color: #4b5056;
     background-color: #f9fafe;
 }
 /* Button default hover */

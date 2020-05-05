@@ -333,18 +333,18 @@
 
 .p-title {
     margin: 35px 0;
-    padding: 35px 0;
+    padding: 0;
     text-transform: uppercase;
     text-align: center;
     position: relative;
     font-size: 30px;
-    font-weight: 300;
 }
 .p-title span {
     padding: 0 20px;
     background: #fff;
     position: relative;
     z-index: 5;
+    font-weight: 800;
 }
 .p-title:before {
     background: #dce4e8;

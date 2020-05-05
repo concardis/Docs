@@ -23,7 +23,7 @@ info:
     </table>
 
   x-logo:
-    url: 'https://www.concardis.com/fileadmin/redakteur/images/Concardis_Logos/concardis-Logo-RGB_web.png'
+    url: 'img/Concardis_Nets_Group_transperent.png'
     backgroundColor: '#fafafa'
     altText: Concardis Logo
 servers:

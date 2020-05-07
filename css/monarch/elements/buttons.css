@@ -219,7 +219,7 @@ input[type='button'].btn-block {
 .btn-group-vertical > .btn,
 .btn-group-vertical > .btn-group,
 .btn-group-vertical > .btn-group > .btn {
-    display: block;
+    display: inline-block;
     float: none;
     width: 100%;
     max-width: 100%;

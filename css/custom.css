@@ -52,3 +52,7 @@ a{
 a:hover{
   color:rgb(237, 139, 0);
 }
+
+.panel-default h2{
+  margin: 0;
+}

@@ -40,7 +40,7 @@
 .header-img{
   overflow: hidden;
   max-height: 360px;
-  min-height: 200px;
+  /* min-height: 200px; */
   margin-bottom: 20px;
 }
 
@@ -52,3 +52,10 @@ a{
 a:hover{
   color:rgb(237, 139, 0);
 }
+
+.panel-default h2{
+  margin: 0;
+}
+
+
+

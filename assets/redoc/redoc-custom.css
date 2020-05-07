@@ -56,7 +56,7 @@ h3{
 .menu-content p, .menu-content span {
   font-family: "Uni Neue", sans-serif !important;
   color: rgb(0,87,118) !important;
-  font-weight: 800;
+  font-size: 14px;
 }
 
 .menu-content > div {

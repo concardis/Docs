@@ -40,7 +40,7 @@
 .header-img{
   overflow: hidden;
   max-height: 360px;
-  min-height: 200px;
+  /* min-height: 200px; */
   margin-bottom: 20px;
 }
 

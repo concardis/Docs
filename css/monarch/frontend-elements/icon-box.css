@@ -116,3 +116,9 @@
 .hero-box .icon-box .icon-title {
     color: rgba(255,255,255,.9);
 }
+
+@media screen and (max-width: 680px){
+    .icon-box.icon-box-offset-large {
+      margin-top: 55px !important;
+    }
+  }

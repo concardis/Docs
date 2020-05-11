@@ -55,6 +55,12 @@ a:hover{
 
 .panel-default h2{
   margin: 0;
+  font-weight: 400;
+}
+
+.top-menu{
+  font-weight: 800;
+  font-size: 16px;
 }
 
 

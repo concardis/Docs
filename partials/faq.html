@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-		<h4 class="p-title" style="color:rgb(237, 139, 0);"><span>Payment Methods</span></h4>
+		<h4 class="p-title" style="color:rgb(237, 139, 0);"><span style="font-weight:400;">Payment Methods</span></h4>
 		<uib-accordion close-others="true">
 			<div uib-accordion-group class="panel-default">
 				<uib-accordion-heading>
@@ -22,254 +22,6 @@
 				<br> Read more about PCI security levels <a href="/systemurl/pcidss">here</a>.<br>
 				<br>
 			</div>
-			<!-- <div uib-accordion-group class="panel-default">
-				<uib-accordion-heading>
-					<h2>PayPal   <img class="alignnone size-medium wp-image-5822" src="/img/PP_Logo.png" alt=""  height="30" /></h2>
-				</uib-accordion-heading>
-				To offer PayPal to your customers you first need a creditcard acceptance agreement with us. Get your offer <a href="https://easycontract.concardis.com/p/user/register">here</a>.<br>
-				<br> Additional you need a PayPal merchant account. Get your offer <a href="https://www.paypal.com/de/webapps/mpp/merchant">here</a>.<br>
-				<br>
-				<h4>Setup</h4><br> Contact our service to deposit your PayPal credentials (Username / Password / Signature / SFTP User) in our system.<br>
-				<br> Creating and managing PayPal API Credentials: <br>
-				<a href="https://developer.paypal.com/docs/classic/api/apiCredentials/">https://developer.paypal.com/docs/classic/api/apiCredentials/</a><br>
-				<br> Setting up SFTP Reports with PayPal: <br>
-				<a href="https://www.paypal-community.com/t5/SFTP-Reports/Setting-Up-SFTP-reports-with-PayPal/td-p/1124738">https://www.paypal-community.com/t5/SFTP-Reports/Setting-Up-SFTP-reports-with-PayPal/td-p/1124738</a>
-				<br>
-
-				<p>
-					To offer PayPal Payment method to your customers you first need an acceptance agreement with us. You can apply for a Payengine account <a target="_blank" href="https://easycontract.concardis.com/p/user/register">here</a>.
-				</p>
-				<p>
-					Additional you need a PayPal merchant account. You can view for offer <a target="_blank" href="https://www.paypal.com/de/webapps/mpp/merchant">here</a>.<br>
-				</p>
-				<br/>
-				<h3>Setup</h3>
-				<br/>
-				<p>
-					First you must have active PayPal payment method.
-					<br/>
-					<img src="/img/faq/paypal/paypal_active.png" alt="" width="100%" />
-				</p>
-				<p>
-					<h4><b>Important!</b></h4>
-					<img src="/img/faq/paypal/paypal_inactive_short.png" alt="" width="100%" class="alignnone size-full wp-image-6539" /> If your PayPal payment method is inactive you must contact our service to deposit your PayPal credentials in our system. We will
-					need:
-					<ul>
-						<li>Username</li>
-						<li>Password</li>
-						<li>Signature</li>
-						<li>SFTP User</li>
-					</ul>
-				</p>
-
-				<p>You can find how to create or manage your PayPal API credentials on PayPal official documentation page <a target="_blank" href="https://developer.paypal.com/docs/classic/api/apiCredentials/">Creating and managing NVP/SOAP API credentials</a>
-				</p>
-				<br/>
-				<p>
-					<label>
-						To find out how to Setup SFTP Reports with PayPal you can view
-						<a target="_blank" href="https://www.paypal-community.com/t5/SFTP-Reports/Setting-Up-SFTP-reports-with-PayPal/td-p/1124738">
-							Setting Up SFTP reports with PayPal
-						</a>
-						page.
-					</label>
-				</p>
-				<br/>
-
-				<h3>Integration</h3>
-				<br/>
-				<p>
-					<label>We have two options to integrate PayPal:	</label>
-					<ol>
-						<li>
-							<a href="/outofthebox/widgetmenu">Widget.</a> It's:
-							<ul>
-								<li>
-									Out of the Box
-								</li>
-								<li>
-									Easy to integrate
-								</li>
-								<li>
-									But with low flexibility
-								</li>
-							</ul>
-						</li>
-						<li>
-							<a href="/buildyourown/restdoc">API. </a>
-							<ul>
-								<li>
-									Use directly our API
-								</li>
-								<li>
-									Maximum flexibility
-								</li>
-							</ul>
-					</ol>
-				</p>
-				<br/>
-
-				<h3>Instant Payment Notifications</h3>
-				<br>
-				<p>
-					<label>
-						To make sure that the Concardis Payengine can process asynchronous notifications (IPN = Instant Payment Notifications) from PayPal, in your PayPal business account settings you must:
-						<ul>
-							<li>
-								set Up IPN Notifications on PayPal,
-							</li>
-							<li>
-								make sure to select the <i>UTF-8</i> encoding.
-							</li>
-						</ul>
-					</label>
-				</p>
-				<br/>
-
-				<h4>Set Up IPN on PayPal:</h4>
-				<br/>
-				<div>
-					<p>
-						<label>To set Up Instant Payment Notifications on PayPal you can follow this steps:
-							<br/>
-							<a href="https://developer.paypal.com/docs/classic/ipn/integration-guide/IPNSetup/#setting-up-ipn-notifications-on-paypal">
-								Setting Up IPN Notifications on PayPal
-							</a>
-						</label>
-					</p>
-					<br/>
-					<p>
-						<label>
-							Make sure that the Notification URL on your "Instant Payment Notification (IPN)" page is not empty.
-						</label>
-						<br/>
-						<label>
-							Тo check the value of the field:
-						</label>
-						<br/>
-						<ul>
-							<li>
-								Go on your "Profile" page, select "My selling tools" menu item and select "Update" link on "Instant payment notifications" row from "Getting paid and managing my risk" section.
-								<img src="/img/faq/paypal/ipn_settings_nav.png" alt="" width="80%" />
-								<label>
-									<b>Important!</b>
-									<br/>
-									If you don't see "Update" link you must first set Up IPN on PayPal, by following steps from this
-									<a href="https://developer.paypal.com/docs/classic/ipn/integration-guide/IPNSetup/#setting-up-ipn-notifications-on-paypal">
-										link
-									</a>.
-								</label>
-							</li>
-							<li>
-								<label>
-									You will see Instant Payment Notification (IPN) page:
-								</label>
-								<img src="/img/faq/paypal/ipn_settings.png" alt="" width="80%" />
-								<label>
-									<b>Important!</b>
-									<br/>
-									Make sure that "Message delivery"	is Enabled, "Notification URL" is not empty and you fill the right URL for receiving IPN messages!
-								</label>
-								<img src="/img/faq/paypal/ipn_settings_not_empty.png" alt="" width="80%" />
-								<label>
-									If "Message delivery"	is Disabled or "Notification URL" is empty or is not valid URL click on "Edit Settings" button, change the values and click on "Save" button:
-								</label>
-								<img src="/img/faq/paypal/ipn_settings_filled.png" alt="" width="80%" />
-							</li>
-						</ul>
-
-					</p>
-				</div>
-
-
-				<h4>Change the encoding to <i>UTF-8</i>:</h4>
-
-				<ul>
-					<li>
-						<p>
-							<label>For <i>New PayPal business accounts:</i></label>
-							<br/>
-							<label>Follow these steps to change the encoding to <i>UTF-8</i>:
-								<a href="https://developer.paypal.com/docs/classic/admin/checkout-settings/#change-the-encoding-used-by-your-website">Change the encoding</a>
-							</label>
-						</p>
-					</li>
-					<li>
-						<p>
-							<label> For <i>Old PayPal business accounts:</i></label>
-							<br/>
-							<ul>
-								<li>
-									<label>
-										First please login in to your PayPal Account (http://www.paypal.com).
-									</label>
-								</li>
-								<li>
-									<label>
-										Then select "My Account" tab from main manu, and "Profile" sub menu item:
-									</label>
-									<img src="/img/faq/paypal/paypal_menu.png" alt="" width="80%" />
-								</li>
-								<li>
-									<label>
-										Select "More Options" button here:
-									</label>
-									<img src="/img/faq/paypal/Paypal1.png" alt="" width="80%" />
-								</li>
-								<li>
-									<label>
-										 Select <i>UTF-8</i> (as you see on picture):<br>
-									</label>
-									<img src="/img/faq/paypal/Paypal2.png" alt="" width="80%" />
-								</li>
-								<li>
-									<label>
-										Save the changed settings.
-									</label>
-								</li>
-							</ul>
-						</p>
-					</li>
-				</ul>
-
-			</div> -->
-
-			<!-- <div uib-accordion-group class="panel-default">
-				<uib-accordion-heading>
-					<h2>Paydirekt   <img class="alignnone size-medium wp-image-5822" src="/img/paydirekt.png" alt=""  height="30" /></h2>
-				</uib-accordion-heading>
-				To offer Paydirekt to your customers you first need a creditcard acceptance agreement with us. Get your offer <a href="https://easycontract.concardis.com/p/user/register">here</a>.<br>
-				<br>
-				<br>
-				<h4>Setup</h4><br> Contact our service to deposit your Paydirekt credentials in our system.<br>
-				<br>
-				<br>
-				<h3>Integration</h3><br> We have two options to integrate Paydirekt:<br>
-				<ol>
-					<li><a href="/outofthebox/widgetmenu">Widget </a>- Out of the Box / easy to integrate / low flexibility</li>
-					<li><a href="/buildyourown/restdoc">API </a>- use directly our API / maximum flexibility</li>
-				</ol>
-			</div>
-			<div uib-accordion-group class="panel-default">
-				<uib-accordion-heading>
-					<h2>SOFORT Banking   <img class="alignnone size-medium wp-image-5822" src="/img/sofort.png" alt=""  height="20" /></h2>
-				</uib-accordion-heading>
-				To offer Sofort to your customers, you firstly need a credit card acceptance agreement with us. Get your<br> offer <a href="https://easycontract.concardis.com/p/user/register">here</a>.<br>
-				<br>
-				<h3>Setup</h3><br> Contact our service to deposit your Sofort credentials in our system.<br>
-				<h3>Integration</h3><br> We have two options to integrate Sofort:<br> 1. <a href="/outofthebox/widgetmenu">Widget</a> – Out of the Box / easy to integrate / low flexibility<br> 2. <a href="/buildyourown/restdoc">API</a> – use directly our API / maximum flexibility
-				<h3>Transaction status</h3><br> After creating a debit order with the payment method Sofort the transaction status will be PENDING and a redirect URL will be provided.<br> The end customer needs to be redirected to the redirect URL.<br> When the end customer completes his payment
-				via Sofort, the transaction status results either in SUCCESS or in case of failure in FAILURE.<br>
-				<h2>With Deutsche Handelsbank bank account</h2><br>
-				<h3>Payment loss</h3><br> In case that the payment does not arrive to your bank account, a new chargeback transaction in the status CHARGEBACK will be created as a child of the initial debit transaction. In this case you should directly contact the end customer to inform
-				him that there is an issue with the payment.
-				<br> The end customer can initiate a bank transfer with the order.paymentProviderTransactionId as reference to complete the transaction.<br> You can find the order.paymentProviderTransactionId in the Merchant Center detail view of your order.<br>				To read the order information via API click <a href="/buildyourown/apidocs">here</a>.<br>
-				<h3>Payment received</h3><br> As soon as the payment amount is available on your bank account, the flag order.settled will be set to true. If there was a chargeback transaction present, the chargeback status will change from CHARGEBACK to BOOKIN. See API spec for reading
-				order information <a href="/buildyourown/apidocs">here</a>.
-				<h2>Without Deutsche Handelsbank bank account</h2><br> No further status updates will be available.<br>
-				<h3>Support</h3><br> If you need to contact the Sofort support to solve a transaction specific problem, ensure that you have always provided the order.paymentProviderTransactionId.<br>
-				<h3>Webhooks</h3><br> Not implemented yet.<br>
-			</div> -->
 			<div uib-accordion-group class="panel-default">
 				<uib-accordion-heading>
 					<h2>Paydirekt <img class="" src="/img/paydirekt.png" alt=""  height="20" /></h2>
@@ -278,7 +30,7 @@
 			</div>
 			<div uib-accordion-group class="panel-default">
 				<uib-accordion-heading>
-					<h2>SOFORT Banking<img class="" src="/img/sofort.png" alt=""  height="20" /></h2>
+					<h2>SOFORT <img class="" src="/img/sofort.png" alt=""  height="20" /></h2>
 				</uib-accordion-heading>
 				<div ng-include="'/partials/faq_pm_sofort.html'"></div>
 			</div>
@@ -382,7 +134,7 @@
 		<br/>
 
 		</uib-accordion>
-		<h4 class="p-title" style="color:rgb(237, 139, 0);"><span>The Frequently Asked Questions about Concardis Payengine</span></h4>
+		<h4 class="p-title" style="color:rgb(237, 139, 0);"><span style="font-weight:400;">The Frequently Asked Questions about Concardis Payengine</span></h4>
 		<uib-accordion close-others="true">
 			<div uib-accordion-group class="panel-default" heading="How can I convert a test account (’sandbox‘ account) into a production or live account?">
 				<p>Test account and production account represent two different user accounts on two separated environments with separated data bases. An automatic conversion from test into live is therefore not possible. You would need to additionally register a live

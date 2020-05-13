@@ -233,7 +233,7 @@ body .button-pane-top {
 .content-box.border-top .content-box-header small {
     opacity: .80;
     -moz-opacity: .80;
-    filter: alpha(opacity: 80);
+    filter: alpha(opacity:80);
 }
 .content-box.border-top .content-box-header + .content-box-wrapper {
     padding-top: 0;

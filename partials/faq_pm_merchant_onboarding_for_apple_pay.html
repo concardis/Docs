@@ -1,0 +1,112 @@
+
+
+<div class="container row col-12">
+  <br>
+  <br>
+  <h1>Merchant onboarding for Apple Pay</h1>
+  <br>
+  <br>
+  <div>
+    <br/>
+    <br/>
+  <div>
+    <h2>Process overview</h2>
+    <br/>
+    <p>Before a merchant cant start accepting Apple Pay payments, they are required to:</p>
+    <br>
+    <ol>
+      <li><a href="faq_pm_merchant_onboarding_for_apple_pay#one">Create a merchant identifier</a></li>
+      <li><a href="faq_pm_merchant_onboarding_for_apple_pay#two">Enable Apple Pay</a></li>
+      <li><a href="faq_pm_merchant_onboarding_for_apple_pay#three">Create a payment processing certificate</a></li>
+      <li><a href="faq_pm_merchant_onboarding_for_apple_pay#four">Register and validate your merchant domain</a></li>
+      <li><a href="faq_pm_merchant_onboarding_for_apple_pay#five">Create a merchant identity certificate</a></li>
+    </ol>
+  </div>
+  <br>
+  <br>
+  <div>
+    <h2 id="one">1. Create a merchant identifier</h2>
+    <br/>
+    <ol>
+      <li>Log in to your Apple Developer account at <a href="https://developer.apple.com.">https://developer.apple.com.</a></li>
+      <li>Follow the Apple Developer Account Help instructions to <a href="https://help.apple.com/developer-account/#/devb2e62b839?sub=dev103e030bb">create a merchant identifier</a>. The merchant identifier is used to validate the payment requests. Therefore, it is advisory to have merchant identifier, which is recognizable for PayEngine, such as 
+          "merchant.payengine.merchant_id" or "merchant.payengine.merchant_id.test" for testing purposes. </li>
+      <li>
+          Once the identifier is created with Apple, then login on PayEngine, go to Settings → Payment method. On the page, select Apple pay and click</li>
+    </ol>
+    <br>
+    <img src="/img/faq/apple_pay/apple_pay_2.png" alt="" width="60%">
+    <br>
+    <ol>
+      <li>Enter the merchant id that you created from the previous step. Then click "Generate CSR" in order to generate the Certificate Sign Request file. Once the file is created, download and save it. You'll need it for the next step.</li>
+    </ol>
+  </div>
+  <br>
+  <br>
+  <div>
+    <h2 id="two">2. Enable Apple Pay</h2>
+    <br/>
+    <ol>
+      <li>Log in to your Apple Developer account at <a href="https://developer.apple.com">https://developer.apple.com</a>.</li>
+      <li>Follow the Apple Developer Account Help instructions to enable  <a href="https://help.apple.com/developer-account/#/dev4cb6dfbdb?sub=dev3f2891710">Apple Pay</a>.</li>
+    </ol>
+  <br>
+  <br>
+  </div>
+  <div>
+    <h2 id="three">3. Create a payment processing certificate</h2>
+    <br/>
+    <ol>
+      <li>Log in to your Apple Developer account at <a href="https://developer.apple.com">https://developer.apple.com</a>.</li>
+      <li>Follow the Apple Developer Account Help instructions to <a href="https://help.apple.com/developer-account/#/devb2e62b839?sub=dev103e030bb">create a payment processing certificate</a>, however:
+        <ul>
+          <li>For merchant identifier, make sure you select the merchant identifier you created in the first step of the process.</li>
+          <li>Do not create a certificate signing request. </li>
+          <li>In the step to select the certificate signing request file, select the CSR you downloaded from PayEngine in step 1.</li>
+        </ul>
+      </li>
+    </ol>
+  <br>
+  <br>
+  </div>
+  <div>
+    <h2 id="four">4. Register and validate your merchant domain</h2>
+    <br/>
+    <ol>
+      <li>Log in to your Apple Developer account at <a href="https://developer.apple.com">https://developer.apple.com</a>.</li>
+      <li>Follow the Apple Developer Account Help instructions to <a href="https://help.apple.com/developer-account/#/dev1731126fb">register a merchant domain</a>, but note the following:
+        <ul>
+          <li>In the step to select a merchant identifier, make sure you select the merchant identifier you created earlier in the process.</li>
+        </ul>
+      </li>
+    </ol>
+  <br>
+  <br>
+  </div>
+  <div>
+    <h2 id="five">5. Create a merchant identity certificate</h2>
+    <br/>
+    For each transaction, you need to <a href="https://developer.apple.com/documentation/apple_pay_on_the_web/apple_pay_js_api/requesting_an_apple_pay_payment_session">request an Apple Pay payment session</a> using your Merchant Identity Certificate. In this step, you will create that certificate
+    <ol>
+      <li>Log in to your Apple Developer account at <a href="https://developer.apple.com">https://developer.apple.com</a>.</li>
+      <li>Follow the Apple Developer Account Help instructions to <a href="https://help.apple.com/developer-account/#/dev1731126fb">create a merchant identity certificate</a>, but note the following:
+        <ul>
+          <li>In the step to select a merchant identifier, make sure you select the merchant identifier you created earlier in the process.</li>
+          <li>Follow the instructions from Apple to create a CSR yourself. The CSR you received from us can't be used for creating a merchant identity certificate.</li>
+          <li>Download and save the generated merchant identity certificate (<strong>.cer</strong> file).</li>
+        </ul>
+      </li>
+      <li>When you have completed the instructions from Apple, add the merchant identity certificate to your keychain.</li>
+      <li>Export the certificate from your keychain as a p12 file.</li>
+      <li>Convert the p12 file to a PEM file using the following command:</li>
+      <br>
+      <code>openssl pkcs12 -in your-file.p12 -out apple-pay-cert.pem -nodes -clcerts</code>
+      <br>
+      <li>Upload the <strong>apple-pay-cert.pem</strong> file to your server.</li>
+    </ol>
+  <br>
+  <br>
+  </div>
+  
+</div>
+

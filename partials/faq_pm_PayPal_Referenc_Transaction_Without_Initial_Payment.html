@@ -102,39 +102,49 @@
           <thead>
             <tr>
               <tr>
-                <th width="33%">Prerequisite</th>
-                <th width="33%">Mandatory/Optional</th>
-                <th width="33%">Create Prerequisite</th>
+                <th width="30%">Prerequisite</th>
+                <th width="30%">Mandatory/Optional</th>
+                <th width="30%">Create Prerequisite</th>
+                <th width="10%"></th>
               </tr>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td width="33%"><span style="color:green;">payment.returnUrl</span></td>
-              <td width="33%">M</td>
-              <td width="33%">
+              <td ><span style="color:green;">billingAgreementId</span></td>
+              <td >O</td>
+              <td > - </td>
+              <td> - </td>
+            </tr>
+            <tr>
+              <td><span style="color:green;">payment.returnUrl</span></td>
+              <td>M</td>
+              <td>
                   The URL to which to redirect the customer when they have successfully accepted the PayPal billing agreement.
                   <br/><br>
                   <strong>NOTE</strong> Maximum length: 2048.
               </td>
+              <td></td>
             </tr>
             <tr>
-              <td width="33%"><span style="color:green;">payment.cancelUrl</span></td>
-              <td width="33%">M</td>
-              <td width="33%">
+              <td><span style="color:green;">payment.cancelUrl</span></td>
+              <td>M</td>
+              <td>
                   The URL to which the customer is redirected in cases when the PayPal billing agreement must be cancelled.
                   <br/><br>
                   <strong>NOTE</strong>  Maximum length: 2048.
               </td>
+              <td></td>
             </tr>
             <tr>
-              <td width="33%"><span style="color:green;">payment.notifyUrl</span></td>
-              <td width="33%">O</td>
-              <td width="33%">
+              <td><span style="color:green;">payment.notifyUrl</span></td>
+              <td>O</td>
+              <td>
                 Notification URL provided by the merchant. The URL to which notifications are sent, when the PayPal billing agreement is created or canceled or payments on this billing agreement are processed.
                 <br/><br>
                 <strong>NOTE</strong> Read only. Maximum length: 2048.
               </td>
+              <td></td>
             </tr>
           </tbody>
         </table>
@@ -157,9 +167,10 @@
                     {
                       "type": "paypal",
                       "payment": {
+                      "billingAgreementId": "38ieuikajekajsa"
                         "returnUrl": "https://example.com/return",
-                    "cancelUrl": "https://example.com/cancel",
-                    "notifyUrl": "https://example.com/notify"
+                      "cancelUrl": "https://example.com/cancel",
+                      "notifyUrl": "https://example.com/notify"
                       }
                     }
                 </code>

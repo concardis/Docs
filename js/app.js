@@ -53,6 +53,8 @@ angular.module('StudyCraneApp',[
   .when('/faq_pm_sepa_single_order', {templateUrl: '/partials/faq_pm_sepa_single_order.html', controller:'faqCtrl'})
   .when('/faq_pm_sepa_ro_with_Initial_payment', {templateUrl: '/partials/faq_pm_sepa_ro_with_Initial_payment.html', controller:'faqCtrl'})
   .when('/faq_pm_sepa_ro_without_initial_payment', {templateUrl: '/partials/faq_pm_sepa_ro_without_initial_payment.html', controller:'faqCtrl'})
+  .when('/faq_pm_apple_pay_for_the_web', {templateUrl: '/partials/faq_pm_apple_pay_for_the_web.html', controller:'faqCtrl'})
+  .when('/faq_pm_merchant_onboarding_for_apple_pay', {templateUrl: '/partials/faq_pm_merchant_onboarding_for_apple_pay.html', controller:'faqCtrl'})
 
   
 
@@ -280,6 +282,17 @@ console.log("trying start REDOCS");
     $scope.cur = $routeParams.id;
   else
     $scope.cur ="pm_sepa_direct_debit";
+
+
+}])
+
+.controller('faqCtrl', ['$rootScope', '$scope', '$http','backendService', '$timeout', '$routeParams', function($rootScope, $scope, $http, backendService, $timeout, $routeParams) {
+	$rootScope.site = "faq_pm_apple_pay_for_the_web";
+
+  if($routeParams.id)
+    $scope.cur = $routeParams.id;
+  else
+    $scope.cur ="faq_pm_apple_pay_for_the_web";
 
 
 }])

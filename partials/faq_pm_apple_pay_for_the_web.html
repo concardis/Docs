@@ -18,12 +18,7 @@
         <li>Technical Flow</li>
         <li>Specifics</li>
       </ul>
-      <li>Samples</li>
-      <ul>
-        <li>PREAUTH request</li>
-        <li>PREAUTH response</li>
-        <li>Capture request</li>
-      </ul>
+    <li>Samples</li>
   </ul>
   <br>
   <br>
@@ -59,7 +54,7 @@
   <div>
     <h2>Customer Experience</h2>
     <br/>
-    <p>The following list describes a simplified payment flow using PostFinance Card.</p>
+    <p>The following list describes a simplified payment flow using Apple Pay.</p>
     <br>
     <table class="table table-bordered table-striped table-condensed">
       <thead>
@@ -71,8 +66,8 @@
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
-          <td>The customer selects the Apple Pay payment method.</td>
+          <td style="vertical-align: top;">1</td>
+          <td style="vertical-align: top;">The customer selects the Apple Pay payment method.</td>
           <td>
             <img src="/img/faq/apple_pay/apple_pay_1.png" alt="" width="50%">
           </td>
@@ -99,7 +94,6 @@
   </div>
   <div>
     <h2>Payengine Details</h2>
-    <br/>
     <h3>General</h3>
     <br/>
     <table class="table table-bordered table-striped table-condensed">
@@ -189,8 +183,8 @@
           <td width="50%">yes</td>
         </tr>
         <tr>
-          <th width="50%">Bridge</th>
-          <td width="50%">yes</td>
+          <th width="50%">Widget as a Bridge</th>
+          <td width="50%">no</td>
         </tr>
         <tr>
           <th width="50%">Shop Plugin</th>
@@ -280,44 +274,61 @@
     The token provided below is generated using a specific encryption key. It cannot be used as an example requests in our API. Please, update it with a token, generated using your own encryption key within PayEngine.
   </p>
   <br>
-  <p><strong>PREAUTH request</strong></p>
-  <br>
   <div>
     <div class="example-box-wrapper">
-      <div class="content-box">
+      <div class="content-box" ng-init="createCustomerResponseShow9=false">
         <h3 class="content-box-header bg-default">
-          PREAUTH
+          Preauth request
+          <div class="header-buttons-separator">
+            <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow9=!createCustomerResponseShow9;">
+              <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow9"></i>
+              <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow9"></i>
+            </a>
+          </div>
         </h3>
-        <div class="content-box-wrapper">
-          <code>
-  {
-    "product" : "applepay",
-    "merchantOrderId": "1231258912561259",
-    "description": "test transaction",
-    "statementDescription": "statement description",
-    "initialAmount": 1990,
-    "currency": "EUR",
-    "channel": "ECOM",
-    "source": "ApplePay PreAuth Test",
-    "payment": {
-        "applePayToken": {
-              "paymentData":{"version":"EC_v1","data":"xPE3fXmvym6529AxxQw2PN6czhxoXj2ylfHnJdiRdZktiMdDe2MAOD5tl2FTa9kir9aeHikXxmH2Fh8rXKJKSY/vWyy7TYIilwJJQ5cuLgq2IlDp0JWLjBDLl8Ckg4sUc3tQEWm5S8C+GM0y5+7s7cRBnEUBXNSp3z9/ICg9ntnlX1bDd1YgdhmvksytepL1JA5NiTyi4Yzh2bJV5YkQ7/AfHWZILNxU/6AD0CZYhqV+YB0VjgT0FjdGsQfeqyGdN5dgStsQnZ0kCIMNGDtGyF8ZOvF5uA2EHAwEV2Vrbgs92uRcDqmmVA3rBNZjzN3ubYXlo0fckhY+TcQBkTSxkKcs9MVWHTS41SBT+6hbu/u2C4ddRWJs/j63h/ToexrXmpMyeU3TYebB597r6R7oaNc0cq4+C2eiWUbqUc3ZOwk=","signature":"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","header":{"ephemeralPublicKey":"MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEimliKD49VNnMZdCVYp5pF+bovwWjI6JU5GsAckkO0DFlLJHGHhw6/RReVlzmagREdASDwIijAeoDOxy1fLo3GA==","publicKeyHash":"qfj/gQGrF0K6y2EhKDoYUhdi84JEg1jCyGe66sgNnrA=","transactionId":"58afcabaa130747ca92eeaff36236988f92c9a07f2fd30b01e1770b2d3052a06"}},"paymentMethod":{"displayName":"Visa 0492","network":"Visa","type":"debit"},"transactionIdentifier":"58AFCABAA130747CA92EEAFF36236988F92C9A07F2FD30B01E1770B2D3052A06"}
+        <div class="content-box-wrapper" ng-if="createCustomerResponseShow9">
+  <code>
+    {
+      "product" : "applepay",
+      "merchantOrderId": "1231258912561259",
+      "description": "test transaction",
+      "statementDescription": "statement description",
+      "initialAmount": 1990,
+      "currency": "EUR",
+      "channel": "ECOM",
+      "source": "ApplePay PreAuth Test",
+      "payment": {
+          "applePayToken": {
+                "paymentData":{
+                    "version":"EC_v1","data":"xPE3fXmvym6529AxxQw2PN6czhxoXj2ylfHnJdiRdZktiMdDe2.........",
+                    "signature":"MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCAB......",
+                    "header":{
+                        "ephemeralPublicKey":"MFkwEw.......",
+                        "publicKeyHash":"qfj/gQGrF0K6y2EhKDoYUhdi84JEg.....",
+                        "transactionId":"58afcabaa130747ca92eeaff362......"
+                    }
+                },
+                "paymentMethod":{
+                    "displayName":"Visa 0492",
+                    "network":"Visa",
+                    "type":"debit"
+                },
+                "transactionIdentifier":"58AFCABAA130747CA92EEAFF36236988F92C9A07F2FD30B01E1770B2D3052A06"
+            }
+      }
     }
-  }
-             </code>
+  </code>
         </div>
       </div>
     </div>
   </div>
 </div>
-<br>
-<br>
-<p><strong>PREAUTH response</strong></p>
+
   <div>
     <div class="example-box-wrapper">
       <div class="content-box" ng-init="createCustomerResponseShow=false">
         <h3 class="content-box-header bg-default">
-            PREAUTH
+          Preauth response
           <div class="header-buttons-separator">
             <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow;">
               <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
@@ -421,22 +432,18 @@
     "lastOperation": "TRANSACTION_PREAUTH_OK",
     "locale": null,
     "risk": null
-  }
+}
           </code>
         </div>
       </div>
     </div>
   </div>
-<br>
-<br>
-<br>
-  <p><strong>Capture request</strong></p>
-  <br>
+
   <div>
     <div class="example-box-wrapper">
       <div class="content-box" ng-init="createCustomerResponseShow3=false">
         <h3 class="content-box-header bg-default">
-            CAPTURE
+          Capture request
           <div class="header-buttons-separator">
             <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow3=!createCustomerResponseShow3;">
               <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow3"></i>
@@ -456,13 +463,12 @@
       </div>
     </div>
   </div>
-<br>
-<br>
+
   <div>
     <div class="example-box-wrapper">
       <div class="content-box" ng-init="createCustomerResponseShow4=false">
         <h3 class="content-box-header bg-default">
-            CAPTURE
+          Capture response
           <div class="header-buttons-separator">
             <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow4=!createCustomerResponseShow4;">
               <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow4"></i>
@@ -686,7 +692,7 @@
     "challenge": null,
     "asyncNotificationSubscriptionId": null,
     "tracking": null
-}
+  }
           </code>
         </div>
       </div>

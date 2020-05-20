@@ -1,19 +1,37 @@
 <div  class="col-md-12">
-    <ul>
-      <li><a href="/faq_pm_apple_pay_for_the_web">Apple Pay for the web</a></li>
-      <li><a href="/faq_pm_merchant_onboarding_for_apple_pay">Merchant onboarding for Apple Pay</a>
-    </ul>
-
+<img src="/img/faq/apple_pay/apple-pay-logo.png" alt="Apple Pay logo" width="200px">
+<br>
+<br>
+<br>
+<h2>Overview</h2>
+<br>
+<p>Apple Pay is easy to set up and gives your customers a simple and secure way to pay and donate with the devices they use every day.</p>
+<br>
+<br>
+<h2>Before you begin</h2>
+<p>Merchants need a credit card setup on PayEngine in order to use Apple Pay. For credit card setup, please check the supported documentation → <a href="https://easycontract.concardis.com/p/user/register">https://easycontract.concardis.com/p/user/register</a></p>
+<br>
+<br>
+<h2>Merchant onboarding</h2>
+<br>
+<p>In order to start accepting Apple Pay payments, each merchant must go through our onboarding process. Please check the page - <a href="/faq_pm_merchant_onboarding_for_apple_pay">Merchant onboarding for Apple Pay</a> for further details</p>
+<br>
+<br>
+<h2>Apple Pay for the web</h2>
+<br>
+<p>Follow the link in order to get more details about how to setup <a href="/faq_pm_apple_pay_for_the_web">Apple Pay for the web</a>.</p>
+<br>
+<br>
 
 <div class="col-md-8">
+  
+  <div ng-show="cur=='faq_pm_merchant_onboarding_for_apple_pay'">
+    <div  ng-include="'/partials/faq_pm_merchant_onboarding_for_apple_pay.html'">
+    </div>
+  </div>
   <div ng-show="cur=='faq_pm_apple_pay_for_the_web'">
     <div  ng-include="'/partials/faq_pm_apple_pay_for_the_web.html'">
     </div>
   </div>
-  <div ng-show="cur=='faq_pm_merchant_onboarding_for_apple_pay'">
-      <div  ng-include="'/partials/faq_pm_merchant_onboarding_for_apple_pay.html'">
-      </div>
-    </div>
-</div>
 
 </div>

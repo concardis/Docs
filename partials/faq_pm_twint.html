@@ -1,0 +1,839 @@
+<img src="/img/faq/twint/twint_logo_rgd.png" alt="" width="30%">
+<br>
+<br>
+<ul>
+	<li>Overview</li>
+	<li>Preconditions</li>
+	<li>Customer Experience</li>
+	<li>Payengine Details</li>
+		<ul>
+			<li>General</li>
+			<li>Supported Features and Services</li>
+			<li>Integration Types</li>
+			<li>Technical Flow</li>
+			<li>Notifications</li>
+			<ul>
+				<li>Webhook and email notifications</li>
+			</ul>
+			<li>Specifics</li>
+				<ul>
+					<li>Prerequisites for Debit Transactions</li>
+					<li>Specific Input Parameters for Debit Transactions</li>
+					<li>Specific Response Parameters for Debit Transactions</li>
+				</ul>
+			<li>Samples</li>
+				<ul>
+					<li>Debit transaction</li>
+					<li>Refund transaction</li>
+				</ul>
+	<li>Testing</li>
+<li>Bkshsh</li>
+</ul>
+<br>
+<br>
+<h2>Overview</h2>
+<br>
+<p>
+	TWINT is the most frequently used mobile wallet in Switzerland.
+	<br>
+	TWINT can be used both in brick-and-mortar and in online stores.
+	<br>
+	A customer needs a Swiss bank account or a credit card to pay with TWINT. This innovative payment method is supported by most Swiss banks.
+	<br>
+	Customers can complete payments quickly and securely with TWINT. E-commerce payments are verified via a single-use QR Code or token.
+</p>	
+<br>
+<p><strong>Merchant Advantages:</strong></p>
+<ul>
+	<li>digitally advanced and well-to-do target groups</li>
+	<li>easy implementation via Payengine Widget and API</li>
+	<li>introduction of loyalty programs and coupons via TWINT</li>
+</ul>
+<br>
+<p><strong>Customer Advantages:</strong></p>
+<ul>
+	<li>fast, easy and secure payments via a mobile app</li>
+	<li>used both for POS and for eCommerce transactions</li>
+	<li>transfer and request money from friends and family</li>
+	<li>take advantage of coupons and promotions</li>
+	<li>store loyalty cards in a digital wallet</li>
+	<li>track and analyze payments</li>
+</ul>
+<br>
+<br>
+<h2>Preconditions</h2>
+<br>
+<p>For <strong>merchants:</strong> </p>
+<p>You need to register with TWINT. </p>
+<br>
+<p><strong>Procedure</strong></p>
+<br>
+<p>Step 1: Create a merchant account via <a href="www.twint.ch">www.twint.ch</a>.</p>
+<p>Step 2: Add one or more stores.</p>
+<p>Step 3: Choose Payengine-Concardis GmbH as PSP (payment service provider).</p>
+<br>
+<p><em>Result: You will receive a confirmation by Payengine's support team as soon as TWINT is activated for your account.</em></p>
+<br>
+<br>
+<p>For <strong>customers:</strong> </p>
+<p>You need to download and install the TWINT app.</p>
+<br>
+<p><strong>Procedure</strong></p>
+<br>
+<p>Step 1: Install the TWINT mobile app (available for iOS and Android).</p>
+<p>Step 2: Link it to a Swiss bank account or a credit card.</p>
+<br>
+<br>
+<h2>Customer Experience</h2>
+<br>
+<p>via Payengine Widget</p>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th width="10%">Step</th>
+			<th width="20%">Description</th>
+			<th width="70%">Screenshot</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td style="vertical-align: top;">1</td>
+			<td style="vertical-align: top;">Choose TWINT</td>
+			<td><img src="/img/faq/twint/twint-1.png" alt="" width="40%"></td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">2</td>
+			<td style="vertical-align: top;">A screen with the one-time
+				<br>
+				QR-code and/or token will be displayed.</td>
+				<td><img src="/img/faq/twint/twint-2.png" alt="" width="40%"></td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">3</td>
+			<td style="vertical-align: top;">Open the TWINT app.
+				<br>
+				Choose <strong>QR Code</strong>.</td>
+			<td><img src="/img/faq/twint/twint-3.png" alt="" width="40%"></td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">4.1</td>
+			<td style="vertical-align: top;">Option 1: Complete payment via QR-code: 
+				<br>
+				Choose <strong>QR Scanner</strong> and proceed with the scanning.</td>
+			<td><img src="/img/faq/twint/twint-4.png" alt="" width="40%"></td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">4.2</td>
+			<td style="vertical-align: top;">Option 2: Complete payment via token:
+				<br>
+				Choose <strong>Code</strong> and proceed with token entry.</td>
+			<td><img src="/img/faq/twint/twint-5.png" alt="" width="40%"></td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">5</td>
+			<td style="vertical-align: top;">Click <strong>OK</strong> to confirm the payment.</td>
+			<td><img src="/img/faq/twint/twint-6.png" alt="" width="40%"></td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">6</td>
+			<td style="vertical-align: top;">You will receive notification for successful payment in the app and in the widget.</td>
+			<td><img src="/img/faq/twint/twint-7.png" alt="" width="40%"></td>
+		</tr>
+		<tr>
+			<td style="vertical-align: top;">7</td>
+			<td style="vertical-align: top;"></td>
+			<td><img src="/img/faq/twint/twint-8.png" alt="" width="40%"></td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<p>Note: This customer experience represents a live environment and may look different in a test environment.</p>
+<br>
+<br>
+<h2>Payengine Details</h2>
+<br>
+<h3>General</h3>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<tbody>
+		<tr>
+			<th width="50%">Product</th>
+			<td width="50%">TWINT</td>
+		</tr>
+		<tr>
+			<th>Payment Options (for Customer)</th>
+			<th>
+				<ul>
+					<li>direct debit</li>
+					<li>credit card</li>
+				</ul>
+			</th>
+		</tr>
+		<tr>
+			<th>Channels</th>
+			<td>ECOM</td>
+		</tr>
+		<tr>
+			<th>Currencies</th>
+			<td>CHF</td>
+		</tr>
+		<tr>
+			<th>Countries</th>
+			<td>CH</td>
+		</tr>
+		<tr>
+			<th>Technical Flow</th>
+			<td>asynchronous</td>
+		</tr>
+		<tr>
+			<th>Recurring</th>
+			<td>no</td>
+		</tr>
+		<tr>
+			<th>Chargebacks</th>
+			<td>yes</td>
+		</tr>
+		<tr>
+			<th>B2B applicable</th>
+			<td>yes</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<br>
+<h3>Supported Features and Services</h3>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<tbody>
+		<tr>
+			<th width="50%">Debit</th>
+			<td width="50%">yes</td>
+		</tr>
+		<tr>
+			<th>Preauthorization</th>
+			<td>no</td>
+		</tr>
+		<tr>
+			<th>Cancelation</th>
+			<td>no</td>
+		</tr>
+		<tr>
+			<th>Capture</th>
+			<td>no</td>
+		</tr>
+		<tr>
+			<th>Refunds</th>
+			<td>yes (full and partial)</td>
+		</tr>
+		<tr>
+			<th>Notifications</th>
+			<td>yes - webhook, email</td>
+		</tr>
+		<tr>
+			<th>Settlement Reporting</th>
+			<td>yes - original settlement reporting</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<br>
+<h3>Integration Types</h3>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<tbody>
+		<tr>
+			<th width="50%">API</th>
+			<td width="50%">yes</td>
+		</tr>
+		<tr>
+			<th>Widget</th>
+			<td>yes</td>
+		</tr>
+		<tr>
+			<th>Bridge</th>
+			<td>no</td>
+		</tr>
+		<tr>
+			<th>Shop Plugin</th>
+			<td>no</td>
+		</tr>
+		<tr>
+			<th>Paylink</th>
+			<td>no</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<br>
+<h3>Technical Flow</h3>
+<br>
+<p>via direct API integration</p>
+<img src="/img/faq/twint/twint-tf.png" alt="" width="100%">
+<br>
+<br>
+<h4>Notifications</h4>
+<br>
+<p><strong>Webhook and email notifications</strong></p>
+<br>
+<p>At the time of the redirect, it is still uncertain whether a transaction will be completed successfully or not. Therefore, Payengine awaits for the final asynchronous notification before the status of a DEBIT transaction is changed from PENDING to SUCCESS or FAILURE.</p>
+<br>
+<p>A merchant should register for Payengine's notifications to receive this final status update.</p>
+<br>
+<p>Alternatively, a GET request on the order or DEBIT transaction would also work, but it is not ensured that the final status will be available immediately after the redirect and a merchant might have to query the GET multiple times.</p>
+<br>		
+<p>Therefore, it is strongly recommended that Payengine's asynchronous notifications are used instead.</p>		
+<br>
+<p>Merchants could receive notifications via URL (webhook) or email.</p>
+<br>
+<p>The TWINT notifications could be subscribed:</p>
+<ul>
+	<li>via the Payengine API (<a href="https://docs.payengine.de/notifications/introduction">link to public website Notifications docu</a>)</li>
+	<li>via the Payengine Merchant Center(<a href="https://docs.payengine.de/notifications/subscription_via_mc">link to MC Notifications docu</a> )</li>
+</ul>
+<br>
+<br>
+<h3>Specifics</h3>
+<br>
+<h4>Prerequisites for Debit Transactions</h4>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th width="180px">Prerequisite</th>
+			<th width="180px">Mandatory/Optional</th>
+			<th>Create Prerequisite</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Customer</td>
+			<td>O</td>
+			<td>POST /customers</td>
+		</tr>
+		<tr>
+			<td>Persona</td>
+			<td>O</td>
+			<td ng-non-bindable>POST /customers/{{customerId}}/personas</td>
+		</tr>
+		<tr>
+			<td>Billing Address</td>
+			<td>O</td>
+			<td ng-non-bindable>POST /customers/{{customerId}}/addresses</td>
+		</tr>
+		<tr>
+			<td>Shipping Address</td>
+			<td>O</td>
+			<td ng-non-bindable>POST /customers/{{customerId}}/addresses</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<br>
+<p><strong>Specific Input Parameters for Debit Transactions</strong></p>
+<table class="table table-bordered table-striped table-condensed">
+		<thead>
+			<tr>
+				<th width="180px">Parameter</th>
+				<th width="180px">Mandatory/Optional</th>
+				<th>Description</th>
+				<th width="60px">Type</th>
+				<th width="190px">Example</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>async.cancelUrl</td>
+				<td>M</td>
+				<td>Redirect URL when payment is canceled</td>
+				<td>string</td>
+				<td><a href="http://my.shop.com/cancel">http://my.shop.com/cancel</a></td>
+			</tr>
+			<tr>
+				<td>async.failureUrl</td>
+				<td>M</td>
+				<td>Redirect URL for unsuccessful payment</td>
+				<td>string</td>
+				<td><a href="http://my.shop.com/fail">http://my.shop.com/fail</a></td>
+			</tr>
+			<tr>
+				<td>async.successUrl</td>
+				<td>M</td>
+				<td>Redirect URL for successful payment</td>
+				<td>string</td>
+				<td><a href="http://my.shop.com/success">http://my.shop.com/success</a></td>
+			</tr>
+			<tr>
+				<td>currency</td>
+				<td>M</td>
+				<td>The currency of the transaction. The only possible value is CHF.</td>
+				<td>string</td>
+				<td>CHF</td>
+			</tr>
+			<tr>
+				<td>channel</td>
+				<td>M</td>
+				<td>The channel of the transaction. The only possible value is ECOM.</td>
+				<td>string</td>
+				<td>ECOM</td>
+			</tr>
+			<tr>
+				<td>basket</td>
+				<td>O</td>
+				<td>Basket data object with attributes</td>
+				<td>object</td>
+				<td></td>
+			</tr>
+		</tbody>
+</table>
+<br>
+<br>
+<p><strong>Specific Response Parameters for Debit Transactions</strong></p>
+<br>
+<p>Payengine sends the following specific response parameters, which are used by the merchant to display QR Code and/or Token to the customer:</p>
+<br>
+<table class="row clearfix  table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th width="180px">Parameter</th>
+			<th width="180px">Mandatory/Optional</th>
+			<th>Description</th>
+			<th width="60px">Type</th>
+			<th width="190px">Example</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>meta.qrCode</td>
+			<td>M</td>
+			<td>The base-64 encrypted image of the one-time QR Code to display to the customer.</td>
+			<td>string</td>
+			<td>See Samples</td>
+		</tr>
+		<tr>
+			<td>meta.token</td>
+			<td>M</td>
+			<td>The one-time token to display to the customer.</td>
+			<td>integer</td>
+			<td>80531</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<br>
+<h3>Samples</h3>
+<br>
+<p><strong>Debit transaction</strong></p>
+<br>
+<p ng-non-bindable>POST/{{publicApiUrl}}/v1/orders/debit</p>
+<br>
+<div>
+	<div class="example-box-wrapper">
+		<div class="content-box" ng-init="createCustomerResponseShoww=false">
+			<h3 class="content-box-header bg-default">
+				Create Debit request
+				<div class="header-buttons-separator">
+					<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShoww=!createCustomerResponseShoww;">
+						<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShoww"></i>
+						<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShoww"></i>
+					</a>
+				</div>
+			</h3>
+			<div class="content-box-wrapper" ng-if="createCustomerResponseShoww">
+				<code>
+	{
+		"product": "twint",
+		"terms": 1468590412476,
+		"privacy": 1468590412476,
+		"merchantOrderId": "merchantOrderId{{$timestamp}}",
+		"description": "test transaction",
+		"statementDescription": "statement description",
+		"initialAmount": 2000,
+		"currency": "CHF",
+		"channel": "ECOM",
+		"source": "Postman Test",
+		"async": {
+			"successUrl": "https://www.google.de/#newwindow=1&q=success",
+			"failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+			"cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
+		}
+	}
+				</code>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<div>
+	<div class="example-box-wrapper">
+		<div class="content-box" ng-init="createCustomerResponseShow=false">
+			<h3 class="content-box-header bg-default">
+				Create Debit response
+				<div class="header-buttons-separator">
+					<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow;">
+						<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow"></i>
+						<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
+					</a>
+				</div>
+			</h3>
+			<div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+				<code>
+	{
+		"createdAt": 1586780167142,
+		"modifiedAt": 1586780167142,
+		"merchantId": "merchant_at9ugmpywt",
+		"terms": 1468590412476,
+		"privacy": 1468590412476,
+		"orderId": "hcjnz1bd3n",
+		"merchantOrderId": "merchantOrderId1586780167",
+		"paymentProviderTransactionId": null,
+		"description": "test transaction",
+		"statementDescription": "statement description",
+		"initialAmount": 2000,
+		"preauthorizedAmount": 0,
+		"capturedAmount": null,
+		"refundedAmount": null,
+		"canceledAmount": null,
+		"currency": "CHF",
+		"basket": [],
+		"customer": null,
+		"persona": null,
+		"billingAddress": null,
+		"shippingAddress": null,
+		"ipAddress": null,
+		"paymentInstrument": {
+				"createdAt": 1586780167000,
+				"modifiedAt": 1586780167000,
+				"paymentInstrumentId": "paymentinstrument_zefnlpmxqk",
+				"merchantPaymentInstrumentId": null,
+				"attributes": null,
+				"encrypted": false,
+				"origin": "twint",
+				"type": "twint",
+				"recurring": false
+		},
+		"transactions": [
+				{
+						"createdAt": 1586780167143,
+						"modifiedAt": 1586780167143,
+						"type": "DEBIT",
+						"transactionId": "transaction_dpwtxisrv4",
+						"description": "test transaction",
+						"initialAmount": 2000,
+						"refundedAmount": 0,
+						"currency": "CHF",
+						"status": "CREATED",
+						"order": "hcjnz1bd3n",
+						"parentTransaction": null,
+						"transactions": null,
+						"basket": [],
+						"providerCode": null,
+						"merchantMessage": null,
+						"customerMessage": null,
+						"descriptor": null,
+						"meta": null,
+						"challenge": null,
+						"asyncNotificationSubscriptionId": null,
+						"tracking": null
+				}
+		],
+		"status": "OPEN",
+		"channel": "ECOM",
+		"source": "Postman Test",
+		"settled": false,
+		"settlementDate": null,
+		"allowedProducts": null,
+		"product": "twint",
+		"transactionType": "DEBIT",
+		"meta": {
+				"qrCode": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdAQAAAAB+6FqiAAAAb0lEQVR42mP4////DwY04oOkQwXD9wvxFQxfIgOBRBSICAcS328CxT6IAmX//6n/wfA17tsPht/Zt4HE2aIKhn+r71QwfDofDpT9thqoTqIHqOOO8g+GLwG9QANi7wBZweVAsdt3gXYIhlYwYLEcAAf4VgNFRaVkAAAAAElFTkSuQmCC",
+				"token": 80531
+		},
+		"async": {
+				"successUrl": "https://www.google.de/#newwindow=1&q=success",
+				"failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+				"cancelUrl": "https://www.google.de/#newwindow=1&q=cancel",
+				"confirmUrl": null
+		},
+		"deviceIdent": null,
+		"clientType": "BRW",
+		"asyncNotificationSubscriptionId": null,
+		"lastOperation": null,
+		"locale": null,
+		"risk": null,
+		"redirectUrl": null
+	}
+				</code>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<br>
+<p><strong>Refund transaction</strong></p>
+<br>
+<p ng-non-bindable>POST/{{publicApiUrl}}/{{apiVersion}}/orders/{{orderId}}/transactions/{{transactionId}}/refund</p>
+<br>
+<div>
+	<div class="example-box-wrapper">
+		<div class="content-box" ng-init="createCustomerResponseShow2=false">
+			<h3 class="content-box-header bg-default">
+				Create Refund request
+				<div class="header-buttons-separator">
+					<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow2=!createCustomerResponseShow2;">
+						<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow2"></i>
+						<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow2"></i>
+					</a>
+				</div>
+			</h3>
+			<div class="content-box-wrapper" ng-if="createCustomerResponseShow2">
+				<code>
+	{
+		"description": "Twint refund transaction",
+		"initialAmount": 2000,
+		"currency": "CHF"
+	}
+				</code>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<div>
+	<div class="example-box-wrapper">
+		<div class="content-box" ng-init="createCustomerResponseShow3=false">
+			<h3 class="content-box-header bg-default">
+				Create Refund response
+				<div class="header-buttons-separator">
+					<a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow3=!createCustomerResponseShow3;">
+						<i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow3"></i>
+						<i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow3"></i>
+					</a>
+				</div>
+			</h3>
+			<div class="content-box-wrapper" ng-if="createCustomerResponseShow3">
+				<code>
+	{
+		"createdAt": 1586780665258,
+		"modifiedAt": 1586780665258,
+		"type": "REFUND",
+		"transactionId": "transaction_xktvpltlqu",
+		"description": "Twint refund transaction",
+		"initialAmount": 2000,
+		"currency": "CHF",
+		"status": "SUCCESS",
+		"order": {
+				"createdAt": 1586780637000,
+				"modifiedAt": 1586780658000,
+				"merchantId": "merchant_at9ugmpywt",
+				"terms": 1468590412476,
+				"privacy": 1468590412476,
+				"orderId": "z0lhs7uxwa",
+				"merchantOrderId": "merchantOrderId1586780637",
+				"paymentProviderTransactionId": "e36d345c-f5c4-463e-81a5-9f34e71f93a9",
+				"description": "test transaction",
+				"statementDescription": "statement description",
+				"initialAmount": 2000,
+				"preauthorizedAmount": 2000,
+				"capturedAmount": 2000,
+				"refundedAmount": 2000,
+				"canceledAmount": 0,
+				"currency": "CHF",
+				"basket": [],
+				"customer": null,
+				"persona": null,
+				"billingAddress": null,
+				"shippingAddress": null,
+				"ipAddress": null,
+				"paymentInstrument": {
+						"createdAt": 1586780637000,
+						"modifiedAt": 1586780658000,
+						"paymentInstrumentId": "paymentinstrument_553vecnhjf",
+						"merchantPaymentInstrumentId": null,
+						"attributes": {
+								"customerRelationUuid": "6d79756d-90d9-4018-a006-0ce11292314c"
+						},
+						"encrypted": false,
+						"origin": "twint",
+						"type": "twint",
+						"recurring": false
+				},
+				"transactions": [
+						{
+								"createdAt": 1586780637000,
+								"modifiedAt": 1586780658000,
+								"type": "DEBIT",
+								"transactionId": "transaction_baxyfeixss",
+								"description": "test transaction",
+								"initialAmount": 2000,
+								"refundedAmount": 2000,
+								"currency": "CHF",
+								"status": "SUCCESS",
+								"order": "z0lhs7uxwa",
+								"parentTransaction": null,
+								"transactions": [
+										"transaction_xktvpltlqu"
+								],
+								"basket": [],
+								"providerCode": null,
+								"merchantMessage": null,
+								"customerMessage": null,
+								"descriptor": null,
+								"meta": null,
+								"challenge": null,
+								"asyncNotificationSubscriptionId": null,
+								"tracking": []
+						}
+				],
+				"status": "CLOSED",
+				"channel": "ECOM",
+				"source": "Postman Test",
+				"settled": false,
+				"settlementDate": null,
+				"allowedProducts": [],
+				"product": "twint",
+				"transactionType": "DEBIT",
+				"meta": {
+						"qrCode": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdAQAAAAB+6FqiAAAAcklEQVR42mP4////DwY04oP4gQqG73fvVzB8iQkEEsEXgUQokPX9ClDsg6hDBcP/D/U/GL67NFcw/FuTW8Hw587xHwy/Hk+oYPjZLg805bssSJ0VUMm9rB8MX8KOAA2IyAKZdxAodncK0A5BmQoGLJYDAH//Vpa6Wr1OAAAAAElFTkSuQmCC",
+						"token": 49713
+				},
+				"async": null,
+				"deviceIdent": null,
+				"clientType": "BRW",
+				"asyncNotificationSubscriptionId": null,
+				"lastOperation": "TRANSACTION_REFUND_SUCCESS",
+				"locale": null,
+				"risk": null
+		},
+		"parentTransaction": {
+				"createdAt": 1586780637000,
+				"modifiedAt": 1586780658000,
+				"type": "DEBIT",
+				"transactionId": "transaction_baxyfeixss",
+				"description": "test transaction",
+				"initialAmount": 2000,
+				"refundedAmount": 2000,
+				"currency": "CHF",
+				"status": "SUCCESS",
+				"order": {
+						"createdAt": 1586780637000,
+						"modifiedAt": 1586780658000,
+						"merchantId": "merchant_at9ugmpywt",
+						"terms": 1468590412476,
+						"privacy": 1468590412476,
+						"orderId": "z0lhs7uxwa",
+						"merchantOrderId": "merchantOrderId1586780637",
+						"paymentProviderTransactionId": "e36d345c-f5c4-463e-81a5-9f34e71f93a9",
+						"description": "test transaction",
+						"statementDescription": "statement description",
+						"initialAmount": 2000,
+						"preauthorizedAmount": 2000,
+						"capturedAmount": 2000,
+						"refundedAmount": 0,
+						"canceledAmount": 0,
+						"currency": "CHF",
+						"basket": [],
+						"customer": null,
+						"persona": null,
+						"billingAddress": null,
+						"shippingAddress": null,
+						"ipAddress": null,
+						"paymentInstrument": {
+								"createdAt": 1586780637000,
+								"modifiedAt": 1586780658000,
+								"paymentInstrumentId": "paymentinstrument_553vecnhjf",
+								"merchantPaymentInstrumentId": null,
+								"attributes": {
+										"customerRelationUuid": "6d79756d-90d9-4018-a006-0ce11292314c"
+								},
+								"encrypted": false,
+								"origin": "twint",
+								"type": "twint",
+								"recurring": false
+						},
+						"transactions": [
+								"transaction_baxyfeixss"
+						],
+						"status": "CLOSED",
+						"channel": "ECOM",
+						"source": "Postman Test",
+						"settled": false,
+						"settlementDate": null,
+						"allowedProducts": [],
+						"product": "twint",
+						"transactionType": "DEBIT",
+						"meta": {
+								"qrCode": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAdAQAAAAB+6FqiAAAAcklEQVR42mP4////DwY04oP4gQqG73fvVzB8iQkEEsEXgUQokPX9ClDsg6hDBcP/D/U/GL67NFcw/FuTW8Hw587xHwy/Hk+oYPjZLg805bssSJ0VUMm9rB8MX8KOAA2IyAKZdxAodncK0A5BmQoGLJYDAH//Vpa6Wr1OAAAAAElFTkSuQmCC",
+								"token": 49713
+						},
+						"async": null,
+						"deviceIdent": null,
+						"clientType": "BRW",
+						"asyncNotificationSubscriptionId": null,
+						"lastOperation": "TRANSACTION_REFUND_SUCCESS",
+						"locale": null,
+						"risk": null
+				},
+				"parentTransaction": null,
+				"transactions": [
+						"transaction_xktvpltlqu"
+				],
+				"basket": [],
+				"providerCode": null,
+				"merchantMessage": null,
+				"customerMessage": null,
+				"descriptor": null,
+				"meta": null,
+				"challenge": null,
+				"asyncNotificationSubscriptionId": null,
+				"tracking": []
+		},
+		"transactions": null,
+		"basket": [],
+		"providerCode": null,
+		"merchantMessage": null,
+		"customerMessage": null,
+		"descriptor": null,
+		"meta": null,
+		"challenge": null,
+		"asyncNotificationSubscriptionId": null,
+		"tracking": null
+	}
+				</code>
+			</div>
+		</div>
+	</div>
+</div>
+<br>
+<br>
+<h3>Testing</h3>
+<br>
+<p>TWINT can be tested via the Payengine Simulator.</p>
+<br>
+<p>The testing amounts for the success and failure scenarios are shown below:</p>
+<table class="table table-bordered table-striped table-condensed">
+	<thead>
+		<tr>
+			<th width="20%">Result</th>
+			<th width="80%">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Success</td>
+			<td>Any applicable amount (excluding failure amounts listed below). The transaction's status changes from "OK" to "SUCCESS"</td>
+		</tr>
+		<tr>
+			<td>Failure</td>
+			<td>
+					Each of the amounts listed below:
+					<ul>
+						<li>11111 (€111,11)</li>
+						<li>111 (€1,11)</li>
+					</ul>
+					The transaction's status changes from "OK" to "FAILURE"
+			</td>
+		</tr>
+	</tbody>
+</table>
+<br>
+<br>

@@ -29,8 +29,11 @@
     <br/>
     <ol>
       <li>Log in to your Apple Developer account at <a href="https://developer.apple.com.">https://developer.apple.com.</a></li>
-      <li>Follow the Apple Developer Account Help instructions to <a href="https://help.apple.com/developer-account/#/devb2e62b839?sub=dev103e030bb">create a merchant identifier</a>. The merchant identifier is used to validate the payment requests. Therefore, it is advisory to have merchant identifier, which is recognizable for PayEngine, such as 
-          "merchant.payengine.merchant_id" or "merchant.payengine.merchant_id.test" for testing purposes. </li>
+      <li>Follow the Apple Developer Account Help instructions to <a href="https://help.apple.com/developer-account/#/devb2e62b839?sub=dev103e030bb">create a merchant identifier</a>. The merchant identifier is used to validate the payment requests. Therefore, it is advisory to have merchant identifier, which is recognizable for PayEngine. Our suggestion is to combine "payengine." with your merchant_id on the platform. Example: 
+        <br>
+        "payengine.merchant_asdfQE1233Asd12" for live environment <br>
+        "payengine.merchant_asdfQE1233Asd12.test" for a test environment
+        </li>
       <li>
           Once the identifier is created with Apple, then login on PayEngine, go to Settings → Payment method. On the page, select Apple pay and click</li>
     </ol>
@@ -65,6 +68,8 @@
           <li>In the step to select the certificate signing request file, select the CSR you downloaded from PayEngine in step 1.</li>
         </ul>
       </li>
+      <li>The payment processing certificate you just created must be uploaded back to our system so the PayEngine can decrypt the submitted payment information from Apple Pay. Head back to the "Merchant Center" and upload it.</li>
+      <img src="img/faq/apple_pay/apple-5.png" alt="apple" width="60%">
     </ol>
   <br>
   <br>

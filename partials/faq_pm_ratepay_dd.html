@@ -530,8 +530,20 @@
 <p>A POST request <strong>with empty body</strong> has to be directed to the following endpoints:</p>
 <br>
 <ul>
-	<li>for TM environment - <a href="https://pptest.payengine.de/widget/ratepay/device-ident/create">https://pptest.payengine.de/widget/ratepay/device-ident/create</a></li>
-	<li>for Production environment - <a href="https://pp.payengine.de/widget/ratepay/device-ident/create">https://pp.payengine.de/widget/ratepay/device-ident/create</a></li>
+	<li>for TM environment - <br/>
+		<ul>
+			<li><a href="https://pptest.payengine.de/widget/ratepay/device-ident/create/ratepay-invoice">https://pptest.payengine.de/widget/ratepay/device-ident/create/ratepay-invoice</a></li>
+			<li><a href="https://pptest.payengine.de/widget/ratepay/device-ident/create/ratepay-directdebit">https://pptest.payengine.de/widget/ratepay/device-ident/create/ratepay-directdebit</a></li>
+			<li><a href="https://pptest.payengine.de/widget/ratepay/device-ident/create/ratepay-installment">https://pptest.payengine.de/widget/ratepay/device-ident/create/ratepay-installment</a></li>
+		</ul>
+		</li>
+	<li>for Production environment - <br>
+		<ul>
+			<li><a href="https://pp.payengine.de/widget/ratepay/device-ident/create/ratepay-invoice">https://pp.payengine.de/widget/ratepay/device-ident/create/ratepay-invoice</a></li>
+			<li><a href="https://pp.payengine.de/widget/ratepay/device-ident/create/ratepay-directdebit">https://pp.payengine.de/widget/ratepay/device-ident/create/ratepay-directdebit</a></li>
+			<li><a href="https://pp.payengine.de/widget/ratepay/device-ident/create/ratepay-installment">https://pp.payengine.de/widget/ratepay/device-ident/create/ratepay-installment</a></li>
+		</ul>
+	</li>
 </ul>
 <br>
 <p>Response of the request will contain the following properties:</p>

@@ -72,6 +72,7 @@ tags:
   - name: Manage reports
   - name: Manage batches
   - name: Health check
+  - name: Notifications
 paths:
   /payment-instruments:
     post:
@@ -420,7 +421,7 @@ paths:
         - settlementDate
         - createdAt
         - modifiedAt
-        - lastOpereation
+        - lastOperation
         - email
 
 
@@ -1671,7 +1672,313 @@ paths:
             $ref: '#/definitions/HealthResponse'
         '403':
           description: The health endpoint is disabled via configuration.
+  '/merchant/{merchantId}/notifications':
+    get:
+      tags:
+        - Notifications
+      summary: Get list of Notifications
+      description: |
+        Endpoint to receive a list of available Notifications.
+      operationId: indexUsingGET_1
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: merchantId
+          in: path
+          description: merchantId
+          required: true
+          type: string
+        - name: allRequestParams
+          in: query
+          description: allRequestParams
+          required: true
+          type: string
+          items:
+            type: array
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            $ref: '#/definitions/NotificationPageIndexResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    post:
+      tags:
+        - Notifications
+      summary: Create Notification
+      description: |
+        Endpoint to create a new Notification
+      operationId: createUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: merchantId
+          in: path
+          description: merchantId
+          required: true
+          type: string
+        - in: body
+          name: request
+          description: request
+          required: true
+          schema:
+            $ref: '#/definitions/NotificationRequest'
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            $ref: '#/definitions/NotificationResponse'
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found 
+  '/merchant/{merchantId}/notifications/{notificationId}':
+    get:
+      tags:
+        - Notifications
+      summary: Get Notification
+      description: |
+        Endpoint to receive a specific Notification referencing the notificationId.
+      operationId: showUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: merchantId
+          in: path
+          description: merchantId
+          required: true
+          type: string
+        - name: notificationId
+          in: path
+          description: notificationId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            $ref: '#/definitions/NotificationResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+    patch:
+      tags:
+        - Notifications
+      summary: Update Notification
+      description: |
+        Endpoint to update a Notification referencing the notificationId.
+      operationId: updateUsingPATCH
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: merchantId
+          in: path
+          description: merchantId
+          required: true
+          type: string
+        - name: notificationId
+          in: path
+          description: notificationId
+          required: true
+          type: string
+        - in: body
+          name: request
+          description: request
+          required: true
+          schema:
+            $ref: '#/definitions/NotificationRequest'
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            $ref: '#/definitions/NotificationResponse'
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    delete:
+      tags:
+        - Notifications
+      summary: Delete Notification
+      description: |
+        Endpoint to delete an existing Notification referencing the notificationId.
+      operationId: deleteUsingDELETE
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: merchantId
+          in: path
+          description: merchantId
+          required: true
+          type: string
+        - name: notificationId
+          in: path
+          description: notificationId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Successful response.
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /event-types:
+    get:
+      tags:
+        - Notifications
+      summary: Get list of Event Types
+      description: |
+        Endpoint to receive a list of available Event Types.
+      operationId: indexUsingGET
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: version
+          in: query
+          description: version
+          required: false
+          type: string
+        - name: notification_type
+          in: query
+          description: notification_type
+          required: false
+          type: string
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            type: array
+            items:
+              type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /notifications/validate:
+    post:
+      tags:
+        - Notifications
+      summary: Validate Notification
+      description: |
+        Endpoint to validate the notification
+      operationId: validateUsingPOST
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: address
+          in: query
+          description: address
+          required: true
+          type: string
+        - in: body
+          name: contentAsReceivedByMerchant
+          description: contentAsReceivedByMerchant
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response.
+          schema:
+            type: string
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
 definitions:
+
+  NotificationPageIndexResponse:
+    type: object
+    properties:
+      elements:
+        type: array
+        items:
+          $ref: '#/definitions/NotificationResponse'
+      totalPages:
+        type: integer
+        format: int32
+  NotificationRequest:
+    type: object
+    properties:
+      active:
+        type: boolean
+      description:
+        type: string
+      event_types:
+        type: array
+        items:
+          type: string
+      name:
+        type: string
+      notification_type:
+        type: string
+      notification_value:
+        type: string
+      version:
+        type: string
+  NotificationResponse:
+    type: object
+    properties:
+      active:
+        type: boolean
+      created_at:
+        type: string
+        format: date-time
+      description:
+        type: string
+      event_types:
+        type: array
+        items:
+          type: string
+      name:
+        type: string
+      notification_id:
+        type: string
+      notification_type:
+        type: string
+      notification_value:
+        type: string
+      updated_at:
+        type: string
+        format: date-time
+      version:
+        type: string      
   HealthResponse:
     title: HealthResponse
     type: object
@@ -2828,7 +3135,7 @@ definitions:
         $ref: '#/definitions/DeviceIdentResponse'
       meta:
         $ref: '#/definitions/OrderMetaInfResponse'
-      lastOpereation:
+      lastOperation:
         description: >-
           A combined field of the last executed transaction and the status of the transaction.
           "TRANSACTION_<TRANSACTION_TYPE>_<TRANSACTION_STATUS>"

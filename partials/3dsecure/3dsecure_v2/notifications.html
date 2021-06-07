@@ -101,15 +101,15 @@
           <td>Merchant order reference</td>
         </tr>
         <tr>
-          <td>authenticationResult</td>
+          <td>authenticationResultDto</td>
           <td>Object containing the result of the 3DS authentication transaction (final results will be available only in case of frictionless flow)</td>
         </tr>
         <tr>
-          <td>authenticationResult.version</td>
+          <td>authenticationResultDto.version</td>
           <td>Parameter indicating the version of the 3DS<br/>1.0 or 2.0</td>
         </tr>
         <tr>
-          <td>authenticationResult.status</td>
+          <td>authenticationResultDto.status</td>
           <td>
             Enum:"Y" "N" "A" "U" "R"<br/><br/>
             Indicates whether a transaction qualifies as an authenticated transaction or account verification.<br/><br/>
@@ -121,15 +121,15 @@
           </td>
         </tr>
         <tr>
-          <td>authenticationResult.transactionId</td>
+          <td>authenticationResultDto.transactionId</td>
           <td>The transaction identifier from the 3DS authentication 3DS 1.0: This will be the XID 3DS 2.0: This will be the dsTransID</td>
         </tr>
         <tr>
-          <td>authenticationResult.authenticationValue</td>
+          <td>authenticationResultDto.authenticationValue</td>
           <td>The authenticationValue returned in the 3DS authentication CAVV: Visa, AMEX, JCB, Diners/Discover UCAF: Mastercard</td>
         </tr>
         <tr>
-          <td>authenticationResult.eci</td>
+          <td>authenticationResultDto.eci</td>
           <td>
             The Electronic Commerce Indicator (ECI) provided by the ACS or DS to indicate the results of the attempt to authenticate the cardholder. The ECI values might differ depending on the card scheme.<br/>
             For all fully authenticated or authentication attempted transactions the liability will be shifted to the card issuer.<br/><br/>
@@ -146,15 +146,15 @@
           </td>
         </tr>
         <tr>
-          <td>authenticationResult.errorDetails</td>
+          <td>authenticationResultDto.errorDetails</td>
           <td>Object containing error information in case of error</td>
         </tr>
         <tr>
-          <td>authenticationResult.errorDetails.providerCode</td>
+          <td>authenticationResultDto.errorDetails.providerCode</td>
           <td>Original error code from the 3ds server or mpi</td>
         </tr>
         <tr>
-          <td>authenticationResult.errorDetails.providerMessage</td>
+          <td>authenticationResultDto.errorDetails.providerMessage</td>
           <td>Original error message from the 3ds server or mpi</td>
         </tr>
         <tr>
@@ -201,7 +201,7 @@
                       "orderId": "jow94tbrwj",
                       "merchantOrderId": "merchantOrderId_49489392"
                     },
-                    "authenticationResult": {
+                    "authenticationResultDto": {
                       "version": "2.0",
                       "status": "Y",
                       "transactionId": "60e15ea6-98df-11e9-a2a3-2a2ae2dbcce4",

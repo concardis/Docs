@@ -72,7 +72,6 @@ tags:
   - name: Manage reports
   - name: Manage batches
   - name: Health check
-  - name: Notifications
 paths:
   /payment-instruments:
     post:
@@ -1672,313 +1671,8 @@ paths:
             $ref: '#/definitions/HealthResponse'
         '403':
           description: The health endpoint is disabled via configuration.
-  '/merchant/{merchantId}/notifications':
-    get:
-      tags:
-        - Notifications
-      summary: Get list of Notifications
-      description: |
-        Endpoint to receive a list of available Notifications.
-      operationId: indexUsingGET_1
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: merchantId
-          in: path
-          description: merchantId
-          required: true
-          type: string
-        - name: allRequestParams
-          in: query
-          description: allRequestParams
-          required: true
-          type: string
-          items:
-            type: array
-      responses:
-        '200':
-          description: Successful response.
-          schema:
-            $ref: '#/definitions/NotificationPageIndexResponse'
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
-        '404':
-          description: Not Found
-    post:
-      tags:
-        - Notifications
-      summary: Create Notification
-      description: |
-        Endpoint to create a new Notification
-      operationId: createUsingPOST
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: merchantId
-          in: path
-          description: merchantId
-          required: true
-          type: string
-        - in: body
-          name: request
-          description: request
-          required: true
-          schema:
-            $ref: '#/definitions/NotificationRequest'
-      responses:
-        '200':
-          description: Successful response.
-          schema:
-            $ref: '#/definitions/NotificationResponse'
-        '201':
-          description: Created
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
-        '404':
-          description: Not Found 
-  '/merchant/{merchantId}/notifications/{notificationId}':
-    get:
-      tags:
-        - Notifications
-      summary: Get Notification
-      description: |
-        Endpoint to receive a specific Notification referencing the notificationId.
-      operationId: showUsingGET
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: merchantId
-          in: path
-          description: merchantId
-          required: true
-          type: string
-        - name: notificationId
-          in: path
-          description: notificationId
-          required: true
-          type: string
-      responses:
-        '200':
-          description: Successful response.
-          schema:
-            $ref: '#/definitions/NotificationResponse'
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
-        '404':
-          description: Not Found
-    patch:
-      tags:
-        - Notifications
-      summary: Update Notification
-      description: |
-        Endpoint to update a Notification referencing the notificationId.
-      operationId: updateUsingPATCH
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: merchantId
-          in: path
-          description: merchantId
-          required: true
-          type: string
-        - name: notificationId
-          in: path
-          description: notificationId
-          required: true
-          type: string
-        - in: body
-          name: request
-          description: request
-          required: true
-          schema:
-            $ref: '#/definitions/NotificationRequest'
-      responses:
-        '200':
-          description: Successful response.
-          schema:
-            $ref: '#/definitions/NotificationResponse'
-        '204':
-          description: No Content
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
-    delete:
-      tags:
-        - Notifications
-      summary: Delete Notification
-      description: |
-        Endpoint to delete an existing Notification referencing the notificationId.
-      operationId: deleteUsingDELETE
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: merchantId
-          in: path
-          description: merchantId
-          required: true
-          type: string
-        - name: notificationId
-          in: path
-          description: notificationId
-          required: true
-          type: string
-      responses:
-        '200':
-          description: Successful response.
-        '204':
-          description: No Content
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
-  /event-types:
-    get:
-      tags:
-        - Notifications
-      summary: Get list of Event Types
-      description: |
-        Endpoint to receive a list of available Event Types.
-      operationId: indexUsingGET
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: version
-          in: query
-          description: version
-          required: false
-          type: string
-        - name: notification_type
-          in: query
-          description: notification_type
-          required: false
-          type: string
-      responses:
-        '200':
-          description: Successful response.
-          schema:
-            type: array
-            items:
-              type: string
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
-        '404':
-          description: Not Found
-  /notifications/validate:
-    post:
-      tags:
-        - Notifications
-      summary: Validate Notification
-      description: |
-        Endpoint to validate the notification
-      operationId: validateUsingPOST
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - name: address
-          in: query
-          description: address
-          required: true
-          type: string
-        - in: body
-          name: contentAsReceivedByMerchant
-          description: contentAsReceivedByMerchant
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful response.
-          schema:
-            type: string
-        '201':
-          description: Created
-        '401':
-          description: Unauthorized
-        '403':
-          description: Forbidden
-        '404':
-          description: Not Found
 definitions:
 
-  NotificationPageIndexResponse:
-    type: object
-    properties:
-      elements:
-        type: array
-        items:
-          $ref: '#/definitions/NotificationResponse'
-      totalPages:
-        type: integer
-        format: int32
-  NotificationRequest:
-    type: object
-    properties:
-      active:
-        type: boolean
-      description:
-        type: string
-      event_types:
-        type: array
-        items:
-          type: string
-      name:
-        type: string
-      notification_type:
-        type: string
-      notification_value:
-        type: string
-      version:
-        type: string
-  NotificationResponse:
-    type: object
-    properties:
-      active:
-        type: boolean
-      created_at:
-        type: string
-        format: date-time
-      description:
-        type: string
-      event_types:
-        type: array
-        items:
-          type: string
-      name:
-        type: string
-      notification_id:
-        type: string
-      notification_type:
-        type: string
-      notification_value:
-        type: string
-      updated_at:
-        type: string
-        format: date-time
-      version:
-        type: string      
   HealthResponse:
     title: HealthResponse
     type: object
@@ -2215,7 +1909,13 @@ definitions:
           Callback URN which will receive the contents of the notification.
           For http listeners, use an URN like https://your-domain-listener/specific-handler.
           For email listeners, use an URN like mailto:specific-handler@your-domain-listener.
-          See the content to expect in the listener: NotificationContent.
+          For notificationVersion "1.0" See the content to expect in the listener: NotificationContent.
+
+
+          For notificationVersion "2.0" See the content to expect in the listener: TransactionContent.
+
+
+          For notificationVersion "2.0" 3ds.success see the content to expect in the listener: ThreeDsContent.
         type: string
         format: url
         minLength: 6
@@ -2225,12 +1925,21 @@ definitions:
           A choice of what kind of updates to receive by this handler as specified in this object's notificationUrn.
           Add "CREATED" to the array to receive notification on object creation.
           Add "UPDATED" to the array to receive notification on object property changes.
+          To use V2 notifications, use notificationVersion with string value 2.0
         type: array
         items:
           $ref: '#/definitions/NotificationStateEnum'
-    required:
-      - notificationUrn
-      - notificationState
+      notificationEvent:
+        description: >-
+          The list of Version Two event types to which this notification is subscribing.
+        type: array
+        items:
+          $ref: '#/definitions/NotificationEventEnum'
+      notificationVersion:
+        description: >-
+          If not provided, defaults to "1.0" if not provided. For 1.0, see notificationState.
+          If 2.0, see notificationEvent.
+        type: string
   Async:
     title: Async
     type: object
@@ -2384,6 +2093,51 @@ definitions:
     enum:
       - CREATED
       - UPDATED
+  NotificationEventEnum:
+    title: NotificationEventEnum
+    type: string
+    description: >-
+      A choice of what kind of updates to receive by this handler as specified in this object's notificationUrn.
+      <br>
+      "trx.preauth.pending" to receive notification for PREAUTH transaction reaching PENDING status. Email is not supported for this notification.
+      <br>
+      "trx.preauth.success" to receive notification for PREAUTH transaction reaching OK status.
+      <br>
+      "trx.preauth.failure" to receive notification for PREAUTH transaction reaching FAILURE or ABORTED or DECLINED or EXPIRED status.
+      <br>
+      "trx.cancel.initiated" to receive notification for CANCEL transaction reaching OK status.
+      <br>
+      "trx.cancel.success" to receive notification for CANCEL transaction reaching SUCCESS status.
+      <br>
+      "trx.cancel.failure" to receive notification for CANCEL transaction reaching FAILURE or DECLINED status.
+      <br>
+      "trx.debit.pending" to receive notification for DEBIT transaction reaching PENDING status. Email is not supported for this notification.
+      <br>
+      "trx.debit.initiated" to receive notification for DEBIT transaction reaching OK status.
+      <br>
+      "trx.debit.success" to receive notification for DEBIT transaction reaching SUCCESS status.
+      <br>
+      "trx.debit.failure" to receive notification for DEBIT transaction reaching FAILURE or ABORTED or DECLINED or EXPIRED status.
+      <br>
+      "trx.capture.initiated" to receive notification for CAPTURE transaction reaching OK status.
+      <br>
+      "trx.capture.success" to receive notification for CAPTURE transaction reaching SUCCESS status.
+      <br>
+      "trx.capture.failure" to receive notification for CAPTURE transaction reaching FAILURE or DECLINED or EXPIRED status.
+      <br>
+      "trx.refund.initiated" to receive notification for REFUND transaction reaching OK status.
+      <br>
+      "trx.refund.success" to receive notification for REFUND transaction reaching SUCCESS status.
+      <br>
+      "trx.refund.failure" to receive notification for REFUND transaction reaching FAILURE, DECLINED status.
+      <br>
+      "trx.credit.initiated" to receive notification for CREDIT transaction reaching OK status.
+      <br>
+      "trx.credit.success" to receive notification for CREDIT transaction reaching SUCCESS status.
+      <br>
+      "trx.credit.failure" to receive notification for CREDIT transaction reaching FAILURE or ABORTED or DECLINED status.
+      <br>
+      "3ds.result" to receive notification for completed 3ds authorization.
   InitialTransactionTypeBaseTypeEnum:
     title: InitialTransactionTypeBaseTypeEnum
     type: string

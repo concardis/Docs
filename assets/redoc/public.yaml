@@ -1909,26 +1909,17 @@ definitions:
           Callback URN which will receive the contents of the notification.
           For http listeners, use an URN like https://your-domain-listener/specific-handler.
           For email listeners, use an URN like mailto:specific-handler@your-domain-listener.
-          For notificationVersion "1.0" See the content to expect in the listener: NotificationContent.
-
-
+          
           For notificationVersion "2.0" See the content to expect in the listener: TransactionContent.
 
-
           For notificationVersion "2.0" 3ds.success see the content to expect in the listener: ThreeDsContent.
+
+          Notification Service 2.0 is described here: https://docs.payengine.de/notifications/introduction
         type: string
         format: url
         minLength: 6
         maxLength: 2048
-      notificationState:
-        description: >-
-          A choice of what kind of updates to receive by this handler as specified in this object's notificationUrn.
-          Add "CREATED" to the array to receive notification on object creation.
-          Add "UPDATED" to the array to receive notification on object property changes.
-          To use V2 notifications, use notificationVersion with string value 2.0
-        type: array
-        items:
-          $ref: '#/definitions/NotificationStateEnum'
+
       notificationEvent:
         description: >-
           The list of Version Two event types to which this notification is subscribing.
@@ -1937,8 +1928,7 @@ definitions:
           $ref: '#/definitions/NotificationEventEnum'
       notificationVersion:
         description: >-
-          If not provided, defaults to "1.0" if not provided. For 1.0, see notificationState.
-          If 2.0, see notificationEvent.
+          2.0: has to be submitted
         type: string
   Async:
     title: Async
@@ -2083,16 +2073,7 @@ definitions:
       - currency
       - async
       - transactionType
-  NotificationStateEnum:
-    title: NotificationStateEnum
-    type: string
-    description: >-
-      A choice of what kind of updates to receive by this handler as specified in this object's notificationUrn.
-      "CREATED" to receive notification on object creation.
-      "UPDATED" to receive notification on object property changes.
-    enum:
-      - CREATED
-      - UPDATED
+
   NotificationEventEnum:
     title: NotificationEventEnum
     type: string

@@ -1,40 +1,40 @@
  <p>A notifications tool allows to merchant to receive notifications about multiple events in the system. Notifications can be sent to e-mail or specific url.</p>
 
  <ul>
-   <li><a href="/notifications/notifications_api#introduction" name="">Introduction</a></li>
-   <li><a href="/notifications/notifications_api#types" name="">Notification Types</a></li>
+   <li><a href="/notifications/introduction#introduction" name="">Introduction</a></li>
+   <li><a href="/notifications/introduction#types" name="">Notification Types</a></li>
    <ul>
-     <li><a href="/notifications/notifications_api#webhook" name="">Webhook (URL) Notifications</a></li>
+     <li><a href="/notifications/introduction#webhook" name="">Webhook (URL) Notifications</a></li>
      <ul>
-       <li><a href="/notifications/notifications_api#validationOfNotifications" name="">Validation of Notifications</a></li>
+       <li><a href="/notifications/introduction#validationOfNotifications" name="">Validation of Notifications</a></li>
      </ul>
-     <li><a href="/notifications/notifications_api#email" name="">Email Notifications</a></li>
+     <li><a href="/notifications/introduction#email" name="">Email Notifications</a></li>
    </ul>
-   <li><a href="/notifications/notifications_api#subscription" name="">Subscription</a></li>
+   <li><a href="/notifications/introduction#subscription" name="">Subscription</a></li>
    <ul>
-     <li><a href="/notifications/notifications_api#subscriptionViaMerchantCenter" name="">Subscription via Merchant Center</a></li>
-     <li><a href="/notifications/notifications_api#subscriptionViaAPI" name="">Subscription via API</a></li>
+     <li><a href="/notifications/introduction#subscriptionViaMerchantCenter" name="">Subscription via Merchant Center</a></li>
+     <li><a href="/notifications/introduction#subscriptionViaAPI" name="">Subscription via API</a></li>
    </ul>
-   <li><a href="/notifications/notifications_api#retryMechanism" name="">Retry Mechanism</a></li>
-   <li><a href="/notifications/notifications_api#notificationVersion1" name="">Notification Version 1.0</a></li>
+   <li><a href="/notifications/introduction#retryMechanism" name="">Retry Mechanism</a></li>
+   <li><a href="/notifications/introduction#notificationVersion1" name="">Notification Version 1.0</a></li>
    <ul>
-     <li><a href="/notifications/notifications_api#events" name="">Events</a></li>
-     <li><a href="/notifications/notifications_api#format" name="">Format</a></li>
-     <li><a href="/notifications/notifications_api#subscriptionViaAPI2" name="">Subscription via API</a></li>
+     <li><a href="/notifications/introduction#events" name="">Events</a></li>
+     <li><a href="/notifications/introduction#format" name="">Format</a></li>
+     <li><a href="/notifications/introduction#subscriptionViaAPI2" name="">Subscription via API</a></li>
    </ul>
-   <li><a href="/notifications/notifications_api#notificationVersion2" name="">Notification Version 2.0</a></li>
+   <li><a href="/notifications/introduction#notificationVersion2" name="">Notification Version 2.0</a></li>
    <ul>
-      <li><a href="/notifications/notifications_api#events2" name="">Events</a></li>
-      <li><a href="/notifications/notifications_api#format2" name="">Format</a></li>
+      <li><a href="/notifications/introduction#events2" name="">Events</a></li>
+      <li><a href="/notifications/introduction#format2" name="">Format</a></li>
       <ul>
-        <li><a href="/notifications/notifications_api#webhook2" name="">Webhook</a></li>
+        <li><a href="/notifications/introduction#webhook2" name="">Webhook</a></li>
         <ul>
-          <li><a href="/notifications/notifications_api#transactionParameter2" name="">Transaction Parameter</a></li>
-          <li><a href="/notifications/notifications_api#3DSParameter2" name="">3DS Parameter</a></li>
+          <li><a href="/notifications/introduction#transactionParameter2" name="">Transaction Parameter</a></li>
+          <li><a href="/notifications/introduction#3DSParameter2" name="">3DS Parameter</a></li>
         </ul>
-        <li><a href="/notifications/notifications_api#email2" name="">Email</a></li>
+        <li><a href="/notifications/introduction#email2" name="">Email</a></li>
       </ul>
-      <li><a href="/notifications/notifications_api#subscriptionViaAPI3" name="">Subscription via API</a></li>
+      <li><a href="/notifications/introduction#subscriptionViaAPI3" name="">Subscription via API</a></li>
     </ul>
  </ul>
 
@@ -136,7 +136,7 @@
   <p>Email notifications are sent from <a href="mailto:no-reply@payengine.de">no-reply@payengine.de</a> and the content depends on the version that will be used.</p>
   <p>For more details, see the <a hreh="">Notification Version</a> section below.</p>
   <br/>
-  </div>
+</div>
 <br/>
 <div id="subscription">
   <br/>
@@ -148,7 +148,7 @@
   <br/>
   <h3 id="subscriptionViaMerchantCenter">Subscription via Merchant Center</h3>
   <br/>
-  <p>For more specific instructions on how to subscribe for notifications via Merchant Center, see <a href="/notifications/notifications_mc">Merchant Center Notifications</a>.</p>
+  <p>For more specific instructions on how to subscribe for notifications via Merchant Center, see <a href="/merchantcenter/notifications_mc">Merchant Center Notifications</a>.</p>
   <br/>
   <br/>
   <h3 id="subscriptionViaAPI">Subscription via API</h3>
@@ -241,7 +241,6 @@
         <td>transaction update failure</td>
         <td>Updating a transaction has failed</td>
       </tr>
-
       <tr>
         <td rowspan="14">Customer Events</td>
         <td>customer update success</td>
@@ -341,8 +340,8 @@
   <br/>
   <div>
     <div class="example-box-wrapper">
-        <div class="content-box" ng-init="createCustomerResponseShow=false">
-          <h3 class="content-box-header bg-default">
+      <div class="content-box" ng-init="createCustomerResponseShow=false">
+        <h3 class="content-box-header bg-default">
             Sample webhook notification
             <div class="header-buttons-separator">
               <a href class="icon-separator toggle-button" ng-click="createCustomerResponseShow=!createCustomerResponseShow; console.log(createCustomerResponseShow)">
@@ -351,10 +350,10 @@
                 <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow"></i>
               </a>
             </div>
-          </h3>
-          <div class="content-box-wrapper" ng-if="createCustomerResponseShow">
-          <!-- <div class="content-box-wrapper"> -->
-            <code>
+        </h3>
+        <div class="content-box-wrapper" ng-if="createCustomerResponseShow">
+            <!-- <div class="content-box-wrapper"> -->
+          <code>
       {
       "notificationApiVersion": "1.0",
       "createdAt": 1534959158570,

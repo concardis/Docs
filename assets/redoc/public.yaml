@@ -4238,6 +4238,10 @@ definitions:
             07 - no authentication available<br/><br/>
           &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 02).<br/><br/>
           Use case: Order based on delegated 3DS authentication
+      forceChallenge:
+        type: boolean
+        example: true
+        description: Flag to force challenge for 3ds v2
   Invoicing:
     title: Invoicing
     type: object
@@ -5660,6 +5664,10 @@ definitions:
         example: browserinfo_123abc456d
       async:
         $ref: '#/definitions/AuthenticationRequestAsync'
+      forceChallenge:
+        description: Flag to force challenge for 3ds v2
+        type: boolean
+        example: true
   AuthenticationResponse:
     type: object
     properties:
@@ -5718,6 +5726,10 @@ definitions:
         example: browserinfo_123abc456d
       async:
         $ref: '#/definitions/AuthenticationRequestAsync'
+      forceChallenge:
+        description: Flag to force challenge for 3ds v2
+        type: boolean
+        example: true
   AuthenticationResult:
     type: object
     description: Object containing the result of the 3DS authentication transaction (final results will be available only in case of frictionless flow)
@@ -5779,6 +5791,10 @@ definitions:
             07 - no authentication available<br/><br/>
           &#42;<sup>1</sup> - Mastercard distinguishes between fully authenticated recurring payments (flagged with ECI 07) and all other fully authenticated transactions (flagged with ECI 02).
         example: '05'
+      forceChallenge:
+        type: boolean
+        example: true
+        description: Flag to force challenge for 3ds v2
       errorDetails:
         $ref: '#/definitions/AuthenticationResultErrorData'
   AuthenticationResultErrorData:

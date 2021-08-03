@@ -1,0 +1,1154 @@
+<ul>
+    <li>Overview</li>
+    <li>Customer Experience</li>
+    <li>Payengine Details
+        <ul>
+            <li>General Details</li>
+            <li>Supported Features and Services</li>
+            <li>Integration Types</li>
+            <li>Technical Flow</li>
+            <li>Notifications</li>
+            <li>Specifics
+                <ul>
+                    <li>Input parameters for Authorizing Transactions</li>
+                </ul>
+            </li>
+            <li>Samples
+                <ul>
+                    <li>Debit transaction</li>
+                    <li>RefundTransaction</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>Testing</li>
+</ul>
+<div>
+    <div id="overview">
+        <h2>Overview</h2>
+        <br />
+        <p>
+            With more than 7.5 billion cards issued globally, UnionPay (also known as China UnionPay and its subsidiary,
+            UnionPay International), is the largest card network in the world and the most commonly accepted payment method in mainland China. This card
+            base opens up a huge opportunity for merchants to sell to consumers across more than 50 UnionPay card-issuing countries. The UnionPay mobile app supports QR code
+            payments and is available to residents of China, Hong Kong and Macau. The app has over 240 million
+            registered users and 50 million monthly active users. UnionPay QR code payments are also supported by 28 additional banking/mobile apps within and
+            outside of China, Hong Kong and Macau. With 42% of mainland Chinese consumers shopping cross-border, merchants accepting UnionPay QR code payments
+            can open up business growth opportunities in the second-largest economy in the world.
+        </p>
+    </div>
+    <br />
+    <div id="customerExperience">
+        <h2>Customer Experience</h2>
+        <br />
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th width="5%">Step</th>
+                    <th width="25%">Description</th>
+                    <th width="70%">Screenshot</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Choose <strong>UnionPay</strong>.</td>
+                    <td><img src="/img/faq/unionpay/unionpay-1.png" alt="" width="60%"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Click <strong>Pay</strong></td>
+                    <td><img src="/img/faq/unionpay/unionpay-2.png" alt="" width="60%"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Redirect to Union Pay</td>
+                    <td><img src="/img/faq/unionpay/unionpay-3.png" alt="" width="60%"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Proceed on the Union Pay page, enter card details and confirm payment</td>
+                    <td><img src="/img/faq/unionpay/unionpay-4.png" alt="" width="80%">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <p>Note: This customer experience is valid for a live environment. In a test environment, the customer experience may look different.</p>
+    </div>
+    <br />
+    <div id="payengineDetails">
+        <h2>Payengine Details</h2>
+        <h3 id="general">General Details</h3>
+        <table class="table table-bordered table-striped table-condensed">
+            <tbody>
+                <tr>
+                    <th width="50%">Product</th>
+                    <td width="50%">Union Pay</td>
+                </tr>
+                <tr>
+                    <th width="50%">Channels</th>
+                    <td width="50%">ECOM</td>
+                </tr>
+                <tr>
+                    <th width="50%">Currencies</th>
+                    <td width="50%">AUD, CAD, CHF, CNY, EUR, GBP, HKD,
+                        JPY, NZD, SGD, USD</td>
+                </tr>
+                <tr>
+                    <th width="50%">Countries</th>
+                    <td width="50%">AE, AG, AT, AU, AZ, BD, BE, BN, BY,
+                        CA, CN, DE, ES, FI, FR, GB, GE, HK, HU, ID, IE, IT, JP, KE, KG, KH, KR, KZ, LB,
+                        LI, LK, LT, LU, MG, MN, MO, MT, MU, MX, MY, NL, NP, NZ, PA, PF, PH, PT, RU, SC,
+                        SG, SI, SK, SR, TH, TJ, TZ, US, VN</td>
+                </tr>
+                <tr>
+                    <th width="50%">Technical Flow</th>
+                    <td width="50%">asynchronous</td>
+                </tr>
+                <tr>
+                    <th width="50%">Recurring</th>
+                    <td width="50%">no</td>
+                </tr>
+                <tr>
+                    <th width="50%">Chargebacks</th>
+                    <td width="50%">no</td>
+                </tr>
+                <tr>
+                    <th width="50%">B2B applicable</th>
+                    <td width="50%">no</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <h3 id="supportedFeaturesAndServices">Supported Features & Services</h3>
+        <table class="table table-bordered table-striped table-condensed">
+            <tbody>
+                <tr>
+                    <th width="50%">Debit</th>
+                    <td width="50%">yes</td>
+                </tr>
+                <tr>
+                    <th width="50%">Preauthorization</th>
+                    <td width="50%">no</td>
+                </tr>
+                <tr>
+                    <th width="50%">Capture</th>
+                    <td width="50%">no</td>
+                </tr>
+                <tr>
+                    <th width="50%">Cancellation</th>
+                    <td width="50%">no</td>
+                </tr>
+                <tr>
+                    <th width="50%">Refunds</th>
+                    <td width="50%">yes</td>
+                </tr>
+                <tr>
+                    <th width="50%">Notifications</th>
+                    <td width="50%">yes - webhook, email</td>
+                </tr>
+                <tr>
+                    <th width="50%">Settlement Reporting</th>
+                    <td width="50%">yes - Unified Settlement Reporting</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <h3 id="integrationTypes">Integration Types</h3>
+        <table class="table table-bordered table-striped table-condensed">
+            <tbody>
+                <tr>
+                    <th width="50%">API</th>
+                    <td width="50%">yes</td>
+                </tr>
+                <tr>
+                    <th width="50%">Widget</th>
+                    <td width="50%">yes</td>
+                </tr>
+                <tr>
+                    <th width="50%">Bridge</th>
+                    <td width="50%">no</td>
+                </tr>
+                <tr>
+                    <th width="50%">Shop Plugins</th>
+                    <td width="50%">no</td>
+                </tr>
+                <tr>
+                    <th width="50%">Paylink</th>
+                    <td width="50%">no</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <h3 id="technicalFlow">Technical Flow</h3>
+        <p> via direct API integration </p>
+        <br />
+        <img src="/img/faq/unionpay/unionpay_flow.png" alt="unionpay flow" width="90%">
+        <br />
+        <h3 id="notifications">Notifications</h3>
+        <h4>Webhook and email notifications</h4>
+        <p>
+            At the time of the redirect, it is still uncertain whether a transaction will be completed successfully or
+            not. Therefore, Payengine awaits for the final asynchronous notification before the status of a DEBIT
+            transaction is changed from PENDING to SUCCESS or FAILURE.
+            <br />
+            <br />
+            A merchant should register for Payengine's notifications to receive this final status update.
+            <br />
+            <br />
+            Alternatively, a GET request on the order or DEBIT transaction would also work, but it is not ensured that
+            the final status will be available immediately after the redirect and a merchant might have to query the GET
+            multiple times.
+            <br />
+            <br />
+            Therefore, it is strongly recommended that Payengine's asynchronous notifications are used instead.
+            <br />
+            <br />
+            Merchants could receive notifications via URL (webhook) or email.
+            <br />
+            <br />
+            The Union Pay notifications could be subscribed:
+        </p>
+        <ul>
+            <li>via the Payengine API (<a href="/buildyourown/restapi">link to public website Notifications docu</a>)
+            </li>
+            <li>via the Payengine Merchant Center (<a href="/merchantcenter/managenotification">link to MC Notifications
+                    docu</a>)</li>
+        </ul>
+        <h3 id="specifics">Specifics</h3>
+        <h4 id="unionpayInputParameters">Input Parameters for Authorizing Transactions</h4>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                <tr>
+                    <th width="25%">Parameter</th>
+                    <th width="25%">Mandatory/Optional</th>
+                    <th width="25%">Description</th>
+                    <th width="25%">Type</th>
+                    <th width="25%">Example</th>
+                </tr>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="25%">async.cancelUrl</td>
+                    <td width="25%">M</td>
+                    <td width="25%">Redirect URL when payment is cancelled</td>
+                    <td width="25%">string</td>
+                    <td width="25%"><a href="http://my.shop.com/cancel">http://my.shop.com/cancel</td>
+                </tr>
+                <tr>
+                    <td width="25%">async.failureUrl</td>
+                    <td width="25%">M</td>
+                    <td width="25%">Redirect URL for unsuccessful payment</td>
+                    <td width="25%">string</td>
+                    <td width="25%"><a href="http://my.shop.com/fail">http://my.shop.com/fail</a></td>
+                </tr>
+                <tr>
+                    <td width="25%">async.successUrl</td>
+                    <td width="25%">M</td>
+                    <td width="25%">Redirect URL for successful payment</td>
+                    <td width="25%">string</td>
+                    <td width="25%"><a href="http://my.shop.com/success">http://my.shop.com/success</a></td>
+                </tr>
+                <tr>
+                    <td width="25%">payment.countryCode</td>
+                    <td width="25%">O</td>
+                    <td width="25%">Country code</td>
+                    <td width="25%">string</td>
+                    <td width="25%">The default value forthe parameter payment.countryCode is "CN" if there is no extra
+                        country code provided.
+                        The default value in the widget is "CN".</td>
+                </tr>
+                <tr>
+                    <td width="25%">payment.accountHolder</td>
+                    <td width="25%">O</td>
+                    <td width="25%">The Union Pay accountholder name</td>
+                    <td width="25%">string</td>
+                    <td width="25%">Dr. Hans-Peter Meier</td>
+                </tr>
+            </tbody>
+        </table>
+        <br />
+        <h3 id="samples">Samples</h3>
+        <h4 id="debitTransaction">Debit transaction</h4>
+        <p>POST /{{'\{\{publicApiUrl\}\}'}}/v1/orders/debit</p>
+        <br />
+        <div>
+            <div class="example-box-wrapper">
+                <div class="content-box" ng-init="createCustomerResponseShoww=false">
+                    <h3 class="content-box-header bg-default">
+                        Create Debit request
+                        <div class="header-buttons-separator">
+                            <a href class="icon-separator toggle-button"
+                                ng-click="createCustomerResponseShoww=!createCustomerResponseShoww;">
+                                <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShoww"></i>
+                                <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShoww"></i>
+                            </a>
+                        </div>
+                    </h3>
+                    <div class="content-box-wrapper" ng-if="createCustomerResponseShoww">
+                        <code>
+                        {
+                            "product": "union-pay",
+                            "terms": 1468590412476,
+                            "privacy": 1468590412476,
+                            "merchantOrderId": "merchantOrderId{{$timestamp}}",
+                            "description": "test transaction",
+                            "statementDescription": "statement description",
+                            "initialAmount": 6060,
+                            "currency": "EUR",
+                            "basket": [
+                                {
+                                    "name": "USB-Stick",
+                                    "articleNumber": "SW10029",
+                                    "totalPrice": 2000,
+                                    "totalPriceWithTax": 2020,
+                                    "unitPrice": 2000,
+                                    "unitPriceWithTax": 2020,
+                                    "tax": 20,
+                                    "quantity": 1
+                                },
+                                {
+                                    "name": "USB-Stick-new",
+                                    "articleNumber": "SW10030",
+                                    "totalPrice": 4000,
+                                    "totalPriceWithTax": 4040,
+                                    "unitPrice": 2000,
+                                    "unitPriceWithTax": 2020,
+                                    "tax": 20,
+                                    "quantity": 2
+                                }
+                            ],
+                            "payment": {
+                                "accountHolder": "Maria Test",
+                                "countryCode": "GB"
+                            },
+                            "meta": {
+                                "preferredLanguage": "zh"
+                            },
+                            "customer": "{{customerId}}",
+                            "persona": "{{personaId}}",
+                            "billingAddress": "{{addressId}}",
+                            "shippingAddress": "{{addressId}}",
+                            "channel": "ECOM",
+                            "source": "Postman Test",
+                            "async": {
+                                "successUrl": "https://www.google.de/#newwindow=1&q=success",
+                                "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+                                "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel"
+                            }
+                        }
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="example-box-wrapper">
+                <div class="content-box" ng-init="createCustomerResponseShow3=false">
+                    <h3 class="content-box-header bg-default">
+                        Create Debit response
+                        <div class="header-buttons-separator">
+                            <a href class="icon-separator toggle-button"
+                                ng-click="createCustomerResponseShow3=!createCustomerResponseShow3;">
+                                <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow3"></i>
+                                <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow3"></i>
+                            </a>
+                        </div>
+                    </h3>
+                    <div class="content-box-wrapper" ng-if="createCustomerResponseShow3">
+                        <code>
+                            {
+                                "createdAt": 1627654176516,
+                                "modifiedAt": 1627654176569,
+                                "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
+                                "terms": 1468590412476,
+                                "privacy": 1468590412476,
+                                "orderId": "6zcbleiet2",
+                                "merchantOrderId": "merchantOrderId1627654117",
+                                "paymentProviderTransactionId": "db83c21f-b4b4-4c85-9",
+                                "description": "test transaction",
+                                "statementDescription": "statement description",
+                                "initialAmount": 6060,
+                                "preauthorizedAmount": 0,
+                                "capturedAmount": 0,
+                                "refundedAmount": 0,
+                                "canceledAmount": 0,
+                                "currency": "EUR",
+                                "basket": [
+                                    {
+                                        "id": "Article-4528f490-6b4c-4e3a-8cb3-1414b3dce103",
+                                        "name": "USB-Stick-new",
+                                        "articleNumber": "SW10030",
+                                        "totalPrice": 4000,
+                                        "totalPriceWithTax": 4040,
+                                        "unitPrice": 2000,
+                                        "unitPriceWithTax": 2020,
+                                        "quantity": 2,
+                                        "tax": 20,
+                                        "discount": null,
+                                        "imageUrl": null,
+                                        "articleUrl": null,
+                                        "articleType": null
+                                    },
+                                    {
+                                        "id": "Article-0dd0fa9f-2d96-4e35-9ea1-10021d809dca",
+                                        "name": "USB-Stick",
+                                        "articleNumber": "SW10029",
+                                        "totalPrice": 2000,
+                                        "totalPriceWithTax": 2020,
+                                        "unitPrice": 2000,
+                                        "unitPriceWithTax": 2020,
+                                        "quantity": 1,
+                                        "tax": 20,
+                                        "discount": null,
+                                        "imageUrl": null,
+                                        "articleUrl": null,
+                                        "articleType": null
+                                    }
+                                ],
+                                "customer": {
+                                    "merchantCustomerId": "merchantCustomerId_1627653850",
+                                    "organizationRegistrationRegister": null,
+                                    "organizationRegistrationId": null,
+                                    "organizationEntityType": null,
+                                    "organizationVatId": null,
+                                    "companyName": null,
+                                    "reference": null,
+                                    "email": "1627653850@payengine-test.de",
+                                    "customerId": "customer_nwic4soycj",
+                                    "addresses": [],
+                                    "personas": [],
+                                    "paymentInstruments": [],
+                                    "createdAt": 1627653909739,
+                                    "modifiedAt": 1627653909739,
+                                    "customerType": null
+                                },
+                                "persona": {
+                                    "personaId": "persona_utzqile3y5",
+                                    "firstName": "Jane",
+                                    "lastName": "Smith",
+                                    "phone": "00493012345",
+                                    "mobile": "00493012345",
+                                    "fax": "00493012345",
+                                    "birthday": 358293600000,
+                                    "gender": "MALE",
+                                    "title": "Prof. Dr.",
+                                    "createdAt": 1627653915532,
+                                    "modifiedAt": 1627653915532
+                                },
+                                "billingAddress": {
+                                    "firstName": "Jane",
+                                    "lastName": "Smith",
+                                    "street": "PRESTON BRIDGE",
+                                    "houseNumber": "125",
+                                    "city": "Musterhausen",
+                                    "zip": "56231",
+                                    "country": "DE",
+                                    "state": "Bayern",
+                                    "phone": "00493012345",
+                                    "fax": "00493012345",
+                                    "mobile": "00493012345",
+                                    "title": "Prof. Dr.",
+                                    "additionalDetails": "premium buyer",
+                                    "addressId": "address_fktgldokpo",
+                                    "createdAt": 1627653912301,
+                                    "modifiedAt": 1627653912301
+                                },
+                                "shippingAddress": {
+                                    "firstName": "Jane",
+                                    "lastName": "Smith",
+                                    "street": "PRESTON BRIDGE",
+                                    "houseNumber": "125",
+                                    "city": "Musterhausen",
+                                    "zip": "56231",
+                                    "country": "DE",
+                                    "state": "Bayern",
+                                    "phone": "00493012345",
+                                    "fax": "00493012345",
+                                    "mobile": "00493012345",
+                                    "title": "Prof. Dr.",
+                                    "additionalDetails": "premium buyer",
+                                    "addressId": "address_fktgldokpo",
+                                    "createdAt": 1627653912301,
+                                    "modifiedAt": 1627653912301
+                                },
+                                "ipAddress": null,
+                                "paymentInstrument": {
+                                    "createdAt": 1627654176518,
+                                    "modifiedAt": 1627654176518,
+                                    "paymentInstrumentId": "paymentinstrument_ocwbbkond8",
+                                    "merchantPaymentInstrumentId": null,
+                                    "attributes": {
+                                        "accountHolder": "Maria Test"
+                                    },
+                                    "encrypted": false,
+                                    "origin": "union-pay",
+                                    "type": "union-pay",
+                                    "recurring": false
+                                },
+                                "transactions": [
+                                    {
+                                        "createdAt": 1627654176518,
+                                        "modifiedAt": 1627654176569,
+                                        "type": "DEBIT",
+                                        "transactionId": "transaction_nluablshw3",
+                                        "description": "test transaction",
+                                        "initialAmount": 6060,
+                                        "refundedAmount": 0,
+                                        "currency": "EUR",
+                                        "status": "PENDING",
+                                        "order": "6zcbleiet2",
+                                        "parentTransaction": null,
+                                        "transactions": null,
+                                        "basket": [
+                                            {
+                                                "id": "Article-4528f490-6b4c-4e3a-8cb3-1414b3dce103",
+                                                "name": "USB-Stick-new",
+                                                "articleNumber": "SW10030",
+                                                "totalPrice": 4000,
+                                                "totalPriceWithTax": 4040,
+                                                "unitPrice": 2000,
+                                                "unitPriceWithTax": 2020,
+                                                "quantity": 2,
+                                                "tax": 20,
+                                                "discount": null,
+                                                "imageUrl": null,
+                                                "articleUrl": null,
+                                                "articleType": null
+                                            },
+                                            {
+                                                "id": "Article-0dd0fa9f-2d96-4e35-9ea1-10021d809dca",
+                                                "name": "USB-Stick",
+                                                "articleNumber": "SW10029",
+                                                "totalPrice": 2000,
+                                                "totalPriceWithTax": 2020,
+                                                "unitPrice": 2000,
+                                                "unitPriceWithTax": 2020,
+                                                "quantity": 1,
+                                                "tax": 20,
+                                                "discount": null,
+                                                "imageUrl": null,
+                                                "articleUrl": null,
+                                                "articleType": null
+                                            }
+                                        ],
+                                        "providerCode": null,
+                                        "merchantMessage": null,
+                                        "customerMessage": null,
+                                        "descriptor": null,
+                                        "meta": null,
+                                        "challenge": null,
+                                        "asyncNotificationSubscriptionId": null,
+                                        "tracking": null
+                                    }
+                                ],
+                                "status": "OPEN",
+                                "channel": "ECOM",
+                                "source": "Postman Test",
+                                "settled": false,
+                                "settlementDate": null,
+                                "allowedProducts": null,
+                                "product": "union-pay",
+                                "transactionType": "DEBIT",
+                                "meta": {
+                                    "preferredLanguage": "zh"
+                                },
+                                "async": {
+                                    "successUrl": "https://www.google.de/#newwindow=1&q=success",
+                                    "failureUrl": "https://www.google.de/#newwindow=1&q=failure",
+                                    "cancelUrl": "https://www.google.de/#newwindow=1&q=cancel",
+                                    "confirmUrl": null
+                                },
+                                "deviceIdent": null,
+                                "clientType": "BRW",
+                                "asyncNotificationSubscriptionId": null,
+                                "lastOperation": "TRANSACTION_DEBIT_PENDING",
+                                "locale": null,
+                                "risk": null,
+                                "redirectUrl": "https://public-api-appdev01.psp.concardis.local/order/union-pay/1.0/redirect/Order-e5668587-348d-4475-af2b-ce3b4e80f34b"
+                            }
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <h4 id="refundTransaction">Refund transaction</h4>
+        <p>POST
+            /{{'\{\{publicApiUrl\}\}'}}/{{'\{\{apiVersion\}\}'}}/orders/{{'\{\{orderId\}\}'}}/transactions/{{'\{\{transactionId\}\}'}}/refund
+        </p>        
+        <br />
+        <div>
+            <div class="example-box-wrapper">
+                <div class="content-box" ng-init="createCustomerResponseShow4=false">
+                    <h3 class="content-box-header bg-default">
+                        Create Refund request
+                        <div class="header-buttons-separator">
+                            <a href class="icon-separator toggle-button"
+                                ng-click="createCustomerResponseShow4=!createCustomerResponseShow4;">
+                                <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow4"></i>
+                                <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow4"></i>
+                            </a>
+                        </div>
+                    </h3>
+                    <div class="content-box-wrapper" ng-if="createCustomerResponseShow4">
+                        <code>
+                            {
+                                "description": "description for transaction.",
+                                "initialAmount": 6060,
+                                "currency": "EUR",
+                                "basket": [
+                                    {
+                                        "name": "USB-Stick",
+                                        "articleNumber": "SW10029",
+                                        "totalPrice": 2000,
+                                        "totalPriceWithTax": 2020,
+                                        "unitPrice": 2000,
+                                        "unitPriceWithTax": 2020,
+                                        "tax": 20,
+                                        "quantity": 1
+                                    },
+                                    {
+                                        "name": "USB-Stick-new",
+                                        "articleNumber": "SW10030",
+                                        "totalPrice": 4000,
+                                        "totalPriceWithTax": 4040,
+                                        "unitPrice": 2000,
+                                        "unitPriceWithTax": 2020,
+                                        "tax": 20,
+                                        "quantity": 2
+                                    }
+                                ]
+                            }
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="example-box-wrapper">
+                <div class="content-box" ng-init="createCustomerResponseShow5=false">
+                    <h3 class="content-box-header bg-default">
+                        Create Refund response
+                        <div class="header-buttons-separator">
+                            <a href class="icon-separator toggle-button"
+                                ng-click="createCustomerResponseShow5=!createCustomerResponseShow5;">
+                                <i class="glyph-icon icon-chevron-up" ng-if="createCustomerResponseShow5"></i>
+                                <i class="glyph-icon icon-chevron-down" ng-if="!createCustomerResponseShow5"></i>
+                            </a>
+                        </div>
+                    </h3>
+                    <div class="content-box-wrapper" ng-if="createCustomerResponseShow5">
+                        <code>
+                            {
+                                "createdAt": 1627654236389,
+                                "modifiedAt": 1627654236438,
+                                "type": "REFUND",
+                                "transactionId": "transaction_9fasgmbjgn",
+                                "description": "description for transaction.",
+                                "initialAmount": 6060,
+                                "currency": "EUR",
+                                "status": "SUCCESS",
+                                "order": {
+                                    "createdAt": 1627654176516,
+                                    "modifiedAt": 1627654236438,
+                                    "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
+                                    "terms": 1468590412476,
+                                    "privacy": 1468590412476,
+                                    "orderId": "6zcbleiet2",
+                                    "merchantOrderId": "merchantOrderId1627654117",
+                                    "paymentProviderTransactionId": "db83c21f-b4b4-4c85-9",
+                                    "description": "test transaction",
+                                    "statementDescription": "statement description",
+                                    "initialAmount": 6060,
+                                    "preauthorizedAmount": 6060,
+                                    "capturedAmount": 6060,
+                                    "refundedAmount": 6060,
+                                    "canceledAmount": 0,
+                                    "currency": "EUR",
+                                    "basket": [
+                                        {
+                                            "id": "Article-0dd0fa9f-2d96-4e35-9ea1-10021d809dca",
+                                            "name": "USB-Stick",
+                                            "articleNumber": "SW10029",
+                                            "totalPrice": 2000,
+                                            "totalPriceWithTax": 2020,
+                                            "unitPrice": 2000,
+                                            "unitPriceWithTax": 2020,
+                                            "quantity": 1,
+                                            "tax": 20,
+                                            "discount": null,
+                                            "imageUrl": null,
+                                            "articleUrl": null,
+                                            "articleType": null
+                                        },
+                                        {
+                                            "id": "Article-4528f490-6b4c-4e3a-8cb3-1414b3dce103",
+                                            "name": "USB-Stick-new",
+                                            "articleNumber": "SW10030",
+                                            "totalPrice": 4000,
+                                            "totalPriceWithTax": 4040,
+                                            "unitPrice": 2000,
+                                            "unitPriceWithTax": 2020,
+                                            "quantity": 2,
+                                            "tax": 20,
+                                            "discount": null,
+                                            "imageUrl": null,
+                                            "articleUrl": null,
+                                            "articleType": null
+                                        }
+                                    ],
+                                    "customer": {
+                                        "merchantCustomerId": "merchantCustomerId_1627653850",
+                                        "organizationRegistrationRegister": null,
+                                        "organizationRegistrationId": null,
+                                        "organizationEntityType": null,
+                                        "organizationVatId": null,
+                                        "companyName": null,
+                                        "reference": null,
+                                        "email": "1627653850@payengine-test.de",
+                                        "customerId": "customer_nwic4soycj",
+                                        "addresses": [],
+                                        "personas": [],
+                                        "paymentInstruments": [],
+                                        "createdAt": 1627653909739,
+                                        "modifiedAt": 1627653909739,
+                                        "customerType": null
+                                    },
+                                    "persona": {
+                                        "personaId": "persona_utzqile3y5",
+                                        "firstName": "Jane",
+                                        "lastName": "Smith",
+                                        "phone": "00493012345",
+                                        "mobile": "00493012345",
+                                        "fax": "00493012345",
+                                        "birthday": 358293600000,
+                                        "gender": "MALE",
+                                        "title": "Prof. Dr.",
+                                        "createdAt": 1627653915532,
+                                        "modifiedAt": 1627653915532
+                                    },
+                                    "billingAddress": {
+                                        "firstName": "Jane",
+                                        "lastName": "Smith",
+                                        "street": "PRESTON BRIDGE",
+                                        "houseNumber": "125",
+                                        "city": "Musterhausen",
+                                        "zip": "56231",
+                                        "country": "DE",
+                                        "state": "Bayern",
+                                        "phone": "00493012345",
+                                        "fax": "00493012345",
+                                        "mobile": "00493012345",
+                                        "title": "Prof. Dr.",
+                                        "additionalDetails": "premium buyer",
+                                        "addressId": "address_fktgldokpo",
+                                        "createdAt": 1627653912301,
+                                        "modifiedAt": 1627653912301
+                                    },
+                                    "shippingAddress": {
+                                        "firstName": "Jane",
+                                        "lastName": "Smith",
+                                        "street": "PRESTON BRIDGE",
+                                        "houseNumber": "125",
+                                        "city": "Musterhausen",
+                                        "zip": "56231",
+                                        "country": "DE",
+                                        "state": "Bayern",
+                                        "phone": "00493012345",
+                                        "fax": "00493012345",
+                                        "mobile": "00493012345",
+                                        "title": "Prof. Dr.",
+                                        "additionalDetails": "premium buyer",
+                                        "addressId": "address_fktgldokpo",
+                                        "createdAt": 1627653912301,
+                                        "modifiedAt": 1627653912301
+                                    },
+                                    "ipAddress": null,
+                                    "paymentInstrument": {
+                                        "createdAt": 1627654176518,
+                                        "modifiedAt": 1627654176518,
+                                        "paymentInstrumentId": "paymentinstrument_ocwbbkond8",
+                                        "merchantPaymentInstrumentId": null,
+                                        "attributes": {
+                                            "accountHolder": "Maria Test"
+                                        },
+                                        "encrypted": false,
+                                        "origin": "union-pay",
+                                        "type": "union-pay",
+                                        "recurring": false
+                                    },
+                                    "transactions": [
+                                        {
+                                            "createdAt": 1627654176518,
+                                            "modifiedAt": 1627654226226,
+                                            "type": "DEBIT",
+                                            "transactionId": "transaction_nluablshw3",
+                                            "description": "test transaction",
+                                            "initialAmount": 6060,
+                                            "refundedAmount": 6060,
+                                            "currency": "EUR",
+                                            "status": "SUCCESS",
+                                            "order": "6zcbleiet2",
+                                            "parentTransaction": null,
+                                            "transactions": [
+                                                "transaction_9fasgmbjgn"
+                                            ],
+                                            "basket": [
+                                                {
+                                                    "id": "Article-0dd0fa9f-2d96-4e35-9ea1-10021d809dca",
+                                                    "name": "USB-Stick",
+                                                    "articleNumber": "SW10029",
+                                                    "totalPrice": 2000,
+                                                    "totalPriceWithTax": 2020,
+                                                    "unitPrice": 2000,
+                                                    "unitPriceWithTax": 2020,
+                                                    "quantity": 1,
+                                                    "tax": 20,
+                                                    "discount": null,
+                                                    "imageUrl": null,
+                                                    "articleUrl": null,
+                                                    "articleType": null
+                                                },
+                                                {
+                                                    "id": "Article-4528f490-6b4c-4e3a-8cb3-1414b3dce103",
+                                                    "name": "USB-Stick-new",
+                                                    "articleNumber": "SW10030",
+                                                    "totalPrice": 4000,
+                                                    "totalPriceWithTax": 4040,
+                                                    "unitPrice": 2000,
+                                                    "unitPriceWithTax": 2020,
+                                                    "quantity": 2,
+                                                    "tax": 20,
+                                                    "discount": null,
+                                                    "imageUrl": null,
+                                                    "articleUrl": null,
+                                                    "articleType": null
+                                                }
+                                            ],
+                                            "providerCode": null,
+                                            "merchantMessage": null,
+                                            "customerMessage": null,
+                                            "descriptor": null,
+                                            "meta": null,
+                                            "challenge": null,
+                                            "asyncNotificationSubscriptionId": null,
+                                            "tracking": []
+                                        }
+                                    ],
+                                    "status": "CLOSED",
+                                    "channel": "ECOM",
+                                    "source": "Postman Test",
+                                    "settled": false,
+                                    "settlementDate": null,
+                                    "allowedProducts": [],
+                                    "product": "union-pay",
+                                    "transactionType": "DEBIT",
+                                    "meta": {
+                                        "preferredLanguage": "zh"
+                                    },
+                                    "async": null,
+                                    "deviceIdent": null,
+                                    "clientType": "BRW",
+                                    "asyncNotificationSubscriptionId": null,
+                                    "lastOperation": "TRANSACTION_REFUND_SUCCESS",
+                                    "locale": null,
+                                    "risk": null,
+                                    "redirectUrl": "https://public-api-appdev01.psp.concardis.local/order/union-pay/1.0/redirect/Order-e5668587-348d-4475-af2b-ce3b4e80f34b"
+                                },
+                                "parentTransaction": {
+                                    "createdAt": 1627654176518,
+                                    "modifiedAt": 1627654226226,
+                                    "type": "DEBIT",
+                                    "transactionId": "transaction_nluablshw3",
+                                    "description": "test transaction",
+                                    "initialAmount": 6060,
+                                    "refundedAmount": 6060,
+                                    "currency": "EUR",
+                                    "status": "SUCCESS",
+                                    "order": {
+                                        "createdAt": 1627654176516,
+                                        "modifiedAt": 1627654236438,
+                                        "merchantId": "Merchant-11111111-1111-1111-1111-111111111111",
+                                        "terms": 1468590412476,
+                                        "privacy": 1468590412476,
+                                        "orderId": "6zcbleiet2",
+                                        "merchantOrderId": "merchantOrderId1627654117",
+                                        "paymentProviderTransactionId": "db83c21f-b4b4-4c85-9",
+                                        "description": "test transaction",
+                                        "statementDescription": "statement description",
+                                        "initialAmount": 6060,
+                                        "preauthorizedAmount": 6060,
+                                        "capturedAmount": 6060,
+                                        "refundedAmount": 6060,
+                                        "canceledAmount": 0,
+                                        "currency": "EUR",
+                                        "basket": [
+                                            {
+                                                "id": "Article-0dd0fa9f-2d96-4e35-9ea1-10021d809dca",
+                                                "name": "USB-Stick",
+                                                "articleNumber": "SW10029",
+                                                "totalPrice": 2000,
+                                                "totalPriceWithTax": 2020,
+                                                "unitPrice": 2000,
+                                                "unitPriceWithTax": 2020,
+                                                "quantity": 1,
+                                                "tax": 20,
+                                                "discount": null,
+                                                "imageUrl": null,
+                                                "articleUrl": null,
+                                                "articleType": null
+                                            },
+                                            {
+                                                "id": "Article-4528f490-6b4c-4e3a-8cb3-1414b3dce103",
+                                                "name": "USB-Stick-new",
+                                                "articleNumber": "SW10030",
+                                                "totalPrice": 4000,
+                                                "totalPriceWithTax": 4040,
+                                                "unitPrice": 2000,
+                                                "unitPriceWithTax": 2020,
+                                                "quantity": 2,
+                                                "tax": 20,
+                                                "discount": null,
+                                                "imageUrl": null,
+                                                "articleUrl": null,
+                                                "articleType": null
+                                            }
+                                        ],
+                                        "customer": {
+                                            "merchantCustomerId": "merchantCustomerId_1627653850",
+                                            "organizationRegistrationRegister": null,
+                                            "organizationRegistrationId": null,
+                                            "organizationEntityType": null,
+                                            "organizationVatId": null,
+                                            "companyName": null,
+                                            "reference": null,
+                                            "email": "1627653850@payengine-test.de",
+                                            "customerId": "customer_nwic4soycj",
+                                            "addresses": [],
+                                            "personas": [],
+                                            "paymentInstruments": [],
+                                            "createdAt": 1627653909739,
+                                            "modifiedAt": 1627653909739,
+                                            "customerType": null
+                                        },
+                                        "persona": {
+                                            "personaId": "persona_utzqile3y5",
+                                            "firstName": "Jane",
+                                            "lastName": "Smith",
+                                            "phone": "00493012345",
+                                            "mobile": "00493012345",
+                                            "fax": "00493012345",
+                                            "birthday": 358293600000,
+                                            "gender": "MALE",
+                                            "title": "Prof. Dr.",
+                                            "createdAt": 1627653915532,
+                                            "modifiedAt": 1627653915532
+                                        },
+                                        "billingAddress": {
+                                            "firstName": "Jane",
+                                            "lastName": "Smith",
+                                            "street": "PRESTON BRIDGE",
+                                            "houseNumber": "125",
+                                            "city": "Musterhausen",
+                                            "zip": "56231",
+                                            "country": "DE",
+                                            "state": "Bayern",
+                                            "phone": "00493012345",
+                                            "fax": "00493012345",
+                                            "mobile": "00493012345",
+                                            "title": "Prof. Dr.",
+                                            "additionalDetails": "premium buyer",
+                                            "addressId": "address_fktgldokpo",
+                                            "createdAt": 1627653912301,
+                                            "modifiedAt": 1627653912301
+                                        },
+                                        "shippingAddress": {
+                                            "firstName": "Jane",
+                                            "lastName": "Smith",
+                                            "street": "PRESTON BRIDGE",
+                                            "houseNumber": "125",
+                                            "city": "Musterhausen",
+                                            "zip": "56231",
+                                            "country": "DE",
+                                            "state": "Bayern",
+                                            "phone": "00493012345",
+                                            "fax": "00493012345",
+                                            "mobile": "00493012345",
+                                            "title": "Prof. Dr.",
+                                            "additionalDetails": "premium buyer",
+                                            "addressId": "address_fktgldokpo",
+                                            "createdAt": 1627653912301,
+                                            "modifiedAt": 1627653912301
+                                        },
+                                        "ipAddress": null,
+                                        "paymentInstrument": {
+                                            "createdAt": 1627654176518,
+                                            "modifiedAt": 1627654176518,
+                                            "paymentInstrumentId": "paymentinstrument_ocwbbkond8",
+                                            "merchantPaymentInstrumentId": null,
+                                            "attributes": {
+                                                "accountHolder": "Maria Test"
+                                            },
+                                            "encrypted": false,
+                                            "origin": "union-pay",
+                                            "type": "union-pay",
+                                            "recurring": false
+                                        },
+                                        "transactions": [
+                                            "transaction_nluablshw3"
+                                        ],
+                                        "status": "CLOSED",
+                                        "channel": "ECOM",
+                                        "source": "Postman Test",
+                                        "settled": false,
+                                        "settlementDate": null,
+                                        "allowedProducts": [],
+                                        "product": "union-pay",
+                                        "transactionType": "DEBIT",
+                                        "meta": {
+                                            "preferredLanguage": "zh"
+                                        },
+                                        "async": null,
+                                        "deviceIdent": null,
+                                        "clientType": "BRW",
+                                        "asyncNotificationSubscriptionId": null,
+                                        "lastOperation": "TRANSACTION_REFUND_SUCCESS",
+                                        "locale": null,
+                                        "risk": null,
+                                        "redirectUrl": "https://public-api-appdev01.psp.concardis.local/order/union-pay/1.0/redirect/Order-e5668587-348d-4475-af2b-ce3b4e80f34b"
+                                    },
+                                    "parentTransaction": null,
+                                    "transactions": [
+                                        "transaction_9fasgmbjgn"
+                                    ],
+                                    "basket": [
+                                        {
+                                            "id": "Article-0dd0fa9f-2d96-4e35-9ea1-10021d809dca",
+                                            "name": "USB-Stick",
+                                            "articleNumber": "SW10029",
+                                            "totalPrice": 2000,
+                                            "totalPriceWithTax": 2020,
+                                            "unitPrice": 2000,
+                                            "unitPriceWithTax": 2020,
+                                            "quantity": 1,
+                                            "tax": 20,
+                                            "discount": null,
+                                            "imageUrl": null,
+                                            "articleUrl": null,
+                                            "articleType": null
+                                        },
+                                        {
+                                            "id": "Article-4528f490-6b4c-4e3a-8cb3-1414b3dce103",
+                                            "name": "USB-Stick-new",
+                                            "articleNumber": "SW10030",
+                                            "totalPrice": 4000,
+                                            "totalPriceWithTax": 4040,
+                                            "unitPrice": 2000,
+                                            "unitPriceWithTax": 2020,
+                                            "quantity": 2,
+                                            "tax": 20,
+                                            "discount": null,
+                                            "imageUrl": null,
+                                            "articleUrl": null,
+                                            "articleType": null
+                                        }
+                                    ],
+                                    "providerCode": null,
+                                    "merchantMessage": null,
+                                    "customerMessage": null,
+                                    "descriptor": null,
+                                    "meta": null,
+                                    "challenge": null,
+                                    "asyncNotificationSubscriptionId": null,
+                                    "tracking": []
+                                },
+                                "transactions": null,
+                                "basket": [
+                                    {
+                                        "id": "Article-1f55c984-b717-4ea1-a0a4-4cddcd5ecfc1",
+                                        "name": "USB-Stick",
+                                        "articleNumber": "SW10029",
+                                        "totalPrice": 2000,
+                                        "totalPriceWithTax": 2020,
+                                        "unitPrice": 2000,
+                                        "unitPriceWithTax": 2020,
+                                        "quantity": 1,
+                                        "tax": 20,
+                                        "discount": null,
+                                        "imageUrl": null,
+                                        "articleUrl": null,
+                                        "articleType": null
+                                    },
+                                    {
+                                        "id": "Article-805c2cb5-2663-4b18-bd07-ac2c5e87a774",
+                                        "name": "USB-Stick-new",
+                                        "articleNumber": "SW10030",
+                                        "totalPrice": 4000,
+                                        "totalPriceWithTax": 4040,
+                                        "unitPrice": 2000,
+                                        "unitPriceWithTax": 2020,
+                                        "quantity": 2,
+                                        "tax": 20,
+                                        "discount": null,
+                                        "imageUrl": null,
+                                        "articleUrl": null,
+                                        "articleType": null
+                                    }
+                                ],
+                                "providerCode": null,
+                                "merchantMessage": null,
+                                "customerMessage": null,
+                                "descriptor": null,
+                                "meta": null,
+                                "challenge": null,
+                                "asyncNotificationSubscriptionId": null,
+                                "tracking": null
+                            }
+                        </code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="testing">
+        <h2>Testing</h2>
+        <br />
+        <p>Union Pay can be tested via the Payengine Simulator.</p>
+        <p>The simulator should map the following functionalities:</p>
+        <ul>
+            <li>debit payment</li>
+            <li>refund</li>
+        </ul>
+        <p>The testing amounts for the two scenarios can be found below:</p>
+        <br />
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th width="15%">Result</th>
+                    <th width="85%">Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="15%">Success</td>
+                    <td width="85%">Any applicable amount (excluding failure amounts listed below). The transaction's
+                        status changes from "OK" to "SUCCESS"</td>
+                </tr>
+                <tr>
+                    <td width="15%">Failure</td>
+                    <td width="85%">Each of the amounts listed below:
+                        <ul>
+                            <li> 11111 (€111,11) </li>
+                            <li> 111 (€1,11) </li>
+                        </ul>
+                        The transaction's status changes from "OK" to "FAILURE"
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

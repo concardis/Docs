@@ -30,7 +30,7 @@
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/createcustomer">Manage customers</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/myaccount">My Account</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/paymentmethods">Payment Methods</a>
-        <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/flexible3ds">Flexible 3DS Rules</a>
+        <!-- <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/flexible3ds">Flexible 3DS Rules</a> -->
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/managebaskets">Manage baskets</a>
         <a type="button" ng-show="menu" class="btn btn-light text-left" href="/merchantcenter/cutoffmanualbookingsreport">Cut-Off Manual Bookings Report</a>
         <hr>
@@ -90,10 +90,11 @@
            <div  ng-include="'/partials/merchant/paymentmethods.html'">
             </div>
         </div>
-        <div ng-show="cur=='flexible3ds'">
+        <!-- PAY-17571 Removing Flexible 3ds rules -->
+        <!-- <div ng-show="cur=='flexible3ds'">
            <div  ng-include="'/partials/merchant/flexible3ds.html'">
             </div>
-        </div>
+        </div> -->
         <div ng-show="cur=='managebaskets'">
            <div  ng-include="'/partials/merchant/manage_baskets.html'">
             </div>
